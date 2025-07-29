@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl20o6ojxtevm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hf70e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hf70e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tj8st"]
+size = Vector3(1, 0.25, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tj8st"]
+size = Vector3(1, 0.25, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("BoxMesh_hf70e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
+shape = SubResource("BoxShape3D_hf70e")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_tj8st")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2"]
+shape = SubResource("BoxShape3D_tj8st")
