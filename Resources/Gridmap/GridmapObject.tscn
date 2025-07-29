@@ -22,12 +22,17 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e1oxl")
 
 [node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.841511, 0, -0.540241, 0, 1, 0, 0.540241, 0, 0.841511, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, -1.77309, 2.68204, 3.34613)
+transform = Transform3D(0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, -1.77309, 3.10401, 3.34613)
 projection = 1
-size = 4.69532
+size = 6.00584
