@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://cl20o6ojxtevm"]
+[gd_scene load_steps=22 format=4 uid="uid://cl20o6ojxtevm"]
 
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://Resources/Gridmap/Basic.001.png" id="1_tj8st"]
+[ext_resource type="Material" uid="uid://sllu7n8iy53k" path="res://Resources/Gridmap/basic.tres" id="2_dtlxk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
 resource_name = "Material.001"
@@ -223,6 +224,7 @@ data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Cube" type="StaticBody3D" parent="Cube"]
 
@@ -232,6 +234,7 @@ shape = SubResource("ConcavePolygonShape3D_y3lco")
 [node name="Slab" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_yk334")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Slab" type="StaticBody3D" parent="Slab"]
 
@@ -241,6 +244,7 @@ shape = SubResource("ConcavePolygonShape3D_4rioy")
 [node name="Ramp" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_fo54x")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Ramp" type="StaticBody3D" parent="Ramp"]
 
@@ -250,6 +254,7 @@ shape = SubResource("ConcavePolygonShape3D_ketmp")
 [node name="Wedge" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_0u141")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Wedge" type="StaticBody3D" parent="Wedge"]
 
@@ -259,6 +264,7 @@ shape = SubResource("ConcavePolygonShape3D_er0k0")
 [node name="Corner" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_t641t")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Corner" type="StaticBody3D" parent="Corner"]
 
@@ -268,6 +274,7 @@ shape = SubResource("ConcavePolygonShape3D_qyx1t")
 [node name="CornerRemoved" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ol6mm")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="CornerRemoved" type="StaticBody3D" parent="CornerRemoved"]
 

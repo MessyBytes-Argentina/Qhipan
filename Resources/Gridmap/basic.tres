@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://sllu7n8iy53k"]
+
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/ToonShader.gdshader" id="1_dlcva"]
+[ext_resource type="Texture2D" uid="uid://b6mxvebhhefip" path="res://Resources/Gridmap/PruebaTextura.png" id="2_dlcva"]
+
+[sub_resource type="Gradient" id="Gradient_bof8u"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_amxg1"]
+gradient = SubResource("Gradient_bof8u")
+
+[sub_resource type="Gradient" id="Gradient_epi6i"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bof8u"]
+gradient = SubResource("Gradient_epi6i")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dlcva")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_dlcva")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_amxg1")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
