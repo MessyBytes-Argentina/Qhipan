@@ -221,62 +221,69 @@ data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Cube" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="Cube" type="StaticBody3D" parent="Cube"]
+[node name="Cube" type="StaticBody3D" parent="Node3D/Cube"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Cube"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Cube/Cube"]
 shape = SubResource("ConcavePolygonShape3D_y3lco")
 
-[node name="Slab" type="MeshInstance3D" parent="."]
+[node name="Slab" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("ArrayMesh_yk334")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="Slab" type="StaticBody3D" parent="Slab"]
+[node name="Slab" type="StaticBody3D" parent="Node3D/Slab"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Slab/Slab"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Slab/Slab"]
 shape = SubResource("ConcavePolygonShape3D_4rioy")
 
-[node name="Ramp" type="MeshInstance3D" parent="."]
+[node name="Ramp" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("ArrayMesh_fo54x")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="Ramp" type="StaticBody3D" parent="Ramp"]
+[node name="Ramp" type="StaticBody3D" parent="Node3D/Ramp"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramp/Ramp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Ramp/Ramp"]
 shape = SubResource("ConcavePolygonShape3D_ketmp")
 
-[node name="Wedge" type="MeshInstance3D" parent="."]
+[node name="Wedge" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("ArrayMesh_0u141")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="Wedge" type="StaticBody3D" parent="Wedge"]
+[node name="Wedge" type="StaticBody3D" parent="Node3D/Wedge"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wedge/Wedge"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Wedge/Wedge"]
 shape = SubResource("ConcavePolygonShape3D_er0k0")
 
-[node name="Corner" type="MeshInstance3D" parent="."]
+[node name="Corner" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("ArrayMesh_t641t")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="Corner" type="StaticBody3D" parent="Corner"]
+[node name="Corner" type="StaticBody3D" parent="Node3D/Corner"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Corner/Corner"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Corner/Corner"]
 shape = SubResource("ConcavePolygonShape3D_qyx1t")
 
-[node name="CornerRemoved" type="MeshInstance3D" parent="."]
+[node name="CornerRemoved" type="MeshInstance3D" parent="Node3D"]
+visible = false
 mesh = SubResource("ArrayMesh_ol6mm")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_dtlxk")
 
-[node name="CornerRemoved" type="StaticBody3D" parent="CornerRemoved"]
+[node name="CornerRemoved" type="StaticBody3D" parent="Node3D/CornerRemoved"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CornerRemoved/CornerRemoved"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CornerRemoved/CornerRemoved"]
 shape = SubResource("ConcavePolygonShape3D_4ku5o")

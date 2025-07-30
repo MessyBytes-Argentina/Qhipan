@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://sllu7n8iy53k"]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://sllu7n8iy53k"]
 
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/ToonShader.gdshader" id="1_dlcva"]
 [ext_resource type="Texture2D" uid="uid://b6mxvebhhefip" path="res://Resources/Gridmap/PruebaTextura.png" id="2_dlcva"]
+[ext_resource type="Texture2D" uid="uid://44bu8gn6pteg" path="res://Resources/Gridmap/PruebaTexturaTop.png" id="3_epi6i"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
 offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
@@ -22,6 +23,7 @@ render_priority = 0
 shader = ExtResource("1_dlcva")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_dlcva")
+shader_parameter/top_texture = ExtResource("3_epi6i")
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 1.0

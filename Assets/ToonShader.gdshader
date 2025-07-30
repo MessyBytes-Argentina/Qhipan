@@ -4,6 +4,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
+uniform sampler2D top_texture : source_color, filter_nearest_mipmap, repeat_enable;
 uniform ivec2 albedo_texture_size;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
@@ -23,6 +24,9 @@ uniform vec3 uv2_offset;
 uniform sampler2D color_gradient;
 uniform sampler2D fresnel_gradient;
 
+varying vec3 world_normal;
+varying vec3 view_normal;
+
 float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
 }
@@ -37,6 +41,14 @@ void vertex() {
 	}
 
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	vec3 temp_normal = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
+	world_normal = (INV_VIEW_MATRIX * vec4(temp_normal, 0.0)).xyz;
+	view_normal = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
+}
+
+vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
+	vec3 world_pos = (inv_view_matrix * vec4(vert, 1.0)).xyz;
+	return world_pos;
 }
 
 void fragment() {
@@ -44,7 +56,15 @@ void fragment() {
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
+	if (world_normal.y < 0.5) {
+		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
+	} else {
+		vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
+		world_pos = fract(world_pos * vec3(1.00000, 1.00000, 1.00000) + vec3(0.50000, 0.00000, 0.50000));
+		vec2 base_uv = world_pos.xz;
+		vec4 albedo_tex = texture(top_texture, base_uv);
+		ALBEDO = albedo.rgb * albedo_tex.rgb;
+	}
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
