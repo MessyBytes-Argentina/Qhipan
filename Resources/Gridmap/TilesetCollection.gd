@@ -8,4 +8,4 @@ var button: Callable = _apply_material
 func _apply_material() -> void:
 	for child in get_children():
 		if child is MeshInstance3D:
-			child.material_override = collectionMaterial
+			child.set_surface_override_material(0, collectionMaterial)

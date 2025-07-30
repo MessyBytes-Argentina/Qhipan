@@ -229,6 +229,7 @@ collectionMaterial = ExtResource("2_dtlxk")
 [node name="Cube" type="MeshInstance3D" parent="Basics"]
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
 
 [node name="Cube" type="StaticBody3D" parent="Basics/Cube"]
 
