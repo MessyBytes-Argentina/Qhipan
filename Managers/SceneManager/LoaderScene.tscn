@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7x0upqglkoj"]
+
+[ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="1_rt8qf"]
+[ext_resource type="Texture2D" uid="uid://4vbh576aiy4t" path="res://Managers/SceneManager/Transition.png" id="2_ron80"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_it3ob"]
+shader = ExtResource("1_rt8qf")
+shader_parameter/transition_texture = ExtResource("2_ron80")
+shader_parameter/progress = 0.0
+
+[node name="LoaderScene" type="Control"]
+material = SubResource("ShaderMaterial_it3ob")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="Loading" type="RichTextLabel" parent="MarginContainer"]
+use_parent_material = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=40.0 freq=5.0 connected=0]Loading...[/wave]"
+fit_content = true
+autowrap_mode = 0

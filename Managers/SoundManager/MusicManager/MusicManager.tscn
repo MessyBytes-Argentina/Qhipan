@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx7128lqsqfuc"]
+
+[ext_resource type="Script" uid="uid://jsole72b20id" path="res://Managers/SoundManager/MusicManager/MusicManager.gd" id="1_ruqe6"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_431aa"]
+
+[node name="MusicManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_ruqe6")
+musicList = SubResource("AudioStreamInteractive_431aa")
+busName = "Music"

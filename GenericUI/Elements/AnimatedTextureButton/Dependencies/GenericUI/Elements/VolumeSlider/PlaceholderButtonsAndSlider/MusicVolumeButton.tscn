@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://gt346rayh13u"]
+
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Placeholder/UI/Extras/Music.png" id="1_5r5vx"]
+[ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="1_7whss"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Placeholder/UI/Extras/MusicDisabled.png" id="2_gmfdc"]
+[ext_resource type="Animation" uid="uid://dytj2q23vgjoe" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/RESET.res" id="4_gowvb"]
+[ext_resource type="Animation" uid="uid://bb4n8fpv0fr5y" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/hover.res" id="5_8xqyk"]
+[ext_resource type="Animation" uid="uid://dvu5w0orutjdl" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/click.res" id="6_n3lw1"]
+
+[node name="MusicVolumeButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+toggle_mode = true
+texture_normal = ExtResource("1_5r5vx")
+texture_pressed = ExtResource("2_gmfdc")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_7whss")
+resetAnimation = ExtResource("4_gowvb")
+hoverAnimation = ExtResource("5_8xqyk")
+clickAnimation = ExtResource("6_n3lw1")
