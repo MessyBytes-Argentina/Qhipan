@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4i4wpup84wht"]
+
+[ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
+[ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
+albedo_texture = ExtResource("1_ptf2q")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
+material = SubResource("StandardMaterial3D_hc36m")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l86x"]
+size = Vector3(0.258057, 0.248047, 0.0117188)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_iw8fe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_8lbv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_5l86x")
