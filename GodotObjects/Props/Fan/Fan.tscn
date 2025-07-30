@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs536j1n36wmr"]
+
+[ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/Props/Fan/Fan.gd" id="1_igptx"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_jh37w"]
+rings = 8
+ring_segments = 8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bussv"]
+height = 1.90576
+radius = 0.918945
+
+[node name="Fan" type="Area3D"]
+script = ExtResource("1_igptx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_jh37w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.784912, 0)
+shape = SubResource("CylinderShape3D_bussv")
+
+[node name="Target" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6673, 0)
+
+[node name="Origin" type="Marker3D" parent="."]
