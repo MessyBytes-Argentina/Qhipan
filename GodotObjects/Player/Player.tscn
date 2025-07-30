@@ -4,22 +4,37 @@
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
+transparency = 1
+cull_mode = 2
 albedo_texture = ExtResource("1_ptf2q")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 material = SubResource("StandardMaterial3D_hc36m")
 size = Vector2(0.25, 0.25)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5l86x"]
-size = Vector3(0.258057, 0.248047, 0.0117188)
+[sub_resource type="SphereShape3D" id="SphereShape3D_iw8fe"]
+radius = 0.125
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iw8fe")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="SpritePivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+
+[node name="Sprite" type="MeshInstance3D" parent="SpritePivot"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("QuadMesh_8lbv8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hc36m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_5l86x")
+shape = SubResource("SphereShape3D_iw8fe")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.75, 1.5)
