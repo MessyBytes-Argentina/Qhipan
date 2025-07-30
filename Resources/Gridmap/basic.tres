@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://44bu8gn6pteg" path="res://Resources/Gridmap/PruebaTexturaTop.png" id="3_epi6i"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+offsets = PackedFloat32Array(0.2, 0.25, 0.75, 0.75)
 colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_amxg1"]
