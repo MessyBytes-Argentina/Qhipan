@@ -85,12 +85,11 @@ shader_parameter/progress = 0.0
 [node name="SceneManager" type="Node" groups=["SceneManager"]]
 process_mode = 3
 script = ExtResource("1_wpufs")
-startScene = "res://GodotObjects/PlayerControllers/SidescrollerPlatformer/test.tscn"
 
 [node name="TransitionAnimator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_4l7yu")
+&"": SubResource("AnimationLibrary_4l7yu")
 }
 
 [node name="LoaderLayer" type="CanvasLayer" parent="."]
