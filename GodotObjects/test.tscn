@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
+[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_5l86x"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_okwja"]
 [ext_resource type="PackedScene" uid="uid://205amao8uwa2" path="res://GodotObjects/Stickers/StickerBase.tscn" id="3_hc36m"]
 [ext_resource type="PackedScene" uid="uid://bs536j1n36wmr" path="res://GodotObjects/Props/Fan/Fan.tscn" id="4_8lbv8"]
-[ext_resource type="PackedScene" uid="uid://bkv8vc14simy8" path="res://GodotObjects/Stickers/StickerPlacement.tscn" id="5_5l86x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -21,6 +21,14 @@ tonemap_mode = 2
 [node name="Test" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_0y1wl")]
+
+[node name="StickerMap" parent="." instance=ExtResource("2_5l86x")]
+collision_layer = 1536
+collision_mask = 0
+data = {
+"cells": PackedInt32Array(131071, 4, 0, 131070, 4, 0, 196605, 3, 1, 196603, 1, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.77675, 0.877114, 3.54806)
@@ -50,6 +58,3 @@ environment = SubResource("Environment_8kaph")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.587, 0.5, 1.773)
 pushForce = 30.0
 noGravityAreaMargin = 0.5
-
-[node name="StickerPlacement" parent="." instance=ExtResource("5_5l86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57486, 0.510499, 3.02648)

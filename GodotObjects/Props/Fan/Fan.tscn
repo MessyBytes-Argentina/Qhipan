@@ -4,16 +4,16 @@
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/Props/NoGravityZone/NoGravity.gd" id="2_gt347"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_jh37w"]
-inner_radius = 0.2
-outer_radius = 0.5
+inner_radius = 0.1
+outer_radius = 0.25
 rings = 8
 ring_segments = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
-size = Vector3(1, 3, 1)
+size = Vector3(0.5, 1, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
-size = Vector3(1, 3.1, 1)
+size = Vector3(0.5, 1.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_gt347"]
 offsets = PackedFloat32Array(0.25, 0.25)
