@@ -64,11 +64,13 @@ radius = 0.858887
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+collision_layer = 2
 slide_on_ceiling = false
 floor_constant_speed = true
 floor_block_on_wall = false
-floor_max_angle = 0.872665
+floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
+disableMaximum = true
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -95,6 +97,7 @@ fov = 55.0
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_vq31v")
