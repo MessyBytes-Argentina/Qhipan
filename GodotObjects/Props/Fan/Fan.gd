@@ -3,7 +3,7 @@ extends Area3D
 
 const PUSHBASELINE: float = 5
 
-@export_range(0.0, 10, 0.1) var pushForce: float = 1.0
+@export_range(0.0, 500, 0.1) var pushForce: float = 1.0
 @export_range(-100.0, 100, 0.1) var areaHeight: float = 1.0:
 	set(value):
 		areaHeight = value
