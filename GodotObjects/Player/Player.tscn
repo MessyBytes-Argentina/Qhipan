@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=14 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
 [ext_resource type="Texture2D" uid="uid://8h0ungnksnr8" path="res://Assets/Character/Placeholder.png" id="3_nasuc"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
-[ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/Player/PickupHandler.gd" id="6_cphfr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
 render_priority = 1
@@ -58,16 +57,12 @@ shader_parameter/fade_power = 1.0
 material = SubResource("ShaderMaterial_a56cn")
 size = Vector3(20, 5, 20)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_l6njb"]
-height = 0.694336
-radius = 0.858887
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 slide_on_ceiling = false
 floor_constant_speed = true
 floor_block_on_wall = false
-floor_max_angle = 0.872665
+floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
 [node name="SpritePivot" type="Node3D" parent="."]
@@ -105,11 +100,3 @@ texture = SubResource("GradientTexture2D_l6njb")
 modulate = Color(1, 1, 1, 0.901961)
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"
-
-[node name="PickupHandler" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 512
-script = ExtResource("6_cphfr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupHandler"]
-shape = SubResource("CylinderShape3D_l6njb")
