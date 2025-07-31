@@ -159,11 +159,11 @@ areaHeight = 3.0
 areaDiameter = 1.0
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0011, 0.830695, -6.58725)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 22.0011, 0.830695, -6.58725)
 slide_on_ceiling = false
 floor_constant_speed = true
 floor_block_on_wall = false
-floor_max_angle = 1.5708
+floor_max_angle = 1.309
 script = ExtResource("2_evl8u")
 maxSpeed = 3.0
 movementMaximum = 100.0
