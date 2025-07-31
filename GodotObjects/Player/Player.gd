@@ -65,13 +65,13 @@ func camera_rotation_check() -> void:
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue
-	cameraPivot.rotation.y = rotationValue
+	cameraPivot.rotation.y = rotationValue + rotation.y
 
 func rotation_finished() -> void:
 	if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 
 		currentCameraRotation = 0.0
 		spritePivot.rotation.y = 0.0
-		cameraPivot.rotation.y = 0.0
+		cameraPivot.rotation.y = rotation.y
 	if cameraRotationTween: 
 		cameraRotationTween.kill()
 		cameraRotationTween = null

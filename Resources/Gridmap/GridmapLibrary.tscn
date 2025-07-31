@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl20o6ojxtevm"]
+[gd_scene load_steps=3 format=3 uid="uid://cl20o6ojxtevm"]
 
 [ext_resource type="PackedScene" uid="uid://c3yg83ptxqt4j" path="res://Resources/Gridmap/BasePieces.tscn" id="1_tj8st"]
+[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/UV Textures/Rust-1/Rust-1.tres" id="2_dtlxk"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="BasePieces" parent="." instance=ExtResource("1_tj8st")]
+[node name="Rust-1" parent="." instance=ExtResource("1_tj8st")]
+collectionMaterial = ExtResource("2_dtlxk")
