@@ -7,6 +7,7 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 @export_range(0, 100, .1) var acceleration: float = 20.0
 @export_range(0, 100, .1) var decceleration: float = 20.0
 @export_range(0, 100, .1) var gravity: float = 32.5
+@export_range(0, 100, .1) var movementMaximum: float = 10
 
 @export_group("Animation Parameters")
 @export_range(0, 2, .1) var cameraLerpDuration: float = 0.5
@@ -16,6 +17,7 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 @onready var cameraPivot: Node3D = %CameraPivot
 @onready var spritePivot: Node3D = %SpritePivot
 @onready var sprite: MeshInstance3D = %Sprite
+@onready var lightDecal: DecalCompatibility = %LightDecal
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -24,8 +26,13 @@ var spriteFlipTween: Tween
 var lastHorizontal: float = 1
 var pushingForces: Dictionary[Node3D, Vector3] = {}
 var noGravityZones: Array[Node3D] = []
+var moved: float = 0.0
+var lastVoluntarySpeed: Vector3 = Vector3.ZERO
+var lastInvoluntarySpeed: Vector3 = Vector3.ZERO
+var lastPushForce: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
+	set_decal_size()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 
@@ -86,14 +93,21 @@ func move_character(delta: float) -> void:
 	var pushForce: Vector3 = Vector3.ZERO
 	for object in pushingForces:
 		pushForce += pushingForces[object]
-	if moveDirection != Vector3.ZERO:
-		velocity += (moveDirection * acceleration) * delta
-		velocity = velocity.limit_length(maxSpeed)
+	if moveDirection != Vector3.ZERO and moved < movementMaximum:
+		lastVoluntarySpeed += (moveDirection * acceleration) * delta
+		lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
 	else:
-		velocity = velocity.lerp(Vector3.ZERO, decceleration * delta)
-	velocity += pushForce * delta
+		lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
+	velocity = lastVoluntarySpeed
+	move_and_slide()
+	moved += (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
+	set_decal_size()
+	lastInvoluntarySpeed -= lastPushForce
+	lastPushForce = pushForce * delta
+	lastInvoluntarySpeed += lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
-		velocity.y -= gravity * delta
+		lastInvoluntarySpeed.y -= gravity * delta
+	velocity = lastInvoluntarySpeed
 	move_and_slide()
 
 func get_move_direction() -> Vector3:
@@ -113,3 +127,7 @@ func enter_no_gravity(node: Node3D) -> void:
 	
 func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
+
+func set_decal_size() -> void:
+	lightDecal.size.x = (movementMaximum - moved) * 2.0
+	lightDecal.size.z = lightDecal.size.x

@@ -1,19 +1,59 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=13 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
+[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
+[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
+render_priority = 1
 transparency = 1
 cull_mode = 2
+shading_mode = 0
+diffuse_mode = 3
 albedo_texture = ExtResource("1_ptf2q")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 material = SubResource("StandardMaterial3D_hc36m")
 size = Vector2(0.25, 0.25)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
+render_priority = 1
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_ptf2q")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_iw8fe"]
 radius = 0.125
+
+[sub_resource type="Gradient" id="Gradient_cphfr"]
+offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
+colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 0.196078, 0, 1, 1, 0.588235, 0, 1, 1, 0.588235, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
+gradient = SubResource("Gradient_cphfr")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a56cn"]
+render_priority = 0
+shader = ExtResource("3_8yuwp")
+shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
+shader_parameter/modulate = Color(1, 1, 1, 0.901961)
+shader_parameter/albedo_mix = 1.0
+shader_parameter/scale_mod = Vector3(0.1, 0.2, 0.1)
+shader_parameter/cube_half_size = Vector3(5, 2.5, 5)
+shader_parameter/enable_y_fade = false
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.7
+shader_parameter/fade_power = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
+material = SubResource("ShaderMaterial_a56cn")
+size = Vector3(10, 5, 10)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_iw8fe")
@@ -26,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 unique_name_in_owner = true
 mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_hc36m")
+surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_iw8fe")
@@ -36,4 +76,20 @@ unique_name_in_owner = true
 top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.75, 1.5)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
+current = true
+fov = 45.0
+
+[node name="LightDecal" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+cast_shadow = 0
+gi_lightmap_scale = 0
+mesh = SubResource("BoxMesh_vq31v")
+Skeleton = null
+script = ExtResource("4_nasuc")
+size = Vector3(10, 5, 10)
+texture = SubResource("GradientTexture2D_l6njb")
+modulate = Color(1, 1, 1, 0.901961)
+enable_fade = false
+metadata/_custom_type_script = "uid://feckn7f3pmud"

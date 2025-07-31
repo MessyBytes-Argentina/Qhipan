@@ -1,7 +1,9 @@
 @tool
 extends Area3D
 
-@export_range(0.0, 100, 0.1) var pushForce: float = 30.0
+const PUSHBASELINE: float = 5
+
+@export_range(0.0, 10, 0.1) var pushForce: float = 1.0
 @export_range(-100.0, 100, 0.1) var areaHeight: float = 1.0:
 	set(value):
 		areaHeight = value
@@ -26,12 +28,13 @@ func set_area_height() -> void:
 	noGravityCollision.shape.radius = area.shape.radius
 	noGravityCollision.shape.height = areaHeight + noGravityAreaMargin
 	noGravity.position.y = (areaHeight + noGravityAreaMargin) / 2.0
-	target.position.y = areaHeight + (noGravityAreaMargin if hasAntigravity else 0)
+	target.position.y = areaHeight + (noGravityAreaMargin if hasAntigravity else 0.0)
 	noGravity.set_deferred("monitorable", hasAntigravity)
 	noGravity.set_deferred("monitoring", hasAntigravity)
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	pushForce *= PUSHBASELINE
 	body_entered.connect(push)
 	body_exited.connect(stop_pushing)
 	set_area_height()
