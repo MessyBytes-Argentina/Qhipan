@@ -142,7 +142,10 @@ func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
 
 func set_decal_size() -> void:
-	if disableMaximum: 
+	if disableMaximum:
+		while not lightDecal:
+			await get_tree().process_frame
+		if not lightDecal.is_node_ready(): await lightDecal.ready
 		lightDecal.hide()
 		return
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
