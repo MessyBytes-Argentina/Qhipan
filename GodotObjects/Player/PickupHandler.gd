@@ -15,5 +15,12 @@ func _input(event: InputEvent) -> void:
 				pickupOnHand = true
 		elif pickupOnHand and currentPickup != null:
 			currentPickup.drop()
+			check_available_area()
 			currentPickup = null
 			pickupOnHand = false
+
+
+func check_available_area() -> void:
+	var placements: Array = get_overlapping_areas()
+	if placements.size() > 0:
+		currentPickup.place_sticker(placements[0].get_target_position())

@@ -12,11 +12,6 @@ var onPlayer: bool = false
 func _ready() -> void:
 	sceneParent = get_parent()
 
-func check_available_area() -> void:
-	var placements: Array = areaChecker.get_overlapping_areas()
-	if placements.size() > 0:
-		place_sticker(placements[0].get_target_position())
-
 func place_sticker(pos: Vector3) -> void:
 	global_position = pos
 	# here goes sticker interactions and stuff
@@ -36,5 +31,4 @@ func grab(node: Node3D) -> void:
 func drop() -> void:
 	global_position.y = global_position.y - height
 	onPlayer = false
-	check_available_area()
 	reparent(sceneParent)

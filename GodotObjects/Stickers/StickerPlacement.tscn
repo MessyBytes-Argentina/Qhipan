@@ -6,7 +6,7 @@
 size = Vector2(1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k8rpl"]
-size = Vector3(1, 0.903394, 1)
+size = Vector3(1, 0.14408, 1)
 
 [node name="StickerPlacement" type="MeshInstance3D"]
 mesh = SubResource("PlaneMesh_23qds")
@@ -17,7 +17,7 @@ collision_mask = 0
 script = ExtResource("1_k8rpl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.441199, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0615419, 0)
 shape = SubResource("BoxShape3D_k8rpl")
 
 [node name="Target" type="Marker3D" parent="Area3D"]
