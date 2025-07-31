@@ -9,7 +9,7 @@
 [node name="GridmapObject" parent="." instance=ExtResource("1_0y1wl")]
 
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.37997, 0.856291)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.77675, 0.877114, 3.54806)
 
 [node name="StickerBase" parent="." instance=ExtResource("3_hc36m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80347, 1.15741, 1.69366)
