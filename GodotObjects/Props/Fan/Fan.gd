@@ -8,7 +8,7 @@ extends Area3D
 		if not Engine.is_editor_hint(): return
 		set_area_height()
 @export var hasAntigravity: bool = true
-@export_range(-100.0, 100, 0.1) var noGravityAreaMargin: float = 0.1:
+@export_range(-1.0, 1, 0.1) var noGravityAreaMargin: float = 0.1:
 	set(value):
 		noGravityAreaMargin = value
 		if not Engine.is_editor_hint(): return
