@@ -103,10 +103,12 @@ func move_character(delta: float) -> void:
 	moved += (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	lastPushForce = pushForce * delta
-	lastInvoluntarySpeed += lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
 		lastInvoluntarySpeed.y -= gravity * delta
+	else:
+		lastInvoluntarySpeed.y = 0
+	lastPushForce = pushForce * delta
+	lastInvoluntarySpeed += lastPushForce
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
 
