@@ -29,7 +29,7 @@ environment = SubResource("Environment_e1oxl")
 
 [node name="Player" parent="." instance=ExtResource("1_ood3a")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.5, 1)
-movementMaximum = 20.0
+movementMaximum = 8.0
 
 [node name="GridmapObject" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
