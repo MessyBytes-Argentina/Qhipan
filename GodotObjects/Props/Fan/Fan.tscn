@@ -10,11 +10,10 @@ rings = 8
 ring_segments = 8
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bussv"]
-height = 0.5
 radius = 0.25
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ps2dv"]
-height = 0.4
+height = 2.1
 radius = 0.25
 
 [sub_resource type="Gradient" id="Gradient_gt347"]
@@ -30,6 +29,7 @@ fill_from = Vector2(0.5, 1)
 
 [node name="Fan" type="Area3D"]
 script = ExtResource("1_igptx")
+pushForce = 30.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_jh37w")
