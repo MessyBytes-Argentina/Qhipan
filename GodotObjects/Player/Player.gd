@@ -1,13 +1,21 @@
+@tool
 extends CharacterBody3D
 
 const cameraRotationStep: float = deg_to_rad(90.0)
 
 @export_group("Character Movement")
-@export_range(0, 100, .1) var maxSpeed: float = 2.0
+@export_range(0, 100, .1) var maxSpeed: float = 3
 @export_range(0, 100, .1) var acceleration: float = 20.0
 @export_range(0, 100, .1) var decceleration: float = 20.0
-@export_range(0, 100, .1) var gravity: float = 32.5
-@export_range(0, 100, .1) var movementMaximum: float = 10
+@export_range(0, 100, .1) var gravity: float = 32
+@export_range(0, 100, .1) var movementMaximum: float = 10:
+	set(value):
+		movementMaximum = value
+		if Engine.is_editor_hint(): set_decal_size()
+@export var disableMaximum: bool = false:
+	set(value):
+		disableMaximum = value
+		if Engine.is_editor_hint(): set_decal_size()
 
 @export_group("Animation Parameters")
 @export_range(0, 2, .1) var cameraLerpDuration: float = 0.5
@@ -33,15 +41,18 @@ var lastPushForce: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	set_decal_size()
+	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 
 func _input(_event: InputEvent) -> void:
+	if Engine.is_editor_hint(): return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	sprite_flip_check()
 	camera_rotation_check()
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	move_character(delta)
 	camera_follow(delta)
 
@@ -93,7 +104,7 @@ func move_character(delta: float) -> void:
 	var pushForce: Vector3 = Vector3.ZERO
 	for object in pushingForces:
 		pushForce += pushingForces[object]
-	if moveDirection != Vector3.ZERO and moved < movementMaximum:
+	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
 		lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
 	else:
@@ -131,5 +142,8 @@ func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
 
 func set_decal_size() -> void:
+	if disableMaximum: 
+		lightDecal.hide()
+		return
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
 	lightDecal.size.z = lightDecal.size.x

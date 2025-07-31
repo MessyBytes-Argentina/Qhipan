@@ -1,11 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgf3d7vsdircp"]
+[gd_scene load_steps=7 format=3 uid="uid://bgf3d7vsdircp"]
 
 [ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="1_rim0p"]
-[ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="2_evl8u"]
 [ext_resource type="PackedScene" uid="uid://bs536j1n36wmr" path="res://GodotObjects/Props/Fan/Fan.tscn" id="3_khc8g"]
-[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="4_74rje"]
-[ext_resource type="Texture2D" uid="uid://8h0ungnksnr8" path="res://Assets/Character/Placeholder.png" id="4_yuop8"]
-[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="5_s2yp5"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="3_rim0p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -18,58 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_xs4vi")
 background_mode = 2
 sky = SubResource("Sky_v5vbm")
 tonemap_mode = 2
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_evl8u"]
-load_path = "res://.godot/imported/Placeholder.png-8f5e9ecc4d0362fc1881e11a2195576b.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yuop8"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-diffuse_mode = 3
-albedo_texture = SubResource("CompressedTexture2D_evl8u")
-
-[sub_resource type="QuadMesh" id="QuadMesh_yuop8"]
-material = SubResource("StandardMaterial3D_yuop8")
-size = Vector2(0.9, 0.9)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
-render_priority = 1
-transparency = 1
-cull_mode = 2
-albedo_texture = ExtResource("4_yuop8")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_yuop8"]
-radius = 0.35
-
-[sub_resource type="Gradient" id="Gradient_cphfr"]
-offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
-colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 0.196078, 0, 1, 1, 0.588235, 0, 1, 1, 0.588235, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
-gradient = SubResource("Gradient_cphfr")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a56cn"]
-render_priority = 0
-shader = ExtResource("4_74rje")
-shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
-shader_parameter/modulate = Color(1, 1, 1, 0.901961)
-shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(0.1, 0.2, 0.1)
-shader_parameter/cube_half_size = Vector3(5, 2.5, 5)
-shader_parameter/enable_y_fade = false
-shader_parameter/fade_start = 0.3
-shader_parameter/fade_end = 0.7
-shader_parameter/fade_power = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
-material = SubResource("ShaderMaterial_a56cn")
-size = Vector3(10, 5, 10)
 
 [node name="Playground" type="Node3D"]
 
@@ -158,49 +103,6 @@ pushForce = 50.0
 areaHeight = 3.0
 areaDiameter = 1.0
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0011, 0.830695, -6.58725)
-slide_on_ceiling = false
-floor_constant_speed = true
-floor_block_on_wall = false
-floor_max_angle = 1.5708
-script = ExtResource("2_evl8u")
-maxSpeed = 3.0
-movementMaximum = 100.0
-
-[node name="SpritePivot" type="Node3D" parent="Player"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
-
-[node name="Sprite" type="MeshInstance3D" parent="Player/SpritePivot"]
-unique_name_in_owner = true
-mesh = SubResource("QuadMesh_yuop8")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0473753, 0)
-shape = SubResource("SphereShape3D_yuop8")
-
-[node name="CameraPivot" type="Node3D" parent="Player"]
-unique_name_in_owner = true
-top_level = true
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
-current = true
-fov = 52.1
-
-[node name="LightDecal" type="MeshInstance3D" parent="Player"]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-cast_shadow = 0
-gi_lightmap_scale = 0
-mesh = SubResource("BoxMesh_vq31v")
-Skeleton = null
-script = ExtResource("5_s2yp5")
-size = Vector3(10, 5, 10)
-texture = SubResource("GradientTexture2D_l6njb")
-modulate = Color(1, 1, 1, 0.901961)
-enable_fade = false
-metadata/_custom_type_script = "uid://feckn7f3pmud"
+[node name="Player" parent="." instance=ExtResource("3_rim0p")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 22.1265, 0.901019, -6.77594)
+disableMaximum = true

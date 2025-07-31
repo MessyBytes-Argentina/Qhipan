@@ -2,7 +2,7 @@
 extends Node3D
 
 @export var collectionMaterial: Material
-@export_tool_button("Apply Material")
+@export_tool_button("Apply Properties")
 var button: Callable = _apply_material
 
 func _apply_material() -> void:

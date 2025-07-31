@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=14 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
+[ext_resource type="Texture2D" uid="uid://8h0ungnksnr8" path="res://Assets/Character/Placeholder.png" id="3_nasuc"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
@@ -15,16 +16,17 @@ albedo_texture = ExtResource("1_ptf2q")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 material = SubResource("StandardMaterial3D_hc36m")
-size = Vector2(0.25, 0.25)
+size = Vector2(0.9, 0.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 1
 transparency = 1
 cull_mode = 2
-albedo_texture = ExtResource("1_ptf2q")
+albedo_texture = ExtResource("3_nasuc")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_iw8fe"]
-radius = 0.125
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
+radius = 0.275
+height = 0.8
 
 [sub_resource type="Gradient" id="Gradient_cphfr"]
 offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
@@ -56,6 +58,11 @@ material = SubResource("ShaderMaterial_a56cn")
 size = Vector3(10, 5, 10)
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+slide_on_ceiling = false
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 0.872665
 script = ExtResource("1_iw8fe")
 
 [node name="SpritePivot" type="Node3D" parent="."]
@@ -69,7 +76,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_iw8fe")
+shape = SubResource("CapsuleShape3D_cphfr")
 
 [node name="CameraPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -78,7 +85,7 @@ top_level = true
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
-fov = 45.0
+fov = 55.0
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
