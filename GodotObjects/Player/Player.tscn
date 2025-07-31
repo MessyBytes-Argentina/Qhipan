@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=14 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
 [ext_resource type="Texture2D" uid="uid://8h0ungnksnr8" path="res://Assets/Character/Placeholder.png" id="3_nasuc"]
-[ext_resource type="Shader" uid="uid://bqphc43opwsju" path="res://Assets/Shaders/Mobius.gdshader" id="4_cphfr"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hc36m"]
@@ -28,20 +27,6 @@ albedo_texture = ExtResource("3_nasuc")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
-
-[sub_resource type="QuadMesh" id="QuadMesh_l6njb"]
-flip_faces = true
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq31v"]
-render_priority = 0
-shader = ExtResource("4_cphfr")
-shader_parameter/zNear = 0.0
-shader_parameter/zFar = 1e+14
-shader_parameter/outlineThickness = 1.0
-shader_parameter/outlineColor = Color(0, 0, 0, 1)
-shader_parameter/wiggleFrequency = 0.08
-shader_parameter/wiggleAmplitude = 2.0
 
 [sub_resource type="Gradient" id="Gradient_cphfr"]
 offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
@@ -77,7 +62,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 slide_on_ceiling = false
 floor_constant_speed = true
 floor_block_on_wall = false
-floor_max_angle = 0.959931
+floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
 [node name="SpritePivot" type="Node3D" parent="."]
@@ -101,10 +86,6 @@ top_level = true
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
 fov = 55.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
-mesh = SubResource("QuadMesh_l6njb")
-surface_material_override/0 = SubResource("ShaderMaterial_vq31v")
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
