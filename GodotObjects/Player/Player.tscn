@@ -129,7 +129,7 @@ metadata/_custom_type_script = "uid://feckn7f3pmud"
 
 [node name="GrabArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 1536
 monitorable = false
 script = ExtResource("6_cphfr")
 
