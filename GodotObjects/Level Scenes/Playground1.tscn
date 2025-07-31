@@ -105,4 +105,3 @@ areaDiameter = 1.0
 
 [node name="Player" parent="." instance=ExtResource("3_rim0p")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 22.1265, 0.901019, -6.77594)
-disableMaximum = true
