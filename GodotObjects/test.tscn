@@ -12,13 +12,13 @@
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.77675, 0.877114, 3.54806)
 
 [node name="StickerBase" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80347, 1.15741, 1.69366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80347, 1.43439, 1.69366)
 
 [node name="StickerBase2" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82596, 0.639355, -0.006271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82596, 0.916334, -0.006271)
 
 [node name="StickerBase3" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107661, 2.14728, 0.0155705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107661, 2.42426, 0.0155705)
 
 [node name="StickerBase4" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67109, 0.639355, 0.108636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67109, 0.916334, 0.108636)
