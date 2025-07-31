@@ -23,6 +23,7 @@ const PUSHBASELINE: float = 5
 @onready var noGravityCollision: CollisionShape3D = %NoGravityCollision
 
 func set_area_height() -> void:
+	if not is_node_ready(): await ready
 	area.shape.height = areaHeight
 	area.position.y = areaHeight / 2.0
 	noGravityCollision.shape.radius = area.shape.radius
