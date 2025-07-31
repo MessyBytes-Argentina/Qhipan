@@ -9,12 +9,11 @@ outer_radius = 0.25
 rings = 8
 ring_segments = 8
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_bussv"]
-radius = 0.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
+size = Vector3(0.5, 1, 0.5)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ps2dv"]
-height = 2.1
-radius = 0.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
+size = Vector3(0.5, 1.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_gt347"]
 offsets = PackedFloat32Array(0.25, 0.25)
@@ -29,7 +28,7 @@ fill_from = Vector2(0.5, 1)
 
 [node name="Fan" type="Area3D"]
 script = ExtResource("1_igptx")
-pushForce = 30.0
+pushForce = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_jh37w")
@@ -37,21 +36,21 @@ mesh = SubResource("TorusMesh_jh37w")
 [node name="Area" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_bussv")
+shape = SubResource("BoxShape3D_gt347")
 
 [node name="NoGravity" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12762, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 script = ExtResource("2_gt347")
 
 [node name="NoGravityCollision" type="CollisionShape3D" parent="NoGravity"]
 unique_name_in_owner = true
-shape = SubResource("CylinderShape3D_ps2dv")
+shape = SubResource("BoxShape3D_ps2dv")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Target" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6673, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Target"]
 billboard = 1
