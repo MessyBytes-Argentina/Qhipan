@@ -26,7 +26,7 @@ func set_area_height() -> void:
 	noGravityCollision.shape.radius = area.shape.radius
 	noGravityCollision.shape.height = areaHeight + noGravityAreaMargin
 	noGravity.position.y = (areaHeight + noGravityAreaMargin) / 2.0
-	target.position.y = areaHeight + (noGravityAreaMargin if hasAntigravity else 0)
+	target.position.y = areaHeight + (noGravityAreaMargin if hasAntigravity else 0.0)
 	noGravity.set_deferred("monitorable", hasAntigravity)
 	noGravity.set_deferred("monitoring", hasAntigravity)
 
