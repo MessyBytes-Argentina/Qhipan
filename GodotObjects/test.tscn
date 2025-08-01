@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=12 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_okwja"]
 [ext_resource type="PackedScene" uid="uid://205amao8uwa2" path="res://GodotObjects/Stickers/StickerBase.tscn" id="3_hc36m"]
 [ext_resource type="PackedScene" uid="uid://bs536j1n36wmr" path="res://GodotObjects/Props/Fan/Fan.tscn" id="4_8lbv8"]
-[ext_resource type="PackedScene" uid="uid://bkv8vc14simy8" path="res://GodotObjects/Stickers/StickerPlacement.tscn" id="5_5l86x"]
+[ext_resource type="Script" uid="uid://bw5w3x1nixqqm" path="res://Resources/Checkpoints/CheckpointsTool.gd" id="5_5l86x"]
+[ext_resource type="Script" uid="uid://bymf43cjcj5al" path="res://Resources/Checkpoints/CheckpointManager.gd" id="5_evf4h"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_8kaph"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -17,6 +19,10 @@ sky_material = SubResource("ProceduralSkyMaterial_5l86x")
 background_mode = 2
 sky = SubResource("Sky_v5vbm")
 tonemap_mode = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8lbv8"]
+radius = 0.05
+height = 0.2
 
 [node name="Test" type="Node3D"]
 
@@ -51,5 +57,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.587, 0.5, 1.773)
 pushForce = 30.0
 noGravityAreaMargin = 0.5
 
-[node name="StickerPlacement" parent="." instance=ExtResource("5_5l86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57486, 0.510499, 3.02648)
+[node name="CheckpointManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+script = ExtResource("5_evf4h")
+
+[node name="Start" type="MeshInstance3D" parent="CheckpointManager"]
+mesh = SubResource("CapsuleMesh_8lbv8")
+
+[node name="Checkpoints" type="Node3D" parent="CheckpointManager"]
+unique_name_in_owner = true
+script = ExtResource("5_5l86x")
+checkpointScene = ExtResource("6_8kaph")
