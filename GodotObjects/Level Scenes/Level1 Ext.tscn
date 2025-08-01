@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsrvqeisyoxxy"]
+[gd_scene load_steps=13 format=3 uid="uid://dsrvqeisyoxxy"]
 
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="1_thhw5"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_mjmnh"]
@@ -7,6 +7,8 @@
 [ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="5_2l5d0"]
 [ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="6_yacks"]
 [ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="7_cbv77"]
+[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="8_bn8cn"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="9_2fmbr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,6 +24,10 @@ sky = SubResource("Sky_v5vbm")
 tonemap_mode = 2
 
 [node name="Level1" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("4_glw6c")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2, 6)
+movementMaximum = 13.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
@@ -46,36 +52,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5,
 [node name="FanSticker4" parent="Stickers" instance=ExtResource("1_thhw5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.9351, 2.29349, 14.5611)
 
-[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("2_mjmnh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
-playerReference = NodePath("Player")
-
-[node name="Checkpoints" parent="CheckpointManager" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
-
-[node name="Checkpoint" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -9.5)
-
-[node name="Checkpoint2" parent="CheckpointManager/Checkpoints" index="1" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
-
-[node name="Checkpoint3" parent="CheckpointManager/Checkpoints" index="2" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1.5, -10.5)
-
-[node name="Checkpoint4" parent="CheckpointManager/Checkpoints" index="3" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -1.5, -3.5)
-
-[node name="Checkpoint5" parent="CheckpointManager/Checkpoints" index="4" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1.5, 2.5)
-
-[node name="Checkpoint6" type="Area3D" parent="CheckpointManager/Checkpoints" index="5" instance=ExtResource("3_rdsaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0019, 0.379018, 9.53719)
-collision_layer = 0
-collision_mask = 2
-
-[node name="Player" parent="CheckpointManager" instance=ExtResource("4_glw6c")]
-movementMaximum = 13.0
-
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 mesh_library = ExtResource("5_2l5d0")
@@ -97,4 +73,27 @@ data = {
 script = ExtResource("7_cbv77")
 metadata/_editor_floor_ = Vector3(0, 6, 0)
 
-[editable path="CheckpointManager"]
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("2_mjmnh")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Start")
+
+[node name="Start" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
+
+[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -7)
+
+[node name="Checkpoint3" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
+
+[node name="Checkpoint4" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, 6)
+
+[node name="Door" parent="." instance=ExtResource("8_bn8cn")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -5)
+
+[node name="Key" parent="." instance=ExtResource("9_2fmbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78, 1.925)
