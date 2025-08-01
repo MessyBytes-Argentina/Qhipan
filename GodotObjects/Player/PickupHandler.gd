@@ -43,7 +43,7 @@ func check_available_area(onReset: bool = false) -> void:
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
 			return
 		elif closest and closest.get_collision_layer_value(12) and currentPickup is Key:
-			currentPickup.place_sticker(closest, closest.global_position)
+			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
 			
 			return
 	if currentPickup: currentPickup.drop()
