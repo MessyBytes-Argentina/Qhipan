@@ -7,17 +7,26 @@ var currentPickup: StickerBase
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if not pickupOnHand:
-			pickups = get_overlapping_bodies()
-			if pickups.size() > 0:
-				currentPickup = pickups[0]
-				currentPickup.reparent(self)
-				currentPickup.grab(self)
-				pickupOnHand = true
+			do_grab()
 		elif pickupOnHand and currentPickup != null:
-			currentPickup.drop()
 			check_available_area()
 			currentPickup = null
 			pickupOnHand = false
+
+func do_grab() -> void:
+	pickups = get_overlapping_bodies()
+	var closest: Node3D
+	var shortestDistance: float = 9999999999
+	if pickups.size() > 0:
+		for pickup in pickups:
+			var currentDistance: float = global_position.distance_to(pickup.global_position)
+			if currentDistance < shortestDistance:
+				closest = pickup
+				shortestDistance = currentDistance
+		currentPickup = closest
+		currentPickup.reparent(self)
+		currentPickup.grab(self)
+		pickupOnHand = true
 
 func check_available_area() -> void:
 	var areas: Array[Area3D] = get_overlapping_areas()
@@ -30,3 +39,5 @@ func check_available_area() -> void:
 				closest = area
 				shortestDistance = currentDistance
 		currentPickup.place_sticker(closest.global_position, closest.get_meta("pointing"))
+		return
+	currentPickup.drop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=23 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
@@ -35,26 +35,26 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5th"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("4_l6njb")
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/edge_threshold = 0.002
 shader_parameter/noise_frequency = 10.0
 shader_parameter/noise_offset_intensity = 0.002
 
-[sub_resource type="Gradient" id="Gradient_cphfr"]
+[sub_resource type="Gradient" id="Gradient_l6njb"]
 offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
 colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 0.196078, 0, 1, 1, 0.588235, 0, 1, 1, 0.588235, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
-gradient = SubResource("Gradient_cphfr")
+gradient = SubResource("Gradient_l6njb")
 width = 1024
 height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a56cn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq31v"]
 render_priority = 0
 shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
@@ -68,11 +68,40 @@ shader_parameter/fade_end = 0.7
 shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
-material = SubResource("ShaderMaterial_a56cn")
+material = SubResource("ShaderMaterial_vq31v")
 size = Vector3(20, 5, 20)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
-radius = 1.0
+radius = 0.75
+
+[sub_resource type="Gradient" id="Gradient_k62l1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
+gradient = SubResource("Gradient_k62l1")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
+render_priority = 0
+shader = ExtResource("3_8yuwp")
+shader_parameter/albedo = SubResource("GradientTexture2D_vq31v")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/albedo_mix = 1.0
+shader_parameter/scale_mod = Vector3(2, 0.1, 2)
+shader_parameter/cube_half_size = Vector3(0.25, 5, 0.25)
+shader_parameter/enable_y_fade = false
+shader_parameter/fade_start = 0.0
+shader_parameter/fade_end = 0.7
+shader_parameter/fade_power = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_fj5th"]
+material = SubResource("ShaderMaterial_c1wxo")
+size = Vector3(0.5, 10, 0.5)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -137,3 +166,15 @@ script = ExtResource("6_cphfr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea"]
 shape = SubResource("CapsuleShape3D_l6njb")
+
+[node name="ShadowDecal" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+cast_shadow = 0
+gi_lightmap_scale = 0
+mesh = SubResource("BoxMesh_fj5th")
+Skeleton = null
+script = ExtResource("4_nasuc")
+size = Vector3(0.5, 10, 0.5)
+texture = SubResource("GradientTexture2D_vq31v")
+enable_fade = false
+metadata/_custom_type_script = "uid://feckn7f3pmud"
