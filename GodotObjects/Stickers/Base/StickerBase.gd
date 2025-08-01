@@ -8,8 +8,11 @@ const BOBBINGTIME: float = 2.0
 const ROTATIONTIME: float = 3.0
 const TILTANGLE: float = deg_to_rad(-30)
 const GRABHEIGHT: float = 0.5
+const PLACEDCHECKTIME: float = 0.25
 
 enum ScaleModes {GRABBED, DROPPED, PLACED}
+
+@export var placed: bool = false
 
 @onready var areaChecker: Area3D = %AreaChecker
 @onready var mesh: MeshInstance3D = %Mesh
@@ -19,7 +22,6 @@ enum ScaleModes {GRABBED, DROPPED, PLACED}
 
 var sceneParent: Node
 var onPlayer: bool = false
-var placed: bool = false
 var rotationTween: Tween
 var bobbingTween: Tween
 var startSize: Vector2
@@ -36,6 +38,23 @@ func _ready() -> void:
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	if not placed: 
+		set_size(ScaleModes.DROPPED)
+		start_rotation()
+	else:
+		await get_tree().create_timer(PLACEDCHECKTIME).timeout
+		var areas: Array[Area3D] = areaChecker.get_overlapping_areas()
+		var closest: Area3D
+		var shortestDistance: float = 9999999999
+		if len(areas) > 0:
+			for area in areas:
+				var currentDistance: float = global_position.distance_to(area.global_position)
+				var hasSticker: bool = area.get_children().any(func(a: Node): return a is StickerBase)
+				if currentDistance < shortestDistance and not hasSticker:
+					closest = area
+					shortestDistance = currentDistance
+			if closest and closest.get_collision_layer_value(11):
+				place_sticker(closest, closest.get_meta("pointing"))
+				return
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
 
@@ -96,8 +115,10 @@ func start_rotation() -> void:
 	rotationTween.play()
 
 func stop_rotation() -> void:
-	rotationTween.kill()
-	bobbingTween.kill()
+	if rotationTween:
+		rotationTween.kill()
+	if bobbingTween:
+		bobbingTween.kill()
 	meshes.position.y = 0
 	meshes.rotation.y = 0
 	meshes.rotation.x = 0
