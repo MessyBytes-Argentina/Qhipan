@@ -44,8 +44,8 @@ shader = ExtResource("4_5s7j6")
 shader_parameter/albedo = SubResource("GradientTexture2D_r7e5t")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(1, 0.2, 1)
-shader_parameter/cube_half_size = Vector3(0.5, 2.5, 0.5)
+shader_parameter/scale_mod = Vector3(1, 1, 1)
+shader_parameter/cube_half_size = Vector3(0.5, 0.5, 0.5)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
@@ -53,7 +53,6 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_8dhaa"]
 material = SubResource("ShaderMaterial_c1wxo")
-size = Vector3(1, 5, 1)
 
 [node name="Key" type="CharacterBody3D"]
 collision_layer = 512
@@ -83,6 +82,7 @@ collision_layer = 0
 collision_mask = 3072
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+unique_name_in_owner = true
 shape = SubResource("SphereShape3D_8ww4f")
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
@@ -92,7 +92,7 @@ gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_8dhaa")
 Skeleton = null
 script = ExtResource("5_yl1a6")
-size = Vector3(1, 5, 1)
+size = Vector3(1, 1, 1)
 texture = SubResource("GradientTexture2D_r7e5t")
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"

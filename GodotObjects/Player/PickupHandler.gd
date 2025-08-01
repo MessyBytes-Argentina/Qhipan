@@ -39,8 +39,12 @@ func check_available_area(onReset: bool = false) -> void:
 			if currentDistance < shortestDistance and not hasSticker:
 				closest = area
 				shortestDistance = currentDistance
-		if closest:
+		if closest and closest.get_collision_layer_value(11):
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
+			return
+		elif closest and closest.get_collision_layer_value(12) and currentPickup is Key:
+			currentPickup.place_sticker(closest, closest.global_position)
+			
 			return
 	if currentPickup: currentPickup.drop()
 

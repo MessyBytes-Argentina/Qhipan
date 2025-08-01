@@ -23,6 +23,7 @@ render_priority = 0
 shader = ExtResource("1_xbxqq")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_uokq2")
+shader_parameter/map_top_to_world = true
 shader_parameter/top_texture = ExtResource("3_m87y2")
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/albedo_texture_size = Vector2i(256, 256)

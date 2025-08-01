@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=12 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_77igb"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="3_evf4h"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_8kaph"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_evf4h"]
+[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="7_77igb"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="8_u47oh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,3 +65,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 
 [node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("6_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -0.5)
+
+[node name="Door" parent="." instance=ExtResource("7_77igb")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.71404, 1, 4.65815)
+
+[node name="Key" parent="." instance=ExtResource("8_u47oh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
