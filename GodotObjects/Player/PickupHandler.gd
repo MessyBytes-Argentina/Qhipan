@@ -1,4 +1,6 @@
+@tool
 extends Area3D
+class_name PickupHandler
 
 var pickups: Array[Node3D]
 var pickupOnHand: bool = false
@@ -8,10 +10,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if not pickupOnHand:
 			do_grab()
-		elif pickupOnHand and currentPickup != null:
-			check_available_area()
-			currentPickup = null
-			pickupOnHand = false
+		else:
+			drop()
 
 func do_grab() -> void:
 	pickups = get_overlapping_bodies()
@@ -40,4 +40,10 @@ func check_available_area() -> void:
 				shortestDistance = currentDistance
 		currentPickup.place_sticker(closest.global_position, closest.get_meta("pointing"))
 		return
-	currentPickup.drop()
+	if currentPickup: currentPickup.drop()
+
+func drop() -> void:
+	if pickupOnHand and currentPickup != null:
+			check_available_area()
+			currentPickup = null
+			pickupOnHand = false
