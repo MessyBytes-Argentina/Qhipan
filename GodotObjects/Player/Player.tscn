@@ -62,8 +62,8 @@ shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
 shader_parameter/modulate = Color(1, 1, 1, 0.901961)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(0.05, 0.05, 0.05)
-shader_parameter/cube_half_size = Vector3(10, 10, 10)
+shader_parameter/scale_mod = Vector3(0.0384615, 0.05, 0.0384615)
+shader_parameter/cube_half_size = Vector3(13, 10, 13)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
@@ -71,7 +71,7 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
 material = SubResource("ShaderMaterial_vq31v")
-size = Vector3(20, 20, 20)
+size = Vector3(26, 20, 26)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
