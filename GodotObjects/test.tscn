@@ -51,11 +51,12 @@ environment = SubResource("Environment_8kaph")
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
 
-[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("6_8kaph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("6_8kaph")]
 playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Checkpoint")
 
-[node name="Checkpoint" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("6_evf4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0927414, 1.26412, -6.00776)
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("6_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 
-[editable path="CheckpointManager"]
+[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("6_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
