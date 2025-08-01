@@ -154,7 +154,7 @@ func set_decal_size() -> void:
 	lightDecal.size.z = lightDecal.size.x
 
 func restart_at_checkpoint(pos: Vector3) -> void:
-	grabArea.drop()
+	grabArea.drop(true)
 	global_position = pos
 	reset_aura()
 

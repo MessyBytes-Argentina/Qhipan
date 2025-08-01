@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://b8a0qh5aupt2k"
+run/main_scene="uid://vam88ax0grfk"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -86,6 +86,7 @@ reset_scene={
 3d_physics/layer_2="Player"
 3d_physics/layer_10="Stickers"
 3d_physics/layer_11="StickerPlacement"
+3d_physics/layer_12="Doors"
 
 [rendering]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btx8bgjlyo51g"
-path.s3tc="res://.godot/imported/Key-1.png-bf5ae593220405d8fbd47a0a21b6d1e0.s3tc.ctex"
+uid="uid://0u4oi5inxe6s"
+path.s3tc="res://.godot/imported/Door.png-a247708ff8f62b0ae1a020e6fd8c4d2a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Stickers/Key/Key-1.png"
-dest_files=["res://.godot/imported/Key-1.png-bf5ae593220405d8fbd47a0a21b6d1e0.s3tc.ctex"]
+source_file="res://Assets/UV Textures/Door.png"
+dest_files=["res://.godot/imported/Door.png-a247708ff8f62b0ae1a020e6fd8c4d2a.s3tc.ctex"]
 
 [params]
 
