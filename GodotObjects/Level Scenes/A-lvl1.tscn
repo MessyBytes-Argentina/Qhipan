@@ -60,7 +60,7 @@ environment = SubResource("Environment_ch6ue")
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("6_q7vpl")]
 playerReference = NodePath("../Player")
-startCheckpoint = NodePath("Checkpoint4")
+startCheckpoint = NodePath("Checkpoint")
 
 [node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("7_g0x6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.268537, 1.47001, -4.06895)
@@ -74,6 +74,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.70481, 1.4, 4.2)
 [node name="Checkpoint4" parent="CheckpointManager" instance=ExtResource("7_g0x6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65, 1.5, 7.95)
 
+[node name="Checkpoint5" parent="CheckpointManager" instance=ExtResource("7_g0x6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -10, 14)
+
 [node name="StickerMap" parent="." instance=ExtResource("4_g0x6e")]
 data = {
 "cells": PackedInt32Array(262138, 65534, 1441793, 196605, 65529, 1441792, 131074, 2, 655360, -196606, 13, 655361, -196607, 8, 655361, -262143, 12, 0, -262143, 10, 0)
@@ -85,6 +88,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 4, 2.7)
 
 [node name="Key2" parent="StickerMap" instance=ExtResource("8_bgqye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57, -1.505, 11.54)
+
+[node name="Key3" parent="StickerMap" instance=ExtResource("8_bgqye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43, -6.505, 13.44)
 
 [node name="Fan" parent="." instance=ExtResource("7_q7vpl")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3.45, -1.5, 11.8)
@@ -104,8 +110,8 @@ pushForce = 50.0
 areaHeight = 3.7
 areaDiameter = 0.75
 
-[node name="Door2" parent="." instance=ExtResource("3_hmuq0")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 2, 1.5, 14.5)
-
 [node name="Door" parent="." instance=ExtResource("3_hmuq0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 1.5, 4.75)
+
+[node name="Door2" parent="." instance=ExtResource("3_hmuq0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 1.5, 15)
