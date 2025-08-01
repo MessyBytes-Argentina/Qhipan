@@ -1,13 +1,13 @@
 extends CharacterBody3D
 class_name StickerBase
 
-const GRABBINGSCALE: float = 0.75
+const GRABBINGSCALE: float = 0.6
 const BOBBINGSCALE: float = 0.5
 const BOBBINGHEIGHT: float = 0.05
 const BOBBINGTIME: float = 2.0
 const ROTATIONTIME: float = 3.0
 const TILTANGLE: float = deg_to_rad(-30)
-const GRABHEIGHT: float = 0.5
+const GRABHEIGHT: float = 0.6
 const PLACEDCHECKTIME: float = 0.25
 
 enum ScaleModes {GRABBED, DROPPED, PLACED}
