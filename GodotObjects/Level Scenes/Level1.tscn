@@ -44,31 +44,23 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
 playerReference = NodePath("Player")
 
-[node name="Player" parent="CheckpointManager" instance=ExtResource("1_ood3a")]
-movementMaximum = 13.0
-
-[node name="Checkpoints" parent="CheckpointManager" index="2"]
+[node name="Checkpoints" parent="CheckpointManager" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
-[node name="Checkpoint" type="Area3D" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("3_scbay")]
+[node name="Checkpoint" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("3_scbay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
-collision_layer = 0
-collision_mask = 2
 
-[node name="Checkpoint2" type="Area3D" parent="CheckpointManager/Checkpoints" index="1" instance=ExtResource("3_scbay")]
+[node name="Checkpoint2" parent="CheckpointManager/Checkpoints" index="1" instance=ExtResource("3_scbay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
-collision_layer = 0
-collision_mask = 2
 
-[node name="Checkpoint3" type="Area3D" parent="CheckpointManager/Checkpoints" index="2" instance=ExtResource("3_scbay")]
+[node name="Checkpoint3" parent="CheckpointManager/Checkpoints" index="2" instance=ExtResource("3_scbay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10.5)
-collision_layer = 0
-collision_mask = 2
 
-[node name="Checkpoint4" type="Area3D" parent="CheckpointManager/Checkpoints" index="3" instance=ExtResource("3_scbay")]
+[node name="Checkpoint4" parent="CheckpointManager/Checkpoints" index="3" instance=ExtResource("3_scbay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -3.5)
-collision_layer = 0
-collision_mask = 2
+
+[node name="Player" parent="CheckpointManager" instance=ExtResource("1_ood3a")]
+movementMaximum = 13.0
 
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
