@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://205amao8uwa2"]
+
+[ext_resource type="Script" uid="uid://d2p44ct5iuibl" path="res://GodotObjects/Stickers/Base/StickerBase.gd" id="1_8ww4f"]
+[ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_r43o5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
+radius = 0.131629
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2i5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tnm2"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("2_r43o5")
+
+[node name="StickerBase" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_8ww4f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_y2i5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_5tnm2")
+
+[node name="AreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+shape = SubResource("SphereShape3D_8ww4f")

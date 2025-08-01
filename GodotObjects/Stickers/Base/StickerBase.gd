@@ -5,6 +5,7 @@ class_name StickerBase
 @export_range(0, 20, 0.1) var gravity: float = 6
 
 @onready var areaChecker: Area3D = %AreaChecker
+@onready var mesh: MeshInstance3D = %Mesh
 
 var sceneParent: Node
 var onPlayer: bool = false
@@ -12,11 +13,14 @@ var placed: bool = false
 
 func _ready() -> void:
 	sceneParent = get_parent()
+	mesh.set_surface_override_material(0, mesh.get_surface_override_material(0).duplicate())
 
-func place_sticker(pos: Vector3) -> void:
-	global_position = pos
+func place_sticker(pos: Vector3, direction: Vector3) -> void:
+	global_position = pos + direction * 0.01
 	onPlayer = false
 	placed = true
+	if not Vector3.UP.cross(global_position - direction).is_zero_approx():
+		look_at(global_position - direction)
 	# here goes sticker interactions and stuff
 
 func _physics_process(_delta: float) -> void:

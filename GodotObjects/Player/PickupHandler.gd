@@ -29,4 +29,4 @@ func check_available_area() -> void:
 			if currentDistance < shortestDistance:
 				closest = area
 				shortestDistance = currentDistance
-		currentPickup.place_sticker(closest.global_position)
+		currentPickup.place_sticker(closest.global_position, closest.get_meta("pointing"))

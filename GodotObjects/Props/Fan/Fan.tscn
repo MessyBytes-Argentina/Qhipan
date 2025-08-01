@@ -29,6 +29,7 @@ fill_from = Vector2(0.5, 1)
 [node name="Fan" type="Area3D"]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_igptx")
 pushForce = 10.0
 
@@ -45,6 +46,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("2_gt347")
 
 [node name="NoGravityCollision" type="CollisionShape3D" parent="NoGravity"]

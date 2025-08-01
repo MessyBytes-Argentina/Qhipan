@@ -5,7 +5,7 @@ orientation = 1
 
 [sub_resource type="Gradient" id="Gradient_2fuw8"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+offsets = PackedFloat32Array(0, 0.1, 0.4, 0.6, 0.9, 1)
 colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0, 1, 1, 1, 0.588235, 1, 1, 1, 0, 1, 1, 1, 0.588235, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_h6tf8"]
@@ -16,6 +16,7 @@ use_hdr = true
 fill_to = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acktf"]
+render_priority = 1
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
