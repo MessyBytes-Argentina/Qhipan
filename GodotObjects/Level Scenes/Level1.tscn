@@ -13,15 +13,27 @@ sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_bottom_color = Color(0, 0, 0.0784314, 1)
 ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
 
-[sub_resource type="Sky" id="Sky_v5vbm"]
+[sub_resource type="Sky" id="Sky_6muoe"]
 sky_material = SubResource("ProceduralSkyMaterial_xs4vi")
 
 [sub_resource type="Environment" id="Environment_e1oxl"]
 background_mode = 2
-sky = SubResource("Sky_v5vbm")
+sky = SubResource("Sky_6muoe")
 tonemap_mode = 2
 
 [node name="Level1" type="Node3D"]
+
+[node name="CheckpointManager_Checkpoints#Checkpoint" parent="." instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
+
+[node name="CheckpointManager_Checkpoints#Checkpoint2" parent="." instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+
+[node name="CheckpointManager_Checkpoints#Checkpoint3" parent="." instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10.5)
+
+[node name="CheckpointManager_Checkpoints#Checkpoint4" parent="." instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -3.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
@@ -46,29 +58,6 @@ playerReference = NodePath("Player")
 
 [node name="Player" parent="CheckpointManager" instance=ExtResource("1_ood3a")]
 movementMaximum = 13.0
-
-[node name="Checkpoints" parent="CheckpointManager" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
-
-[node name="Checkpoint" type="Area3D" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
-collision_layer = 0
-collision_mask = 2
-
-[node name="Checkpoint2" type="Area3D" parent="CheckpointManager/Checkpoints" index="1" instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
-collision_layer = 0
-collision_mask = 2
-
-[node name="Checkpoint3" type="Area3D" parent="CheckpointManager/Checkpoints" index="2" instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10.5)
-collision_layer = 0
-collision_mask = 2
-
-[node name="Checkpoint4" type="Area3D" parent="CheckpointManager/Checkpoints" index="3" instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -3.5)
-collision_layer = 0
-collision_mask = 2
 
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
