@@ -52,11 +52,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0.5
 [node name="FanSticker2" parent="Stickers" instance=ExtResource("7_xx357")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13, 0.5, -10)
 
-[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("1_30t6r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
-playerReference = NodePath("Player")
-
-[node name="Player" parent="CheckpointManager" instance=ExtResource("1_ood3a")]
+[node name="Player" parent="." instance=ExtResource("1_ood3a")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.5, 6)
 movementMaximum = 13.0
 
 [node name="TerrainMap" type="GridMap" parent="."]
@@ -80,4 +77,18 @@ data = {
 script = ExtResource("6_8k52u")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[editable path="CheckpointManager"]
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("1_30t6r")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Start")
+
+[node name="Start" parent="CheckpointManager" instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
+
+[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98, 0.5, -7)
+
+[node name="Checkpoint3" parent="CheckpointManager" instance=ExtResource("3_scbay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
