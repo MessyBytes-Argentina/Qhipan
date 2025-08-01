@@ -19,8 +19,14 @@ func _input(event: InputEvent) -> void:
 			currentPickup = null
 			pickupOnHand = false
 
-
 func check_available_area() -> void:
-	var placements: Array = get_overlapping_areas()
-	if placements.size() > 0:
-		currentPickup.place_sticker(placements[0].get_target_position())
+	var areas: Array[Area3D] = get_overlapping_areas()
+	var closest: Area3D
+	var shortestDistance: float = 9999999999
+	if len(areas) > 0:
+		for area in areas:
+			var currentDistance: float = global_position.distance_to(area.global_position)
+			if currentDistance < shortestDistance:
+				closest = area
+				shortestDistance = currentDistance
+		currentPickup.place_sticker(closest.global_position, closest.get_meta("pointing"))

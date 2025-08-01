@@ -26,6 +26,7 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 @onready var spritePivot: Node3D = %SpritePivot
 @onready var sprite: MeshInstance3D = %Sprite
 @onready var lightDecal: DecalCompatibility = %LightDecal
+@onready var postProcessing: MeshInstance3D = %PostProcessing
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -44,6 +45,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
+	postProcessing.show()
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return

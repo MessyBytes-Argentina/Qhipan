@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=19 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ep1uo6u8q3l0" path="res://icon.svg" id="1_ptf2q"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
 [ext_resource type="Texture2D" uid="uid://8h0ungnksnr8" path="res://Assets/Character/Placeholder.png" id="3_nasuc"]
+[ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="4_l6njb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/Player/PickupHandler.gd" id="6_cphfr"]
 
@@ -28,6 +29,18 @@ albedo_texture = ExtResource("3_nasuc")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
+
+[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5th"]
+render_priority = 0
+shader = ExtResource("4_l6njb")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.002
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002
 
 [sub_resource type="Gradient" id="Gradient_cphfr"]
 offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
@@ -58,8 +71,8 @@ shader_parameter/fade_power = 1.0
 material = SubResource("ShaderMaterial_a56cn")
 size = Vector3(20, 5, 20)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_l6njb"]
-height = 0.8
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
+radius = 1.0
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -93,6 +106,14 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
 fov = 55.0
 
+[node name="PostProcessing" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
+unique_name_in_owner = true
+visible = false
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_vq31v")
+surface_material_override/0 = SubResource("ShaderMaterial_fj5th")
+
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -115,4 +136,4 @@ monitorable = false
 script = ExtResource("6_cphfr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea"]
-shape = SubResource("CylinderShape3D_l6njb")
+shape = SubResource("CapsuleShape3D_l6njb")

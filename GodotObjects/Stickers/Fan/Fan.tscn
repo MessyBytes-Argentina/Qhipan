@@ -1,0 +1,203 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjg3u8idl755x"]
+
+[ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/Stickers/Fan/Fan.gd" id="1_2wwg3"]
+[ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_e06n3"]
+[ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/Props/Fan/Fan.gd" id="3_6ngi6"]
+[ext_resource type="Texture2D" uid="uid://ct67p5u0qvkh4" path="res://Assets/Stickers/Fan/Vent-3.png" id="3_rl7rx"]
+[ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/Props/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
+[ext_resource type="Texture2D" uid="uid://dunhq8g73hkfo" path="res://Assets/Stickers/Fan/Vent-4.png" id="4_6ngi6"]
+[ext_resource type="Texture2D" uid="uid://coje2mtnbxmjy" path="res://Assets/Stickers/Fan/Vent-2.png" id="5_2hw6u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
+radius = 0.131629
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2i5e"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tnm2"]
+render_priority = 1
+transparency = 1
+albedo_texture = ExtResource("2_e06n3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
+size = Vector3(1, 3.1, 1)
+
+[sub_resource type="Gradient" id="Gradient_gt347"]
+offsets = PackedFloat32Array(0.25, 0.25)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
+gradient = SubResource("Gradient_gt347")
+width = 16
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 1)
+
+[sub_resource type="Animation" id="Animation_l5vid"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_e06n3")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fan")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"switch_fan"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_j2x5e"]
+resource_name = "Spin"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_rl7rx"), ExtResource("4_6ngi6")]
+}
+
+[sub_resource type="Animation" id="Animation_47yv1"]
+resource_name = "SpinUp"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_e06n3"), ExtResource("5_2hw6u"), ExtResource("3_rl7rx"), ExtResource("4_6ngi6")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Spin", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fan")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"switch_fan"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2x5e"]
+_data = {
+&"RESET": SubResource("Animation_l5vid"),
+&"Spin": SubResource("Animation_j2x5e"),
+&"SpinUp": SubResource("Animation_47yv1")
+}
+
+[node name="FanSticker" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_2wwg3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_y2i5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_5tnm2")
+
+[node name="Fan" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_6ngi6")
+isOn = false
+pushForce = 50.0
+areaHeight = 3.0
+areaDiameter = 1.0
+
+[node name="Area" type="CollisionShape3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_gt347")
+
+[node name="NoGravity" type="Area3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_2hw6u")
+
+[node name="NoGravityCollision" type="CollisionShape3D" parent="Fan/NoGravity"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_ps2dv")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Target" type="Marker3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Fan/Target"]
+billboard = 1
+texture = SubResource("GradientTexture2D_ps2dv")
+
+[node name="Origin" type="Marker3D" parent="Fan"]
+unique_name_in_owner = true
+
+[node name="AreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_j2x5e")
+}
