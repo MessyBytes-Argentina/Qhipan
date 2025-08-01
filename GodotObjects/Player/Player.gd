@@ -176,7 +176,7 @@ func animation_check() -> void:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
 
-func check_movement_animation(inputDirection: Vector3) -> void:
-	if currentState != States.Push: currentState = States.Walk if inputDirection.length() > 0 else States.Idle
-	if inputDirection.z == 0 and currentState != States.Idle: return
-	facingBack = inputDirection.z < 0
+func check_movement_animation(currentInputDirection: Vector3) -> void:
+	if currentState != States.Push: currentState = States.Walk if currentInputDirection.length() > 0 else States.Idle
+	if currentInputDirection.z == 0 and currentState != States.Idle: return
+	facingBack = currentInputDirection.z < 0

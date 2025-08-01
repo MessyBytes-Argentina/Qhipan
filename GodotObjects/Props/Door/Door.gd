@@ -1,15 +1,21 @@
 extends Node3D
 
+enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, RotateToCeiling}
+
+@export var openAnimation: Animations = Animations.SlideLeft
+
 @onready var doorBody: DoorBody = %DoorBody
 @onready var bodyShape: CollisionShape3D = %BodyShape
-@onready var areaShape: CollisionShape3D = %AreaShape1
-@onready var areaShape2: CollisionShape3D = %AreaShape2
+@onready var area3d: Area3D = %Area3D
+@onready var area3d2: Area3D = %Area3D2
+@onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 
 func _ready() -> void:
 	doorBody.open.connect(open_door)
 
 func open_door() -> void:
-	hide()
-	bodyShape.disabled = true
-	areaShape.disabled = true
-	areaShape2.disabled = true
+	#hide()
+	#bodyShape.disabled = true
+	area3d.set_deferred("monitorable", false)
+	area3d2.set_deferred("monitorable", false)
+	animationPlayer.play(Animations.keys()[openAnimation])

@@ -68,8 +68,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 [node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("6_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -0.5)
 
-[node name="Door" parent="." instance=ExtResource("7_77igb")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.71404, 1, 4.65815)
-
 [node name="Key" parent="." instance=ExtResource("8_u47oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
+
+[node name="Door" parent="." instance=ExtResource("7_77igb")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 1, 4.5)
