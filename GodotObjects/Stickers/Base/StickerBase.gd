@@ -115,8 +115,10 @@ func start_rotation() -> void:
 	rotationTween.play()
 
 func stop_rotation() -> void:
-	rotationTween.kill()
-	bobbingTween.kill()
+	if rotationTween:
+		rotationTween.kill()
+	if bobbingTween:
+		bobbingTween.kill()
 	meshes.position.y = 0
 	meshes.rotation.y = 0
 	meshes.rotation.x = 0
