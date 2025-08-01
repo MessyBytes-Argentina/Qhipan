@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btx8bgjlyo51g"
-path.s3tc="res://.godot/imported/Key-1.png-bf5ae593220405d8fbd47a0a21b6d1e0.s3tc.ctex"
+uid="uid://bmiqb3vmp5lcx"
+path="res://.godot/imported/Sticker-Slot-1.png-ceca171465e48c5a7d8a9ae61f7f766f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stickers/Key/Key-1.png"
-dest_files=["res://.godot/imported/Key-1.png-bf5ae593220405d8fbd47a0a21b6d1e0.s3tc.ctex"]
+source_file="res://Assets/Decals/Sticker-Slot-1.png"
+dest_files=["res://.godot/imported/Sticker-Slot-1.png-ceca171465e48c5a7d8a9ae61f7f766f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -90,6 +90,7 @@ reset_scene={
 3d_physics/layer_2="Player"
 3d_physics/layer_10="Stickers"
 3d_physics/layer_11="StickerPlacement"
+3d_physics/layer_12="Doors"
 
 [rendering]
 
