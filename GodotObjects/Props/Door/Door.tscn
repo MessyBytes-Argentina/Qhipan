@@ -87,38 +87,6 @@ tracks/2/keys = {
 "values": [Vector3(0, -2.18557e-08, 0.5)]
 }
 
-[sub_resource type="Animation" id="Animation_lv0gf"]
-resource_name = "SlideDown"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Centered:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
-"update": 0,
-"values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, -0.501)]
-}
-
-[sub_resource type="Animation" id="Animation_iyqt8"]
-resource_name = "RotateToFloor"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_gmc35"]
 resource_name = "RotateToCeiling"
 length = 0.8
@@ -147,8 +115,24 @@ tracks/1/keys = {
 "values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, 0.75)]
 }
 
-[sub_resource type="Animation" id="Animation_2hdbo"]
-resource_name = "SlideUp"
+[sub_resource type="Animation" id="Animation_iyqt8"]
+resource_name = "RotateToFloor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lv0gf"]
+resource_name = "SlideDown"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -160,7 +144,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
-"values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, 1.501)]
+"values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, -0.501)]
 }
 
 [sub_resource type="Animation" id="Animation_qoht4"]
@@ -193,6 +177,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-3, -3),
 "update": 0,
 "values": [Vector3(0, -2.18557e-08, 0.5), Vector3(1.01, 0, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_2hdbo"]
+resource_name = "SlideUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, 1.501)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmc35"]
