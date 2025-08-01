@@ -4,6 +4,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
+uniform bool map_top_to_world = true;
 uniform sampler2D top_texture : source_color, filter_nearest_mipmap, repeat_enable;
 uniform float top_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform ivec2 albedo_texture_size;
@@ -57,7 +58,7 @@ void fragment() {
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	if (world_normal.y < 0.5) {
+	if (world_normal.y < 0.5 && map_top_to_world) {
 		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 	} else {
 		vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
