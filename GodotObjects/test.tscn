@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=12 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_77igb"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_evf4h"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="7_77igb"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="8_u47oh"]
-[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/DeathZone/DeathZone.tscn" id="9_u47oh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -21,9 +20,6 @@ sky_material = SubResource("ProceduralSkyMaterial_5l86x")
 background_mode = 2
 sky = SubResource("Sky_v5vbm")
 tonemap_mode = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u47oh"]
-size = Vector3(1.96008, 1, 1)
 
 [node name="Test" type="Node3D"]
 
@@ -60,6 +56,7 @@ environment = SubResource("Environment_8kaph")
 
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
+disableMaximum = true
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("6_8kaph")]
 playerReference = NodePath("../Player")
@@ -76,10 +73,3 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.7140
 
 [node name="Key" parent="." instance=ExtResource("8_u47oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
-
-[node name="DeathZone" parent="." instance=ExtResource("9_u47oh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 6)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480042, 0, 0)
-shape = SubResource("BoxShape3D_u47oh")
