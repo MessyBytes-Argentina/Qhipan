@@ -90,8 +90,8 @@ shader_parameter/noise_frequency = 10.0
 shader_parameter/noise_offset_intensity = 0.002
 
 [sub_resource type="Gradient" id="Gradient_l6njb"]
-offsets = PackedFloat32Array(0, 0.95, 0.95, 0.999, 1)
-colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 0.196078, 0, 1, 1, 0.588235, 0, 1, 1, 0.588235, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.0258162, 0.0288535, 0.03265, 0.0463174, 0.0516325, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.16325, 0.288732, 0.443662, 0.8, 0.85, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0.796841, 0.952107, 1, 1, 1, 1, 0.0305074, 1, 1, 1, 0.0682116, 0, 1, 1, 0.486275, 1, 1, 1, 0, 1, 1, 1, 0.021541, 0, 0.796841, 0.952107, 1, 1, 1, 1, 0.044739, 1, 1, 1, 0.117647, 0, 1, 1, 0.196078, 0.776471, 1, 1, 0.0392157, 0, 1, 1, 0.392157, 0, 0.247059, 0.72549, 0.431373, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
 gradient = SubResource("Gradient_l6njb")
