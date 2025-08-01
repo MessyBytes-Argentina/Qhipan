@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b0sqkoo60eyuw"]
+[gd_scene load_steps=9 format=4 uid="uid://b0sqkoo60eyuw"]
 
 [ext_resource type="Texture2D" uid="uid://0u4oi5inxe6s" path="res://Assets/UV Textures/Door.png" id="1_avh7a"]
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://GodotObjects/Props/Door/Door.gd" id="1_iyqt8"]
@@ -45,6 +45,9 @@ shadow_mesh = SubResource("ArrayMesh_72boo")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qyx1t"]
 data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
+size = Vector3(1, 0.251892, 1)
+
 [node name="Door" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_iyqt8")
@@ -61,3 +64,11 @@ script = ExtResource("2_n2c0y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Slab/DoorBody"]
 shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.124176, -4.44089e-16)
+shape = SubResource("BoxShape3D_iyqt8")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=15 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Stickers/Key/Key-1.png" id="2_mjg6o"]
 [ext_resource type="Texture2D" uid="uid://dnhbolkwgdgjn" path="res://Assets/Stickers/Fan/Vent-Back.png" id="3_gqhl2"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="4_5s7j6"]
-[ext_resource type="Script" uid="uid://decgrpkq4bxbo" path="res://GodotObjects/Stickers/Key/KeyArea.gd" id="4_loxqr"]
 [ext_resource type="Script" uid="uid://bok5ycfda8ov6" path="res://GodotObjects/Stickers/Key/Key.gd" id="4_ws05p"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="5_yl1a6"]
 
@@ -82,7 +81,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_loxqr")
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 3072
-script = ExtResource("4_loxqr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
 shape = SubResource("SphereShape3D_8ww4f")
