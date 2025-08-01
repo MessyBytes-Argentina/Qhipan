@@ -4,6 +4,8 @@ class_name Player
 
 const cameraRotationStep: float = deg_to_rad(90.0)
 
+enum States {Idle, Walk, Push}
+
 @export_group("Character Movement")
 @export_range(0, 100, .1) var maxSpeed: float = 3
 @export_range(0, 100, .1) var acceleration: float = 20.0
@@ -29,7 +31,7 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 @onready var lightDecal: DecalCompatibility = %LightDecal
 @onready var postProcessing: MeshInstance3D = %PostProcessing
 @onready var grabArea: PickupHandler = %GrabArea
-
+@onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -42,6 +44,9 @@ var moved: float = 0.0
 var lastVoluntarySpeed: Vector3 = Vector3.ZERO
 var lastInvoluntarySpeed: Vector3 = Vector3.ZERO
 var lastPushForce: Vector3 = Vector3.ZERO
+var currentState: States = States.Idle
+var facingBack: bool = false
+var currentAnimation: String = "Idle"
 
 func _ready() -> void:
 	set_decal_size()
@@ -53,6 +58,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
+	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
 
@@ -60,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	move_character(delta)
 	camera_follow(delta)
+	animation_check()
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -162,3 +169,14 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 func reset_aura() -> void:
 	moved = 0
 	set_decal_size()
+
+func animation_check() -> void:
+	var newAnimationName = ("Grab_" if grabArea.pickupOnHand else "") + States.keys()[currentState] as String + ("_Back" if facingBack else "")
+	if newAnimationName != currentAnimation:
+		animationPlayer.play(newAnimationName)
+		currentAnimation = newAnimationName
+
+func check_movement_animation(inputDirection: Vector3) -> void:
+	if currentState != States.Push: currentState = States.Walk if inputDirection.length() > 0 else States.Idle
+	if inputDirection.z == 0: return
+	facingBack = inputDirection.z < 0

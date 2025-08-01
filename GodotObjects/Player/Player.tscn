@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=65 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
+[ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Character/WALK/WALK 2.png" id="11_lpbw1"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Character/WALK/WALK 3.png" id="12_wm78n"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Character/WALK/WALK 4.png" id="13_bity2"]
@@ -32,6 +33,10 @@
 [ext_resource type="Texture2D" uid="uid://cqgb5lgcq302k" path="res://Assets/Character/GRAB IDLE/IG 1.png" id="30_bity2"]
 [ext_resource type="Texture2D" uid="uid://bfu0cpsdn01i0" path="res://Assets/Character/GRAB IDLE/IG 2.png" id="31_dkmaj"]
 [ext_resource type="Texture2D" uid="uid://dxja7jycrceyo" path="res://Assets/Character/GRAB IDLE/IG 3.png" id="32_kp4bv"]
+[ext_resource type="Texture2D" uid="uid://dyw03fnhmdai1" path="res://Assets/Character/GRAB BACK/BACK 1.png" id="34_w2rxr"]
+[ext_resource type="Texture2D" uid="uid://c7jsi7m74hj4t" path="res://Assets/Character/GRAB BACK/BACK 2.png" id="35_l1a28"]
+[ext_resource type="Texture2D" uid="uid://cvsrbn3bxtsbe" path="res://Assets/Character/GRAB BACK/BACK 3.png" id="36_0t7aq"]
+[ext_resource type="Texture2D" uid="uid://w8hpajfglu2b" path="res://Assets/Character/GRAB BACK/BACK 4.png" id="37_x0qs5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -146,6 +151,36 @@ shader_parameter/fade_power = 1.0
 material = SubResource("ShaderMaterial_c1wxo")
 size = Vector3(0.5, 5, 0.5)
 
+[sub_resource type="Animation" id="Animation_vmy0v"]
+resource_name = "Grab_Idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp")]
+}
+
 [sub_resource type="Animation" id="Animation_ocbmi"]
 resource_name = "Idle"
 length = 0.8
@@ -174,6 +209,36 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk")]
+}
+
+[sub_resource type="Animation" id="Animation_c6d4u"]
+resource_name = "Idle_Back"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu")]
 }
 
 [sub_resource type="Animation" id="Animation_57iut"]
@@ -233,36 +298,6 @@ tracks/1/keys = {
 "values": [ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2")]
 }
 
-[sub_resource type="Animation" id="Animation_c6d4u"]
-resource_name = "Idle_Back"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu")]
-}
-
 [sub_resource type="Animation" id="Animation_po2dv"]
 resource_name = "Walk_Back"
 length = 0.8
@@ -293,8 +328,38 @@ tracks/1/keys = {
 "values": [ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
 }
 
+[sub_resource type="Animation" id="Animation_30xxu"]
+resource_name = "Grab_Idle_Back"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5")]
+}
+
 [sub_resource type="Animation" id="Animation_ay78x"]
-resource_name = "Walk_Grab"
+resource_name = "Grab_Walk"
 length = 0.8
 loop_mode = 1
 step = 0.1
@@ -324,7 +389,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_5jpe1"]
-resource_name = "Walk_Grab_Back"
+resource_name = "Grab_Walk_Back"
 length = 0.8
 loop_mode = 1
 step = 0.1
@@ -351,48 +416,19 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk")]
-}
-
-[sub_resource type="Animation" id="Animation_vmy0v"]
-resource_name = "Grab_Idle"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("29_xdwbk")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("29_xdwbk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]
 _data = {
 &"Grab_Idle": SubResource("Animation_vmy0v"),
+&"Grab_Idle_Back": SubResource("Animation_30xxu"),
+&"Grab_Walk": SubResource("Animation_ay78x"),
+&"Grab_Walk_Back": SubResource("Animation_5jpe1"),
 &"Idle": SubResource("Animation_ocbmi"),
 &"Idle_Back": SubResource("Animation_c6d4u"),
 &"RESET": SubResource("Animation_57iut"),
 &"Walk": SubResource("Animation_6681y"),
-&"Walk_Back": SubResource("Animation_po2dv"),
-&"Walk_Grab": SubResource("Animation_ay78x"),
-&"Walk_Grab_Back": SubResource("Animation_5jpe1")
+&"Walk_Back": SubResource("Animation_po2dv")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -472,6 +508,7 @@ enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ihfjc")
 }
