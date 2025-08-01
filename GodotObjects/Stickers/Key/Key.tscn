@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=16 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Stickers/Key/Key-1.png" id="2_mjg6o"]
-[ext_resource type="Texture2D" uid="uid://dnhbolkwgdgjn" path="res://Assets/Stickers/Fan/Vent-Back.png" id="3_gqhl2"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="4_5s7j6"]
 [ext_resource type="Script" uid="uid://bok5ycfda8ov6" path="res://GodotObjects/Stickers/Key/Key.gd" id="4_ws05p"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="5_yl1a6"]
@@ -9,22 +8,31 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.131629
 
-[sub_resource type="QuadMesh" id="QuadMesh_h7mp7"]
+[sub_resource type="QuadMesh" id="QuadMesh_mjg6o"]
 size = Vector2(0.8, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws05p"]
-render_priority = 1
+render_priority = 2
 transparency = 1
 albedo_texture = ExtResource("2_mjg6o")
 
-[sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
+[sub_resource type="QuadMesh" id="QuadMesh_loxqr"]
 flip_faces = true
 size = Vector2(0.8, 0.8)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loxqr"]
-render_priority = 1
+[sub_resource type="Gradient" id="Gradient_8cfjh"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjg6o"]
+gradient = SubResource("Gradient_8cfjh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5eqd"]
+render_priority = 2
 transparency = 1
-albedo_texture = ExtResource("3_gqhl2")
+albedo_texture = ExtResource("2_mjg6o")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_mjg6o")
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -44,8 +52,8 @@ shader = ExtResource("4_5s7j6")
 shader_parameter/albedo = SubResource("GradientTexture2D_r7e5t")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(1, 1, 1)
-shader_parameter/cube_half_size = Vector3(0.5, 0.5, 0.5)
+shader_parameter/scale_mod = Vector3(1, 0.333333, 1)
+shader_parameter/cube_half_size = Vector3(0.5, 1.5, 0.5)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
@@ -53,6 +61,7 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_8dhaa"]
 material = SubResource("ShaderMaterial_c1wxo")
+size = Vector3(1, 3, 1)
 
 [node name="Key" type="CharacterBody3D"]
 collision_layer = 512
@@ -66,15 +75,15 @@ unique_name_in_owner = true
 
 [node name="Mesh" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true
-mesh = SubResource("QuadMesh_h7mp7")
+mesh = SubResource("QuadMesh_mjg6o")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ws05p")
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true
-mesh = SubResource("QuadMesh_8dhaa")
+mesh = SubResource("QuadMesh_loxqr")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_loxqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_c5eqd")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -87,12 +96,13 @@ shape = SubResource("SphereShape3D_8ww4f")
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_8dhaa")
 Skeleton = null
 script = ExtResource("5_yl1a6")
-size = Vector3(1, 1, 1)
+size = Vector3(1, 3, 1)
 texture = SubResource("GradientTexture2D_r7e5t")
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"

@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjg3u8idl755x"]
+[gd_scene load_steps=29 format=3 uid="uid://cjg3u8idl755x"]
 
 [ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/Stickers/Fan/Fan.gd" id="1_2wwg3"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_e06n3"]
-[ext_resource type="Texture2D" uid="uid://dnhbolkwgdgjn" path="res://Assets/Stickers/Fan/Vent-Back.png" id="3_2hw6u"]
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/Props/Fan/Fan.gd" id="3_6ngi6"]
 [ext_resource type="Texture2D" uid="uid://ct67p5u0qvkh4" path="res://Assets/Stickers/Fan/Vent-3.png" id="3_rl7rx"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/Props/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
@@ -18,7 +17,7 @@ radius = 0.4
 size = Vector2(0.8, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tnm2"]
-render_priority = 1
+render_priority = 2
 transparency = 1
 albedo_texture = ExtResource("2_e06n3")
 
@@ -26,10 +25,19 @@ albedo_texture = ExtResource("2_e06n3")
 flip_faces = true
 size = Vector2(0.8, 0.8)
 
+[sub_resource type="Gradient" id="Gradient_2hw6u"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5l5r5"]
+gradient = SubResource("Gradient_2hw6u")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l5r5"]
-render_priority = 1
+render_priority = 4
 transparency = 1
-albedo_texture = ExtResource("3_2hw6u")
+albedo_texture = ExtResource("2_e06n3")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_5l5r5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
 size = Vector3(1, 3, 1)
@@ -166,8 +174,8 @@ shader = ExtResource("9_xf8nb")
 shader_parameter/albedo = SubResource("GradientTexture2D_xf8nb")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(1, 0.2, 1)
-shader_parameter/cube_half_size = Vector3(0.5, 2.5, 0.5)
+shader_parameter/scale_mod = Vector3(1, 0.333333, 1)
+shader_parameter/cube_half_size = Vector3(0.5, 1.5, 0.5)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
@@ -175,7 +183,7 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_5l5r5"]
 material = SubResource("ShaderMaterial_c1wxo")
-size = Vector3(1, 5, 1)
+size = Vector3(1, 3, 1)
 
 [node name="FanSticker" type="CharacterBody3D"]
 collision_layer = 512
@@ -255,12 +263,13 @@ libraries = {
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_5l5r5")
 Skeleton = null
 script = ExtResource("10_5l5r5")
-size = Vector3(1, 5, 1)
+size = Vector3(1, 3, 1)
 texture = SubResource("GradientTexture2D_xf8nb")
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"
