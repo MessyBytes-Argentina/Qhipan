@@ -30,6 +30,7 @@ func _ready() -> void:
 	sceneParent = get_parent()
 	meshMaterial = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, meshMaterial)
+	mesh.mesh = mesh.mesh.duplicate()
 	backMaterial = back.get_surface_override_material(0).duplicate()
 	back.set_surface_override_material(0, backMaterial)
 	startSize = mesh.mesh.size
