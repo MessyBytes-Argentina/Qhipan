@@ -30,6 +30,7 @@ func _ready() -> void:
 	sceneParent = get_parent()
 	meshMaterial = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, meshMaterial)
+	mesh.mesh = mesh.mesh.duplicate()
 	backMaterial = back.get_surface_override_material(0).duplicate()
 	back.set_surface_override_material(0, backMaterial)
 	startSize = mesh.mesh.size
@@ -38,13 +39,13 @@ func _ready() -> void:
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
 
-func place_sticker(pos: Vector3, direction: Vector3) -> void:
+func place_sticker(area: Area3D, direction: Vector3) -> void:
 	set_size(ScaleModes.PLACED)
-	global_position = pos + direction * 0.01
+	global_position = area.global_position + direction * 0.01
 	onPlayer = false
 	placed = true
 	look_at(global_position - direction)
-	reparent(sceneParent)
+	reparent(area)
 
 func set_size(mode: ScaleModes) -> void:
 	match mode:

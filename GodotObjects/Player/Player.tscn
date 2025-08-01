@@ -72,7 +72,7 @@ material = SubResource("ShaderMaterial_vq31v")
 size = Vector3(20, 20, 20)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
-radius = 0.75
+radius = 0.6
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -92,8 +92,8 @@ shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_vq31v")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(2, 0.1, 2)
-shader_parameter/cube_half_size = Vector3(0.25, 5, 0.25)
+shader_parameter/scale_mod = Vector3(2, 0.2, 2)
+shader_parameter/cube_half_size = Vector3(0.25, 2.5, 0.25)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.0
 shader_parameter/fade_end = 0.7
@@ -101,7 +101,7 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj5th"]
 material = SubResource("ShaderMaterial_c1wxo")
-size = Vector3(0.5, 10, 0.5)
+size = Vector3(0.5, 5, 0.5)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
@@ -168,12 +168,13 @@ shape = SubResource("CapsuleShape3D_l6njb")
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_fj5th")
 Skeleton = null
 script = ExtResource("4_nasuc")
-size = Vector3(0.5, 10, 0.5)
+size = Vector3(0.5, 5, 0.5)
 texture = SubResource("GradientTexture2D_vq31v")
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"
