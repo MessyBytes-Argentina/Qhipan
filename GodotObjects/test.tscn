@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=10 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_77igb"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_okwja"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="3_evf4h"]
-[ext_resource type="PackedScene" uid="uid://bs536j1n36wmr" path="res://GodotObjects/Props/Fan/Fan.tscn" id="4_8lbv8"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_8kaph"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_evf4h"]
 
@@ -49,19 +48,14 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8kaph")
 
-[node name="Fan" parent="." instance=ExtResource("4_8lbv8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.587, 0.5, 1.773)
-pushForce = 30.0
-noGravityAreaMargin = 0.5
-
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
-disableMaximum = false
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("6_8kaph")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 playerReference = NodePath("../Player")
 
 [node name="Checkpoint" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("6_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0927414, 1.26412, -6.00776)
 
 [editable path="CheckpointManager"]
