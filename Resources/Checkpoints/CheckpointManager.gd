@@ -3,8 +3,8 @@ extends Node3D
 @export var playerReference: CharacterBody3D
 
 @onready var checkpoints: CheckpointsTool = %Checkpoints
+@onready var currentRestartPoint: Vector3 = global_position
 
-var currentRestartPoint: Vector3 = global_position
 var isOnStart = true
 
 func _ready() -> void:
