@@ -52,6 +52,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45496, -1.5, 11.6195)
 [node name="Door" parent="GridmapObject" instance=ExtResource("3_hmuq0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.5, 1.5, 4.25)
 
+[node name="Door2" parent="GridmapObject" instance=ExtResource("3_hmuq0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.52, 1.48, 14.01)
+
 [node name="Player" parent="." instance=ExtResource("5_hmuq0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.18237, -3.72876)
 
@@ -88,6 +91,9 @@ metadata/_editor_floor_ = Vector3(0, -4, 0)
 
 [node name="Key" parent="StickerMap" instance=ExtResource("8_bgqye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 4, 2.7)
+
+[node name="Key2" parent="StickerMap" instance=ExtResource("8_bgqye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43, 1.495, 7.54)
 
 [node name="Fan" parent="." instance=ExtResource("7_q7vpl")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3.45, -1.5, 11.95)
