@@ -61,7 +61,7 @@ void fragment() {
 		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 	} else {
 		vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
-		world_pos = fract(world_pos * vec3(1.00000 / top_texture_scale, 1.00000, 1.00000 / top_texture_scale) + vec3(0.50000, 0.00000, 0.500000) + vec3(0.50000 / top_texture_scale, 0.00000, 0.50000 / top_texture_scale));
+		world_pos = fract(world_pos * vec3(1.00000 / top_texture_scale, 1.00000, 1.00000 / top_texture_scale) + vec3(0.50000 / top_texture_scale, 0.00000, 0.50000 / top_texture_scale));
 		vec2 base_uv = world_pos.xz;
 		vec4 albedo_tex = texture(top_texture, base_uv);
 		ALBEDO = albedo.rgb * albedo_tex.rgb;

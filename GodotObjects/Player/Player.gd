@@ -1,5 +1,6 @@
 @tool
 extends CharacterBody3D
+class_name Player
 
 const cameraRotationStep: float = deg_to_rad(90.0)
 
@@ -26,6 +27,9 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 @onready var spritePivot: Node3D = %SpritePivot
 @onready var sprite: MeshInstance3D = %Sprite
 @onready var lightDecal: DecalCompatibility = %LightDecal
+@onready var postProcessing: MeshInstance3D = %PostProcessing
+@onready var grabArea: PickupHandler = %GrabArea
+
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -44,6 +48,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
+	postProcessing.show()
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -142,8 +147,17 @@ func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
 
 func set_decal_size() -> void:
-	if disableMaximum: 
-		lightDecal.hide()
+	if disableMaximum:
+		if lightDecal: lightDecal.hide()
 		return
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
 	lightDecal.size.z = lightDecal.size.x
+
+func restart_at_checkpoint(pos: Vector3) -> void:
+	grabArea.drop()
+	global_position = pos
+	reset_aura()
+
+func reset_aura() -> void:
+	moved = 0
+	set_decal_size()

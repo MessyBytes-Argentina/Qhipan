@@ -1,24 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=10 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
+[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_77igb"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_okwja"]
-[ext_resource type="PackedScene" uid="uid://205amao8uwa2" path="res://GodotObjects/Stickers/StickerBase.tscn" id="3_hc36m"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="3_evf4h"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_8kaph"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_evf4h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_v5vbm"]
+sky_material = SubResource("ProceduralSkyMaterial_5l86x")
+
+[sub_resource type="Environment" id="Environment_8kaph"]
+background_mode = 2
+sky = SubResource("Sky_v5vbm")
+tonemap_mode = 2
 
 [node name="Test" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_0y1wl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="StickerMap" parent="." instance=ExtResource("2_77igb")]
+data = {
+"cells": PackedInt32Array(196604, 2, 1441793, 196603, 2, 1441793, 131069, 3, 655360, 131070, 3, 655360, 131070, 4, 655360, 131069, 4, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="FanSticker" parent="." instance=ExtResource("3_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, -0.5)
+
+[node name="FanSticker2" parent="." instance=ExtResource("3_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 1.5)
+
+[node name="FanSticker3" parent="." instance=ExtResource("3_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 3.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.945098, 0.878431, 0.788235, 1)
+light_energy = 0.025
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8kaph")
 
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.77675, 0.877114, 3.54806)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
 
-[node name="StickerBase" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80347, 1.15741, 1.69366)
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference") instance=ExtResource("6_8kaph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+playerReference = NodePath("../Player")
 
-[node name="StickerBase2" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82596, 0.639355, -0.006271)
+[node name="Checkpoint" parent="CheckpointManager/Checkpoints" index="0" instance=ExtResource("6_evf4h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0927414, 1.26412, -6.00776)
 
-[node name="StickerBase3" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107661, 2.14728, 0.0155705)
-
-[node name="StickerBase4" parent="." instance=ExtResource("3_hc36m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67109, 0.639355, 0.108636)
+[editable path="CheckpointManager"]
