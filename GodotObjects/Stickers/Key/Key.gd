@@ -16,7 +16,6 @@ func grab(node: Node3D) -> void:
 
 func check_door():
 	var bodyList: Array = areaChecker.get_overlapping_bodies()
-	print(bodyList)
 	for object in bodyList:
 		if object is DoorBody:
 			open_door(object)
