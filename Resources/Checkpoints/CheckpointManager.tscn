@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8ef8qmyhh7pd"]
+
+[ext_resource type="Script" uid="uid://bymf43cjcj5al" path="res://Resources/Checkpoints/CheckpointManager.gd" id="1_idfdr"]
+[ext_resource type="Script" uid="uid://bw5w3x1nixqqm" path="res://Resources/Checkpoints/CheckpointsTool.gd" id="2_c21kn"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="3_en32a"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8lbv8"]
+radius = 0.05
+height = 0.2
+
+[node name="CheckpointManager" type="Node3D"]
+script = ExtResource("1_idfdr")
+
+[node name="Start" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_8lbv8")
+
+[node name="Checkpoints" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_c21kn")
+checkpointScene = ExtResource("3_en32a")

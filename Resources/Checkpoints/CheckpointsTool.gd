@@ -16,7 +16,7 @@ func _ready() -> void:
 		for object: Area3D in checkpointList:
 			object.body_entered.connect(change_current_checkpoint.bind(object))
 
-func change_current_checkpoint(checkpoint: Area3D) -> void:
+func change_current_checkpoint(_body, checkpoint: Area3D) -> void:
 	currentCheckpoint = checkpoint
 	currentCheckpoint.body_entered.disconnect(change_current_checkpoint)
 	emit_signal("checkpoint_changed", currentCheckpoint.global_position)
