@@ -28,22 +28,24 @@ func do_grab() -> void:
 		currentPickup.grab(self)
 		pickupOnHand = true
 
-func check_available_area() -> void:
+func check_available_area(onReset: bool = false) -> void:
 	var areas: Array[Area3D] = get_overlapping_areas()
 	var closest: Area3D
 	var shortestDistance: float = 9999999999
-	if len(areas) > 0:
+	if len(areas) > 0 and not onReset:
 		for area in areas:
 			var currentDistance: float = global_position.distance_to(area.global_position)
-			if currentDistance < shortestDistance:
+			var hasSticker: bool = area.get_children().any(func(a: Node): return a is StickerBase)
+			if currentDistance < shortestDistance and not hasSticker:
 				closest = area
 				shortestDistance = currentDistance
-		currentPickup.place_sticker(closest.global_position, closest.get_meta("pointing"))
-		return
+		if closest:
+			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
+			return
 	if currentPickup: currentPickup.drop()
 
-func drop() -> void:
+func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup != null:
-			check_available_area()
-			currentPickup = null
-			pickupOnHand = false
+		check_available_area(onReset)
+		currentPickup = null
+		pickupOnHand = false
