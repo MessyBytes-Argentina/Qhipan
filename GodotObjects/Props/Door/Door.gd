@@ -12,6 +12,8 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 
 func _ready() -> void:
 	doorBody.open.connect(open_door)
+	area3d.set_meta("pointing", area3d.global_position.direction_to(area3d.get_node("Marker3D").global_position))
+	area3d2.set_meta("pointing", area3d2.global_position.direction_to(area3d2.get_node("Marker3D").global_position))
 
 func open_door() -> void:
 	#hide()

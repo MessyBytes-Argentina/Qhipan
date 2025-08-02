@@ -245,6 +245,9 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114
 shape = SubResource("BoxShape3D_iyqt8")
 debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
 
+[node name="Marker3D" type="Marker3D" parent="Centered/UpPivot/DownPivot/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
+
 [node name="Area3D2" type="Area3D" parent="Centered/UpPivot/DownPivot"]
 unique_name_in_owner = true
 transform = Transform3D(-1, -1.50996e-07, -3.82138e-15, 1.50996e-07, -1, -8.74228e-08, 9.3791e-15, -8.74228e-08, 1, 0, 0.3, 0.5)
@@ -257,6 +260,9 @@ metadata/pointing = Vector3(0, 0, -1)
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_iyqt8")
 debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
+
+[node name="Marker3D" type="Marker3D" parent="Centered/UpPivot/DownPivot/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
