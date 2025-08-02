@@ -1,6 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl8pwr8srhfnh"]
+[gd_scene load_steps=9 format=3 uid="uid://cl8pwr8srhfnh"]
 
 [ext_resource type="Texture2D" uid="uid://bwyl40jo86u3t" path="res://Assets/Particle Texture/Wind.png" id="1_304jv"]
+
+[sub_resource type="Gradient" id="Gradient_304jv"]
+offsets = PackedFloat32Array(0.7375, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdeok"]
+gradient = SubResource("Gradient_304jv")
 
 [sub_resource type="Curve" id="Curve_wdeok"]
 _limits = [-200.0, 200.0, 0.0, 1.0]
@@ -22,10 +29,12 @@ linear_accel_min = -2.23517e-06
 linear_accel_max = 2.0
 linear_accel_curve = SubResource("CurveTexture_30j2s")
 damping_max = 2.0
+color_ramp = SubResource("GradientTexture1D_wdeok")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fa6iu"]
 transparency = 1
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_304jv")
 disable_receive_shadows = true
 billboard_mode = 1
