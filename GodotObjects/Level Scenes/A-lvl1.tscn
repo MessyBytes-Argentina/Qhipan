@@ -49,15 +49,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -1.5, 8.5)
 [node name="Player" parent="." instance=ExtResource("5_hmuq0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 2.18237, -3.72876)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player"]
-transform = Transform3D(-0.954041, 0.288809, -0.0799601, -0.23664, -0.562345, 0.792319, 0.183864, 0.774827, 0.604844, 2.00373, 7.67949, -1.00373)
-light_color = Color(0.945098, 0.878431, 0.788235, 1)
-light_energy = 0.025
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Player"]
-environment = SubResource("Environment_ch6ue")
-
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("6_q7vpl")]
 playerReference = NodePath("../Player")
 startCheckpoint = NodePath("Checkpoint")
@@ -112,6 +103,17 @@ areaDiameter = 0.75
 
 [node name="Door" parent="." instance=ExtResource("3_hmuq0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 1.5, 4.75)
+openAnimation = 3
 
 [node name="Door2" parent="." instance=ExtResource("3_hmuq0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 1.5, 15)
+openAnimation = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.544598, 0.752105, 0.371149, -0.23664, -0.562345, 0.792319, 0.804621, 0.343666, 0.48423, 0.707107, 9.86186, -5.85536)
+light_color = Color(0.945098, 0.878431, 0.788235, 1)
+light_energy = 0.025
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ch6ue")
