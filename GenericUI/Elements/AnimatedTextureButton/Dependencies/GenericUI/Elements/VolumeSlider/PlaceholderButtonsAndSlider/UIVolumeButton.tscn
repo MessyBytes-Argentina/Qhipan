@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://23hcgk4hee52"]
 
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Placeholder/UI/Extras/Sound.png" id="1_fiw1q"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Placeholder/UI/Extras/SoundDisabled.png" id="2_qtage"]
+[ext_resource type="Texture2D" uid="uid://c65wmpbcyy3h5" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/Sound.png" id="1_fiw1q"]
+[ext_resource type="Texture2D" uid="uid://dmp0180w0csbj" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/SoundDisabled.png" id="2_qtage"]
 [ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="3_vu11g"]
 [ext_resource type="Animation" uid="uid://dytj2q23vgjoe" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/RESET.res" id="4_lb3cw"]
 [ext_resource type="Animation" uid="uid://bb4n8fpv0fr5y" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/hover.res" id="5_8pixu"]
