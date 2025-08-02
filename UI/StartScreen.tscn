@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://3iena3lvxxgn"]
+
+[ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://UI/StartButton.gd" id="1_oq7qy"]
+[ext_resource type="PackedScene" uid="uid://dq782t3gqfnxn" path="res://GodotObjects/Level Scenes/N-lvl1.tscn" id="2_4n4q3"]
+
+[node name="StartScreen" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.454902, 0.666667, 0.623529)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("1_oq7qy")
+levelList = Array[PackedScene]([ExtResource("2_4n4q3")])

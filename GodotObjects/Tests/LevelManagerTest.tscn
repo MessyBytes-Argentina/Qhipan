@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2vsok3n4lg1s"]
+[gd_scene load_steps=2 format=3 uid="uid://d2vsok3n4lg1s"]
 
 [ext_resource type="Script" uid="uid://c4wd8i1wdlc5c" path="res://GodotObjects/Tests/LevelManagerTest.gd" id="1_nub7d"]
-[ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/Tests/test.tscn" id="2_cj8mi"]
 
 [node name="LevelManagerTest" type="Node"]
 script = ExtResource("1_nub7d")
-levelList = Array[PackedScene]([ExtResource("2_cj8mi")])
