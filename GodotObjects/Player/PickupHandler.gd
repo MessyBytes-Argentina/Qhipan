@@ -6,6 +6,11 @@ var pickups: Array[Node3D]
 var pickupOnHand: bool = false
 var currentPickup: StickerBase
 
+@onready var pickupSound: RandomPitchPlayer = $Pickup
+@onready var removeSound: RandomPitchPlayer = $Remove
+@onready var dropSound: RandomPitchPlayer = $Drop
+@onready var stickSound: RandomPitchPlayer = $Stick
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if not pickupOnHand:
@@ -24,6 +29,8 @@ func do_grab() -> void:
 				closest = pickup
 				shortestDistance = currentDistance
 		currentPickup = closest
+		if currentPickup.placed: removeSound.play_sound()
+		else: pickupSound.play_sound()
 		currentPickup.reparent(self)
 		currentPickup.grab(self)
 		pickupOnHand = true
@@ -41,12 +48,15 @@ func check_available_area(onReset: bool = false) -> void:
 				shortestDistance = currentDistance
 		if closest and closest.get_collision_layer_value(11):
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
+			stickSound.play_sound()
 			return
 		elif closest and closest.get_collision_layer_value(12) and currentPickup is Key:
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
-			
+			stickSound.play_sound()
 			return
-	if currentPickup: currentPickup.drop()
+	if currentPickup:
+		currentPickup.drop()
+		dropSound.play_sound()
 
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup != null:
