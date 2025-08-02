@@ -9,6 +9,7 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 @onready var area3d: Area3D = %Area3D
 @onready var area3d2: Area3D = %Area3D2
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
+@onready var fanfareSound: RandomPitchPlayer = %FanfareSound
 
 func _ready() -> void:
 	doorBody.open.connect(open_door)
@@ -21,3 +22,4 @@ func open_door() -> void:
 	area3d.set_deferred("monitorable", false)
 	area3d2.set_deferred("monitorable", false)
 	animationPlayer.play(Animations.keys()[openAnimation])
+	fanfareSound.play_sound()

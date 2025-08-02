@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://boyck3nkn4lct"]
+[gd_scene load_steps=19 format=4 uid="uid://boyck3nkn4lct"]
 
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://GodotObjects/Props/Door/Door.gd" id="1_b1das"]
 [ext_resource type="Texture2D" uid="uid://1qb1r6y0tv1y" path="res://Assets/UV Textures/Goal-Door.png" id="2_b1das"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/Props/Door/DoorBody.gd" id="3_naok6"]
+[ext_resource type="AudioStream" uid="uid://b6bul5ui0ktw4" path="res://Assets/Sounds/Fanfare.mp3" id="4_naok6"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_cw5sc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6m7da"]
 resource_name = "Material.001"
@@ -330,3 +332,9 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_gmc35")
 }
+
+[node name="FanfareSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_naok6")
+script = ExtResource("5_cw5sc")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"

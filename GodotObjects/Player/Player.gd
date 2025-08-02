@@ -38,6 +38,7 @@ enum States {Idle, Walk, Float}
 @onready var fallSound: RandomPitchPlayer = %FallSound
 @onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
 @onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
+@onready var areaShrinkSound: AudioStreamPlayer = $AreaShrinkSound
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0

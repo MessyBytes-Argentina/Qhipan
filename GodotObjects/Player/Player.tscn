@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=98 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -64,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="Texture2D" uid="uid://crvbknm4v8pes" path="res://Assets/Placeholder bubble.png" id="54_6pvne"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
+[ext_resource type="AudioStream" uid="uid://tmoj5e35fces" path="res://Assets/Sounds/Area_Shrink.mp3" id="65_3jjt7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -725,3 +726,6 @@ transparent_bg = true
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
 texture = ExtResource("54_6pvne")
 centered = false
+
+[node name="AreaShrinkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("65_3jjt7")
