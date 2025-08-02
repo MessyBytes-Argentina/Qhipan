@@ -1,6 +1,8 @@
 extends Node
 
 @export var levelList: Array[PackedScene]
+
+@onready var creditsScene: PackedScene = load("res://UI/Credits.tscn")
 var currentLvlId: int = 0
 
 func next_level() -> void:
@@ -37,6 +39,4 @@ func load_new_scene(scene: PackedScene) -> void:
 	get_tree().change_scene_to_packed(scene)
 
 func go_to_credits() -> void:
-	print("end in progress")
-	await get_tree().create_timer(1).timeout
-	print("maybe...")
+	get_tree().change_scene_to_packed(creditsScene)
