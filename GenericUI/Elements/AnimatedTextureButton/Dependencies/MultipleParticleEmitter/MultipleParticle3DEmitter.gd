@@ -5,6 +5,8 @@ extends Node3D
 ## A [Node3D] that holds multiple [GPUParticles3D] and instantiates on demand at set delays. All non one shot particles will be turned one shot to avoid memory leaks.
 class_name MultipleParticle3DEmitter
 
+signal finished
+
 ## The [GPUParticles3D] to emit. Taken as [PackedScene]s. All non [GPUParticles3D] scenes will be ignored.
 @export var particles: Array[PackedScene]:
 	set(value):
@@ -90,6 +92,8 @@ func emit_particles() -> void:
 					if currentParticle["draw_pass_" + str(j + 1)] is PrimitiveMesh:
 						currentParticle["draw_pass_" + str(j + 1)] = scale_primitive_mesh(currentParticle["draw_pass_" + str(j + 1)].duplicate(), min(scale.x, scale.y, scale.z))
 			currentParticle.one_shot = true
+			if i == len(particles) - 1:
+				currentParticle.finished.connect(finished.emit)
 			currentParticle.finished.connect(currentParticle.queue_free)
 			currentParticle.emitting = true
 			if len(particles) > 1 and i < len(particles) - 1:
