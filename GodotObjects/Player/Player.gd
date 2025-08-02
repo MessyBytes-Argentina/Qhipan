@@ -4,7 +4,7 @@ class_name Player
 
 const cameraRotationStep: float = deg_to_rad(90.0)
 
-enum States {Idle, Walk, Push}
+enum States {Idle, Walk, Float}
 
 @export_group("Character Movement")
 @export_range(0, 100, .1) var maxSpeed: float = 3
@@ -132,6 +132,10 @@ func move_character(delta: float) -> void:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
 	lastInvoluntarySpeed += lastPushForce
+	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
+	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
+		currentState = States.Idle
+		animation_check()
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
 
@@ -176,7 +180,7 @@ func animation_check() -> void:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
 
-func check_movement_animation(inputDirection: Vector3) -> void:
-	if currentState != States.Push: currentState = States.Walk if inputDirection.length() > 0 else States.Idle
-	if inputDirection.z == 0 and currentState != States.Idle: return
-	facingBack = inputDirection.z < 0
+func check_movement_animation(currentInputDirection: Vector3) -> void:
+	if currentState != States.Float: currentState = States.Walk if currentInputDirection.length() > 0 else States.Idle
+	if currentInputDirection.z == 0 and currentState != States.Idle: return
+	facingBack = currentInputDirection.z < 0

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf4vem2dsju0h"]
+
+[ext_resource type="Script" uid="uid://h1qddn4qxm6k" path="res://GodotObjects/Props/Goal/GoalZone.gd" id="1_2y8wx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2y8wx"]
+height = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_2y8wx"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="GoalZone" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2y8wx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_2y8wx")
+debug_color = Color(0.996078, 0, 0.2, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_2y8wx")

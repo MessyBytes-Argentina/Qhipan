@@ -43,7 +43,7 @@ detail_mask = SubResource("GradientTexture2D_5l5r5")
 size = Vector3(1, 3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
-size = Vector3(1, 3.1, 1)
+size = Vector3(1, 3.15, 1)
 
 [sub_resource type="Gradient" id="Gradient_gt347"]
 offsets = PackedFloat32Array(0.25, 0.25)
@@ -51,10 +51,10 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
 gradient = SubResource("Gradient_gt347")
-width = 16
+width = 32
 height = 32
 fill = 1
-fill_from = Vector2(0.5, 1)
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_l5vid"]
 length = 0.001
@@ -217,6 +217,7 @@ isOn = false
 pushForce = 50.0
 areaHeight = 3.0
 areaDiameter = 1.0
+noGravityAreaMargin = 0.15
 
 [node name="Area" type="CollisionShape3D" parent="Fan"]
 unique_name_in_owner = true
@@ -225,7 +226,7 @@ shape = SubResource("BoxShape3D_gt347")
 
 [node name="NoGravity" type="Area3D" parent="Fan"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.575, 0)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -238,9 +239,10 @@ debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Target" type="Marker3D" parent="Fan"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Fan/Target"]
+pixel_size = 0.015
 billboard = 1
 texture = SubResource("GradientTexture2D_ps2dv")
 

@@ -14,6 +14,7 @@ func _ready() -> void:
 		if object is not Checkpoint or object == startCheckpoint: continue
 		object.body_entered.connect(change_current_checkpoint.bind(object as Checkpoint))
 	currentCheckpoint = startCheckpoint
+	currentCheckpoint.activate()
 	reset_player()
 
 func _input(event: InputEvent) -> void:
@@ -26,8 +27,10 @@ func reset_player() -> void:
 	playerReference.restart_at_checkpoint(currentCheckpoint.global_position)
 
 func change_current_checkpoint(_body, checkpoint: Checkpoint) -> void:
+	currentCheckpoint.deactivate()
 	currentCheckpoint.body_entered.connect(change_current_checkpoint.bind(currentCheckpoint as Checkpoint))
 	currentCheckpoint = checkpoint
+	currentCheckpoint.activate()
 	currentCheckpoint.body_entered.disconnect(change_current_checkpoint)
 
 func set_player_to_start() -> void:
