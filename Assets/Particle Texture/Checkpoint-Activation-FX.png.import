@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1elvatgjpf8e"
-path.s3tc="res://.godot/imported/Crystal.png-05d02b3a4f02cb2f7e9b9f85af80ff25.s3tc.ctex"
+uid="uid://cybhvgwjx6twu"
+path.s3tc="res://.godot/imported/Checkpoint-Activation-FX.png-fbaa232b7799ee28b7a7411af62994f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Decos/Crystal.png"
-dest_files=["res://.godot/imported/Crystal.png-05d02b3a4f02cb2f7e9b9f85af80ff25.s3tc.ctex"]
+source_file="res://Assets/Particle Texture/Checkpoint-Activation-FX.png"
+dest_files=["res://.godot/imported/Checkpoint-Activation-FX.png-fbaa232b7799ee28b7a7411af62994f8.s3tc.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://vam88ax0grfk"
+run/main_scene="uid://dkdx1yrx643d4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,10 +22,6 @@ MusicManager="*res://Managers/SoundManager/MusicManager/MusicManager.tscn"
 VolumeManager="*res://Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
-
-[filesystem]
-
-import/blender/enabled=false
 
 [input]
 

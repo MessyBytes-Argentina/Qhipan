@@ -1,118 +1,85 @@
-[gd_scene load_steps=12 format=3 uid="uid://daavw18bmhpxh"]
+[gd_scene load_steps=9 format=3 uid="uid://dkdx1yrx643d4"]
 
-[ext_resource type="Script" uid="uid://dcfdh42lcaq1y" path="res://Managers/SceneManager/SceneManager.gd" id="1_wpufs"]
-[ext_resource type="PackedScene" uid="uid://ck7x0upqglkoj" path="res://Managers/SceneManager/LoaderScene.tscn" id="2_g7w1k"]
-[ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="2_vbwar"]
-[ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="3_qisbq"]
-[ext_resource type="Texture2D" uid="uid://4vbh576aiy4t" path="res://Managers/SceneManager/Transition.png" id="5_r04xi"]
+[ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
+[ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
+[ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/Tests/test.tscn" id="3_g38tw"]
 
-[sub_resource type="Animation" id="Animation_o0l2p"]
-resource_name = "FromLoader"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LoaderLayer/LoaderScene:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g38tw"]
+seed = 9
+frequency = 1.0
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_type = 2
+domain_warp_fractal_octaves = 6
 
-[sub_resource type="Animation" id="Animation_s8im1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SceneScreenshot:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LoaderLayer/LoaderScene:material:shader_parameter/progress")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ebjrv"]
+width = 128
+height = 128
+generate_mipmaps = false
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_g38tw")
 
-[sub_resource type="Animation" id="Animation_ps2q3"]
-resource_name = "ToLoader"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SceneScreenshot:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
+[sub_resource type="Gradient" id="Gradient_eu6fj"]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4l7yu"]
-_data = {
-&"FromLoader": SubResource("Animation_o0l2p"),
-&"RESET": SubResource("Animation_s8im1"),
-&"ToLoader": SubResource("Animation_ps2q3")
-}
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hhw3"]
+gradient = SubResource("Gradient_eu6fj")
+width = 1024
+height = 768
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ldcx"]
-shader = ExtResource("2_vbwar")
-shader_parameter/transition_texture = ExtResource("5_r04xi")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldry7"]
+shader = ExtResource("3_ebjrv")
+shader_parameter/transition_texture = SubResource("GradientTexture2D_7hhw3")
 shader_parameter/progress = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1s0do"]
-shader = ExtResource("2_vbwar")
-shader_parameter/transition_texture = ExtResource("5_r04xi")
-shader_parameter/progress = 0.0
-
-[node name="SceneManager" type="Node" groups=["SceneManager"]]
+[node name="SceneManager" type="Control"]
 process_mode = 3
-script = ExtResource("1_wpufs")
-
-[node name="TransitionAnimator" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_4l7yu")
-}
-
-[node name="LoaderLayer" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-layer = -1
-
-[node name="LoaderScene" parent="LoaderLayer" instance=ExtResource("2_g7w1k")]
-unique_name_in_owner = true
-
-[node name="SceneContainer" type="Node" parent="."]
-unique_name_in_owner = true
-process_mode = 1
-
-[node name="StartScene" parent="SceneContainer" instance=ExtResource("3_qisbq")]
-material = SubResource("ShaderMaterial_1ldcx")
-
-[node name="SceneScreenshot" type="TextureRect" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_1s0do")
+process_priority = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t3vn0")
+noise = SubResource("NoiseTexture2D_ebjrv")
 
-[connection signal="animation_finished" from="TransitionAnimator" to="." method="_on_animation_finished"]
+[node name="MainSubViewportContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
+
+[node name="TestScene" parent="MainSubViewportContainer" instance=ExtResource("3_g38tw")]
+
+[node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/StoryWriterComposerReference = "qnTZhQh9wpHFQbRbEZulH*SjW=RPGf-L"
+
+[node name="LoaderSubViewport" type="SubViewport" parent="LoaderSubViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="ShaderColorRect" type="ColorRect" parent="LoaderSubViewportContainer/LoaderSubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ldry7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
