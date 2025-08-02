@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkdx1yrx643d4"]
+[gd_scene load_steps=8 format=3 uid="uid://dkdx1yrx643d4"]
 
 [ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
 [ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
 [ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/Tests/test.tscn" id="3_g38tw"]
+[ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/UV Textures/Diamonds_1-512x512.png" id="4_7hhw3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g38tw"]
 seed = 9
@@ -20,17 +21,10 @@ seamless = true
 normalize = false
 noise = SubResource("FastNoiseLite_g38tw")
 
-[sub_resource type="Gradient" id="Gradient_eu6fj"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hhw3"]
-gradient = SubResource("Gradient_eu6fj")
-width = 1024
-height = 768
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ldry7"]
 shader = ExtResource("3_ebjrv")
-shader_parameter/transition_texture = SubResource("GradientTexture2D_7hhw3")
-shader_parameter/progress = 1.0
+shader_parameter/transition_texture = ExtResource("4_7hhw3")
+shader_parameter/progress = 0.0
 
 [node name="SceneManager" type="Control"]
 process_mode = 3
