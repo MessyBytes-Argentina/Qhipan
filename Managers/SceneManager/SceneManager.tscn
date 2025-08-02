@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkdx1yrx643d4"]
 
 [ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
+[ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_7hhw3"]
 [ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
-[ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/Tests/test.tscn" id="3_g38tw"]
 [ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/UV Textures/Diamonds_1-512x512.png" id="4_7hhw3"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g38tw"]
@@ -26,7 +26,7 @@ shader = ExtResource("3_ebjrv")
 shader_parameter/transition_texture = ExtResource("4_7hhw3")
 shader_parameter/progress = 0.0
 
-[node name="SceneManager" type="Control"]
+[node name="SceneManager" type="Control" groups=["SceneManager"]]
 process_mode = 3
 process_priority = 1
 layout_mode = 3
@@ -48,7 +48,8 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
 
-[node name="TestScene" parent="MainSubViewportContainer" instance=ExtResource("3_g38tw")]
+[node name="StartScene" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
+layout_mode = 1
 
 [node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

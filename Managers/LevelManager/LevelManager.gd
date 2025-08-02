@@ -33,7 +33,7 @@ func set_list(list: Array[String], loadFirstLevel: bool = true) -> void:
 
 func change_level(lvlPath: String) -> void:
 	levelList.clear()
-	levelList.append(load(lvlPath))
+	levelList.append(lvlPath)
 	currentLvlId = 0
 	load_new_scene(levelList[currentLvlId])
 
