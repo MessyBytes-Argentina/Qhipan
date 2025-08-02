@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://UI/SettingsButton.gd" id="2_6u8ck"]
 [ext_resource type="PackedScene" uid="uid://cn4yayku4c737" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/SimpleSettingsMenu.tscn" id="3_l0taq"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=["SceneManager"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
