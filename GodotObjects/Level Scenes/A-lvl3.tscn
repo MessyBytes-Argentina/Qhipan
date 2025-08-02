@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c45dkar7id21k"]
+
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_n6db1"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_07uoc"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="3_m3sql"]
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="4_07uoc"]
+[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="5_j5bst"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="6_63o5s"]
+[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="7_d18j8"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="8_he3sb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0moyb"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0, 0, 0.0784314, 1)
+ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
+
+[sub_resource type="Sky" id="Sky_hmuq0"]
+sky_material = SubResource("ProceduralSkyMaterial_0moyb")
+
+[sub_resource type="Environment" id="Environment_nqi3c"]
+background_mode = 2
+sky = SubResource("Sky_hmuq0")
+tonemap_mode = 2
+
+[node name="A-lvl3" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_n6db1")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7, 12.1824, 1.77124)
+
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("2_07uoc")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Checkpoint")
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("3_m3sql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01854, 11.97, 1.93105)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.544598, 0.752105, 0.371149, -0.23664, -0.562345, 0.792319, 0.804621, 0.343666, 0.48423, 0.707107, 9.86186, -5.85536)
+light_color = Color(0.945098, 0.878431, 0.788235, 1)
+light_energy = 0.025
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nqi3c")
+
+[node name="GridmapObject" parent="." instance=ExtResource("4_07uoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+data = {
+"cells": PackedInt32Array(1441784, 1, 22, 1441785, 1, 22, 1441786, 1, 22, 1441787, 1, 22, 1441788, 1, 22, 1441789, 1, 22, 1441790, 1, 22, 1441784, 2, 22, 1441785, 2, 22, 1441786, 2, 22, 1441787, 2, 22, 1441788, 2, 22, 1441789, 2, 22, 1441790, 2, 22, 1441784, 0, 22, 1441785, 0, 22, 1441786, 0, 22, 1441787, 0, 22, 1441788, 0, 22, 1441789, 0, 22, 1441791, 1, 22, 1441791, 0, 22, 1441790, 0, 22, 1441791, 2, 22, 1441784, 65535, 22, 1441785, 65535, 22, 1441786, 65535, 22, 1441787, 65535, 22, 1441788, 65535, 22, 1441789, 65535, 22, 1441790, 65535, 22, 1441791, 65535, 22, 1441784, 3, 22, 1441785, 3, 22, 1441786, 3, 22, 1441787, 3, 22, 1441788, 3, 22, 1441789, 3, 22, 1441790, 3, 22, 1441791, 3, 22, 1441784, 4, 22, 1441785, 4, 22, 1441786, 4, 22, 1441787, 4, 22, 1441788, 4, 22, 1441789, 4, 22, 1441790, 4, 22, 1441791, 4, 22, 1441784, 65534, 22, 1441785, 65534, 22, 1441786, 65534, 22, 1441787, 65534, 22, 1441788, 65534, 22, 1441789, 65534, 22, 1441790, 65534, 22, 1441791, 65534, 22, 1376256, 4, 22, 1376256, 3, 22, 1376256, 2, 22, 1376256, 1, 22, 1376257, 1, 22, 1376257, 0, 22, 1376257, 65535, 22, 1376256, 65535, 22, 1376256, 65534, 22, 1376257, 65534, 22, 1376256, 0, 22, 1376257, 2, 22, 1376257, 3, 22, 1376257, 4, 22, 1376258, 4, 22, 1376258, 3, 22, 1376258, 2, 22, 1376258, 1, 22, 1376258, 0, 22, 1376258, 65535, 22, 1376258, 65534, 22, 1376259, 4, 22, 1376259, 3, 22, 1376259, 2, 22, 1376259, 1, 22, 1376259, 0, 22, 1376259, 65535, 22, 1376259, 65534, 22, 1572858, 1, 14, 1572856, 0, 14, 1572856, 65535, 14, 1572857, 65535, 14, 1572858, 65535, 14, 1572859, 1, 14, 1572860, 0, 14, 1572859, 65534, 14, 1572860, 65534, 14, 1572861, 65534, 12, 1572860, 3, 14, 1572859, 3, 14, 1572857, 3, 14, 1572856, 3, 14, 1572856, 2, 14, 1572861, 2, 14, 1572861, 0, 14, 1572862, 2, 14, 1572862, 0, 14, 1572859, 4, 1441806)
+}
+metadata/_editor_floor_ = Vector3(0, 23, 0)
+
+[node name="StickerMap" parent="." instance=ExtResource("5_j5bst")]
+data = {
+"cells": PackedInt32Array(1638397, 65535, 1441793)
+}
+metadata/_editor_floor_ = Vector3(0, 24, 0)
+
+[node name="FanSticker" parent="." instance=ExtResource("6_63o5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12, -0.5)
+placed = true
+
+[node name="Door" parent="." instance=ExtResource("7_d18j8")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -5, 12, 1)
+openAnimation = 3
+
+[node name="Key" parent="." instance=ExtResource("8_he3sb")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -7, 12, 5)

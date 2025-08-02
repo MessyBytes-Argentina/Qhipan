@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg0ae0tr5nam7"]
+[gd_scene load_steps=13 format=3 uid="uid://bg0ae0tr5nam7"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_vvxd4"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="2_3pxkq"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="6_4leuw"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="7_3pxkq"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="7_n333n"]
-[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/DeathZone/DeathZone.tscn" id="9_f6xbp"]
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="10_4leuw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yery1"]
@@ -16,15 +15,13 @@ sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_bottom_color = Color(0, 0, 0.0784314, 1)
 ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
 
-[sub_resource type="Sky" id="Sky_hmuq0"]
+[sub_resource type="Sky" id="Sky_f6xbp"]
 sky_material = SubResource("ProceduralSkyMaterial_yery1")
 
 [sub_resource type="Environment" id="Environment_i03tn"]
 background_mode = 2
-sky = SubResource("Sky_hmuq0")
+sky = SubResource("Sky_f6xbp")
 tonemap_mode = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4leuw"]
 
 [node name="A-lvl2" type="Node3D"]
 
@@ -110,48 +107,6 @@ placed = true
 
 [node name="FanSticker2" parent="." instance=ExtResource("2_3pxkq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 11.5, 1)
-
-[node name="DeathZone" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 11.5, 4)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
-
-[node name="DeathZone3" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 11.5, 5)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone3"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
-
-[node name="DeathZone4" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11.5, 6)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone4"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
-
-[node name="DeathZone5" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11.5, 7)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone5"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
-
-[node name="DeathZone6" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11.5, 8)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone6"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
-
-[node name="DeathZone7" parent="." instance=ExtResource("9_f6xbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 11.5, 9)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone7"]
-shape = SubResource("BoxShape3D_4leuw")
-debug_color = Color(0.839216, 0, 0.423529, 1)
 
 [node name="FanSticker3" parent="." instance=ExtResource("2_3pxkq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12.5, -4.5)
