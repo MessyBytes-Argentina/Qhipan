@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=97 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="4_l6njb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_o7oki"]
+[ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
+[ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="5_3jjt7"]
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/Player/PickupHandler.gd" id="6_cphfr"]
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Character/IDLE/IDLE 2.png" id="7_fj5th"]
@@ -61,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://dfc82wqu3h2t5" path="res://Assets/Character/FLOAT/FLOAT 3.png" id="52_6fycs"]
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="Texture2D" uid="uid://crvbknm4v8pes" path="res://Assets/Placeholder bubble.png" id="54_6pvne"]
+[ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -591,6 +594,20 @@ floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
+[node name="FallSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("62_8njlr")
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="RotateCamLeft" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_rr2ib")
+
+[node name="RotateCamRight" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_3jjt7")
+
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
@@ -662,7 +679,6 @@ shape = SubResource("CapsuleShape3D_l6njb")
 
 [node name="Remove" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("13_8hsli")
-volume_db = 20.0
 max_polyphony = 1569325056
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
@@ -679,6 +695,7 @@ metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Stick" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("12_f7h1j")
+volume_db = -12.0
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
