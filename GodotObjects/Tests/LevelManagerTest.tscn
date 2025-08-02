@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2vsok3n4lg1s"]
-
-[ext_resource type="Script" uid="uid://c4wd8i1wdlc5c" path="res://GodotObjects/Tests/LevelManagerTest.gd" id="1_nub7d"]
-
-[node name="LevelManagerTest" type="Node"]
-script = ExtResource("1_nub7d")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkdx1yrx643d4"]
 
 [ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
+[ext_resource type="PackedScene" uid="uid://3iena3lvxxgn" path="res://UI/StartScreen.tscn" id="2_eu6fj"]
 [ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
-[ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/Tests/test.tscn" id="3_g38tw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g38tw"]
 seed = 9
@@ -30,9 +30,9 @@ height = 768
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ldry7"]
 shader = ExtResource("3_ebjrv")
 shader_parameter/transition_texture = SubResource("GradientTexture2D_7hhw3")
-shader_parameter/progress = 1.0
+shader_parameter/progress = 0.0
 
-[node name="SceneManager" type="Control"]
+[node name="SceneManager" type="Control" groups=["SceneManager"]]
 process_mode = 3
 process_priority = 1
 layout_mode = 3
@@ -54,7 +54,8 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
 
-[node name="TestScene" parent="MainSubViewportContainer" instance=ExtResource("3_g38tw")]
+[node name="StartScreen" parent="MainSubViewportContainer" instance=ExtResource("2_eu6fj")]
+layout_mode = 1
 
 [node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -75,6 +76,8 @@ render_target_update_mode = 4
 
 [node name="ShaderColorRect" type="ColorRect" parent="LoaderSubViewportContainer/LoaderSubViewport"]
 unique_name_in_owner = true
+z_index = 22
+z_as_relative = false
 material = SubResource("ShaderMaterial_ldry7")
 anchors_preset = 15
 anchor_right = 1.0
