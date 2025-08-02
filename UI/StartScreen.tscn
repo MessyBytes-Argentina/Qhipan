@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=5 format=3 uid="uid://3iena3lvxxgn"]
 
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://UI/StartButton.gd" id="1_oq7qy"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://UI/SettingsButton.gd" id="2_6u8ck"]
 [ext_resource type="PackedScene" uid="uid://cn4yayku4c737" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/SimpleSettingsMenu.tscn" id="3_l0taq"]
@@ -19,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.388235, 0.572549, 1)
+color = Color(0.294118, 0.419608, 0.466667, 1)
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -28,10 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -20.0
-offset_right = 23.0
-offset_bottom = 20.0
+offset_left = -144.0
+offset_top = -12.0
+offset_right = 141.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -40,13 +41,19 @@ layout_mode = 2
 
 [node name="StartButton" type="Button" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 80
 text = "Start"
+flat = true
 script = ExtResource("1_oq7qy")
 levelList = Array[String](["res://GodotObjects/Tests/test.tscn", "res://GodotObjects/Level Scenes/N-lvl1.tscn"])
 
 [node name="Settings" type="Button" parent="AspectRatioContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 80
 text = "Settings"
+flat = true
 script = ExtResource("2_6u8ck")
 settingsScene = NodePath("../../../SimpleSettingsMenu")
 
@@ -64,3 +71,33 @@ offset_right = 512.0
 offset_bottom = 384.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Logo" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 22.0
+offset_right = 40.0
+offset_bottom = 62.0
+
+[node name="ColorRect" type="ColorRect" parent="Logo"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 168.0
+offset_right = 808.0
+offset_bottom = 232.0
+color = Color(0.211765, 0.141176, 0.133333, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Logo"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 32.0
+offset_right = 864.0
+offset_bottom = 361.0
+theme_override_colors/default_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_constants/outline_size = 90
+theme_override_fonts/normal_font = ExtResource("1_l0taq")
+theme_override_font_sizes/normal_font_size = 180
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]qhipan[/wave]"
+autowrap_mode = 0
+horizontal_alignment = 1
