@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="4_lsqei"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="5_xajvo"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="6_lsqei"]
-[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/DeathZone/DeathZone.tscn" id="7_lsqei"]
+[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="7_lsqei"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="8_qmjhl"]
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="10_ue8o2"]
 

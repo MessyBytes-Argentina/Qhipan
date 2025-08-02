@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckk7riwonuhfw"]
 
-[ext_resource type="Script" uid="uid://xujlsh7vwfd7" path="res://GodotObjects/DeathZone/DeathZone.gd" id="1_kxvo8"]
+[ext_resource type="Script" uid="uid://xujlsh7vwfd7" path="res://GodotObjects/Props/DeathZone/DeathZone.gd" id="1_kxvo8"]
 
 [node name="DeathZone" type="Area3D"]
 collision_layer = 0
