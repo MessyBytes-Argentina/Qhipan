@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4o2c7ytt7k6l"
-path="res://.godot/imported/Pencil-Stroke.png-c6ec3fe1c2f09c6dc1d000906029e785.ctex"
+uid="uid://crvbknm4v8pes"
+path="res://.godot/imported/Placeholder bubble.png-5eaac7747de4f5a9823a7d6a289c4723.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Pencil-Stroke.png"
-dest_files=["res://.godot/imported/Pencil-Stroke.png-c6ec3fe1c2f09c6dc1d000906029e785.ctex"]
+source_file="res://Assets/Placeholder bubble.png"
+dest_files=["res://.godot/imported/Placeholder bubble.png-5eaac7747de4f5a9823a7d6a289c4723.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
