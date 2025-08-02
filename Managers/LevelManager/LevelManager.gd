@@ -39,4 +39,4 @@ func load_new_scene(scene: PackedScene) -> void:
 	get_tree().change_scene_to_packed(scene)
 
 func go_to_credits() -> void:
-	get_tree().change_scene_to_packed(creditsScene)
+	get_tree().change_scene_to_packed.call_deferred(creditsScene)
