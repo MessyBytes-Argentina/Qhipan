@@ -21,6 +21,7 @@ ButtonSoundManager="*res://Managers/SoundManager/ButtonSoundManager/ButtonSoundM
 MusicManager="*res://Managers/SoundManager/MusicManager/MusicManager.tscn"
 VolumeManager="*res://Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://Managers/PopupManager/PopupManager.gd"
+LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
 
 [filesystem]
 
