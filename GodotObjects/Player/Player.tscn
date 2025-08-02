@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=85 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -6,10 +6,14 @@
 [ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="4_l6njb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/Player/PickupHandler.gd" id="6_cphfr"]
+[ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Character/IDLE/IDLE 2.png" id="7_fj5th"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
+[ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
+[ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
+[ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Character/WALK/WALK 2.png" id="11_lpbw1"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Character/WALK/WALK 3.png" id="12_wm78n"]
@@ -37,6 +41,18 @@
 [ext_resource type="Texture2D" uid="uid://c7jsi7m74hj4t" path="res://Assets/Character/GRAB BACK/BACK 2.png" id="35_l1a28"]
 [ext_resource type="Texture2D" uid="uid://cvsrbn3bxtsbe" path="res://Assets/Character/GRAB BACK/BACK 3.png" id="36_0t7aq"]
 [ext_resource type="Texture2D" uid="uid://w8hpajfglu2b" path="res://Assets/Character/GRAB BACK/BACK 4.png" id="37_x0qs5"]
+[ext_resource type="Texture2D" uid="uid://b8ge5r3d57rxs" path="res://Assets/Character/GRAB BACK FLOAT/BF GRAB 1.png" id="42_o7oki"]
+[ext_resource type="Texture2D" uid="uid://ip5anpvgphmd" path="res://Assets/Character/GRAB BACK FLOAT/BF GRAB 2.png" id="43_uqbk1"]
+[ext_resource type="Texture2D" uid="uid://rm4l81urr25d" path="res://Assets/Character/GRAB BACK FLOAT/BF GRAB 3.png" id="44_i00t0"]
+[ext_resource type="Texture2D" uid="uid://y7eky115tf2v" path="res://Assets/Character/GRAB BACK FLOAT/BF GRAB 4.png" id="45_sjywp"]
+[ext_resource type="Texture2D" uid="uid://crhekgfvb554t" path="res://Assets/Character/BACK FLOAT/BACK FLOAT 1.png" id="46_8hsli"]
+[ext_resource type="Texture2D" uid="uid://lgdujaik65wv" path="res://Assets/Character/BACK FLOAT/BACK FLOAT 2.png" id="47_8njlr"]
+[ext_resource type="Texture2D" uid="uid://cqpvnnenii4jt" path="res://Assets/Character/BACK FLOAT/BACK FLOAT 3.png" id="48_f7h1j"]
+[ext_resource type="Texture2D" uid="uid://cn85qbh2fy7kb" path="res://Assets/Character/BACK FLOAT/BACK FLOAT 4.png" id="49_rr2ib"]
+[ext_resource type="Texture2D" uid="uid://bb1dd274rn7bp" path="res://Assets/Character/FLOAT/FLOAT 1.png" id="50_3jjt7"]
+[ext_resource type="Texture2D" uid="uid://dwv18bhx6hqk0" path="res://Assets/Character/FLOAT/FLOAT 2.png" id="51_xq41j"]
+[ext_resource type="Texture2D" uid="uid://dfc82wqu3h2t5" path="res://Assets/Character/FLOAT/FLOAT 3.png" id="52_6fycs"]
+[ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -150,6 +166,36 @@ shader_parameter/fade_power = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_fj5th"]
 material = SubResource("ShaderMaterial_c1wxo")
 size = Vector3(0.5, 5, 0.5)
+
+[sub_resource type="Animation" id="Animation_yiccp"]
+resource_name = "Grab_Float"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go")]
+}
 
 [sub_resource type="Animation" id="Animation_vmy0v"]
 resource_name = "Grab_Idle"
@@ -418,8 +464,102 @@ tracks/1/keys = {
 "values": [ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
 }
 
+[sub_resource type="Animation" id="Animation_ur8aw"]
+resource_name = "Grab_Float_Back"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp")]
+}
+
+[sub_resource type="Animation" id="Animation_xf0c4"]
+resource_name = "Float_Back"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib")]
+}
+
+[sub_resource type="Animation" id="Animation_h423j"]
+resource_name = "Float"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]
 _data = {
+&"Float": SubResource("Animation_h423j"),
+&"Float_Back": SubResource("Animation_xf0c4"),
+&"Grab_Float": SubResource("Animation_yiccp"),
+&"Grab_Float_Back": SubResource("Animation_ur8aw"),
 &"Grab_Idle": SubResource("Animation_vmy0v"),
 &"Grab_Idle_Back": SubResource("Animation_30xxu"),
 &"Grab_Walk": SubResource("Animation_ay78x"),
