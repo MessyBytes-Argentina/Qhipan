@@ -1,6 +1,10 @@
 extends StickerBase
 
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
+@onready var fanParticles: GPUParticles3D = %FanParticles
+
+func _ready() -> void:
+	super()
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	super(area, direction)
