@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://gugcr5mkigxg"]
+
+[ext_resource type="Texture2D" uid="uid://cybhvgwjx6twu" path="res://Assets/Particle Texture/Checkpoint-Activation-FX.png" id="1_6f3u3"]
+
+[sub_resource type="Gradient" id="Gradient_0tww5"]
+offsets = PackedFloat32Array(0.720833, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lrrka"]
+gradient = SubResource("Gradient_0tww5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r55mc"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 0.6
+direction = Vector3(0, 0, 0)
+spread = 90.0
+initial_velocity_max = 0.7
+gravity = Vector3(0, 3, 0)
+color_ramp = SubResource("GradientTexture1D_lrrka")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjxt8"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6f3u3")
+billboard_mode = 1
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8xj7r"]
+material = SubResource("StandardMaterial3D_sjxt8")
+
+[node name="Checkpoint-Activation-FX" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.6
+process_material = SubResource("ParticleProcessMaterial_r55mc")
+draw_pass_1 = SubResource("RibbonTrailMesh_8xj7r")
