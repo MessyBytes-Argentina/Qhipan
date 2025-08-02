@@ -9,6 +9,8 @@ const LIGHTENERGY: float = 0.25
 
 @onready var light: OmniLight3D = %Light
 @onready var llamaTotem: MeshInstance3D = %LlamaTotem
+@onready var particles1: GPUParticles3D = %Particles1
+@onready var particles2: GPUParticles3D = %Particles2
 
 var lightTween: Tween
 var material: StandardMaterial3D
@@ -25,6 +27,8 @@ func activate() -> void:
 	lightTween = create_tween()
 	lightTween.tween_property(light, "light_energy", LIGHTENERGY, (1.0 - inverse_lerp(0.0, LIGHTENERGY, light.light_energy)) * LIGHTTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.play()
+	particles1.emitting = true
+	particles2.emitting = true
 
 func deactivate() -> void:
 	material.albedo_texture = offTexture
