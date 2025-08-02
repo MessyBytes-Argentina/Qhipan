@@ -23,6 +23,10 @@ VolumeManager="*res://Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 forwards={
