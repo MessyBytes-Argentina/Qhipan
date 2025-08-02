@@ -1,6 +1,6 @@
 extends Button
 
-@export var levelList: Array[PackedScene]
+@export var levelList: Array[String]
 
 func _ready() -> void:
 	pressed.connect(start)

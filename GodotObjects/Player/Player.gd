@@ -3,6 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 const cameraRotationStep: float = deg_to_rad(90.0)
+const transparencyTime: float = 0.1
 
 enum States {Idle, Walk, Float}
 
@@ -32,6 +33,8 @@ enum States {Idle, Walk, Float}
 @onready var postProcessing: MeshInstance3D = %PostProcessing
 @onready var grabArea: PickupHandler = %GrabArea
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
+@onready var poof: MultipleParticle3DEmitter = %Poof
+@onready var shadowDecal: DecalCompatibility = %ShadowDecal
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -47,16 +50,26 @@ var lastPushForce: Vector3 = Vector3.ZERO
 var currentState: States = States.Idle
 var facingBack: bool = false
 var currentAnimation: String = "Idle"
+var transparencyTween: Tween
+var hasSpawned: bool = false
+var material: StandardMaterial3D
+var submaterial: StandardMaterial3D
+var death: bool = false
 
 func _ready() -> void:
 	set_decal_size()
 	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
+	material = sprite.get_surface_override_material(0)
+	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
+	if death: 
+		inputDirection = Vector3.ZERO
+		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
@@ -167,8 +180,33 @@ func set_decal_size() -> void:
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
+	if not hasSpawned:
+		global_position = pos
+		reset_aura()
+		hasSpawned = true
+		return
+	death = true
+	if transparencyTween:
+		transparencyTween.kill()
+	transparencyTween = create_tween()
+	transparencyTween.tween_property(material, "albedo_color:a", 0.0, transparencyTime)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, transparencyTime)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, transparencyTime)
+	transparencyTween.play()
+	poof.emit_particles()
+	await poof.finished
 	global_position = pos
 	reset_aura()
+	poof.emit_particles()
+	if transparencyTween:
+		transparencyTween.kill()
+	transparencyTween = create_tween()
+	transparencyTween.tween_property(material, "albedo_color:a", 1.0, transparencyTime)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, transparencyTime)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, transparencyTime)
+	transparencyTween.play()
+	await poof.finished
+	death = false
 
 func reset_aura() -> void:
 	moved = 0
