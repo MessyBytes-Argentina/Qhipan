@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=94 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -14,11 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
+[ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
+[ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="11_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Character/WALK/WALK 2.png" id="11_lpbw1"]
+[ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="12_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Character/WALK/WALK 3.png" id="12_wm78n"]
+[ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/Ripping.mp3" id="13_8hsli"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Character/WALK/WALK 4.png" id="13_bity2"]
 [ext_resource type="Texture2D" uid="uid://wd4evw80tj5p" path="res://Assets/Character/IDLE BACK/BACK 1.png" id="14_dkmaj"]
 [ext_resource type="Texture2D" uid="uid://b4anntfovs3gb" path="res://Assets/Character/IDLE BACK/BACK 2.png" id="15_kp4bv"]
@@ -111,19 +116,19 @@ shader_parameter/edge_threshold = 0.002
 shader_parameter/noise_frequency = 10.0
 shader_parameter/noise_offset_intensity = 0.002
 
-[sub_resource type="Gradient" id="Gradient_l6njb"]
-offsets = PackedFloat32Array(0.0258162, 0.0288535, 0.03265, 0.0463174, 0.0516325, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.16325, 0.288732, 0.443662, 0.8, 0.85, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0.796841, 0.952107, 1, 1, 1, 1, 0.0305074, 1, 1, 1, 0.0682116, 0, 1, 1, 0.486275, 1, 1, 1, 0, 1, 1, 1, 0.021541, 0, 0.796841, 0.952107, 1, 1, 1, 1, 0.044739, 1, 1, 1, 0.117647, 0, 1, 1, 0.196078, 0.776471, 1, 1, 0.0392157, 0, 1, 1, 0.392157, 0, 0.247059, 0.72549, 0.431373, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_6pvne"]
+offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.916968, 0.935018, 0.963899, 0.998, 0.999)
+colors = PackedColorArray(1, 1, 1, 0, 0.796751, 0.622936, 1, 1, 1, 1, 1, 0.0305074, 1, 1, 1, 0.0682116, 0.986229, 0.807665, 1, 0.486275, 1, 1, 1, 0, 1, 1, 1, 0.021541, 0.85115, 0.591557, 1, 1, 1, 1, 1, 0.044739, 0.329412, 1, 0.329412, 0, 0, 1, 0, 0.235294, 0, 1, 0, 0.196078, 0, 1, 0, 0.470588, 5.86594e-08, 0.143815, 9.62615e-08, 1, 0, 0.145098, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
-gradient = SubResource("Gradient_l6njb")
+gradient = SubResource("Gradient_6pvne")
 width = 1024
 height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+fill_to = Vector2(1, 0.529915)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq31v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_504ik"]
 render_priority = 0
 shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
@@ -137,7 +142,7 @@ shader_parameter/fade_end = 0.7
 shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
-material = SubResource("ShaderMaterial_vq31v")
+material = SubResource("ShaderMaterial_504ik")
 size = Vector3(20, 20, 20)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
@@ -654,6 +659,28 @@ script = ExtResource("6_cphfr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea"]
 shape = SubResource("CapsuleShape3D_l6njb")
+
+[node name="Remove" type="AudioStreamPlayer" parent="GrabArea"]
+stream = ExtResource("13_8hsli")
+volume_db = 20.0
+max_polyphony = 1569325056
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="Pickup" type="AudioStreamPlayer" parent="GrabArea"]
+stream = ExtResource("9_sjywp")
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="Drop" type="AudioStreamPlayer" parent="GrabArea"]
+stream = ExtResource("11_f7h1j")
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="Stick" type="AudioStreamPlayer" parent="GrabArea"]
+stream = ExtResource("12_f7h1j")
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
