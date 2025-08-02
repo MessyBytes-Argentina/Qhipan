@@ -76,3 +76,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 5)
 
 [node name="Door" parent="." instance=ExtResource("7_77igb")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 1, 5)
+
+[editable path="CheckpointManager/Checkpoint2"]
