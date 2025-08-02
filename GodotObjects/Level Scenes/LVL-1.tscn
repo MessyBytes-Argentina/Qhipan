@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crmvcuof5gyt2"]
+[gd_scene load_steps=11 format=3 uid="uid://d3bfvxxioqu03"]
 
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="1_ht6y8"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_w8b2x"]
