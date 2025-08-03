@@ -9,7 +9,7 @@ signal finished()
 ## The wait time after a scene is loaded in.
 const loadExtraTime: float = 0.5
 ## The animation time.
-const loadAnimationTime: float = 2
+const loadAnimationTime: float = 1
 const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
 const loadAnimationExtraTime: float = 0
@@ -51,9 +51,7 @@ func load_scene(sceneName: String, path: String) -> void:
 		"path": path,
 		"scene": null
 	}
-	var thread: Thread = Thread.new()
-	thread.start(ResourceLoader.load_threaded_request.bind(path, "PackedScene"))
-	thread.wait_to_finish()
+	ResourceLoader.load_threaded_request(path, "PackedScene", true)
 
 ## Removes a scene from memory.
 func erase_scene(sceneName: String) -> void:

@@ -30,6 +30,16 @@ tonemap_mode = 2
 
 [node name="Test" type="Node3D"]
 
+[node name="EnvironmentObjects" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentObjects"]
+environment = SubResource("Environment_8kaph")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.05
+shadow_enabled = true
+
 [node name="GridmapObject" parent="." instance=ExtResource("1_0y1wl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 data = {
@@ -46,11 +56,6 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 [node name="FanSticker" parent="." instance=ExtResource("3_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -0.5)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.05
-shadow_enabled = true
-
 [node name="FanSticker3" parent="." instance=ExtResource("3_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 2)
 
@@ -59,9 +64,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 1.5)
 
 [node name="DeathZone" parent="." instance=ExtResource("4_atttt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8kaph")
 
 [node name="Player" parent="." instance=ExtResource("2_okwja")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
