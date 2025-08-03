@@ -112,85 +112,106 @@ albedo_texture = ExtResource("21_7jxh1")
 [node name="GridMap" type="Node3D"]
 
 [node name="1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_gt386")
 
 [node name="2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_yahkh")
 
 [node name="3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_sdufq")
 
 [node name="4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_c033x")
 
 [node name="5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_fg8qq")
 
 [node name="6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_x4r1j")
 
 [node name="7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_jly38")
 
 [node name="8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_yfo5f")
 
 [node name="9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_mi5fv")
 
 [node name="10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_ucd8s")
 
 [node name="11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_h1foa")
 
 [node name="aa" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_l6vjp")
 
 [node name="ab" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_aajvo")
 
 [node name="ac" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_i3u12")
 
 [node name="ad" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_ftd5d")
 
 [node name="ae" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_fv774")
 
 [node name="af" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_nim0w")
 
 [node name="ag" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_hu2bf")
 
 [node name="ah" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_wvr5c")
 
 [node name="ai" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_8yhvv")
 
 [node name="aj" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("PlaneMesh_hyy62")
 surface_material_override/0 = SubResource("StandardMaterial3D_uaooe")
