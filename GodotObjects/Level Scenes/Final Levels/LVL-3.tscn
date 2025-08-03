@@ -37,7 +37,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 21, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_ohv1b")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4, 12, -1.5)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13, 12, -3)
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("4_wa1k7")]
 playerReference = NodePath("../Player")

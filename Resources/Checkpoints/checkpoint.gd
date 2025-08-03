@@ -18,7 +18,6 @@ var material: StandardMaterial3D
 var soundEnabled: bool = false
 
 func _ready() -> void:
-	print(name)
 	material = llamaTotem.get_surface_override_material(0).duplicate()
 	llamaTotem.set_surface_override_material(0, material)
 
