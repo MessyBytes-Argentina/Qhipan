@@ -35,6 +35,9 @@ enum States {Idle, Walk, Float}
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 @onready var poof: MultipleParticle3DEmitter = %Poof
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
+@onready var fallSound: RandomPitchPlayer = %FallSound
+@onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
+@onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -55,6 +58,7 @@ var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
 var death: bool = false
+var fallSoundPlayed = false
 
 func _ready() -> void:
 	set_decal_size()
@@ -107,6 +111,10 @@ func camera_rotation_check() -> void:
 		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, cameraLerpDuration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 		cameraRotationTween.finished.connect(rotation_finished)
 		cameraRotationTween.play()
+		if cameraRotation > 0:
+			rotateCamLeftSound.play()
+		else:
+			rotateCamRightSound.play()
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue
@@ -141,6 +149,7 @@ func move_character(delta: float) -> void:
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
 		lastInvoluntarySpeed.y -= gravity * delta
+		fallSoundPlayed = false
 	else:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
@@ -151,6 +160,9 @@ func move_character(delta: float) -> void:
 		animation_check()
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
+	if is_on_floor() and not fallSoundPlayed:
+		fallSound.play_sound()
+		fallSoundPlayed = true
 
 func get_move_direction() -> Vector3:
 	var moveDirection: Vector3 = inputDirection
