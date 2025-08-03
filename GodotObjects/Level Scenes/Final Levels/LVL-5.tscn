@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://baa07m7c51sm4"]
+[gd_scene load_steps=16 format=3 uid="uid://baa07m7c51sm4"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_44gul"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_qq1u7"]
@@ -12,19 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="10_dthqh"]
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="11_7y0ey"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="12_u0rck"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yery1"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_bottom_color = Color(0, 0, 0.0784314, 1)
-ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
-
-[sub_resource type="Sky" id="Sky_f6xbp"]
-sky_material = SubResource("ProceduralSkyMaterial_yery1")
-
-[sub_resource type="Environment" id="Environment_i03tn"]
-background_mode = 2
-sky = SubResource("Sky_f6xbp")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="13_n16sb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i03tn"]
 
@@ -50,15 +38,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 12.
 
 [node name="Checkpoint4" parent="CheckpointManager" instance=ExtResource("3_al11q")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 13.5, 6)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.544598, 0.752105, 0.371149, -0.23664, -0.562345, 0.792319, 0.804621, 0.343666, 0.48423, 0.707107, 9.86186, -5.85536)
-light_color = Color(0.945098, 0.878431, 0.788235, 1)
-light_energy = 0.025
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_i03tn")
 
 [node name="GridmapObject" parent="." instance=ExtResource("4_akfcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
@@ -246,3 +225,5 @@ transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -6, -5, 3.5)
 shape = SubResource("WorldBoundaryShape3D_u0rck")
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("13_n16sb")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://l62ulb285l1f"]
+[gd_scene load_steps=15 format=3 uid="uid://l62ulb285l1f"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_c6k3k"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_kxn5y"]
@@ -12,33 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="10_pd865"]
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="11_naf6b"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="12_nexcr"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0moyb"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_bottom_color = Color(0, 0, 0.0784314, 1)
-ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
-
-[sub_resource type="Sky" id="Sky_hmuq0"]
-sky_material = SubResource("ProceduralSkyMaterial_0moyb")
-
-[sub_resource type="Environment" id="Environment_nqi3c"]
-background_mode = 2
-sky = SubResource("Sky_hmuq0")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="13_oun8y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2pl5"]
 size = Vector3(1, 0.5, 1)
 
 [node name="A-lvl3" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.544598, 0.752105, 0.371149, -0.23664, -0.562345, 0.792319, 0.804621, 0.343666, 0.48423, 0.707107, 9.86186, -5.85536)
-light_color = Color(0.945098, 0.878431, 0.788235, 1)
-light_energy = 0.025
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_nqi3c")
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_c6k3k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
@@ -107,3 +86,5 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 [node name="FanSticker" parent="Stickers" instance=ExtResource("6_yu8au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 12, -3.5)
 placed = true
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("13_oun8y")]

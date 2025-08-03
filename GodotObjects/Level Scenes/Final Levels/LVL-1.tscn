@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crmvcuof5gyt2"]
+[gd_scene load_steps=16 format=3 uid="uid://crmvcuof5gyt2"]
 
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="1_s5rg6"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="2_cxxxt"]
@@ -13,32 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="11_eox0h"]
 [ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/Props/InfoCrystal/InfoCrystal.tscn" id="12_cxxxt"]
 [ext_resource type="Texture2D" uid="uid://b5jx2r8r6av81" path="res://Assets/Tutorial Screens/Rotate Camera.png" id="13_ujhbp"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_bottom_color = Color(0, 0, 0.0784314, 1)
-ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
-
-[sub_resource type="Sky" id="Sky_6muoe"]
-sky_material = SubResource("ProceduralSkyMaterial_xs4vi")
-
-[sub_resource type="Environment" id="Environment_e1oxl"]
-background_mode = 2
-sky = SubResource("Sky_6muoe")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="14_nwjiy"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_iy086"]
 
 [node name="Level1" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
-light_color = Color(0.945098, 0.878431, 0.788235, 1)
-light_energy = 0.025
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e1oxl")
 
 [node name="Player" parent="." instance=ExtResource("3_ujhbp")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6.92921, 0.5, -0.0447978)
@@ -107,3 +86,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, -1)
 [node name="InfoCrystal2" parent="." instance=ExtResource("12_cxxxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
 infoSprite = ExtResource("13_ujhbp")
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("14_nwjiy")]
