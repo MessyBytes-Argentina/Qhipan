@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dq782t3gqfnxn"]
+[gd_scene load_steps=16 format=3 uid="uid://dq782t3gqfnxn"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_kpri1"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="2_dvf04"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="10_ue8o2"]
 [ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/Props/InfoCrystal/InfoCrystal.tscn" id="12_yh5u0"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="13_2y6v4"]
+[ext_resource type="Texture2D" uid="uid://b5jx2r8r6av81" path="res://Assets/Tutorial Screens/Rotate Camera.png" id="13_a5qic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6vrhw"]
 size = Vector3(32, 1, 31)
@@ -161,5 +162,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, -9)
 
 [node name="InfoCrystal" parent="." instance=ExtResource("12_yh5u0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1.5)
+infoSprite = ExtResource("13_a5qic")
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("13_2y6v4")]
