@@ -281,3 +281,5 @@ mouse_filter = 2
 script = ExtResource("12_piisv")
 particles = Array[PackedScene]([ExtResource("13_eqio2")])
 _testParticles = ""
+
+[connection signal="pressed_finished" from="CloseButtonMarginContainer/AnimatedTextureButton4" to="." method="hide"]

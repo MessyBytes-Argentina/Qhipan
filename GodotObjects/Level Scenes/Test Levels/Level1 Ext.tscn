@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsrvqeisyoxxy"]
 
-[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="1_thhw5"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_mjmnh"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="3_rdsaj"]
-[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="4_glw6c"]
-[ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="5_2l5d0"]
-[ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="6_yacks"]
-[ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="7_cbv77"]
-[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="8_bn8cn"]
-[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="9_2fmbr"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_vetq7"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="2_cykml"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="3_tvaby"]
+[ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="4_k8pm3"]
+[ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="5_iyrlc"]
+[ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="6_jigbj"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="7_m1kwj"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="8_twy1n"]
+[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="9_7k2v6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -25,7 +25,7 @@ tonemap_mode = 2
 
 [node name="Level1" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("4_glw6c")]
+[node name="Player" parent="." instance=ExtResource("1_vetq7")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.5, 6)
 movementMaximum = 13.0
 
@@ -40,41 +40,41 @@ environment = SubResource("Environment_e1oxl")
 
 [node name="Stickers" type="Node3D" parent="."]
 
-[node name="FanSticker" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0.5, -9)
 
-[node name="FanSticker2" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker2" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13, 0.5, -10)
 
-[node name="FanSticker3" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker3" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5, 0.5, 7.5)
 
-[node name="FanSticker4" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker4" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -11.9351, 3.29349, 19.5611)
 placed = true
 
-[node name="FanSticker5" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker5" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(4.37114e-08, -1, 4.37114e-08, 7.30144e-30, 4.37114e-08, 1, -1, -4.37114e-08, 1.91069e-15, -12, -0.5, 23)
 placed = true
 
-[node name="FanSticker6" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker6" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 0.25, 28)
 
-[node name="FanSticker7" parent="Stickers" instance=ExtResource("1_thhw5")]
+[node name="FanSticker7" parent="Stickers" instance=ExtResource("2_cykml")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.9351, 0.29349, 29.0611)
 
-[node name="Key" parent="Stickers" instance=ExtResource("9_2fmbr")]
+[node name="Key" parent="Stickers" instance=ExtResource("3_tvaby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.945, 0.5, 2)
 
-[node name="Key3" parent="Stickers" instance=ExtResource("9_2fmbr")]
+[node name="Key3" parent="Stickers" instance=ExtResource("3_tvaby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.945, 0, 30)
 
-[node name="Key2" parent="Stickers" instance=ExtResource("9_2fmbr")]
+[node name="Key2" parent="Stickers" instance=ExtResource("3_tvaby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
 
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh_library = ExtResource("5_2l5d0")
+mesh_library = ExtResource("4_k8pm3")
 cell_size = Vector3(1, 0.5, 1)
 cell_center_y = false
 data = {
@@ -84,45 +84,45 @@ metadata/_editor_floor_ = Vector3(0, 9, 0)
 
 [node name="StickerMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh_library = ExtResource("6_yacks")
+mesh_library = ExtResource("5_iyrlc")
 cell_size = Vector3(1, 0.5, 1)
 cell_center_y = false
 data = {
 "cells": PackedInt32Array(131065, 65527, 655361, 131063, 65527, 1, 131061, 65529, 655361, 131058, 65529, 1441793, 65522, 7, 1441792, 458739, 19, 1441793, -13, 22, 655360, 65524, 24, 1, 65523, 25, 1441793, 65525, 26, 1441793, 65526, 24, 1441793, 65521, 27, 655361)
 }
-script = ExtResource("7_cbv77")
+script = ExtResource("6_jigbj")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("2_mjmnh")]
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("7_m1kwj")]
 playerReference = NodePath("../Player")
 startCheckpoint = NodePath("Start")
 
-[node name="Start" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Start" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
 
-[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6)
 
-[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, -7)
 
-[node name="Checkpoint3" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint3" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.5, 0)
 
-[node name="Checkpoint4" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint4" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 3, 6)
 
-[node name="Checkpoint5" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint5" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.5, 13)
 
-[node name="Checkpoint6" parent="CheckpointManager" instance=ExtResource("3_rdsaj")]
+[node name="Checkpoint6" parent="CheckpointManager" instance=ExtResource("8_twy1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 23)
 
-[node name="Door" parent="." instance=ExtResource("8_bn8cn")]
+[node name="Door" parent="." instance=ExtResource("9_7k2v6")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, -5)
 
-[node name="Door2" parent="." instance=ExtResource("8_bn8cn")]
+[node name="Door2" parent="." instance=ExtResource("9_7k2v6")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12, 3, 20.5)
 
-[node name="Door3" parent="." instance=ExtResource("8_bn8cn")]
+[node name="Door3" parent="." instance=ExtResource("9_7k2v6")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12, 3, 23.5)
