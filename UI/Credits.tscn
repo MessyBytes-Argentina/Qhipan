@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bclmhvt3fe7tl"]
 
-[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://UI/Start-Credit-Background.png" id="1_wqoo4"]
-[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_8guth"]
-[ext_resource type="Script" uid="uid://csiekn50petma" path="res://UI/one_more_button.gd" id="3_c2kx8"]
+[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://UI/Start-Credit-Background.png" id="1_lqvxy"]
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_qvjrn"]
+[ext_resource type="Script" uid="uid://csiekn50petma" path="res://UI/one_more_button.gd" id="6_petif"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_petif"]
 
@@ -37,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wqoo4")
+texture = ExtResource("1_lqvxy")
 expand_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport"]
@@ -57,7 +57,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.0862745, 0.156863, 0.247059, 1)
 theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("2_8guth")
+theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[wave amp=50.0 freq=5.0 connected=1]Thanks for playing![/wave]"
@@ -70,7 +70,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.0862745, 0.156863, 0.247059, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("2_8guth")
+theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 40
 text = "Credits
 Programers: Nahtrex, Elkas
@@ -91,7 +91,7 @@ theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_8guth")
+theme_override_fonts/font = ExtResource("1_qvjrn")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_petif")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ek0d3")
@@ -99,4 +99,4 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ek0d3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ek0d3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ek0d3")
 text = "One More?"
-script = ExtResource("3_c2kx8")
+script = ExtResource("6_petif")

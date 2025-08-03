@@ -5,6 +5,10 @@ var creditsScene: String = "res://UI/Restart.tscn"
 var sceneManager:StoryWriterSceneManager
 var currentLvlId: int = 0
 
+#func _input(_event) -> void:
+	#if Input.is_action_just_pressed("win"):
+		#next_level()
+
 func _ready() -> void:
 	while not sceneManager:
 		await get_tree().process_frame
