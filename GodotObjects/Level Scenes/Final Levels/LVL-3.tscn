@@ -66,27 +66,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 1
 [node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("5_gnqdc")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -3.7, 12, -1.35)
 
-[node name="FanSticker" parent="." instance=ExtResource("6_yu8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 12, -3.5)
-placed = true
-
-[node name="Door" parent="." instance=ExtResource("7_xn0yx")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -4, 12, 0.5)
-openAnimation = 4
-
-[node name="Door2" parent="." instance=ExtResource("7_xn0yx")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -4, 12, 1.5)
-openAnimation = 4
-
-[node name="Key" parent="." instance=ExtResource("8_jlknm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 12, -3)
-
-[node name="Key2" parent="." instance=ExtResource("8_jlknm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 15.5, 7)
-
-[node name="Key4" parent="." instance=ExtResource("8_jlknm")]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -4, 12, -10)
-
 [node name="GoalZone" parent="." instance=ExtResource("9_kc00a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 14, 8.75)
 
@@ -100,6 +79,31 @@ shape = SubResource("BoxShape3D_i2pl5")
 [node name="Pinchos" parent="DeathZone" instance=ExtResource("11_naf6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Door3" parent="." instance=ExtResource("12_nexcr")]
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("7_xn0yx")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -4, 12, 0.5)
+openAnimation = 4
+
+[node name="Door2" parent="Doors" instance=ExtResource("7_xn0yx")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -4, 12, 1.5)
+openAnimation = 4
+
+[node name="FinalDoor" parent="Doors" instance=ExtResource("12_nexcr")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 14, 8.5)
 openAnimation = 3
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="Key" parent="Stickers" instance=ExtResource("8_jlknm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 12, -3)
+
+[node name="Key2" parent="Stickers" instance=ExtResource("8_jlknm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 15.5, 7)
+
+[node name="Key4" parent="Stickers" instance=ExtResource("8_jlknm")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -4, 12, -10)
+
+[node name="FanSticker" parent="Stickers" instance=ExtResource("6_yu8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 12, -3.5)
+placed = true

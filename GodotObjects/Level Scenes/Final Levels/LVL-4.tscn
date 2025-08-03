@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dp0p4t6cc64a6"]
+[gd_scene load_steps=20 format=3 uid="uid://dp0p4t6cc64a6"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_kwqtn"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="2_ajnex"]
@@ -33,6 +33,8 @@ size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vklj4"]
 size = Vector3(5, 0.5, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ukcbj"]
 
 [node name="A-lvl1" type="Node3D"]
 
@@ -359,3 +361,10 @@ shape = SubResource("BoxShape3D_vklj4")
 
 [node name="Door2" parent="." instance=ExtResource("12_ukcbj")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 1.5, 15.5)
+
+[node name="DeathZone" parent="." instance=ExtResource("9_g01xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -5, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9, -5, 0)
+shape = SubResource("WorldBoundaryShape3D_ukcbj")

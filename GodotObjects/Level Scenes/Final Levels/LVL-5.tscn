@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://baa07m7c51sm4"]
+[gd_scene load_steps=18 format=3 uid="uid://baa07m7c51sm4"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_44gul"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_qq1u7"]
@@ -27,6 +27,8 @@ sky = SubResource("Sky_f6xbp")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i03tn"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u0rck"]
 
 [node name="A-lvl2" type="Node3D"]
 
@@ -65,170 +67,182 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 26, 0)
 
-[node name="Key" parent="." instance=ExtResource("5_303jl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 12, 2)
-
-[node name="Key2" parent="." instance=ExtResource("5_303jl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13, 0)
-
-[node name="Key3" parent="." instance=ExtResource("5_303jl")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -4, 10.5, 10)
-
-[node name="Key4" parent="." instance=ExtResource("5_303jl")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 10.5, 14)
-
-[node name="Key5" parent="." instance=ExtResource("5_303jl")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 3, 13.5, 9)
-
 [node name="StickerMap" parent="." instance=ExtResource("6_j5ch0")]
 data = {
 "cells": PackedInt32Array(1572846, 0, 655361, 1507324, 1, 655360, 1703933, 65531, 1441793, 1441786, 9, 1441793, 1441786, 5, 1441793, 1441788, 7, 1441793, 1441788, 11, 1441793, 1572866, 0, 1441792, 1572866, 7, 1441792, 1638403, 6, 1)
 }
 metadata/_editor_floor_ = Vector3(0, 24, 0)
 
-[node name="Door" parent="." instance=ExtResource("7_i6ovk")]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -5.5, 11.5, 1.5)
-openAnimation = 4
-
-[node name="Door2" parent="." instance=ExtResource("7_i6ovk")]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.5, 12.5, 2)
-openAnimation = 4
-
-[node name="Door5" parent="." instance=ExtResource("7_i6ovk")]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.5, 12.5, 2)
-openAnimation = 4
-
-[node name="Door6" parent="." instance=ExtResource("7_i6ovk")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 3, 13.5, 4.5)
-openAnimation = 4
-
-[node name="FanSticker" parent="." instance=ExtResource("8_7yhxa")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.5, 11.5, 1)
-placed = true
-
-[node name="FanSticker2" parent="." instance=ExtResource("8_7yhxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 11.5, 1)
-
-[node name="FanSticker3" parent="." instance=ExtResource("8_7yhxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12.5, -4.5)
-placed = true
-
-[node name="FanSticker4" parent="." instance=ExtResource("8_7yhxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 13, -3)
-
-[node name="GoalZone" parent="." instance=ExtResource("9_te2nf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.65, 12.5, 7)
-
 [node name="FanSticker5" parent="." instance=ExtResource("8_7yhxa")]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 3, 13.5, 7)
 
-[node name="DeathZone" parent="." instance=ExtResource("10_dthqh")]
+[node name="Hazards" type="Node3D" parent="."]
+
+[node name="DeathZone" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, 7)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone2" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone2" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 7)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone2"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone2" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone2" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone10" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone10" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone10"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone10"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone10" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone10" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone11" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone11" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 4)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone11"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone11"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone11" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone11" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone12" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone12" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, 4)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone12"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone12"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone12" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone12" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone3" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone3" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 9)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone3"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone3" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone3" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone4" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone4" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 9, 9)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone4"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone4" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone4" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone5" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone5" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 11)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone5"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone5" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone5" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone6" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone6" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, 11)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone6"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone6" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone6" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone7" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone7" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 9, 13)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone7"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone7" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone7" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone8" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone8" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9, 13)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone8"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone8" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone8" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="DeathZone9" parent="." instance=ExtResource("10_dthqh")]
+[node name="DeathZone9" parent="Hazards" instance=ExtResource("10_dthqh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 9, 13)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazards/DeathZone9"]
 shape = SubResource("BoxShape3D_i03tn")
 
-[node name="Pinchos" parent="DeathZone9" instance=ExtResource("11_7y0ey")]
+[node name="Pinchos" parent="Hazards/DeathZone9" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Door3" parent="." instance=ExtResource("12_u0rck")]
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="Key" parent="Stickers" instance=ExtResource("5_303jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 12, 2)
+
+[node name="Key2" parent="Stickers" instance=ExtResource("5_303jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 13, 0)
+
+[node name="Key3" parent="Stickers" instance=ExtResource("5_303jl")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -4, 10.5, 10)
+
+[node name="Key4" parent="Stickers" instance=ExtResource("5_303jl")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 10.5, 14)
+
+[node name="Key5" parent="Stickers" instance=ExtResource("5_303jl")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 3, 13.5, 9)
+
+[node name="FanSticker" parent="Stickers" instance=ExtResource("8_7yhxa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.5, 11.5, 1)
+placed = true
+
+[node name="FanSticker2" parent="Stickers" instance=ExtResource("8_7yhxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 11.5, 1)
+
+[node name="FanSticker3" parent="Stickers" instance=ExtResource("8_7yhxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12.5, -4.5)
+placed = true
+
+[node name="FanSticker4" parent="Stickers" instance=ExtResource("8_7yhxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 13, -3)
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("7_i6ovk")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -5.5, 11.5, 1.5)
+openAnimation = 4
+
+[node name="Door2" parent="Doors" instance=ExtResource("7_i6ovk")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -0.5, 12.5, 2)
+openAnimation = 4
+
+[node name="Door5" parent="Doors" instance=ExtResource("7_i6ovk")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0.5, 12.5, 2)
+openAnimation = 4
+
+[node name="Door6" parent="Doors" instance=ExtResource("7_i6ovk")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 3, 13.5, 4.5)
+openAnimation = 4
+
+[node name="GoalZone" parent="Doors" instance=ExtResource("9_te2nf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.65, 12.5, 7)
+
+[node name="Door3" parent="Doors" instance=ExtResource("12_u0rck")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 8.5, 12.5, 7)
+
+[node name="DeathZone" parent="." instance=ExtResource("10_dthqh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -6, -5, 3.5)
+shape = SubResource("WorldBoundaryShape3D_u0rck")
