@@ -10,7 +10,7 @@
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="9_xf8nb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="10_5l5r5"]
 [ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/Fan_On.mp3" id="10_tax0g"]
-[ext_resource type="Script" uid="uid://bjvquoaf21fx3" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer3D.gd" id="10_xf8nb"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="11_5l5r5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.6
@@ -361,9 +361,10 @@ texture = SubResource("GradientTexture2D_xf8nb")
 enable_fade = false
 metadata/_custom_type_script = "uid://feckn7f3pmud"
 
-[node name="SpinupSound" type="AudioStreamPlayer3D" parent="."]
+[node name="SpinupSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("10_tax0g")
+volume_db = 20.0
 bus = &"SFX"
-script = ExtResource("10_xf8nb")
-metadata/_custom_type_script = "uid://bjvquoaf21fx3"
+script = ExtResource("11_5l5r5")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"

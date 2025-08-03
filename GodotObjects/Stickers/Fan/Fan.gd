@@ -2,7 +2,7 @@ extends StickerBase
 
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 @onready var fanParticles: GPUParticles3D = %FanParticles
-@onready var spinupSound: RandomPitchPlayer3D = %SpinupSound
+@onready var spinupSound: RandomPitchPlayer = %SpinupSound
 
 var grabed: bool = false
 
