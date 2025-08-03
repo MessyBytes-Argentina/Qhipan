@@ -26,6 +26,7 @@
 
 [node name="Player" parent="." instance=ExtResource("1_03dge")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13, 1.5, -15.5)
+movementMaximum = 13.0
 
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)

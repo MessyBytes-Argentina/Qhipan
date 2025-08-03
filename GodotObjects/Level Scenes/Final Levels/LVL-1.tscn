@@ -25,6 +25,7 @@
 
 [node name="Player" parent="." instance=ExtResource("3_ujhbp")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.36837, 0.507987, -0.0395842)
+movementMaximum = 13.0
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("14_nwjiy")]
 
