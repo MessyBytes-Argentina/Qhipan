@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfplkh261v3fy"]
+
+[sub_resource type="Gradient" id="Gradient_304jv"]
+offsets = PackedFloat32Array(0, 0.263514, 0.648649, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.392157, 1, 1, 1, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdeok"]
+gradient = SubResource("Gradient_304jv")
+
+[sub_resource type="Curve" id="Curve_wdeok"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 44.898), 0.0, -135.714, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_30j2s"]
+curve = SubResource("Curve_wdeok")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5l5r5"]
+emission_shape_scale = Vector3(0.4, 0.5, 0.4)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 0.5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("CurveTexture_30j2s")
+damping_max = 2.0
+scale_min = 0.5
+scale_max = 0.8
+scale_over_velocity_max = 2.0
+color = Color(0.588235, 1, 0.996078, 1)
+color_ramp = SubResource("GradientTexture1D_wdeok")
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hw6u"]
+render_priority = 2
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+grow = true
+grow_amount = 0.005
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2hw6u"]
+material = SubResource("StandardMaterial3D_2hw6u")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.75
+
+[node name="FanParticles" type="GPUParticles3D"]
+emitting = false
+lifetime = 0.45
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_5l5r5")
+draw_pass_1 = SubResource("CylinderMesh_2hw6u")

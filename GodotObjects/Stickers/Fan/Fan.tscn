@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cjg3u8idl755x"]
+[gd_scene load_steps=32 format=3 uid="uid://cjg3u8idl755x"]
 
 [ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/Stickers/Fan/Fan.gd" id="1_2wwg3"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_e06n3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/Props/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
 [ext_resource type="Texture2D" uid="uid://dunhq8g73hkfo" path="res://Assets/Stickers/Fan/Vent-4.png" id="4_6ngi6"]
 [ext_resource type="Texture2D" uid="uid://coje2mtnbxmjy" path="res://Assets/Stickers/Fan/Vent-2.png" id="5_2hw6u"]
+[ext_resource type="PackedScene" path="res://Resources/Particles/fan_particles.tscn" id="5_tax0g"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="9_xf8nb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="10_5l5r5"]
 [ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/Fan_On.mp3" id="10_tax0g"]
@@ -57,56 +58,6 @@ width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_304jv"]
-offsets = PackedFloat32Array(0, 0.263514, 0.648649, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.392157, 1, 1, 1, 0.588235, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdeok"]
-gradient = SubResource("Gradient_304jv")
-
-[sub_resource type="Curve" id="Curve_wdeok"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 44.898), 0.0, -135.714, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_30j2s"]
-curve = SubResource("Curve_wdeok")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5l5r5"]
-emission_shape_scale = Vector3(0.4, 0.5, 0.4)
-emission_shape = 6
-emission_ring_axis = Vector3(0, 90, 1)
-emission_ring_height = 0.5
-emission_ring_radius = 1.0
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-gravity = Vector3(0, 9.8, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 2.0
-linear_accel_curve = SubResource("CurveTexture_30j2s")
-damping_max = 2.0
-scale_min = 0.5
-scale_max = 0.8
-scale_over_velocity_max = 2.0
-color = Color(0.588235, 1, 0.996078, 1)
-color_ramp = SubResource("GradientTexture1D_wdeok")
-hue_variation_min = -0.05
-hue_variation_max = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hw6u"]
-render_priority = 2
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-grow = true
-grow_amount = 0.005
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2hw6u"]
-material = SubResource("StandardMaterial3D_2hw6u")
-top_radius = 0.025
-bottom_radius = 0.025
-height = 0.75
 
 [sub_resource type="Animation" id="Animation_l5vid"]
 length = 0.001
@@ -325,14 +276,9 @@ texture = SubResource("GradientTexture2D_ps2dv")
 [node name="Origin" type="Marker3D" parent="Fan"]
 unique_name_in_owner = true
 
-[node name="FanParticles" type="GPUParticles3D" parent="Fan"]
+[node name="FanParticles" parent="Fan" instance=ExtResource("5_tax0g")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
-emitting = false
-lifetime = 0.45
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_5l5r5")
-draw_pass_1 = SubResource("CylinderMesh_2hw6u")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
