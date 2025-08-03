@@ -15,6 +15,7 @@ config/version="1.0"
 run/main_scene="uid://dkdx1yrx643d4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
 boot_splash/image="uid://dn8lpixxsjk3g"
 config/icon="uid://bl5tesrbned68"
 config/windows_native_icon="res://favicon.ico"
@@ -30,6 +31,16 @@ MusicManager="*res://Managers/SoundManager/MusicManager/MusicManager.tscn"
 VolumeManager="*res://Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
+
+[display]
+
+window/fullsize=false
+window/bg_color=Color(0, 0, 0, 1)
+window/image="uid://dn8lpixxsjk3g"
+window/icon="uid://bl5tesrbned68"
+window/windows_native_icon="res://favicon.ico"
+window/version="1.0"
+window/name="Qhipan"
 
 [filesystem]
 

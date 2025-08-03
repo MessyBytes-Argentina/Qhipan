@@ -76,25 +76,64 @@ rotation = -0.287404
 scale = Vector2(0.660865, 0.660865)
 texture = ExtResource("7_xubrw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -127.0
-offset_top = -270.0
-offset_right = 127.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = -200
+
+[node name="Logo" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/Logo"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_constants/outline_size = 90
+theme_override_fonts/normal_font = ExtResource("1_l0taq")
+theme_override_font_sizes/normal_font_size = 180
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]qhipan[/wave]"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/Logo/RichTextLabel"]
+show_behind_parent = true
+custom_minimum_size = Vector2(450, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = -90
+theme_override_constants/margin_bottom = 75
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/VBoxContainer/Logo/RichTextLabel/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+color = Color(0.211765, 0.141176, 0.133333, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
@@ -112,7 +151,7 @@ text = "Start"
 script = ExtResource("1_oq7qy")
 levelList = Array[String](["res://GodotObjects/Level Scenes/Final Levels/LVL-1.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-2.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-3.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-4.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-5.tscn"])
 
-[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
@@ -128,37 +167,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_kxy5c")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kxy5c")
 text = "Settings"
 script = ExtResource("2_6u8ck")
-settingsScene = NodePath("../../../SimpleSettingsMenu")
-
-[node name="Logo" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 22.0
-offset_right = 40.0
-offset_bottom = 62.0
-
-[node name="ColorRect" type="ColorRect" parent="Logo"]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 168.0
-offset_right = 808.0
-offset_bottom = 232.0
-color = Color(0.211765, 0.141176, 0.133333, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Logo"]
-layout_mode = 0
-offset_left = 288.0
-offset_top = 32.0
-offset_right = 864.0
-offset_bottom = 361.0
-theme_override_colors/default_color = Color(0.796078, 0.443137, 0.192157, 1)
-theme_override_colors/font_outline_color = Color(0.211765, 0.141176, 0.133333, 1)
-theme_override_constants/outline_size = 90
-theme_override_fonts/normal_font = ExtResource("1_l0taq")
-theme_override_font_sizes/normal_font_size = 180
-bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1]qhipan[/wave]"
-autowrap_mode = 0
-horizontal_alignment = 1
+settingsScene = NodePath("../../../../../SimpleSettingsMenu")
 
 [node name="SimpleSettingsMenu" parent="." instance=ExtResource("3_l0taq")]
 visible = false

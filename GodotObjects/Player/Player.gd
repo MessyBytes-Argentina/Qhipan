@@ -6,6 +6,7 @@ const cameraRotationStep: float = deg_to_rad(90.0)
 const transparencyTime: float = 0.1
 const tweenTime: float = 0.25
 const POPUPTIME: float = 0.5
+const RESTARTBUTTONWAIT: float = 2.0
 
 enum States {Idle, Walk, Float}
 
@@ -97,6 +98,7 @@ func _physics_process(delta: float) -> void:
 	move_character(delta)
 	camera_follow(delta)
 	animation_check()
+	if not stopped: resetButton.hide()
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -152,7 +154,7 @@ func move_character(delta: float) -> void:
 		pushForce += pushingForces[object]
 	if moved >= movementMaximum and not stopped:
 		do_popup()
-		if resetButton: resetButton.show()
+		if resetButton: get_tree().create_timer(RESTARTBUTTONWAIT).timeout.connect(show_restart)
 		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
@@ -279,3 +281,6 @@ func do_popout() -> void:
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
+
+func show_restart() -> void:
+	if stopped: resetButton.show()
