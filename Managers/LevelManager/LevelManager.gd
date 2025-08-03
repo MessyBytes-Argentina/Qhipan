@@ -1,7 +1,7 @@
 extends Node
 
 var levelList: Array[String]
-var creditsScene: String = "res://UI/Credits.tscn"
+var creditsScene: String = "res://UI/RestartScreen.tscn"
 var sceneManager:StoryWriterSceneManager
 var currentLvlId: int = 0
 

@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8wvtujbncu6r"]
+[gd_scene load_steps=6 format=3 uid="uid://b8wvtujbncu6r"]
 
+[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://UI/Start-Credit-Background.png" id="1_lqvxy"]
 [ext_resource type="Script" uid="uid://c8yqk5lhkwmyt" path="res://UI/RestartButton.gd" id="1_nw1lt"]
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_qvjrn"]
-[ext_resource type="Texture2D" uid="uid://dfxr4q4fycll1" path="res://Assets/Decos/Deco Grid/ah.png" id="3_petif"]
-[ext_resource type="Texture2D" uid="uid://dhwtjjqbk327g" path="res://Assets/Decos/Deco Grid/aj.png" id="4_ek0d3"]
-[ext_resource type="Texture2D" uid="uid://bgbty6dq2ur7s" path="res://Assets/Decos/Deco Grid/af.png" id="5_0f4px"]
-[ext_resource type="Texture2D" uid="uid://cviuuoe86ithu" path="res://Assets/Decos/Deco Grid/ab.png" id="6_hh5ev"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_petif"]
 
@@ -20,92 +17,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.294118, 0.419608, 0.466667, 1)
+stretch = true
 
-[node name="Ah" type="Sprite2D" parent="."]
-position = Vector2(178, 482)
-texture = ExtResource("3_petif")
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(1152, 648)
 
-[node name="Aj" type="Sprite2D" parent="."]
-position = Vector2(1083, 138)
-texture = ExtResource("4_ek0d3")
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Af" type="Sprite2D" parent="."]
-position = Vector2(976, 442)
-texture = ExtResource("5_0f4px")
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_lqvxy")
 
-[node name="Ab" type="Sprite2D" parent="."]
-position = Vector2(153, 136)
-rotation = -0.427586
-texture = ExtResource("6_hh5ev")
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -252.0
-offset_top = 12.0
-offset_right = 253.0
-offset_bottom = 517.0
-grow_horizontal = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport/MarginContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.0862745, 0.156863, 0.247059, 1)
-theme_override_constants/outline_size = 20
-theme_override_fonts/normal_font = ExtResource("1_qvjrn")
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[wave amp=50.0 freq=5.0 connected=1]Thanks for playing![/wave]"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="AspectRatioContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0.0862745, 0.156863, 0.247059, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("1_qvjrn")
-theme_override_font_sizes/normal_font_size = 40
-text = "Credits
-Programers: Nahtrex, Elkas
-Designers: Ivan Aranda, Anthony Rufus, Santi Mejias
-Visual Art: Mechi, Luis Arbit
-Sound Design: Anthony Rufus
-UI/UX: Barbara Lax
-Colaborators: Milton Blanco"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = 206.0
-offset_right = 106.0
-offset_bottom = 302.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="RestartButton" type="Button" parent="AspectRatioContainer2"]
+[node name="RestartButton" type="Button" parent="SubViewportContainer/SubViewport/MarginContainer/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
