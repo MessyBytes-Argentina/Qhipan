@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=16 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_0y1wl"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_77igb"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_okwja"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="3_evf4h"]
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="4_atttt"]
+[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Skybox/Skybox-Dawn.png" id="5_wvbsw"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_8kaph"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="6_evf4h"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="8_u47oh"]
@@ -12,16 +13,19 @@
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="10_atttt"]
 [ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/Props/InfoCrystal/InfoCrystal.tscn" id="11_qjlft"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5l86x"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
+panorama = ExtResource("5_wvbsw")
+energy_multiplier = 0.6
 
 [sub_resource type="Sky" id="Sky_v5vbm"]
-sky_material = SubResource("ProceduralSkyMaterial_5l86x")
+sky_material = SubResource("PanoramaSkyMaterial_wvbsw")
 
 [sub_resource type="Environment" id="Environment_8kaph"]
 background_mode = 2
+background_color = Color(0.384314, 0.454902, 0.54902, 1)
 sky = SubResource("Sky_v5vbm")
+ambient_light_source = 2
+ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
 tonemap_mode = 2
 
 [node name="Test" type="Node3D"]
