@@ -37,6 +37,7 @@ SceneManager=""
 InputBlocking=""
 Checkpoints=""
 ResetButton=""
+Player=""
 
 [input]
 
