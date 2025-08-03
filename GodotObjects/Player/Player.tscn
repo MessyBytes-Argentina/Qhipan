@@ -598,19 +598,26 @@ floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
-[node name="FallSound" type="AudioStreamPlayer" parent="."]
+[node name="PlayerSounds" type="Node3D" parent="."]
+
+[node name="FallSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("62_8njlr")
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
-[node name="RotateCamLeft" type="AudioStreamPlayer" parent="."]
+[node name="RotateCamLeft" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("4_rr2ib")
 
-[node name="RotateCamRight" type="AudioStreamPlayer" parent="."]
+[node name="RotateCamRight" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("5_3jjt7")
+
+[node name="PoofSound" type="AudioStreamPlayer" parent="PlayerSounds"]
+unique_name_in_owner = true
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
