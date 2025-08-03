@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://baa07m7c51sm4"]
+[gd_scene load_steps=17 format=3 uid="uid://baa07m7c51sm4"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_44gul"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_qq1u7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="9_te2nf"]
 [ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="10_dthqh"]
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="11_7y0ey"]
+[ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="12_u0rck"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yery1"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -100,10 +101,6 @@ openAnimation = 4
 [node name="Door6" parent="." instance=ExtResource("7_i6ovk")]
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 3, 13.5, 4.5)
 openAnimation = 4
-
-[node name="Door7" parent="." instance=ExtResource("7_i6ovk")]
-transform = Transform3D(1.31134e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.31134e-07, -5.73206e-15, 8.5, 12.5, 7)
-openAnimation = 3
 
 [node name="FanSticker" parent="." instance=ExtResource("8_7yhxa")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.5, 11.5, 1)
@@ -232,3 +229,6 @@ shape = SubResource("BoxShape3D_i03tn")
 
 [node name="Pinchos" parent="DeathZone9" instance=ExtResource("11_7y0ey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Door3" parent="." instance=ExtResource("12_u0rck")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 8.5, 12.5, 7)
