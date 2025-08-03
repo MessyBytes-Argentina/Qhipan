@@ -25,6 +25,7 @@ const loadAnimationWaitTime: float = 0.5
 @onready var loaderSubViewport: SubViewport = %LoaderSubViewport
 ## Reference to the main subviewport.
 @onready var mainSubViewport: Control = %MainSubViewportContainer
+@onready var resetButton: Button = %ResetButton
 
 ## A Dictionary of scenes loaded.
 var loadedScenes: Dictionary = {}
@@ -83,6 +84,7 @@ func _process(_delta: float) -> void:
 
 ## Switches the main scene to the given one.
 func switch_scene(sceneName: String = currentScene) -> void:
+	resetButton.hide()
 	reloaded = sceneName == currentScene
 	await get_tree().process_frame
 	inSetup = true

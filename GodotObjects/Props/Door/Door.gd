@@ -4,7 +4,7 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 
 @export var openAnimation: Animations = Animations.SlideLeft
 
-@onready var doorBody: DoorBody = %DoorBody
+@onready var doorBody: DoorBody = %DownPivot
 @onready var bodyShape: CollisionShape3D = %BodyShape
 @onready var area3d: Area3D = %Area3D
 @onready var area3d2: Area3D = %Area3D2

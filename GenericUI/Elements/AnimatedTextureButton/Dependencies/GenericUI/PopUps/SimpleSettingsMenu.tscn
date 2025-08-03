@@ -48,9 +48,18 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
-[node name="SimpleSettingsMenu" type="MarginContainer"]
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="SimpleSettingsMenu" type="MarginContainer" parent="."]
 material = SubResource("ShaderMaterial_omkoa")
 custom_minimum_size = Vector2(512, 300)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -64,25 +73,25 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 192)
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Body PanelContainer" type="PanelContainer" parent="."]
+[node name="Body PanelContainer" type="PanelContainer" parent="SimpleSettingsMenu"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j68xm")
 
-[node name="BodyMarginContainer" type="MarginContainer" parent="Body PanelContainer"]
+[node name="BodyMarginContainer" type="MarginContainer" parent="SimpleSettingsMenu/Body PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body PanelContainer/BodyMarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="Label" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
@@ -92,30 +101,30 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicVolumeHSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+[node name="MusicVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
 layout_mode = 2
 bus = 2
 
-[node name="SFXVolumeHSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+[node name="SFXVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
 layout_mode = 2
 buttonScene = ExtResource("4_dwkyl")
 soundOnChange = ExtResource("5_1paln")
 bus = 1
 
-[node name="UIVolumeHSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+[node name="UIVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
 visible = false
 layout_mode = 2
 buttonScene = ExtResource("5_npjjy")
 soundOnChange = ExtResource("7_qesth")
 bus = 3
 
-[node name="CloseButtonMarginContainer" type="MarginContainer" parent="."]
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="SimpleSettingsMenu"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_top = -30
 theme_override_constants/margin_right = -30
 
-[node name="AnimatedTextureButton4" type="Button" parent="CloseButtonMarginContainer"]
+[node name="AnimatedTextureButton4" type="Button" parent="SimpleSettingsMenu/CloseButtonMarginContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -125,7 +134,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
 
-[node name="MarginContainer" type="MarginContainer" parent="CloseButtonMarginContainer/AnimatedTextureButton4"]
+[node name="MarginContainer" type="MarginContainer" parent="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,7 +144,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = -16
 
-[node name="Label" type="Label" parent="CloseButtonMarginContainer/AnimatedTextureButton4/MarginContainer"]
+[node name="Label" type="Label" parent="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
 theme_override_constants/shadow_offset_x = 0
@@ -146,4 +155,4 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CloseButtonMarginContainer/AnimatedTextureButton4" to="." method="hide"]
+[connection signal="pressed" from="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4" to="." method="hide"]

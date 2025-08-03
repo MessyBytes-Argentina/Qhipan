@@ -67,6 +67,7 @@ var fallSoundPlayed: bool = false
 var respawnFall: bool = false
 var popupTween: Tween
 var stopped: bool = false
+var resetButton: Button
 
 func _ready() -> void:
 	set_decal_size()
@@ -76,6 +77,7 @@ func _ready() -> void:
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
+	resetButton = get_tree().get_first_node_in_group("ResetButton")
 
 func block_inputs() -> void:
 	death = true
@@ -150,6 +152,7 @@ func move_character(delta: float) -> void:
 		pushForce += pushingForces[object]
 	if moved >= movementMaximum and not stopped:
 		do_popup()
+		resetButton.show()
 		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
@@ -224,6 +227,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 		reset_aura()
 		hasSpawned = true
 		return
+	resetButton.hide()
 	do_popout()
 	death = true
 	poofSound.play_sound()

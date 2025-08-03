@@ -127,7 +127,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kxy5c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kxy5c")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kxy5c")
 text = "Settings"
-clip_text = true
 script = ExtResource("2_6u8ck")
 settingsScene = NodePath("../../../SimpleSettingsMenu")
 

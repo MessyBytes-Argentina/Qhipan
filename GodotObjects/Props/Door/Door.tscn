@@ -279,7 +279,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 [node name="UpPivot" type="Node3D" parent="Centered"]
 
 [node name="DownPivot" type="Node3D" parent="Centered/UpPivot"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.37114e-08, -1)
+script = ExtResource("2_n2c0y")
 
 [node name="Door" type="MeshInstance3D" parent="Centered/UpPivot/DownPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
@@ -289,7 +291,6 @@ skeleton = NodePath("")
 [node name="DoorBody" type="StaticBody3D" parent="Centered/UpPivot/DownPivot/Door"]
 unique_name_in_owner = true
 collision_layer = 2049
-script = ExtResource("2_n2c0y")
 
 [node name="BodyShape" type="CollisionShape3D" parent="Centered/UpPivot/DownPivot/Door/DoorBody"]
 unique_name_in_owner = true
