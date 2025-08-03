@@ -98,6 +98,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="ActivationSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_w4bbu")
+volume_db = -20.0
 bus = &"SFX"
 script = ExtResource("4_bsfi2")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"

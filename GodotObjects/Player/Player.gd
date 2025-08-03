@@ -152,7 +152,7 @@ func move_character(delta: float) -> void:
 		pushForce += pushingForces[object]
 	if moved >= movementMaximum and not stopped:
 		do_popup()
-		resetButton.show()
+		if resetButton: resetButton.show()
 		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
@@ -227,7 +227,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 		reset_aura()
 		hasSpawned = true
 		return
-	resetButton.hide()
+	if resetButton: resetButton.hide()
 	do_popout()
 	death = true
 	poofSound.play_sound()
