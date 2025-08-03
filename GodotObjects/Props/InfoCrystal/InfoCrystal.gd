@@ -1,18 +1,16 @@
-extends Node3D
+extends Area3D
 
 const BOBBINGHEIGHT: float = 0.1
 const BOBBINGTIME: float = 3.0
 const ROTATIONTIME: float = 5.0
 const POPUPTIME: float = 0.4
-const POPUPPIXELSIZE: float = 0.01
-const INFOPIXELSIZE: float = 0.0005
 const INFOSHRINKTIME: float = 0.1
 
 @export var infoSprite: Texture2D
 
 @onready var crystal: MeshInstance3D = $Crystal
 @onready var infoIcon: Sprite3D = %InfoIcon
-@onready var infoBoard: Sprite3D = %InfoBoard
+@onready var popupBoard: Sprite3D = %PopupBoard
 @onready var textureRect: TextureRect = %TextureRect
 
 var rotationTween: Tween
@@ -22,6 +20,9 @@ var popupTween: Tween
 func _ready() -> void:
 	start_bobbing()
 	textureRect.texture = infoSprite
+	body_entered.connect(do_popup.unbind(1))
+	body_exited.connect(do_popout.unbind(1))
+	popupBoard.scale = Vector3.ONE * 0.001
 
 func start_bobbing() -> void:
 	rotationTween = create_tween()
@@ -37,12 +38,12 @@ func start_bobbing() -> void:
 
 func do_popup() -> void:
 	popupTween = create_tween()
-	popupTween.tween_property(infoIcon, "pixel_size", 0.0, INFOSHRINKTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	popupTween.tween_property(infoBoard, "pixel_size", POPUPPIXELSIZE, POPUPTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.tween_property(infoIcon, "scale", Vector3.ONE * 0.001, INFOSHRINKTIME * infoIcon.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.tween_property(popupBoard, "scale", Vector3.ONE, POPUPTIME * (1.0 - popupBoard.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
 
 func do_popout() -> void:
 	popupTween = create_tween()
-	popupTween.tween_property(infoBoard, "pixel_size", 0.0, inverse_lerp(0.0, POPUPPIXELSIZE, infoBoard.pixel_size) * POPUPTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	popupTween.tween_property(infoIcon, "pixel_size", INFOPIXELSIZE, INFOSHRINKTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.tween_property(popupBoard, "scale", Vector3.ONE * 0.001, POPUPTIME * popupBoard.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.tween_property(infoIcon, "scale", Vector3.ONE, INFOSHRINKTIME * (1.0 - infoIcon.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
