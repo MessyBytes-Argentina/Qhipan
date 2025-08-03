@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l62ulb285l1f"]
+[gd_scene load_steps=19 format=3 uid="uid://l62ulb285l1f"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="1_c6k3k"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="2_kxn5y"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="11_naf6b"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="12_nexcr"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="13_oun8y"]
+[ext_resource type="PackedScene" uid="uid://bt8utmhhfqc7x" path="res://GodotObjects/Props/Decorations/Cantaro.tscn" id="14_8fru6"]
+[ext_resource type="PackedScene" uid="uid://ian8ddyxqvd7" path="res://GodotObjects/Props/Decorations/Jarron Cusco.tscn" id="15_1sak8"]
+[ext_resource type="PackedScene" uid="uid://bsaoxxoswk6dt" path="res://GodotObjects/Props/Decorations/Botellon Corcho.tscn" id="16_yvvul"]
+[ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://Resources/DecalMap/DecalMap.tscn" id="17_ere70"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2pl5"]
 size = Vector3(1, 0.5, 1)
@@ -88,3 +92,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 12, -3.5)
 placed = true
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("13_oun8y")]
+
+[node name="Deco" type="Node3D" parent="."]
+
+[node name="Cantaro" parent="Deco" instance=ExtResource("14_8fru6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94792, 12.5, -4.24667)
+
+[node name="Jarron Cusco" parent="Deco" instance=ExtResource("15_1sak8")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -9.22293, 12.5132, -3.77231)
+
+[node name="BotellonCorcho" parent="Deco" instance=ExtResource("16_yvvul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76573, 12.5, -2.82031)
+
+[node name="BotellonCorcho2" parent="Deco" instance=ExtResource("16_yvvul")]
+transform = Transform3D(0.678527, 0, 0, 0, 0.682584, 0, 0, 0, 0.677317, -3.01891, 12.5, -3.25376)
+
+[node name="Jarron Cusco2" parent="Deco" instance=ExtResource("15_1sak8")]
+transform = Transform3D(0.4, 0, 0, 0, 0.266, 0, 0, 0, 0.4, -3.1802, 12.5, -2.91977)
+
+[node name="Jarron Cusco3" parent="Deco" instance=ExtResource("15_1sak8")]
+transform = Transform3D(0.4, 0, 0, 0, 0.266, 0, 0, 0, 0.4, -3.45731, 11.4983, -0.755879)
+
+[node name="Cantaro2" parent="Deco" instance=ExtResource("14_8fru6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23611, 11.5, -1.75537)
+
+[node name="Cantaro3" parent="Deco" instance=ExtResource("14_8fru6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25668, 11.5, 0.209575)
+
+[node name="Jarron Cusco4" parent="Deco" instance=ExtResource("15_1sak8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.74047, 11.5, -2.69568)
+
+[node name="GridMap" parent="." instance=ExtResource("17_ere70")]
+data = {
+"cells": PackedInt32Array(1638395, 5, 1048613, 1638395, 65532, 655399, 1572851, 65532, 1441796, 1572854, 65535, 5, 1572854, 65532, 1048582, 1572859, 65528, 1048592, 1507330, 65533, 1048587, 1572855, 65530, 1048591, 1572859, 2, 1048588)
+}
+metadata/_editor_floor_ = Vector3(0, 23, 0)
