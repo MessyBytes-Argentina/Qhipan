@@ -10,6 +10,7 @@ signal finished()
 const loadExtraTime: float = 0.5
 ## The animation time.
 const loadAnimationTime: float = 2
+const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
 const loadAnimationExtraTime: float = 0
 ## The time to spread back the hexes on loading time extended.
@@ -38,6 +39,10 @@ var transitionTween: Tween
 ## Doing transition setup.
 var inSetup: bool = false
 
+var currentScene: String
+
+var reloaded: bool = false
+
 ## Starts loading a given scene.
 func load_scene(sceneName: String, path: String) -> void:
 	if loadedScenes.has(sceneName):
@@ -59,6 +64,7 @@ func load_and_switch(path: String, sceneName: String = "") -> void:
 	if sceneName == "": sceneName = path.get_file().get_basename()
 	load_scene(sceneName, path)
 	switch_scene(sceneName)
+	currentScene = sceneName
 
 ## Executed every frame.
 func _process(_delta: float) -> void:
@@ -78,7 +84,8 @@ func _process(_delta: float) -> void:
 		mainSubViewport.size = currentViewportSize
 
 ## Switches the main scene to the given one.
-func switch_scene(sceneName: String) -> void:
+func switch_scene(sceneName: String = currentScene) -> void:
+	reloaded = sceneName == currentScene
 	await get_tree().process_frame
 	inSetup = true
 	get_tree().paused = true
@@ -88,7 +95,7 @@ func switch_scene(sceneName: String) -> void:
 	newNoise.noise.seed = randi()
 	custom_set_shader_parameter(newNoise, "noise_texture")
 	transitionTween = create_tween()
-	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 0.0, 1.0, loadAnimationTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 0.0, 1.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	transitionTween.tween_method(custom_set_shader_parameter.bind("transparency") ,0.0 , 1.0, loadAnimationExtraTime)
 	transitionTween.play()
 	await transitionTween.finished
@@ -126,7 +133,8 @@ func finish_scene_switch() -> void:
 		transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 0.5, 1.0, loadAnimationWaitTime).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART)
 		transitioning = false
 	transitionTween.tween_method(custom_set_shader_parameter.bind("transparency"), 1.0 , 0.0, loadAnimationExtraTime)
-	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 1.0, 0.0, loadAnimationTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 1.0, 0.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	reloaded = false
 	transitionTween.play()
 	get_tree().paused = false
 	finished.emit()

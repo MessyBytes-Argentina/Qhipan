@@ -202,13 +202,13 @@ func set_decal_size() -> void:
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
-	poofSound.play_sound()
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()
 		hasSpawned = true
 		return
 	death = true
+	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
