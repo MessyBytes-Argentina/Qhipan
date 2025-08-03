@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg8pmyaygm64r"]
+
+[ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="1_p18uu"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5th"]
+render_priority = -1
+shader = ExtResource("1_p18uu")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.002
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002
+
+[node name="PostProcessing" type="MeshInstance3D"]
+visible = false
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_vq31v")
+surface_material_override/0 = SubResource("ShaderMaterial_fj5th")
