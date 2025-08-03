@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8wvtujbncu6r"]
+[gd_scene load_steps=3 format=3 uid="uid://b8wvtujbncu6r"]
 
 [ext_resource type="Script" uid="uid://c8yqk5lhkwmyt" path="res://UI/RestartButton.gd" id="1_nw1lt"]
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_qvjrn"]
 
 [node name="Credits" type="Node3D"]
 
@@ -19,22 +20,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.000321104, 0.125626, 0.488222, 0.835294)
+color = Color(0.294118, 0.419608, 0.466667, 1)
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -252.0
+offset_top = 12.0
+offset_right = 253.0
+offset_bottom = 517.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Control/AspectRatioContainer"]
+visible = false
 layout_mode = 2
 text = "The end 
    UwU"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_qvjrn")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Thanks for playing![/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Control/AspectRatioContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_qvjrn")
+theme_override_font_sizes/normal_font_size = 40
+text = "Credits
+Programers: Nahtrex, Nico
+Designers: Ivan, Lihue, Santi
+Visual Art: Mechi, Luis
+Sound Design: Lihue
+UI/UX: Barbi
+Colaborators: Milton Blanco"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
@@ -43,14 +76,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -20.0
-offset_right = 32.5
-offset_bottom = 20.0
+offset_left = -105.0
+offset_top = 206.0
+offset_right = 106.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RestartButton" type="Button" parent="Control/AspectRatioContainer2"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_qvjrn")
+theme_override_font_sizes/font_size = 60
 text = "Restart"
+flat = true
 script = ExtResource("1_nw1lt")
