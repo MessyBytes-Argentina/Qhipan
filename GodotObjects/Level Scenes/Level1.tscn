@@ -23,18 +23,6 @@ tonemap_mode = 2
 
 [node name="Level1" type="Node3D"]
 
-[node name="CheckpointManager_Checkpoints#Checkpoint" parent="." instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.5)
-
-[node name="CheckpointManager_Checkpoints#Checkpoint2" parent="." instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
-
-[node name="CheckpointManager_Checkpoints#Checkpoint3" parent="." instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10.5)
-
-[node name="CheckpointManager_Checkpoints#Checkpoint4" parent="." instance=ExtResource("3_scbay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -3.5)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
 light_color = Color(0.945098, 0.878431, 0.788235, 1)

@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://crmvcuof5gyt2"]
+
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="1_s5rg6"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="2_cxxxt"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="3_ujhbp"]
+[ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="4_nwjiy"]
+[ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="5_l7rve"]
+[ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="6_5wacr"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="7_7n58t"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="8_tpri7"]
+[ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="9_vvb0c"]
+[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="10_g8lfo"]
+[ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="11_eox0h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0, 0, 0.0784314, 1)
+ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
+
+[sub_resource type="Sky" id="Sky_6muoe"]
+sky_material = SubResource("ProceduralSkyMaterial_xs4vi")
+
+[sub_resource type="Environment" id="Environment_e1oxl"]
+background_mode = 2
+sky = SubResource("Sky_6muoe")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_iy086"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
+light_color = Color(0.945098, 0.878431, 0.788235, 1)
+light_energy = 0.025
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e1oxl")
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="FanSticker" parent="Stickers" instance=ExtResource("1_s5rg6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0.5, -9)
+
+[node name="FanSticker2" parent="Stickers" instance=ExtResource("1_s5rg6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13, 0.5, -10)
+
+[node name="Key" parent="Stickers" instance=ExtResource("2_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0456, 0.123816, -4.01005)
+
+[node name="Player" parent="." instance=ExtResource("3_ujhbp")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6.92921, 0.5, -0.0447978)
+movementMaximum = 13.0
+
+[node name="TerrainMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh_library = ExtResource("4_nwjiy")
+cell_size = Vector3(1, 0.5, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(-1, 65529, 655394, -65536, 65528, 655394, -1, 65528, 655394, -2, 65528, 655394, -65535, 65527, 655394, -65536, 65527, 655394, -1, 65527, 655394, -2, 65527, 655394, -3, 65527, 655394, -3, 65526, 655394, -4, 65526, 655394, -2, 65526, 655394, -1, 65526, 655394, -65536, 65526, 655394, -2, 65525, 655394, -1, 65525, 655394, -65536, 65525, 655394, -1, 65524, 655394, -65535, 65526, 655394, -65535, 65525, 655394, -65536, 65524, 655394, -2, 65524, 655394, -3, 65525, 655394, -1, 65523, 1048598, -65534, 65526, 655394, -65536, 65529, 22, -65535, 65528, 655385, -65534, 65527, 655382, -65534, 65525, 655382, -65535, 65524, 1441817, -65536, 65523, 1441817, -2, 65523, 25, -3, 65524, 25, -4, 65525, 1048598, -4, 65527, 1048598, -3, 65528, 1048601, -2, 65529, 22, 0, 65524, 1048604, 1, 65525, 1048604, 1, 65527, 28, 65534, 65528, 1441820, 65533, 65527, 1441820, 65533, 65525, 655388, 65534, 65524, 655388, 0, 65528, 28, -65533, 65526, 655384, -65533, 65527, 1048598, -65533, 65525, 1048598, -5, 65526, 655394, -6, 65526, 655394, -7, 65526, 655394, -7, 65527, 655394, -7, 65525, 655362, -6, 65525, 655362, -6, 65527, 655364, -8, 65526, 655362, -7, 65528, 655394, -9, 65528, 655394, -9, 65527, 655394, -9, 65526, 655394, -8, 65525, 655362, 65530, 65527, 12, -10, 65526, 655394, -11, 65526, 655394, -11, 65527, 655394, -11, 65528, 655394, -8, 65528, 655394, -6, 65528, 655362, -6, 65529, 655365, -7, 65529, 655362, -8, 65529, 655362, -9, 65529, 655362, -10, 65529, 655362, -10, 65528, 655362, -10, 65525, 655362, -11, 65525, 655362, -10, 65527, 4, 65526, 65527, 12, -5, 65525, 655362, -5, 65527, 655362, -12, 65525, 655362, -12, 65526, 655362, -12, 65527, 655362, -65532, 65526, 1048598, -65532, 65525, 1441817, -65532, 65527, 655385, -11, 65529, 655394, 65526, 65529, 655372, -11, 65530, 655362, -10, 65530, 655365, -14, 65529, 655394, 65522, 65528, 12, -14, 65528, 1441796, -15, 65529, 655394, -15, 65528, 655394, -15, 65527, 655394, -14, 65527, 655394, -14, 65526, 655394, -14, 65525, 24, -13, 65527, 655362, -13, 65526, 655362, -13, 65525, 655362, -14, 65524, 2, -15, 65525, 655362, -15, 65526, 655362, -16, 65527, 655362, -16, 65528, 655362, -16, 65529, 655362, -16, 65530, 1048581, -15, 65530, 655362, -16, 65526, 5, -15, 65524, 5, -13, 65524, 1441797, -12, 65528, 655362, -13, 65528, 655362, -15, 65532, 655362, -15, 65533, 655362, -15, 65534, 655362, -13, 65532, 655362, -13, 65533, 655362, -13, 65534, 655362, -12, 65530, 655362, -13, 65530, 655362, -13, 65531, 655362, -15, 65531, 655362, -9, 65525, 24, -9, 65524, 655362, -8, 65524, 1441797, -10, 65524, 5, -65529, 65534, 655394, -65529, 65535, 655394, -65529, 0, 655394, -65530, 0, 655394, -65530, 65535, 655394, -65530, 65534, 655394, -65531, 65534, 655394, -65531, 65535, 655394, -65531, 0, 655394, -65532, 65535, 655394, -65533, 65535, 655394, -65534, 65535, 655394, -65535, 65535, 655394, -65536, 65535, 655394, -1, 65535, 655394, -1, 65534, 655394, -1, 65533, 655394, -1, 65532, 655394, -1, 65531, 655394, -1, 65530, 655394, -2, 65531, 655394, -3, 65531, 655394, -4, 65531, 24, -15, 65535, 655362, -13, 65535, 655382, -15, 0, 1048601, -13, 0, 655385, -14, 0, 655382, -14, 65535, 655394, 131057, 65535, 655381, 131059, 65535, 1048597, 131057, 0, 1048601, 131059, 0, 655385, 131058, 0, 655382, 196594, 65535, 24, -14, 65534, 24, -14, 65533, 655394, -65536, 65530, 1048598, -65536, 65531, 1048598, -65536, 65532, 1048598, -65536, 65533, 1048598, -65536, 65534, 1048598, -65535, 65534, 1048598, -65534, 65534, 1048598, -65533, 65534, 1048598, -65532, 65534, 1048598, -65531, 65533, 1048598, -65530, 65533, 1048598, -65529, 65533, 1048598, -65528, 65534, 1048598, -65528, 65535, 1048598, -65529, 1, 1048598, -65530, 1, 1048598, -65531, 1, 1048598, -65532, 0, 1048598, -65533, 0, 1048598, -65534, 0, 1048598, -65535, 0, 1048598, -65536, 0, 1048598, -1, 0, 1048598, -2, 0, 1048598, -2, 65533, 1048598, -2, 65534, 1048598, -2, 65535, 1048598, -3, 65532, 1048598, -4, 65532, 1048598, -5, 65532, 1048598, -5, 65531, 1048598, -5, 65530, 1048598, -4, 65530, 1048598, -3, 65530, 1048598, -65528, 0, 1048598, -65528, 1, 655385, -65528, 65533, 1441817, -65532, 65533, 25, -65532, 1, 1048601, 65536, 65534, 1048598, 65536, 65533, 1048598, 65536, 65532, 1048598, 65536, 65531, 1048598, 65536, 65530, 1048598, 65536, 65529, 1048598, -2, 65530, 655394, -2, 65532, 1441814, 65534, 65530, 655388, 65537, 65534, 655383, -14, 65532, 655384)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="StickerMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+mesh_library = ExtResource("5_l7rve")
+cell_size = Vector3(1, 0.5, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(131065, 65527, 655361, 131063, 65527, 1, 131061, 65529, 655361, 131058, 65529, 1441793)
+}
+script = ExtResource("6_5wacr")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("7_7n58t")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Start")
+
+[node name="Start" parent="CheckpointManager" instance=ExtResource("8_tpri7")]
+transform = Transform3D(0.0171034, 0, 0.999854, 0, 1, 0, -0.999854, 0, 0.0171034, 7.36837, 0.507987, -0.0395842)
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("8_tpri7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.57228, 0.386595, -3.96975)
+
+[node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("8_tpri7")]
+transform = Transform3D(-0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, -0.984808, -7.89412, 0.5, -9.36796)
+
+[node name="GoalZone" parent="." instance=ExtResource("9_vvb0c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.0072, 0.496855, -0.0220867)
+
+[node name="DeathZone" parent="." instance=ExtResource("10_g8lfo")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.685, -5, -6.557)
+shape = SubResource("WorldBoundaryShape3D_iy086")
+
+[node name="Door2" parent="." instance=ExtResource("11_eox0h")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0.5, -0.5)
