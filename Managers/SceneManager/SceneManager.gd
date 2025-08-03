@@ -9,7 +9,7 @@ signal finished()
 ## The wait time after a scene is loaded in.
 const loadExtraTime: float = 0.5
 ## The animation time.
-const loadAnimationTime: float = 2
+const loadAnimationTime: float = 1
 const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
 const loadAnimationExtraTime: float = 0
