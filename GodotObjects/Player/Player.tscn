@@ -578,7 +578,7 @@ _data = {
 &"Walk_Back": SubResource("Animation_po2dv")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["InputBlocking"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 collision_layer = 2
 slide_on_ceiling = false
