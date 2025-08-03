@@ -37,7 +37,6 @@ texture = ExtResource("1_4gdyn")
 [node name="Ag" type="Sprite2D" parent="."]
 position = Vector2(167, 491)
 rotation = -0.184937
-scale = Vector2(1, 1)
 texture = ExtResource("2_y3vac")
 
 [node name="Ab" type="Sprite2D" parent="."]
@@ -93,7 +92,7 @@ text = "Start"
 flat = true
 clip_text = true
 script = ExtResource("1_oq7qy")
-levelList = Array[String](["res://GodotObjects/Tests/test.tscn", "res://GodotObjects/Level Scenes/N-lvl1.tscn"])
+levelList = Array[String](["res://GodotObjects/Level Scenes/Final Levels/LVL-1.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-2.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-3.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-4.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-5.tscn"])
 
 [node name="Settings" type="Button" parent="AspectRatioContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
 layout_mode = 2
