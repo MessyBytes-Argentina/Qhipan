@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx7128lqsqfuc"]
+[gd_scene load_steps=6 format=3 uid="uid://dx7128lqsqfuc"]
 
 [ext_resource type="Script" uid="uid://jsole72b20id" path="res://Managers/SoundManager/MusicManager/MusicManager.gd" id="1_ruqe6"]
 [ext_resource type="AudioStream" uid="uid://cl7dsnumvyoit" path="res://Assets/Sounds/Music/Andinou LastChanges.mp3" id="2_4sbe0"]
+[ext_resource type="AudioStream" uid="uid://c7wxwrg6wj24s" path="res://Assets/Sounds/Music/steps.mp3" id="3_72nwp"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_72nwp"]
 stream_count = 2
 stream_0/stream = ExtResource("2_4sbe0")
-stream_0/volume = 0.0
-stream_1/volume = 0.0
+stream_0/volume = 12.0
+stream_1/stream = ExtResource("3_72nwp")
+stream_1/volume = -60.0
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_431aa"]
 clip_count = 1

@@ -73,7 +73,7 @@ func set_synchro_clip_volume(clipName: String, streamIndexes: Array[int], newVol
 		if streamIndex < stream.stream_count:
 			if time > 0:
 				var tweener = create_tween()
-				tweener.tween_method(sync_stream_tween_method.bind(streamIndex, stream), stream.get_sync_stream(streamIndex), newVolume, time)
+				tweener.tween_method(sync_stream_tween_method.bind(streamIndex, stream), stream.get_sync_stream_volume(streamIndex), newVolume, time)
 			else:
 				stream.set_sync_stream_volume(streamIndex, newVolume)
 

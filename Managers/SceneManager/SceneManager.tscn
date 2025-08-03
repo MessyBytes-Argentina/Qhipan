@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkdx1yrx643d4"]
 
 [ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
-[ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_7hhw3"]
+[ext_resource type="PackedScene" uid="uid://8ain4p6etldq" path="res://UI/SplashScenePreload.tscn" id="2_7hhw3"]
 [ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
 [ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/UV Textures/Diamonds_1-512x512.png" id="4_7hhw3"]
 
@@ -48,8 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
 
-[node name="StartScene" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
-layout_mode = 1
+[node name="Node3D" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
 
 [node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
