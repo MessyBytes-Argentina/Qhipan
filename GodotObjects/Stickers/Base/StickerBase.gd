@@ -30,7 +30,7 @@ var backMaterial: StandardMaterial3D
 
 func _ready() -> void:
 	sceneParent = get_parent()
-	meshMaterial = mesh.get_surface_override_material(0).duplicate()
+	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
 	mesh.mesh = mesh.mesh.duplicate()
 	backMaterial = back.get_surface_override_material(0).duplicate()

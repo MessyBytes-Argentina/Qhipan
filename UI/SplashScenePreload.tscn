@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://8ain4p6etldq"]
+
+[ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
+[ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
+[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="2_tjpxc"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_7th63"]
+[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="3_r1tmu"]
+[ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
+[ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://Resources/Particles/fan_particles.tscn" id="5_r1tmu"]
+[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="6_fhpfe"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_k62l1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81nvi"]
+gradient = SubResource("Gradient_k62l1")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
+render_priority = 0
+shader = ExtResource("2_tjpxc")
+shader_parameter/albedo = SubResource("GradientTexture2D_81nvi")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/albedo_mix = 1.0
+shader_parameter/scale_mod = Vector3(2, 0.2, 2)
+shader_parameter/cube_half_size = Vector3(0.25, 2.5, 0.25)
+shader_parameter/enable_y_fade = false
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.7
+shader_parameter/fade_power = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl6uw"]
+material = SubResource("ShaderMaterial_c1wxo")
+size = Vector3(0.5, 5, 0.5)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_dxbmg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+render_priority = 5
+texture = SubResource("ViewportTexture_81nvi")
+
+[node name="ShadowDecal" type="MeshInstance3D" parent="Sprite3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
+cast_shadow = 0
+gi_lightmap_scale = 0
+mesh = SubResource("BoxMesh_dl6uw")
+Skeleton = null
+script = ExtResource("3_r1tmu")
+size = Vector3(0.5, 5, 0.5)
+texture = SubResource("GradientTexture2D_81nvi")
+enable_fade = false
+metadata/_custom_type_script = "uid://feckn7f3pmud"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+
+[node name="StartScene" parent="SubViewport" instance=ExtResource("2_fhpfe")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15)
+
+[node name="Poof" parent="." instance=ExtResource("3_7th63")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Particles1" parent="." instance=ExtResource("4_tjpxc")]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -7.5)
+
+[node name="FanParticles" parent="." instance=ExtResource("5_r1tmu")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
+
+[node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]

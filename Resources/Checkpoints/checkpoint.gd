@@ -11,9 +11,11 @@ const LIGHTENERGY: float = 0.25
 @onready var llamaTotem: MeshInstance3D = %LlamaTotem
 @onready var particles1: GPUParticles3D = %Particles1
 @onready var particles2: GPUParticles3D = %Particles2
+@onready var activationSound: RandomPitchPlayer = %ActivationSound
 
 var lightTween: Tween
 var material: StandardMaterial3D
+var soundEnabled: bool = false
 
 func _ready() -> void:
 	material = llamaTotem.get_surface_override_material(0).duplicate()
@@ -29,6 +31,9 @@ func activate() -> void:
 	lightTween.play()
 	particles1.emitting = true
 	particles2.emitting = true
+	if soundEnabled:
+		activationSound.play_sound()
+	get_tree().call_group("Player","reset_aura")
 
 func deactivate() -> void:
 	material.albedo_texture = offTexture
@@ -38,3 +43,6 @@ func deactivate() -> void:
 	lightTween.play()
 	await lightTween.finished
 	light.hide()
+
+func enable_sounds() -> void:
+	soundEnabled = true
