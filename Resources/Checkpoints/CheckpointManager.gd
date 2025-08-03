@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("reset_player"):
 		reset_player()
 	if event.is_action_pressed("reset_scene"):
-		get_tree().reload_current_scene()
+		get_tree().call_group("SceneManager", "switch_scene")
 
 func reset_player() -> void:
 	playerReference.restart_at_checkpoint(currentCheckpoint.global_position)
