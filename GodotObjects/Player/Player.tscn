@@ -145,19 +145,19 @@ size = Vector3(20, 20, 20)
 radius = 0.6
 height = 1.5
 
-[sub_resource type="Gradient" id="Gradient_k62l1"]
+[sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5)
 colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
-gradient = SubResource("Gradient_k62l1")
+gradient = SubResource("Gradient_3jjt7")
 width = 1024
 height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xq41j"]
 render_priority = 0
 shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_vq31v")
@@ -166,12 +166,12 @@ shader_parameter/albedo_mix = 1.0
 shader_parameter/scale_mod = Vector3(2, 0.2, 2)
 shader_parameter/cube_half_size = Vector3(0.25, 2.5, 0.25)
 shader_parameter/enable_y_fade = false
-shader_parameter/fade_start = 0.0
+shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
 shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj5th"]
-material = SubResource("ShaderMaterial_c1wxo")
+material = SubResource("ShaderMaterial_xq41j")
 size = Vector3(0.5, 5, 0.5)
 
 [sub_resource type="Animation" id="Animation_h423j"]
