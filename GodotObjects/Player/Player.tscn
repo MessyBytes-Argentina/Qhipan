@@ -638,6 +638,7 @@ texture = ExtResource("10_xq41j")
 
 [node name="popUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
 stream = ExtResource("11_xq41j")
+bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
