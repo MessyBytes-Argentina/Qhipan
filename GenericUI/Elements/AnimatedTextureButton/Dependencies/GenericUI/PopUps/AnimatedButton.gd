@@ -1,9 +1,9 @@
 @tool
-extends TextureButton
+extends Button
 
-## This [TextureButton] holds animations and plays them on the procured events.
+## This [Button] holds animations and plays them on the procured events.
 ## Any animation dependencies must be added as childs of this scene (eg. [MultipleParticleEmitterControl])
-class_name AnimatedTextureButton
+class_name AnimatedButton
 
 ## This enum holds the possible pivot configs for the node.
 enum PivotPositions {CENTER, TOP_LEFT, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT}
