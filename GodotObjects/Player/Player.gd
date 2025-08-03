@@ -202,11 +202,15 @@ func set_decal_size() -> void:
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
 	lightDecal.size.z = lightDecal.size.x
 
+func enable_checkpoint_sound() -> void:
+	get_tree().call_group("Checkpoints","enable_sounds")
+
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
 	respawnFall = true
 	get_tree().create_timer(1.0).timeout.connect(set.bind("respawnFall", false))
+	get_tree().create_timer(1.0).timeout.connect(enable_checkpoint_sound)
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()

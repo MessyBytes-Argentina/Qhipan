@@ -31,6 +31,7 @@ LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
 
 SceneManager=""
 InputBlocking=""
+Checkpoints=""
 
 [input]
 

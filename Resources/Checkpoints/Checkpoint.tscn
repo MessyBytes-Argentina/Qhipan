@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2oqm8r8jgsxc"]
+[gd_scene load_steps=12 format=4 uid="uid://d2oqm8r8jgsxc"]
 
 [ext_resource type="Script" uid="uid://3t8xjw3gutun" path="res://Resources/Checkpoints/checkpoint.gd" id="1_bhnv4"]
 [ext_resource type="Texture2D" uid="uid://d0nk04f8gsnwg" path="res://Assets/CheckPoint Totem/Checkpoint-Off.png" id="2_ynn0r"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="3_3d0u6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="4_bsfi2"]
+[ext_resource type="AudioStream" uid="uid://cwwjlqqulapem" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="4_w4bbu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_isids"]
 height = 1.0
@@ -47,11 +48,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vslfx")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4bbu"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("2_ynn0r")
+roughness = 0.5
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ynn0r"]
 height = 4.5
 radius = 1.0
 
-[node name="Checkpoint" type="Area3D"]
+[node name="Checkpoint" type="Area3D" groups=["Checkpoints"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_bhnv4")
@@ -65,7 +72,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.325, 0.6)
 mesh = SubResource("ArrayMesh_fx22s")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_j43pj")
+surface_material_override/0 = SubResource("StandardMaterial3D_w4bbu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LlamaTotem"]
 
@@ -90,5 +97,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 
 [node name="ActivationSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+stream = ExtResource("4_w4bbu")
 script = ExtResource("4_bsfi2")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
