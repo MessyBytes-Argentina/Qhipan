@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0nk04f8gsnwg" path="res://Assets/CheckPoint Totem/Checkpoint-Off.png" id="2_ynn0r"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="3_3d0u6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="4_bsfi2"]
-[ext_resource type="AudioStream" uid="uid://cwwjlqqulapem" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="4_w4bbu"]
+[ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="4_w4bbu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_isids"]
 height = 1.0
@@ -98,5 +98,6 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="ActivationSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_w4bbu")
+bus = &"SFX"
 script = ExtResource("4_bsfi2")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
