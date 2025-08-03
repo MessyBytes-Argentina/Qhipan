@@ -26,6 +26,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.294118, 0.419608, 0.466667, 1)
 
+[node name="Ah" type="Sprite2D" parent="Control"]
+position = Vector2(178, 482)
+texture = ExtResource("3_petif")
+
+[node name="Aj" type="Sprite2D" parent="Control"]
+position = Vector2(1083, 138)
+texture = ExtResource("4_ek0d3")
+
+[node name="Af" type="Sprite2D" parent="Control"]
+position = Vector2(976, 442)
+texture = ExtResource("5_0f4px")
+
+[node name="Ab" type="Sprite2D" parent="Control"]
+position = Vector2(153, 136)
+rotation = -0.427586
+texture = ExtResource("6_hh5ev")
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
@@ -62,11 +79,11 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 40
 text = "Credits
-Programers: Nahtrex, Nico
-Designers: Ivan, Lihue, Santi
-Visual Art: Mechi, Luis
-Sound Design: Lihue
-UI/UX: Barbi
+Programers: Nahtrex, Elkas
+Designers: Ivan Aranda, Anthony Rufus, Santi Mejias
+Visual Art: Mechi, Luis Arbit
+Sound Design: Anthony Rufus
+UI/UX: Barbara Lax
 Colaborators: Milton Blanco"
 fit_content = true
 autowrap_mode = 0
@@ -94,20 +111,3 @@ theme_override_font_sizes/font_size = 60
 text = "Restart"
 flat = true
 script = ExtResource("1_nw1lt")
-
-[node name="Ah" type="Sprite2D" parent="Control"]
-position = Vector2(178, 482)
-texture = ExtResource("3_petif")
-
-[node name="Aj" type="Sprite2D" parent="Control"]
-position = Vector2(1029, 138)
-texture = ExtResource("4_ek0d3")
-
-[node name="Af" type="Sprite2D" parent="Control"]
-position = Vector2(976, 442)
-texture = ExtResource("5_0f4px")
-
-[node name="Ab" type="Sprite2D" parent="Control"]
-position = Vector2(176, 167)
-rotation = -0.427586
-texture = ExtResource("6_hh5ev")
