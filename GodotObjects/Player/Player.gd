@@ -4,6 +4,7 @@ class_name Player
 
 const cameraRotationStep: float = deg_to_rad(90.0)
 const transparencyTime: float = 0.1
+const tweenTime: float = 0.5
 
 enum States {Idle, Walk, Float}
 
@@ -35,6 +36,10 @@ enum States {Idle, Walk, Float}
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 @onready var poof: MultipleParticle3DEmitter = %Poof
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
+@onready var fallSound: RandomPitchPlayer = %FallSound
+@onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
+@onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
+@onready var poofSound: RandomPitchPlayer = %PoofSound
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -55,6 +60,8 @@ var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
 var death: bool = false
+var fallSoundPlayed: bool = false
+var respawnFall: bool = false
 
 func _ready() -> void:
 	set_decal_size()
@@ -107,6 +114,10 @@ func camera_rotation_check() -> void:
 		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, cameraLerpDuration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 		cameraRotationTween.finished.connect(rotation_finished)
 		cameraRotationTween.play()
+		if cameraRotation > 0:
+			rotateCamLeftSound.play()
+		else:
+			rotateCamRightSound.play()
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue
@@ -136,11 +147,19 @@ func move_character(delta: float) -> void:
 		lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
 	velocity = lastVoluntarySpeed
 	move_and_slide()
-	moved += (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
+	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
+	
+	#if movedAmount != 0:
+		#MusicManager.set_synchro_clip_volume("main",[1],0.0,tweenTime)
+	#else:
+		#MusicManager.set_synchro_clip_volume("main",[1],-8.0,tweenTime)
+	
+	moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
 		lastInvoluntarySpeed.y -= gravity * delta
+		fallSoundPlayed = false
 	else:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
@@ -151,6 +170,9 @@ func move_character(delta: float) -> void:
 		animation_check()
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
+	if is_on_floor() and not fallSoundPlayed and not respawnFall:
+		fallSound.play_sound()
+	fallSoundPlayed = true
 
 func get_move_direction() -> Vector3:
 	var moveDirection: Vector3 = inputDirection
@@ -180,12 +202,15 @@ func set_decal_size() -> void:
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
+	respawnFall = true
+	get_tree().create_timer(1.0).timeout.connect(set.bind("respawnFall", false))
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()
 		hasSpawned = true
 		return
 	death = true
+	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
