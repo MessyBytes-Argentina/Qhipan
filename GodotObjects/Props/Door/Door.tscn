@@ -336,5 +336,6 @@ libraries = {
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_gmc35")
+bus = &"SFX"
 script = ExtResource("5_gmc35")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"

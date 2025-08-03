@@ -364,5 +364,6 @@ metadata/_custom_type_script = "uid://feckn7f3pmud"
 [node name="SpinupSound" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("10_tax0g")
+bus = &"SFX"
 script = ExtResource("10_xf8nb")
 metadata/_custom_type_script = "uid://bjvquoaf21fx3"

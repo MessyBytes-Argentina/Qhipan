@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://djeknm04s00t6" path="res://GodotObjects/Props/InfoCrystal/InfoCrystal.gd" id="1_sw5to"]
 [ext_resource type="Texture2D" uid="uid://biqrc6bv45wo3" path="res://Assets/Info Icon.png" id="3_uu0du"]
 [ext_resource type="Texture2D" uid="uid://crvbknm4v8pes" path="res://Assets/Placeholder bubble.png" id="4_atxa6"]
-[ext_resource type="AudioStream" uid="uid://bckko7kq16hjw" path="res://Assets/Sounds/Crytal Pop up.mp3" id="5_c8ppd"]
+[ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="5_c8ppd"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="6_0tcr6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_atxa6"]
@@ -133,5 +133,6 @@ stretch_mode = 5
 [node name="PopUpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_c8ppd")
+bus = &"SFX"
 script = ExtResource("6_0tcr6")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
