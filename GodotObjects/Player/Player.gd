@@ -60,7 +60,8 @@ var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
 var death: bool = false
-var fallSoundPlayed = false
+var fallSoundPlayed: bool = false
+var respawnFall: bool = false
 
 func _ready() -> void:
 	set_decal_size()
@@ -169,9 +170,9 @@ func move_character(delta: float) -> void:
 		animation_check()
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
-	if is_on_floor() and not fallSoundPlayed:
+	if is_on_floor() and not fallSoundPlayed and not respawnFall:
 		fallSound.play_sound()
-		fallSoundPlayed = true
+	fallSoundPlayed = true
 
 func get_move_direction() -> Vector3:
 	var moveDirection: Vector3 = inputDirection
@@ -201,6 +202,8 @@ func set_decal_size() -> void:
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
+	respawnFall = true
+	get_tree().create_timer(1.0).timeout.connect(set.bind("respawnFall", false))
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()
