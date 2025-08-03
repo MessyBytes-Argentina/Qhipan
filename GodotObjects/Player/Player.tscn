@@ -69,10 +69,14 @@
 render_priority = 2
 transparency = 1
 cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("2_cphfr")
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 0.1
+backlight = Color(1, 1, 1, 1)
 backlight_texture = ExtResource("2_cphfr")
+disable_receive_shadows = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 material = SubResource("StandardMaterial3D_ghylh")
