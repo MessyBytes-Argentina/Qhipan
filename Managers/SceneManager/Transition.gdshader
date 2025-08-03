@@ -4,9 +4,8 @@ uniform sampler2D transition_texture;
 uniform float progress : hint_range(0.0, 1.0, 0.01) = 0.0;
 
 void fragment() {
-	float actualprogress = 1.0 - progress;
 	float value = texture(transition_texture, UV).r;
-	if (value < actualprogress || actualprogress == 1.0) {
+	if (value < progress || progress == 1.0) {
 		COLOR = vec4(COLOR.rgb, 0.0);
 	}
 }
