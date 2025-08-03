@@ -51,9 +51,7 @@ func load_scene(sceneName: String, path: String) -> void:
 		"path": path,
 		"scene": null
 	}
-	var thread: Thread = Thread.new()
-	thread.start(ResourceLoader.load_threaded_request.bind(path, "PackedScene"))
-	thread.wait_to_finish()
+	ResourceLoader.load_threaded_request(path, "PackedScene", true)
 
 ## Removes a scene from memory.
 func erase_scene(sceneName: String) -> void:

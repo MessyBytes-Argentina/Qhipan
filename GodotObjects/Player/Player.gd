@@ -153,7 +153,7 @@ func move_character(delta: float) -> void:
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	
 	if movedAmount != 0:
-		MusicManager.set_synchro_clip_volume("main",[1],12.0,tweenTime)
+		MusicManager.set_synchro_clip_volume("main",[1],0.0,tweenTime)
 	else:
 		MusicManager.set_synchro_clip_volume("main",[1],-60.0,tweenTime)
 	
