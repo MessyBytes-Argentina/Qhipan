@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://b0sqkoo60eyuw"]
+[gd_scene load_steps=18 format=4 uid="uid://b0sqkoo60eyuw"]
 
 [ext_resource type="Texture2D" uid="uid://0u4oi5inxe6s" path="res://Assets/UV Textures/Door.png" id="1_avh7a"]
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://GodotObjects/Props/Door/Door.gd" id="1_iyqt8"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/Props/Door/DoorBody.gd" id="2_n2c0y"]
+[ext_resource type="Script" uid="uid://bjvquoaf21fx3" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer3D.gd" id="4_5h8iw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2c0y"]
 resource_name = "Material.001"
@@ -330,3 +331,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_gmc35")
 }
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_5h8iw")
+metadata/_custom_type_script = "uid://bjvquoaf21fx3"
