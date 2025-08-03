@@ -33,6 +33,7 @@ func activate() -> void:
 	particles2.emitting = true
 	if soundEnabled:
 		activationSound.play_sound()
+	get_tree().call_group("Player","reset_aura")
 
 func deactivate() -> void:
 	material.albedo_texture = offTexture
