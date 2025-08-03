@@ -23,11 +23,10 @@
 
 [node name="Level1" type="Node3D"]
 
-[node name="EnvironmentObjects" parent="." instance=ExtResource("14_nwjiy")]
-
 [node name="Player" parent="." instance=ExtResource("3_ujhbp")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6.92921, 0.5, -0.0447978)
-movementMaximum = 13.0
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.36837, 0.507987, -0.0395842)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("14_nwjiy")]
 
 [node name="TerrainMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
