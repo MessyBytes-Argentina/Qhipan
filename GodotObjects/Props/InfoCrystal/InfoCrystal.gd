@@ -12,6 +12,7 @@ const INFOSHRINKTIME: float = 0.1
 @onready var infoIcon: Sprite3D = %InfoIcon
 @onready var popupBoard: Sprite3D = %PopupBoard
 @onready var textureRect: TextureRect = %TextureRect
+@onready var popUpSound: RandomPitchPlayer = %PopUpSound
 
 var rotationTween: Tween
 var bobbingTween: Tween
@@ -41,6 +42,7 @@ func do_popup() -> void:
 	popupTween.tween_property(infoIcon, "scale", Vector3.ONE * 0.001, INFOSHRINKTIME * infoIcon.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.tween_property(popupBoard, "scale", Vector3.ONE, POPUPTIME * (1.0 - popupBoard.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
+	popUpSound.play_sound()
 
 func do_popout() -> void:
 	popupTween = create_tween()
