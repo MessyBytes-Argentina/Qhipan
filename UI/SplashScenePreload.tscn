@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://8ain4p6etldq"]
+
+[ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
+[ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_7th63"]
+[ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
+[ext_resource type="PackedScene" path="res://Resources/Particles/fan_particles.tscn" id="5_r1tmu"]
+[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="6_fhpfe"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_dxbmg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+render_priority = 5
+texture = SubResource("ViewportTexture_81nvi")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+
+[node name="StartScene" parent="SubViewport" instance=ExtResource("2_fhpfe")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15)
+
+[node name="Poof" parent="." instance=ExtResource("3_7th63")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="Particles1" parent="." instance=ExtResource("4_tjpxc")]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -7.5)
+
+[node name="FanParticles" parent="." instance=ExtResource("5_r1tmu")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
+
+[node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]

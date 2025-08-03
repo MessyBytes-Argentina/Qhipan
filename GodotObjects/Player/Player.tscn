@@ -1,10 +1,9 @@
-[gd_scene load_steps=98 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=96 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
 [ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_x38go"]
-[ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="4_l6njb"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_o7oki"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
@@ -19,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
+[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
@@ -111,18 +111,6 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
-
-[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
-flip_faces = true
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5th"]
-render_priority = -1
-shader = ExtResource("4_l6njb")
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/edge_threshold = 0.002
-shader_parameter/noise_frequency = 10.0
-shader_parameter/noise_offset_intensity = 0.002
 
 [sub_resource type="Gradient" id="Gradient_6pvne"]
 offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.916968, 0.935018, 0.963899, 0.998, 0.999)
@@ -662,13 +650,8 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
 fov = 55.0
 
-[node name="PostProcessing" type="MeshInstance3D" parent="CameraPivot/Camera3D"]
+[node name="PostProcessing" parent="CameraPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
-visible = false
-extra_cull_margin = 16384.0
-ignore_occlusion_culling = true
-mesh = SubResource("QuadMesh_vq31v")
-surface_material_override/0 = SubResource("ShaderMaterial_fj5th")
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
