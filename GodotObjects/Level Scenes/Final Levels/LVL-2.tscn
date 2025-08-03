@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bc7t04hvqoifc"]
+[gd_scene load_steps=15 format=3 uid="uid://bc7t04hvqoifc"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_03dge"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="2_6knnl"]
@@ -12,36 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="10_memn4"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="11_ih6j5"]
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="12_l08g2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_bottom_color = Color(0, 0, 0.0784314, 1)
-ground_horizon_color = Color(0, 0.519359, 0.830239, 1)
-
-[sub_resource type="Sky" id="Sky_v5vbm"]
-sky_material = SubResource("ProceduralSkyMaterial_xs4vi")
-
-[sub_resource type="Environment" id="Environment_e1oxl"]
-background_mode = 2
-sky = SubResource("Sky_v5vbm")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://Resources/EnvironmentObjects.tscn" id="13_l08g2"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_e5jbh"]
 
-[node name="Level1" type="Node3D"]
+[node name="Level2" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_03dge")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13, 1.5, -15.5)
 movementMaximum = 13.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.25, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0.5, 1.5, 0.5)
-light_color = Color(0.945098, 0.878431, 0.788235, 1)
-light_energy = 0.025
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e1oxl")
 
 [node name="Stickers" type="Node3D" parent="."]
 
@@ -114,11 +93,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 23)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -5, 20.5)
 shape = SubResource("WorldBoundaryShape3D_e5jbh")
 
-[node name="Door" parent="." instance=ExtResource("9_uoift")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12, 3, 20.5)
-
-[node name="Door2" parent="." instance=ExtResource("11_ih6j5")]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -12, 3, 23.5)
-
 [node name="GoalZone" parent="." instance=ExtResource("12_l08g2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 3.5, 25)
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("9_uoift")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -12, 3, 20.5)
+
+[node name="FinalDoor" parent="Doors" instance=ExtResource("11_ih6j5")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -12, 3, 23.5)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("13_l08g2")]
