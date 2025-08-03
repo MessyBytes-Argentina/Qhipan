@@ -15,6 +15,10 @@ run/main_scene="uid://dkdx1yrx643d4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://c5ealkxrsd0ur"
+
 [autoload]
 
 ButtonSoundManager="*res://Managers/SoundManager/ButtonSoundManager/ButtonSoundManager.tscn"

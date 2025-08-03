@@ -38,6 +38,7 @@ enum States {Idle, Walk, Float}
 @onready var fallSound: RandomPitchPlayer = %FallSound
 @onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
 @onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
+@onready var poofSound: RandomPitchPlayer = %PoofSound
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -144,7 +145,16 @@ func move_character(delta: float) -> void:
 		lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
 	velocity = lastVoluntarySpeed
 	move_and_slide()
-	moved += (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
+	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
+	
+	if movedAmount != 0:
+		# player moves
+		pass
+	else:
+		# player doesn't move
+		pass
+	
+	moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
@@ -198,6 +208,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 		hasSpawned = true
 		return
 	death = true
+	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
