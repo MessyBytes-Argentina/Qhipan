@@ -590,6 +590,7 @@ script = ExtResource("1_iw8fe")
 [node name="FallSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("62_8njlr")
+volume_db = -10.0
 bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
@@ -607,6 +608,7 @@ bus = &"SFX"
 [node name="PoofSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("6_3jjt7")
+volume_db = -20.0
 bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
@@ -638,6 +640,7 @@ texture = ExtResource("10_xq41j")
 
 [node name="popUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
 stream = ExtResource("11_xq41j")
+volume_db = -20.0
 bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
