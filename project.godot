@@ -30,6 +30,7 @@ LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
 [global_group]
 
 SceneManager=""
+InputBlocking=""
 
 [input]
 

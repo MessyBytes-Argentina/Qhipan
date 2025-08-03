@@ -72,6 +72,9 @@ func _ready() -> void:
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 
+func block_inputs() -> void:
+	death = true
+
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if death: 
