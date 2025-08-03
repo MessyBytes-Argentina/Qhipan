@@ -5,6 +5,7 @@ class_name Player
 const cameraRotationStep: float = deg_to_rad(90.0)
 const transparencyTime: float = 0.1
 const tweenTime: float = 0.25
+const POPUPTIME: float = 0.5
 
 enum States {Idle, Walk, Float}
 
@@ -40,6 +41,8 @@ enum States {Idle, Walk, Float}
 @onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
 @onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
 @onready var poofSound: RandomPitchPlayer = %PoofSound
+@onready var message: Sprite3D = %Message
+@onready var popUpSound: RandomPitchPlayer = $SpritePivot/Message/popUpSound
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -62,6 +65,8 @@ var submaterial: StandardMaterial3D
 var death: bool = false
 var fallSoundPlayed: bool = false
 var respawnFall: bool = false
+var popupTween: Tween
+var stopped: bool = false
 
 func _ready() -> void:
 	set_decal_size()
@@ -143,6 +148,9 @@ func move_character(delta: float) -> void:
 	var pushForce: Vector3 = Vector3.ZERO
 	for object in pushingForces:
 		pushForce += pushingForces[object]
+	if moved >= movementMaximum and not stopped:
+		do_popup()
+		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
 		lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
@@ -202,16 +210,21 @@ func set_decal_size() -> void:
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
 	lightDecal.size.z = lightDecal.size.x
 
+func enable_checkpoint_sound() -> void:
+	get_tree().call_group("Checkpoints","enable_sounds")
+
 func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
 	respawnFall = true
 	get_tree().create_timer(1.0).timeout.connect(set.bind("respawnFall", false))
+	get_tree().create_timer(1.0).timeout.connect(enable_checkpoint_sound)
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()
 		hasSpawned = true
 		return
+	do_popout()
 	death = true
 	poofSound.play_sound()
 	if transparencyTween:
@@ -235,6 +248,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.play()
 	await poof.finished
 	death = false
+	stopped = false
 
 func reset_aura() -> void:
 	moved = 0
@@ -250,3 +264,14 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 	if currentState != States.Float: currentState = States.Walk if currentInputDirection.length() > 0 else States.Idle
 	if currentInputDirection.z == 0 and currentState != States.Idle: return
 	facingBack = currentInputDirection.z < 0
+
+func do_popup() -> void:
+	popupTween = create_tween()
+	popupTween.tween_property(message, "scale", Vector3.ONE, POPUPTIME * (1.0 - message.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.play()
+	popUpSound.play_sound()
+
+func do_popout() -> void:
+	popupTween = create_tween()
+	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	popupTween.play()
