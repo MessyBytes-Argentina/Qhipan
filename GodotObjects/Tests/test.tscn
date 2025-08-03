@@ -78,9 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 [node name="Checkpoint2" parent="CheckpointManager" instance=ExtResource("6_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -0.5)
 
-[node name="LlamaTotem" parent="CheckpointManager/Checkpoint2" index="1"]
-surface_material_override/0 = null
-
 [node name="Key" parent="." instance=ExtResource("8_u47oh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
 
@@ -92,5 +89,3 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 
 [node name="InfoCrystal" parent="." instance=ExtResource("11_qjlft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
-
-[editable path="CheckpointManager/Checkpoint2"]

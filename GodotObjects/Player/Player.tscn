@@ -21,9 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
+[ext_resource type="Texture2D" uid="uid://dd8k35t2irrpo" path="res://Assets/Tutorial Screens/Reset Bubble.png" id="10_xq41j"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="11_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Character/WALK/WALK 2.png" id="11_lpbw1"]
+[ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="11_xq41j"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="12_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Character/WALK/WALK 3.png" id="12_wm78n"]
 [ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/Ripping.mp3" id="13_8hsli"]
@@ -63,7 +65,6 @@
 [ext_resource type="Texture2D" uid="uid://dwv18bhx6hqk0" path="res://Assets/Character/FLOAT/FLOAT 2.png" id="51_xq41j"]
 [ext_resource type="Texture2D" uid="uid://dfc82wqu3h2t5" path="res://Assets/Character/FLOAT/FLOAT 3.png" id="52_6fycs"]
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
-[ext_resource type="Texture2D" uid="uid://crvbknm4v8pes" path="res://Assets/Placeholder bubble.png" id="54_6pvne"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
@@ -104,9 +105,6 @@ emission_energy_multiplier = 2.0
 detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_504ik"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
@@ -630,13 +628,18 @@ script = ExtResource("4_o7oki")
 particles = Array[PackedScene]([ExtResource("3_x38go")])
 _testParticles = ""
 
-[node name="Sprite3D" type="Sprite3D" parent="SpritePivot"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, -5.96046e-08, 0, -1.19209e-07, 1, 1, 0.7, 0.3)
-visible = false
-pixel_size = 0.003
+[node name="Message" type="Sprite3D" parent="SpritePivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 2.98024e-10, 0, -2.98024e-10, 0.001, 0.858579, 0.651631, 0.432892)
+pixel_size = 0.0025
 no_depth_test = true
 render_priority = 3
-texture = SubResource("ViewportTexture_504ik")
+texture = ExtResource("10_xq41j")
+
+[node name="popUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
+stream = ExtResource("11_xq41j")
+script = ExtResource("10_8hsli")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cphfr")
@@ -722,10 +725,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_ihfjc")
 }
 autoplay = "Idle"
-
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
-texture = ExtResource("54_6pvne")
-centered = false
