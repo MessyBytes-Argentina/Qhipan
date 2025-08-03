@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
 	move_character(delta)
 	camera_follow(delta)
 	animation_check()
-	if not stopped: resetButton.hide()
+	if not stopped and resetButton: resetButton.hide()
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
