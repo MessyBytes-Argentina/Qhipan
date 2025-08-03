@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bc7t04hvqoifc"]
+[gd_scene load_steps=19 format=3 uid="uid://bc7t04hvqoifc"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_03dge"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="2_6knnl"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bsaoxxoswk6dt" path="res://GodotObjects/Props/Decorations/Botellon Corcho.tscn" id="14_p8rap"]
 [ext_resource type="PackedScene" uid="uid://ian8ddyxqvd7" path="res://GodotObjects/Props/Decorations/Jarron Cusco.tscn" id="15_c55gs"]
 [ext_resource type="PackedScene" uid="uid://bt8utmhhfqc7x" path="res://GodotObjects/Props/Decorations/Cantaro.tscn" id="16_uoift"]
+[ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://Resources/DecalMap/DecalMap.tscn" id="17_c55gs"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_e5jbh"]
 
@@ -144,8 +145,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2203, -0.5, 25.1157)
 [node name="BotellonCorcho3" parent="Deco" instance=ExtResource("14_p8rap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2, 16)
 
-[node name="Jarron Cusco" parent="." instance=ExtResource("15_c55gs")]
+[node name="Jarron Cusco6" parent="Deco" instance=ExtResource("15_c55gs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, 9)
 
-[node name="Jarron Cusco2" parent="." instance=ExtResource("15_c55gs")]
+[node name="Jarron Cusco7" parent="Deco" instance=ExtResource("15_c55gs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, 9)
+
+[node name="GridMap" parent="." instance=ExtResource("17_c55gs")]
+data = {
+"cells": PackedInt32Array(65522, 1, 655370, 65522, 65526, 1441801, 65522, 65531, 1441805, 65520, 6, 13, 65524, 6, 13, 262130, 9, 11, 393205, 24, 4, 393205, 21, 5, 393202, 18, 655362, 393203, 21, 655373, -15, 24, 655365, -15, 27, 1441798, 65521, 2, 1441798, 65523, 2, 1441795, 327664, 13, 1441797, 327668, 14, 1441799)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
