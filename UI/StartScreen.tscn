@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=16 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="Texture2D" uid="uid://cuahxmtx1nier" path="res://Assets/Decos/Deco Grid/aa.png" id="1_4gdyn"]
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
@@ -11,6 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://dhwtjjqbk327g" path="res://Assets/Decos/Deco Grid/aj.png" id="5_j1sgt"]
 [ext_resource type="Texture2D" uid="uid://dfxr4q4fycll1" path="res://Assets/Decos/Deco Grid/ah.png" id="6_ge5ru"]
 [ext_resource type="Texture2D" uid="uid://16pvrx37266h" path="res://Assets/Decos/Deco Grid/ae.png" id="7_xubrw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gdyn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3vac"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1jkq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxy5c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control" groups=["SceneManager"]]
 layout_mode = 3
@@ -66,40 +76,57 @@ rotation = -0.287404
 scale = Vector2(0.660865, 0.660865)
 texture = ExtResource("7_xubrw")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -12.0
-offset_right = 141.0
-offset_bottom = 242.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -270.0
+offset_right = 127.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="StartButton" type="Button" parent="AspectRatioContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4gdyn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y3vac")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y3vac")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y3vac")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y3vac")
 text = "Start"
-flat = true
-clip_text = true
 script = ExtResource("1_oq7qy")
 levelList = Array[String](["res://GodotObjects/Level Scenes/Final Levels/LVL-1.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-2.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-3.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-4.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-5.tscn"])
 
-[node name="Settings" type="Button" parent="AspectRatioContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kxy5c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kxy5c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kxy5c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxy5c")
 text = "Settings"
-flat = true
 clip_text = true
 script = ExtResource("2_6u8ck")
 settingsScene = NodePath("../../../SimpleSettingsMenu")

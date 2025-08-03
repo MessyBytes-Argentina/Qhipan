@@ -1,24 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://cn4yayku4c737"]
+[gd_scene load_steps=15 format=3 uid="uid://cn4yayku4c737"]
 
-[ext_resource type="Texture2D" uid="uid://byxcwe55b3bkh" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Blue/PanelsAndWindows9Slice.png" id="1_ileku"]
-[ext_resource type="FontFile" uid="uid://k2d6sgchllyk" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Fonts/KarenFat.ttf" id="2_seph6"]
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_j68xm"]
 [ext_resource type="PackedScene" uid="uid://cbt3ir543hjep" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/VolumeHSlider.tscn" id="3_kloqg"]
 [ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_dwkyl"]
 [ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1paln"]
 [ext_resource type="PackedScene" uid="uid://23hcgk4hee52" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/UIVolumeButton.tscn" id="5_npjjy"]
-[ext_resource type="Texture2D" uid="uid://jgogweyysgfd" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/ReturnButton.png" id="6_snj1i"]
 [ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="6_t5k1t"]
 [ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="7_cy042"]
 [ext_resource type="AudioStream" uid="uid://dfsx470k0xqp4" path="res://Assets/Sounds/ButtonsSFX/Bounce2.ogg" id="7_qesth"]
-[ext_resource type="Animation" uid="uid://c6m11xjao8bbn" path="res://GenericUI/Elements/AnimatedTextureButton/RESET.res" id="8_vvc8w"]
-[ext_resource type="Animation" uid="uid://dijfkl740kipq" path="res://GenericUI/Elements/AnimatedTextureButton/hover.res" id="9_qlcfx"]
-[ext_resource type="Animation" uid="uid://0csbm78eb800" path="res://GenericUI/Elements/AnimatedTextureButton/pressed.res" id="10_qf0et"]
-[ext_resource type="Animation" uid="uid://epf048xdyi6x" path="res://GenericUI/Elements/AnimatedTextureButton/focus.res" id="11_2yogu"]
 [ext_resource type="Script" uid="uid://y5tfp47a5yrk" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticleEmitterControl.gd" id="12_piisv"]
-[ext_resource type="Texture2D" uid="uid://cur0ngh7ps0tk" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/Restart.png" id="12_r26ml"]
 [ext_resource type="PackedScene" uid="uid://bk6ps7cpbkl5r" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/Particles/Fireworks2D.tscn" id="13_eqio2"]
-[ext_resource type="Texture2D" uid="uid://drr1wphhwki37" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/Save.png" id="13_pxuly"]
-[ext_resource type="Texture2D" uid="uid://iwk0jk6bgvn1" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/CloseButton.png" id="17_vfhi1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
 shader = ExtResource("6_t5k1t")
@@ -31,58 +22,8 @@ shader_parameter/useTime = false
 shader_parameter/speed = 1.0
 shader_parameter/progress = 0.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uatif"]
-texture = ExtResource("1_ileku")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-region_rect = Rect2(288, 0, 48, 48)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65lju"]
-shader = ExtResource("6_t5k1t")
-shader_parameter/shineColor = Color(1, 1, 1, 1)
-shader_parameter/shineSize = 0.0
-shader_parameter/shineAngle = 315.0
-shader_parameter/lineSmoothness = 0.0
-shader_parameter/distortion = 0.0
-shader_parameter/useTime = false
-shader_parameter/speed = 1.0
-shader_parameter/progress = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6o2u8"]
-atlas = ExtResource("6_snj1i")
-region = Rect2(0, 11, 16, 20)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgv6r"]
-shader = ExtResource("6_t5k1t")
-shader_parameter/shineColor = Color(1, 1, 1, 1)
-shader_parameter/shineSize = 0.15
-shader_parameter/shineAngle = 315.0
-shader_parameter/lineSmoothness = 0.0
-shader_parameter/distortion = 0.0
-shader_parameter/useTime = false
-shader_parameter/speed = 1.0
-shader_parameter/progress = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4l7om"]
-atlas = ExtResource("12_r26ml")
-region = Rect2(0, 0, 144, 60)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0tqe"]
-shader = ExtResource("6_t5k1t")
-shader_parameter/shineColor = Color(1, 1, 1, 1)
-shader_parameter/shineSize = 0.15
-shader_parameter/shineAngle = 315.0
-shader_parameter/lineSmoothness = 0.0
-shader_parameter/distortion = 0.0
-shader_parameter/useTime = false
-shader_parameter/speed = 1.0
-shader_parameter/progress = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nn4jx"]
-atlas = ExtResource("13_pxuly")
-region = Rect2(0, 0, 100, 60)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68xm"]
+bg_color = Color(0.0862745, 0.156863, 0.247059, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dibcv"]
 shader = ExtResource("6_t5k1t")
@@ -95,13 +36,11 @@ shader_parameter/useTime = false
 shader_parameter/speed = 1.0
 shader_parameter/progress = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tm2m0"]
-atlas = ExtResource("17_vfhi1")
-region = Rect2(0, 11, 16, 20)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
 
 [node name="SimpleSettingsMenu" type="MarginContainer"]
 material = SubResource("ShaderMaterial_omkoa")
-custom_minimum_size = Vector2(512, 384)
+custom_minimum_size = Vector2(512, 300)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -110,7 +49,7 @@ anchor_bottom = 0.5
 offset_left = -256.0
 offset_top = -192.0
 offset_right = 256.0
-offset_bottom = 192.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(256, 192)
@@ -121,25 +60,24 @@ theme_override_constants/margin_bottom = 50
 
 [node name="Body PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_uatif")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j68xm")
 
 [node name="BodyMarginContainer" type="MarginContainer" parent="Body PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Body PanelContainer/BodyMarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 14
 
 [node name="Label" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_seph6")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("2_j68xm")
+theme_override_font_sizes/font_size = 56
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -155,97 +93,11 @@ soundOnChange = ExtResource("5_1paln")
 bus = 1
 
 [node name="UIVolumeHSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+visible = false
 layout_mode = 2
 buttonScene = ExtResource("5_npjjy")
 soundOnChange = ExtResource("7_qesth")
 bus = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="AnimatedTextureButton" type="TextureButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer"]
-material = SubResource("ShaderMaterial_65lju")
-custom_minimum_size = Vector2(46, 32)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_6o2u8")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_cy042")
-customPivotPosition = 6
-resetAnimation = ExtResource("8_vvc8w")
-hoverAnimation = ExtResource("9_qlcfx")
-clickAnimation = ExtResource("10_qf0et")
-focusAnimation = ExtResource("11_2yogu")
-
-[node name="MultipleParticleEmitterControl" type="Control" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer/AnimatedTextureButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("12_piisv")
-particles = Array[PackedScene]([ExtResource("13_eqio2")])
-_testParticles = ""
-
-[node name="AnimatedTextureButton2" type="TextureButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer"]
-material = SubResource("ShaderMaterial_wgv6r")
-custom_minimum_size = Vector2(136, 32)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_4l7om")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_cy042")
-customPivotPosition = 6
-resetAnimation = ExtResource("8_vvc8w")
-hoverAnimation = ExtResource("9_qlcfx")
-clickAnimation = ExtResource("10_qf0et")
-focusAnimation = ExtResource("11_2yogu")
-
-[node name="MultipleParticleEmitterControl" type="Control" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer/AnimatedTextureButton2"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("12_piisv")
-particles = Array[PackedScene]([ExtResource("13_eqio2")])
-_testParticles = ""
-
-[node name="AnimatedTextureButton3" type="TextureButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer"]
-material = SubResource("ShaderMaterial_s0tqe")
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-texture_normal = SubResource("AtlasTexture_nn4jx")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_cy042")
-customPivotPosition = 6
-resetAnimation = ExtResource("8_vvc8w")
-hoverAnimation = ExtResource("9_qlcfx")
-clickAnimation = ExtResource("10_qf0et")
-focusAnimation = ExtResource("11_2yogu")
-
-[node name="MultipleParticleEmitterControl" type="Control" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/HBoxContainer/AnimatedTextureButton3"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("12_piisv")
-particles = Array[PackedScene]([ExtResource("13_eqio2")])
-_testParticles = ""
 
 [node name="CloseButtonMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -253,21 +105,14 @@ mouse_filter = 2
 theme_override_constants/margin_top = -30
 theme_override_constants/margin_right = -20
 
-[node name="AnimatedTextureButton4" type="TextureButton" parent="CloseButtonMarginContainer"]
+[node name="AnimatedTextureButton4" type="Button" parent="CloseButtonMarginContainer"]
 material = SubResource("ShaderMaterial_dibcv")
 custom_minimum_size = Vector2(46, 64)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-texture_normal = SubResource("AtlasTexture_tm2m0")
-ignore_texture_size = true
-stretch_mode = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
 script = ExtResource("7_cy042")
-customPivotPosition = 6
-resetAnimation = ExtResource("8_vvc8w")
-hoverAnimation = ExtResource("9_qlcfx")
-clickAnimation = ExtResource("10_qf0et")
-focusAnimation = ExtResource("11_2yogu")
 
 [node name="MultipleParticleEmitterControl" type="Control" parent="CloseButtonMarginContainer/AnimatedTextureButton4"]
 show_behind_parent = true
