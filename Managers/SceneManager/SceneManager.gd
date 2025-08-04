@@ -7,7 +7,7 @@ class_name StoryWriterSceneManager
 signal finished()
 
 ## The wait time after a scene is loaded in.
-const loadExtraTime: float = 0.5
+const loadExtraTime: float = 1.0
 ## The animation time.
 const loadAnimationTime: float = 1
 const loadSameScene: float = 0.5
@@ -15,9 +15,6 @@ const loadSameScene: float = 0.5
 const loadAnimationExtraTime: float = 0
 ## The time to spread back the hexes on loading time extended.
 const loadAnimationWaitTime: float = 0.5
-
-##Noise to use on shader.
-@export var noise: NoiseTexture2D
 
 ## Reference to the shader ColorRect.
 @onready var shaderColorRect: ColorRect = %ShaderColorRect

@@ -1,11 +1,9 @@
-[gd_scene load_steps=97 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=96 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_x38go"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
-[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_o7oki"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="5_3jjt7"]
 [ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/poof.ogg" id="6_3jjt7"]
@@ -13,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Character/IDLE/IDLE 2.png" id="7_fj5th"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
+[ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/Player/poofEmitter.tscn" id="8_3jjt7"]
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
@@ -128,8 +127,8 @@ shader = ExtResource("3_8yuwp")
 shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
 shader_parameter/modulate = Color(1, 1, 1, 0.901961)
 shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(0.05, 0.05, 0.05)
-shader_parameter/cube_half_size = Vector3(10, 10, 10)
+shader_parameter/scale_mod = Vector3(0.0384615, 0.05, 0.0384615)
+shader_parameter/cube_half_size = Vector3(13, 10, 13)
 shader_parameter/enable_y_fade = false
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.7
@@ -137,7 +136,7 @@ shader_parameter/fade_power = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
 material = SubResource("ShaderMaterial_504ik")
-size = Vector3(20, 20, 20)
+size = Vector3(26, 20, 26)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
@@ -666,12 +665,9 @@ mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cphfr")
 
-[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("3_x38go")]
+[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, -0.0725533, 0.199339)
-script = ExtResource("4_o7oki")
-particles = Array[PackedScene]([ExtResource("3_x38go")])
-_testParticles = ""
 
 [node name="Message" type="Sprite3D" parent="SpritePivot"]
 unique_name_in_owner = true

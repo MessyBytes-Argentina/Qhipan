@@ -72,6 +72,7 @@ var resetButton: Button
 
 func _ready() -> void:
 	set_decal_size()
+	poof.emit_particles()
 	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position

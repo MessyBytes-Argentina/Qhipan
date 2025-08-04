@@ -11,7 +11,6 @@ const INFOSHRINKTIME: float = 0.1
 @onready var crystal: MeshInstance3D = $Crystal
 @onready var infoIcon: Sprite3D = %InfoIcon
 @onready var popupBoard: Sprite3D = %PopupBoard
-@onready var textureRect: TextureRect = %TextureRect
 @onready var popUpSound: RandomPitchPlayer = %PopUpSound
 
 var rotationTween: Tween
@@ -20,9 +19,10 @@ var popupTween: Tween
 
 func _ready() -> void:
 	start_bobbing()
-	textureRect.texture = infoSprite
 	body_entered.connect(do_popup.unbind(1))
 	body_exited.connect(do_popout.unbind(1))
+	popupBoard.texture = infoSprite
+	await get_tree().create_timer(0.1).timeout
 	popupBoard.scale = Vector3.ONE * 0.001
 
 func start_bobbing() -> void:

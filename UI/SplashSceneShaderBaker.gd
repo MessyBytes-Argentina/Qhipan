@@ -5,12 +5,14 @@ extends Node3D
 @onready var poof: GPUParticles3D = %Poof
 @onready var particles_1: GPUParticles3D = %Particles1
 @onready var fan_particles: GPUParticles3D = %FanParticles
+@onready var poof_2: MultipleParticle3DEmitter = %Poof2
 
 func _ready() -> void:
 	MusicManager.set_synchro_clip_volume("main",[1],-60.0,0.1)
 	poof.emitting = true
 	particles_1.emitting = true
 	fan_particles.emitting = true
+	poof_2.emit_particles()
 	var sceneManager: StoryWriterSceneManager = null
 	while not sceneManager:
 		await get_tree().process_frame

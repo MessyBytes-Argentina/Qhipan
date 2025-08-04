@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://b6tpow1ja1rde"]
+[gd_scene load_steps=12 format=4 uid="uid://b6tpow1ja1rde"]
 
 [ext_resource type="Texture2D" uid="uid://b1elvatgjpf8e" path="res://Assets/Decos/Crystal.png" id="1_5cfut"]
 [ext_resource type="Script" uid="uid://djeknm04s00t6" path="res://GodotObjects/Props/InfoCrystal/InfoCrystal.gd" id="1_sw5to"]
 [ext_resource type="Texture2D" uid="uid://biqrc6bv45wo3" path="res://Assets/Info Icon.png" id="3_uu0du"]
-[ext_resource type="Texture2D" uid="uid://crvbknm4v8pes" path="res://Assets/Placeholder bubble.png" id="4_atxa6"]
 [ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="5_c8ppd"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="6_0tcr6"]
 
@@ -94,42 +93,12 @@ omni_range = 2.0
 [node name="PopupBoard" type="Sprite3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1, 0)
-pixel_size = 0.0007
+pixel_size = 0.0004
 billboard = 1
 no_depth_test = true
 fixed_size = true
 render_priority = 3
 texture = SubResource("ViewportTexture_atxa6")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(1152, 512)
-
-[node name="Control" type="Control" parent="SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport/Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -324.0
-offset_right = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_atxa6")
-expand_mode = 2
-stretch_mode = 5
 
 [node name="PopUpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

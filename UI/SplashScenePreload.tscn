@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://8ain4p6etldq"]
+[gd_scene load_steps=30 format=3 uid="uid://8ain4p6etldq"]
 
 [ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
 [ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="13_28kp4"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="14_as1pu"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="15_6x7mq"]
+[ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/Player/poofEmitter.tscn" id="22_0rg7o"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
 viewport_path = NodePath("SubViewport")
@@ -101,7 +102,11 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
 
+[node name="Poof2" parent="." instance=ExtResource("22_0rg7o")]
+unique_name_in_owner = true
+
 [node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]
+visible = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tv7nj")
