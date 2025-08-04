@@ -7,6 +7,7 @@ extends Node3D
 @onready var fan_particles: GPUParticles3D = %FanParticles
 
 func _ready() -> void:
+	MusicManager.set_synchro_clip_volume("main",[1],-60.0,0.1)
 	poof.emitting = true
 	particles_1.emitting = true
 	fan_particles.emitting = true
