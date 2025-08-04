@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=24 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Stickers/Key/Key-1.png" id="2_mjg6o"]
 [ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Stickers/Key/Key-Used.png" id="3_loxqr"]
@@ -49,16 +49,6 @@ transparency = 1
 albedo_texture = ExtResource("2_mjg6o")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_mjg6o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loxqr"]
-render_priority = 2
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("2_mjg6o")
-detail_enabled = true
-detail_mask = SubResource("GradientTexture2D_o0lwf")
-detail_albedo = ExtResource("3_loxqr")
-billboard_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -188,11 +178,13 @@ mesh = SubResource("QuadMesh_loxqr")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c5eqd")
 
-[node name="Billboard" type="MeshInstance3D" parent="Meshes"]
+[node name="Billboard" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
-mesh = SubResource("QuadMesh_mjg6o")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_loxqr")
+pixel_size = 0.0004
+billboard = 1
+fixed_size = true
+render_priority = 2
+texture = ExtResource("2_mjg6o")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true

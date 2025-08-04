@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name StickerBase
 
-const GRABBINGSCALE: float = 0.8
 const BOBBINGSCALE: float = 0.5
 const BOBBINGHEIGHT: float = 0.05
 const BOBBINGTIME: float = 2.0
@@ -19,7 +18,7 @@ enum ScaleModes {GRABBED, DROPPED, PLACED}
 @onready var back: MeshInstance3D = %Back
 @onready var meshes: Node3D = %Meshes
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
-@onready var billboard: MeshInstance3D = %Billboard
+@onready var billboard: Sprite3D = %Billboard
 
 var sceneParent: Node
 var onPlayer: bool = false
@@ -38,8 +37,7 @@ func _ready() -> void:
 	back.set_surface_override_material(0, backMaterial)
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
-	billboard.mesh.size = startSize * GRABBINGSCALE
-	get_tree().create_timer(0.1).timeout.connect(billboard.hide)
+	prerender()
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
@@ -60,6 +58,18 @@ func _ready() -> void:
 				return
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
+
+func prerender() -> void:
+	await get_tree().create_timer(0.01).timeout
+	mesh.hide()
+	back.hide()
+	billboard.hide()
+	await get_tree().create_timer(0.01).timeout
+	mesh.show()
+	back.show()
+	billboard.show()
+	await get_tree().create_timer(0.01).timeout
+	billboard.hide()
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	set_size(ScaleModes.PLACED)
@@ -127,5 +137,5 @@ func stop_rotation() -> void:
 	meshes.position.y = 0
 	meshes.rotation.y = 0
 	meshes.rotation.x = 0
-	meshes.scale = Vector3.ONE if not onPlayer else (Vector3.ONE * GRABBINGSCALE)
+	meshes.scale = Vector3.ONE
 	shadowDecal.hide()

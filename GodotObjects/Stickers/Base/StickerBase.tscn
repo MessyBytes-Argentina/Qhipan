@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://205amao8uwa2"]
+[gd_scene load_steps=16 format=3 uid="uid://205amao8uwa2"]
 
 [ext_resource type="Script" uid="uid://d2p44ct5iuibl" path="res://GodotObjects/Stickers/Base/StickerBase.gd" id="1_8ww4f"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_r43o5"]
@@ -33,16 +33,6 @@ transparency = 1
 albedo_texture = ExtResource("2_r43o5")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_h7mp7")
-
-[sub_resource type="QuadMesh" id="QuadMesh_k62l1"]
-size = Vector2(0.8, 0.8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1wxo"]
-render_priority = 2
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("2_r43o5")
-billboard_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -95,11 +85,13 @@ mesh = SubResource("QuadMesh_8dhaa")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xhy6c")
 
-[node name="Billboard" type="MeshInstance3D" parent="Meshes"]
+[node name="Billboard" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
-mesh = SubResource("QuadMesh_k62l1")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_c1wxo")
+pixel_size = 0.0004
+billboard = 1
+fixed_size = true
+render_priority = 2
+texture = ExtResource("2_r43o5")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true

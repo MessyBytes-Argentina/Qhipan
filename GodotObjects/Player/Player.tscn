@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=97 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -559,6 +559,48 @@ tracks/1/keys = {
 "values": [ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
 }
 
+[sub_resource type="Animation" id="Animation_xq41j"]
+resource_name = "preload"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02, 0.021, 0.022, 0.023, 0.024, 0.025, 0.026, 0.027, 0.028, 0.029, 0.03, 0.031, 0.032, 0.033, 0.034, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04, 0.041, 0.042, 0.043, 0.044, 0.045, 0.046, 0.047),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.048),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02, 0.021, 0.022, 0.023, 0.024, 0.025, 0.026, 0.027, 0.028, 0.029, 0.03, 0.031, 0.032, 0.033, 0.034, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04, 0.041, 0.042, 0.043, 0.044, 0.045, 0.046, 0.047),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]
 _data = {
 &"Float": SubResource("Animation_h423j"),
@@ -573,7 +615,8 @@ _data = {
 &"Idle_Back": SubResource("Animation_c6d4u"),
 &"RESET": SubResource("Animation_57iut"),
 &"Walk": SubResource("Animation_6681y"),
-&"Walk_Back": SubResource("Animation_po2dv")
+&"Walk_Back": SubResource("Animation_po2dv"),
+&"preload": SubResource("Animation_xq41j")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["InputBlocking", "Player"]]
@@ -728,4 +771,4 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ihfjc")
 }
-autoplay = "Idle"
+autoplay = "preload"
