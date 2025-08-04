@@ -28,7 +28,7 @@ const loadAnimationWaitTime: float = 0.5
 @onready var resetButton: Button = %ResetButton
 
 ## A Dictionary of scenes loaded.
-var loadedScenes: Dictionary = {}
+var loadedScenes: Dictionary[String, Dictionary] = {}
 ## The currently requested main scene.
 var requested: String = ""
 ## Toggle used for transitions.
@@ -43,6 +43,8 @@ var inSetup: bool = false
 var currentScene: String
 
 var reloaded: bool = false
+
+var requestedSwitch: bool = false
 
 ## Starts loading a given scene.
 func load_scene(sceneName: String, path: String) -> void:
@@ -62,6 +64,8 @@ func erase_scene(sceneName: String) -> void:
 func load_and_switch(path: String, sceneName: String = "") -> void:
 	if sceneName == "": sceneName = path.get_file().get_basename()
 	load_scene(sceneName, path)
+	prints(path, sceneName)
+	requestedSwitch = true
 	switch_scene(sceneName)
 	currentScene = sceneName
 
@@ -74,7 +78,7 @@ func _process(_delta: float) -> void:
 				match ResourceLoader.load_threaded_get_status(loadedScenes[key].path, progress):
 					ResourceLoader.THREAD_LOAD_LOADED:
 						loadedScenes[key].scene = ResourceLoader.load_threaded_get(loadedScenes[key].path)
-						finish_scene_switch()
+						if requestedSwitch: finish_scene_switch()
 					ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 						push_error("An error occurred while loading scene '" + key + "' with path '" + loadedScenes[key].path + "'.")
 	if currentViewportSize != get_viewport_rect().size:
@@ -90,10 +94,6 @@ func switch_scene(sceneName: String = currentScene) -> void:
 	inSetup = true
 	get_tree().paused = true
 	requested = sceneName
-	var newNoise: NoiseTexture2D = noise.duplicate()
-	newNoise.noise = noise.noise.duplicate()
-	newNoise.noise.seed = randi()
-	custom_set_shader_parameter(newNoise, "noise_texture")
 	transitionTween = create_tween()
 	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 0.0, 1.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	transitionTween.tween_method(custom_set_shader_parameter.bind("transparency") ,0.0 , 1.0, loadAnimationExtraTime)

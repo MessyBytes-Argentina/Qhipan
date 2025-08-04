@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name StickerBase
 
-const GRABBINGSCALE: float = 0.6
+const GRABBINGSCALE: float = 0.8
 const BOBBINGSCALE: float = 0.5
 const BOBBINGHEIGHT: float = 0.05
 const BOBBINGTIME: float = 2.0
@@ -19,6 +19,7 @@ enum ScaleModes {GRABBED, DROPPED, PLACED}
 @onready var back: MeshInstance3D = %Back
 @onready var meshes: Node3D = %Meshes
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
+@onready var billboard: MeshInstance3D = %Billboard
 
 var sceneParent: Node
 var onPlayer: bool = false
@@ -37,6 +38,8 @@ func _ready() -> void:
 	back.set_surface_override_material(0, backMaterial)
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
+	billboard.mesh.size = startSize * GRABBINGSCALE
+	get_tree().create_timer(0.1).timeout.connect(billboard.hide)
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
@@ -69,17 +72,19 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 func set_size(mode: ScaleModes) -> void:
 	match mode:
 		ScaleModes.GRABBED:
-			meshMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-			backMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-			mesh.mesh.size = startSize * GRABBINGSCALE
+			billboard.show()
+			mesh.hide()
+			back.hide()
 		ScaleModes.DROPPED:
-			meshMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_DISABLED
-			backMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_DISABLED
+			billboard.hide()
+			mesh.show()
+			back.show()
 			mesh.mesh.size = startSize
 			meshes.scale = Vector3.ONE * BOBBINGSCALE
 		ScaleModes.PLACED:
-			meshMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_DISABLED
-			backMaterial.billboard_mode = BaseMaterial3D.BILLBOARD_DISABLED
+			billboard.hide()
+			mesh.show()
+			back.show()
 			mesh.mesh.size = startSize
 			meshes.scale = Vector3.ONE
 
@@ -105,8 +110,8 @@ func start_rotation() -> void:
 	meshes.position.y = BOBBINGHEIGHT
 	meshes.rotation.x = TILTANGLE
 	shadowDecal.show()
-	bobbingTween.tween_property(meshes, "position:y", -BOBBINGHEIGHT, BOBBINGTIME / 2.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	bobbingTween.tween_property(meshes, "position:y", BOBBINGHEIGHT, BOBBINGTIME / 2.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
+	bobbingTween.tween_property(meshes, "position:y", -BOBBINGHEIGHT, BOBBINGTIME / 2.0).set_trans(Tween.TRANS_SINE)
+	bobbingTween.tween_property(meshes, "position:y", BOBBINGHEIGHT, BOBBINGTIME / 2.0).set_trans(Tween.TRANS_SINE)
 	bobbingTween.set_loops()
 	bobbingTween.play()
 	rotationTween.tween_property(meshes, "rotation:y", deg_to_rad(360), ROTATIONTIME)

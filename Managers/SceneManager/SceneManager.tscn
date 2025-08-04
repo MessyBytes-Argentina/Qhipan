@@ -77,6 +77,7 @@ grow_vertical = 2
 metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
 
 [node name="Node3D" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
+sounds = Array[AudioStream]([])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

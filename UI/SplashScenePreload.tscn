@@ -1,13 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://8ain4p6etldq"]
+[gd_scene load_steps=29 format=3 uid="uid://8ain4p6etldq"]
 
 [ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
 [ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="2_tjpxc"]
+[ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="2_tv7nj"]
+[ext_resource type="AudioStream" uid="uid://t07xlctfpaa4" path="res://Assets/Sounds/Sticker_Remove.mp3" id="3_0rg7o"]
 [ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_7th63"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="3_r1tmu"]
+[ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="4_d0xu3"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
+[ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="5_38xoa"]
 [ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://Resources/Particles/fan_particles.tscn" id="5_r1tmu"]
+[ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/Ripping.mp3" id="6_5ktst"]
 [ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="6_fhpfe"]
+[ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/poof.ogg" id="7_ecpr7"]
+[ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="8_obfha"]
+[ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/Fan_On.mp3" id="9_8jf77"]
+[ext_resource type="AudioStream" uid="uid://b6bul5ui0ktw4" path="res://Assets/Sounds/Fanfare.mp3" id="10_s5eie"]
+[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="11_p2227"]
+[ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="12_sg3fy"]
+[ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="13_28kp4"]
+[ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="14_as1pu"]
+[ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="15_6x7mq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
 viewport_path = NodePath("SubViewport")
@@ -41,8 +55,12 @@ shader_parameter/fade_power = 1.0
 material = SubResource("ShaderMaterial_c1wxo")
 size = Vector3(0.5, 5, 0.5)
 
+[sub_resource type="Environment" id="Environment_tv7nj"]
+background_mode = 1
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_dxbmg")
+sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), ExtResource("7_ecpr7"), ExtResource("6_5ktst"), ExtResource("5_38xoa"), ExtResource("4_d0xu3"), ExtResource("3_0rg7o"), ExtResource("2_tv7nj"), ExtResource("10_s5eie"), ExtResource("11_p2227"), ExtResource("12_sg3fy"), ExtResource("13_28kp4"), ExtResource("14_as1pu"), ExtResource("15_6x7mq")])
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
@@ -84,3 +102,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
 
 [node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tv7nj")
