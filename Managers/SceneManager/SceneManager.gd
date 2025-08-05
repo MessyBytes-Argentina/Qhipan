@@ -139,7 +139,7 @@ func finish_scene_switch() -> void:
 func fin_transition() -> void:
 	blockScreen.hide()
 	var player: Player = get_tree().get_first_node_in_group("Player")
-	if player: player.death = false
+	if player: player.noMovement = false
 
 ## Shader set parameter function
 func custom_set_shader_parameter(value: Variant, parameter: String) -> void:

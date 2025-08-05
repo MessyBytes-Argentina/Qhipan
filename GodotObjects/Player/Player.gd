@@ -8,6 +8,8 @@ const STEPSOUNDTWEENTIME: float = 0.25
 const POPUPTIME: float = 0.5
 const RESTARTBUTTONWAIT: float = 2.0
 const CAMERALERPDURATION: float = 0.25
+const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
+const CAMERAZOOMTIME: float = 0.25
 
 enum States {Idle, Walk, Float}
 
@@ -44,10 +46,13 @@ enum States {Idle, Walk, Float}
 @onready var poofSound: RandomPitchPlayer = %PoofSound
 @onready var message: Sprite3D = %Message
 @onready var popUpSound: RandomPitchPlayer = %PopUpSound
+@onready var cameraZoomPivot: Node3D = %CameraZoomPivot
+@onready var playerHighlight: Sprite3D = %PlayerHighlight
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
 var cameraRotationTween: Tween
+var cameraZoomTween: Tween
 var spriteFlipTween: Tween
 var lastHorizontal: float = 1
 var pushingForces: Dictionary[Node3D, Vector3] = {}
@@ -63,15 +68,18 @@ var transparencyTween: Tween
 var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
-var death: bool = true
+var noMovement: bool = true
 var fallSoundPlayed: bool = false
 var respawnFall: bool = false
 var popupTween: Tween
 var stopped: bool = false
 var resetButton: Button
+var zooming: bool = false
+var zoomedOut: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
 	set_decal_size()
 	poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
@@ -80,16 +88,18 @@ func _ready() -> void:
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 	resetButton = get_tree().get_first_node_in_group("ResetButton")
+	playerHighlight.scale = Vector3.ONE * 0.001
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	if death: 
+	if noMovement or zooming: 
 		inputDirection = Vector3.ZERO
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
+	camera_zoom_check()
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
@@ -104,7 +114,7 @@ func _physics_process(delta: float) -> void:
 			do_popout()
 
 func block_inputs() -> void:
-	death = true
+	noMovement = true
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -125,21 +135,37 @@ func rotate_sprite(rotationValue: float) -> void:
 
 func camera_rotation_check() -> void:
 	if cameraRotationTween: return
-	var cameraRotation = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
-	if cameraRotation != 0:
-		currentCameraRotation += cameraRotation
-		cameraRotationTween = create_tween()
-		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-		cameraRotationTween.finished.connect(rotation_finished)
-		cameraRotationTween.play()
-		if cameraRotation > 0:
-			rotateCamLeftSound.play()
-		else:
-			rotateCamRightSound.play()
+	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
+	if cameraRotation == 0: return
+	currentCameraRotation += cameraRotation
+	cameraRotationTween = create_tween()
+	cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	cameraRotationTween.finished.connect(rotation_finished)
+	cameraRotationTween.play()
+	if cameraRotation > 0:
+		rotateCamLeftSound.play()
+	else:
+		rotateCamRightSound.play()
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue
 	cameraPivot.rotation.y = rotationValue + rotation.y
+
+func camera_zoom_check() -> void:
+	if zooming: return
+	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
+	if not doZoom: return
+	zooming = true
+	noMovement = true
+	cameraZoomTween = create_tween()
+	cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
+	cameraZoomTween.finished.connect(rotation_finished)
+	cameraZoomTween.play()
+	await cameraZoomTween.finished
+	zooming = false
+	noMovement = false
+	zoomedOut = not zoomedOut
 
 func rotation_finished() -> void:
 	if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 
@@ -237,7 +263,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 		return
 	if resetButton: resetButton.hide()
 	do_popout()
-	death = true
+	noMovement = true
 	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
@@ -259,7 +285,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	await poof.finished
-	death = false
+	noMovement = false
 	stopped = false
 
 func reset_aura() -> void:

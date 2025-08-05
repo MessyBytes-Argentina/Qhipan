@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=102 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -104,6 +104,19 @@ emission_energy_multiplier = 2.0
 detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
+
+[sub_resource type="Gradient" id="Gradient_6fycs"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.251521)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujwi3"]
+gradient = SubResource("Gradient_6fycs")
+width = 192
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.1)
+fill_to = Vector2(0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
@@ -692,6 +705,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cphfr")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, -0.0725533, 0.199339)
 
+[node name="PlayerHighlight" type="Sprite3D" parent="SpritePivot/Sprite"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, -0.241844, 0.939692, -0.241844, 0.664463, 0.34202, 0.664463, 0, 0.422862, 0.153909)
+pixel_size = 0.0003
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 3
+texture = SubResource("GradientTexture2D_ujwi3")
+
 [node name="Message" type="Sprite3D" parent="SpritePivot"]
 unique_name_in_owner = true
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 2.98024e-10, 0, -2.98024e-10, 0.001, 0.858579, 0.651631, 0.432892)
@@ -715,12 +738,15 @@ shape = SubResource("CapsuleShape3D_cphfr")
 unique_name_in_owner = true
 top_level = true
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="CameraZoomPivot" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraZoomPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
 fov = 55.0
 
-[node name="PostProcessing" parent="CameraPivot/Camera3D" instance=ExtResource("10_3jjt7")]
+[node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
