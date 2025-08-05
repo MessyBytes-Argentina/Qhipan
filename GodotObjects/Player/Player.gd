@@ -63,7 +63,7 @@ var transparencyTween: Tween
 var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
-var death: bool = false
+var death: bool = true
 var fallSoundPlayed: bool = false
 var respawnFall: bool = false
 var popupTween: Tween

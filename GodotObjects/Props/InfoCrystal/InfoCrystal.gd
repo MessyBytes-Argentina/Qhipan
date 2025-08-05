@@ -38,6 +38,7 @@ func start_bobbing() -> void:
 	rotationTween.play()
 
 func do_popup() -> void:
+	if popupTween: popupTween.kill()
 	popupTween = create_tween()
 	popupTween.tween_property(infoIcon, "scale", Vector3.ONE * 0.001, INFOSHRINKTIME * infoIcon.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.tween_property(popupBoard, "scale", Vector3.ONE, POPUPTIME * (1.0 - popupBoard.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
@@ -45,6 +46,7 @@ func do_popup() -> void:
 	popUpSound.play_sound()
 
 func do_popout() -> void:
+	if popupTween: popupTween.kill()
 	popupTween = create_tween()
 	popupTween.tween_property(popupBoard, "scale", Vector3.ONE * 0.001, POPUPTIME * popupBoard.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.tween_property(infoIcon, "scale", Vector3.ONE, INFOSHRINKTIME * (1.0 - infoIcon.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)

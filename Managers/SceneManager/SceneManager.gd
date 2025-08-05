@@ -9,10 +9,10 @@ signal finished()
 ## The wait time after a scene is loaded in.
 const loadExtraTime: float = 1.0
 ## The animation time.
-const loadAnimationTime: float = 1
+const loadAnimationTime: float = 1.0
 const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
-const loadAnimationExtraTime: float = 0
+const loadAnimationExtraTime: float = 0.0
 ## The time to spread back the hexes on loading time extended.
 const loadAnimationWaitTime: float = 0.5
 
@@ -23,6 +23,7 @@ const loadAnimationWaitTime: float = 0.5
 ## Reference to the main subviewport.
 @onready var mainSubViewport: Control = %MainSubViewportContainer
 @onready var resetButton: Button = %ResetButton
+@onready var blockScreen: CanvasLayer = $BlockScreen
 
 ## A Dictionary of scenes loaded.
 var loadedScenes: Dictionary[String, Dictionary] = {}
@@ -38,9 +39,7 @@ var transitionTween: Tween
 var inSetup: bool = false
 
 var currentScene: String
-
 var reloaded: bool = false
-
 var requestedSwitch: bool = false
 
 ## Starts loading a given scene.
@@ -84,6 +83,7 @@ func _process(_delta: float) -> void:
 
 ## Switches the main scene to the given one.
 func switch_scene(sceneName: String = currentScene) -> void:
+	blockScreen.show()
 	resetButton.hide()
 	reloaded = sceneName == currentScene
 	await get_tree().process_frame
@@ -132,8 +132,14 @@ func finish_scene_switch() -> void:
 	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 1.0, 0.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	reloaded = false
 	transitionTween.play()
+	transitionTween.finished.connect(fin_transition)
 	get_tree().paused = false
 	finished.emit()
+
+func fin_transition() -> void:
+	blockScreen.hide()
+	var player: Player = get_tree().get_first_node_in_group("Player")
+	if player: player.death = false
 
 ## Shader set parameter function
 func custom_set_shader_parameter(value: Variant, parameter: String) -> void:

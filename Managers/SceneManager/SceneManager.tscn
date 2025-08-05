@@ -93,9 +93,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_pkxch")
 text = "Restart Level [Y]"
 script = ExtResource("7_efent")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
+[node name="BlockScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+
+[node name="BlockScreen" type="ColorRect" parent="BlockScreen"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
