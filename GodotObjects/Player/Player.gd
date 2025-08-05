@@ -99,6 +99,7 @@ func _physics_process(delta: float) -> void:
 	move_character(delta)
 	camera_follow(delta)
 	animation_check()
+	grabArea.canDrop = is_on_floor()
 	if not stopped and resetButton: resetButton.hide()
 
 func sprite_flip_check() -> void:

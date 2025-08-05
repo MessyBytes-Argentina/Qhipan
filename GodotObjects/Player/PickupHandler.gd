@@ -5,6 +5,7 @@ class_name PickupHandler
 var pickups: Array[Node3D]
 var pickupOnHand: bool = false
 var currentPickup: StickerBase
+var canDrop: bool = true
 
 @onready var pickupSound: RandomPitchPlayer = $Pickup
 @onready var removeSound: RandomPitchPlayer = $Remove
@@ -35,7 +36,7 @@ func do_grab() -> void:
 		currentPickup.grab(self)
 		pickupOnHand = true
 
-func check_available_area(onReset: bool = false) -> void:
+func check_available_area(onReset: bool = false) -> bool:
 	var areas: Array[Area3D] = get_overlapping_areas()
 	var closest: Area3D
 	var shortestDistance: float = 9999999999
@@ -49,17 +50,21 @@ func check_available_area(onReset: bool = false) -> void:
 		if closest and closest.get_collision_layer_value(11):
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
 			stickSound.play_sound()
-			return
+			return true
 		elif closest and closest.get_collision_layer_value(12) and currentPickup is Key:
 			currentPickup.place_sticker(closest, closest.get_meta("pointing"))
 			stickSound.play_sound()
-			return
+			return true
+	return false
 	if currentPickup:
 		currentPickup.drop()
 		dropSound.play_sound()
 
 func drop(onReset: bool = false) -> void:
-	if pickupOnHand and currentPickup != null:
-		check_available_area(onReset)
+	if pickupOnHand and currentPickup:
+		if not check_available_area(onReset):
+			if not canDrop: return
+			currentPickup.drop()
+			dropSound.play_sound()
 		currentPickup = null
 		pickupOnHand = false
