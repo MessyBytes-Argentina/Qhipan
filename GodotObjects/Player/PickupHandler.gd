@@ -12,6 +12,15 @@ var canDrop: bool = true
 @onready var dropSound: RandomPitchPlayer = $Drop
 @onready var stickSound: RandomPitchPlayer = $Stick
 
+var closeStickers: Array[StickerBase] = []
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+
+func _physics_process(delta: float) -> void:
+	sort_close_stickers()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		if not pickupOnHand:
@@ -20,21 +29,13 @@ func _input(event: InputEvent) -> void:
 			drop()
 
 func do_grab() -> void:
-	pickups = get_overlapping_bodies()
-	var closest: Node3D
-	var shortestDistance: float = 9999999999
-	if pickups.size() > 0:
-		for pickup in pickups:
-			var currentDistance: float = global_position.distance_to(pickup.global_position)
-			if currentDistance < shortestDistance:
-				closest = pickup
-				shortestDistance = currentDistance
-		currentPickup = closest
-		if currentPickup.placed: removeSound.play_sound()
-		else: pickupSound.play_sound()
-		currentPickup.reparent(self)
-		currentPickup.grab(self)
-		pickupOnHand = true
+	if len(closeStickers) == 0: return
+	currentPickup = closeStickers[0]
+	if currentPickup.placed: removeSound.play_sound()
+	else: pickupSound.play_sound()
+	currentPickup.reparent(self)
+	currentPickup.grab(self)
+	pickupOnHand = true
 
 func check_available_area(onReset: bool = false) -> bool:
 	var areas: Array[Area3D] = get_overlapping_areas()
@@ -65,3 +66,19 @@ func drop(onReset: bool = false) -> void:
 			dropSound.play_sound()
 		currentPickup = null
 		pickupOnHand = false
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is not StickerBase: return
+	if body not in closeStickers: closeStickers.append(body)
+
+func _on_body_exited(body: Node3D) -> void:
+	if body is not StickerBase: return
+	closeStickers.erase(body)
+	body.highlight.hide()
+
+func sort_close_stickers() -> void:
+	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
+	if len(closeStickers) == 0: return
+	closeStickers[0].highlight.visible = not pickupOnHand
+	for i in range(1, len(closeStickers)):
+		closeStickers[i].highlight.hide()

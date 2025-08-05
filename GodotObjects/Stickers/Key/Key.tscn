@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=26 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Stickers/Key/Key-1.png" id="2_mjg6o"]
 [ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Stickers/Key/Key-Used.png" id="3_loxqr"]
@@ -49,6 +49,18 @@ transparency = 1
 albedo_texture = ExtResource("2_mjg6o")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_mjg6o")
+
+[sub_resource type="Gradient" id="Gradient_h7mp7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.251521)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_loxqr"]
+gradient = SubResource("Gradient_h7mp7")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.1)
+fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -185,6 +197,14 @@ billboard = 1
 fixed_size = true
 render_priority = 2
 texture = ExtResource("2_mjg6o")
+
+[node name="Highlight" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+top_level = true
+pixel_size = 0.003
+billboard = 1
+texture = SubResource("GradientTexture2D_loxqr")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
