@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://205amao8uwa2"]
+[gd_scene load_steps=16 format=3 uid="uid://205amao8uwa2"]
 
 [ext_resource type="Script" uid="uid://d2p44ct5iuibl" path="res://GodotObjects/Stickers/Base/StickerBase.gd" id="1_8ww4f"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Stickers/Fan/Vent-1.png" id="2_r43o5"]
@@ -33,18 +33,6 @@ transparency = 1
 albedo_texture = ExtResource("2_r43o5")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
-
-[sub_resource type="Gradient" id="Gradient_h7mp7"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.251521)
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8dhaa"]
-gradient = SubResource("Gradient_h7mp7")
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.1)
-fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_k62l1"]
 interpolation_mode = 1
@@ -104,15 +92,6 @@ billboard = 1
 fixed_size = true
 render_priority = 2
 texture = ExtResource("2_r43o5")
-
-[node name="Highlight" type="Sprite3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-top_level = true
-pixel_size = 0.003
-billboard = 1
-render_priority = 2
-texture = SubResource("GradientTexture2D_8dhaa")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true

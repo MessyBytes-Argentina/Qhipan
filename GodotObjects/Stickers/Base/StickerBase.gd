@@ -12,6 +12,7 @@ const PLACEDCHECKTIME: float = 0.25
 enum ScaleModes {GRABBED, DROPPED, PLACED}
 
 @export var placed: bool = false
+@export var validAreaIndexes: Array[int] = [11]
 
 @onready var areaChecker: Area3D = %AreaChecker
 @onready var mesh: MeshInstance3D = %Mesh
@@ -19,7 +20,6 @@ enum ScaleModes {GRABBED, DROPPED, PLACED}
 @onready var meshes: Node3D = %Meshes
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
 @onready var billboard: Sprite3D = %Billboard
-@onready var highlight: Sprite3D = %Highlight
 
 var sceneParent: Node
 var onPlayer: bool = false
@@ -28,7 +28,6 @@ var bobbingTween: Tween
 var startSize: Vector2
 var meshMaterial: StandardMaterial3D
 var backMaterial: StandardMaterial3D
-var highlightHeight: float
 
 func _ready() -> void:
 	sceneParent = get_parent()
@@ -39,8 +38,6 @@ func _ready() -> void:
 	back.set_surface_override_material(0, backMaterial)
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
-	highlightHeight = highlight.position.y
-	highlight.global_position = global_position + Vector3.UP * highlightHeight
 	prerender()
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
@@ -68,15 +65,12 @@ func prerender() -> void:
 	mesh.hide()
 	back.hide()
 	billboard.hide()
-	highlight.hide()
 	await get_tree().create_timer(0.01).timeout
 	mesh.show()
 	back.show()
 	billboard.show()
-	highlight.show()
 	await get_tree().create_timer(0.01).timeout
 	billboard.hide()
-	highlight.hide()
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	set_size(ScaleModes.PLACED)
@@ -85,7 +79,6 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 	placed = true
 	look_at(global_position - direction)
 	reparent(area)
-	highlight.global_position = global_position + Vector3.UP * highlightHeight
 
 func set_size(mode: ScaleModes) -> void:
 	match mode:
@@ -119,7 +112,6 @@ func drop() -> void:
 	placed = false
 	reparent(sceneParent)
 	start_rotation()
-	highlight.global_position = global_position + Vector3.UP * highlightHeight
 
 func start_rotation() -> void:
 	rotationTween = create_tween()

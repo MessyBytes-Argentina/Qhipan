@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=100 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -141,6 +141,29 @@ size = Vector3(20, 20, 20)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
 height = 1.5
+
+[sub_resource type="Gradient" id="Gradient_h7mp7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.251521)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3jjt7"]
+gradient = SubResource("Gradient_h7mp7")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_xq41j"]
+offsets = PackedFloat32Array(0, 0.25, 0.7, 0.7)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 0.0980392, 1, 0, 0, 0.588235, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6fycs"]
+gradient = SubResource("Gradient_xq41j")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
@@ -677,7 +700,8 @@ no_depth_test = true
 render_priority = 3
 texture = ExtResource("10_xq41j")
 
-[node name="popUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
+[node name="PopUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
+unique_name_in_owner = true
 stream = ExtResource("11_xq41j")
 volume_db = -20.0
 bus = &"SFX"
@@ -748,6 +772,20 @@ volume_db = -12.0
 bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="Highlight" type="Sprite3D" parent="GrabArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+top_level = true
+pixel_size = 0.003
+billboard = 1
+render_priority = 2
+texture = SubResource("GradientTexture2D_3jjt7")
+
+[node name="AreaHighlight" type="Sprite3D" parent="GrabArea"]
+top_level = true
+pixel_size = 0.0026
+render_priority = 1
+texture = SubResource("GradientTexture2D_6fycs")
 
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

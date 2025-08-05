@@ -43,7 +43,7 @@ enum States {Idle, Walk, Float}
 @onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
 @onready var poofSound: RandomPitchPlayer = %PoofSound
 @onready var message: Sprite3D = %Message
-@onready var popUpSound: RandomPitchPlayer = $SpritePivot/Message/popUpSound
+@onready var popUpSound: RandomPitchPlayer = %PopUpSound
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -71,18 +71,15 @@ var stopped: bool = false
 var resetButton: Button
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	set_decal_size()
 	poof.emit_particles()
-	if Engine.is_editor_hint(): return
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 	resetButton = get_tree().get_first_node_in_group("ResetButton")
-
-func block_inputs() -> void:
-	death = true
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -105,6 +102,9 @@ func _physics_process(delta: float) -> void:
 		if message: 
 			if popupTween: if popupTween.is_running(): return
 			do_popout()
+
+func block_inputs() -> void:
+	death = true
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
