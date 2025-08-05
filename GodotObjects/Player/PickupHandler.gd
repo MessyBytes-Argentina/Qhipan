@@ -56,9 +56,6 @@ func check_available_area(onReset: bool = false) -> bool:
 			stickSound.play_sound()
 			return true
 	return false
-	if currentPickup:
-		currentPickup.drop()
-		dropSound.play_sound()
 
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup:
