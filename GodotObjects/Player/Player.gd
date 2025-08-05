@@ -2,11 +2,12 @@
 extends CharacterBody3D
 class_name Player
 
-const cameraRotationStep: float = deg_to_rad(90.0)
-const transparencyTime: float = 0.1
-const tweenTime: float = 0.25
+const CAMERAROTATIONSTEP: float = deg_to_rad(45.0)
+const TRANSPARENCYTIME: float = 0.1
+const STEPSOUNDTWEENTIME: float = 0.25
 const POPUPTIME: float = 0.5
 const RESTARTBUTTONWAIT: float = 2.0
+const CAMERALERPDURATION: float = 0.25
 
 enum States {Idle, Walk, Float}
 
@@ -25,7 +26,6 @@ enum States {Idle, Walk, Float}
 		if Engine.is_editor_hint(): set_decal_size()
 
 @export_group("Animation Parameters")
-@export_range(0, 2, .1) var cameraLerpDuration: float = 0.5
 @export_range(0, 2, .1) var spriteFlipDuration: float = 0.5
 @export_range(0, 1, .01) var cameraFollowSpeed: float = 0.1
 
@@ -125,11 +125,11 @@ func rotate_sprite(rotationValue: float) -> void:
 
 func camera_rotation_check() -> void:
 	if cameraRotationTween: return
-	var cameraRotation = (cameraRotationStep if Input.is_action_just_pressed("camera_left") else 0.0) - (cameraRotationStep if Input.is_action_just_pressed("camera_right") else 0.0)
+	var cameraRotation = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
 	if cameraRotation != 0:
 		currentCameraRotation += cameraRotation
 		cameraRotationTween = create_tween()
-		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, cameraLerpDuration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 		cameraRotationTween.finished.connect(rotation_finished)
 		cameraRotationTween.play()
 		if cameraRotation > 0:
@@ -172,9 +172,9 @@ func move_character(delta: float) -> void:
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	
 	if movedAmount != 0:
-		MusicManager.set_synchro_clip_volume("main",[1],0.0,tweenTime)
+		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
 	else:
-		MusicManager.set_synchro_clip_volume("main",[1],-60.0,tweenTime)
+		MusicManager.set_synchro_clip_volume("main", [1], -60.0, STEPSOUNDTWEENTIME)
 	
 	moved += movedAmount
 	set_decal_size()
@@ -242,9 +242,9 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 0.0, transparencyTime)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, transparencyTime)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, transparencyTime)
+	transparencyTween.tween_property(material, "albedo_color:a", 0.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	poof.emit_particles()
 	await poof.finished
@@ -254,9 +254,9 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 1.0, transparencyTime)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, transparencyTime)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, transparencyTime)
+	transparencyTween.tween_property(material, "albedo_color:a", 1.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	await poof.finished
 	death = false
