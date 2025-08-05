@@ -166,6 +166,7 @@ func camera_zoom_check() -> void:
 	zooming = false
 	noMovement = false
 	zoomedOut = not zoomedOut
+	grabArea.zoomedOut = zoomedOut
 
 func rotation_finished() -> void:
 	if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 

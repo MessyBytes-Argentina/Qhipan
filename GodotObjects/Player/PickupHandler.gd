@@ -19,6 +19,7 @@ var pickups: Array[Node3D]
 var pickupOnHand: bool = false
 var currentPickup: StickerBase
 var canDrop: bool = true
+var zoomedOut: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -32,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 	sort_close_areas()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and not zoomedOut:
 		if not pickupOnHand:
 			do_grab()
 		else:
