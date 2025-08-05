@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://Resources/Gridmap/GridmapObject.tscn" id="3_lj7ia"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="4_h1bmy"]
 [ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://Resources/DecalMap/DecalMap.tscn" id="5_bjts7"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_fucph"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="7_25w4u"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/Props/Checkpoints/CheckpointManager.tscn" id="6_fucph"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/Props/Checkpoints/Checkpoint.tscn" id="7_25w4u"]
 
 [node name="Node3D" type="Node3D"]
 

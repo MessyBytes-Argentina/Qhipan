@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://d2oqm8r8jgsxc"]
 
-[ext_resource type="Script" uid="uid://3t8xjw3gutun" path="res://Resources/Checkpoints/checkpoint.gd" id="1_bhnv4"]
+[ext_resource type="Script" uid="uid://3t8xjw3gutun" path="res://GodotObjects/Props/Checkpoints/checkpoint.gd" id="1_bhnv4"]
 [ext_resource type="Texture2D" uid="uid://d0nk04f8gsnwg" path="res://Assets/CheckPoint Totem/Checkpoint-Off.png" id="2_ynn0r"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://Resources/Particles/CheckpointParticles.tscn" id="3_3d0u6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="4_bsfi2"]

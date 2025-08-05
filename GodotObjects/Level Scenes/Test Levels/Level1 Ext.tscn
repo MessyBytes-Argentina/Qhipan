@@ -6,8 +6,8 @@
 [ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="4_k8pm3"]
 [ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="5_iyrlc"]
 [ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="6_jigbj"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="7_m1kwj"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="8_twy1n"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/Props/Checkpoints/CheckpointManager.tscn" id="7_m1kwj"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/Props/Checkpoints/Checkpoint.tscn" id="8_twy1n"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="9_7k2v6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xs4vi"]

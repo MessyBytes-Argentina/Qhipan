@@ -89,13 +89,11 @@ func set_size(mode: ScaleModes) -> void:
 			billboard.hide()
 			mesh.show()
 			back.show()
-			mesh.mesh.size = startSize
 			meshes.scale = Vector3.ONE * BOBBINGSCALE
 		ScaleModes.PLACED:
 			billboard.hide()
 			mesh.show()
 			back.show()
-			mesh.mesh.size = startSize
 			meshes.scale = Vector3.ONE
 
 func grab(node: Node3D) -> void:

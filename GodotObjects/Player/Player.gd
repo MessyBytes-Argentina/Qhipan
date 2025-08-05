@@ -100,7 +100,11 @@ func _physics_process(delta: float) -> void:
 	camera_follow(delta)
 	animation_check()
 	grabArea.canDrop = is_on_floor()
-	if not stopped and resetButton: resetButton.hide()
+	if not stopped:
+		if resetButton: resetButton.hide()
+		if message: 
+			if popupTween: if popupTween.is_running(): return
+			do_popout()
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))

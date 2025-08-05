@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://c82u541mymtsu"]
 
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="1_30t6r"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/Props/Checkpoints/CheckpointManager.tscn" id="1_30t6r"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_ood3a"]
 [ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://Resources/Gridmap/Gridmap.tres" id="2_30t6r"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="3_scbay"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/Props/Checkpoints/Checkpoint.tscn" id="3_scbay"]
 [ext_resource type="MeshLibrary" uid="uid://dutf87tb7781v" path="res://Resources/StickerMap/StickerMap.tres" id="5_6muoe"]
 [ext_resource type="Script" uid="uid://cf82wnorcan8p" path="res://Resources/StickerMap/StickerMap.gd" id="6_8k52u"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="7_xx357"]

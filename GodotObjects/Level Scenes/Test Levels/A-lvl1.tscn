@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/Props/Door/Door.tscn" id="3_hmuq0"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://Resources/StickerMap/StickerMap.tscn" id="4_g0x6e"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="5_hmuq0"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="6_q7vpl"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="7_g0x6e"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/Props/Checkpoints/CheckpointManager.tscn" id="6_q7vpl"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/Props/Checkpoints/Checkpoint.tscn" id="7_g0x6e"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="8_bgqye"]
 [ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/Props/DeathZone/DeathZone.tscn" id="9_bgqye"]
 [ext_resource type="PackedScene" uid="uid://cdbi84srg0x18" path="res://GodotObjects/Props/DeathZone/Pinchos.tscn" id="10_7a1ol"]
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/Props/Goal/GoalZone.tscn" id="12_7naoj"]
-[ext_resource type="PackedScene" uid="uid://byd6plsi6yr2m" path="res://GodotObjects/Props/Door/Goal-Door.tscn" id="12_xmniy"]
+[ext_resource type="PackedScene" path="res://GodotObjects/Props/Door/Goal-Door.tscn" id="12_xmniy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kh36s"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

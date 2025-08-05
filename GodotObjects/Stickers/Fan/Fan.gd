@@ -7,7 +7,11 @@ extends StickerBase
 var grabed: bool = false
 
 func _ready() -> void:
+	fanParticles.emitting = true
 	super()
+	if not placed:
+		await get_tree().create_timer(0.5).timeout
+		fanParticles.emitting = false
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	super(area, direction)

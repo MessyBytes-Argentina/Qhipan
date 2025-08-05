@@ -61,7 +61,6 @@ func erase_scene(sceneName: String) -> void:
 func load_and_switch(path: String, sceneName: String = "") -> void:
 	if sceneName == "": sceneName = path.get_file().get_basename()
 	load_scene(sceneName, path)
-	prints(path, sceneName)
 	requestedSwitch = true
 	switch_scene(sceneName)
 	currentScene = sceneName

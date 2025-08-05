@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://ds4mvv7xvh58k"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="1_busd3"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://Resources/Checkpoints/CheckpointManager.tscn" id="2_u0com"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://Resources/Checkpoints/Checkpoint.tscn" id="3_45uh4"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/Props/Checkpoints/CheckpointManager.tscn" id="2_u0com"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/Props/Checkpoints/Checkpoint.tscn" id="3_45uh4"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/Stickers/Fan/Fan.tscn" id="4_t0rat"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/Stickers/Key/Key.tscn" id="5_jnroe"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/Props/Door/GoalDoor.tscn" id="6_45uh4"]

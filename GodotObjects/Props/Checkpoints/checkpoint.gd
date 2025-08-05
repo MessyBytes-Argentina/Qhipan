@@ -16,12 +16,16 @@ const LIGHTENERGY: float = 0.25
 var lightTween: Tween
 var material: StandardMaterial3D
 var soundEnabled: bool = false
+var activated: bool = false
 
 func _ready() -> void:
 	material = llamaTotem.get_surface_override_material(0).duplicate()
 	llamaTotem.set_surface_override_material(0, material)
+	particles1.emitting = true
+	particles2.emitting = true
 
 func activate() -> void:
+	activated = true
 	material.albedo_texture = onTexture
 	llamaTotem.set_surface_override_material(0, material)
 	light.show()
@@ -43,6 +47,7 @@ func deactivate() -> void:
 	lightTween.play()
 	await lightTween.finished
 	light.hide()
+	activated = false
 
 func enable_sounds() -> void:
 	soundEnabled = true
