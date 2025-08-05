@@ -48,10 +48,7 @@ func do_grab() -> void:
 	pickupOnHand = true
 
 func check_available_area(onReset: bool = false) -> bool:
-	var areas: Array[Area3D] = get_overlapping_areas()
-	var closest: Area3D
-	var shortestDistance: float = 9999999999
-	if currentArea:
+	if currentArea and not onReset:
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"))
 		stickSound.play_sound()
 		return true
@@ -99,5 +96,8 @@ func sort_close_areas() -> void:
 			areaHighlight.hide()
 			return
 		areaHighlight.global_position = currentArea.global_position + currentArea.get_meta("pointing") * AREAHIGHLIGHTOFFSET
-		areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"))
+		if not Vector3.UP.cross(currentArea.get_meta("pointing")).is_zero_approx():
+			areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"))
+		else:
+			areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"), Vector3.FORWARD)
 		areaHighlight.show()

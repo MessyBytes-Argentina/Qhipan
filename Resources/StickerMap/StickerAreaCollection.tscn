@@ -6,7 +6,6 @@
 orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acktf"]
-render_priority = 1
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("1_2fuw8")

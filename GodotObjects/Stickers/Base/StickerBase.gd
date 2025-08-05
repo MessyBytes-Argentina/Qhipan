@@ -77,7 +77,10 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 	global_position = area.global_position + direction * 0.01
 	onPlayer = false
 	placed = true
-	look_at(global_position - direction)
+	if not Vector3.UP.cross(direction).is_zero_approx():
+		look_at(global_position - direction)
+	else:
+		look_at(global_position - direction, Vector3.FORWARD)
 	reparent(area)
 
 func set_size(mode: ScaleModes) -> void:

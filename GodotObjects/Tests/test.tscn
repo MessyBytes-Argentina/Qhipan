@@ -50,9 +50,9 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="StickerMap" parent="." instance=ExtResource("2_77igb")]
 data = {
-"cells": PackedInt32Array(196604, 2, 1441793, 196603, 2, 1441793, 131069, 3, 655360, 131070, 3, 655360, 131070, 4, 655360, 131069, 4, 655360)
+"cells": PackedInt32Array(196604, 2, 1441793, 196603, 2, 1441793, 131069, 3, 655360, 131070, 3, 655360, 131070, 4, 655360, 131069, 4, 655360, 196602, 1, 655361)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="FanSticker" parent="." instance=ExtResource("3_evf4h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -0.5)
