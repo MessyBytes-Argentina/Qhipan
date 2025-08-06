@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dej5midubfhnx" path="res://Assets/Particle Texture/Spoof-Cloud.png" id="1_0dg1w"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="2_jqibb"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_e0q6x"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/Particles/spoof_particle.tscn" id="3_e0q6x"]
 
 [sub_resource type="Gradient" id="Gradient_kptbx"]
 offsets = PackedFloat32Array(0, 0.126531, 0.408163, 1)

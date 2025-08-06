@@ -52,8 +52,6 @@ expand_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 88.0
-offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -122,7 +120,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y3vac")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y3vac")
 text = "Start"
 script = ExtResource("1_oq7qy")
-levelList = Array[String](["res://GodotObjects/Level Scenes/Final Levels/LVL-1.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-2.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-3.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-4.tscn", "res://GodotObjects/Level Scenes/Final Levels/LVL-5.tscn", "res://UI/Credits.tscn", "res://GodotObjects/Level Scenes/Test Levels/N-lvl1.tscn"])
+levelList = Array[String](["res://LevelResources/Level Scenes/Final Levels/LVL-1.tscn", "res://LevelResources/Level Scenes/Final Levels/LVL-2.tscn", "res://LevelResources/Level Scenes/Final Levels/LVL-3.tscn", "res://LevelResources/Level Scenes/Final Levels/LVL-4.tscn", "res://LevelResources/Level Scenes/Final Levels/LVL-5.tscn", "res://UI/Credits.tscn", "res://LevelResources/Level Scenes/Test Levels/N-lvl1.tscn"])
 
 [node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
 layout_mode = 2

@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
-[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="10_3jjt7"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
+[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/Particles/post_processing.tscn" id="10_3jjt7"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://dd8k35t2irrpo" path="res://Assets/Tutorial Screens/Reset Bubble.png" id="10_xq41j"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
@@ -802,6 +802,7 @@ metadata/_custom_type_script = "uid://6jte5qpxmam0"
 [node name="Highlight" type="Sprite3D" parent="GrabArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 top_level = true
+visible = false
 pixel_size = 0.003
 billboard = 1
 render_priority = 2
@@ -809,6 +810,7 @@ texture = SubResource("GradientTexture2D_3jjt7")
 
 [node name="AreaHighlight" type="Sprite3D" parent="GrabArea"]
 top_level = true
+visible = false
 pixel_size = 0.0026
 render_priority = 1
 texture = SubResource("GradientTexture2D_6fycs")
