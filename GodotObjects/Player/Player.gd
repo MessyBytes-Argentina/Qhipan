@@ -76,6 +76,7 @@ var stopped: bool = false
 var resetButton: Button
 var zooming: bool = false
 var zoomedOut: bool = false
+var inCheckpoint: bool = true
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -197,13 +198,11 @@ func move_character(delta: float) -> void:
 	velocity = lastVoluntarySpeed
 	move_and_slide()
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
-	
 	if movedAmount != 0:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
 	else:
 		MusicManager.set_synchro_clip_volume("main", [1], -60.0, STEPSOUNDTWEENTIME)
-	
-	moved += movedAmount
+	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
@@ -317,3 +316,10 @@ func do_popout() -> void:
 
 func show_restart() -> void:
 	if stopped: resetButton.show()
+
+func checkpoint_entered() -> void:
+	inCheckpoint = true
+	moved = 0
+
+func checkpoint_exited() -> void:
+	inCheckpoint = false

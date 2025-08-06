@@ -4,8 +4,8 @@ class_name Checkpoint
 const LIGHTTIME: float = 0.5
 const LIGHTENERGY: float = 0.25
 
-@onready var offTexture: Texture2D = preload("res://Assets/CheckPoint Totem/Checkpoint-Off.png")
-@onready var onTexture: Texture2D = preload("res://Assets/CheckPoint Totem/Material Base Color.png")
+@onready var offTexture: Texture2D = preload("uid://d0nk04f8gsnwg")
+@onready var onTexture: Texture2D = preload("uid://bttfw724v68fi")
 
 @onready var light: OmniLight3D = %Light
 @onready var llamaTotem: MeshInstance3D = %LlamaTotem
@@ -23,6 +23,8 @@ func _ready() -> void:
 	llamaTotem.set_surface_override_material(0, material)
 	particles1.emitting = true
 	particles2.emitting = true
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 
 func activate() -> void:
 	activated = true
@@ -51,3 +53,9 @@ func deactivate() -> void:
 
 func enable_sounds() -> void:
 	soundEnabled = true
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is Player: body.checkpoint_entered()
+
+func _on_body_exited(body: Node3D) -> void:
+	if body is Player: body.checkpoint_exited()
