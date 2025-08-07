@@ -1,14 +1,11 @@
-[gd_scene load_steps=48 format=4 uid="uid://cl20o6ojxtevm"]
+[gd_scene load_steps=39 format=4 uid="uid://cl20o6ojxtevm"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_fnntw"]
 [ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/UV Textures/Rust-1/Rust-1.tres" id="2_dtlxk"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://LevelResources/Gridmaps/Gridmap/Basic.001.png" id="3_ug2ju"]
 [ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/UV Textures/Patron-Andino-1/Patron-Andino-1.tres" id="4_ug2ju"]
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="5_7wpwn"]
-[ext_resource type="Texture2D" uid="uid://dpjmte3noa1ys" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1.png" id="6_3alb7"]
-[ext_resource type="Texture2D" uid="uid://d4no0vdjo3b5x" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1-Top.png" id="7_5vnqh"]
-[ext_resource type="Texture2D" uid="uid://ct7156uyj7odk" path="res://Assets/UV Textures/Baldosas-1/Baldosas-1.png" id="8_5vnqh"]
-[ext_resource type="Texture2D" uid="uid://dye2myam31tkk" path="res://Assets/UV Textures/Baldosas-1/Baldosas-1-Top.png" id="9_386y4"]
+[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1.tres" id="5_kiaye"]
+[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/UV Textures/Baldosas-1/Baldosas-1.tres" id="6_xeqyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
 resource_name = "Material.001"
@@ -372,62 +369,6 @@ shadow_mesh = SubResource("ArrayMesh_i4bdm")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v422e"]
 data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5)
 
-[sub_resource type="Gradient" id="Gradient_bof8u"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_amxg1"]
-gradient = SubResource("Gradient_bof8u")
-
-[sub_resource type="Gradient" id="Gradient_epi6i"]
-offsets = PackedFloat32Array(0.75, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bof8u"]
-gradient = SubResource("Gradient_epi6i")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqe3y"]
-render_priority = 0
-shader = ExtResource("5_7wpwn")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("6_3alb7")
-shader_parameter/map_top_to_world = true
-shader_parameter/top_texture = ExtResource("7_5vnqh")
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/albedo_texture_size = Vector2i(256, 256)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_amxg1")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_386y4"]
-render_priority = 0
-shader = ExtResource("5_7wpwn")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("8_5vnqh")
-shader_parameter/map_top_to_world = true
-shader_parameter/top_texture = ExtResource("9_386y4")
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/albedo_texture_size = Vector2i(256, 256)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_amxg1")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
-
 [node name="Node3D" type="Node3D"]
 
 [node name="Rust-1" type="Node3D" parent="."]
@@ -640,12 +581,12 @@ shape = SubResource("ConcavePolygonShape3D_v422e")
 
 [node name="Arcilla-1" type="Node3D" parent="."]
 script = ExtResource("1_fnntw")
-collectionMaterial = SubResource("ShaderMaterial_jqe3y")
+collectionMaterial = ExtResource("5_kiaye")
 
 [node name="Corner__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/Corner__Arcilla-1"]
 
@@ -655,7 +596,7 @@ shape = SubResource("ConcavePolygonShape3D_y3lco")
 [node name="CornerRemoved__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_yk334")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/CornerRemoved__Arcilla-1"]
 
@@ -665,7 +606,7 @@ shape = SubResource("ConcavePolygonShape3D_4rioy")
 [node name="Cube__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_fo54x")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/Cube__Arcilla-1"]
 
@@ -675,7 +616,7 @@ shape = SubResource("ConcavePolygonShape3D_ketmp")
 [node name="Ramp__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_0u141")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/Ramp__Arcilla-1"]
 
@@ -685,7 +626,7 @@ shape = SubResource("ConcavePolygonShape3D_er0k0")
 [node name="Slab__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_t641t")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/Slab__Arcilla-1"]
 
@@ -695,7 +636,7 @@ shape = SubResource("ConcavePolygonShape3D_qyx1t")
 [node name="Wedge__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_ol6mm")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/Wedge__Arcilla-1"]
 
@@ -705,7 +646,7 @@ shape = SubResource("ConcavePolygonShape3D_4ku5o")
 [node name="SlabCorner__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_13sst")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/SlabCorner__Arcilla-1"]
 
@@ -715,7 +656,7 @@ shape = SubResource("ConcavePolygonShape3D_pqycb")
 [node name="SlabRamp__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_4vbom")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/SlabRamp__Arcilla-1"]
 
@@ -725,7 +666,7 @@ shape = SubResource("ConcavePolygonShape3D_xwmje")
 [node name="SlabWedge__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_spn8v")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/SlabWedge__Arcilla-1"]
 
@@ -735,7 +676,7 @@ shape = SubResource("ConcavePolygonShape3D_un63l")
 [node name="SlabCornerRemoved__Arcilla-1" type="MeshInstance3D" parent="Arcilla-1"]
 mesh = SubResource("ArrayMesh_uyxvl")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_jqe3y")
+surface_material_override/0 = ExtResource("5_kiaye")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Arcilla-1/SlabCornerRemoved__Arcilla-1"]
 
@@ -744,12 +685,12 @@ shape = SubResource("ConcavePolygonShape3D_v422e")
 
 [node name="Baldosas-1" type="Node3D" parent="."]
 script = ExtResource("1_fnntw")
-collectionMaterial = SubResource("ShaderMaterial_386y4")
+collectionMaterial = ExtResource("6_xeqyn")
 
 [node name="Corner__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/Corner__Baldosas-1"]
 
@@ -759,7 +700,7 @@ shape = SubResource("ConcavePolygonShape3D_y3lco")
 [node name="CornerRemoved__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_yk334")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/CornerRemoved__Baldosas-1"]
 
@@ -769,7 +710,7 @@ shape = SubResource("ConcavePolygonShape3D_4rioy")
 [node name="Cube__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_fo54x")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/Cube__Baldosas-1"]
 
@@ -779,7 +720,7 @@ shape = SubResource("ConcavePolygonShape3D_ketmp")
 [node name="Ramp__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_0u141")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/Ramp__Baldosas-1"]
 
@@ -789,7 +730,7 @@ shape = SubResource("ConcavePolygonShape3D_er0k0")
 [node name="Slab__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_t641t")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/Slab__Baldosas-1"]
 
@@ -799,7 +740,7 @@ shape = SubResource("ConcavePolygonShape3D_qyx1t")
 [node name="Wedge__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_ol6mm")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/Wedge__Baldosas-1"]
 
@@ -809,7 +750,7 @@ shape = SubResource("ConcavePolygonShape3D_4ku5o")
 [node name="SlabCorner__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_13sst")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/SlabCorner__Baldosas-1"]
 
@@ -819,7 +760,7 @@ shape = SubResource("ConcavePolygonShape3D_pqycb")
 [node name="SlabRamp__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_4vbom")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/SlabRamp__Baldosas-1"]
 
@@ -829,7 +770,7 @@ shape = SubResource("ConcavePolygonShape3D_xwmje")
 [node name="SlabWedge__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_spn8v")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/SlabWedge__Baldosas-1"]
 
@@ -839,7 +780,7 @@ shape = SubResource("ConcavePolygonShape3D_un63l")
 [node name="SlabCornerRemoved__Baldosas-1" type="MeshInstance3D" parent="Baldosas-1"]
 mesh = SubResource("ArrayMesh_uyxvl")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_386y4")
+surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Baldosas-1/SlabCornerRemoved__Baldosas-1"]
 

@@ -1,8 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cka0eqqiaflf5"]
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cd35salnecua2"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="1_xbxqq"]
-[ext_resource type="Texture2D" uid="uid://c8vsq4clfj5fj" path="res://Assets/UV Textures/Patron-Andino-1/Patron-Andino-1.png" id="2_uokq2"]
-[ext_resource type="Texture2D" uid="uid://co4rvargsfqxy" path="res://Assets/UV Textures/Patron-Andino-1/Patron-Andino-1-top.png" id="3_m87y2"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="1_bux7b"]
+[ext_resource type="Texture2D" uid="uid://dpjmte3noa1ys" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1.png" id="2_641nt"]
+[ext_resource type="Texture2D" uid="uid://d4no0vdjo3b5x" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1-Top.png" id="3_cbx0s"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
 offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
@@ -20,11 +20,11 @@ gradient = SubResource("Gradient_epi6i")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_xbxqq")
+shader = ExtResource("1_bux7b")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("2_uokq2")
+shader_parameter/texture_albedo = ExtResource("2_641nt")
 shader_parameter/map_top_to_world = true
-shader_parameter/top_texture = ExtResource("3_m87y2")
+shader_parameter/top_texture = ExtResource("3_cbx0s")
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/albedo_texture_size = Vector2i(256, 256)
 shader_parameter/point_size = 0.0
