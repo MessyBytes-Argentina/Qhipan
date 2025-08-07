@@ -1,11 +1,9 @@
-[gd_scene load_steps=96 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=102 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://Resources/Particles/spoof_particle.tscn" id="3_x38go"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
-[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_o7oki"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="5_3jjt7"]
 [ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/poof.ogg" id="6_3jjt7"]
@@ -13,13 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Character/IDLE/IDLE 2.png" id="7_fj5th"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
+[ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/Player/poofEmitter.tscn" id="8_3jjt7"]
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Character/WALK/WALK 1.png" id="10_2fn2m"]
-[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://Resources/Particles/post_processing.tscn" id="10_3jjt7"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://Resources/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
+[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/Particles/post_processing.tscn" id="10_3jjt7"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://dd8k35t2irrpo" path="res://Assets/Tutorial Screens/Reset Bubble.png" id="10_xq41j"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
@@ -106,6 +105,19 @@ detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
 
+[sub_resource type="Gradient" id="Gradient_6fycs"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.251521)
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujwi3"]
+gradient = SubResource("Gradient_6fycs")
+width = 192
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.1)
+fill_to = Vector2(0, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
@@ -142,6 +154,29 @@ size = Vector3(20, 20, 20)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
 height = 1.5
+
+[sub_resource type="Gradient" id="Gradient_h7mp7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.251521)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3jjt7"]
+gradient = SubResource("Gradient_h7mp7")
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.1)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_xq41j"]
+offsets = PackedFloat32Array(0, 0.25, 0.7, 0.7)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 0.0980392, 1, 0, 0, 0.588235, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6fycs"]
+gradient = SubResource("Gradient_xq41j")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
@@ -559,6 +594,48 @@ tracks/1/keys = {
 "values": [ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
 }
 
+[sub_resource type="Animation" id="Animation_xq41j"]
+resource_name = "preload"
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02, 0.021, 0.022, 0.023, 0.024, 0.025, 0.026, 0.027, 0.028, 0.029, 0.03, 0.031, 0.032, 0.033, 0.034, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04, 0.041, 0.042, 0.043, 0.044, 0.045, 0.046, 0.047),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.048),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008, 0.009, 0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02, 0.021, 0.022, 0.023, 0.024, 0.025, 0.026, 0.027, 0.028, 0.029, 0.03, 0.031, 0.032, 0.033, 0.034, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04, 0.041, 0.042, 0.043, 0.044, 0.045, 0.046, 0.047),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]
 _data = {
 &"Float": SubResource("Animation_h423j"),
@@ -573,7 +650,8 @@ _data = {
 &"Idle_Back": SubResource("Animation_c6d4u"),
 &"RESET": SubResource("Animation_57iut"),
 &"Walk": SubResource("Animation_6681y"),
-&"Walk_Back": SubResource("Animation_po2dv")
+&"Walk_Back": SubResource("Animation_po2dv"),
+&"preload": SubResource("Animation_xq41j")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["InputBlocking", "Player"]]
@@ -623,12 +701,19 @@ mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_cphfr")
 
-[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("3_x38go")]
+[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, -0.0725533, 0.199339)
-script = ExtResource("4_o7oki")
-particles = Array[PackedScene]([ExtResource("3_x38go")])
-_testParticles = ""
+
+[node name="PlayerHighlight" type="Sprite3D" parent="SpritePivot/Sprite"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, -0.241844, 0.939692, -0.241844, 0.664463, 0.34202, 0.664463, 0, 0.422862, 0.153909)
+pixel_size = 0.0003
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 3
+texture = SubResource("GradientTexture2D_ujwi3")
 
 [node name="Message" type="Sprite3D" parent="SpritePivot"]
 unique_name_in_owner = true
@@ -638,7 +723,8 @@ no_depth_test = true
 render_priority = 3
 texture = ExtResource("10_xq41j")
 
-[node name="popUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
+[node name="PopUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
+unique_name_in_owner = true
 stream = ExtResource("11_xq41j")
 volume_db = -20.0
 bus = &"SFX"
@@ -652,12 +738,15 @@ shape = SubResource("CapsuleShape3D_cphfr")
 unique_name_in_owner = true
 top_level = true
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="CameraZoomPivot" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraZoomPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
 current = true
 fov = 55.0
 
-[node name="PostProcessing" parent="CameraPivot/Camera3D" instance=ExtResource("10_3jjt7")]
+[node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
@@ -710,6 +799,22 @@ bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
+[node name="Highlight" type="Sprite3D" parent="GrabArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+top_level = true
+visible = false
+pixel_size = 0.003
+billboard = 1
+render_priority = 2
+texture = SubResource("GradientTexture2D_3jjt7")
+
+[node name="AreaHighlight" type="Sprite3D" parent="GrabArea"]
+top_level = true
+visible = false
+pixel_size = 0.0026
+render_priority = 1
+texture = SubResource("GradientTexture2D_6fycs")
+
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
@@ -728,4 +833,4 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_ihfjc")
 }
-autoplay = "Idle"
+autoplay = "preload"

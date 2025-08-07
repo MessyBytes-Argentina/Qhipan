@@ -1,9 +1,13 @@
 extends Node
 
 var levelList: Array[String]
-var creditsScene: String = "res://UI/RestartScreen.tscn"
-var sceneManager:StoryWriterSceneManager
+var creditsScene: String = "res://UI/Restart.tscn"
+var sceneManager: StoryWriterSceneManager
 var currentLvlId: int = 0
+
+#func _input(_event) -> void:
+	#if Input.is_action_just_pressed("win"):
+		#next_level()
 
 func _ready() -> void:
 	while not sceneManager:

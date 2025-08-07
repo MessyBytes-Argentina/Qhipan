@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1tkfj6teqgo"]
+
+[ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://LevelResources/NoGravityZone/NoGravity.gd" id="1_5x4vh"]
+
+[node name="NoGravityArea" type="Area3D"]
+script = ExtResource("1_5x4vh")
+metadata/_custom_type_script = "uid://trd7162s7a8s"

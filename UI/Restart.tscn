@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8wvtujbncu6r"]
 
-[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://UI/Start-Credit-Background.png" id="1_lqvxy"]
-[ext_resource type="Script" uid="uid://c8yqk5lhkwmyt" path="res://UI/RestartButton.gd" id="1_nw1lt"]
-[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_qvjrn"]
+[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://UI/Start-Credit-Background.png" id="1_2d7qx"]
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_qkwud"]
+[ext_resource type="Script" uid="uid://c8yqk5lhkwmyt" path="res://UI/RestartButton.gd" id="3_lbwl6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_petif"]
 
@@ -37,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lqvxy")
+texture = ExtResource("1_2d7qx")
 expand_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport"]
@@ -60,7 +60,7 @@ theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_qvjrn")
+theme_override_fonts/font = ExtResource("2_qkwud")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_petif")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ek0d3")
@@ -68,4 +68,4 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ek0d3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ek0d3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ek0d3")
 text = "Restart"
-script = ExtResource("1_nw1lt")
+script = ExtResource("3_lbwl6")

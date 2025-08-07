@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkdx1yrx643d4"]
+[gd_scene load_steps=15 format=3 uid="uid://dkdx1yrx643d4"]
 
 [ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
 [ext_resource type="PackedScene" uid="uid://8ain4p6etldq" path="res://UI/SplashScenePreload.tscn" id="2_7hhw3"]
@@ -9,22 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Buttons/PRESSED.png" id="5_du044"]
 [ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Buttons/IDLE.png" id="6_jywdf"]
 [ext_resource type="Script" uid="uid://b42e131hj7nte" path="res://Managers/SceneManager/ResetButton.gd" id="7_efent"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_g38tw"]
-seed = 9
-frequency = 1.0
-domain_warp_enabled = true
-domain_warp_type = 2
-domain_warp_fractal_type = 2
-domain_warp_fractal_octaves = 6
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ebjrv"]
-width = 128
-height = 128
-generate_mipmaps = false
-seamless = true
-normalize = false
-noise = SubResource("FastNoiseLite_g38tw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvkcw"]
 
@@ -64,7 +48,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t3vn0")
-noise = SubResource("NoiseTexture2D_ebjrv")
 
 [node name="MainSubViewportContainer" type="Control" parent="."]
 unique_name_in_owner = true
@@ -77,6 +60,7 @@ grow_vertical = 2
 metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
 
 [node name="Node3D" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
+sounds = Array[AudioStream]([])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -106,8 +90,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pvkcw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yd3x0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_s85d3")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pkxch")
-text = "Restart Level"
+text = "Restart Level [Y]"
 script = ExtResource("7_efent")
+
+[node name="BlockScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+
+[node name="BlockScreen" type="ColorRect" parent="BlockScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

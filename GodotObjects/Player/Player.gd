@@ -2,11 +2,14 @@
 extends CharacterBody3D
 class_name Player
 
-const cameraRotationStep: float = deg_to_rad(90.0)
-const transparencyTime: float = 0.1
-const tweenTime: float = 0.25
+const CAMERAROTATIONSTEP: float = deg_to_rad(45.0)
+const TRANSPARENCYTIME: float = 0.1
+const STEPSOUNDTWEENTIME: float = 0.25
 const POPUPTIME: float = 0.5
 const RESTARTBUTTONWAIT: float = 2.0
+const CAMERALERPDURATION: float = 0.25
+const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
+const CAMERAZOOMTIME: float = 0.25
 
 enum States {Idle, Walk, Float}
 
@@ -25,7 +28,6 @@ enum States {Idle, Walk, Float}
 		if Engine.is_editor_hint(): set_decal_size()
 
 @export_group("Animation Parameters")
-@export_range(0, 2, .1) var cameraLerpDuration: float = 0.5
 @export_range(0, 2, .1) var spriteFlipDuration: float = 0.5
 @export_range(0, 1, .01) var cameraFollowSpeed: float = 0.1
 
@@ -43,11 +45,14 @@ enum States {Idle, Walk, Float}
 @onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
 @onready var poofSound: RandomPitchPlayer = %PoofSound
 @onready var message: Sprite3D = %Message
-@onready var popUpSound: RandomPitchPlayer = $SpritePivot/Message/popUpSound
+@onready var popUpSound: RandomPitchPlayer = %PopUpSound
+@onready var cameraZoomPivot: Node3D = %CameraZoomPivot
+@onready var playerHighlight: Sprite3D = %PlayerHighlight
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
 var cameraRotationTween: Tween
+var cameraZoomTween: Tween
 var spriteFlipTween: Tween
 var lastHorizontal: float = 1
 var pushingForces: Dictionary[Node3D, Vector3] = {}
@@ -63,42 +68,54 @@ var transparencyTween: Tween
 var hasSpawned: bool = false
 var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
-var death: bool = false
+var noMovement: bool = true
 var fallSoundPlayed: bool = false
 var respawnFall: bool = false
 var popupTween: Tween
 var stopped: bool = false
 var resetButton: Button
+var zooming: bool = false
+var zoomedOut: bool = false
+var inCheckpoint: bool = true
 
 func _ready() -> void:
-	set_decal_size()
 	if Engine.is_editor_hint(): return
+	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
+	set_decal_size()
+	poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 	resetButton = get_tree().get_first_node_in_group("ResetButton")
-
-func block_inputs() -> void:
-	death = true
+	playerHighlight.scale = Vector3.ONE * 0.001
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	if death: 
+	if noMovement or zooming: 
 		inputDirection = Vector3.ZERO
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
+	camera_zoom_check()
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	move_character(delta)
 	camera_follow(delta)
 	animation_check()
-	if not stopped and resetButton: resetButton.hide()
+	grabArea.canDrop = is_on_floor()
+	if not stopped:
+		if resetButton: resetButton.hide()
+		if message: 
+			if popupTween: if popupTween.is_running(): return
+			do_popout()
+
+func block_inputs() -> void:
+	noMovement = true
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -119,21 +136,38 @@ func rotate_sprite(rotationValue: float) -> void:
 
 func camera_rotation_check() -> void:
 	if cameraRotationTween: return
-	var cameraRotation = (cameraRotationStep if Input.is_action_just_pressed("camera_left") else 0.0) - (cameraRotationStep if Input.is_action_just_pressed("camera_right") else 0.0)
-	if cameraRotation != 0:
-		currentCameraRotation += cameraRotation
-		cameraRotationTween = create_tween()
-		cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, cameraLerpDuration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-		cameraRotationTween.finished.connect(rotation_finished)
-		cameraRotationTween.play()
-		if cameraRotation > 0:
-			rotateCamLeftSound.play()
-		else:
-			rotateCamRightSound.play()
+	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
+	if cameraRotation == 0: return
+	currentCameraRotation += cameraRotation
+	cameraRotationTween = create_tween()
+	cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	cameraRotationTween.finished.connect(rotation_finished)
+	cameraRotationTween.play()
+	if cameraRotation > 0:
+		rotateCamLeftSound.play()
+	else:
+		rotateCamRightSound.play()
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue
 	cameraPivot.rotation.y = rotationValue + rotation.y
+
+func camera_zoom_check() -> void:
+	if zooming: return
+	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
+	if not doZoom: return
+	zooming = true
+	noMovement = true
+	cameraZoomTween = create_tween()
+	cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
+	cameraZoomTween.finished.connect(rotation_finished)
+	cameraZoomTween.play()
+	await cameraZoomTween.finished
+	zooming = false
+	noMovement = false
+	zoomedOut = not zoomedOut
+	grabArea.zoomedOut = zoomedOut
 
 func rotation_finished() -> void:
 	if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 
@@ -164,13 +198,11 @@ func move_character(delta: float) -> void:
 	velocity = lastVoluntarySpeed
 	move_and_slide()
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
-	
 	if movedAmount != 0:
-		MusicManager.set_synchro_clip_volume("main",[1],0.0,tweenTime)
+		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
 	else:
-		MusicManager.set_synchro_clip_volume("main",[1],-60.0,tweenTime)
-	
-	moved += movedAmount
+		MusicManager.set_synchro_clip_volume("main", [1], -60.0, STEPSOUNDTWEENTIME)
+	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0:
@@ -231,14 +263,14 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 		return
 	if resetButton: resetButton.hide()
 	do_popout()
-	death = true
+	noMovement = true
 	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 0.0, transparencyTime)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, transparencyTime)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, transparencyTime)
+	transparencyTween.tween_property(material, "albedo_color:a", 0.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	poof.emit_particles()
 	await poof.finished
@@ -248,12 +280,12 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 1.0, transparencyTime)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, transparencyTime)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, transparencyTime)
+	transparencyTween.tween_property(material, "albedo_color:a", 1.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, TRANSPARENCYTIME)
+	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	await poof.finished
-	death = false
+	noMovement = false
 	stopped = false
 
 func reset_aura() -> void:
@@ -284,3 +316,10 @@ func do_popout() -> void:
 
 func show_restart() -> void:
 	if stopped: resetButton.show()
+
+func checkpoint_entered() -> void:
+	inCheckpoint = true
+	moved = 0
+
+func checkpoint_exited() -> void:
+	inCheckpoint = false

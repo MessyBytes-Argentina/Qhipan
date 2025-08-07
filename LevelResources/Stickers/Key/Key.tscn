@@ -1,0 +1,214 @@
+[gd_scene load_steps=24 format=3 uid="uid://5y3mxiemv321"]
+
+[ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Stickers/Key/Key-1.png" id="2_mjg6o"]
+[ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Stickers/Key/Key-Used.png" id="3_loxqr"]
+[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="4_5s7j6"]
+[ext_resource type="Script" uid="uid://bok5ycfda8ov6" path="res://LevelResources/Stickers/Key/Key.gd" id="4_ws05p"]
+[ext_resource type="Texture2D" uid="uid://ddl4r2wmhi7dh" path="res://Assets/Stickers/Key/key-2.png" id="5_ws05p"]
+[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="5_yl1a6"]
+[ext_resource type="Texture2D" uid="uid://bl5tesrbned68" path="res://Assets/Stickers/Key/Key-3.png" id="6_loxqr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
+radius = 0.6
+
+[sub_resource type="QuadMesh" id="QuadMesh_mjg6o"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_c5eqd"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o0lwf"]
+gradient = SubResource("Gradient_c5eqd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws05p"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("2_mjg6o")
+rim = 0.0
+rim_tint = 0.0
+anisotropy = 1.0
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_o0lwf")
+detail_albedo = ExtResource("3_loxqr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_loxqr"]
+flip_faces = true
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_8cfjh"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjg6o"]
+gradient = SubResource("Gradient_8cfjh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5eqd"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("2_mjg6o")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_mjg6o")
+
+[sub_resource type="Gradient" id="Gradient_k62l1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r7e5t"]
+gradient = SubResource("Gradient_k62l1")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
+render_priority = 0
+shader = ExtResource("4_5s7j6")
+shader_parameter/albedo = SubResource("GradientTexture2D_r7e5t")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/albedo_mix = 1.0
+shader_parameter/scale_mod = Vector3(1, 0.333333, 1)
+shader_parameter/cube_half_size = Vector3(0.5, 1.5, 0.5)
+shader_parameter/enable_y_fade = false
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.7
+shader_parameter/fade_power = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_8dhaa"]
+material = SubResource("ShaderMaterial_c1wxo")
+size = Vector3(1, 3, 1)
+
+[sub_resource type="Animation" id="Animation_c5eqd"]
+resource_name = "PowerUp"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_mjg6o"), ExtResource("5_ws05p"), ExtResource("6_loxqr")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"open_door"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meshes/Mesh:surface_material_override/0:detail_mask:gradient:colors")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedColorArray(0, 0, 0, 1), PackedColorArray(0, 0, 0, 1), PackedColorArray(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o0lwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_mjg6o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meshes/Mesh:surface_material_override/0:detail_mask:gradient:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedColorArray(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ij7cm"]
+_data = {
+&"PowerUp": SubResource("Animation_c5eqd"),
+&"RESET": SubResource("Animation_o0lwf")
+}
+
+[node name="KeySticker" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("4_ws05p")
+validAreaIndexes = Array[int]([11, 12])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="Meshes" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_mjg6o")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ws05p")
+
+[node name="Back" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_loxqr")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_c5eqd")
+
+[node name="Billboard" type="Sprite3D" parent="Meshes"]
+unique_name_in_owner = true
+pixel_size = 0.002
+billboard = 1
+render_priority = 2
+texture = ExtResource("2_mjg6o")
+
+[node name="AreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 3072
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="ShadowDecal" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+cast_shadow = 0
+gi_lightmap_scale = 0
+mesh = SubResource("BoxMesh_8dhaa")
+Skeleton = null
+script = ExtResource("5_yl1a6")
+size = Vector3(1, 3, 1)
+texture = SubResource("GradientTexture2D_r7e5t")
+enable_fade = false
+metadata/_custom_type_script = "uid://feckn7f3pmud"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_ij7cm")
+}

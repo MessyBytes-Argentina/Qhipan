@@ -7,17 +7,14 @@ class_name StoryWriterSceneManager
 signal finished()
 
 ## The wait time after a scene is loaded in.
-const loadExtraTime: float = 0.5
+const loadExtraTime: float = 1.0
 ## The animation time.
-const loadAnimationTime: float = 1
+const loadAnimationTime: float = 1.0
 const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
-const loadAnimationExtraTime: float = 0
+const loadAnimationExtraTime: float = 0.0
 ## The time to spread back the hexes on loading time extended.
 const loadAnimationWaitTime: float = 0.5
-
-##Noise to use on shader.
-@export var noise: NoiseTexture2D
 
 ## Reference to the shader ColorRect.
 @onready var shaderColorRect: ColorRect = %ShaderColorRect
@@ -26,9 +23,10 @@ const loadAnimationWaitTime: float = 0.5
 ## Reference to the main subviewport.
 @onready var mainSubViewport: Control = %MainSubViewportContainer
 @onready var resetButton: Button = %ResetButton
+@onready var blockScreen: CanvasLayer = $BlockScreen
 
 ## A Dictionary of scenes loaded.
-var loadedScenes: Dictionary = {}
+var loadedScenes: Dictionary[String, Dictionary] = {}
 ## The currently requested main scene.
 var requested: String = ""
 ## Toggle used for transitions.
@@ -41,8 +39,8 @@ var transitionTween: Tween
 var inSetup: bool = false
 
 var currentScene: String
-
 var reloaded: bool = false
+var requestedSwitch: bool = false
 
 ## Starts loading a given scene.
 func load_scene(sceneName: String, path: String) -> void:
@@ -62,6 +60,7 @@ func erase_scene(sceneName: String) -> void:
 func load_and_switch(path: String, sceneName: String = "") -> void:
 	if sceneName == "": sceneName = path.get_file().get_basename()
 	load_scene(sceneName, path)
+	requestedSwitch = true
 	switch_scene(sceneName)
 	currentScene = sceneName
 
@@ -74,7 +73,7 @@ func _process(_delta: float) -> void:
 				match ResourceLoader.load_threaded_get_status(loadedScenes[key].path, progress):
 					ResourceLoader.THREAD_LOAD_LOADED:
 						loadedScenes[key].scene = ResourceLoader.load_threaded_get(loadedScenes[key].path)
-						finish_scene_switch()
+						if requestedSwitch: finish_scene_switch()
 					ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 						push_error("An error occurred while loading scene '" + key + "' with path '" + loadedScenes[key].path + "'.")
 	if currentViewportSize != get_viewport_rect().size:
@@ -84,16 +83,13 @@ func _process(_delta: float) -> void:
 
 ## Switches the main scene to the given one.
 func switch_scene(sceneName: String = currentScene) -> void:
+	blockScreen.show()
 	resetButton.hide()
 	reloaded = sceneName == currentScene
 	await get_tree().process_frame
 	inSetup = true
 	get_tree().paused = true
 	requested = sceneName
-	var newNoise: NoiseTexture2D = noise.duplicate()
-	newNoise.noise = noise.noise.duplicate()
-	newNoise.noise.seed = randi()
-	custom_set_shader_parameter(newNoise, "noise_texture")
 	transitionTween = create_tween()
 	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 0.0, 1.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	transitionTween.tween_method(custom_set_shader_parameter.bind("transparency") ,0.0 , 1.0, loadAnimationExtraTime)
@@ -136,8 +132,14 @@ func finish_scene_switch() -> void:
 	transitionTween.tween_method(custom_set_shader_parameter.bind("progress"), 1.0, 0.0, loadAnimationTime if not reloaded else loadSameScene).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	reloaded = false
 	transitionTween.play()
+	transitionTween.finished.connect(fin_transition)
 	get_tree().paused = false
 	finished.emit()
+
+func fin_transition() -> void:
+	blockScreen.hide()
+	var player: Player = get_tree().get_first_node_in_group("Player")
+	if player: player.noMovement = false
 
 ## Shader set parameter function
 func custom_set_shader_parameter(value: Variant, parameter: String) -> void:
