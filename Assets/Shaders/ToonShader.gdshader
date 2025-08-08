@@ -2,6 +2,7 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon;
 
+#include "res://Assets/Shaders/noises.gdshaderinc"
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
 uniform bool map_top_to_world = true;
@@ -29,6 +30,20 @@ uniform sampler2D fresnel_gradient;
 varying vec3 world_normal;
 varying vec3 view_normal;
 
+uniform vec4 borderColor: source_color = vec4(0.0, 1.0, 1.0, 1.0);
+uniform float borderSize = 0.25;
+uniform float borderEmission = 7.0;
+uniform float noiseSpeed;
+uniform float noiseStrength;
+uniform float noiseSize;
+uniform vec3 cylinderPosition;
+uniform vec3 cylinderRotation;
+uniform float cylinderRadius1;
+uniform float cylinderRadius2;
+uniform float cylinderHeight;
+
+varying vec3 worldVector;
+
 float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
 }
@@ -46,6 +61,7 @@ void vertex() {
 	vec3 temp_normal = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	world_normal = (INV_VIEW_MATRIX * vec4(temp_normal, 0.0)).xyz;
 	view_normal = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
+	worldVector = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
@@ -75,6 +91,18 @@ void fragment() {
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
+	
+	//CUTOUT
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	if (cylinderRadius1 > 0.0) {
+		vec3 p = worldVector - cylinderPosition;
+		float sdfCylinder = sdRoundCone(p, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
+		sdfCylinder += snoise(p * noiseSize + TIME * noiseSpeed) * noiseStrength;
+		if (sdfCylinder < 0.0) {discard;}
+		float borderDistance = smoothstep(0.0, borderSize, sdfCylinder);
+		ALBEDO = mix(borderColor.rgb, ALBEDO, borderDistance);
+		EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
+	}
 }
 
 void light() {

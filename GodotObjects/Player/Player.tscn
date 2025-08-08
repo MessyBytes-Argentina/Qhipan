@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=110 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -27,12 +27,19 @@
 [ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="11_xq41j"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="12_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Character/WALK/WALK 3.png" id="12_wm78n"]
+[ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/Player/CutoutCylinder.gd" id="12_xf0c4"]
 [ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/Ripping.mp3" id="13_8hsli"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Character/WALK/WALK 4.png" id="13_bity2"]
+[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/UV Textures/Rust-1/Rust-1.tres" id="13_h423j"]
 [ext_resource type="Texture2D" uid="uid://wd4evw80tj5p" path="res://Assets/Character/IDLE BACK/BACK 1.png" id="14_dkmaj"]
+[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/UV Textures/Patron-Andino-1/Patron-Andino-1.tres" id="14_k5k78"]
+[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/UV Textures/Arcilla-1/Arcilla-1.tres" id="15_1npnc"]
 [ext_resource type="Texture2D" uid="uid://b4anntfovs3gb" path="res://Assets/Character/IDLE BACK/BACK 2.png" id="15_kp4bv"]
+[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/UV Textures/Baldosas-1/Baldosas-1.tres" id="16_upgpw"]
 [ext_resource type="Texture2D" uid="uid://duqlyfcy6ckyy" path="res://Assets/Character/IDLE BACK/BACK 3.png" id="16_vmy0v"]
 [ext_resource type="Texture2D" uid="uid://brl7tlmrv10ry" path="res://Assets/Character/IDLE BACK/BACK 4.png" id="17_84qwu"]
+[ext_resource type="Material" uid="uid://c2djejiyff327" path="res://Assets/UV Textures/Doors/Door.tres" id="17_k5k78"]
+[ext_resource type="Material" uid="uid://b3tp4pl6us037" path="res://Assets/UV Textures/Doors/GoalDoor.tres" id="18_1npnc"]
 [ext_resource type="Texture2D" uid="uid://b72ik3kxud5rh" path="res://Assets/Character/WALK BACK/BW 1.png" id="18_yiccp"]
 [ext_resource type="Texture2D" uid="uid://bxu0ow1ccn7v8" path="res://Assets/Character/WALK BACK/BW 2.png" id="19_w2rxr"]
 [ext_resource type="Texture2D" uid="uid://bu10dw62umb1b" path="res://Assets/Character/WALK BACK/BW 3.png" id="20_l1a28"]
@@ -121,6 +128,11 @@ fill_to = Vector2(0, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
+top_radius = 0.1
+bottom_radius = 1.1
+height = 3.5
 
 [sub_resource type="Gradient" id="Gradient_6pvne"]
 offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.916968, 0.935018, 0.963899, 0.998, 0.999)
@@ -748,6 +760,15 @@ fov = 55.0
 
 [node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
+
+[node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0871557, -0.996195, 0, 0.996195, -0.0871557, 0, 0.173205, -2.15)
+visible = false
+mesh = SubResource("CylinderMesh_xvk8m")
+skeleton = NodePath("../../..")
+script = ExtResource("12_xf0c4")
+materials = Array[ShaderMaterial]([ExtResource("13_h423j"), ExtResource("14_k5k78"), ExtResource("15_1npnc"), ExtResource("16_upgpw"), ExtResource("17_k5k78"), ExtResource("18_1npnc")])
+offset = 0.5
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
