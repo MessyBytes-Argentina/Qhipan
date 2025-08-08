@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbhjclvuck2fk"
-path="res://.godot/imported/Cube.blend-ec56b2e6990ca06fd3d8d455478930ce.scn"
+path="res://.godot/imported/Cube.blend-59f93bb8af932c20a28a1d1925814517.scn"
 
 [deps]
 
-source_file="res://Resources/StickerMap/Cube.blend"
-dest_files=["res://.godot/imported/Cube.blend-ec56b2e6990ca06fd3d8d455478930ce.scn"]
+source_file="res://LevelResources/Gridmaps/StickerMap/Cube.blend"
+dest_files=["res://.godot/imported/Cube.blend-59f93bb8af932c20a28a1d1925814517.scn"]
 
 [params]
 

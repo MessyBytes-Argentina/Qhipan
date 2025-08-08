@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c1poifwjlhcvw"
-path="res://.godot/imported/wind.blend-2f66b297742aefa4420e834688afcf16.scn"
+path="res://.godot/imported/wind.blend-5955ac7b10a534a18bf619fb13fbc85f.scn"
 
 [deps]
 
-source_file="res://Resources/Particles/wind.blend"
-dest_files=["res://.godot/imported/wind.blend-2f66b297742aefa4420e834688afcf16.scn"]
+source_file="res://GodotObjects/Particles/wind.blend"
+dest_files=["res://.godot/imported/wind.blend-5955ac7b10a534a18bf619fb13fbc85f.scn"]
 
 [params]
 

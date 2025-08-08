@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b4li350da1qvl"
-path="res://.godot/imported/BasePieces.blend-71dba49c3bce02123da9542b10dcaf62.scn"
+path="res://.godot/imported/BasePieces.blend-ff01a262986520ae042aafe8592e2b9d.scn"
 
 [deps]
 
-source_file="res://Resources/Gridmap/BasePieces.blend"
-dest_files=["res://.godot/imported/BasePieces.blend-71dba49c3bce02123da9542b10dcaf62.scn"]
+source_file="res://LevelResources/Gridmaps/Gridmap/BasePieces.blend"
+dest_files=["res://.godot/imported/BasePieces.blend-ff01a262986520ae042aafe8592e2b9d.scn"]
 
 [params]
 

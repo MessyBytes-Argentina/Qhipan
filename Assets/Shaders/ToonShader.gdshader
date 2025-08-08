@@ -93,7 +93,6 @@ void fragment() {
 	ROUGHNESS = roughness_tex * roughness;
 	
 	//CUTOUT
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	if (cylinderRadius1 > 0.0) {
 		vec3 p = worldVector - cylinderPosition;
 		float sdfCylinder = sdRoundCone(p, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
