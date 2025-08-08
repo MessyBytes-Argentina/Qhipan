@@ -77,6 +77,7 @@ var resetButton: Button
 var zooming: bool = false
 var zoomedOut: bool = false
 var inCheckpoint: bool = true
+var resetPoppingOut: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -110,9 +111,7 @@ func _physics_process(delta: float) -> void:
 	grabArea.canDrop = is_on_floor()
 	if not stopped:
 		if resetButton: resetButton.hide()
-		if message: 
-			if popupTween: if popupTween.is_running(): return
-			do_popout()
+		if not resetPoppingOut: do_popout()
 
 func block_inputs() -> void:
 	noMovement = true
@@ -304,15 +303,22 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 	facingBack = currentInputDirection.z < 0
 
 func do_popup() -> void:
+	if popupTween:
+		popupTween.kill()
+		resetPoppingOut = false
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE, POPUPTIME * (1.0 - message.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
 	popUpSound.play_sound()
 
 func do_popout() -> void:
+	if popupTween:
+		popupTween.kill()
+	resetPoppingOut = true
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
+	popupTween.finished.connect(set.bind("resetPoppingOut", false))
 
 func show_restart() -> void:
 	if stopped: resetButton.show()
