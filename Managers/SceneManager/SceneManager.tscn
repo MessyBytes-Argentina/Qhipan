@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://8ain4p6etldq" path="res://UI/SplashScenePreload.tscn" id="2_7hhw3"]
 [ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
 [ext_resource type="FontFile" uid="uid://bjjw2oo2kbblm" path="res://Assets/Types/WinkyRough-VariableFont_wght.ttf" id="3_uqga5"]
-[ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/UV Textures/Diamonds_1-512x512.png" id="4_7hhw3"]
+[ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/Shaders/Diamonds_1-512x512.png" id="4_7hhw3"]
 [ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Buttons/HOVER.png" id="4_efent"]
 [ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Buttons/PRESSED.png" id="5_du044"]
 [ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Buttons/IDLE.png" id="6_jywdf"]

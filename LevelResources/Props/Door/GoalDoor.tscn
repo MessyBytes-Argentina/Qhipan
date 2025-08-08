@@ -1,16 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://boyck3nkn4lct"]
+[gd_scene load_steps=18 format=4 uid="uid://boyck3nkn4lct"]
 
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://LevelResources/Props/Door/Door.gd" id="1_b1das"]
-[ext_resource type="Texture2D" uid="uid://1qb1r6y0tv1y" path="res://Assets/UV Textures/Goal-Door.png" id="2_b1das"]
+[ext_resource type="Material" uid="uid://b3tp4pl6us037" path="res://Assets/UV Textures/Doors/GoalDoor.tres" id="3_713kq"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://LevelResources/Props/Door/DoorBody.gd" id="3_naok6"]
 [ext_resource type="AudioStream" uid="uid://b6bul5ui0ktw4" path="res://Assets/Sounds/Fanfare.mp3" id="4_naok6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_cw5sc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6m7da"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("2_b1das")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
 _surfaces = [{
@@ -34,7 +28,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_6m7da"),
+"material": ExtResource("3_713kq"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

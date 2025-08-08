@@ -38,7 +38,8 @@ uniform float noiseStrength;
 uniform float noiseSize;
 uniform vec3 cylinderPosition;
 uniform vec3 cylinderRotation;
-uniform float cylinderRadius;
+uniform float cylinderRadius1;
+uniform float cylinderRadius2;
 uniform float cylinderHeight;
 
 varying vec3 worldVector;
@@ -93,15 +94,14 @@ void fragment() {
 	
 	//CUTOUT
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	if (cylinderRadius > 0.0) {
+	if (cylinderRadius1 > 0.0) {
 		vec3 p = worldVector - cylinderPosition;
-		float sdfCylinder = sdCappedCylinder(p, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius);
+		float sdfCylinder = sdRoundCone(p, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
 		sdfCylinder += snoise(p * noiseSize + TIME * noiseSpeed) * noiseStrength;
 		if (sdfCylinder < 0.0) {discard;}
 		float borderDistance = smoothstep(0.0, borderSize, sdfCylinder);
 		ALBEDO = mix(borderColor.rgb, ALBEDO, borderDistance);
-		//ALPHA = mix(borderColor.a, albedo_tex.a, borderDistance);
-		//EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
+		EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
 	}
 }
 
