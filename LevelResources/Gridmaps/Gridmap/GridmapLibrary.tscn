@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://cl20o6ojxtevm"]
+[gd_scene load_steps=60 format=4 uid="uid://cl20o6ojxtevm"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_fnntw"]
 [ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/UV Textures/Rust-1/Rust-1.tres" id="2_dtlxk"]
@@ -393,7 +393,7 @@ blend_shape_mode = 0
 resource_name = "BasePieces_SlabRampUpsideDown"
 _surfaces = [{
 "aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
-"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA/x//P/8fAAAAAP9f/3//n/8//1//P/+f/38AAAAA/z//HwAA/x//P/9//1//P/8//z//X/9/"),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA/x//P/8fAAAAAP9f/3//n/8//1//P/+f/38AAAAA/z//HwAA/x//X/9//z//P/9f/z//P/9/"),
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
@@ -402,7 +402,7 @@ _surfaces = [{
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 18,
-"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABMDQAA/////0wN//8AAP//TA0AAP//AABMDf//AAD/////AAD////////+//////////7///8AAKoq//8AAP//qir+//////+qKv//AAAAAKoq////f////3////9/////f/9/////f////3///8DGe/LAxnvywMZ78sDGe/L/f/9//3//f/9//3+qqlRVqqpUVaqqVFWqqlRV")
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABMDQAA/////0wN//8AAP//TA0AAP//AABMDf//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3///8DGe/LAxnvywMZ78sDGe/L/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sthk2")
@@ -463,7 +463,7 @@ blend_shape_mode = 0
 resource_name = "BasePieces_RampUpsideDown"
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA////P///AAD/v/9f/3//n/8//1//P/+f/38AAP+//z///wAA////H/9//1//P/8f/z//X/9/"),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA////P///AAD/v/9f/3//n/8//1//P/+f/38AAP+//z///wAA////X/9//x//P/9f/z//H/9/"),
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
@@ -472,7 +472,7 @@ _surfaces = [{
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 18,
-"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABUFgAA/////1QW//8AAP//VBYAAP//AABUFv//AAD/////AAD////////+//////////7///8AAKoq//8AAP//qir+//////+qKv//AAAAAKoq////f////3////9/////f/9/////f////3////rKCOr6ygjq+soI6vrKCOr/f/9//3//f/9//3+qqlRVqqpUVaqqVFWqqlRV")
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABUFgAA/////1QW//8AAP//VBYAAP//AABUFv//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3////rKCOr6ygjq+soI6vrKCOr/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nmoqy")
@@ -514,6 +514,88 @@ shadow_mesh = SubResource("ArrayMesh_xlj1p")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_phrc6"]
 data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l05q"]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("3_ug2ju")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_211wu"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sp3hq"]
+resource_name = "BasePieces_SlabCornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+f/1//n/+f/3//n/9//1//P/+f/z//P/8fAAAAAAAA/x8AAP8fAAAAAP8//x//n/9//7//P/+f/z//v/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_8l05q"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAACCyAAAAAP//ILL+//////8gsv7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAKoqAAD/////qioAAAAA//+qKgAA//8AAKoq//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////hEv1P4RL9T+ES/U//f////3////9/////v/9//7//f/+//39U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_211wu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hhwsf"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 1, 0.5, -0.5, 0.5, -0.5, -0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrvbc"]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("3_ug2ju")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nefu6"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ojlt"]
+resource_name = "BasePieces_CornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+//1//v/+f/3//n/9//1//P/+f/z//P///AAD/vwAA//8AAP//AAD/v/8/////3/9//5//P//f/z//n/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_lrvbc"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAAJaxAAAAAP//lrH+//////+Wsf7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAFTVAAD/////VNUAAAAA//9U1QAA//8AAFTV//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////xF8058RfNOfEXzTn/f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqqAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nefu6")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d6bbe"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5)
 
 [node name="Node3D" type="Node3D"]
 
@@ -979,6 +1061,26 @@ surface_material_override/0 = ExtResource("2_dtlxk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Rust-1/CornerUpsideDown__Rust-1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_phrc6")
 
+[node name="SlabCornerRemovedUpsideDown__Rust-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Rust-1"]
+mesh = SubResource("ArrayMesh_sp3hq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Rust-1/SlabCornerRemovedUpsideDown__Rust-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Rust-1/SlabCornerRemovedUpsideDown__Rust-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhwsf")
+
+[node name="CornerRemovedUpsideDown__Rust-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Rust-1"]
+mesh = SubResource("ArrayMesh_0ojlt")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_dtlxk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Rust-1/CornerRemovedUpsideDown__Rust-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Rust-1/CornerRemovedUpsideDown__Rust-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_d6bbe")
+
 [node name="Patron-Andino-1" type="Node3D" parent="UpsideDownForOldCollections"]
 script = ExtResource("1_fnntw")
 collectionMaterial = ExtResource("4_ug2ju")
@@ -1022,6 +1124,26 @@ surface_material_override/0 = ExtResource("4_ug2ju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Patron-Andino-1/CornerUpsideDown__Patron-Andino-1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_phrc6")
+
+[node name="SlabCornerRemovedUpsideDown__Patron-Andino-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Patron-Andino-1"]
+mesh = SubResource("ArrayMesh_sp3hq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_ug2ju")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Patron-Andino-1/SlabCornerRemovedUpsideDown__Patron-Andino-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Patron-Andino-1/SlabCornerRemovedUpsideDown__Patron-Andino-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhwsf")
+
+[node name="CornerRemovedUpsideDown__Patron-Andino-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Patron-Andino-1"]
+mesh = SubResource("ArrayMesh_0ojlt")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_ug2ju")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Patron-Andino-1/CornerRemovedUpsideDown__Patron-Andino-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Patron-Andino-1/CornerRemovedUpsideDown__Patron-Andino-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_d6bbe")
 
 [node name="Arcilla-1" type="Node3D" parent="UpsideDownForOldCollections"]
 script = ExtResource("1_fnntw")
@@ -1067,6 +1189,26 @@ surface_material_override/0 = ExtResource("5_kiaye")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Arcilla-1/CornerUpsideDown__Arcilla-1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_phrc6")
 
+[node name="SlabCornerRemovedUpsideDown__Arcilla-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Arcilla-1"]
+mesh = SubResource("ArrayMesh_sp3hq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_kiaye")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Arcilla-1/SlabCornerRemovedUpsideDown__Arcilla-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Arcilla-1/SlabCornerRemovedUpsideDown__Arcilla-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhwsf")
+
+[node name="CornerRemovedUpsideDown__Arcilla-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Arcilla-1"]
+mesh = SubResource("ArrayMesh_0ojlt")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_kiaye")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Arcilla-1/CornerRemovedUpsideDown__Arcilla-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Arcilla-1/CornerRemovedUpsideDown__Arcilla-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_d6bbe")
+
 [node name="Baldosas-1" type="Node3D" parent="UpsideDownForOldCollections"]
 script = ExtResource("1_fnntw")
 collectionMaterial = ExtResource("6_xeqyn")
@@ -1110,3 +1252,23 @@ surface_material_override/0 = ExtResource("6_xeqyn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Baldosas-1/CornerUpsideDown__Baldosas-1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_phrc6")
+
+[node name="SlabCornerRemovedUpsideDown__Baldosas-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Baldosas-1"]
+mesh = SubResource("ArrayMesh_sp3hq")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_xeqyn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Baldosas-1/SlabCornerRemovedUpsideDown__Baldosas-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Baldosas-1/SlabCornerRemovedUpsideDown__Baldosas-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hhwsf")
+
+[node name="CornerRemovedUpsideDown__Baldosas-1" type="MeshInstance3D" parent="UpsideDownForOldCollections/Baldosas-1"]
+mesh = SubResource("ArrayMesh_0ojlt")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_xeqyn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UpsideDownForOldCollections/Baldosas-1/CornerRemovedUpsideDown__Baldosas-1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpsideDownForOldCollections/Baldosas-1/CornerRemovedUpsideDown__Baldosas-1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_d6bbe")
