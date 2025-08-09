@@ -30,17 +30,19 @@ uniform sampler2D fresnel_gradient;
 varying vec3 world_normal;
 varying vec3 view_normal;
 
+uniform bool cylinderCutout = false;
 uniform vec4 borderColor: source_color = vec4(0.0, 1.0, 1.0, 1.0);
 uniform float borderSize = 0.25;
 uniform float borderEmission = 7.0;
-uniform float noiseSpeed;
-uniform float noiseStrength;
-uniform float noiseSize;
+uniform vec3 boxPosition;
+uniform vec3 boxSize;
+uniform mat3 boxRotation;
 uniform vec3 cylinderPosition;
 uniform vec3 cylinderRotation;
 uniform float cylinderRadius1;
 uniform float cylinderRadius2;
 uniform float cylinderHeight;
+uniform vec3 playerPosition;
 
 varying vec3 worldVector;
 
@@ -74,14 +76,26 @@ void fragment() {
 	vec2 base_uv = UV;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
-	if (world_normal.y < 0.5 && map_top_to_world) {
+	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
+	float borderDistance = 1.0;
+	//Cylinder cutout
+	if (cylinderCutout && world_pos.y > playerPosition.y + 0.02) {
+		vec3 cylinderWorldPosition = worldVector - cylinderPosition;
+		float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
+		vec3 boxWorldPosition = worldVector - boxPosition;
+		float sdfBox = sdBoxRotated(boxWorldPosition, boxSize, boxRotation);
+		float resultShape = opSubtraction(sdfBox, sdfCylinder);
+		if (resultShape < 0.0) {discard;}
+		borderDistance = smoothstep(0.0, borderSize, resultShape);
+	}
+	
+	if (world_normal.y < 0.5 || !map_top_to_world) {
 		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 	} else {
-		vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
 		world_pos = fract(world_pos * vec3(1.00000 / top_texture_scale, 1.00000, 1.00000 / top_texture_scale) + vec3(0.50000 / top_texture_scale, 0.00000, 0.50000 / top_texture_scale));
 		vec2 base_uv = world_pos.xz;
 		vec4 albedo_tex = texture(top_texture, base_uv);
-		ALBEDO = albedo.rgb * albedo_tex.rgb;
+		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 	}
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
@@ -92,13 +106,7 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	
-	//CUTOUT
-	if (cylinderRadius1 > 0.0) {
-		vec3 p = worldVector - cylinderPosition;
-		float sdfCylinder = sdRoundCone(p, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
-		sdfCylinder += snoise(p * noiseSize + TIME * noiseSpeed) * noiseStrength;
-		if (sdfCylinder < 0.0) {discard;}
-		float borderDistance = smoothstep(0.0, borderSize, sdfCylinder);
+	if (cylinderCutout) {
 		ALBEDO = mix(borderColor.rgb, ALBEDO, borderDistance);
 		EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
 	}

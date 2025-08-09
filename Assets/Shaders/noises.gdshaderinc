@@ -1,6 +1,16 @@
 float dot2( in vec2 v ) { return dot(v,v); }
 float dot2( in vec3 v ) { return dot(v,v); }
 float ndot( in vec2 a, in vec2 b ) { return a.x*b.x - a.y*b.y; }
+float opUnion( float d1, float d2 ) { return min(d1,d2);}
+float opSubtraction( float d1, float d2 ) { return max(-d1,d2); }
+float opIntersection( float d1, float d2 ) { return max(d1,d2); }
+float opXor(float d1, float d2 ) { return max(min(d1,d2),-max(d1,d2)); }
+
+//mat2 rot(float a) {
+	//float s = sin(a);
+	//float c = cos(a);
+	//return mat2(c, -s, s, c);
+//}
 
 float saturate (float s){
     return clamp(s,0,1);
@@ -12,6 +22,17 @@ float remap(float value, float inputMin, float inputMax, float outputMin, float 
  
 float sdSphere(vec3 p, float s){
     return length(p)-s;
+}
+
+
+float sdBox( vec3 p, vec3 b )
+{
+  vec3 q = abs(p) - b;
+  return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0);
+}
+
+float sdBoxRotated( vec3 p, vec3 b , mat3 t ) {
+	return sdBox( inverse(t) * p, b);
 }
 
 float sdCappedCylinder( vec3 p, vec3 a, vec3 b, float r )
