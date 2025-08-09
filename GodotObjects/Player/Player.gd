@@ -48,6 +48,7 @@ enum States {Idle, Walk, Float}
 @onready var popUpSound: RandomPitchPlayer = %PopUpSound
 @onready var cameraZoomPivot: Node3D = %CameraZoomPivot
 @onready var playerHighlight: Sprite3D = %PlayerHighlight
+@onready var cubeCutout: CutoutCube = %CubeCutout
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -155,6 +156,7 @@ func camera_zoom_check() -> void:
 	if zooming: return
 	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
 	if not doZoom: return
+	cubeCutout.zoomedOut = not zoomedOut
 	zooming = true
 	noMovement = true
 	cameraZoomTween = create_tween()

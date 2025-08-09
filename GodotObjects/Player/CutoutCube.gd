@@ -6,12 +6,13 @@ class_name CutoutCube
 @export var offset: float = 0.0
 @export_tool_button("Align") var allignAction: Callable = align_position
 
-@onready var cylinder: MeshInstance3D = $"../CameraZoomPivot/Camera3D/CutoutCylinder"
-@onready var playerFloor: Marker3D = $"../../PlayerFloor"
-@onready var cameraRayCast1: RayCast3D = $"../CameraZoomPivot/Camera3D/CameraRayCast1"
-@onready var cameraRayCast2: RayCast3D = $"../CameraZoomPivot/Camera3D/CameraRayCast2"
+@onready var cylinder: MeshInstance3D = %CutoutCylinder
+@onready var playerFloor: Marker3D = %PlayerFloor
+@onready var cameraRayCast1: RayCast3D = %CameraRayCast1
+@onready var cameraRayCast2: RayCast3D = %CameraRayCast2
 
 var up: Marker3D
+var zoomedOut: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -32,7 +33,7 @@ func _process(_delta: float) -> void:
 	for updateMaterial in materials: update_material(updateMaterial)
 
 func update_material(updateMaterial: ShaderMaterial) -> void:
-	updateMaterial.set_shader_parameter("cylinderCutout", cameraRayCast1.is_colliding() and cameraRayCast2.is_colliding())
+	updateMaterial.set_shader_parameter("cylinderCutout", cameraRayCast1.is_colliding() and cameraRayCast2.is_colliding() and not zoomedOut)
 	updateMaterial.set_shader_parameter("boxPosition", global_position)
 	updateMaterial.set_shader_parameter("boxRotation", global_transform.basis)
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinder.global_position)
