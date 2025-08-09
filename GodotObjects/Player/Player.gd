@@ -116,6 +116,7 @@ func _physics_process(delta: float) -> void:
 
 func block_inputs() -> void:
 	noMovement = true
+	grabArea.canGrab = false
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -159,6 +160,7 @@ func camera_zoom_check() -> void:
 	cubeCutout.zoomedOut = not zoomedOut
 	zooming = true
 	noMovement = true
+	grabArea.canGrab = false
 	cameraZoomTween = create_tween()
 	cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
@@ -167,6 +169,7 @@ func camera_zoom_check() -> void:
 	await cameraZoomTween.finished
 	zooming = false
 	noMovement = false
+	grabArea.canGrab = true
 	zoomedOut = not zoomedOut
 	grabArea.zoomedOut = zoomedOut
 
@@ -206,13 +209,13 @@ func move_character(delta: float) -> void:
 	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	if not is_on_floor() and len(noGravityZones) == 0:
+	if not is_on_floor() and len(noGravityZones) == 0 and not respawnFall:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
 	else:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
-	lastInvoluntarySpeed += lastPushForce
+	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawnFall else Vector3.ZERO
 	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
@@ -265,6 +268,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	if resetButton: resetButton.hide()
 	do_popout()
 	noMovement = true
+	grabArea.canGrab = false
 	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
@@ -287,6 +291,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.play()
 	await poof.finished
 	noMovement = false
+	grabArea.canGrab = true
 	stopped = false
 
 func reset_aura() -> void:

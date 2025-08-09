@@ -18,6 +18,7 @@ var currentArea: Area3D
 var pickups: Array[Node3D]
 var pickupOnHand: bool = false
 var currentPickup: StickerBase
+var canGrab: bool = true
 var canDrop: bool = true
 var zoomedOut: bool = false
 
@@ -33,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	sort_close_areas()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and not zoomedOut:
+	if event.is_action_pressed("interact") and not zoomedOut and canGrab:
 		if not pickupOnHand:
 			do_grab()
 		else:
