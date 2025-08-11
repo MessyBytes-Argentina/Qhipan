@@ -1,26 +1,31 @@
 @tool
 extends Area3D
 
-const PUSHBASELINE: float = 5
+#const PUSHBASELINE: float = 5
 
-@export var isOn: bool = true
-@export_range(0.0, 100, 0.01) var pushForce: float = 1.0
-@export_range(0.0, 100, 0.01) var areaHeight: float = 1.0:
-	set(value):
-		areaHeight = value
-		if not Engine.is_editor_hint(): return
-		set_area_size()
-@export_range(0.0, 100, 0.01) var areaDiameter: float = 0.5:
-	set(value):
-		areaDiameter = value
-		if not Engine.is_editor_hint(): return
-		set_area_size()
+@export var isOn: bool = false
 @export var hasAntigravity: bool = true
-@export_range(-1.0, 1, 0.01) var noGravityAreaMargin: float = 0.1:
-	set(value):
-		noGravityAreaMargin = value
-		if not Engine.is_editor_hint(): return
-		set_area_size()
+
+const pushForce: float = 250.0
+const areaHeight: float = 3.0
+const areaDiameter: float = 1.0
+const noGravityAreaMargin: float = 0.15
+
+#@export_range(0.0, 100, 0.01) var areaHeight: float = 3.0:
+	#set(value):
+		#areaHeight = value
+		#if not Engine.is_editor_hint(): return
+		#set_area_size()
+#@export_range(0.0, 100, 0.01) var areaDiameter: float = 1.0:
+	#set(value):
+		#areaDiameter = value
+		#if not Engine.is_editor_hint(): return
+		#set_area_size()
+#@export_range(-1.0, 1, 0.01) var noGravityAreaMargin: float = 0.15:
+	#set(value):
+		#noGravityAreaMargin = value
+		#if not Engine.is_editor_hint(): return
+		#set_area_size()
 
 @onready var target: Marker3D = %Target
 @onready var origin: Marker3D = %Origin
@@ -42,7 +47,7 @@ func set_area_size() -> void:
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	pushForce *= PUSHBASELINE
+	#pushForce *= PUSHBASELINE
 	body_entered.connect(push)
 	body_exited.connect(stop_pushing)
 	set_area_size()
