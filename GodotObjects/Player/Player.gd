@@ -15,10 +15,10 @@ const APROXFLOORDISTANCE: float = -0.39
 enum States {Idle, Walk, Float}
 
 @export_group("Character Movement")
-@export_range(0, 100, .1) var maxSpeed: float = 3
-@export_range(0, 100, .1) var acceleration: float = 20.0
-@export_range(0, 100, .1) var decceleration: float = 20.0
-@export_range(0, 100, .1) var gravity: float = 32
+const maxSpeed: float = 3
+const acceleration: float = 20.0
+const decceleration: float = 20.0
+const gravity: float = 32
 @export_range(0, 100, .1) var movementMaximum: float = 10:
 	set(value):
 		movementMaximum = value
