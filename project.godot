@@ -49,6 +49,7 @@ InputBlocking=""
 Checkpoints=""
 ResetButton=""
 Player=""
+Gridmap=""
 
 [input]
 

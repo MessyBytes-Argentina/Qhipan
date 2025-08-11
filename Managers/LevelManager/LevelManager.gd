@@ -22,6 +22,9 @@ func _input(_event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if restartHeld: restartButtonHeldTime += delta
 	if restartButtonHeldTime >= RESTARTBUTTONTIME and not restarted: 
+		if not sceneManager:
+			get_tree().reload_current_scene()
+			return
 		restarted = true
 		sceneManager.switch_scene()
 		await sceneManager.finished

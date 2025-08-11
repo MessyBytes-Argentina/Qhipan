@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -129,8 +129,13 @@ fill_to = Vector2(0, 1)
 radius = 0.275
 height = 0.8
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_k5k78"]
+transparency = 1
+albedo_color = Color(0.490196, 1, 1, 0.784314)
+
 [sub_resource type="BoxMesh" id="BoxMesh_k5k78"]
-size = Vector3(3, 2, 2)
+material = SubResource("ORMMaterial3D_k5k78")
+size = Vector3(4, 4, 4)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
 top_radius = 0.0
@@ -678,10 +683,6 @@ floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
-[node name="PlayerFloor" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-
 [node name="PlayerSounds" type="Node3D" parent="."]
 
 [node name="FallSound" type="AudioStreamPlayer" parent="PlayerSounds"]
@@ -757,14 +758,21 @@ shape = SubResource("CapsuleShape3D_cphfr")
 unique_name_in_owner = true
 top_level = true
 
-[node name="CubeCutout" type="MeshInstance3D" parent="CameraPivot"]
+[node name="CubeCutoutPivot" type="Node3D" parent="CameraPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)
-visible = false
+top_level = true
+
+[node name="CubeCutout" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 mesh = SubResource("BoxMesh_k5k78")
-skeleton = NodePath("../CameraZoomPivot/Camera3D/CutoutCylinder")
+skeleton = NodePath("../../CameraZoomPivot/Camera3D/CutoutCylinder")
 script = ExtResource("12_xf0c4")
 materials = Array[ShaderMaterial]([ExtResource("15_1npnc"), ExtResource("16_upgpw"), ExtResource("14_k5k78"), ExtResource("13_h423j"), ExtResource("17_k5k78"), ExtResource("18_1npnc")])
+
+[node name="PlayerFloor" type="Marker3D" parent="CameraPivot/CubeCutoutPivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.269, 0)
 
 [node name="CameraZoomPivot" type="Node3D" parent="CameraPivot"]
 unique_name_in_owner = true
@@ -785,15 +793,24 @@ visible = false
 mesh = SubResource("CylinderMesh_xvk8m")
 skeleton = NodePath("../../..")
 
-[node name="CameraRayCast1" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
+[node name="CameraRayCasts" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
+
+[node name="CameraRayCast1" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
+transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(0, -6, -0.05)
 
-[node name="CameraRayCast2" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, 0, 0)
+[node name="CameraRayCast2" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
+transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(0, -6, 0.2)
+
+[node name="CameraRayCast3" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
+transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
+target_position = Vector3(0.05, -6, 0.076)
+
+[node name="CameraRayCast4" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
+transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
+target_position = Vector3(-0.05, -6, 0.076)
 
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
@@ -851,6 +868,7 @@ top_level = true
 visible = false
 pixel_size = 0.003
 billboard = 1
+no_depth_test = true
 render_priority = 2
 texture = SubResource("GradientTexture2D_3jjt7")
 

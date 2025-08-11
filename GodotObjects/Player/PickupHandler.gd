@@ -92,7 +92,7 @@ func sort_close_areas() -> void:
 	if not pickupOnHand:
 		if areaHighlight: areaHighlight.hide()
 	elif areaHighlight:
-		var currentIndex: int = closeAreas.find_custom(func(a: Area3D): return currentPickup.validAreaIndexes.any(func(index: int): return a.get_collision_layer_value(index)))
+		var currentIndex: int = closeAreas.find_custom(get_closest_valid)
 		currentArea = closeAreas[currentIndex] if currentIndex > -1 else null
 		if not currentArea:
 			areaHighlight.hide()
@@ -103,3 +103,7 @@ func sort_close_areas() -> void:
 		else:
 			areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"), Vector3.FORWARD)
 		areaHighlight.show()
+
+func get_closest_valid(area: Area3D) -> bool:
+	return currentPickup.validAreaIndexes.any(func(index: int): return area.get_collision_layer_value(index)) and not area.get_children().any(func(child: Node3D): return child is StickerBase)
+	

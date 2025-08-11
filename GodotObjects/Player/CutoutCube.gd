@@ -8,8 +8,7 @@ class_name CutoutCube
 
 @onready var cylinder: MeshInstance3D = %CutoutCylinder
 @onready var playerFloor: Marker3D = %PlayerFloor
-@onready var cameraRayCast1: RayCast3D = %CameraRayCast1
-@onready var cameraRayCast2: RayCast3D = %CameraRayCast2
+@onready var cameraRayCasts: Node3D = %CameraRayCasts
 
 var up: Marker3D
 var zoomedOut: bool = false
@@ -33,9 +32,10 @@ func _process(_delta: float) -> void:
 	for updateMaterial in materials: update_material(updateMaterial)
 
 func update_material(updateMaterial: ShaderMaterial) -> void:
-	updateMaterial.set_shader_parameter("cylinderCutout", cameraRayCast1.is_colliding() and cameraRayCast2.is_colliding() and not zoomedOut)
+	var anyRaycast: bool = not cameraRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
+	updateMaterial.set_shader_parameter("cylinderCutout", anyRaycast and not zoomedOut)
 	updateMaterial.set_shader_parameter("boxPosition", global_position)
-	updateMaterial.set_shader_parameter("boxRotation", global_transform.basis)
+	updateMaterial.set_shader_parameter("boxRotation", global_rotation.y)
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinder.global_position)
 	updateMaterial.set_shader_parameter("cylinderRotation", cylinder.global_position - up.global_position)
 	updateMaterial.set_shader_parameter("playerPosition", playerFloor.global_position)
