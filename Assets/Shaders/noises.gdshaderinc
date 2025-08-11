@@ -6,11 +6,11 @@ float opSubtraction( float d1, float d2 ) { return max(-d1,d2); }
 float opIntersection( float d1, float d2 ) { return max(d1,d2); }
 float opXor(float d1, float d2 ) { return max(min(d1,d2),-max(d1,d2)); }
 
-//mat2 rot(float a) {
-	//float s = sin(a);
-	//float c = cos(a);
-	//return mat2(c, -s, s, c);
-//}
+mat2 rot(float a) {
+	float s = sin(a);
+	float c = cos(a);
+	return mat2(vec2(c, -s), vec2(s, c));
+}
 
 float saturate (float s){
     return clamp(s,0,1);
@@ -31,8 +31,9 @@ float sdBox( vec3 p, vec3 b )
   return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0);
 }
 
-float sdBoxRotated( vec3 p, vec3 b , mat3 t ) {
-	return sdBox( inverse(t) * p, b);
+float sdBoxRotated( vec3 p, vec3 b , float r ) {
+	p.xz *= rot(r);
+	return sdBox(p, b);
 }
 
 float sdCappedCylinder( vec3 p, vec3 a, vec3 b, float r )

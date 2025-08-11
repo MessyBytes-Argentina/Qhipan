@@ -10,6 +10,7 @@ const RESTARTBUTTONWAIT: float = 2.0
 const CAMERALERPDURATION: float = 0.25
 const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
 const CAMERAZOOMTIME: float = 0.25
+const APROXFLOORDISTANCE: float = -0.39
 
 enum States {Idle, Walk, Float}
 
@@ -49,6 +50,7 @@ enum States {Idle, Walk, Float}
 @onready var cameraZoomPivot: Node3D = %CameraZoomPivot
 @onready var playerHighlight: Sprite3D = %PlayerHighlight
 @onready var cubeCutout: CutoutCube = %CubeCutout
+@onready var cubeCutoutPivot: Node3D = %CubeCutoutPivot
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -79,6 +81,7 @@ var zooming: bool = false
 var zoomedOut: bool = false
 var inCheckpoint: bool = true
 var resetPoppingOut: bool = false
+var gridmap: GridMap
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -92,6 +95,9 @@ func _ready() -> void:
 	postProcessing.show()
 	resetButton = get_tree().get_first_node_in_group("ResetButton")
 	playerHighlight.scale = Vector3.ONE * 0.001
+	while not gridmap:
+		gridmap = get_tree().get_first_node_in_group("Gridmap")
+		await get_tree().process_frame
 
 func _input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -109,6 +115,7 @@ func _physics_process(delta: float) -> void:
 	move_character(delta)
 	camera_follow(delta)
 	animation_check()
+	current_grid_check()
 	grabArea.canDrop = is_on_floor()
 	if not stopped:
 		if resetButton: resetButton.hide()
@@ -184,6 +191,13 @@ func rotation_finished() -> void:
 
 func camera_follow(_delta: float) -> void:
 	cameraPivot.global_position = lerp(cameraPivot.global_position, global_position, cameraFollowSpeed)
+
+func current_grid_check() -> void:
+	if not gridmap: return
+	var currentGridPosition: Vector3 = Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
+	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
+	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
+	cubeCutoutPivot.rotation.y = cameraPivot.rotation.y
 
 func move_character(delta: float) -> void:
 	var moveDirection: Vector3 = get_move_direction()
