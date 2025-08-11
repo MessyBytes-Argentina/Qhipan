@@ -48,6 +48,7 @@ enum States {Idle, Walk, Float}
 @onready var popUpSound: RandomPitchPlayer = %PopUpSound
 @onready var cameraZoomPivot: Node3D = %CameraZoomPivot
 @onready var playerHighlight: Sprite3D = %PlayerHighlight
+@onready var cubeCutout: CutoutCube = %CubeCutout
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -77,6 +78,7 @@ var resetButton: Button
 var zooming: bool = false
 var zoomedOut: bool = false
 var inCheckpoint: bool = true
+var resetPoppingOut: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -110,12 +112,11 @@ func _physics_process(delta: float) -> void:
 	grabArea.canDrop = is_on_floor()
 	if not stopped:
 		if resetButton: resetButton.hide()
-		if message: 
-			if popupTween: if popupTween.is_running(): return
-			do_popout()
+		if not resetPoppingOut: do_popout()
 
 func block_inputs() -> void:
 	noMovement = true
+	grabArea.canGrab = false
 
 func sprite_flip_check() -> void:
 	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
@@ -156,8 +157,10 @@ func camera_zoom_check() -> void:
 	if zooming: return
 	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
 	if not doZoom: return
+	cubeCutout.zoomedOut = not zoomedOut
 	zooming = true
 	noMovement = true
+	grabArea.canGrab = false
 	cameraZoomTween = create_tween()
 	cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
@@ -166,6 +169,7 @@ func camera_zoom_check() -> void:
 	await cameraZoomTween.finished
 	zooming = false
 	noMovement = false
+	grabArea.canGrab = true
 	zoomedOut = not zoomedOut
 	grabArea.zoomedOut = zoomedOut
 
@@ -205,13 +209,13 @@ func move_character(delta: float) -> void:
 	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	if not is_on_floor() and len(noGravityZones) == 0:
+	if not is_on_floor() and len(noGravityZones) == 0 and not respawnFall:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
 	else:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
-	lastInvoluntarySpeed += lastPushForce
+	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawnFall else Vector3.ZERO
 	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
@@ -264,6 +268,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	if resetButton: resetButton.hide()
 	do_popout()
 	noMovement = true
+	grabArea.canGrab = false
 	poofSound.play_sound()
 	if transparencyTween:
 		transparencyTween.kill()
@@ -286,6 +291,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.play()
 	await poof.finished
 	noMovement = false
+	grabArea.canGrab = true
 	stopped = false
 
 func reset_aura() -> void:
@@ -304,15 +310,22 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 	facingBack = currentInputDirection.z < 0
 
 func do_popup() -> void:
+	if popupTween:
+		popupTween.kill()
+		resetPoppingOut = false
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE, POPUPTIME * (1.0 - message.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
 	popUpSound.play_sound()
 
 func do_popout() -> void:
+	if popupTween:
+		popupTween.kill()
+	resetPoppingOut = true
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
+	popupTween.finished.connect(set.bind("resetPoppingOut", false))
 
 func show_restart() -> void:
 	if stopped: resetButton.show()

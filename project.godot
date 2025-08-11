@@ -42,10 +42,6 @@ window/windows_native_icon="res://favicon.ico"
 window/version="1.0"
 window/name="Qhipan"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [global_group]
 
 SceneManager=""
