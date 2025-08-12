@@ -11,6 +11,8 @@ const CAMERALERPDURATION: float = 0.25
 const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
 const CAMERAZOOMTIME: float = 0.25
 const APROXFLOORDISTANCE: float = -0.39
+const PLAYERRESTARTTIME: float = 1.0
+const PLAYERRESTARTWAITTIME: float = 0.25
 
 enum States {Idle, Walk, Float}
 
@@ -289,8 +291,8 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
 	respawnFall = true
-	get_tree().create_timer(1.0).timeout.connect(set.bind("respawnFall", false))
-	get_tree().create_timer(1.0).timeout.connect(enable_checkpoint_sound)
+	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(set.bind("respawnFall", false))
+	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(enable_checkpoint_sound)
 	if not hasSpawned:
 		global_position = pos
 		reset_aura()
@@ -309,7 +311,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	poof.emit_particles()
-	await poof.finished
+	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = pos
 	reset_aura()
 	poof.emit_particles()
@@ -320,7 +322,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, TRANSPARENCYTIME)
 	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, TRANSPARENCYTIME)
 	transparencyTween.play()
-	await poof.finished
+	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	noMovement = false
 	grabArea.canGrab = true
 	stopped = false

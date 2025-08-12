@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbo3auep3r0u"]
 
-[ext_resource type="Texture2D" uid="uid://dej5midubfhnx" path="res://Assets/Sprites/Particle Texture/Spoof-Cloud.png" id="1_1i37l"]
+[ext_resource type="Texture2D" uid="uid://dej5midubfhnx" path="res://Assets/Textures/Particle Texture/Spoof-Cloud.png" id="1_1i37l"]
 
 [sub_resource type="Gradient" id="Gradient_kptbx"]
 offsets = PackedFloat32Array(0, 0.126531, 0.408163, 1)
@@ -41,11 +41,9 @@ material = SubResource("StandardMaterial3D_o7oki")
 size = Vector2(0.6, 0.6)
 
 [node name="Poof" type="GPUParticles3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
 lifetime = 0.6
 one_shot = true
 explosiveness = 0.85
-local_coords = true
 process_material = SubResource("ParticleProcessMaterial_x38go")
 draw_pass_1 = SubResource("QuadMesh_uqbk1")

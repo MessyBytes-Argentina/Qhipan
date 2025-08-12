@@ -876,6 +876,7 @@ unique_name_in_owner = true
 top_level = true
 visible = false
 pixel_size = 0.0026
+no_depth_test = true
 render_priority = 1
 texture = SubResource("GradientTexture2D_6fycs")
 

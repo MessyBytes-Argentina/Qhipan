@@ -22,9 +22,9 @@ func _ready() -> void:
 func block_inputs() -> void:
 	inputsBlocked = true
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if inputsBlocked: return
-	if event.is_action_pressed("reset_player"):
+	if Input.is_action_just_pressed("reset_player") and not playerReference.noMovement:
 		checkpointResetAmount += 1
 		reset_player()
 
