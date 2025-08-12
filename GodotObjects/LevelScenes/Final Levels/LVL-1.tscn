@@ -90,157 +90,161 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0
 [node name="GoalZone" parent="." instance=ExtResource("9_vvb0c")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.0072, 0.496855, -0.0220867)
 
-[node name="InfoCrystal" parent="." instance=ExtResource("12_cxxxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26, 0.5, -0.555)
-infoSprite = ExtResource("14_tpri7")
-
-[node name="InfoCrystal2" parent="." instance=ExtResource("12_cxxxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
-infoSprite = ExtResource("13_ujhbp")
-
-[node name="InfoCrystal3" parent="." instance=ExtResource("12_cxxxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -3)
-infoSprite = ExtResource("15_l7rve")
-
-[node name="InfoCrystal4" parent="." instance=ExtResource("12_cxxxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -10)
-infoSprite = ExtResource("16_7n58t")
-
-[node name="InfoCrystal5" parent="." instance=ExtResource("12_cxxxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -10)
-infoSprite = ExtResource("17_tpri7")
-
 [node name="GridMap" parent="." instance=ExtResource("19_658pf")]
 data = {
 "cells": PackedInt32Array(131071, 65534, 655391, 196607, 65533, 655382, 131070, 65533, 655375, 131071, 65532, 655401, 196607, 65530, 655400, 65521, 65530, 1048613, 65522, 65530, 37, 131059, 65530, 18, 131057, 65533, 1441810, 131059, 65527, 655376, 131056, 65527, 1048593, 131059, 65532, 1048580, 131057, 65525, 1048582, 131057, 65531, 1441792, 131064, 65529, 1441794, 131064, 65526, 1048582, 131067, 65525, 1441801, 131067, 65527, 1048585, 131059, 65533, 655370, 131061, 65530, 655370, 131063, 65529, 1048578, 131065, 65529, 2, 131066, 65528, 1441807, 131068, 65530, 1441808, 131067, 65532, 655373, 131060, 65528, 655377, 131065, 65524, 17, 131066, 65525, 14, 131056, 65529, 1048586)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="BotellonCorcho" parent="." instance=ExtResource("20_6mcca")]
+[node name="Props" type="Node3D" parent="."]
+
+[node name="BotellonCorcho" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.979438, 0.5, 1.21343)
 
-[node name="Cantaro" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91311, 0.5, -0.960206)
 
-[node name="Cantaro2" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro2" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53283, 0.5, -0.770687)
 
-[node name="Cantaro3" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro3" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18197, 0.5, 1.07765)
 
-[node name="Cantaro4" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro4" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90227, 0.5, 1.18008)
 
-[node name="BotellonCorcho2" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho2" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.487953, 0.5, 1.89252)
 
-[node name="BotellonCorcho3" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho3" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274759, 0.5, 1.8811)
 
-[node name="Jarron Cusco" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37829, 0.5, -6.86717)
 
-[node name="Jarron Cusco2" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco2" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87636, 0.5, -7.29715)
 
-[node name="Jarron Cusco3" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco3" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35223, 0.5, -7.78288)
 
-[node name="BotellonCorcho4" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho4" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49753, 0.5, -10.2139)
 
-[node name="BotellonCorcho5" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho5" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71164, 0.5, -9.96731)
 
-[node name="BotellonCorcho6" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho6" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03304, 0.5, -10.445)
 
-[node name="BotellonCorcho7" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho7" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.146, 0.5, -9.79998)
 
-[node name="BotellonCorcho8" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho8" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9702, 0.5, -9.20122)
 
-[node name="Cantaro5" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro5" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5346, 0.5, -9.28745)
 
-[node name="Jarron Cusco4" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco4" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.106, 0.5, -1.20942)
 
-[node name="Jarron Cusco5" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco5" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1756, 0.5, -1.14592)
 
-[node name="Cantaro6" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro6" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.01143, 0.5, -10.1982)
 
-[node name="Cantaro7" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro7" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97913, 0.5, -9.93631)
 
-[node name="Jarron Cusco6" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco6" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.41957, 0.5, -10.7217)
 
-[node name="Cantaro8" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro8" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(0.482992, 0.875625, 0, -0.875625, 0.482992, 0, 0, 0, 1, -9.66884, 0.657307, -9.98181)
 
-[node name="Jarron Cusco7" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco7" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.98718, 0.5, -10.9864)
 
-[node name="Jarron Cusco8" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco8" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95953, 0.5, -10.9393)
 
-[node name="BotellonCorcho9" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho9" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96647, 1, -7.9572)
 
-[node name="BotellonCorcho10" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho10" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05134, 1, -7.95279)
 
-[node name="BotellonCorcho11" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho11" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05481, 1, -5.92616)
 
-[node name="Jarron Cusco9" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco9" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09898, 0.5, -5.82161)
 
-[node name="Jarron Cusco10" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco10" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(0.0167544, -0.99986, 0, 0.99986, 0.0167544, 0, 0, 0, 1, -2.68777, 0.733632, -10.0831)
 
-[node name="BotellonCorcho12" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho12" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15989, 0.5, -10.3472)
 
-[node name="Jarron Cusco11" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco11" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18671, 0.5, -1.95141)
 
-[node name="Cantaro9" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro9" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93793, 0.5, -2.06374)
 
-[node name="BotellonCorcho13" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho13" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66488, 0.5, -2.04475)
 
-[node name="BotellonCorcho14" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho14" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39739, 0.5, -1.99297)
 
-[node name="BotellonCorcho15" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho15" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89619, 0.5, 1.95382)
 
-[node name="BotellonCorcho16" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho16" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52227, 0.5, 2.20952)
 
-[node name="Jarron Cusco12" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco12" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35866, 0.5, 1.82413)
 
-[node name="Cantaro10" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro10" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23058, 0.5, 1.96497)
 
-[node name="BotellonCorcho17" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho17" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88913, 0.5, -1.51396)
 
-[node name="Cantaro11" parent="." instance=ExtResource("21_lu28r")]
+[node name="Cantaro11" parent="Props" instance=ExtResource("21_lu28r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91595, 0.5, 1.44015)
 
-[node name="BotellonCorcho18" parent="." instance=ExtResource("20_6mcca")]
+[node name="BotellonCorcho18" parent="Props" instance=ExtResource("20_6mcca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0522, 1, -7.00164)
 
-[node name="Jarron Cusco13" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco13" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0726, 0.5, -8.96326)
 
-[node name="Jarron Cusco14" parent="." instance=ExtResource("22_7011f")]
+[node name="Jarron Cusco14" parent="Props" instance=ExtResource("22_7011f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0113, 0.5, -5.02056)
+
+[node name="Tutos" type="Node3D" parent="."]
+
+[node name="InfoCrystal" parent="Tutos" instance=ExtResource("12_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26, 0.5, -0.555)
+infoSprite = ExtResource("14_tpri7")
+
+[node name="InfoCrystal2" parent="Tutos" instance=ExtResource("12_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+infoSprite = ExtResource("13_ujhbp")
+
+[node name="InfoCrystal3" parent="Tutos" instance=ExtResource("12_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -3)
+infoSprite = ExtResource("15_l7rve")
+
+[node name="InfoCrystal4" parent="Tutos" instance=ExtResource("12_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -10)
+infoSprite = ExtResource("16_7n58t")
+
+[node name="InfoCrystal5" parent="Tutos" instance=ExtResource("12_cxxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, -10)
+infoSprite = ExtResource("17_tpri7")
