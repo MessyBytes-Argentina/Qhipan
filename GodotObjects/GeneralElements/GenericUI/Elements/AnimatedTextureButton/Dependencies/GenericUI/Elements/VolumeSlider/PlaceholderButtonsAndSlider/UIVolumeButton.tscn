@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://23hcgk4hee52"]
+
+[ext_resource type="Texture2D" uid="uid://c65wmpbcyy3h5" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/Sound.png" id="1_fiw1q"]
+[ext_resource type="Texture2D" uid="uid://dmp0180w0csbj" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/SoundDisabled.png" id="2_qtage"]
+[ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="3_vu11g"]
+[ext_resource type="Animation" uid="uid://dytj2q23vgjoe" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/RESET.res" id="4_lb3cw"]
+[ext_resource type="Animation" uid="uid://bb4n8fpv0fr5y" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/hover.res" id="5_8pixu"]
+[ext_resource type="Animation" uid="uid://dvu5w0orutjdl" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/click.res" id="6_p0222"]
+
+[node name="UIVolumeButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+toggle_mode = true
+texture_normal = ExtResource("1_fiw1q")
+texture_pressed = ExtResource("2_qtage")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_vu11g")
+resetAnimation = ExtResource("4_lb3cw")
+hoverAnimation = ExtResource("5_8pixu")
+clickAnimation = ExtResource("6_p0222")

@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkdx1yrx643d4"]
+
+[ext_resource type="Script" uid="uid://d0braq3j72oyu" path="res://GodotObjects/Managers/SceneManager/SceneManager.gd" id="1_t3vn0"]
+[ext_resource type="PackedScene" uid="uid://8ain4p6etldq" path="res://GodotObjects/GeneralElements/UI/SplashScenePreload.tscn" id="2_7hhw3"]
+[ext_resource type="Shader" uid="uid://ctuuccmm71npw" path="res://GodotObjects/Managers/SceneManager/Transition.gdshader" id="3_ebjrv"]
+[ext_resource type="FontFile" uid="uid://bjjw2oo2kbblm" path="res://Assets/Types/WinkyRough-VariableFont_wght.ttf" id="3_uqga5"]
+[ext_resource type="Texture2D" uid="uid://btbppucsdx761" path="res://Assets/Shaders/Diamonds_1-512x512.png" id="4_7hhw3"]
+[ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="4_efent"]
+[ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="5_du044"]
+[ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Textures/Buttons/IDLE.png" id="6_jywdf"]
+[ext_resource type="Script" uid="uid://b42e131hj7nte" path="res://GodotObjects/Managers/SceneManager/ResetButton.gd" id="7_efent"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvkcw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yd3x0"]
+texture = ExtResource("4_efent")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s85d3"]
+texture = ExtResource("5_du044")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkxch"]
+texture = ExtResource("6_jywdf")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ldry7"]
+shader = ExtResource("3_ebjrv")
+shader_parameter/transition_texture = ExtResource("4_7hhw3")
+shader_parameter/progress = 0.0
+
+[node name="SceneManager" type="Control" groups=["SceneManager"]]
+process_mode = 3
+process_priority = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t3vn0")
+
+[node name="MainSubViewportContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/StoryWriterComposerReference = "TQfO67RUG9xPW1Bt_JnSxbggu+MBhkXK"
+
+[node name="Node3D" parent="MainSubViewportContainer" instance=ExtResource("2_7hhw3")]
+sounds = Array[AudioStream]([])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/MarginContainer" groups=["ResetButton"]]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_uqga5")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pvkcw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yd3x0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s85d3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pkxch")
+text = "Restart Level [Y]"
+script = ExtResource("7_efent")
+
+[node name="BlockScreen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+
+[node name="BlockScreen" type="ColorRect" parent="BlockScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="LoaderSubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/StoryWriterComposerReference = "qnTZhQh9wpHFQbRbEZulH*SjW=RPGf-L"
+
+[node name="LoaderSubViewport" type="SubViewport" parent="LoaderSubViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="ShaderColorRect" type="ColorRect" parent="LoaderSubViewportContainer/LoaderSubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ldry7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

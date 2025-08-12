@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt1sfwp46ika"]
+
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_uxics"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_84dco"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_r0f3w"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="4_x16w4"]
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="5_rc43o"]
+[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://GodotObjects/LevelResources/Gridmaps/StickerMap/StickerMap.tscn" id="6_s2evk"]
+[ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://GodotObjects/LevelResources/Gridmaps/DecalMap/DecalMap.tscn" id="7_gu5wx"]
+
+[node name="BaseLevelScene" type="Node3D"]
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_uxics")]
+
+[node name="Player" parent="." instance=ExtResource("2_84dco")]
+
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("3_r0f3w")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Checkpoint")
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("4_x16w4")]
+
+[node name="GridmapObject" parent="." instance=ExtResource("5_rc43o")]
+metadata/_editor_floor_ = Vector3(0, -3, 0)
+
+[node name="StickerMap" parent="." instance=ExtResource("6_s2evk")]
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="DecalMap" parent="." instance=ExtResource("7_gu5wx")]
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Doors" type="Node3D" parent="."]

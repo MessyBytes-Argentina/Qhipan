@@ -36,7 +36,7 @@ uniform float borderSize = 0.25;
 uniform float borderEmission = 7.0;
 uniform vec3 boxPosition;
 uniform vec3 boxSize;
-uniform mat3 boxRotation;
+uniform float boxRotation;
 uniform vec3 cylinderPosition;
 uniform vec3 cylinderRotation;
 uniform float cylinderRadius1;

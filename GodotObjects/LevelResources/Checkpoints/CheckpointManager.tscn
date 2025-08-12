@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ef8qmyhh7pd"]
+
+[ext_resource type="Script" uid="uid://bymf43cjcj5al" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.gd" id="1_idfdr"]
+
+[node name="CheckpointManager" type="Node3D" groups=["InputBlocking"]]
+script = ExtResource("1_idfdr")
+metadata/_edit_lock_ = true

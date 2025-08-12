@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs536j1n36wmr"]
+
+[ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="1_igptx"]
+[ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="2_gt347"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_jh37w"]
+inner_radius = 0.1
+outer_radius = 0.25
+rings = 8
+ring_segments = 8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
+size = Vector3(0.5, 1.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_gt347"]
+offsets = PackedFloat32Array(0.25, 0.25)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
+gradient = SubResource("Gradient_gt347")
+width = 16
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 1)
+
+[node name="Fan" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_igptx")
+pushForce = 10.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_jh37w")
+
+[node name="Area" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_gt347")
+
+[node name="NoGravity" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("2_gt347")
+
+[node name="NoGravityCollision" type="CollisionShape3D" parent="NoGravity"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_ps2dv")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Target" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Target"]
+billboard = 1
+texture = SubResource("GradientTexture2D_ps2dv")
+
+[node name="Origin" type="Marker3D" parent="."]
+unique_name_in_owner = true
