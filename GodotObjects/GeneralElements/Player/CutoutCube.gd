@@ -9,9 +9,11 @@ class_name CutoutCube
 @onready var cylinder: MeshInstance3D = %CutoutCylinder
 @onready var playerFloor: Marker3D = %PlayerFloor
 @onready var cameraRayCasts: Node3D = %CameraRayCasts
+@onready var cubeCutoutAux: MeshInstance3D = %CubeCutoutAux
 
 var up: Marker3D
 var zoomedOut: bool = false
+var auxMode: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -39,6 +41,9 @@ func update_material(updateMaterial: ShaderMaterial) -> void:
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinder.global_position)
 	updateMaterial.set_shader_parameter("cylinderRotation", cylinder.global_position - up.global_position)
 	updateMaterial.set_shader_parameter("playerPosition", playerFloor.global_position)
+	updateMaterial.set_shader_parameter("auxMode", auxMode)
+	updateMaterial.set_shader_parameter("auxBoxPosition", cubeCutoutAux.global_position)
+	updateMaterial.set_shader_parameter("auxBoxRotation", cubeCutoutAux.global_rotation.y)
 
 func align_position() -> void:
 	cylinder.position = (cylinder.mesh.height / 2 + offset) * Vector3.FORWARD
