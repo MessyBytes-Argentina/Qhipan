@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=114 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -10,9 +10,11 @@
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/Player/PickupHandler.gd" id="6_cphfr"]
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Character/IDLE/IDLE 2.png" id="7_fj5th"]
+[ext_resource type="AudioStream" uid="uid://c3rywfna5oyfk" path="res://Assets/Sounds/zoomIn.mp3" id="7_upgpw"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
 [ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/Player/poofEmitter.tscn" id="8_3jjt7"]
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
+[ext_resource type="AudioStream" uid="uid://cnb8ua68k7mfg" path="res://Assets/Sounds/zoomOut.mp3" id="8_xvk8m"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
@@ -710,6 +712,16 @@ volume_db = -20.0
 bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="CamZoomIn" type="AudioStreamPlayer" parent="PlayerSounds"]
+unique_name_in_owner = true
+stream = ExtResource("7_upgpw")
+bus = &"SFX"
+
+[node name="CamZoomOut" type="AudioStreamPlayer" parent="PlayerSounds"]
+unique_name_in_owner = true
+stream = ExtResource("8_xvk8m")
+bus = &"SFX"
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true

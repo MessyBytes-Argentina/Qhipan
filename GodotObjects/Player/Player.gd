@@ -51,6 +51,8 @@ const gravity: float = 32
 @onready var playerHighlight: Sprite3D = %PlayerHighlight
 @onready var cubeCutout: CutoutCube = %CubeCutout
 @onready var cubeCutoutPivot: Node3D = %CubeCutoutPivot
+@onready var camZoomIn: AudioStreamPlayer = %CamZoomIn
+@onready var camZoomOut: AudioStreamPlayer = %CamZoomOut
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -165,6 +167,8 @@ func camera_zoom_check() -> void:
 	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
 	if not doZoom: return
 	cubeCutout.zoomedOut = not zoomedOut
+	if zoomedOut: camZoomIn.play()
+	else: camZoomOut.play()
 	zooming = true
 	noMovement = true
 	grabArea.canGrab = false
