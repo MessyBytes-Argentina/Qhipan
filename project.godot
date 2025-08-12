@@ -26,11 +26,11 @@ buses/default_bus_layout="uid://c5ealkxrsd0ur"
 
 [autoload]
 
-ButtonSoundManager="*res://Managers/SoundManager/ButtonSoundManager/ButtonSoundManager.tscn"
-MusicManager="*res://Managers/SoundManager/MusicManager/MusicManager.tscn"
-VolumeManager="*res://Managers/SoundManager/VolumeManager.gd"
-PopupManager="*res://Managers/PopupManager/PopupManager.gd"
-LevelManager="*res://Managers/LevelManager/LevelManager.tscn"
+ButtonSoundManager="*res://GodotObjects/Managers/SoundManager/ButtonSoundManager/ButtonSoundManager.tscn"
+MusicManager="*res://GodotObjects/Managers/SoundManager/MusicManager/MusicManager.tscn"
+VolumeManager="*res://GodotObjects/Managers/SoundManager/VolumeManager.gd"
+PopupManager="*res://GodotObjects/Managers/PopupManager/PopupManager.gd"
+LevelManager="*res://GodotObjects/Managers/LevelManager/LevelManager.tscn"
 
 [display]
 

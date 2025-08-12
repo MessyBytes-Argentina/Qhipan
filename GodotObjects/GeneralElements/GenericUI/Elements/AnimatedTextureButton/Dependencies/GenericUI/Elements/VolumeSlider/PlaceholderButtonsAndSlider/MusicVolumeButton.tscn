@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gt346rayh13u"]
+
+[ext_resource type="Texture2D" uid="uid://bu715m1fer6gr" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/Music.png" id="1_5r5vx"]
+[ext_resource type="Texture2D" uid="uid://b6a1k8f6uxuya" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicDisabled.png" id="2_gmfdc"]
+
+[node name="MusicVolumeButton" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+toggle_mode = true
+texture_normal = ExtResource("1_5r5vx")
+texture_pressed = ExtResource("2_gmfdc")
+ignore_texture_size = true
+stretch_mode = 5

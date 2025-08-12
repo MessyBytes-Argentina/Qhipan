@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbt3ir543hjep"]
+
+[ext_resource type="Script" uid="uid://dl548l3g84gvl" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/VolumeHSlider.gd" id="1_aqb0x"]
+[ext_resource type="PackedScene" uid="uid://gt346rayh13u" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/MusicVolumeButton.tscn" id="2_ba8nx"]
+[ext_resource type="PackedScene" uid="uid://bn3a8oiupqm6a" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/HSlider.tscn" id="3_54lw5"]
+
+[node name="MusicVolumeHSlider" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("1_aqb0x")
+buttonScene = ExtResource("2_ba8nx")
+buttonCustomMinimumSize = Vector2(32, 32)
+sliderScene = ExtResource("3_54lw5")
+bus = 0

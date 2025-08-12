@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpsltup5aeffb"]
+
+[ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="1_sgl7p"]
+[ext_resource type="Texture2D" uid="uid://bw25mw0ryfxe6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/CloseButton.png" id="2_dkoa1"]
+[ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="3_qa8is"]
+[ext_resource type="Animation" uid="uid://c6m11xjao8bbn" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/RESET.res" id="4_psop6"]
+[ext_resource type="Animation" uid="uid://dijfkl740kipq" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/hover.res" id="5_4kiho"]
+[ext_resource type="Animation" uid="uid://0csbm78eb800" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/pressed.res" id="6_fmtjy"]
+[ext_resource type="Animation" uid="uid://epf048xdyi6x" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/focus.res" id="7_cw3el"]
+[ext_resource type="Script" uid="uid://y5tfp47a5yrk" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticleEmitterControl.gd" id="8_yphgf"]
+[ext_resource type="PackedScene" uid="uid://bk6ps7cpbkl5r" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/Particles/Fireworks2D.tscn" id="9_nrhrn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
+shader = ExtResource("1_sgl7p")
+shader_parameter/shineColor = Color(1, 1, 1, 1)
+shader_parameter/shineSize = 0.1
+shader_parameter/shineAngle = 135.0
+shader_parameter/lineSmoothness = 0.0
+shader_parameter/distortion = 1.5
+shader_parameter/useTime = false
+shader_parameter/speed = 1.0
+shader_parameter/progress = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ke6g"]
+atlas = ExtResource("2_dkoa1")
+region = Rect2(0, 11, 16, 20)
+
+[node name="MarginContainer" type="MarginContainer"]
+process_priority = 6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedTextureButton" type="TextureButton" parent="." groups=["AnimatedButtons", "SoundButtons"]]
+material = SubResource("ShaderMaterial_omkoa")
+custom_minimum_size = Vector2(512, 640)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_8ke6g")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_qa8is")
+customPivotPosition = 6
+resetAnimation = ExtResource("4_psop6")
+hoverAnimation = ExtResource("5_4kiho")
+clickAnimation = ExtResource("6_fmtjy")
+focusAnimation = ExtResource("7_cw3el")
+
+[node name="MultipleParticleEmitterControl" type="Control" parent="AnimatedTextureButton"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_yphgf")
+particles = Array[PackedScene]([ExtResource("9_nrhrn"), ExtResource("9_nrhrn")])
+delay = PackedFloat32Array(0.25)
+_testParticles = ""

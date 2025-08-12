@@ -1,0 +1,158 @@
+[gd_scene load_steps=17 format=3 uid="uid://cn4yayku4c737"]
+
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_j68xm"]
+[ext_resource type="PackedScene" uid="uid://cbt3ir543hjep" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/VolumeHSlider.tscn" id="3_kloqg"]
+[ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_dwkyl"]
+[ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1paln"]
+[ext_resource type="PackedScene" uid="uid://23hcgk4hee52" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/UIVolumeButton.tscn" id="5_npjjy"]
+[ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="6_t5k1t"]
+[ext_resource type="AudioStream" uid="uid://dfsx470k0xqp4" path="res://Assets/Sounds/ButtonsSFX/Bounce2.ogg" id="7_qesth"]
+[ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Textures/Buttons/IDLE.png" id="8_avfaw"]
+[ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="8_unbn1"]
+[ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="9_ubsbl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
+shader = ExtResource("6_t5k1t")
+shader_parameter/shineColor = Color(1, 1, 1, 1)
+shader_parameter/shineSize = 0.0
+shader_parameter/shineAngle = 315.0
+shader_parameter/lineSmoothness = 0.0
+shader_parameter/distortion = 0.0
+shader_parameter/useTime = false
+shader_parameter/speed = 1.0
+shader_parameter/progress = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68xm"]
+bg_color = Color(0.0862745, 0.156863, 0.247059, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j68xm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqt6w"]
+texture = ExtResource("8_unbn1")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kplp2"]
+texture = ExtResource("9_ubsbl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
+texture = ExtResource("8_avfaw")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="SimpleSettingsMenu" type="MarginContainer" parent="."]
+material = SubResource("ShaderMaterial_omkoa")
+custom_minimum_size = Vector2(512, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -192.0
+offset_right = 256.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(256, 192)
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Body PanelContainer" type="PanelContainer" parent="SimpleSettingsMenu"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j68xm")
+
+[node name="BodyMarginContainer" type="MarginContainer" parent="SimpleSettingsMenu/Body PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_j68xm")
+theme_override_font_sizes/font_size = 56
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+layout_mode = 2
+bus = 2
+
+[node name="SFXVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+layout_mode = 2
+buttonScene = ExtResource("4_dwkyl")
+soundOnChange = ExtResource("5_1paln")
+bus = 1
+
+[node name="UIVolumeHSlider" parent="SimpleSettingsMenu/Body PanelContainer/BodyMarginContainer/VBoxContainer" instance=ExtResource("3_kloqg")]
+visible = false
+layout_mode = 2
+buttonScene = ExtResource("5_npjjy")
+soundOnChange = ExtResource("7_qesth")
+bus = 3
+
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="SimpleSettingsMenu"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -30
+theme_override_constants/margin_right = -30
+
+[node name="AnimatedTextureButton4" type="Button" parent="SimpleSettingsMenu/CloseButtonMarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j68xm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
+
+[node name="MarginContainer" type="MarginContainer" parent="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -16
+
+[node name="Label" type="Label" parent="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_j68xm")
+theme_override_font_sizes/font_size = 56
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="SimpleSettingsMenu/CloseButtonMarginContainer/AnimatedTextureButton4" to="." method="hide"]

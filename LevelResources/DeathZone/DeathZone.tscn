@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckk7riwonuhfw"]
-
-[ext_resource type="Script" uid="uid://xujlsh7vwfd7" path="res://LevelResources/DeathZone/DeathZone.gd" id="1_kxvo8"]
-
-[node name="DeathZone" type="Area3D"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("1_kxvo8")

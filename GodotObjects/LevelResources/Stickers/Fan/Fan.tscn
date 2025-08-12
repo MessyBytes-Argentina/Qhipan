@@ -1,0 +1,318 @@
+[gd_scene load_steps=32 format=3 uid="uid://cjg3u8idl755x"]
+
+[ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.gd" id="1_2wwg3"]
+[ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="2_e06n3"]
+[ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="3_6ngi6"]
+[ext_resource type="Texture2D" uid="uid://ct67p5u0qvkh4" path="res://Assets/Textures/Stickers/Fan/Vent-3.png" id="3_rl7rx"]
+[ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
+[ext_resource type="Texture2D" uid="uid://dunhq8g73hkfo" path="res://Assets/Textures/Stickers/Fan/Vent-4.png" id="4_6ngi6"]
+[ext_resource type="Texture2D" uid="uid://coje2mtnbxmjy" path="res://Assets/Textures/Stickers/Fan/Vent-2.png" id="5_2hw6u"]
+[ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="5_tax0g"]
+[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="9_xf8nb"]
+[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="10_5l5r5"]
+[ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/Fan_On.mp3" id="10_tax0g"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="11_5l5r5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
+radius = 0.6
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2i5e"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tnm2"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("2_e06n3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xf8nb"]
+flip_faces = true
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_2hw6u"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5l5r5"]
+gradient = SubResource("Gradient_2hw6u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l5r5"]
+render_priority = 4
+transparency = 1
+albedo_texture = ExtResource("2_e06n3")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_5l5r5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
+size = Vector3(1, 3.15, 1)
+
+[sub_resource type="Gradient" id="Gradient_gt347"]
+offsets = PackedFloat32Array(0.25, 0.25)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
+gradient = SubResource("Gradient_gt347")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_l5vid"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_e06n3")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fan")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"switch_fan"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fan/FanParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j2x5e"]
+resource_name = "Spin"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_rl7rx"), ExtResource("4_6ngi6")]
+}
+
+[sub_resource type="Animation" id="Animation_47yv1"]
+resource_name = "SpinUp"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meshes/Mesh:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_e06n3"), ExtResource("5_2hw6u"), ExtResource("3_rl7rx"), ExtResource("4_6ngi6")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Spin", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fan")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"switch_fan"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fan/FanParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2x5e"]
+_data = {
+&"RESET": SubResource("Animation_l5vid"),
+&"Spin": SubResource("Animation_j2x5e"),
+&"SpinUp": SubResource("Animation_47yv1")
+}
+
+[sub_resource type="Gradient" id="Gradient_k62l1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xf8nb"]
+gradient = SubResource("Gradient_k62l1")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
+render_priority = 0
+shader = ExtResource("9_xf8nb")
+shader_parameter/albedo = SubResource("GradientTexture2D_xf8nb")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/albedo_mix = 1.0
+shader_parameter/scale_mod = Vector3(1, 0.333333, 1)
+shader_parameter/cube_half_size = Vector3(0.5, 1.5, 0.5)
+shader_parameter/enable_y_fade = false
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.7
+shader_parameter/fade_power = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_5l5r5"]
+material = SubResource("ShaderMaterial_c1wxo")
+size = Vector3(1, 3, 1)
+
+[node name="FanSticker" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_2wwg3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="Meshes" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_y2i5e")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5tnm2")
+
+[node name="Back" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+mesh = SubResource("QuadMesh_xf8nb")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5l5r5")
+
+[node name="Billboard" type="Sprite3D" parent="Meshes"]
+unique_name_in_owner = true
+pixel_size = 0.002
+billboard = 1
+render_priority = 2
+texture = ExtResource("2_e06n3")
+
+[node name="Fan" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_6ngi6")
+
+[node name="Area" type="CollisionShape3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_gt347")
+
+[node name="NoGravity" type="Area3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.575, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_2hw6u")
+
+[node name="NoGravityCollision" type="CollisionShape3D" parent="Fan/NoGravity"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_ps2dv")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Target" type="Marker3D" parent="Fan"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Fan/Target"]
+pixel_size = 0.015
+billboard = 1
+texture = SubResource("GradientTexture2D_ps2dv")
+
+[node name="Origin" type="Marker3D" parent="Fan"]
+unique_name_in_owner = true
+
+[node name="FanParticles" parent="Fan" instance=ExtResource("5_tax0g")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
+
+[node name="AreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_j2x5e")
+}
+
+[node name="ShadowDecal" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+cast_shadow = 0
+gi_lightmap_scale = 0
+mesh = SubResource("BoxMesh_5l5r5")
+Skeleton = null
+script = ExtResource("10_5l5r5")
+size = Vector3(1, 3, 1)
+texture = SubResource("GradientTexture2D_xf8nb")
+enable_fade = false
+metadata/_custom_type_script = "uid://feckn7f3pmud"
+
+[node name="SpinupSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_tax0g")
+volume_db = 20.0
+bus = &"SFX"
+script = ExtResource("11_5l5r5")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
