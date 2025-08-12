@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://cubwbignuipt8" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 1.png" id="26_ybulr"]
 [ext_resource type="Texture2D" uid="uid://bfp7x55ytynap" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 2.png" id="27_nbpqb"]
 [ext_resource type="Texture2D" uid="uid://c5csvcg3w1kia" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 3.png" id="28_60daa"]
+[ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="29_vha6k"]
 [ext_resource type="Texture2D" uid="uid://cgrj1t810dqbw" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 4.png" id="29_xdwbk"]
 [ext_resource type="Texture2D" uid="uid://cqgb5lgcq302k" path="res://Assets/Textures/Character/GRAB IDLE/IG 1.png" id="30_bity2"]
 [ext_resource type="Texture2D" uid="uid://bfu0cpsdn01i0" path="res://Assets/Textures/Character/GRAB IDLE/IG 2.png" id="31_dkmaj"]
@@ -165,21 +166,9 @@ size = Vector3(20, 20, 20)
 radius = 0.6
 height = 1.5
 
-[sub_resource type="Gradient" id="Gradient_h7mp7"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.251521)
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3jjt7"]
-gradient = SubResource("Gradient_h7mp7")
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.1)
-fill_to = Vector2(0, 1)
-
 [sub_resource type="Gradient" id="Gradient_xq41j"]
-offsets = PackedFloat32Array(0, 0.25, 0.7, 0.7)
-colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 0.0980392, 1, 0, 0, 0.588235, 1, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.488889, 0.563235, 0.569118, 0.67619, 0.692064)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0.360784, 0, 0.0980392, 0.854902, 0.52549, 0, 0, 1, 1, 0, 0.596078, 0.854902, 0.682353, 0, 0.909804, 0.854902, 0.52549, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6fycs"]
 gradient = SubResource("Gradient_xq41j")
@@ -679,37 +668,31 @@ script = ExtResource("1_iw8fe")
 unique_name_in_owner = true
 stream = ExtResource("62_8njlr")
 volume_db = -10.0
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="RotateCamLeft" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("4_rr2ib")
-bus = &"SFX"
 
 [node name="RotateCamRight" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("5_3jjt7")
-bus = &"SFX"
 
 [node name="PoofSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("6_3jjt7")
 volume_db = -20.0
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="CamZoomIn" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("7_upgpw")
-bus = &"SFX"
 
 [node name="CamZoomOut" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("8_xvk8m")
-bus = &"SFX"
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -747,7 +730,6 @@ texture = ExtResource("10_xq41j")
 unique_name_in_owner = true
 stream = ExtResource("11_xq41j")
 volume_db = -20.0
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
@@ -840,26 +822,22 @@ shape = SubResource("CapsuleShape3D_l6njb")
 [node name="Remove" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("13_8hsli")
 max_polyphony = 1569325056
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("9_sjywp")
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Drop" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("11_f7h1j")
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Stick" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("12_f7h1j")
 volume_db = -12.0
-bus = &"SFX"
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
@@ -871,7 +849,7 @@ pixel_size = 0.003
 billboard = 1
 no_depth_test = true
 render_priority = 2
-texture = SubResource("GradientTexture2D_3jjt7")
+texture = ExtResource("29_vha6k")
 
 [node name="AreaHighlight" type="Sprite3D" parent="GrabArea"]
 top_level = true
