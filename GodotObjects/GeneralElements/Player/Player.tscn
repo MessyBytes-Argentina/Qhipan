@@ -850,9 +850,14 @@ volume_db = -12.0
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
-[node name="Highlight" type="Sprite3D" parent="GrabArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+[node name="HighlightPivot" type="Node3D" parent="GrabArea"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 top_level = true
+
+[node name="Highlight" type="Sprite3D" parent="GrabArea/HighlightPivot"]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.45, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1
@@ -861,6 +866,7 @@ render_priority = 2
 texture = ExtResource("29_vha6k")
 
 [node name="AreaHighlight" type="Sprite3D" parent="GrabArea"]
+unique_name_in_owner = true
 top_level = true
 visible = false
 pixel_size = 0.0026

@@ -90,7 +90,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pvkcw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yd3x0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_s85d3")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pkxch")
-text = "Restart Level [Y]"
+text = "Restart Level"
 script = ExtResource("7_efent")
 
 [node name="BlockScreen" type="CanvasLayer" parent="."]

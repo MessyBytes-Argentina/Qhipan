@@ -3,13 +3,16 @@ extends Area3D
 class_name PickupHandler
 
 const AREAHIGHLIGHTOFFSET: float = 0.01
+const STICKERHIGHLIGHTBOBDISTANCE: float = 0.1
+const STICKERHIGHLIGHTBOBTIME: float = 0.5
 
 @onready var pickupSound: RandomPitchPlayer = $Pickup
 @onready var removeSound: RandomPitchPlayer = $Remove
 @onready var dropSound: RandomPitchPlayer = $Drop
 @onready var stickSound: RandomPitchPlayer = $Stick
-@onready var highlight: Sprite3D = $Highlight
-@onready var areaHighlight: Sprite3D = $AreaHighlight
+@onready var highlight: Sprite3D = %Highlight
+@onready var areaHighlight: Sprite3D = %AreaHighlight
+@onready var highlightPivot: Node3D = %HighlightPivot
 
 var closeStickers: Array[StickerBase] = []
 var closeAreas: Array[Area3D] = []
@@ -21,6 +24,7 @@ var currentPickup: StickerBase
 var canGrab: bool = true
 var canDrop: bool = true
 var zoomedOut: bool = false
+var stickerHighlightTween: Tween
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -28,6 +32,7 @@ func _ready() -> void:
 	highlightHeight = highlight.position.y
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
+	bob_sticker_hightlight()
 
 func _physics_process(_delta: float) -> void:
 	sort_close_stickers()
@@ -78,7 +83,7 @@ func sort_close_stickers() -> void:
 	if len(closeStickers) == 0 or pickupOnHand: 
 		if highlight: highlight.hide()
 	elif highlight:
-		highlight.global_position = closeStickers[0].global_position + Vector3.UP * highlightHeight
+		highlightPivot.global_position = closeStickers[0].global_position
 		highlight.show()
 
 func _on_area_entered(area: Area3D) -> void:
@@ -106,4 +111,10 @@ func sort_close_areas() -> void:
 
 func get_closest_valid(area: Area3D) -> bool:
 	return currentPickup.validAreaIndexes.any(func(index: int): return area.get_collision_layer_value(index)) and not area.get_children().any(func(child: Node3D): return child is StickerBase)
-	
+
+func bob_sticker_hightlight() -> void:
+	stickerHighlightTween = create_tween()
+	stickerHighlightTween.tween_property(highlight, "position:y", highlightHeight, STICKERHIGHLIGHTBOBTIME).set_trans(Tween.TRANS_SINE)
+	stickerHighlightTween.tween_property(highlight, "position:y", highlightHeight + STICKERHIGHLIGHTBOBDISTANCE, STICKERHIGHLIGHTBOBTIME).set_trans(Tween.TRANS_SINE)
+	stickerHighlightTween.set_loops()
+	stickerHighlightTween.play()
