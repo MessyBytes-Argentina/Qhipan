@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://78km3l7m37q7"
-path="res://.godot/imported/Move.png-77ee4a98b7c6abab082b5504b8bf253a.ctex"
+uid="uid://bjw4hx081ykmr"
+path="res://.godot/imported/Camera.png-4b91da77ab9b51744e62ab11c690eace.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tutorial Screens/New Tutorial Screens/Keyboard/Move.png"
-dest_files=["res://.godot/imported/Move.png-77ee4a98b7c6abab082b5504b8bf253a.ctex"]
+source_file="res://Assets/Textures/Tutorial Screens/Joystick/Camera.png"
+dest_files=["res://.godot/imported/Camera.png-4b91da77ab9b51744e62ab11c690eace.ctex"]
 
 [params]
 

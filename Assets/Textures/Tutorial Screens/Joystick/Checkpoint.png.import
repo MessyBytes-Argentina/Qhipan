@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjw4hx081ykmr"
-path="res://.godot/imported/Camera.png-cdd7f8617743c772ac03699c1a16d72f.ctex"
+uid="uid://cy5qpo0on4vn5"
+path="res://.godot/imported/Checkpoint.png-8fcb5e652e86934571c7b2f096b5aafd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tutorial Screens/New Tutorial Screens/Joystick/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-cdd7f8617743c772ac03699c1a16d72f.ctex"]
+source_file="res://Assets/Textures/Tutorial Screens/Joystick/Checkpoint.png"
+dest_files=["res://.godot/imported/Checkpoint.png-8fcb5e652e86934571c7b2f096b5aafd.ctex"]
 
 [params]
 

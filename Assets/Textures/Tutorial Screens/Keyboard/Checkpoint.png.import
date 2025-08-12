@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rvhbfaari6us"
-path="res://.godot/imported/Checkpoint.png-7ecec68d35b493d78927a5acef621fee.ctex"
+path="res://.godot/imported/Checkpoint.png-0a01dc570ea7eb09da68c9cc1a634119.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tutorial Screens/New Tutorial Screens/Keyboard/Checkpoint.png"
-dest_files=["res://.godot/imported/Checkpoint.png-7ecec68d35b493d78927a5acef621fee.ctex"]
+source_file="res://Assets/Textures/Tutorial Screens/Keyboard/Checkpoint.png"
+dest_files=["res://.godot/imported/Checkpoint.png-0a01dc570ea7eb09da68c9cc1a634119.ctex"]
 
 [params]
 

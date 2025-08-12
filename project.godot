@@ -31,6 +31,7 @@ MusicManager="*res://GodotObjects/Managers/SoundManager/MusicManager/MusicManage
 VolumeManager="*res://GodotObjects/Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://GodotObjects/Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://GodotObjects/Managers/LevelManager/LevelManager.tscn"
+GeneralVariables="*res://GodotObjects/Managers/GeneralVariables/GeneralVariables.gd"
 
 [display]
 
@@ -123,6 +124,7 @@ zoom={
 
 3d_physics/layer_1="Floor"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Objects"
 3d_physics/layer_10="Stickers"
 3d_physics/layer_11="StickerPlacement"
 3d_physics/layer_12="Doors"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://bt8utmhhfqc7x"]
 
-[ext_resource type="Texture2D" uid="uid://c1bn63d7wb7uj" path="res://Assets/Sprites/Decos/Cantaro.png" id="1_3inrw"]
+[ext_resource type="Texture2D" uid="uid://c1bn63d7wb7uj" path="res://Assets/Textures/Decos/Cantaro.png" id="1_3inrw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imfao"]
 resource_name = "Material.003"
@@ -53,6 +53,8 @@ mesh = SubResource("ArrayMesh_7f8tf")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cantaro"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cantaro/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kh2xc")

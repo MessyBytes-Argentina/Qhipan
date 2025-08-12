@@ -75,6 +75,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_w4bbu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="LlamaTotem"]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LlamaTotem/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
