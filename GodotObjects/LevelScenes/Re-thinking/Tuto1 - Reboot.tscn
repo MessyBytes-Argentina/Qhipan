@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://by8i8swhvvvek"]
+[gd_scene load_steps=12 format=3 uid="uid://by8i8swhvvvek"]
 
 [ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://GodotObjects/LevelResources/Gridmaps/DecalMap/DecalMap.tscn" id="1_krona"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_yxln3"]
@@ -8,11 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://GodotObjects/LevelResources/Gridmaps/StickerMap/StickerMap.tscn" id="4_gjheb"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="5_oo6uy"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="5_uvr3n"]
-[ext_resource type="Texture2D" uid="uid://d16nnnay2km1k" path="res://Assets/Textures/Tutorial Screens/Reach Checkpoint.png" id="7_5xirp"]
 [ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/LevelResources/Props/InfoCrystal/InfoCrystal.tscn" id="7_jhha6"]
-[ext_resource type="Texture2D" uid="uid://d1eubwhb5j48r" path="res://Assets/Textures/Tutorial Screens/Movement.png" id="8_4qd2f"]
-[ext_resource type="Texture2D" uid="uid://b5jx2r8r6av81" path="res://Assets/Textures/Tutorial Screens/Rotate Camera.png" id="8_14y68"]
-[ext_resource type="Texture2D" uid="uid://dooak1fj2be7c" path="res://Assets/Textures/Tutorial Screens/Pickup Sticker.png" id="11_6tjuh"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/LevelResources/Props/Door/Door.tscn" id="11_14y68"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="13_6tjuh"]
 
@@ -48,19 +44,15 @@ movementMaximum = 5.0
 
 [node name="InfoCrystal" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
-infoSprite = ExtResource("8_4qd2f")
 
 [node name="InfoCrystal2" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -1)
-infoSprite = ExtResource("7_5xirp")
 
 [node name="InfoCrystal3" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -6)
-infoSprite = ExtResource("8_14y68")
 
 [node name="InfoCrystal4" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -1)
-infoSprite = ExtResource("11_6tjuh")
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("5_uvr3n")]
 playerReference = NodePath("../Player")

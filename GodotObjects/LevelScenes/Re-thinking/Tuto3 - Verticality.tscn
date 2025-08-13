@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bowsaiqa88bm4"]
+[gd_scene load_steps=14 format=3 uid="uid://bowsaiqa88bm4"]
 
-[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/Environment/EnvironmentObjects.tscn" id="1_st0d7"]
-[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/Player/Player.tscn" id="2_gfqof"]
-[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://LevelResources/Gridmaps/StickerMap/StickerMap.tscn" id="3_hbgam"]
-[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="4_mti4h"]
-[ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://LevelResources/Gridmaps/DecalMap/DecalMap.tscn" id="5_88mc6"]
-[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://LevelResources/Checkpoints/CheckpointManager.tscn" id="6_g0hnt"]
-[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://LevelResources/Checkpoints/Checkpoint.tscn" id="7_7mv51"]
-[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://LevelResources/Stickers/Fan/Fan.tscn" id="8_111js"]
-[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://LevelResources/Stickers/Key/Key.tscn" id="9_vrbgb"]
-[ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://LevelResources/Props/Door/Door.tscn" id="10_26ik8"]
-[ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://LevelResources/Props/Door/GoalDoor.tscn" id="11_uxvm8"]
-[ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://LevelResources/Goal/GoalZone.tscn" id="12_rh76q"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_st0d7"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_gfqof"]
+[ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://GodotObjects/LevelResources/Gridmaps/StickerMap/StickerMap.tscn" id="3_hbgam"]
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="4_mti4h"]
+[ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://GodotObjects/LevelResources/Gridmaps/DecalMap/DecalMap.tscn" id="5_88mc6"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="6_g0hnt"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="7_7mv51"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="8_111js"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="9_vrbgb"]
+[ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/LevelResources/Props/Door/GoalDoor.tscn" id="11_uxvm8"]
+[ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/LevelResources/Goal/GoalZone.tscn" id="12_rh76q"]
+[ext_resource type="PackedScene" uid="uid://ckk7riwonuhfw" path="res://GodotObjects/LevelResources/DeathZone/DeathZone.tscn" id="13_8hw37"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hw37"]
+size = Vector3(100000, 1, 1e+06)
 
 [node name="BlankLevelScene" type="Node3D"]
 
@@ -19,18 +22,19 @@
 
 [node name="Player" parent="." instance=ExtResource("2_gfqof")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.5, 0)
-movementMaximum = 5.0
+movementMaximum = 3.0
 
 [node name="StickerMap" parent="." instance=ExtResource("3_hbgam")]
 data = {
-"cells": PackedInt32Array(131072, 65535, 1048576, 196607, 0, 1048576)
+"cells": PackedInt32Array(196607, 0, 1048576, 655357, 65534, 1441793, 131071, 65532, 1048577)
 }
-metadata/_editor_floor_ = Vector3(0, 2, 0)
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="TerrainMap" parent="." instance=ExtResource("4_mti4h")]
 data = {
-"cells": PackedInt32Array(65535, 65535, 1048598, 65535, 0, 1048598, 0, 65535, 1048598, 65535, 65534, 1048598, 65534, 65535, 1048598)
+"cells": PackedInt32Array(65535, 65535, 1048598, 65535, 0, 12, 0, 65535, 1048598, 65535, 65534, 1048598, 65534, 65535, 1048598, 1, 65535, 22, 0, 65534, 22, 0, 0, 22, 65534, 0, 22, 65534, 65534, 22, 65533, 65535, 22, 65536, 65533, 1441814, 65537, 65534, 655387, 131070, 65533, 1441814, 131069, 65534, 27, 131069, 0, 27, 65537, 0, 655387, 65536, 1, 1048603, 131071, 1, 1048603, 131070, 1, 1048603, 524287, 65535, 24, 65535, 65529, 1048580, 131071, 65528, 1048583, 131071, 65527, 1048590, 65536, 65527, 1048588, 196608, 65527, 1048588, 65536, 65526, 1048588, 131071, 65526, 1048588, 131070, 65526, 1048588, 131070, 65527, 1048588, 262142, 65527, 1048588, 262142, 65526, 1048588, 262143, 65526, 1048588, 196608, 65526, 1048588, 393214, 65527, 1048588, 393214, 65526, 1048588, 393215, 65526, 1048588, 327680, 65526, 1048588, 327680, 65527, 1048588, 393215, 65528, 1048588, 327680, 65528, 35, 393214, 65528, 1441827, 458752, 65527, 1048588, 458752, 65526, 1048588, 524287, 65526, 1048588, 524286, 65526, 1048588, 524286, 65527, 1048588, 524287, 65528, 1048588, 655359, 65528, 1048588, 589824, 65527, 1048588, 589824, 65526, 1048588, 655358, 65526, 1048588, 655358, 65527, 1048588, -1, 65528, 1048578, -1, 65527, 1048578, -65536, 65527, 1048578, -2, 65527, 1048578, -1, 65526, 1048578, -196608, 65527, 1048578, -131074, 65527, 1048578, -131073, 65527, 1048578, -131073, 65526, 1048578, -262145, 65527, 1048578, -327680, 65527, 655402, -262146, 65527, 42, -262145, 65526, 1441834, 327679, 65528, 14, 65536, 65528, 2, 65536, 65529, 2, 131070, 65528, 2, 131070, 65529, 2, 196608, 65528, 2, 262142, 65528, 2, 458752, 65528, 655395, 524286, 65528, 1048611, 65537, 65527, 1441827, 65537, 65526, 1441827, 131069, 65527, 35, 131069, 65526, 35, 262143, 65529, 2, 262143, 65530, 1048578, 65536, 65530, 1048578, 131070, 65530, 1048578, 65535, 65530, 1048583, -65536, 65530, 2, -2, 65530, 2, -65537, 65530, 2, 589823, 65534, 1048609, 524288, 65535, 33, 524289, 65535, 32, 589823, 65533, 32, 393216, 65535, 655420, 458751, 65534, 1441852, 458750, 65535, 60, 196607, 65531, 1048616, 131072, 65531, 1048616, 196606, 65531, 1048616, 589822, 65533, 1048608, 589821, 65533, 12, 131069, 65533, 1048602, 65537, 65533, 26, 65537, 1, 1441818, 131069, 1, 655386, -2, 65533, 1441844, -3, 65534, 52, -3, 0, 52, -2, 1, 1048628, -65536, 1, 1048628, -1, 1, 1048628, -65535, 0, 655412, -65535, 65534, 655412, -65536, 65533, 1441844, -3, 65533, 1048629, -65535, 65533, 53, -65535, 1, 1441845, -3, 1, 655413, 262142, 65533, 23, 196608, 65533, 655383, 327679, 65533, 34, 589821, 1, 1441829, 589821, 2, 1441826, 65535, 65533, 12)
 }
+metadata/_editor_floor_ = Vector3(0, -2, 0)
 
 [node name="DecalMap" parent="." instance=ExtResource("5_88mc6")]
 
@@ -41,6 +45,9 @@ startCheckpoint = NodePath("Checkpoint0")
 [node name="Checkpoint0" parent="CheckpointManager" instance=ExtResource("7_7mv51")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 1.5, 0)
 
+[node name="Checkpoint1" parent="CheckpointManager" instance=ExtResource("7_7mv51")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 1.5, 5.5, 0)
+
 [node name="FanStickers" type="Node3D" parent="."]
 
 [node name="FanSticker" parent="FanStickers" instance=ExtResource("8_111js")]
@@ -50,18 +57,23 @@ placed = true
 [node name="KeyStickers" type="Node3D" parent="."]
 
 [node name="KeySticker" parent="KeyStickers" instance=ExtResource("9_vrbgb")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1, 1, 0)
-placed = true
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2, 5, 3)
 
 [node name="Door" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
-[node name="Door" parent="Door" instance=ExtResource("10_26ik8")]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -0.5, 1.5, -2)
-openAnimation = 3
-
 [node name="Door2" parent="Door" instance=ExtResource("11_uxvm8")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 1.5, -2.5)
+openAnimation = 4
 
 [node name="GoalZone" parent="." instance=ExtResource("12_rh76q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="DeathZone" parent="." instance=ExtResource("13_8hw37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_8hw37")
+
+[node name="Spikes" type="Node3D" parent="."]
