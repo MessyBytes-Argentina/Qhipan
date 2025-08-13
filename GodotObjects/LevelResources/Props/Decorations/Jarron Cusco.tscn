@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://ian8ddyxqvd7"]
 
-[ext_resource type="Texture2D" uid="uid://d0f1egh4l6n7y" path="res://Assets/Sprites/Decos/Jarronsito.png" id="1_cw0ut"]
+[ext_resource type="Texture2D" uid="uid://d0f1egh4l6n7y" path="res://Assets/Textures/Decos/Jarronsito.png" id="1_cw0ut"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y4gb"]
 resource_name = "Material.001"
@@ -53,6 +53,8 @@ mesh = SubResource("ArrayMesh_mjd4s")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Jarron Cusco"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Jarron Cusco/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1wd8f")

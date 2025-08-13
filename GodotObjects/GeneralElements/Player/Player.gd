@@ -14,11 +14,18 @@ const APROXFLOORDISTANCE: float = -0.39
 
 enum States {Idle, Walk, Float}
 
-@export_group("Character Movement")
+signal zooming_out(zoomingOut: bool)
+
+## Animation Parameters
+const spriteFlipDuration: float = 0.5
+const cameraFollowSpeed: float = 0.1
+
+## Character Movement
 const maxSpeed: float = 3
 const acceleration: float = 20.0
 const decceleration: float = 20.0
 const gravity: float = 32
+
 @export_range(0, 100, .1) var movementMaximum: float = 10:
 	set(value):
 		movementMaximum = value
@@ -27,10 +34,6 @@ const gravity: float = 32
 	set(value):
 		disableMaximum = value
 		if Engine.is_editor_hint(): set_decal_size()
-
-@export_group("Animation Parameters")
-@export_range(0, 2, .1) var spriteFlipDuration: float = 0.5
-@export_range(0, 1, .01) var cameraFollowSpeed: float = 0.1
 
 @onready var cameraPivot: Node3D = %CameraPivot
 @onready var spritePivot: Node3D = %SpritePivot
@@ -101,7 +104,7 @@ func _ready() -> void:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
 
-func _input(_event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if noMovement or zooming: 
 		inputDirection = Vector3.ZERO
@@ -113,9 +116,9 @@ func _input(_event: InputEvent) -> void:
 	camera_zoom_check()
 
 func _physics_process(delta: float) -> void:
+	camera_follow(delta)
 	if Engine.is_editor_hint(): return
 	move_character(delta)
-	camera_follow(delta)
 	animation_check()
 	current_grid_check()
 	grabArea.canDrop = is_on_floor()
@@ -167,6 +170,7 @@ func camera_zoom_check() -> void:
 	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
 	if not doZoom: return
 	cubeCutout.zoomedOut = not zoomedOut
+	zooming_out.emit(not zoomedOut)
 	if zoomedOut: camZoomIn.play()
 	else: camZoomOut.play()
 	zooming = true
@@ -263,9 +267,13 @@ func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
 
 func set_decal_size() -> void:
+	if Engine.is_editor_hint() and not lightDecal: return
+	while not lightDecal:
+		await get_tree().process_frame
 	if disableMaximum:
 		if lightDecal: lightDecal.hide()
 		return
+	else: lightDecal.show()
 	lightDecal.size.x = (movementMaximum - moved) * 2.0
 	lightDecal.size.z = lightDecal.size.x
 

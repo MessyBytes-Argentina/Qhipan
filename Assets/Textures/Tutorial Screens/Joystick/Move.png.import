@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3igvucrpv1gq"
-path="res://.godot/imported/Pick Up.png-0952374a4c4a1d236b2933172ce7ede0.ctex"
+uid="uid://ba8pag57qauga"
+path="res://.godot/imported/Move.png-be4c81473f78c9d006f059b9474f99fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tutorial Screens/New Tutorial Screens/Joystick/Pick Up.png"
-dest_files=["res://.godot/imported/Pick Up.png-0952374a4c4a1d236b2933172ce7ede0.ctex"]
+source_file="res://Assets/Textures/Tutorial Screens/Joystick/Move.png"
+dest_files=["res://.godot/imported/Move.png-be4c81473f78c9d006f059b9474f99fb.ctex"]
 
 [params]
 

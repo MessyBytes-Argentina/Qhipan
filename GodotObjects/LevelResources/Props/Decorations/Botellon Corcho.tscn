@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://bsaoxxoswk6dt"]
 
-[ext_resource type="Texture2D" uid="uid://chbsyyig64q0c" path="res://Assets/Sprites/Decos/Botella-Corcho.png" id="1_mhar0"]
+[ext_resource type="Texture2D" uid="uid://chbsyyig64q0c" path="res://Assets/Textures/Decos/Botella-Corcho.png" id="1_mhar0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu2m3"]
 resource_name = "Material.002"
@@ -53,6 +53,8 @@ mesh = SubResource("ArrayMesh_o7aim")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Botellon Corcho"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Botellon Corcho/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kmiwt")

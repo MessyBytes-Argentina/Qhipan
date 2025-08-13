@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jxvras1tcbad"
-path="res://.godot/imported/Place.png-8cd5dbe3cf6ed926ed26453aec07e5e4.ctex"
+uid="uid://o5ey1px8lqc0"
+path="res://.godot/imported/Pick Up.png-4ee7ade7577b09cd0227298a5399e82c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Tutorial Screens/New Tutorial Screens/Keyboard/Place.png"
-dest_files=["res://.godot/imported/Place.png-8cd5dbe3cf6ed926ed26453aec07e5e4.ctex"]
+source_file="res://Assets/Textures/Tutorial Screens/Keyboard/Pick Up.png"
+dest_files=["res://.godot/imported/Pick Up.png-4ee7ade7577b09cd0227298a5399e82c.ctex"]
 
 [params]
 
