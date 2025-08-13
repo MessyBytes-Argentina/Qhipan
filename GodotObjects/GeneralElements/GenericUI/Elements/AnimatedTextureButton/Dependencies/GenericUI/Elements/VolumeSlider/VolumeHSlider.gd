@@ -49,6 +49,7 @@ func drop_slider_focus(_finalValue: float) -> void:
 
 ## Set volume with controller.
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if not GeneralVariables.usingGamepad: return
 	if not _slider.has_focus(): return
 	if Input.is_action_pressed("ui_left"): _slider.set_value(_slider.value - _slider.step * CONTROLLERSTEPMULTIPLIER)
