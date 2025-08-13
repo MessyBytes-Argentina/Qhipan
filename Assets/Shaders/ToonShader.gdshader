@@ -43,6 +43,9 @@ uniform float cylinderRadius1;
 uniform float cylinderRadius2;
 uniform float cylinderHeight;
 uniform vec3 playerPosition;
+uniform bool auxMode = false;
+uniform vec3 auxBoxPosition;
+uniform float auxBoxRotation;
 
 varying vec3 worldVector;
 varying float shortestDistance;
@@ -86,6 +89,11 @@ void fragment() {
 		vec3 boxWorldPosition = worldVector - boxPosition;
 		float sdfBox = sdBoxRotated(boxWorldPosition, boxSize, boxRotation);
 		float resultShape = opSubtraction(sdfBox, sdfCylinder);
+		if (auxMode) {
+			vec3 auxBoxWorldPosition = worldVector - auxBoxPosition;
+			float sdfAuxBox = sdBoxRotated(auxBoxWorldPosition, boxSize, auxBoxRotation);
+			resultShape = opSubtraction(sdfAuxBox, resultShape);
+		}
 		if (resultShape < 0.0) {discard;}
 		borderDistance = smoothstep(0.0, borderSize, resultShape);
 	}

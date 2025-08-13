@@ -18,7 +18,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		process_mode = PROCESS_MODE_ALWAYS
 		# Make sure this scene is the top layer.
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().process_frame
 		var parent: Node = get_parent()
 		parent.remove_child(self)
 		parent.add_child(self)
@@ -74,7 +74,6 @@ func show_popup(popupName: String) -> void:
 				animationPlayer.play("RESET")
 			await get_tree().create_timer(0.1).timeout
 			popupScene.show()
-			popupQueue.append(colorRect)
 			if popupScene.has_meta("popin"):
 				var tweener: Tween = create_tween()
 				tweener.tween_property(colorRect, "self_modulate", Color.WHITE, popupScene.get_meta("popin"))
@@ -82,6 +81,7 @@ func show_popup(popupName: String) -> void:
 				animationPlayer.play("popin")
 		else:
 			popupScene.show()
+		popupQueue.append(colorRect)
 
 ## Closes the popup at the top of the queue.
 func close_top_popup() -> void:
@@ -129,3 +129,7 @@ func _close_popup(toClose: ColorRect) -> void:
 	else:
 		toClosePopupResource.clear_scene()
 		toClose.queue_free()
+
+## Checks for existing popup.
+func is_popup(popupName: String) -> bool:
+	return popupQueue.any(func(a): return a.get_meta("popupResource").popupName == popupName)

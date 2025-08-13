@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PopupResource" load_steps=3 format=3 uid="uid://rnk1df6yv7pn"]
+
+[ext_resource type="PackedScene" uid="uid://bepcupksdg3h5" path="res://GodotObjects/GeneralElements/UI/SettingsMenu.tscn" id="1_h8t4a"]
+[ext_resource type="Script" uid="uid://cb5tb8ub5e3r5" path="res://GodotObjects/Managers/PopupManager/PopupResource.gd" id="1_ua7an"]
+
+[resource]
+script = ExtResource("1_ua7an")
+popupName = "Settings"
+popupScene = ExtResource("1_h8t4a")
+greyoutColor = Color(0, 0, 0, 0.392157)
+greyoutBlocksBackground = true
+persistent = false
+metadata/_custom_type_script = "uid://cb5tb8ub5e3r5"

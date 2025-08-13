@@ -2,8 +2,6 @@ extends Node
 
 ## Path to the credits scene
 const creditsScene: String = "uid://b8wvtujbncu6r"
-## Amount of time to hold the restart button
-const RESTARTBUTTONTIME: float = 1.0
 
 ## Array with the list of paths to the levels scenes
 var levelList: Array[String]
@@ -11,39 +9,24 @@ var levelList: Array[String]
 var sceneManager: StoryWriterSceneManager
 ## Current level id for the list progress
 var currentLvlId: int = 0
-## Amount of time the restart button was held
-var restartButtonHeldTime: float = 0.0
-## Restart input flag
-var restartHeld: bool = false
 ## Restarted flag
 var restarted: bool = false
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("reset_scene") and not restarted:
-		restartHeld = true
-	else:
-		restartHeld = false
-		restartButtonHeldTime = 0
-	#if Input.is_action_just_pressed("win"):
-		#next_level()
-
-func _process(delta: float) -> void:
-	if restartHeld: restartButtonHeldTime += delta
-	if restartButtonHeldTime >= RESTARTBUTTONTIME and not restarted: 
-		if not sceneManager:
-			get_tree().reload_current_scene()
-			return
-		restarted = true
-		sceneManager.switch_scene()
-		await sceneManager.finished
-		await get_tree().create_timer(1.0).timeout
-		restarted = false
 
 func _ready() -> void:
 	# Awaiting for the SceneManager to load
 	while not sceneManager:
 		await get_tree().process_frame
 		sceneManager = get_tree().get_first_node_in_group("SceneManager")
+
+func do_restart() -> void:
+	if not sceneManager:
+		get_tree().reload_current_scene()
+		return
+	restarted = true
+	sceneManager.switch_scene()
+	await sceneManager.finished
+	await get_tree().create_timer(1.0).timeout
+	restarted = false
 
 ## Changes the current scene to the next level on the list.
 ## if there are no more levels it changes to the credits scene

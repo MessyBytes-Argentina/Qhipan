@@ -1,20 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=8 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://GodotObjects/GeneralElements/UI/StartButton.gd" id="1_oq7qy"]
 [ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://GodotObjects/GeneralElements/UI/Start-Credit-Background.png" id="1_t72tu"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://GodotObjects/GeneralElements/UI/SettingsButton.gd" id="2_6u8ck"]
-[ext_resource type="PackedScene" uid="uid://cn4yayku4c737" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/SimpleSettingsMenu.tscn" id="3_l0taq"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gdyn"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3vac"]
-bg_color = Color(1, 1, 1, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skuak"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1jkq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxy5c"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h2pr"]
 
 [node name="Control" type="Control" groups=["SceneManager"]]
 layout_mode = 3
@@ -106,40 +101,37 @@ theme_override_constants/separation = 0
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4gdyn")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y3vac")
-theme_override_styles/hover = SubResource("StyleBoxFlat_y3vac")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y3vac")
-theme_override_styles/normal = SubResource("StyleBoxFlat_y3vac")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_skuak")
 text = "Start"
 script = ExtResource("1_oq7qy")
 levelList = Array[String](["uid://crmvcuof5gyt2", "uid://bc7t04hvqoifc", "uid://l62ulb285l1f", "uid://dp0p4t6cc64a6", "uid://baa07m7c51sm4", "uid://bclmhvt3fe7tl", "uid://dq782t3gqfnxn"])
 
-[node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
+[node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kxy5c")
-theme_override_styles/hover = SubResource("StyleBoxFlat_kxy5c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_kxy5c")
-theme_override_styles/normal = SubResource("StyleBoxFlat_kxy5c")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5h2pr")
 text = "Settings"
 script = ExtResource("2_6u8ck")
-settingsScene = NodePath("../../../../../../../SimpleSettingsMenu")
-
-[node name="SimpleSettingsMenu" parent="." instance=ExtResource("3_l0taq")]
-visible = false
-layout_mode = 1

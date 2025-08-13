@@ -28,7 +28,7 @@
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13, 1.5, -15.5)
 movementMaximum = 13.0
 
-[node name="TerrainMap" type="GridMap" parent="."]
+[node name="TerrainMap" type="GridMap" parent="." groups=["Gridmap"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 mesh_library = ExtResource("4_l08g2")
 cell_size = Vector3(1, 0.5, 1)

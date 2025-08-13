@@ -65,6 +65,7 @@ sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), Ext
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
+double_sided = false
 no_depth_test = true
 render_priority = 5
 texture = SubResource("ViewportTexture_81nvi")
