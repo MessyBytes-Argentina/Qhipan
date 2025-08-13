@@ -118,7 +118,7 @@ text = "Start"
 script = ExtResource("1_oq7qy")
 levelList = Array[String](["uid://crmvcuof5gyt2", "uid://bc7t04hvqoifc", "uid://l62ulb285l1f", "uid://dp0p4t6cc64a6", "uid://baa07m7c51sm4", "uid://bclmhvt3fe7tl", "uid://dq782t3gqfnxn"])
 
-[node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("settingsScene")]
+[node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
@@ -135,4 +135,3 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5h2pr")
 text = "Settings"
 script = ExtResource("2_6u8ck")
-settingsScene = NodePath("")

@@ -7,6 +7,8 @@ class_name VolumeHSlider
 
 ## A controller step multiplier.
 const CONTROLLERSTEPMULTIPLIER: float = 7.5
+## Volume override for sound player
+const VOLUMEOVERRIDE: float = 0.0
 
 ## New volume was set.
 signal updated
@@ -75,6 +77,7 @@ func _ready() -> void:
 		_soundPlayer = AudioStreamPlayer.new()
 		_soundPlayer.bus = AudioServer.get_bus_name(bus)
 		_soundPlayer.stream = soundOnChange
+		_soundPlayer.volume_db = VOLUMEOVERRIDE
 		add_child(_soundPlayer)
 
 ## Mutes and unmutes the audio bus.
