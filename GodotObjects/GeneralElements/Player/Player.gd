@@ -80,7 +80,7 @@ var material: StandardMaterial3D
 var submaterial: StandardMaterial3D
 var noMovement: bool = true
 var fallSoundPlayed: bool = false
-var respawnFall: bool = false
+var respawnFall: bool = true
 var popupTween: Tween
 var stopped: bool = false
 var resetButton: Button
@@ -89,6 +89,7 @@ var zoomedOut: bool = false
 var inCheckpoint: bool = true
 var resetPoppingOut: bool = false
 var gridmap: GridMap
+var currentCheckpointPosition: Vector3
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -112,6 +113,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		inputDirection = Vector3.ZERO
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
+	if Input.is_action_just_pressed("reset_player") and not noMovement:
+		restart_at_checkpoint()
+		return
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
@@ -253,6 +257,8 @@ func move_character(delta: float) -> void:
 	move_and_slide()
 	if is_on_floor() and not fallSoundPlayed and not respawnFall:
 		fallSound.play_sound()
+	if is_on_floor() and respawnFall:
+		respawnFall = false
 	fallSoundPlayed = true
 
 func get_move_direction() -> Vector3:
@@ -287,14 +293,14 @@ func set_decal_size() -> void:
 func enable_checkpoint_sound() -> void:
 	get_tree().call_group("Checkpoints","enable_sounds")
 
-func restart_at_checkpoint(pos: Vector3) -> void:
+func restart_at_checkpoint() -> void:
 	#Al final parece que no se tienen que droppear
 	#grabArea.drop(true)
 	respawnFall = true
 	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(set.bind("respawnFall", false))
 	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(enable_checkpoint_sound)
 	if not hasSpawned:
-		global_position = pos
+		global_position = currentCheckpointPosition
 		reset_aura()
 		hasSpawned = true
 		return
@@ -312,7 +318,7 @@ func restart_at_checkpoint(pos: Vector3) -> void:
 	transparencyTween.play()
 	poof.emit_particles()
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
-	global_position = pos
+	global_position = currentCheckpointPosition
 	reset_aura()
 	poof.emit_particles()
 	if transparencyTween:
