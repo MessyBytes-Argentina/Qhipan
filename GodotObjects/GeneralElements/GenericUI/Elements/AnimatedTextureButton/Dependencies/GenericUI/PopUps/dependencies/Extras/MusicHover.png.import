@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wyaakid6c7wl"
-path="res://.godot/imported/Speech_Bubble.png-38b839a9d78fe10155025ec31f5ee8f6.ctex"
+uid="uid://cxkg2knw1a3o6"
+path="res://.godot/imported/MusicHover.png-df8e354e395c4d6d010ec3db6b81e127.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Speech_Bubble.png"
-dest_files=["res://.godot/imported/Speech_Bubble.png-38b839a9d78fe10155025ec31f5ee8f6.ctex"]
+source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicHover.png"
+dest_files=["res://.godot/imported/MusicHover.png-df8e354e395c4d6d010ec3db6b81e127.ctex"]
 
 [params]
 

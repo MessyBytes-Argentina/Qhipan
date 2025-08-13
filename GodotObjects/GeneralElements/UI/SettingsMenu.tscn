@@ -1,0 +1,231 @@
+[gd_scene load_steps=22 format=3 uid="uid://bepcupksdg3h5"]
+
+[ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="1_y7cun"]
+[ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_yfyft"]
+[ext_resource type="Script" uid="uid://dl548l3g84gvl" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/VolumeHSlider.gd" id="3_cqhlc"]
+[ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_2bmqm"]
+[ext_resource type="PackedScene" uid="uid://gt346rayh13u" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/MusicVolumeButton.tscn" id="4_qf23i"]
+[ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1ytef"]
+[ext_resource type="Texture2D" uid="uid://cxkg2knw1a3o6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicHover.png" id="5_moqiu"]
+[ext_resource type="PackedScene" uid="uid://bn3a8oiupqm6a" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/HSlider.tscn" id="5_rp3o8"]
+[ext_resource type="Texture2D" uid="uid://b6a1k8f6uxuya" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicDisabled.png" id="6_4dvbu"]
+[ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="8_3ggm8"]
+[ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="9_t1gfv"]
+[ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Textures/Buttons/IDLE.png" id="10_v8tat"]
+[ext_resource type="Texture2D" uid="uid://xs4jg4hwr8xe" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXHover.png" id="10_ycww2"]
+[ext_resource type="Script" uid="uid://bmy4rxan6ndx0" path="res://GodotObjects/GeneralElements/UI/SettingsCloseButton.gd" id="11_cqhlc"]
+[ext_resource type="Script" uid="uid://dsbdtcedvujab" path="res://GodotObjects/GeneralElements/UI/RestartLevel.gd" id="11_qf23i"]
+[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXDisabled.png" id="11_qj3d8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
+shader = ExtResource("1_y7cun")
+shader_parameter/shineColor = Color(1, 1, 1, 1)
+shader_parameter/shineSize = 0.0
+shader_parameter/shineAngle = 315.0
+shader_parameter/lineSmoothness = 0.0
+shader_parameter/distortion = 0.0
+shader_parameter/useTime = false
+shader_parameter/speed = 1.0
+shader_parameter/progress = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68xm"]
+bg_color = Color(0.0862745, 0.156863, 0.247059, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqt6w"]
+texture = ExtResource("8_3ggm8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kplp2"]
+texture = ExtResource("9_t1gfv")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
+texture = ExtResource("10_v8tat")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="SimpleSettingsMenu" type="MarginContainer"]
+material = SubResource("ShaderMaterial_omkoa")
+custom_minimum_size = Vector2(512, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -192.0
+offset_right = 256.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(256, 192)
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Body PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j68xm")
+
+[node name="BodyMarginContainer" type="MarginContainer" parent="Body PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body PanelContainer/BodyMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_yfyft")
+theme_override_font_sizes/font_size = 56
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeHSlider" type="HBoxContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("_button", "_slider")]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("3_cqhlc")
+_button = NodePath("MusicVolumeButton")
+_slider = NodePath("HSlider")
+bus = 2
+
+[node name="MusicVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("4_qf23i")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_right = NodePath("../HSlider")
+focus_neighbor_bottom = NodePath("../../SFXVolumeHSlider/SoundsVolumeButton")
+focus_mode = 0
+texture_hover = ExtResource("5_moqiu")
+texture_disabled = ExtResource("6_4dvbu")
+texture_focused = ExtResource("5_moqiu")
+
+[node name="HSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("5_rp3o8")]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_bottom = NodePath("../../SFXVolumeHSlider/HSlider")
+
+[node name="SFXVolumeHSlider" type="HBoxContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("_button", "_slider")]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+script = ExtResource("3_cqhlc")
+_button = NodePath("SoundsVolumeButton")
+_slider = NodePath("HSlider")
+soundOnChange = ExtResource("5_1ytef")
+bus = 1
+
+[node name="SoundsVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/SFXVolumeHSlider" instance=ExtResource("4_2bmqm")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../MusicVolumeHSlider/MusicVolumeButton")
+focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_bottom = NodePath("../../RestartLevel")
+focus_mode = 0
+texture_hover = ExtResource("10_ycww2")
+texture_disabled = ExtResource("11_qj3d8")
+texture_focused = ExtResource("10_ycww2")
+
+[node name="HSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/SFXVolumeHSlider" instance=ExtResource("5_rp3o8")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SoundsVolumeButton")
+focus_neighbor_top = NodePath("../../MusicVolumeHSlider/HSlider")
+focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_bottom = NodePath("../../RestartLevel")
+
+[node name="RestartLevel" type="Button" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("music", "sound", "closeButton")]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../SFXVolumeHSlider/HSlider")
+focus_neighbor_right = NodePath("../../../../CloseButtonMarginContainer/CloseButton")
+focus_neighbor_bottom = NodePath(".")
+theme_override_fonts/font = ExtResource("2_yfyft")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
+script = ExtResource("11_qf23i")
+music = NodePath("../MusicVolumeHSlider")
+sound = NodePath("../SFXVolumeHSlider")
+closeButton = NodePath("../../../../CloseButtonMarginContainer/CloseButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/RestartLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -8
+
+[node name="Label" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/RestartLevel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_yfyft")
+theme_override_font_sizes/font_size = 26
+text = "Restart level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -30
+theme_override_constants/margin_right = -30
+
+[node name="CloseButton" type="Button" parent="CloseButtonMarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_neighbor_left = NodePath("../../Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
+script = ExtResource("11_cqhlc")
+
+[node name="MarginContainer" type="MarginContainer" parent="CloseButtonMarginContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = -16
+
+[node name="Label" type="Label" parent="CloseButtonMarginContainer/CloseButton/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.392157)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_yfyft")
+theme_override_font_sizes/font_size = 56
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

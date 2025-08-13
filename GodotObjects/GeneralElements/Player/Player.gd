@@ -6,7 +6,7 @@ const CAMERAROTATIONSTEP: float = PI / 4.0
 const TRANSPARENCYTIME: float = 0.1
 const STEPSOUNDTWEENTIME: float = 0.25
 const POPUPTIME: float = 0.5
-const RESTARTBUTTONWAIT: float = 2.0
+const RESETBUTTONWAIT: float = 1.0
 const CAMERALERPDURATION: float = 0.25
 const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
 const CAMERAZOOMTIME: float = 0.25
@@ -83,13 +83,13 @@ var fallSoundPlayed: bool = false
 var respawnFall: bool = true
 var popupTween: Tween
 var stopped: bool = false
-var resetButton: Button
 var zooming: bool = false
 var zoomedOut: bool = false
 var inCheckpoint: bool = true
 var resetPoppingOut: bool = false
 var gridmap: GridMap
 var currentCheckpointPosition: Vector3
+var onSettings: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -101,7 +101,6 @@ func _ready() -> void:
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
-	resetButton = get_tree().get_first_node_in_group("ResetButton")
 	playerHighlight.scale = Vector3.ONE * 0.001
 	while not gridmap:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
@@ -109,6 +108,7 @@ func _ready() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
+	if onSettings: return
 	if noMovement or zooming: 
 		inputDirection = Vector3.ZERO
 		return
@@ -116,12 +116,16 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reset_player") and not noMovement:
 		restart_at_checkpoint()
 		return
+	if Input.is_action_just_pressed("pause"):
+		onSettings = true
+		PopupManager.show_popup("Settings")
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
 	camera_zoom_check()
 
 func _physics_process(delta: float) -> void:
+	if onSettings: return
 	camera_follow(delta)
 	if Engine.is_editor_hint(): return
 	move_character(delta)
@@ -129,7 +133,6 @@ func _physics_process(delta: float) -> void:
 	current_grid_check()
 	grabArea.canDrop = is_on_floor()
 	if not stopped:
-		if resetButton: resetButton.hide()
 		if not resetPoppingOut: do_popout()
 
 func block_inputs() -> void:
@@ -225,7 +228,6 @@ func move_character(delta: float) -> void:
 		pushForce += pushingForces[object]
 	if moved >= movementMaximum and not stopped:
 		do_popup()
-		if resetButton: get_tree().create_timer(RESTARTBUTTONWAIT).timeout.connect(show_restart)
 		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
 		lastVoluntarySpeed += (moveDirection * acceleration) * delta
@@ -304,7 +306,6 @@ func restart_at_checkpoint() -> void:
 		reset_aura()
 		hasSpawned = true
 		return
-	if resetButton: resetButton.hide()
 	do_popout()
 	noMovement = true
 	grabArea.canGrab = false
@@ -349,9 +350,10 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 	facingBack = currentInputDirection.z < 0
 
 func do_popup() -> void:
+	resetPoppingOut = false
+	await get_tree().create_timer(RESETBUTTONWAIT).timeout
 	if popupTween:
 		popupTween.kill()
-		resetPoppingOut = false
 	popupTween = create_tween()
 	popupTween.tween_property(message, "scale", Vector3.ONE, POPUPTIME * (1.0 - message.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
@@ -365,9 +367,6 @@ func do_popout() -> void:
 	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	popupTween.play()
 	popupTween.finished.connect(set.bind("resetPoppingOut", false))
-
-func show_restart() -> void:
-	if stopped: resetButton.show()
 
 func checkpoint_entered() -> void:
 	inCheckpoint = true

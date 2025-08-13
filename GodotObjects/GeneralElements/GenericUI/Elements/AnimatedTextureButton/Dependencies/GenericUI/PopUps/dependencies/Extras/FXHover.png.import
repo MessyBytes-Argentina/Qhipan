@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb3at1esifks2"
-path="res://.godot/imported/Wizard_Portrait_Box.PNG-7ba18ff6ae56dfe4ae28594bfd02c44b.ctex"
+uid="uid://xs4jg4hwr8xe"
+path="res://.godot/imported/FXHover.png-71f3057673c2f154e0140629ee564059.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Wizard_Portrait_Box.PNG"
-dest_files=["res://.godot/imported/Wizard_Portrait_Box.PNG-7ba18ff6ae56dfe4ae28594bfd02c44b.ctex"]
+source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXHover.png"
+dest_files=["res://.godot/imported/FXHover.png-71f3057673c2f154e0140629ee564059.ctex"]
 
 [params]
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=8 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://GodotObjects/GeneralElements/UI/StartButton.gd" id="1_oq7qy"]
 [ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://GodotObjects/GeneralElements/UI/Start-Credit-Background.png" id="1_t72tu"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://GodotObjects/GeneralElements/UI/SettingsButton.gd" id="2_6u8ck"]
-[ext_resource type="PackedScene" uid="uid://cn4yayku4c737" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/SimpleSettingsMenu.tscn" id="3_l0taq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skuak"]
 
@@ -136,8 +135,4 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5h2pr")
 text = "Settings"
 script = ExtResource("2_6u8ck")
-settingsScene = NodePath("../../../../../../../SimpleSettingsMenu")
-
-[node name="SimpleSettingsMenu" parent="." instance=ExtResource("3_l0taq")]
-visible = false
-layout_mode = 1
+settingsScene = NodePath("")
