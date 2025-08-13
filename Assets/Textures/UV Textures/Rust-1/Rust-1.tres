@@ -51,3 +51,6 @@ shader_parameter/cylinderRadius1 = 0.0
 shader_parameter/cylinderRadius2 = 0.0
 shader_parameter/cylinderHeight = 0.0
 shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

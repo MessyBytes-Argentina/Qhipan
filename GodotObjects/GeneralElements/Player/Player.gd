@@ -161,6 +161,12 @@ func camera_rotation_check() -> void:
 	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
 	if cameraRotation == 0: return
 	currentCameraRotation += cameraRotation
+	if abs(fmod(cameraPivot.rotation.y + cameraRotation, PI / 2.0)) < 0.001:
+		cubeCutout.auxMode = false
+		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation
+	else: 
+		cubeCutout.auxMode = true
+		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation - PI / 4.0
 	cameraRotationTween = create_tween()
 	cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	cameraRotationTween.finished.connect(rotation_finished)
@@ -214,12 +220,6 @@ func current_grid_check() -> void:
 	var currentGridPosition: Vector3 = Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
 	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
-	if fmod(cameraPivot.rotation.y, PI / 2.0) < 0.001:
-		cubeCutout.auxMode = false
-		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y
-	else: 
-		cubeCutout.auxMode = true
-		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y - PI / 4.0
 
 func move_character(delta: float) -> void:
 	var moveDirection: Vector3 = get_move_direction()
