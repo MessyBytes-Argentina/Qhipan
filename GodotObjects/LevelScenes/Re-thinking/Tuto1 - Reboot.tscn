@@ -43,7 +43,7 @@ movementMaximum = 5.0
 [node name="Tutocrystals" type="Node3D" parent="."]
 
 [node name="InfoCrystal" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
 [node name="InfoCrystal2" parent="Tutocrystals" instance=ExtResource("7_jhha6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -1)
@@ -59,7 +59,7 @@ playerReference = NodePath("../Player")
 startCheckpoint = NodePath("Checkpoint0")
 
 [node name="Checkpoint0" parent="CheckpointManager" instance=ExtResource("5_oo6uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.25, 1, 0)
 
 [node name="Checkpoint1" parent="CheckpointManager" instance=ExtResource("5_oo6uy")]
 transform = Transform3D(1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 6.5, 1, 0)
