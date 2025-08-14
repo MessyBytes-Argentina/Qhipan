@@ -90,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.685, -5, -6.557)
 shape = SubResource("WorldBoundaryShape3D_iy086")
 
 [node name="FinalDoor" parent="." instance=ExtResource("11_eox0h")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13, 0.5, -0.25)
 
 [node name="GoalZone" parent="." instance=ExtResource("9_vvb0c")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -13.0072, 0.496855, -0.0220867)
