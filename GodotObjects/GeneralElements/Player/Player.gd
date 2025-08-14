@@ -111,6 +111,7 @@ func _ready() -> void:
 	while not gridmap:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
+	cutout_cube_rotation_check(cameraPivot.rotation.y)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
@@ -167,13 +168,7 @@ func camera_rotation_check() -> void:
 	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
 	if cameraRotation == 0: return
 	currentCameraRotation += cameraRotation
-	var rotationCheck: float = cameraPivot.rotation.y + cameraRotation
-	if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
-		cubeCutout.auxMode = false
-		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation
-	else: 
-		cubeCutout.auxMode = true
-		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation - PI / 4.0
+	cutout_cube_rotation_check(cameraPivot.rotation.y + cameraRotation)
 	cameraRotationTween = create_tween()
 	cameraRotationTween.tween_method(rotate_camera, spritePivot.rotation.y, currentCameraRotation, CAMERALERPDURATION).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	cameraRotationTween.finished.connect(rotation_finished)
@@ -182,6 +177,14 @@ func camera_rotation_check() -> void:
 		rotateCamLeftSound.play()
 	else:
 		rotateCamRightSound.play()
+
+func cutout_cube_rotation_check(rotationCheck: float) -> void:
+	if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
+		cubeCutout.auxMode = false
+		cubeCutoutPivot.rotation.y = rotationCheck
+	else: 
+		cubeCutout.auxMode = true
+		cubeCutoutPivot.rotation.y = rotationCheck - PI / 4.0
 
 func rotate_camera(rotationValue: float) -> void:
 	spritePivot.rotation.y = rotationValue

@@ -747,8 +747,7 @@ top_level = true
 
 [node name="CubeCutout" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.075)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.085)
 mesh = SubResource("BoxMesh_k5k78")
 skeleton = NodePath("../../CameraZoomPivot/Camera3D/CutoutCylinder")
 script = ExtResource("12_xf0c4")
@@ -756,7 +755,7 @@ materials = Array[ShaderMaterial]([ExtResource("15_1npnc"), ExtResource("16_upgp
 
 [node name="CubeCutoutAux" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot/CubeCutout"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.45, 0, 3)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.499, 0, 3)
 mesh = SubResource("BoxMesh_k5k78")
 skeleton = NodePath("../../../CameraZoomPivot/Camera3D/CutoutCylinder")
 
@@ -863,7 +862,7 @@ top_level = true
 
 [node name="Highlight" type="Sprite3D" parent="GrabArea/HighlightPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.538717, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.604262, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1

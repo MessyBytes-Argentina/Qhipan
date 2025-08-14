@@ -57,11 +57,13 @@ theme_override_constants/separation = -200
 [node name="Logo" type="MarginContainer" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/Logo"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_outline_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_constants/outline_size = 90
@@ -83,12 +85,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_top = -90
 theme_override_constants/margin_bottom = 75
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/Logo/RichTextLabel/MarginContainer"]
 show_behind_parent = true
 layout_mode = 2
+mouse_filter = 2
 color = Color(0.211765, 0.141176, 0.133333, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer"]
