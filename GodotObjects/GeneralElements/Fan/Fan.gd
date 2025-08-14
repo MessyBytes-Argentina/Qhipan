@@ -1,5 +1,6 @@
 @tool
 extends Area3D
+class_name Fan
 
 #const PUSHBASELINE: float = 5
 

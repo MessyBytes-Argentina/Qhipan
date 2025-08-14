@@ -28,6 +28,7 @@ var bobbingTween: Tween
 var startSize: Vector2
 var meshMaterial: StandardMaterial3D
 var backMaterial: StandardMaterial3D
+var grabed: bool = false
 
 func _ready() -> void:
 	sceneParent = get_parent()
@@ -82,6 +83,7 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
 	reparent(area)
+	grabed = false
 
 func set_size(mode: ScaleModes) -> void:
 	match mode:
@@ -107,6 +109,7 @@ func grab(node: Node3D) -> void:
 	rotation = Vector3.ZERO
 	set_size(ScaleModes.GRABBED)
 	stop_rotation()
+	grabed = true
 
 func drop() -> void:
 	set_size(ScaleModes.DROPPED)
@@ -115,6 +118,7 @@ func drop() -> void:
 	placed = false
 	reparent(sceneParent)
 	start_rotation()
+	grabed = false
 
 func start_rotation() -> void:
 	rotationTween = create_tween()

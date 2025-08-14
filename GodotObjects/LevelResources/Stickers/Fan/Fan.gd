@@ -3,8 +3,7 @@ extends StickerBase
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 @onready var fanParticles: GPUParticles3D = %FanParticles
 @onready var spinupSound: RandomPitchPlayer = %SpinupSound
-
-var grabed: bool = false
+@onready var fan: Fan = %Fan
 
 func _ready() -> void:
 	fanParticles.emitting = true
@@ -14,12 +13,18 @@ func _ready() -> void:
 		fanParticles.emitting = false
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
-	super(area, direction)
-	animationPlayer.play("SpinUp")
 	if grabed:
 		spinupSound.play_sound()
+	super(area, direction)
+	animationPlayer.play("SpinUp")
 
 func grab(node: Node3D) -> void:
 	super(node)
 	animationPlayer.play("RESET")
+	fanParticles.emitting = false
+	fan.switch_fan(false)
 	grabed = true
+
+func _process(delta: float) -> void:
+	if not grabed and fan.isOn:
+		fan.switch_fan(false)
