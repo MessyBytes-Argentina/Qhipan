@@ -58,6 +58,10 @@ const gravity: float = 32
 @onready var cubeCutoutPivot: Node3D = %CubeCutoutPivot
 @onready var camZoomIn: AudioStreamPlayer = %CamZoomIn
 @onready var camZoomOut: AudioStreamPlayer = %CamZoomOut
+@onready var resetAssets: Dictionary[String, Texture2D] = {
+	"keyboard": preload("uid://dd8k35t2irrpo"),
+	"controller": preload("uid://3pmu7pe3ruii")
+}
 
 var inputDirection: Vector3 = Vector3.ZERO
 var currentCameraRotation: float = 0.0
@@ -102,6 +106,8 @@ func _ready() -> void:
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	postProcessing.show()
 	playerHighlight.scale = Vector3.ONE * 0.001
+	GeneralVariables.input_mode_changed.connect(control_scheme_switch)
+	control_scheme_switch(GeneralVariables.usingGamepad)
 	while not gridmap:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
@@ -161,7 +167,9 @@ func camera_rotation_check() -> void:
 	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
 	if cameraRotation == 0: return
 	currentCameraRotation += cameraRotation
-	if abs(fmod(cameraPivot.rotation.y + cameraRotation, PI / 2.0)) < 0.001:
+	var rotationCheck: float = cameraPivot.rotation.y + cameraRotation
+	prints(rotationCheck, fmod(abs(rotationCheck) + 0.0001, PI / 2.0))
+	if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
 		cubeCutout.auxMode = false
 		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation
 	else: 
@@ -374,3 +382,7 @@ func checkpoint_entered() -> void:
 
 func checkpoint_exited() -> void:
 	inCheckpoint = false
+
+func control_scheme_switch(isController: bool) -> void:
+	if isController: message.texture = resetAssets.controller
+	else: message.texture = resetAssets.keyboard
