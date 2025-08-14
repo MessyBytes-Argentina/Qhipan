@@ -12,6 +12,11 @@ var currentLvlId: int = 0
 ## Restarted flag
 var restarted: bool = false
 
+## WIN CODE
+#func _process(_delta: float) -> void:
+	#if Input.is_action_pressed("camera_left") and Input.is_action_pressed("camera_right"):
+		#next_level()
+
 func _ready() -> void:
 	# Awaiting for the SceneManager to load
 	while not sceneManager:

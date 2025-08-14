@@ -330,6 +330,8 @@ func restart_at_checkpoint() -> void:
 	poof.emit_particles()
 	lastInvoluntarySpeed = Vector3.ZERO
 	lastPushForce = Vector3.ZERO
+	noGravityZones.clear()
+	pushingForces.clear()
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = currentCheckpointPosition
 	reset_aura()

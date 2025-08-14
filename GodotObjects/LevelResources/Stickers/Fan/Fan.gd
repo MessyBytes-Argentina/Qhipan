@@ -25,6 +25,6 @@ func grab(node: Node3D) -> void:
 	fan.switch_fan(false)
 	grabed = true
 
-func _process(delta: float) -> void:
-	if not grabed and fan.isOn:
+func _process(_delta: float) -> void:
+	if not grabed and not placed and fan.isOn:
 		fan.switch_fan(false)

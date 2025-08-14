@@ -1,7 +1,5 @@
 extends Button
 
-@export var levelList: Array[PackedScene]
-
 func _ready() -> void:
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)
 	set_controller_mode(GeneralVariables.usingGamepad)
