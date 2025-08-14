@@ -3,6 +3,8 @@ extends CanvasLayer
 ## This scene manages loading, showing, and hiding popups.
 class_name PopupManagerObject
 
+signal closed_popup(popupName: String)
+
 ## The location to find the resource group for the popup resources to load at start.
 const PopupsResourceGroup: String = "uid://b6vq5y04cq4o7"
 
@@ -129,6 +131,7 @@ func _close_popup(toClose: ColorRect) -> void:
 	else:
 		toClosePopupResource.clear_scene()
 		toClose.queue_free()
+	closed_popup.emit(toClosePopupResource.popupName)
 
 ## Checks for existing popup.
 func is_popup(popupName: String) -> bool:

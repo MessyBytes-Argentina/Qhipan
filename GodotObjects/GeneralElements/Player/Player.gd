@@ -328,10 +328,15 @@ func restart_at_checkpoint() -> void:
 	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.play()
 	poof.emit_particles()
+	lastInvoluntarySpeed = Vector3.ZERO
+	lastPushForce = Vector3.ZERO
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = currentCheckpointPosition
 	reset_aura()
 	poof.emit_particles()
+	if popupTween:
+		popupTween.kill()
+	message.scale = Vector3.ONE * 0.001
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()

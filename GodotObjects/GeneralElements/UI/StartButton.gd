@@ -6,6 +6,7 @@ extends Button
 func _ready() -> void:
 	pressed.connect(start)
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)
+	PopupManager.closed_popup.connect(_on_settings_closed)
 	set_controller_mode(GeneralVariables.usingGamepad)
 
 func set_controller_mode(isController: bool) -> void:
@@ -15,8 +16,8 @@ func set_controller_mode(isController: bool) -> void:
 		settingsButton.release_focus()
 
 func start() -> void:
-	print("?")
 	LevelManager.set_list(levelList)
 
-func _process(_delta: float) -> void:
-	if not PopupManager.is_popup("Settings") and not settingsButton.has_focus() and GeneralVariables.usingGamepad: set_controller_mode(GeneralVariables.usingGamepad)
+func _on_settings_closed(popupName: String) -> void:
+	if popupName != "Settings": return
+	if GeneralVariables.usingGamepad: settingsButton.grab_focus()

@@ -5,7 +5,6 @@ signal input_mode_changed(isGamepad: bool)
 var usingGamepad: bool = false
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion: return
 	var currentlyGamepad: bool = event is InputEventJoypadButton or event is InputEventJoypadMotion
 	if usingGamepad != currentlyGamepad:
 		usingGamepad = currentlyGamepad
