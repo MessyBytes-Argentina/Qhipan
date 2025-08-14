@@ -168,7 +168,6 @@ func camera_rotation_check() -> void:
 	if cameraRotation == 0: return
 	currentCameraRotation += cameraRotation
 	var rotationCheck: float = cameraPivot.rotation.y + cameraRotation
-	prints(rotationCheck, fmod(abs(rotationCheck) + 0.0001, PI / 2.0))
 	if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
 		cubeCutout.auxMode = false
 		cubeCutoutPivot.rotation.y = cameraPivot.rotation.y + cameraRotation
