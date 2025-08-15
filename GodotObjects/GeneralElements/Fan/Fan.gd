@@ -2,37 +2,23 @@
 extends Area3D
 class_name Fan
 
-#const PUSHBASELINE: float = 5
-
 ## Fan activation flag
 @export var isOn: bool = false
 ## Antigravity on/off flag
 @export var hasAntigravity: bool = true
+## Pushing area lenght
+@export_range(0.0, 100, 0.01) var areaHeight: float = 3.0:
+	set(value):
+		areaHeight = value
+		if not Engine.is_editor_hint(): return
+		set_area_size()
 
 ## Amount of force the player is pushed by
 const pushForce: float = 250.0
-## Pushing area lenght
-const areaHeight: float = 3.0
 ## Pushing area diameter
 const areaDiameter: float = 1.0
 ## Extra lenght of no gravity
 const noGravityAreaMargin: float = 0.15
-
-#@export_range(0.0, 100, 0.01) var areaHeight: float = 3.0:
-	#set(value):
-		#areaHeight = value
-		#if not Engine.is_editor_hint(): return
-		#set_area_size()
-#@export_range(0.0, 100, 0.01) var areaDiameter: float = 1.0:
-	#set(value):
-		#areaDiameter = value
-		#if not Engine.is_editor_hint(): return
-		#set_area_size()
-#@export_range(-1.0, 1, 0.01) var noGravityAreaMargin: float = 0.15:
-	#set(value):
-		#noGravityAreaMargin = value
-		#if not Engine.is_editor_hint(): return
-		#set_area_size()
 
 ## Target marker for direction
 @onready var target: Marker3D = %Target
@@ -41,6 +27,7 @@ const noGravityAreaMargin: float = 0.15
 ## Pushing area collision shape reference
 @onready var area: CollisionShape3D = %Area
 
+## NoGravity zone reference
 @onready var noGravity: NoGravityZone = %NoGravity
 ## NoGravity area collision shape reference
 @onready var noGravityCollision: CollisionShape3D = %NoGravityCollision
