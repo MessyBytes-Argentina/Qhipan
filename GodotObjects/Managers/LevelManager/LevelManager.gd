@@ -17,12 +17,14 @@ var restarted: bool = false
 	#if Input.is_action_pressed("camera_left") and Input.is_action_pressed("camera_right"):
 		#next_level()
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Awaiting for the SceneManager to load
 	while not sceneManager:
 		await get_tree().process_frame
 		sceneManager = get_tree().get_first_node_in_group("SceneManager")
 
+## Reloads the current level when called
 func do_restart() -> void:
 	if not sceneManager:
 		get_tree().reload_current_scene()
