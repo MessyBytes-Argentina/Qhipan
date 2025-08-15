@@ -3,16 +3,22 @@ extends CharacterBody3D
 ## The player object.
 class_name Player
 
+## How much the camera rotates for each button press.
 const CAMERAROTATIONSTEP: float = PI / 4.0
-const TRANSPARENCYTIME: float = 0.1
-const STEPSOUNDTWEENTIME: float = 0.25
-const POPUPTIME: float = 0.5
-const RESETBUTTONWAIT: float = 1.0
+## Camera rotation animation time.
 const CAMERALERPDURATION: float = 0.25
+## Camera zoom out position.
 const CAMERAZOOMOUT: Vector3 = Vector3(0, 5, 7)
+## Camera zoom out animation time.
 const CAMERAZOOMTIME: float = 0.25
-const APROXFLOORDISTANCE: float = -0.39
-const PLAYERRESTARTTIME: float = 1.0
+## Time to transparency on restart
+const TRANSPARENCYTIME: float = 0.1
+## Time to full volume for step drums music.
+const STEPSOUNDTWEENTIME: float = 0.25
+## Time for reset popup animation.
+const POPUPTIME: float = 0.5
+## Time to wait after no moves to show the reset popup.
+const RESETBUTTONWAIT: float = 1.0
 const PLAYERRESTARTWAITTIME: float = 0.25
 
 enum States {Idle, Walk, Float}
@@ -95,6 +101,7 @@ var resetPoppingOut: bool = false
 var gridmap: GridMap
 var currentCheckpointPosition: Vector3
 var onSettings: bool = false
+var respawning: bool = false
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -255,13 +262,13 @@ func move_character(delta: float) -> void:
 	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	if not is_on_floor() and len(noGravityZones) == 0 and not respawnFall:
+	if not is_on_floor() and len(noGravityZones) == 0:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
 	else:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
-	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawnFall else Vector3.ZERO
+	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawning else Vector3.ZERO
 	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
@@ -272,6 +279,7 @@ func move_character(delta: float) -> void:
 		fallSound.play_sound()
 	if is_on_floor() and respawnFall:
 		respawnFall = false
+		fallSoundPlayed = true
 	fallSoundPlayed = true
 
 func get_move_direction() -> Vector3:
@@ -308,12 +316,15 @@ func enable_checkpoint_sound() -> void:
 
 func restart_at_checkpoint() -> void:
 	respawnFall = true
-	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(set.bind("respawnFall", false))
-	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(enable_checkpoint_sound)
+	respawning = true
 	if not hasSpawned:
 		global_position = currentCheckpointPosition
 		reset_aura()
 		hasSpawned = true
+		await get_tree().process_frame
+		await get_tree().physics_frame
+		get_tree().call_group("Checkpoints","enable_sounds")
+		respawning = false
 		return
 	do_popout()
 	noMovement = true
@@ -349,6 +360,7 @@ func restart_at_checkpoint() -> void:
 	noMovement = false
 	grabArea.canGrab = true
 	stopped = false
+	respawning = false
 
 func reset_aura() -> void:
 	moved = 0

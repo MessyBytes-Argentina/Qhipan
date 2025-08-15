@@ -1,5 +1,6 @@
 @tool
 extends Area3D
+## Pickup Handler object. The grabbing area.
 class_name PickupHandler
 
 const AREAHIGHLIGHTOFFSET: float = 0.01
