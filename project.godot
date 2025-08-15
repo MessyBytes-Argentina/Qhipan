@@ -50,7 +50,6 @@ enabled=PackedStringArray("res://addons/decal_compatibility/plugin.cfg", "res://
 [global_group]
 
 SceneManager=""
-InputBlocking=""
 Checkpoints=""
 ResetButton=""
 Player=""

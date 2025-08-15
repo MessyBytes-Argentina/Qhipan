@@ -1,8 +1,5 @@
 extends Button
 
-
-#@export var levelList: Array[PackedScene]
-
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)

@@ -8,4 +8,4 @@ func _ready() -> void:
 func finish(_body) -> void:
 	LevelManager.next_level()
 	body_entered.disconnect(finish)
-	get_tree().call_group("InputBlocking","block_inputs")
+	get_tree().call_group("Player", "block_inputs")
