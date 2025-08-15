@@ -1,4 +1,5 @@
 extends Area3D
+## The checkpoint object.
 class_name Checkpoint
 
 ## Time multiplier for light animation

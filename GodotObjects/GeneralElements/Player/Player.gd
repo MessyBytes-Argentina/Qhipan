@@ -1,5 +1,6 @@
 @tool
 extends CharacterBody3D
+## The player object.
 class_name Player
 
 const CAMERAROTATIONSTEP: float = PI / 4.0
@@ -306,8 +307,6 @@ func enable_checkpoint_sound() -> void:
 	get_tree().call_group("Checkpoints","enable_sounds")
 
 func restart_at_checkpoint() -> void:
-	#Al final parece que no se tienen que droppear
-	#grabArea.drop(true)
 	respawnFall = true
 	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(set.bind("respawnFall", false))
 	get_tree().create_timer(PLAYERRESTARTTIME).timeout.connect(enable_checkpoint_sound)

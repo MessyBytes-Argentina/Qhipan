@@ -1,5 +1,6 @@
 @tool
 extends Area3D
+## The wind propelling fan object. Used inside Fan stickers too.
 class_name Fan
 
 ## Fan activation flag
