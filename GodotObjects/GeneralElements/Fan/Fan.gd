@@ -17,7 +17,7 @@ class_name Fan
 ## Amount of force the player is pushed by
 const pushForce: float = 250.0
 ## Pushing area diameter
-const areaDiameter: float = 1.0
+const areaDiameter: float = 0.8
 ## Extra lenght of no gravity
 const noGravityAreaMargin: float = 0.15
 

@@ -248,7 +248,6 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("3_6ngi6")
-areaHeight = null
 
 [node name="Area" type="CollisionShape3D" parent="Fan"]
 unique_name_in_owner = true
