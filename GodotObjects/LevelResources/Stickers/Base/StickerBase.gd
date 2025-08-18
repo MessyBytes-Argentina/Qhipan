@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name StickerBase
 
+const ZOOMOUTSCALE: float = 0.5
 const BOBBINGSCALE: float = 0.5
 const BOBBINGHEIGHT: float = 0.05
 const BOBBINGTIME: float = 2.0
@@ -9,7 +10,7 @@ const TILTANGLE: float = deg_to_rad(-30)
 const GRABHEIGHT: float = 0.6
 const PLACEDCHECKTIME: float = 0.25
 
-enum ScaleModes {GRABBED, DROPPED, PLACED}
+enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 @export var placed: bool = false
 @export var validAreaIndexes: Array[int] = [11]
@@ -20,6 +21,7 @@ enum ScaleModes {GRABBED, DROPPED, PLACED}
 @onready var meshes: Node3D = %Meshes
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
 @onready var billboard: Sprite3D = %Billboard
+@onready var billboardZoomedOut: Sprite3D = %BillboardZoomedOut
 
 var sceneParent: Node
 var onPlayer: bool = false
@@ -29,6 +31,7 @@ var startSize: Vector2
 var meshMaterial: StandardMaterial3D
 var backMaterial: StandardMaterial3D
 var grabed: bool = false
+var lastVisualMode: ScaleModes = ScaleModes.DROPPED
 
 func _ready() -> void:
 	sceneParent = get_parent()
@@ -40,6 +43,7 @@ func _ready() -> void:
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	prerender()
+	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
@@ -66,12 +70,15 @@ func prerender() -> void:
 	mesh.hide()
 	back.hide()
 	billboard.hide()
+	billboardZoomedOut.hide()
 	await get_tree().create_timer(0.01).timeout
 	mesh.show()
 	back.show()
 	billboard.show()
+	billboardZoomedOut.show()
 	await get_tree().create_timer(0.01).timeout
 	billboard.hide()
+	billboardZoomedOut.hide()
 
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	set_size(ScaleModes.PLACED)
@@ -86,21 +93,31 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 	grabed = false
 
 func set_size(mode: ScaleModes) -> void:
+	if mode != ScaleModes.ZOOMEDOUT: lastVisualMode = mode
 	match mode:
 		ScaleModes.GRABBED:
 			billboard.show()
 			mesh.hide()
 			back.hide()
+			billboardZoomedOut.hide()
 		ScaleModes.DROPPED:
 			billboard.hide()
 			mesh.show()
 			back.show()
+			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE * BOBBINGSCALE
 		ScaleModes.PLACED:
 			billboard.hide()
 			mesh.show()
 			back.show()
+			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
+		ScaleModes.ZOOMEDOUT:
+			billboardZoomedOut.show()
+			billboard.hide()
+			mesh.hide()
+			back.hide()
+			meshes.scale = Vector3.ONE * ZOOMOUTSCALE
 
 func grab(node: Node3D) -> void:
 	onPlayer = true
@@ -145,3 +162,12 @@ func stop_rotation() -> void:
 	meshes.rotation.x = 0
 	meshes.scale = Vector3.ONE
 	shadowDecal.hide()
+
+func zooming_out(zoomedOut: bool) -> void:
+	if not grabed: 
+		if zoomedOut: 
+			if lastVisualMode == ScaleModes.DROPPED: stop_rotation()
+			set_size(ScaleModes.ZOOMEDOUT)
+		else: 
+			set_size(lastVisualMode)
+			if lastVisualMode == ScaleModes.DROPPED: start_rotation()

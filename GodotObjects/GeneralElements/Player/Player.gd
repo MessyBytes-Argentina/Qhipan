@@ -224,6 +224,9 @@ func _physics_process(delta: float) -> void:
 	grabArea.canDrop = is_on_floor()
 	if not stopped:
 		if not resetPoppingOut: do_popout()
+		if popupTween:
+			popupTween.kill()
+		message.scale = Vector3.ONE * 0.001
 
 ## Blocks the player input. RIGHT NOW ONLY USED IN GOAL AREA.
 func block_inputs() -> void:
@@ -423,9 +426,6 @@ func restart_at_checkpoint() -> void:
 	global_position = currentCheckpointPosition
 	reset_aura()
 	poof.emit_particles()
-	if popupTween:
-		popupTween.kill()
-	message.scale = Vector3.ONE * 0.001
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()
@@ -458,6 +458,7 @@ func animation_check() -> void:
 func do_popup() -> void:
 	resetPoppingOut = false
 	await get_tree().create_timer(RESETBUTTONWAIT).timeout
+	if not stopped: return
 	if popupTween:
 		popupTween.kill()
 	popupTween = create_tween()

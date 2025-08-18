@@ -97,7 +97,7 @@ void fragment() {
 		if (resultShape < 0.0) {discard;}
 		borderDistance = smoothstep(0.0, borderSize, resultShape);
 	}
-	
+
 	if (world_normal.y < 0.5 || !map_top_to_world) {
 		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
 	} else {
@@ -114,7 +114,7 @@ void fragment() {
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
-	
+
 	if (cylinderCutout) {
 		ALBEDO = mix(borderColor.rgb, ALBEDO, borderDistance);
 		EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
