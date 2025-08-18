@@ -236,6 +236,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5l5r5")
 
 [node name="Billboard" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
+visible = false
 pixel_size = 0.002
 billboard = 1
 render_priority = 2
@@ -243,6 +244,7 @@ texture = ExtResource("2_e06n3")
 
 [node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
+visible = false
 pixel_size = 0.0005
 billboard = 1
 no_depth_test = true

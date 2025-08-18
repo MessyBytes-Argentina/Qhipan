@@ -66,6 +66,10 @@ func _ready() -> void:
 		start_rotation()
 
 func prerender() -> void:
+	mesh.show()
+	back.show()
+	billboard.show()
+	billboardZoomedOut.show()
 	await get_tree().create_timer(0.01).timeout
 	mesh.hide()
 	back.hide()
