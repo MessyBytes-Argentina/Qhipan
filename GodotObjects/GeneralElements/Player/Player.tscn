@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=106 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -33,16 +33,10 @@
 [ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutCube.gd" id="12_xf0c4"]
 [ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/Ripping.mp3" id="13_8hsli"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Textures/Character/WALK/WALK 4.png" id="13_bity2"]
-[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/Textures/UV Textures/Rust-1/Rust-1.tres" id="13_h423j"]
 [ext_resource type="Texture2D" uid="uid://wd4evw80tj5p" path="res://Assets/Textures/Character/IDLE BACK/BACK 1.png" id="14_dkmaj"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Textures/UV Textures/Patron-Andino-1/Patron-Andino-1.tres" id="14_k5k78"]
-[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Textures/UV Textures/Arcilla-1/Arcilla-1.tres" id="15_1npnc"]
 [ext_resource type="Texture2D" uid="uid://b4anntfovs3gb" path="res://Assets/Textures/Character/IDLE BACK/BACK 2.png" id="15_kp4bv"]
-[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Textures/UV Textures/Baldosas-1/Baldosas-1.tres" id="16_upgpw"]
 [ext_resource type="Texture2D" uid="uid://duqlyfcy6ckyy" path="res://Assets/Textures/Character/IDLE BACK/BACK 3.png" id="16_vmy0v"]
 [ext_resource type="Texture2D" uid="uid://brl7tlmrv10ry" path="res://Assets/Textures/Character/IDLE BACK/BACK 4.png" id="17_84qwu"]
-[ext_resource type="Material" uid="uid://c2djejiyff327" path="res://Assets/Textures/UV Textures/Doors/Door.tres" id="17_k5k78"]
-[ext_resource type="Material" uid="uid://b3tp4pl6us037" path="res://Assets/Textures/UV Textures/Doors/GoalDoor.tres" id="18_1npnc"]
 [ext_resource type="Texture2D" uid="uid://b72ik3kxud5rh" path="res://Assets/Textures/Character/WALK BACK/BW 1.png" id="18_yiccp"]
 [ext_resource type="Texture2D" uid="uid://bxu0ow1ccn7v8" path="res://Assets/Textures/Character/WALK BACK/BW 2.png" id="19_w2rxr"]
 [ext_resource type="Texture2D" uid="uid://bu10dw62umb1b" path="res://Assets/Textures/Character/WALK BACK/BW 3.png" id="20_l1a28"]
@@ -752,7 +746,6 @@ visible = false
 mesh = SubResource("BoxMesh_k5k78")
 skeleton = NodePath("../../CameraZoomPivot/Camera3D/CutoutCylinder")
 script = ExtResource("12_xf0c4")
-materials = Array[ShaderMaterial]([ExtResource("15_1npnc"), ExtResource("16_upgpw"), ExtResource("14_k5k78"), ExtResource("13_h423j"), ExtResource("17_k5k78"), ExtResource("18_1npnc")])
 
 [node name="CubeCutoutAux" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot/CubeCutout"]
 unique_name_in_owner = true
@@ -863,7 +856,7 @@ top_level = true
 
 [node name="Highlight" type="Sprite3D" parent="GrabArea/HighlightPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.698347, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.92652, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1

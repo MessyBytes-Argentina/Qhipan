@@ -1,20 +1,32 @@
 @tool
 extends MeshInstance3D
+
+## This class updates shader parameters for objects that need to be cut off when they obstructs the player.
 class_name CutoutCube
 
-@export var materials: Array[ShaderMaterial]
-@export var offset: float = 0.0
+## Value to offset the cutout cylinder to after the camera.
+const offset: float = 0.0
+
+## Auto aligns the cutout cylinder.
 @export_tool_button("Align") var allignAction: Callable = align_position
 
+## Reference to the cutout cylinder.
 @onready var cylinder: MeshInstance3D = %CutoutCylinder
+## Reference to the cutout player floor.
 @onready var playerFloor: Marker3D = %PlayerFloor
+## Reference to the camera ray casts group.
 @onready var cameraRayCasts: Node3D = %CameraRayCasts
+## Reference to the secondary cutout cube.
 @onready var cubeCutoutAux: MeshInstance3D = %CubeCutoutAux
 
+## The up reference for the camera.
 var up: Marker3D
+## Is the player zooming out.
 var zoomedOut: bool = false
+## Should we use the secondary cube for the cutout. Used for 45 degree angles to prevent cutting out blocks diagonally.
 var auxMode: bool = false
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	hide()
@@ -23,18 +35,20 @@ func _ready() -> void:
 		up = Marker3D.new()
 		cylinder.add_child(up)
 		up.position = Vector3.UP
-	for updateMaterial in materials: 
+	for updateMaterial: ShaderMaterial in GeneralVariables.cutoutMaterials: 
 		updateMaterial.set_shader_parameter("boxSize", mesh.size)
 		updateMaterial.set_shader_parameter("cylinderRadius2", cylinder.mesh.bottom_radius)
 		updateMaterial.set_shader_parameter("cylinderRadius1", cylinder.mesh.top_radius)
 		updateMaterial.set_shader_parameter("cylinderHeight", cylinder.mesh.height)
 
+## Called during the processing step of the main loop.
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	for updateMaterial in materials: update_material(updateMaterial)
-
-func update_material(updateMaterial: ShaderMaterial) -> void:
 	var anyRaycast: bool = not cameraRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
+	for updateMaterial: ShaderMaterial in GeneralVariables.cutoutMaterials: update_material(updateMaterial, anyRaycast)
+
+## Updates the cutout parameters to match the current cylinder and cube positions and rotations.
+func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("cylinderCutout", anyRaycast and not zoomedOut)
 	updateMaterial.set_shader_parameter("boxPosition", global_position)
 	updateMaterial.set_shader_parameter("boxRotation", global_rotation.y)
@@ -45,5 +59,6 @@ func update_material(updateMaterial: ShaderMaterial) -> void:
 	updateMaterial.set_shader_parameter("auxBoxPosition", cubeCutoutAux.global_position)
 	updateMaterial.set_shader_parameter("auxBoxRotation", cubeCutoutAux.global_rotation.y)
 
+## Aligns the cylinder position using the provided offset.
 func align_position() -> void:
 	cylinder.position = (cylinder.mesh.height / 2 + offset) * Vector3.FORWARD

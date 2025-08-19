@@ -91,19 +91,26 @@ size = Vector2i(1152, 648)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15)
 
-[node name="Poof" parent="." instance=ExtResource("3_7th63")]
+[node name="Particles" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
 
-[node name="Particles1" parent="." instance=ExtResource("4_tjpxc")]
+[node name="Poof" parent="Particles" instance=ExtResource("3_7th63")]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
 
-[node name="FanParticles" parent="." instance=ExtResource("5_r1tmu")]
+[node name="Particles1" parent="Particles" instance=ExtResource("4_tjpxc")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 3.5)
 
-[node name="Poof2" parent="." instance=ExtResource("22_0rg7o")]
+[node name="FanParticles" parent="Particles" instance=ExtResource("5_r1tmu")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3)
+
+[node name="ParticleEmmitters" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Poof2" parent="ParticleEmmitters" instance=ExtResource("22_0rg7o")]
 unique_name_in_owner = true
 
 [node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]

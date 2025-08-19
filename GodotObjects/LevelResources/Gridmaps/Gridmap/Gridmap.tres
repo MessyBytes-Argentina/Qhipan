@@ -1,9 +1,9 @@
 [gd_resource type="MeshLibrary" load_steps=229 format=4 uid="uid://dxt4jj2rx1xyb"]
 
-[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/Textures/UV Textures/Rust-1/Rust-1.tres" id="1_y8qrp"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Textures/UV Textures/Patron-Andino-1/Patron-Andino-1.tres" id="2_rek8k"]
-[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Textures/UV Textures/Arcilla-1/Arcilla-1.tres" id="3_hjahe"]
-[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Textures/UV Textures/Baldosas-1/Baldosas-1.tres" id="4_56dtg"]
+[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/Materials/WithCutout/Rust-1.tres" id="1_y8qrp"]
+[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="2_rek8k"]
+[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Materials/WithCutout/Arcilla-1.tres" id="3_hjahe"]
+[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Materials/WithCutout/Baldosas-1.tres" id="4_56dtg"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b3cyf"]
 _surfaces = [{
