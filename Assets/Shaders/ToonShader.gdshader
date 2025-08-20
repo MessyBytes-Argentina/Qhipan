@@ -6,7 +6,6 @@ render_mode blend_mix, depth_draw_always, cull_back, diffuse_toon, specular_toon
 
 // Base
 uniform vec4 albedo : source_color = vec4(1.0);
-uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
 uniform vec3 uv1_scale = vec3(1.0);
 uniform vec3 uv1_offset = vec3(1.0);
 
@@ -76,11 +75,9 @@ vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
 
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
-	ALBEDO = albedo.rgb * albedo_tex.rgb + applied_fresnel;
+	ALBEDO = albedo.rgb + applied_fresnel;
 
 	//Cylinder cutout
 	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
