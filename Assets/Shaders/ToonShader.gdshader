@@ -113,8 +113,6 @@ void fragment() {
 	vec4 side_base_albedo_tex = texture(side_texture, mix(side_base_world_pos.yx, side_base_world_pos.yz, float(abs(world_normal.x) > 0.5)));
 	ALBEDO = mix(ALBEDO, albedo.rgb * side_base_albedo_tex.rgb + applied_fresnel, float(sideWorldMapped));
 
-	//ALBEDO = vec3(mix(0.0, 1.0, float(y_normal > 0.25 && y_normal < 0.75)), 0.0, 0.0);
-
 	// Cutout border painting
 	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
 	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
