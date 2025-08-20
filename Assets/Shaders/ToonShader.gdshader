@@ -1,37 +1,27 @@
 // NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_toon, specular_toon;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
+
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+
+// Worldspace Texture Variables
 uniform bool map_top_to_world = true;
 uniform sampler2D top_texture : source_color, filter_nearest_mipmap, repeat_enable;
 uniform float top_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_nearest_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest_mipmap, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
+// Toon shader variables
 uniform sampler2D color_gradient;
 uniform sampler2D fresnel_gradient;
 
-varying vec3 world_normal;
-varying vec3 view_normal;
-
+// Cutout Variables
 uniform bool cylinderCutout = false;
-uniform vec4 borderColor: source_color = vec4(0.0, 1.0, 1.0, 1.0);
+uniform vec3 borderColor: source_color = vec3(1.0, 1.0, 1.0);
 uniform float borderSize = 0.25;
 uniform float borderEmission = 7.0;
 uniform vec3 boxPosition;
@@ -47,6 +37,8 @@ uniform bool auxMode = false;
 uniform vec3 auxBoxPosition;
 uniform float auxBoxRotation;
 
+varying vec3 world_normal;
+varying vec3 view_normal;
 varying vec3 worldVector;
 varying float shortestDistance;
 
@@ -78,50 +70,37 @@ vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	vec2 base_uv = UV;
-
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
-	float borderDistance = 1.0;
+
 	//Cylinder cutout
-	if (cylinderCutout && world_pos.y > playerPosition.y + 0.02) {
-		vec3 cylinderWorldPosition = worldVector - cylinderPosition;
-		float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
-		vec3 boxWorldPosition = worldVector - boxPosition;
-		float sdfBox = sdBoxRotated(boxWorldPosition, boxSize, boxRotation);
-		float resultShape = opSubtraction(sdfBox, sdfCylinder);
-		if (auxMode) {
-			vec3 auxBoxWorldPosition = worldVector - auxBoxPosition;
-			float sdfAuxBox = sdBoxRotated(auxBoxWorldPosition, boxSize, auxBoxRotation);
-			resultShape = opSubtraction(sdfAuxBox, resultShape);
-		}
-		if (resultShape < 0.0) {discard;}
-		borderDistance = smoothstep(0.0, borderSize, resultShape);
-	}
+	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
+	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
+	float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
+	vec3 boxWorldPosition = worldVector - boxPosition;
+	float sdfBox = sdBoxRotated(boxWorldPosition, boxSize, boxRotation);
+	float resultShape = opSubtraction(sdfBox, sdfCylinder);
+	vec3 auxBoxWorldPosition = worldVector - auxBoxPosition;
+	float sdfAuxBox = sdBoxRotated(auxBoxWorldPosition, boxSize, auxBoxRotation);
+	resultShape = opSubtraction(sdfAuxBox, resultShape) * float(auxMode) + resultShape * float(auxMode == false);
+	if (resultShape < 0.0 && docutout) {discard;}
+	float borderDistance = smoothstep(0.0, borderSize, resultShape) * float(docutout) + float(docutout == false);
 
-	if (world_normal.y < 0.5 || !map_top_to_world) {
-		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
-	} else {
-		world_pos = fract(world_pos * vec3(1.00000 / top_texture_scale, 1.00000, 1.00000 / top_texture_scale) + vec3(0.50000 / top_texture_scale, 0.00000, 0.50000 / top_texture_scale));
-		vec2 base_uv = world_pos.xz;
-		vec4 albedo_tex = texture(top_texture, base_uv);
-		ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
-	}
+	// Worldmapping
+	ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
+	bool topWorldMapped = !(world_normal.y < 0.5 || !map_top_to_world);
+	world_pos = fract(world_pos * vec3(1.00000 / top_texture_scale, 1.00000, 1.00000 / top_texture_scale) + vec3(0.50000 / top_texture_scale, 0.00000, 0.50000 / top_texture_scale));
+	base_uv = world_pos.xz;
+	albedo_tex = texture(top_texture, base_uv);
+	ALBEDO = mix(ALBEDO, albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0), float(topWorldMapped));
 
-	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-
-	if (cylinderCutout) {
-		ALBEDO = mix(borderColor.rgb, ALBEDO, borderDistance);
-		EMISSION = mix(borderColor.rgb * borderEmission, vec3(0.0), borderDistance);
-	}
+	// Cutout border painting
+	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
+	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
 }
 
 void light() {
+	// Toon Shader
 	float dotproduct = clamp(dot(NORMAL, LIGHT), -0.9, 0.9);
 	float sample = clamp((dotproduct + 1.0) * ATTENUATION / 2.1, 0.05, 0.95);
 	vec4 shaded = texture(color_gradient, vec2(sample, 0.0));
