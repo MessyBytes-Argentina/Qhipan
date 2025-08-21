@@ -44,6 +44,7 @@ const specialValueParameters: Array[String] = ["metallic", "metallic_specular", 
 
 ## Make the material.
 func make_material() -> void:
+	shaderMaterial = ShaderMaterial.new()
 	shaderMaterial.shader = load(ttcShader)
 	var baseMaterials: Dictionary[String, StandardMaterial3D] = {
 		"top": topSurfaceMaterial,
