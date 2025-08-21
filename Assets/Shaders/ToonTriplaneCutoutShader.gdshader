@@ -25,7 +25,6 @@ uniform float bottom_detail_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float side_detail_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 
 // Roughness
-uniform bool enable_roughness = false;
 uniform sampler2D top_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
@@ -34,7 +33,6 @@ uniform float bottom_roughness : hint_range(0.0, 1.0);
 uniform float side_roughness : hint_range(0.0, 1.0);
 
 // Metallic
-uniform bool enable_metallic = false;
 uniform sampler2D top_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
@@ -207,21 +205,17 @@ void fragment() {
 	vec4 base_albedo = texture(bottom_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 0.0) + texture(top_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 1.0) + texture(side_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 2.0);
 	ALBEDO = base_albedo.rgb;
 	
-	if (enable_roughness) {
-		// Roughness: Enabled
-		vec4 roughness_texture_channel = vec4(0.0, 1.0, 0.0, 0.0);
-		vec4 base_roughness = triple_condition_vec4(texture(bottom_texture_roughness, base_detail_uv.xy), texture(top_texture_roughness, base_detail_uv.xy), texture(side_texture_roughness, base_detail_uv.xy), base_detail_uv.z);
-		float roughness_tex = dot(base_roughness, roughness_texture_channel);
-		ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z);
-	}
+	// Roughness: Enabled
+	vec4 roughness_texture_channel = vec4(0.0, 1.0, 0.0, 0.0);
+	vec4 base_roughness = triple_condition_vec4(texture(bottom_texture_roughness, base_detail_uv.xy), texture(top_texture_roughness, base_detail_uv.xy), texture(side_texture_roughness, base_detail_uv.xy), base_detail_uv.z);
+	float roughness_tex = dot(base_roughness, roughness_texture_channel);
+	ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z);
 	
-	if (enable_metallic) {
-		// Metallic: Enabled
-		vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
-		float metallic_tex = dot(base_metallic, metallic_texture_channel);
-		METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
-		SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z);
-	}
+	// Metallic: Enabled
+	vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
+	float metallic_tex = dot(base_metallic, metallic_texture_channel);
+	METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
+	SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z);
 	
 	if (enable_normal) {
 		// Normal Map: Enabled

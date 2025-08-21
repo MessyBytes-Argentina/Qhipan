@@ -12,6 +12,8 @@ const textureTypes: Array[String] = ["albedo_texture", "roughness_texture", "met
 const textureTypesAlias: Array[String] = ["albedo", "roughness", "metallic", "emission", "normal", "clearcoat", "anisotropy_flowmap", "ambient_occlusion"]
 ## The list of special value parameters.
 const specialValueParameters: Array[String] = ["metallic", "metallic_specular", "roughness", "emission", "emission_energy_multiplier", "normal_scale", "clearcoat", "clearcoat_roughness", "anisotropy", "ao_light_affect"]
+## The list of toggles to exclude.
+const excludeToggleParameters: Array[String] = ["roughness", "metallic"]
 
 ## The top surface of the pieces.
 @export var topSurfaceMaterial: StandardMaterial3D
@@ -52,14 +54,16 @@ func make_material() -> void:
 		"side": SideSurfaceMaterial
 	}
 	var validModes: Dictionary[String, bool] = {}
-	textureTypesAlias.map(func(a: String): validModes[a] = false)
+	textureTypesAlias.map(func(a: String): if a not in excludeToggleParameters: validModes[a] = false)
+	print(validModes.keys())
 	for surface in baseMaterials:
 		shaderMaterial.set_shader_parameter(surface + "_texture_scale", get(surface + "AlbedoSize"))
 		shaderMaterial.set_shader_parameter(surface + "_detail_texture_scale", get(surface + "DetailSize"))
 		for i in range(len(textureTypes)):
 			if not baseMaterials[surface][textureTypes[i]]: continue
 			shaderMaterial.set_shader_parameter(surface + "_texture_" + textureTypesAlias[i], baseMaterials[surface][textureTypes[i]])
-			validModes[textureTypesAlias[i]] = true
+			print(textureTypesAlias[i] in validModes.keys())
+			if textureTypesAlias[i] in validModes.keys(): validModes[textureTypesAlias[i]] = true
 		for prop in specialValueParameters:
 			shaderMaterial.set_shader_parameter(surface + "_" + prop, baseMaterials[surface][prop])
 	for mode in validModes:
