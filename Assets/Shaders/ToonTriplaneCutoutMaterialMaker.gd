@@ -42,6 +42,7 @@ const specialValueParameters: Array[String] = ["metallic", "metallic_specular", 
 ## The produced material.
 @export var shaderMaterial: ShaderMaterial
 
+## Make the material.
 func make_material() -> void:
 	shaderMaterial.shader = load(ttcShader)
 	var baseMaterials: Dictionary[String, StandardMaterial3D] = {
