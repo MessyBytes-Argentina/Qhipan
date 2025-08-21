@@ -55,14 +55,12 @@ func make_material() -> void:
 	}
 	var validModes: Dictionary[String, bool] = {}
 	textureTypesAlias.map(func(a: String): if a not in excludeToggleParameters: validModes[a] = false)
-	print(validModes.keys())
 	for surface in baseMaterials:
 		shaderMaterial.set_shader_parameter(surface + "_texture_scale", get(surface + "AlbedoSize"))
 		shaderMaterial.set_shader_parameter(surface + "_detail_texture_scale", get(surface + "DetailSize"))
 		for i in range(len(textureTypes)):
 			if not baseMaterials[surface][textureTypes[i]]: continue
 			shaderMaterial.set_shader_parameter(surface + "_texture_" + textureTypesAlias[i], baseMaterials[surface][textureTypes[i]])
-			print(textureTypesAlias[i] in validModes.keys())
 			if textureTypesAlias[i] in validModes.keys(): validModes[textureTypesAlias[i]] = true
 		for prop in specialValueParameters:
 			shaderMaterial.set_shader_parameter(surface + "_" + prop, baseMaterials[surface][prop])
