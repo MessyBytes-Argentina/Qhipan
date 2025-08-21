@@ -39,9 +39,9 @@ uniform sampler2D top_texture_metallic : hint_default_white, filter_linear_mipma
 uniform sampler2D bottom_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform vec4 metallic_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-uniform float top_specular : hint_range(0.0, 1.0, 0.01);
-uniform float bottom_specular : hint_range(0.0, 1.0, 0.01);
-uniform float side_specular : hint_range(0.0, 1.0, 0.01);
+uniform float top_metallic_specular : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_metallic_specular : hint_range(0.0, 1.0, 0.01);
+uniform float side_metallic_specular : hint_range(0.0, 1.0, 0.01);
 uniform float top_metallic : hint_range(0.0, 1.0, 0.01);
 uniform float bottom_metallic : hint_range(0.0, 1.0, 0.01);
 uniform float side_metallic : hint_range(0.0, 1.0, 0.01);
@@ -54,9 +54,9 @@ uniform sampler2D side_texture_emission : source_color, hint_default_black, filt
 uniform vec3 top_emission : source_color;
 uniform vec3 bottom_emission : source_color;
 uniform vec3 side_emission : source_color;
-uniform float top_emission_energy : hint_range(0.0, 100.0, 0.01);
-uniform float bottom_emission_energy : hint_range(0.0, 100.0, 0.01);
-uniform float side_emission_energy : hint_range(0.0, 100.0, 0.01);
+uniform float top_emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
+uniform float bottom_emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
+uniform float side_emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
 
 // Normal
 uniform bool enable_normal = false;
@@ -81,19 +81,19 @@ uniform float side_clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
 
 // Anisotropy
 uniform bool enable_anisotropy = false;
-uniform sampler2D top_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
-uniform sampler2D bottom_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
-uniform sampler2D side_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
-uniform float top_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
-uniform float bottom_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
-uniform float side_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
+uniform sampler2D top_texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
+uniform sampler2D bottom_texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
+uniform sampler2D side_texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
+uniform float top_anisotropy : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_anisotropy : hint_range(0.0, 1.0, 0.01);
+uniform float side_anisotropy : hint_range(0.0, 1.0, 0.01);
 
 // Ambient Oclussion
 uniform bool enable_ambient_occlusion = false;
 uniform sampler2D top_texture_ambient_occlusion : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_ambient_occlusion : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_ambient_occlusion : hint_default_white, filter_linear_mipmap, repeat_enable;
-uniform vec4 ao_texture_channel;
+uniform vec4 ao_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 uniform float top_ao_light_affect : hint_range(0.0, 1.0, 0.01);
 uniform float bottom_ao_light_affect : hint_range(0.0, 1.0, 0.01);
 uniform float side_ao_light_affect : hint_range(0.0, 1.0, 0.01);
@@ -220,7 +220,7 @@ void fragment() {
 		vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
 		float metallic_tex = dot(base_metallic, metallic_texture_channel);
 		METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
-		SPECULAR = triple_condition_float(bottom_specular, top_specular, side_normal_scale, base_detail_uv.z);
+		SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z);
 	}
 	
 	if (enable_normal) {
@@ -232,7 +232,7 @@ void fragment() {
 	if (enable_emission) {
 		// Emission: Add
 		vec3 emission_tex = (triple_condition_vec4(texture(bottom_texture_emission, base_detail_uv.xy), texture(top_texture_emission, base_detail_uv.xy), texture(side_texture_emission, base_detail_uv.xy), base_detail_uv.z)).rgb;
-		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy, top_emission_energy, side_emission_energy, base_detail_uv.z);
+		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy_multiplier, top_emission_energy_multiplier, side_emission_energy_multiplier, base_detail_uv.z);
 	}
 	
 	if (enable_clearcoat) {
@@ -246,8 +246,8 @@ void fragment() {
 	
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
-		vec3 anisotropy_tex = (triple_condition_vec4(texture(bottom_texture_flowmap, base_detail_uv.xy), texture(top_texture_flowmap, base_detail_uv.xy), texture(side_texture_flowmap, base_detail_uv.xy), base_detail_uv.z)).rga;
-		ANISOTROPY = triple_condition_float(bottom_anisotropy_ratio, top_anisotropy_ratio, side_anisotropy_ratio, base_detail_uv.z) * anisotropy_tex.b;
+		vec3 anisotropy_tex = (triple_condition_vec4(texture(bottom_texture_anisotropy_flowmap, base_detail_uv.xy), texture(top_texture_anisotropy_flowmap, base_detail_uv.xy), texture(side_texture_anisotropy_flowmap, base_detail_uv.xy), base_detail_uv.z)).rga;
+		ANISOTROPY = triple_condition_float(bottom_anisotropy, top_anisotropy, side_anisotropy, base_detail_uv.z) * anisotropy_tex.b;
 		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0;
 	}
 	
