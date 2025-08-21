@@ -48,6 +48,8 @@ const excludeToggleParameters: Array[String] = ["roughness", "metallic"]
 func make_material() -> void:
 	shaderMaterial = ShaderMaterial.new()
 	shaderMaterial.shader = load(ttcShader)
+	shaderMaterial.set_shader_parameter("color_gradient", colorGradient)
+	shaderMaterial.set_shader_parameter("fresnel_gradient", fresnelGradient)
 	var baseMaterials: Dictionary[String, StandardMaterial3D] = {
 		"top": topSurfaceMaterial,
 		"bottom": bottomSurfaceMaterial,
