@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cka0eqqiaflf5"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="1_xbxqq"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_xbxqq"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
 offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)

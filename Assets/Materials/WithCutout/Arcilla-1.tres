@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cd35salnecua2"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="1_bux7b"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_bux7b"]
 [ext_resource type="Texture2D" uid="uid://d4no0vdjo3b5x" path="res://Assets/Textures/UV Textures/Arcilla-1/Arcilla-1-Top.png" id="3_cbx0s"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
