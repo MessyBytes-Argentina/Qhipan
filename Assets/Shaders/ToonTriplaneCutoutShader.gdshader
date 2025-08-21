@@ -26,10 +26,12 @@ uniform float side_detail_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 
 // Roughness
 uniform bool enable_roughness = false;
-uniform float roughness : hint_range(0.0, 1.0);
 uniform sampler2D top_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_roughness : hint_roughness_g, filter_linear_mipmap, repeat_enable;
+uniform float top_roughness : hint_range(0.0, 1.0);
+uniform float bottom_roughness : hint_range(0.0, 1.0);
+uniform float side_roughness : hint_range(0.0, 1.0);
 
 // Metallic
 uniform bool enable_metallic = false;
@@ -37,38 +39,54 @@ uniform sampler2D top_texture_metallic : hint_default_white, filter_linear_mipma
 uniform sampler2D bottom_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform vec4 metallic_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
+uniform float top_specular : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_specular : hint_range(0.0, 1.0, 0.01);
+uniform float side_specular : hint_range(0.0, 1.0, 0.01);
+uniform float top_metallic : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_metallic : hint_range(0.0, 1.0, 0.01);
+uniform float side_metallic : hint_range(0.0, 1.0, 0.01);
 
 // Emission
 uniform bool enable_emission = false;
 uniform sampler2D top_texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
-uniform vec4 emission : source_color;
-uniform float emission_energy : hint_range(0.0, 100.0, 0.01);
+uniform vec3 top_emission : source_color;
+uniform vec3 bottom_emission : source_color;
+uniform vec3 side_emission : source_color;
+uniform float top_emission_energy : hint_range(0.0, 100.0, 0.01);
+uniform float bottom_emission_energy : hint_range(0.0, 100.0, 0.01);
+uniform float side_emission_energy : hint_range(0.0, 100.0, 0.01);
 
 // Normal
 uniform bool enable_normal = false;
 uniform sampler2D top_texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
-uniform float normal_scale : hint_range(-16.0, 16.0);
+uniform float top_normal_scale : hint_range(-16.0, 16.0);
+uniform float bottom_normal_scale : hint_range(-16.0, 16.0);
+uniform float side_normal_scale : hint_range(-16.0, 16.0);
 
 // Clearcoat
 uniform bool enable_clearcoat = false;
-uniform float clearcoat : hint_range(0.0, 1.0, 0.01);
-uniform float clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
 uniform sampler2D top_texture_clearcoat : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_clearcoat : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_clearcoat : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform float top_clearcoat : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_clearcoat : hint_range(0.0, 1.0, 0.01);
+uniform float side_clearcoat : hint_range(0.0, 1.0, 0.01);
+uniform float top_clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
+uniform float side_clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
 
 // Anisotropy
 uniform bool enable_anisotropy = false;
-uniform float anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
 uniform sampler2D top_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform sampler2D bottom_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
+uniform float top_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
+uniform float side_anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
 
 // Ambient Oclussion
 uniform bool enable_ambient_occlusion = false;
@@ -76,7 +94,9 @@ uniform sampler2D top_texture_ambient_occlusion : hint_default_white, filter_lin
 uniform sampler2D bottom_texture_ambient_occlusion : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform sampler2D side_texture_ambient_occlusion : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform vec4 ao_texture_channel;
-uniform float ao_light_affect : hint_range(0.0, 1.0, 0.01);
+uniform float top_ao_light_affect : hint_range(0.0, 1.0, 0.01);
+uniform float bottom_ao_light_affect : hint_range(0.0, 1.0, 0.01);
+uniform float side_ao_light_affect : hint_range(0.0, 1.0, 0.01);
 
 // Cutout Variables
 uniform bool cylinderCutout = false;
@@ -142,6 +162,22 @@ vec3 worldmap(vec3 world_pos, float y_normal, vec3 texture_scales) {
 	return vec3(res, float(topWorldMapped && !sideWorldMapped) + float(sideWorldMapped) * 2.0);
 }
 
+float matching(float x, float y) {
+	return 1.0 - abs(sign(x - y));
+}
+
+float triple_condition_float(float a, float b, float c, float v) {
+	return a * matching(0.0, v) + b * matching(1.0, v) + c * matching(2.0, v);
+}
+
+vec3 triple_condition_vec3(vec3 a, vec3 b, vec3 c, float v) {
+	return a * matching(0.0, v) + b * matching(1.0, v) + c * matching(2.0, v);
+}
+
+vec4 triple_condition_vec4(vec4 a, vec4 b, vec4 c, float v) {
+	return a * matching(0.0, v) + b * matching(1.0, v) + c * matching(2.0, v);
+}
+
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
@@ -174,49 +210,51 @@ void fragment() {
 	if (enable_roughness) {
 		// Roughness: Enabled
 		vec4 roughness_texture_channel = vec4(0.0, 1.0, 0.0, 0.0);
-		vec4 base_roughness = texture(bottom_texture_roughness, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_roughness, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_roughness, base_detail_uv.xy) * float(base_detail_uv.z == 2.0);
+		vec4 base_roughness = triple_condition_vec4(texture(bottom_texture_roughness, base_detail_uv.xy), texture(top_texture_roughness, base_detail_uv.xy), texture(side_texture_roughness, base_detail_uv.xy), base_detail_uv.z);
 		float roughness_tex = dot(base_roughness, roughness_texture_channel);
-		ROUGHNESS = roughness_tex * roughness;
+		ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z);
 	}
 	
 	if (enable_metallic) {
 		// Metallic: Enabled
-		vec4 base_metallic = texture(bottom_texture_metallic, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_metallic, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_metallic, base_detail_uv.xy) * float(base_detail_uv.z == 2.0);
+		vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
 		float metallic_tex = dot(base_metallic, metallic_texture_channel);
-		METALLIC = metallic_tex * metallic;
-		SPECULAR = specular;
+		METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
+		SPECULAR = triple_condition_float(bottom_specular, top_specular, side_normal_scale, base_detail_uv.z);
 	}
 	
 	if (enable_normal) {
 		// Normal Map: Enabled
-		NORMAL_MAP = (texture(bottom_texture_normal, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_normal, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_normal, base_detail_uv.xy) * float(base_detail_uv.z == 2.0)).rgb;
-		NORMAL_MAP_DEPTH = normal_scale;
+		NORMAL_MAP = (triple_condition_vec4(texture(bottom_texture_normal, base_detail_uv.xy), texture(top_texture_normal, base_detail_uv.xy), texture(side_texture_normal, base_detail_uv.xy), base_detail_uv.z)).rgb;
+		NORMAL_MAP_DEPTH = triple_condition_float(bottom_normal_scale, top_normal_scale, side_normal_scale, base_detail_uv.z);
 	}
 	
 	if (enable_emission) {
 		// Emission: Add
-		vec3 emission_tex = (texture(bottom_texture_emission, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_emission, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_emission, base_detail_uv.xy) * float(base_detail_uv.z == 2.0)).rgb;
-		EMISSION = (emission.rgb + emission_tex) * emission_energy;
+		vec3 emission_tex = (triple_condition_vec4(texture(bottom_texture_emission, base_detail_uv.xy), texture(top_texture_emission, base_detail_uv.xy), texture(side_texture_emission, base_detail_uv.xy), base_detail_uv.z)).rgb;
+		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy, top_emission_energy, side_emission_energy, base_detail_uv.z);
 	}
 	
 	if (enable_clearcoat) {
 		// Clearcoat: Enabled
-		vec2 clearcoat_tex = (texture(bottom_texture_clearcoat, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_clearcoat, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_clearcoat, base_detail_uv.xy) * float(base_detail_uv.z == 2.0)).xy;
+		vec2 clearcoat_tex = (triple_condition_vec4(texture(bottom_texture_clearcoat, base_detail_uv.xy), texture(top_texture_clearcoat, base_detail_uv.xy), texture(side_texture_clearcoat, base_detail_uv.xy), base_detail_uv.z)).xy;
+		float clearcoat = triple_condition_float(bottom_clearcoat, top_clearcoat, side_clearcoat, base_detail_uv.z);
+		float clearcoat_roughness = triple_condition_float(bottom_clearcoat_roughness, top_clearcoat_roughness, side_clearcoat_roughness, base_detail_uv.z);
 		CLEARCOAT = clearcoat * clearcoat_tex.x;
 		CLEARCOAT_ROUGHNESS = clearcoat_roughness * clearcoat_tex.y;
 	}
 	
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
-		vec3 anisotropy_tex = (texture(bottom_texture_flowmap, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_flowmap, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_flowmap, base_detail_uv.xy) * float(base_detail_uv.z == 2.0)).rga;
-		ANISOTROPY = anisotropy_ratio * anisotropy_tex.b;
+		vec3 anisotropy_tex = (triple_condition_vec4(texture(bottom_texture_flowmap, base_detail_uv.xy), texture(top_texture_flowmap, base_detail_uv.xy), texture(side_texture_flowmap, base_detail_uv.xy), base_detail_uv.z)).rga;
+		ANISOTROPY = triple_condition_float(bottom_anisotropy_ratio, top_anisotropy_ratio, side_anisotropy_ratio, base_detail_uv.z) * anisotropy_tex.b;
 		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0;
 	}
 	
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
-		AO = dot(texture(bottom_texture_ambient_occlusion, base_detail_uv.xy) * float(base_detail_uv.z == 0.0) + texture(top_texture_ambient_occlusion, base_detail_uv.xy) * float(base_detail_uv.z == 1.0) + texture(side_texture_ambient_occlusion, base_detail_uv.xy) * float(base_detail_uv.z == 2.0), ao_texture_channel);
-		AO_LIGHT_AFFECT = ao_light_affect;
+		AO = dot(triple_condition_vec4(texture(bottom_texture_ambient_occlusion, base_detail_uv.xy), texture(top_texture_ambient_occlusion, base_detail_uv.xy), texture(side_texture_ambient_occlusion, base_detail_uv.xy), base_detail_uv.z), ao_texture_channel);
+		AO_LIGHT_AFFECT = triple_condition_float(bottom_ao_light_affect, top_ao_light_affect, side_ao_light_affect, base_detail_uv.z);
 	}
 	
 	// Cutout border painting

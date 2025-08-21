@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://b3tp4pl6us037"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_nuwrh"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_fek31"]
 [ext_resource type="Texture2D" uid="uid://1qb1r6y0tv1y" path="res://Assets/Textures/UV Textures/Doors/Goal-Door.png" id="2_84qjl"]
 
 [sub_resource type="Gradient" id="Gradient_bof8u"]
@@ -19,21 +19,9 @@ gradient = SubResource("Gradient_epi6i")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_nuwrh")
+shader = ExtResource("1_fek31")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_84qjl")
-shader_parameter/map_top_to_world = false
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/color_gradient = SubResource("GradientTexture1D_amxg1")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
 shader_parameter/cylinderCutout = false

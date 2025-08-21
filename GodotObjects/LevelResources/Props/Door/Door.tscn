@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://GodotObjects/LevelResources/Props/Door/Door.gd" id="1_iyqt8"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_n2c0y"]
-[ext_resource type="Material" uid="uid://c2djejiyff327" path="res://Assets/Materials/WithCutout/Door.tres" id="3_x7cyp"]
+[ext_resource type="Material" uid="uid://cch5x4exg8o71" path="res://Assets/Materials/WithCutout/Door.tres" id="3_x7cyp"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_gmc35"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_gmc35"]
 
@@ -28,7 +28,6 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": ExtResource("3_x7cyp"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -281,6 +280,7 @@ script = ExtResource("2_n2c0y")
 transform = Transform3D(0.99, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 mesh = SubResource("ArrayMesh_iyqt8")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_x7cyp")
 
 [node name="DoorBody" type="StaticBody3D" parent="Centered/UpPivot/DownPivot/Door"]
 unique_name_in_owner = true

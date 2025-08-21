@@ -28,7 +28,6 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": ExtResource("3_713kq"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -281,6 +280,7 @@ script = ExtResource("3_naok6")
 transform = Transform3D(0.99, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 mesh = SubResource("ArrayMesh_iyqt8")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_713kq")
 
 [node name="DoorBody" type="StaticBody3D" parent="Centered/UpPivot/DownPivot/Door"]
 unique_name_in_owner = true
