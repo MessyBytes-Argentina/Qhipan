@@ -45,6 +45,6 @@ emitting = false
 lifetime = 0.6
 one_shot = true
 explosiveness = 0.85
-local_coords = true
+visibility_aabb = AABB(-40, -40, -40, 80, 80, 80)
 process_material = SubResource("ParticleProcessMaterial_x38go")
 draw_pass_1 = SubResource("QuadMesh_uqbk1")

@@ -87,6 +87,7 @@ func emit_particles() -> void:
 		var currentParticle: GPUParticles3D = particles[i].instantiate()
 		if currentParticle:
 			add_child(currentParticle)
+			currentParticle.global_position = global_position
 			if scale != Vector3.ONE:
 				for j in range(currentParticle.draw_passes):
 					if currentParticle["draw_pass_" + str(j + 1)] is PrimitiveMesh:

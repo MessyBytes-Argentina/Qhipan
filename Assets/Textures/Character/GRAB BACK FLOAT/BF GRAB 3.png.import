@@ -3,31 +3,30 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rm4l81urr25d"
-path.s3tc="res://.godot/imported/BF GRAB 3.png-6a2dfdd81a59a6be2b0e5a76d9c92c0c.s3tc.ctex"
+path="res://.godot/imported/BF GRAB 3.png-6a2dfdd81a59a6be2b0e5a76d9c92c0c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Character/GRAB BACK FLOAT/BF GRAB 3.png"
-dest_files=["res://.godot/imported/BF GRAB 3.png-6a2dfdd81a59a6be2b0e5a76d9c92c0c.s3tc.ctex"]
+dest_files=["res://.godot/imported/BF GRAB 3.png-6a2dfdd81a59a6be2b0e5a76d9c92c0c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=true
-mipmaps/limit=-1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=4
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

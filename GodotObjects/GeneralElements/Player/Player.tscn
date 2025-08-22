@@ -75,11 +75,11 @@
 render_priority = 2
 transparency = 1
 cull_mode = 2
-diffuse_mode = 3
+depth_draw_mode = 2
 specular_mode = 1
 albedo_texture = ExtResource("2_cphfr")
 emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.1
+emission_energy_multiplier = 0.01
 backlight = Color(1, 1, 1, 1)
 backlight_texture = ExtResource("2_cphfr")
 disable_receive_shadows = true
@@ -102,10 +102,11 @@ transparency = 1
 cull_mode = 2
 depth_draw_mode = 2
 no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
 albedo_texture = ExtResource("2_cphfr")
-emission_enabled = true
-emission = Color(0, 100, 100, 1)
-emission_energy_multiplier = 2.0
+albedo_texture_force_srgb = true
 detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
@@ -656,6 +657,7 @@ floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
+disableMaximum = true
 
 [node name="PlayerSounds" type="Node3D" parent="."]
 
@@ -701,7 +703,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cphfr")
 
 [node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, -0.0725533, 0.199339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="PlayerHighlight" type="Sprite3D" parent="SpritePivot/Sprite"]
 unique_name_in_owner = true
@@ -806,6 +808,7 @@ target_position = Vector3(-0.05, -6, 0.076)
 [node name="LightDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_vq31v")
@@ -856,7 +859,7 @@ top_level = true
 
 [node name="Highlight" type="Sprite3D" parent="GrabArea/HighlightPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.954777, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.956089, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1
@@ -876,6 +879,7 @@ texture = SubResource("GradientTexture2D_6fycs")
 [node name="ShadowDecal" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+visible = false
 cast_shadow = 0
 gi_lightmap_scale = 0
 mesh = SubResource("BoxMesh_fj5th")
