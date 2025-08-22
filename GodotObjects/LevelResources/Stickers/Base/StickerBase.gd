@@ -1,38 +1,66 @@
 extends CharacterBody3D
 class_name StickerBase
 
+## Size of the sticker when the camera zooms out.
 const ZOOMOUTSCALE: float = 0.5
+## Size of the sticker when floating on the ground.
 const BOBBINGSCALE: float = 0.5
+## Length of bobbing in the y axis.
 const BOBBINGHEIGHT: float = 0.05
+## Amount of time the bobbing animation takes.
 const BOBBINGTIME: float = 2.0
+## Amount of time it takes the sticker to rotate.
 const ROTATIONTIME: float = 3.0
+## Angle of the sticker in the x axis when floating on the ground.
 const TILTANGLE: float = deg_to_rad(-30)
+## Height of the sticker when grabbed.
 const GRABHEIGHT: float = 0.6
+## Wait time to place when loading.
 const PLACEDCHECKTIME: float = 0.25
 
+## State of the sticker.
 enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
+## If true checks for areas to place after loading.
 @export var placed: bool = false
+## Collision layer for sticker placement.
 @export var validAreaIndexes: Array[int] = [11]
 
+## Area3D to check for placement.
 @onready var areaChecker: Area3D = %AreaChecker
+## Front visual mesh reference.
 @onready var mesh: MeshInstance3D = %Mesh
+## Back visual mesh reference.
 @onready var back: MeshInstance3D = %Back
+## Reference to the parent of all meshes.
 @onready var meshes: Node3D = %Meshes
+## Shadow decal reference.
 @onready var shadowDecal: DecalCompatibility = %ShadowDecal
+## Sticker billboard reference.
 @onready var billboard: Sprite3D = %Billboard
+## Sticker billboard on zoom out reference.
 @onready var billboardZoomedOut: Sprite3D = %BillboardZoomedOut
 
+## Parent node reference for placement.
 var sceneParent: Node
+## Flag turns true when grabbed by the player (not used?).
 var onPlayer: bool = false
+## Tween for rotation animation.
 var rotationTween: Tween
+## Tween for bobbing animation.
 var bobbingTween: Tween
+## Mesh size before modifications (not used?).
 var startSize: Vector2
+## Front mesh material reference to make unique.
 var meshMaterial: StandardMaterial3D
+## back mesh material reference to make unique.
 var backMaterial: StandardMaterial3D
+## Flag to not show the sticke on zoom out.
 var grabed: bool = false
+## Current state of the sticker.
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sceneParent = get_parent()
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
@@ -65,6 +93,7 @@ func _ready() -> void:
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
 
+## Cabeza fix to load visuals
 func prerender() -> void:
 	mesh.show()
 	back.show()
@@ -84,6 +113,7 @@ func prerender() -> void:
 	billboard.hide()
 	billboardZoomedOut.hide()
 
+## Places the sticker on the given area facing the given direction
 func place_sticker(area: Area3D, direction: Vector3) -> void:
 	set_size(ScaleModes.PLACED)
 	global_position = area.global_position + direction * 0.01
@@ -96,6 +126,7 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 	reparent(area)
 	grabed = false
 
+## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
 	if mode != ScaleModes.ZOOMEDOUT: lastVisualMode = mode
 	match mode:
@@ -123,6 +154,7 @@ func set_size(mode: ScaleModes) -> void:
 			back.hide()
 			meshes.scale = Vector3.ONE * ZOOMOUTSCALE
 
+## Moves the sticker position to the given node position
 func grab(node: Node3D) -> void:
 	onPlayer = true
 	global_position = node.global_position
@@ -132,6 +164,7 @@ func grab(node: Node3D) -> void:
 	stop_rotation()
 	grabed = true
 
+## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:
 	set_size(ScaleModes.DROPPED)
 	global_position.y = global_position.y - GRABHEIGHT
@@ -141,6 +174,7 @@ func drop() -> void:
 	start_rotation()
 	grabed = false
 
+## Starts the floating animations 
 func start_rotation() -> void:
 	rotationTween = create_tween()
 	bobbingTween = create_tween()
@@ -156,6 +190,7 @@ func start_rotation() -> void:
 	rotationTween.set_loops()
 	rotationTween.play()
 
+## Stops floating animations
 func stop_rotation() -> void:
 	if rotationTween:
 		rotationTween.kill()
@@ -167,6 +202,7 @@ func stop_rotation() -> void:
 	meshes.scale = Vector3.ONE
 	shadowDecal.hide()
 
+## Changes visual size on zoom out
 func zooming_out(zoomedOut: bool) -> void:
 	if not grabed: 
 		if zoomedOut: 

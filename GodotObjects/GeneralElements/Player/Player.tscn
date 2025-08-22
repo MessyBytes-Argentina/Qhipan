@@ -856,7 +856,7 @@ top_level = true
 
 [node name="Highlight" type="Sprite3D" parent="GrabArea/HighlightPivot"]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.92652, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.954777, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1
