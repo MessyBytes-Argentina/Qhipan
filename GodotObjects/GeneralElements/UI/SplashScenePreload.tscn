@@ -1,12 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://8ain4p6etldq"]
+[gd_scene load_steps=24 format=3 uid="uid://8ain4p6etldq"]
 
 [ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://GodotObjects/GeneralElements/UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
 [ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://GodotObjects/Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
-[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="2_tjpxc"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="2_tv7nj"]
 [ext_resource type="AudioStream" uid="uid://t07xlctfpaa4" path="res://Assets/Sounds/Sticker_Remove.mp3" id="3_0rg7o"]
 [ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/poof_particle.tscn" id="3_7th63"]
-[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="3_r1tmu"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="4_d0xu3"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://GodotObjects/GeneralElements/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="5_38xoa"]
@@ -27,35 +25,6 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="Gradient" id="Gradient_k62l1"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_81nvi"]
-gradient = SubResource("Gradient_k62l1")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
-render_priority = 0
-shader = ExtResource("2_tjpxc")
-shader_parameter/albedo = SubResource("GradientTexture2D_81nvi")
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(2, 0.2, 2)
-shader_parameter/cube_half_size = Vector3(0.25, 2.5, 0.25)
-shader_parameter/enable_y_fade = false
-shader_parameter/fade_start = 0.3
-shader_parameter/fade_end = 0.7
-shader_parameter/fade_power = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_dl6uw"]
-material = SubResource("ShaderMaterial_c1wxo")
-size = Vector3(0.5, 5, 0.5)
-
 [sub_resource type="Environment" id="Environment_tv7nj"]
 background_mode = 1
 
@@ -69,19 +38,6 @@ double_sided = false
 no_depth_test = true
 render_priority = 5
 texture = SubResource("ViewportTexture_81nvi")
-
-[node name="ShadowDecal" type="MeshInstance3D" parent="Sprite3D"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
-cast_shadow = 0
-gi_lightmap_scale = 0
-mesh = SubResource("BoxMesh_dl6uw")
-Skeleton = null
-script = ExtResource("3_r1tmu")
-size = Vector3(0.5, 5, 0.5)
-texture = SubResource("GradientTexture2D_81nvi")
-enable_fade = false
-metadata/_custom_type_script = "uid://feckn7f3pmud"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1152, 648)
