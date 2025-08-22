@@ -1,6 +1,6 @@
 // NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
