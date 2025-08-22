@@ -154,7 +154,7 @@ vec3 worldmap(vec3 world_pos, float y_normal, vec3 texture_scales) {
 	// SIDES
 	bool sideWorldMapped = y_normal > 0.25 && y_normal < 0.75;
 	vec3 side_base_world_pos = fract(world_pos * vec3(1.00000 / side_texture_scale, 1.00000 / texture_scales.z, 1.00000 / texture_scales.z) + vec3(0.50000 / texture_scales.z, 0.00000, 0.50000 / texture_scales.z));
-	vec2 side_base_world_pos_off = mix(side_base_world_pos.yx, side_base_world_pos.yz, float(abs(world_normal.x) > 0.5));
+	vec2 side_base_world_pos_off = mix(side_base_world_pos.xy, side_base_world_pos.zy, float(abs(world_normal.x) > 0.5)) * vec2(1.0, -1.0);
 	res = mix(res, side_base_world_pos_off, float(sideWorldMapped));
 	
 	return vec3(res, float(topWorldMapped && !sideWorldMapped) + float(sideWorldMapped) * 2.0);
