@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8ain4p6etldq"]
+[gd_scene load_steps=23 format=3 uid="uid://8ain4p6etldq"]
 
 [ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://GodotObjects/GeneralElements/UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
 [ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://GodotObjects/Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
@@ -25,17 +25,17 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="Environment" id="Environment_tv7nj"]
-background_mode = 1
-
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_dxbmg")
 sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), ExtResource("7_ecpr7"), ExtResource("6_5ktst"), ExtResource("5_38xoa"), ExtResource("4_d0xu3"), ExtResource("3_0rg7o"), ExtResource("2_tv7nj"), ExtResource("10_s5eie"), ExtResource("11_p2227"), ExtResource("12_sg3fy"), ExtResource("13_28kp4"), ExtResource("14_as1pu"), ExtResource("15_6x7mq")])
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.0098
 billboard = 1
+transparent = false
 double_sided = false
 no_depth_test = true
+texture_filter = 1
 render_priority = 5
 texture = SubResource("ViewportTexture_81nvi")
 
@@ -71,6 +71,3 @@ unique_name_in_owner = true
 
 [node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]
 visible = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tv7nj")
