@@ -82,12 +82,13 @@ func scale_primitive_mesh(mesh: PrimitiveMesh, newScale: float) -> PrimitiveMesh
 	return mesh
 
 ## Emits the particles in the set time delays
-func emit_particles() -> void:
+func emit_particles(newPosition: Vector3 = global_position, newRotation: Vector3 = global_rotation) -> void:
+	global_position = newPosition
+	global_rotation = newRotation
 	for i in range(len(particles)):
 		var currentParticle: GPUParticles3D = particles[i].instantiate()
 		if currentParticle:
 			add_child(currentParticle)
-			currentParticle.global_position = global_position
 			if scale != Vector3.ONE:
 				for j in range(currentParticle.draw_passes):
 					if currentParticle["draw_pass_" + str(j + 1)] is PrimitiveMesh:
@@ -96,6 +97,8 @@ func emit_particles() -> void:
 			if i == len(particles) - 1:
 				currentParticle.finished.connect(finished.emit)
 			currentParticle.finished.connect(currentParticle.queue_free)
+			currentParticle.global_position = newPosition
+			currentParticle.global_rotation = newRotation
 			currentParticle.emitting = true
 			if len(particles) > 1 and i < len(particles) - 1:
 				if delay[i] > 0:

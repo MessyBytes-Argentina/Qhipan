@@ -45,10 +45,10 @@ var canDrop: bool = true
 var zoomedOut: bool = false
 ## Tween for the highlight bobbing animation
 var stickerHighlightTween: Tween
-##
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	highlightHeight = highlight.position.y
@@ -58,11 +58,13 @@ func _ready() -> void:
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	sort_close_stickers()
 	sort_close_areas()
 
 ## Handles player input.
 func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint(): return
 	if event.is_action_pressed("interact") and not zoomedOut and canGrab:
 		if not pickupOnHand:
 			do_grab()

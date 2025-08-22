@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbo3auep3r0u"]
 
-[ext_resource type="Texture2D" uid="uid://dej5midubfhnx" path="res://Assets/Textures/Particle Texture/Spoof-Cloud.png" id="1_1i37l"]
+[ext_resource type="Texture2D" uid="uid://dej5midubfhnx" path="res://Assets/Textures/Particle Texture/Poof-Cloud.png" id="1_e7be8"]
 
 [sub_resource type="Gradient" id="Gradient_kptbx"]
 offsets = PackedFloat32Array(0, 0.126531, 0.408163, 1)
@@ -33,7 +33,7 @@ render_priority = 3
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_1i37l")
+albedo_texture = ExtResource("1_e7be8")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_uqbk1"]
@@ -41,10 +41,12 @@ material = SubResource("StandardMaterial3D_o7oki")
 size = Vector2(0.6, 0.6)
 
 [node name="Poof" type="GPUParticles3D"]
+top_level = true
 emitting = false
 lifetime = 0.6
 one_shot = true
 explosiveness = 0.85
 visibility_aabb = AABB(-40, -40, -40, 80, 80, 80)
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_x38go")
 draw_pass_1 = SubResource("QuadMesh_uqbk1")

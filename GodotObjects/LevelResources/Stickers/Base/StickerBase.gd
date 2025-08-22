@@ -35,7 +35,7 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 ## Reference to the parent of all meshes.
 @onready var meshes: Node3D = %Meshes
 ## Shadow decal reference.
-@onready var shadowDecal: DecalCompatibility = %ShadowDecal
+@onready var shadowDecal: Decal = %ShadowDecal
 ## Sticker billboard reference.
 @onready var billboard: Sprite3D = %Billboard
 ## Sticker billboard on zoom out reference.

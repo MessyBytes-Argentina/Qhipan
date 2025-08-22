@@ -28,13 +28,28 @@ sky = SubResource("Sky_v5vbm")
 ambient_light_source = 2
 ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
 ambient_light_energy = 1.5
-tonemap_mode = 3
+tonemap_mode = 2
 tonemap_exposure = 1.5
 ssao_enabled = true
 ssao_radius = 2.0
 ssao_intensity = 4.0
 ssil_enabled = true
-glow_enabled = true
+sdfgi_energy = 7.275
+glow_strength = 0.53
+glow_bloom = 1.0
+fog_mode = 1
+fog_light_color = Color(0.827038, 0.452026, 0.194988, 1)
+fog_light_energy = 16.0
+fog_sun_scatter = 1.0
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height_density = 0.5
+fog_depth_begin = 4000.0
+fog_depth_end = 4000.0
+volumetric_fog_density = 0.2228
+volumetric_fog_length = 2.0
+volumetric_fog_ambient_inject = 0.1
+volumetric_fog_sky_affect = 0.0
 
 [node name="Test" type="Node3D"]
 

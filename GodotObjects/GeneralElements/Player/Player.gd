@@ -417,7 +417,7 @@ func restart_at_checkpoint() -> void:
 	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
 	transparencyTween.play()
-	poof.emit_particles()
+	poof.emit_particles(global_position, sprite.global_rotation)
 	lastInvoluntarySpeed = Vector3.ZERO
 	lastPushForce = Vector3.ZERO
 	noGravityZones.clear()
@@ -425,7 +425,7 @@ func restart_at_checkpoint() -> void:
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = currentCheckpointPosition
 	reset_aura()
-	poof.emit_particles()
+	poof.emit_particles(global_position, sprite.global_rotation)
 	if transparencyTween:
 		transparencyTween.kill()
 	transparencyTween = create_tween()

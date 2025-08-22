@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkdoii7lm8ucj"]
 
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="2_jqibb"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/spoof_particle.tscn" id="3_e0q6x"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/poof_particle.tscn" id="3_e0q6x"]
 
 [node name="Poof" type="Node3D"]
 script = ExtResource("2_jqibb")

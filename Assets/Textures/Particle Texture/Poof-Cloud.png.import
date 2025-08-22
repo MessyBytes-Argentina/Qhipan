@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dej5midubfhnx"
-path.s3tc="res://.godot/imported/Spoof-Cloud.png-49e9489670b97a9d1a66515d5f9e6dd9.s3tc.ctex"
+path.s3tc="res://.godot/imported/Poof-Cloud.png-d72747695316850e04ad56e3979a1856.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Particle Texture/Spoof-Cloud.png"
-dest_files=["res://.godot/imported/Spoof-Cloud.png-49e9489670b97a9d1a66515d5f9e6dd9.s3tc.ctex"]
+source_file="res://Assets/Textures/Particle Texture/Poof-Cloud.png"
+dest_files=["res://.godot/imported/Poof-Cloud.png-d72747695316850e04ad56e3979a1856.s3tc.ctex"]
 
 [params]
 

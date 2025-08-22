@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="2_tjpxc"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="2_tv7nj"]
 [ext_resource type="AudioStream" uid="uid://t07xlctfpaa4" path="res://Assets/Sounds/Sticker_Remove.mp3" id="3_0rg7o"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/spoof_particle.tscn" id="3_7th63"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/poof_particle.tscn" id="3_7th63"]
 [ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="3_r1tmu"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="4_d0xu3"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://GodotObjects/GeneralElements/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
