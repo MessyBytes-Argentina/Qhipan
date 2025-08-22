@@ -338,7 +338,7 @@ func move_character(delta: float) -> void:
 	var pushForce: Vector3 = Vector3.ZERO
 	for object in pushingForces:
 		pushForce += pushingForces[object]
-	if moved >= movementMaximum and not stopped:
+	if moved >= movementMaximum and not stopped and not disableMaximum:
 		do_popup()
 		stopped = true
 	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
