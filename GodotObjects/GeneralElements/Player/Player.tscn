@@ -628,8 +628,6 @@ script = ExtResource("1_iw8fe")
 unique_name_in_owner = true
 stream = ExtResource("62_8njlr")
 volume_db = -10.0
-script = ExtResource("10_8hsli")
-metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="RotateCamLeft" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true

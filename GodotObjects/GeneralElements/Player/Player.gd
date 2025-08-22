@@ -22,6 +22,18 @@ const POPUPTIME: float = 0.5
 const RESETBUTTONWAIT: float = 1.0
 ## Time the restart takes.
 const PLAYERRESTARTWAITTIME: float = 0.25
+## Minimum fall distance to play the fall sound at minimum volume.
+const MINFALLDISTANCE: float = 0.75
+## Maximum fall distance to play the fall sound at top volume.
+const MAXFALLDISTANCE: float = 5.0
+## Minimum fall volume.
+const MINFALLVOLUME: float = -12.0
+## Maximum fall volume.
+const MAXFALLVOLUME: float = -10.0
+## Minimum fall volume.
+const MINFALLPITCH: float = 1.5
+## Maximum fall volume.
+const MAXFALLPITCH: float = 1.0
 
 ## Time it takes for the player sprite to flip.
 const spriteFlipDuration: float = 0.5
@@ -79,7 +91,7 @@ enum States {Idle, Walk, Float}
 ## Reference to the player shadow decal.
 @onready var shadowDecal: Decal = %ShadowDecal
 ## Reference to the fall sound player.
-@onready var fallSound: RandomPitchPlayer = %FallSound
+@onready var fallSound: AudioStreamPlayer = %FallSound
 ## Reference to the rotate camera left sound player.
 @onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
 ## Reference to the rotate camera right sound player.
@@ -172,6 +184,8 @@ var currentCheckpointPosition: Vector3
 var onSettings: bool = false
 ## Flag for when the player is respawning.
 var respawning: bool = false
+## Currently fell distance.
+var fellDistance: float = 0.0
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -369,12 +383,22 @@ func move_character(delta: float) -> void:
 		animation_check()
 	velocity = lastInvoluntarySpeed
 	move_and_slide()
-	if is_on_floor() and not fallSoundPlayed and not respawnFall:
-		fallSound.play_sound()
+	if not is_on_floor():
+		fellDistance += (get_last_motion() * Vector3.UP).length()
+	else: 
+		play_fall_sound()
+		fellDistance = 0
 	if is_on_floor() and respawnFall:
 		respawnFall = false
 		fallSoundPlayed = true
 	fallSoundPlayed = true
+
+## Plays falling sound
+func play_fall_sound() -> void:
+	if fallSoundPlayed or respawnFall or fellDistance < MINFALLDISTANCE: return
+	fallSound.pitch_scale = lerpf(MINFALLPITCH, MAXFALLPITCH, min(1.0, inverse_lerp(MINFALLDISTANCE, MAXFALLDISTANCE, fellDistance)))
+	fallSound.volume_db = lerpf(MINFALLVOLUME, MAXFALLVOLUME, min(1.0, inverse_lerp(MINFALLDISTANCE, MAXFALLDISTANCE, fellDistance)))
+	fallSound.play()
 
 ## Sets the movement area decal size to match the expected size.
 func set_decal_size() -> void:
