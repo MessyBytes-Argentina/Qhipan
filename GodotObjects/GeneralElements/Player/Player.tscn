@@ -1,9 +1,7 @@
-[gd_scene load_steps=104 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=100 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
-[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="3_8yuwp"]
-[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="4_nasuc"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="5_3jjt7"]
 [ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/poof.ogg" id="6_3jjt7"]
@@ -128,34 +126,17 @@ top_radius = 0.0
 bottom_radius = 1.25
 height = 7.0
 
-[sub_resource type="Gradient" id="Gradient_6pvne"]
-offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.916968, 0.935018, 0.963899, 0.998, 0.999)
-colors = PackedColorArray(1, 1, 1, 0, 0.796751, 0.622936, 1, 1, 1, 1, 1, 0.0305074, 1, 1, 1, 0.0682116, 0.986229, 0.807665, 1, 0.486275, 1, 1, 1, 0, 1, 1, 1, 0.021541, 0.85115, 0.591557, 1, 1, 1, 1, 1, 0.044739, 0.329412, 1, 0.329412, 0, 0, 1, 0, 0.235294, 0, 1, 0, 0.196078, 0, 1, 0, 0.470588, 5.86594e-08, 0.143815, 9.62615e-08, 1, 0, 0.145098, 0, 0)
+[sub_resource type="Gradient" id="Gradient_hlfjp"]
+offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.916968, 0.935018, 0.963899, 0.998, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.796751, 0.622936, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.986229, 0.807665, 1, 0.486275, 0, 0, 0, 0, 0, 0, 0, 0, 0.85115, 0.591557, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0.235294, 0, 1, 0, 0.196078, 0, 1, 0, 0.470588, 5.86594e-08, 0.143815, 9.62615e-08, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l6njb"]
-gradient = SubResource("Gradient_6pvne")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjorx"]
+gradient = SubResource("Gradient_hlfjp")
 width = 1024
 height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.529915)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_504ik"]
-render_priority = 0
-shader = ExtResource("3_8yuwp")
-shader_parameter/albedo = SubResource("GradientTexture2D_l6njb")
-shader_parameter/modulate = Color(1, 1, 1, 0.901961)
-shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(0.05, 0.05, 0.05)
-shader_parameter/cube_half_size = Vector3(10, 10, 10)
-shader_parameter/enable_y_fade = false
-shader_parameter/fade_start = 0.3
-shader_parameter/fade_end = 0.7
-shader_parameter/fade_power = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_vq31v"]
-material = SubResource("ShaderMaterial_504ik")
-size = Vector3(20, 20, 20)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
@@ -640,7 +621,6 @@ floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
-disableMaximum = true
 
 [node name="PlayerSounds" type="Node3D" parent="."]
 
@@ -763,6 +743,7 @@ fov = 55.0
 
 [node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
+layers = 524288
 
 [node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
 unique_name_in_owner = true
@@ -790,20 +771,17 @@ target_position = Vector3(0.05, -6, 0.076)
 transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(-0.05, -6, 0.076)
 
-[node name="LightDecal" type="MeshInstance3D" parent="."]
+[node name="LightDecal" type="Decal" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-visible = false
-cast_shadow = 0
-gi_lightmap_scale = 0
-mesh = SubResource("BoxMesh_vq31v")
-Skeleton = null
-script = ExtResource("4_nasuc")
-size = Vector3(20, 20, 20)
-texture = SubResource("GradientTexture2D_l6njb")
-modulate = Color(1, 1, 1, 0.901961)
-enable_fade = false
-metadata/_custom_type_script = "uid://feckn7f3pmud"
+transform = Transform3D(1, 0, 0, 0, 0.999999, -1.19209e-07, 0, -2.10734e-08, 1, 0, 0, 0)
+size = Vector3(20, 10, 20)
+texture_albedo = SubResource("GradientTexture2D_bjorx")
+texture_emission = SubResource("GradientTexture2D_bjorx")
+emission_energy = 0.5
+lower_fade = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+cull_mask = 524285
 
 [node name="GrabArea" type="Area3D" parent="."]
 unique_name_in_owner = true

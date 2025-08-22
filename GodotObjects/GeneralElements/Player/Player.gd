@@ -65,7 +65,7 @@ enum States {Idle, Walk, Float}
 ## Reference to the player sprite.
 @onready var sprite: MeshInstance3D = %Sprite
 ## Reference to the player area decal. TO BE REIMPLEMENTED.
-@onready var lightDecal: DecalCompatibility = %LightDecal
+@onready var lightDecal: Decal = %LightDecal
 ## Reference to the camera post processing effects.
 @onready var postProcessing: MeshInstance3D = %PostProcessing
 ## Reference to the [PickupHandler], the player's grab area.
