@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmpj6b7muxgub"
-path="res://.godot/imported/ScrollButton2.png-2429ff689e29597f71b37af52a204632.ctex"
+uid="uid://d2e8ejja2bl78"
+path="res://.godot/imported/Godot Logo.png-36c6bada9dad76f12224d2b5ba4cb27e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Blue/ScrollButton2.png"
-dest_files=["res://.godot/imported/ScrollButton2.png-2429ff689e29597f71b37af52a204632.ctex"]
+source_file="res://Assets/Textures/Logo/Godot Logo.png"
+dest_files=["res://.godot/imported/Godot Logo.png-36c6bada9dad76f12224d2b5ba4cb27e.ctex"]
 
 [params]
 
@@ -21,14 +21,14 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

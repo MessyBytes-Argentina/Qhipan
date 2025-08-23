@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmiiphouhx4xy"
-path="res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"
+uid="uid://dhqry1xlxewlx"
+path="res://.godot/imported/MESSYBRATS2.png-b5ff2f046b8e3d10c4ffc0aec312e065.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/RedHorizontalBarFill3Slice.png"
-dest_files=["res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"]
+source_file="res://Assets/Textures/Logo/MESSYBRATS2.png"
+dest_files=["res://.godot/imported/MESSYBRATS2.png-b5ff2f046b8e3d10c4ffc0aec312e065.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

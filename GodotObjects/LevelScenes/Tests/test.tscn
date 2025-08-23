@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=19 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cf4vem2dsju0h" path="res://GodotObjects/LevelResources/Goal/GoalZone.tscn" id="11_dxq8q"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/LevelResources/Props/Door/GoalDoor.tscn" id="12_u6kbg"]
 [ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/LevelResources/Props/InfoCrystal/InfoCrystal.tscn" id="13_dnt0v"]
+[ext_resource type="Texture2D" uid="uid://bjw4hx081ykmr" path="res://Assets/Textures/Tutorial Screens/Joystick/Camera.png" id="14_ckktb"]
+[ext_resource type="Texture2D" uid="uid://cy5qpo0on4vn5" path="res://Assets/Textures/Tutorial Screens/Joystick/Checkpoint.png" id="15_5fpv5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -117,3 +119,5 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 
 [node name="InfoCrystal" parent="." instance=ExtResource("13_dnt0v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
+infoSpriteKeyboard = ExtResource("14_ckktb")
+infoSpriteController = ExtResource("15_5fpv5")

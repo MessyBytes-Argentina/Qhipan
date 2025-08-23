@@ -78,6 +78,7 @@ shape = SubResource("ConcavePolygonShape3D_lrclw")
 [node name="InfoIcon" type="Sprite3D" parent="Crystal"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+layers = 2
 pixel_size = 0.001
 billboard = 1
 render_priority = 2
@@ -91,11 +92,15 @@ omni_range = 2.0
 [node name="PopupBoard" type="Sprite3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1, 0)
+layers = 2
 pixel_size = 0.001
 billboard = 1
+shaded = true
+double_sided = false
 no_depth_test = true
 fixed_size = true
-render_priority = 3
+alpha_cut = 2
+render_priority = 4
 
 [node name="PopUpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

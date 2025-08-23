@@ -151,6 +151,8 @@ pause={
 
 [layer_names]
 
+3d_render/layer_2="Ecluir_Sombras&PlayerArea"
+3d_render/layer_20="Postprocessing"
 3d_physics/layer_1="Floor"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Objects"

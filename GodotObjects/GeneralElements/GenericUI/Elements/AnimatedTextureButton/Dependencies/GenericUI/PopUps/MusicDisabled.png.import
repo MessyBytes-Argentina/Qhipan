@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmiiphouhx4xy"
-path="res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"
+uid="uid://b6a1k8f6uxuya"
+path="res://.godot/imported/MusicDisabled.png-a8f0a4e59b02e9483d6e88a11bbfb263.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/RedHorizontalBarFill3Slice.png"
-dest_files=["res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"]
+source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/MusicDisabled.png"
+dest_files=["res://.godot/imported/MusicDisabled.png-a8f0a4e59b02e9483d6e88a11bbfb263.ctex"]
 
 [params]
 

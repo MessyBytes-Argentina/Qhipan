@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmiiphouhx4xy"
-path="res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"
+uid="uid://xs4jg4hwr8xe"
+path="res://.godot/imported/FXHover.png-d06ab0bb5e71f8a1a4a3f69089e8da95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/RedHorizontalBarFill3Slice.png"
-dest_files=["res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"]
+source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXHover.png"
+dest_files=["res://.godot/imported/FXHover.png-d06ab0bb5e71f8a1a4a3f69089e8da95.ctex"]
 
 [params]
 

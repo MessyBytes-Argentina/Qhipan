@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmiiphouhx4xy"
-path="res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"
+uid="uid://chg63nofp88n7"
+path="res://.godot/imported/ParticleControl.svg-e0f2a9aded3ec4fdd0272318c995da7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/RedHorizontalBarFill3Slice.png"
-dest_files=["res://.godot/imported/RedHorizontalBarFill3Slice.png-993a78bc65b69954b5293a1216c9eab9.ctex"]
+source_file="res://GodotObjects/GeneralElements/MultipleParticleEmitter/ParticleControl.svg"
+dest_files=["res://.godot/imported/ParticleControl.svg-e0f2a9aded3ec4fdd0272318c995da7c.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
