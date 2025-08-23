@@ -27,9 +27,9 @@ const MINFALLDISTANCE: float = 0.75
 ## Maximum fall distance to play the fall sound at top volume.
 const MAXFALLDISTANCE: float = 5.0
 ## Minimum fall volume.
-const MINFALLVOLUME: float = -12.0
+const MINFALLVOLUME: float = -7.0
 ## Maximum fall volume.
-const MAXFALLVOLUME: float = -10.0
+const MAXFALLVOLUME: float = -5.0
 ## Minimum fall volume.
 const MINFALLPITCH: float = 1.5
 ## Maximum fall volume.

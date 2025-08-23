@@ -93,14 +93,11 @@ omni_range = 2.0
 unique_name_in_owner = true
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1, 0)
 layers = 2
-pixel_size = 0.001
+pixel_size = 0.005
 billboard = 1
-shaded = true
 double_sided = false
 no_depth_test = true
-fixed_size = true
-alpha_cut = 2
-render_priority = 4
+render_priority = 3
 
 [node name="PopUpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

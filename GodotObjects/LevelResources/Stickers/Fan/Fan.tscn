@@ -34,7 +34,7 @@ colors = PackedColorArray(1, 1, 1, 1)
 gradient = SubResource("Gradient_2hw6u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5l5r5"]
-render_priority = 4
+render_priority = 2
 transparency = 1
 albedo_texture = ExtResource("2_e06n3")
 detail_enabled = true
