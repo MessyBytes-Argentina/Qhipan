@@ -23,13 +23,16 @@
 [ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/GeneralElements/Player/poofEmitter.tscn" id="22_0rg7o"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("CanvasLayer/SubViewport")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node"]
 script = ExtResource("1_dxbmg")
 sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), ExtResource("7_ecpr7"), ExtResource("6_5ktst"), ExtResource("5_38xoa"), ExtResource("4_d0xu3"), ExtResource("3_0rg7o"), ExtResource("2_tv7nj"), ExtResource("10_s5eie"), ExtResource("11_p2227"), ExtResource("12_sg3fy"), ExtResource("13_28kp4"), ExtResource("14_as1pu"), ExtResource("15_6x7mq")])
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="CanvasLayer2"]
+visible = false
 pixel_size = 0.0098
 billboard = 1
 transparent = false
@@ -39,35 +42,46 @@ texture_filter = 1
 render_priority = 5
 texture = SubResource("ViewportTexture_81nvi")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(1152, 648)
-
-[node name="StartScene" parent="SubViewport" instance=ExtResource("2_fhpfe")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15)
+current = true
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="CanvasLayer2"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
 
-[node name="Poof" parent="Particles" instance=ExtResource("3_7th63")]
+[node name="Poof" parent="CanvasLayer2/Particles" instance=ExtResource("3_7th63")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
 
-[node name="Particles1" parent="Particles" instance=ExtResource("4_tjpxc")]
+[node name="Particles1" parent="CanvasLayer2/Particles" instance=ExtResource("4_tjpxc")]
 unique_name_in_owner = true
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 3.5)
 
-[node name="FanParticles" parent="Particles" instance=ExtResource("5_r1tmu")]
+[node name="FanParticles" parent="CanvasLayer2/Particles" instance=ExtResource("5_r1tmu")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3)
 
-[node name="ParticleEmitters" type="Node3D" parent="."]
+[node name="ParticleEmitters" type="Node3D" parent="CanvasLayer2"]
 unique_name_in_owner = true
 
-[node name="Poof2" parent="ParticleEmitters" instance=ExtResource("22_0rg7o")]
+[node name="Poof2" parent="CanvasLayer2/ParticleEmitters" instance=ExtResource("22_0rg7o")]
 unique_name_in_owner = true
 
-[node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]
+[node name="PostProcessing" parent="CanvasLayer2" instance=ExtResource("6_fhpfe")]
 visible = true
+skeleton = NodePath("../..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 14
+follow_viewport_enabled = true
+
+[node name="StartScene" parent="CanvasLayer" instance=ExtResource("2_fhpfe")]
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer"]
+disable_3d = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(1152, 648)
+render_target_clear_mode = 1
+render_target_update_mode = 4

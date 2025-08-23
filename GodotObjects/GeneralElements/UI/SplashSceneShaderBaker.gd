@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 ## Plays all provided particles and sounds to make sure godot prebakes them.
 
