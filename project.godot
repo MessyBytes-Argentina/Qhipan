@@ -45,7 +45,7 @@ window/name="Qhipan"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/decal_compatibility/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg")
+enabled=PackedStringArray("res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg")
 
 [global_group]
 
