@@ -6,6 +6,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 
 // Base
 uniform vec4 albedo : source_color = vec4(1.0);
+uniform sampler2D mask : source_color, filter_nearest_mipmap, repeat_enable;
 
 // Toon shader variables
 uniform sampler2D light_gradient;
@@ -180,7 +181,8 @@ void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
-	ALBEDO = albedo.rgb + applied_fresnel;
+	float mask_value = texture(mask, UV).r;
+	ALBEDO = albedo.rgb + applied_fresnel * mask_value;
 	vec2 base_uv = UV;
 	
 	// Worldmapping
@@ -209,24 +211,24 @@ void fragment() {
 	vec4 roughness_texture_channel = vec4(0.0, 1.0, 0.0, 0.0);
 	vec4 base_roughness = triple_condition_vec4(texture(bottom_texture_roughness, base_detail_uv.xy), texture(top_texture_roughness, base_detail_uv.xy), texture(side_texture_roughness, base_detail_uv.xy), base_detail_uv.z);
 	float roughness_tex = dot(base_roughness, roughness_texture_channel);
-	ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z);
+	ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z) * mask_value;
 	
 	// Metallic: Enabled
 	vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
 	float metallic_tex = dot(base_metallic, metallic_texture_channel);
-	METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
-	SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z);
+	METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z) * mask_value;
+	SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z) * mask_value;
 	
 	if (enable_normal) {
 		// Normal Map: Enabled
-		NORMAL_MAP = (triple_condition_vec4(texture(bottom_texture_normal, base_detail_uv.xy), texture(top_texture_normal, base_detail_uv.xy), texture(side_texture_normal, base_detail_uv.xy), base_detail_uv.z)).rgb;
-		NORMAL_MAP_DEPTH = triple_condition_float(bottom_normal_scale, top_normal_scale, side_normal_scale, base_detail_uv.z);
+		NORMAL_MAP = (triple_condition_vec4(texture(bottom_texture_normal, base_detail_uv.xy), texture(top_texture_normal, base_detail_uv.xy), texture(side_texture_normal, base_detail_uv.xy), base_detail_uv.z)).rgb * mask_value;
+		NORMAL_MAP_DEPTH = triple_condition_float(bottom_normal_scale, top_normal_scale, side_normal_scale, base_detail_uv.z) * mask_value;
 	}
 	
 	if (enable_emission) {
 		// Emission: Add
 		vec3 emission_tex = (triple_condition_vec4(texture(bottom_texture_emission, base_detail_uv.xy), texture(top_texture_emission, base_detail_uv.xy), texture(side_texture_emission, base_detail_uv.xy), base_detail_uv.z)).rgb;
-		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy_multiplier, top_emission_energy_multiplier, side_emission_energy_multiplier, base_detail_uv.z);
+		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy_multiplier, top_emission_energy_multiplier, side_emission_energy_multiplier, base_detail_uv.z) * mask_value;
 	}
 	
 	if (enable_clearcoat) {
@@ -234,26 +236,27 @@ void fragment() {
 		vec2 clearcoat_tex = (triple_condition_vec4(texture(bottom_texture_clearcoat, base_detail_uv.xy), texture(top_texture_clearcoat, base_detail_uv.xy), texture(side_texture_clearcoat, base_detail_uv.xy), base_detail_uv.z)).xy;
 		float clearcoat = triple_condition_float(bottom_clearcoat, top_clearcoat, side_clearcoat, base_detail_uv.z);
 		float clearcoat_roughness = triple_condition_float(bottom_clearcoat_roughness, top_clearcoat_roughness, side_clearcoat_roughness, base_detail_uv.z);
-		CLEARCOAT = clearcoat * clearcoat_tex.x;
-		CLEARCOAT_ROUGHNESS = clearcoat_roughness * clearcoat_tex.y;
+		CLEARCOAT = clearcoat * clearcoat_tex.x * mask_value;
+		CLEARCOAT_ROUGHNESS = clearcoat_roughness * clearcoat_tex.y * mask_value;
 	}
 	
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
 		vec3 anisotropy_tex = (triple_condition_vec4(texture(bottom_texture_anisotropy_flowmap, base_detail_uv.xy), texture(top_texture_anisotropy_flowmap, base_detail_uv.xy), texture(side_texture_anisotropy_flowmap, base_detail_uv.xy), base_detail_uv.z)).rga;
-		ANISOTROPY = triple_condition_float(bottom_anisotropy, top_anisotropy, side_anisotropy, base_detail_uv.z) * anisotropy_tex.b;
-		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0;
+		ANISOTROPY = triple_condition_float(bottom_anisotropy, top_anisotropy, side_anisotropy, base_detail_uv.z) * anisotropy_tex.b * mask_value;
+		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0 * mask_value;
 	}
 	
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
-		AO = dot(triple_condition_vec4(texture(bottom_texture_ambient_occlusion, base_detail_uv.xy), texture(top_texture_ambient_occlusion, base_detail_uv.xy), texture(side_texture_ambient_occlusion, base_detail_uv.xy), base_detail_uv.z), ao_texture_channel);
-		AO_LIGHT_AFFECT = triple_condition_float(bottom_ao_light_affect, top_ao_light_affect, side_ao_light_affect, base_detail_uv.z);
+		AO = dot(triple_condition_vec4(texture(bottom_texture_ambient_occlusion, base_detail_uv.xy), texture(top_texture_ambient_occlusion, base_detail_uv.xy), texture(side_texture_ambient_occlusion, base_detail_uv.xy), base_detail_uv.z), ao_texture_channel) * mask_value;
+		AO_LIGHT_AFFECT = triple_condition_float(bottom_ao_light_affect, top_ao_light_affect, side_ao_light_affect, base_detail_uv.z) * mask_value;
 	}
 	
 	// Cutout border painting
-	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
-	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
+	ALBEDO = mix(borderColor, ALBEDO, borderDistance) * mask_value;
+	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance) * mask_value;
+	ALPHA = mask_value;
 }
 
 void light() {

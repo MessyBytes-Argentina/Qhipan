@@ -1,14 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://8psq8m74l0gh"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://8psq8m74l0gh"]
 
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_jly1r"]
 [ext_resource type="Texture2D" uid="uid://d1sfip5meglo5" path="res://Assets/Textures/UV Textures/Rust-1/Rust-1-Top.png" id="2_f7ye8"]
-
-[sub_resource type="Gradient" id="Gradient_bof8u"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_amxg1"]
-gradient = SubResource("Gradient_bof8u")
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_f7ye8"]
 
 [sub_resource type="Gradient" id="Gradient_epi6i"]
 offsets = PackedFloat32Array(0.75, 1)
@@ -21,7 +15,7 @@ gradient = SubResource("Gradient_epi6i")
 render_priority = 0
 shader = ExtResource("1_jly1r")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/color_gradient = SubResource("GradientTexture1D_amxg1")
+shader_parameter/light_gradient = ExtResource("3_f7ye8")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
 shader_parameter/top_texture_albedo = ExtResource("2_f7ye8")
 shader_parameter/bottom_texture_albedo = ExtResource("2_f7ye8")

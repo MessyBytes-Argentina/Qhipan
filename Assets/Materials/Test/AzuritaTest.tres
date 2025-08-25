@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TTCMaterialMaker" load_steps=10 format=3 uid="uid://btv7s0av85xyq"]
 
 [ext_resource type="Material" uid="uid://dpwnmlllhdi3j" path="res://Assets/Materials/Test/Azurita.tres" id="1_l3ku0"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/ColorGradient.tres" id="1_pdjjf"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="1_pdjjf"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_w61ks"]
 [ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_m4ttx"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="5_77s42"]
