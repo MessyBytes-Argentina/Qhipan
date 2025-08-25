@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dgfk5ryw7qatd"]
 
-[ext_resource type="Shader" path="res://addons/dreadpon.spatial_gardener/shaders/sh_circle_brush.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://c8hlhqho41jj7" path="res://addons/dreadpon.spatial_gardener/shaders/sh_circle_brush.gdshader" id="1"]
 
 [resource]
 render_priority = 0

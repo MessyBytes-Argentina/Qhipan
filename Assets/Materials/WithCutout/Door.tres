@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_gij6w"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_7ppuc"]
-[ext_resource type="Texture2D" uid="uid://0u4oi5inxe6s" path="res://Assets/Textures/UV Textures/Doors/Door.png" id="2_auu43"]
+[ext_resource type="Texture2D" uid="uid://0u4oi5inxe6s" path="res://Assets/Textures/UV Textures/Doors/Door.png" id="2_o33wc"]
 
 [sub_resource type="Gradient" id="Gradient_epi6i"]
 offsets = PackedFloat32Array(0.75, 1)
@@ -15,25 +15,25 @@ gradient = SubResource("Gradient_epi6i")
 render_priority = 0
 shader = ExtResource("1_gij6w")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("2_auu43")
+shader_parameter/albedo_texture = ExtResource("2_o33wc")
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/light_gradient = ExtResource("2_7ppuc")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_o33wc")
 shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
+shader_parameter/metallic_specular = 0.0
 shader_parameter/metallic = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/enable_emission = false
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 0.0
+shader_parameter/emission_energy_multiplier = 0.0
 shader_parameter/enable_normal = false
 shader_parameter/normal_scale = 0.0
 shader_parameter/enable_clearcoat = false
 shader_parameter/clearcoat = 0.0
 shader_parameter/clearcoat_roughness = 0.0
 shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy_ratio = 0.0
+shader_parameter/anisotropy = 0.0
 shader_parameter/enable_ambient_occlusion = false
 shader_parameter/ao_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/ao_light_affect = 0.0

@@ -28,7 +28,7 @@ uniform vec4 metallic_texture_channel;
 uniform bool enable_emission = false;
 uniform sampler2D emission_texture : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
 uniform vec4 emission : source_color;
-uniform float emission_energy : hint_range(0.0, 100.0, 0.01);
+uniform float emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
 
 // Normal
 uniform bool enable_normal = false;
@@ -43,7 +43,7 @@ uniform sampler2D clearcoat_texture : hint_default_white, filter_linear_mipmap, 
 
 // Anisotropy
 uniform bool enable_anisotropy = false;
-uniform float anisotropy_ratio : hint_range(0.0, 1.0, 0.01);
+uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 uniform sampler2D anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 
 // Ambient Occlusion
@@ -107,7 +107,7 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	vec4 base_color = texture(albedo_texture, base_uv);
 	ALBEDO = base_color.rgb * albedo.rgb + applied_fresnel;
-	
+
 	//Cylinder cutout
 	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
 	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
@@ -120,28 +120,28 @@ void fragment() {
 	resultShape = opSubtraction(sdfAuxBox, resultShape) * float(auxMode) + resultShape * float(auxMode == false);
 	if (resultShape < 0.0 && docutout) {discard;}
 	float borderDistance = smoothstep(0.0, borderSize, resultShape) * float(docutout) + float(docutout == false);
-	
+
 	//Roughness: Enabled
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(texture(roughness_texture, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
-	
+
 	// Metallic: Enabled
 	float metallic_tex = dot(texture(metallic_texture, base_uv), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
+	SPECULAR = metallic_specular;
 
 	if (enable_normal) {
 		// Normal Map: Enabled
 		NORMAL_MAP = texture(normal_texture, base_uv).rgb;
 		NORMAL_MAP_DEPTH = normal_scale;
 	}
-	
+
 	if (enable_emission) {
 		// Emission: Enabled
 		vec3 emission_tex = texture(emission_texture, base_uv).rgb;
 		// Emission Operator: Add
-		EMISSION = (emission.rgb + emission_tex) * emission_energy;
+		EMISSION = (emission.rgb + emission_tex) * emission_energy_multiplier;
 	}
 
 	if (enable_clearcoat) {
@@ -150,20 +150,20 @@ void fragment() {
 		CLEARCOAT = clearcoat * clearcoat_tex.x;
 		CLEARCOAT_ROUGHNESS = clearcoat_roughness * clearcoat_tex.y;
 	}
-	
+
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
 		vec3 anisotropy_tex = texture(anisotropy_flowmap, base_uv).rga;
-		ANISOTROPY = anisotropy_ratio * anisotropy_tex.b;
+		ANISOTROPY = anisotropy * anisotropy_tex.b;
 		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0;
 	}
-	
+
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
 		AO = dot(texture(ao_texture, base_uv), ao_texture_channel);
 		AO_LIGHT_AFFECT = ao_light_affect;
 	}
-	
+
 	// Cutout border painting
 	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
 	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
