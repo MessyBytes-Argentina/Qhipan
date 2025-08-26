@@ -9,6 +9,8 @@ const AREAHIGHLIGHTOFFSET: float = 0.01
 const STICKERHIGHLIGHTBOBDISTANCE: float = 0.1
 ## Amount of time the bobbing animation takes.
 const STICKERHIGHLIGHTBOBTIME: float = 0.5
+## Maximum surface distance
+const MAXSURFACEDISTANCE: float = 2.25
 
 ## Pick up sound player reference
 @onready var pickupSound: RandomPitchPlayer = $Pickup
@@ -24,6 +26,8 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 @onready var areaHighlight: Sprite3D = %AreaHighlight
 ## HighligtPivot reference for position placement
 @onready var highlightPivot: Node3D = %HighlightPivot
+## PlaceholderArea reference for sticker placement detection
+@onready var placeholderArea: Area3D = %PlaceholderArea
 
 ## List of stickers in grabbing range
 var closeStickers: Array[StickerBase] = []
@@ -45,6 +49,8 @@ var canDrop: bool = true
 var zoomedOut: bool = false
 ## Tween for the highlight bobbing animation
 var stickerHighlightTween: Tween
+## The valid surfaces for stickers
+var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -126,8 +132,25 @@ func _on_area_entered(area: Area3D) -> void:
 func _on_area_exited(area: Area3D) -> void:
 	closeAreas.erase(area)
 
+## Fetches valid surfaces for stickers.
+func _fetch_valid_surfaces() -> void:
+	for gridmap: StickerGridmap in get_tree().get_nodes_in_group("Gridmap"):
+		for key in gridmap.stickerableSurfaces:
+			stickerableSurfaces[key] = gridmap.stickerableSurfaces[key]
+
 ## Sorts the closeAreas list by distance and shows area highlight when possible
 func sort_close_areas() -> void:
+	## TEST
+	if len(stickerableSurfaces.keys()) > 0:
+		var surfaceArray: Array[Vector3] = stickerableSurfaces.keys()
+		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
+		if global_position.distance_to(surfaceArray[0]) > MAXSURFACEDISTANCE:
+			placeholderArea.set_deferred("monitorable", false)
+		else:
+			placeholderArea.global_position = surfaceArray[0]
+			placeholderArea.set_deferred("monitorable", true)
+			placeholderArea.set_meta("pointing", stickerableSurfaces[surfaceArray[0]])
+	
 	closeAreas.sort_custom(func(a: Area3D, b: Area3D): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	if not pickupOnHand:
 		if areaHighlight: areaHighlight.hide()
