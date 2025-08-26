@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=10 format=3 uid="uid://dg8412wrqq4hm"]
 
-[ext_resource type="QuadMesh" uid="uid://b3dha7mvoas00" path="res://test/mesh_instance_3d.tres" id="1_nah6i"]
+[ext_resource type="ArrayMesh" uid="uid://l64r46km8nd7" path="res://GodotObjects/LevelResources/Props/Decorations/Botellon Corcho.tres" id="1_nah6i"]
 [ext_resource type="Script" uid="uid://cjsirac1827tg" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" id="1_x03x2"]
 [ext_resource type="Script" uid="uid://c6btkf1v8d8pn" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" id="2_5esm4"]
-[ext_resource type="PackedScene" uid="uid://edbh3w3l1o2s" path="res://test/mesh_instance_3d.tscn" id="3_pl0xl"]
+[ext_resource type="PackedScene" uid="uid://bsaoxxoswk6dt" path="res://GodotObjects/LevelResources/Props/Decorations/Botellon Corcho.tscn" id="3_5esm4"]
 [ext_resource type="Script" uid="uid://bnsd2fyntembv" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="4_0hqna"]
 [ext_resource type="Script" uid="uid://ckg16wf0ebcts" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="5_l4ry1"]
 
@@ -11,7 +11,7 @@
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("2_5esm4")
 mesh = ExtResource("1_nah6i")
-spawned_spatial = ExtResource("3_pl0xl")
+spawned_spatial = ExtResource("3_5esm4")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
@@ -19,6 +19,7 @@ metadata/class = "Greenhouse_LODVariant"
 resource_name = "Greenhouse_Plant"
 script = ExtResource("4_0hqna")
 mesh/mesh_LOD_variants = [SubResource("Resource_nah6i")]
+mesh/selected_for_edit_resource = SubResource("Resource_nah6i")
 mesh/mesh_LOD_max_distance = 10.0
 mesh/mesh_LOD_kill_distance = -1.0
 mesh/mesh_LOD_max_capacity = 75
@@ -26,13 +27,13 @@ mesh/mesh_LOD_min_size = 1.0
 octree/octree_reconfigure_button = false
 octree/octree_recenter_button = false
 density/density_per_units = 100.0
-scale/scale_scaling_type = 0
-scale/scale_range = [Vector3(1, 1, 1), Vector3(1, 1, 1)]
+scale/scale_scaling_type = 1
+scale/scale_range = [Vector3(0.5, 0.5, 0.5), Vector3(2, 2, 2)]
 up_vector/up_vector_primary_type = 4
 up_vector/up_vector_primary = Vector3(0, 0, 0)
-up_vector/up_vector_secondary_type = 4
+up_vector/up_vector_secondary_type = 2
 up_vector/up_vector_secondary = Vector3(0, 0, 0)
-up_vector/up_vector_blending = 0.0
+up_vector/up_vector_blending = 0.5
 fwd_vector/fwd_vector_primary_type = 0
 fwd_vector/fwd_vector_primary = Vector3(0, 0, 0)
 fwd_vector/fwd_vector_secondary_type = 0

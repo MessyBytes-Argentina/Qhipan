@@ -109,6 +109,18 @@ detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
 
+[sub_resource type="Gradient" id="Gradient_mseqm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
+gradient = SubResource("Gradient_mseqm")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.275
 height = 0.8
@@ -155,18 +167,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hlfjp"]
 radius = 0.35
-
-[sub_resource type="Gradient" id="Gradient_mseqm"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
-gradient = SubResource("Gradient_mseqm")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_h423j"]
 resource_name = "Float"
@@ -661,6 +661,7 @@ transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0,
 
 [node name="Sprite" type="MeshInstance3D" parent="SpritePivot"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 0, 1, 0.0353553, -0.0362767, 0.0996694)
 layers = 2
 mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
@@ -695,6 +696,16 @@ stream = ExtResource("11_xq41j")
 volume_db = -20.0
 script = ExtResource("10_8hsli")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[node name="ShadowDecal" type="Decal" parent="SpritePivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.939691, -0.34202, 0, 0.342019, 0.939692, 0.0353553, -0.506123, -0.0713405)
+size = Vector3(0.6, 2, 0.6)
+texture_albedo = SubResource("GradientTexture2D_vq31v")
+lower_fade = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+cull_mask = 1048573
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cphfr")
@@ -775,6 +786,7 @@ target_position = Vector3(-0.05, -6, 0.076)
 [node name="LightDecal" type="Decal" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.999999, -1.19209e-07, 0, -2.10734e-08, 1, 0, 0, 0)
+visible = false
 size = Vector3(20, 10, 20)
 texture_albedo = SubResource("GradientTexture2D_bjorx")
 texture_emission = SubResource("GradientTexture2D_bjorx")
@@ -851,16 +863,6 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea/PlaceholderArea"]
 shape = SubResource("SphereShape3D_hlfjp")
 debug_color = Color(1, 0.833333, 0, 0.419608)
-
-[node name="ShadowDecal" type="Decal" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.999999, -1.19209e-07, 0, -2.10734e-08, 1, 0, -0.499999, 3.68785e-08)
-size = Vector3(0.5, 2, 0.5)
-texture_albedo = SubResource("GradientTexture2D_vq31v")
-lower_fade = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-cull_mask = 1048573
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

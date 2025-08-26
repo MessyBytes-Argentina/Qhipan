@@ -51,6 +51,8 @@ var zoomedOut: bool = false
 var stickerHighlightTween: Tween
 ## The valid surfaces for stickers
 var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
+## Surfaces that already hold stickers
+var surfacesWithStickers: PackedVector3Array = []
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -81,7 +83,9 @@ func _input(event: InputEvent) -> void:
 func do_grab() -> void:
 	if len(closeStickers) == 0: return
 	currentPickup = closeStickers[0]
-	if currentPickup.placed: removeSound.play_sound()
+	if currentPickup.placed:
+		removeSound.play_sound()
+		if surfacesWithStickers.has(currentPickup.placedPosition): surfacesWithStickers.remove_at(surfacesWithStickers.find(currentPickup.placedPosition))
 	else: pickupSound.play_sound()
 	currentPickup.reparent(self)
 	currentPickup.grab(self)
@@ -91,6 +95,7 @@ func do_grab() -> void:
 func check_available_area(onReset: bool = false) -> bool:
 	if currentArea and not onReset:
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
+		if currentArea == placeholderArea: surfacesWithStickers.append(placeholderArea.global_position)
 		stickSound.play_sound()
 		return true
 	return false
@@ -144,6 +149,7 @@ func sort_close_areas() -> void:
 	if len(stickerableSurfaces.keys()) > 0:
 		var surfaceArray: Array[Vector3] = stickerableSurfaces.keys()
 		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
+		surfaceArray = surfaceArray.filter(func(s: Vector3): return s not in surfacesWithStickers)
 		if global_position.distance_to(surfaceArray[0]) > MAXSURFACEDISTANCE:
 			placeholderArea.set_deferred("monitorable", false)
 		else:

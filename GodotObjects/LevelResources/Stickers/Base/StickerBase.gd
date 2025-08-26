@@ -61,6 +61,8 @@ var grabed: bool = false
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
 ## Reference to the original parent of this sticker
 var originalParent: Node
+## Placed position reference for overlaps.
+var placedPosition: Vector3
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,21 +82,19 @@ func _ready() -> void:
 		start_rotation()
 	else:
 		await get_tree().create_timer(PLACEDCHECKTIME).timeout
-		var areas: Array[Area3D] = areaChecker.get_overlapping_areas()
-		var closest: Area3D
-		var shortestDistance: float = 9999999999
-		if len(areas) > 0:
-			for area in areas:
-				var currentDistance: float = global_position.distance_to(area.global_position)
-				var hasSticker: bool = area.get_children().any(func(a: Node): return a is StickerBase)
-				if currentDistance < shortestDistance and not hasSticker:
-					closest = area
-					shortestDistance = currentDistance
-			if closest and closest.get_collision_layer_value(11):
-				place_sticker(closest, closest.get_meta("pointing"))
-				return
-		set_size(ScaleModes.DROPPED)
-		start_rotation()
+		var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
+		while len(grabArea.stickerableSurfaces) == 0:
+			await get_tree().process_frame
+		var surfaceArray: Array[Vector3] = grabArea.stickerableSurfaces.keys()
+		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
+		var closest: Vector3 = surfaceArray[0]
+		var temporaryArea: Area3D = Area3D.new()
+		add_child(temporaryArea)
+		temporaryArea.global_position = closest
+		place_sticker(temporaryArea, grabArea.stickerableSurfaces[closest], true)
+		temporaryArea.queue_free()
+		grabArea.surfacesWithStickers.append(closest)
+		shadowDecal.hide()
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
@@ -119,6 +119,7 @@ func prerender() -> void:
 ## Places the sticker on the given area facing the given direction
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
 	set_size(ScaleModes.PLACED)
+	placedPosition = area.global_position
 	global_position = area.global_position + direction * 0.01
 	onPlayer = false
 	placed = true
