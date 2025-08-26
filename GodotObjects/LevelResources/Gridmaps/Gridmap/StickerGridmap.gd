@@ -26,6 +26,12 @@ var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
 func _ready() -> void:
 	fetch_stickerable_surfaces()
 
+## Ties queue free to function.
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_PREDELETE:
+			_on_delete_requested()
+
 ## Fetches all valid stickerable surfaces.
 func fetch_stickerable_surfaces() -> void:
 	# Fetch valid materials and pointing vectors.
@@ -50,3 +56,7 @@ func fetch_stickerable_surfaces() -> void:
 		await get_tree().process_frame
 		grabArea = get_tree().get_first_node_in_group("Player").grabArea
 	grabArea._fetch_valid_surfaces()
+
+## Runs before it's freed.
+func _on_delete_requested() -> void:
+	get_tree().get_first_node_in_group("Player").grabArea._fetch_valid_surfaces()
