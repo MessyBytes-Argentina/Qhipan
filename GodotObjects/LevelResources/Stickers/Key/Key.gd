@@ -15,15 +15,15 @@ func _ready() -> void:
 	animationPlayer.play("RESET")
 
 ## Places the sticker and checks for door
-func place_sticker(area: Area3D, direction: Vector3) -> void:
-	super(area, direction)
-	#animationPlayer.play("SpinUp")
+func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+	super(area, direction, isPlaceholderArea)
 	await get_tree().create_timer(0.1).timeout
 	check_door()
 
 ## Checks if it has a door as an ancestor
 ## if true disables the key and starts the animation
 func check_door():
+	if get_parent() == originalParent: return
 	var superParent: Node3D = get_parent().get_parent()
 	if superParent is DoorBody:
 		door = superParent

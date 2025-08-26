@@ -10,9 +10,9 @@ const VALIDFACES: Dictionary[String, PackedVector3Array] = {
 	"Cube": [Vector3.UP, Vector3.LEFT, Vector3.FORWARD, Vector3.RIGHT, Vector3.BACK],
 	"RampUpsideDown": [Vector3.UP, Vector3.RIGHT],
 	"Ramp": [Vector3.RIGHT],
-	"SlabCornerRemovedUpsideDown": [Vector3.UP * 0.5],
-	"SlabRampUpsideDown": [Vector3.UP * 0.5],
-	"Slab": [Vector3.UP * 0.5],
+	"SlabCornerRemovedUpsideDown": [Vector3.UP],
+	"SlabRampUpsideDown": [Vector3.UP],
+	"Slab": [Vector3.UP],
 	"Wedge": [Vector3.RIGHT, Vector3.BACK]
 }
 
@@ -38,12 +38,15 @@ func fetch_stickerable_surfaces() -> void:
 	var usedCells: Array[Vector3i] = get_used_cells()
 	for cell in usedCells:
 		var cellItem: int = get_cell_item(cell)
+		var isSlab: bool = mesh_library.get_item_name(cellItem).contains("Slab")
+		var test = mesh_library.get_item_name(cellItem) == "Slab__Patron-Andino-1"
 		if cellItem not in stickerableMaterials.keys(): continue
 		for direction in stickerableMaterials[cellItem]:
 			var rotatedDirection: Vector3 = direction * get_cell_item_basis(cell).inverse()
 			var testDirection: Vector3i = rotatedDirection.normalized()
 			if (cell + testDirection) in usedCells or (cell + testDirection + Vector3i.UP) in usedCells: continue
-			stickerableSurfaces[to_global(map_to_local(cell)) + rotatedDirection / 2.0 + cell_size * Vector3.UP] = rotatedDirection
+			if test: prints(map_to_local(cell), to_global(map_to_local(cell)), rotatedDirection, to_global(map_to_local(cell)) + rotatedDirection / 2.0 + cell_size * Vector3.UP)
+			stickerableSurfaces[to_global(map_to_local(cell)) + ((rotatedDirection / 2.0) if not isSlab else Vector3.ZERO) + cell_size * Vector3.UP] = rotatedDirection
 	var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
 	while not grabArea:
 		await get_tree().process_frame

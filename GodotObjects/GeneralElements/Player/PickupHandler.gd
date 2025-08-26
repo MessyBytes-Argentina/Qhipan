@@ -90,7 +90,7 @@ func do_grab() -> void:
 ## Checks for available areas to place a sticker
 func check_available_area(onReset: bool = false) -> bool:
 	if currentArea and not onReset:
-		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"))
+		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
 		stickSound.play_sound()
 		return true
 	return false

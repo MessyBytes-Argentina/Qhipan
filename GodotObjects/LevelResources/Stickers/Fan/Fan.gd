@@ -18,10 +18,10 @@ func _ready() -> void:
 		fanParticles.emitting = false
 
 ## Plays sound and places the fan then starts the fan animation.
-func place_sticker(area: Area3D, direction: Vector3) -> void:
+func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
 	if grabed:
 		spinupSound.play_sound()
-	super(area, direction)
+	super(area, direction, isPlaceholderArea)
 	animationPlayer.play("SpinUp")
 
 ## Turns off the fan and grabs it

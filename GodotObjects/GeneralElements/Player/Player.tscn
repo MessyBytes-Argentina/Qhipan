@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=101 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
@@ -155,16 +155,6 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hlfjp"]
 radius = 0.35
-
-[sub_resource type="Gradient" id="Gradient_bjorx"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.509346)
-colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mseqm"]
-gradient = SubResource("Gradient_bjorx")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_mseqm"]
 interpolation_mode = 1
@@ -861,11 +851,6 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea/PlaceholderArea"]
 shape = SubResource("SphereShape3D_hlfjp")
 debug_color = Color(1, 0.833333, 0, 0.419608)
-
-[node name="Sprite3D" type="Sprite3D" parent="GrabArea/PlaceholderArea"]
-billboard = 1
-no_depth_test = true
-texture = SubResource("GradientTexture2D_mseqm")
 
 [node name="ShadowDecal" type="Decal" parent="."]
 unique_name_in_owner = true

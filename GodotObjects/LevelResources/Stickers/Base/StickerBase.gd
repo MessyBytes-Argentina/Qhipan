@@ -59,6 +59,8 @@ var backMaterial: StandardMaterial3D
 var grabed: bool = false
 ## Current state of the sticker.
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
+## Reference to the original parent of this sticker
+var originalParent: Node
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,6 +74,7 @@ func _ready() -> void:
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	prerender()
 	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
+	originalParent = get_parent()
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
@@ -114,7 +117,7 @@ func prerender() -> void:
 	billboardZoomedOut.hide()
 
 ## Places the sticker on the given area facing the given direction
-func place_sticker(area: Area3D, direction: Vector3) -> void:
+func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
 	set_size(ScaleModes.PLACED)
 	global_position = area.global_position + direction * 0.01
 	onPlayer = false
@@ -123,7 +126,10 @@ func place_sticker(area: Area3D, direction: Vector3) -> void:
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	reparent(area)
+	if isPlaceholderArea:
+		reparent(originalParent)
+	else:
+		reparent(area)
 	grabed = false
 
 ## Changes the current state and visuals to the given mode
