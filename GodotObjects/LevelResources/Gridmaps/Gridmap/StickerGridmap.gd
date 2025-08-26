@@ -21,6 +21,8 @@ const VALIDFACES: Dictionary[String, PackedVector3Array] = {
 
 ## The list of stickerable surfaces.
 var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
+## Reference to the player grab area.
+var grabArea: PickupHandler
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,7 +53,6 @@ func fetch_stickerable_surfaces() -> void:
 			var testDirection: Vector3i = rotatedDirection.normalized()
 			if (cell + testDirection) in usedCells or (cell + testDirection + Vector3i.UP) in usedCells: continue
 			stickerableSurfaces[to_global(map_to_local(cell)) + ((rotatedDirection / 2.0) if not isSlab else Vector3.ZERO) + cell_size * Vector3.UP] = rotatedDirection
-	var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
 	while not grabArea:
 		await get_tree().process_frame
 		grabArea = get_tree().get_first_node_in_group("Player").grabArea
@@ -59,4 +60,4 @@ func fetch_stickerable_surfaces() -> void:
 
 ## Runs before it's freed.
 func _on_delete_requested() -> void:
-	get_tree().get_first_node_in_group("Player").grabArea._fetch_valid_surfaces()
+	if grabArea: grabArea._fetch_valid_surfaces()
