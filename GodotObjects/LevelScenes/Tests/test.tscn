@@ -81,7 +81,6 @@ data = {
 }
 script = ExtResource("3_ckktb")
 stickerValidTerrainTypes = PackedStringArray("Patron-Andino-1")
-metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="FanSticker" parent="." instance=ExtResource("4_sgigg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, -0.5)

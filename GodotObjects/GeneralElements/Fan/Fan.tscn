@@ -10,17 +10,17 @@ rings = 8
 ring_segments = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.8, 3, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
-size = Vector3(0.5, 1.5, 0.5)
+size = Vector3(0.8, 3.15, 0.8)
 
-[sub_resource type="Gradient" id="Gradient_gt347"]
+[sub_resource type="Gradient" id="Gradient_105mt"]
 offsets = PackedFloat32Array(0.25, 0.25)
 colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
-gradient = SubResource("Gradient_gt347")
+gradient = SubResource("Gradient_105mt")
 width = 16
 height = 32
 fill = 1
@@ -31,7 +31,6 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_igptx")
-pushForce = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_jh37w")
