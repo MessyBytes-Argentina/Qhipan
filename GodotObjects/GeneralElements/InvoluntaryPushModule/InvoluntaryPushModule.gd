@@ -1,5 +1,6 @@
 extends Node
 
+## Component class for objects that can be pushed around by fans
 class_name InvoluntaryPushModule
 
 ## Accumultation of non voluntary movements and forces.
