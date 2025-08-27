@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjg3u8idl755x"]
+[gd_scene load_steps=29 format=3 uid="uid://cjg3u8idl755x"]
 
 [ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.gd" id="1_2wwg3"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="2_e06n3"]
+[ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_sly70"]
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="3_6ngi6"]
 [ext_resource type="Texture2D" uid="uid://ct67p5u0qvkh4" path="res://Assets/Textures/Stickers/Fan/Vent-3.png" id="3_rl7rx"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
@@ -197,6 +198,10 @@ fill_from = Vector2(0.5, 0.5)
 collision_layer = 512
 script = ExtResource("1_2wwg3")
 
+[node name="InvoluntaryPushModule" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_sly70")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8ww4f")
 
@@ -241,7 +246,7 @@ texture = ExtResource("2_e06n3")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 514
 monitorable = false
 script = ExtResource("3_6ngi6")
 

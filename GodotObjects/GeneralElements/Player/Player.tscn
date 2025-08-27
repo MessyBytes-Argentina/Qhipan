@@ -1,6 +1,7 @@
-[gd_scene load_steps=101 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=102 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
+[ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/Camera_Rotate_Right.mp3" id="5_3jjt7"]
@@ -624,6 +625,10 @@ floor_constant_speed = true
 floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
+
+[node name="InvoluntaryPushModule" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_bjorx")
 
 [node name="PlayerSounds" type="Node3D" parent="."]
 

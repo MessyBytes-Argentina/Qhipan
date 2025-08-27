@@ -117,6 +117,8 @@ enum States {Idle, Walk, Float}
 	"keyboard": preload("uid://dd8k35t2irrpo"),
 	"controller": preload("uid://3pmu7pe3ruii")
 }
+## Reference to the involuntary movement module.
+@onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 #endregion
 
 #region Variables
@@ -134,8 +136,6 @@ var spriteFlipTween: Tween
 var lastHorizontal: float = 1
 ## Whether the sprite is facing backwards.
 var facingBack: bool = false
-## Accumultation of non voluntary movements and forces.
-var pushingForces: Dictionary[Node3D, Vector3] = {}
 ## Accumultation of nogravity areas.
 var noGravityZones: Array[Node3D] = []
 ## How much the player moved after last checkpoint.
@@ -349,9 +349,7 @@ func get_move_direction() -> Vector3:
 ## Moves the player character.
 func move_character(delta: float) -> void:
 	var moveDirection: Vector3 = get_move_direction()
-	var pushForce: Vector3 = Vector3.ZERO
-	for object in pushingForces:
-		pushForce += pushingForces[object]
+	var pushForce: Vector3 = involuntaryPushModule.get_current_push()
 	if moved >= movementMaximum and not stopped and not disableMaximum:
 		do_popup()
 		stopped = true
@@ -445,7 +443,7 @@ func restart_at_checkpoint() -> void:
 	lastInvoluntarySpeed = Vector3.ZERO
 	lastPushForce = Vector3.ZERO
 	noGravityZones.clear()
-	pushingForces.clear()
+	involuntaryPushModule.clear()
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = currentCheckpointPosition
 	reset_aura()
@@ -520,14 +518,6 @@ func checkpoint_exited() -> void:
 
 ## External forces functions
 #region External Forces
-## Adds a push force to the pushingForces list
-func push(node: Node3D, direction: Vector3, force: float) -> void:
-	pushingForces[node] = direction * force
-
-## Removes a push force from the pushingForces list
-func stop_pushing(node: Node3D) -> void:
-	pushingForces.erase(node)
-
 ## Adds a no gravity zone to the noGravityZones list
 func enter_no_gravity(node: Node3D) -> void:
 	if not noGravityZones.has(node): noGravityZones.append(node)

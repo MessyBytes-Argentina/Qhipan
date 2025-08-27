@@ -64,8 +64,8 @@ func switch_fan(mode: bool = not isOn) -> void:
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
-	if body.has_method("push"): body.push(self, origin.global_position.direction_to(target.global_position), pushForce)
+	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:
-	if body.has_method("stop_pushing"): body.stop_pushing(self)
+	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").stop_pushing(self)

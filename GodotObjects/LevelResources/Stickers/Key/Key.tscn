@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=21 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Textures/Stickers/Key/Key-1.png" id="2_mjg6o"]
+[ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_s3lcm"]
 [ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Textures/Stickers/Key/Key-Used.png" id="3_loxqr"]
 [ext_resource type="Script" uid="uid://bok5ycfda8ov6" path="res://GodotObjects/LevelResources/Stickers/Key/Key.gd" id="4_ws05p"]
 [ext_resource type="Texture2D" uid="uid://ddl4r2wmhi7dh" path="res://Assets/Textures/Stickers/Key/key-2.png" id="5_ws05p"]
@@ -140,6 +141,10 @@ _data = {
 collision_layer = 512
 script = ExtResource("4_ws05p")
 validAreaIndexes = Array[int]([11, 12])
+
+[node name="InvoluntaryPushModule" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_s3lcm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true

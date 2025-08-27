@@ -40,6 +40,8 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 @onready var billboard: Sprite3D = %Billboard
 ## Sticker billboard on zoom out reference.
 @onready var billboardZoomedOut: Sprite3D = %BillboardZoomedOut
+## Reference to the involuntary movement module.
+@onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 
 ## Parent node reference for placement.
 var sceneParent: Node
@@ -95,6 +97,13 @@ func _ready() -> void:
 		temporaryArea.queue_free()
 		grabArea.surfacesWithStickers.append(closest)
 		shadowDecal.hide()
+
+## Executed on every physics frame.
+func _physics_process(delta: float) -> void:
+	if placed or grabed: return
+	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
+	velocity = currentPush * delta
+	move_and_slide()
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
