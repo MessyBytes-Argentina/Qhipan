@@ -9,12 +9,15 @@ const LIGHTFADETIME: float = 0.3
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
 ## The light to turn on and of.
 @onready var light: OmniLight3D = %Light
+## Light area of effect
+@onready var lightArea: Area3D = %LightArea
 
 ## Light animation tween.
 var lightTween: Tween
 ## Last light range.
 var lastLightValue: float = 0.0
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	light.position.y = -GRABHEIGHT / 2.0
@@ -26,6 +29,7 @@ func set_size(mode: ScaleModes) -> void:
 		ScaleModes.GRABBED:
 			floatingMesh.hide()
 			animate_light_fade(LIGHTRANGEGRABED)
+			lightArea.set_deferred("monitoring", false)
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
@@ -34,6 +38,7 @@ func set_size(mode: ScaleModes) -> void:
 			floatingMesh.hide()
 			mesh.show()
 			animate_light_fade(LIGHTRANGEPLACED)
+			lightArea.set_deferred("monitoring", true)
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 
@@ -77,8 +82,14 @@ func prerender() -> void:
 
 ## Activates the sticker effect when held by the player
 func activate_on_player_effect() -> void:
-	pass
+	_light_body_entered(get_tree().get_first_node_in_group("Player"))
 
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
-	pass
+	_light_body_exited(get_tree().get_first_node_in_group("Player"))
+
+func _light_body_entered(body: Node3D) -> void:
+	if body.has_node("DarknessBlockerModule"): body.get_node("DarknessBlockerModule").light_area_entered(self)
+
+func _light_body_exited(body: Node3D) -> void:
+	if body.has_node("DarknessBlockerModule"): body.get_node("DarknessBlockerModule").light_area_exited(self)

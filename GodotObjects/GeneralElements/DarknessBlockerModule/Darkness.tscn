@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://uefmm3wnclty"]
+
+[ext_resource type="Script" uid="uid://dc8ouxotv186o" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.gd" id="1_7xcgd"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_ckktb"]
+density = 8.0
+albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5fpv5"]
+radius = 1.4
+
+[node name="Darkness" type="FogVolume"]
+size = Vector3(3, 3, 3)
+shape = 0
+material = SubResource("FogMaterial_ckktb")
+script = ExtResource("1_7xcgd")
+collisionShape = SubResource("SphereShape3D_5fpv5")
+
+[node name="Collision" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="DarknessCollisionShape" type="CollisionShape3D" parent="Collision"]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_5fpv5")
+
+[node name="DarknessArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="DarknessAreaShape" type="CollisionShape3D" parent="DarknessArea"]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_5fpv5")
+
+[connection signal="body_entered" from="DarknessArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DarknessArea" to="." method="_on_body_exited"]

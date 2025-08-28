@@ -45,6 +45,8 @@ var currentPickup: StickerBase
 var canGrab: bool = true
 ## Flag that allows or stops the player from being able to drop a sticker
 var canDrop: bool = true
+## Flag that allows or stops the player from being able to drop a sticker while in darkness
+var inDarkness: bool = false
 ## Flag turns true when zooming out
 var zoomedOut: bool = false
 ## Tween for the highlight bobbing animation
@@ -104,11 +106,11 @@ func check_available_area(onReset: bool = false) -> bool:
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup:
-		currentPickup.deactivate_on_player_effect()
 		if not check_available_area(onReset):
-			if not canDrop: return
+			if not canDrop or inDarkness: return
 			currentPickup.drop()
 			dropSound.play_sound()
+		currentPickup.deactivate_on_player_effect()
 		currentPickup = null
 		pickupOnHand = false
 

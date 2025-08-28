@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://obi7mybs0j53"]
+[gd_scene load_steps=19 format=3 uid="uid://obi7mybs0j53"]
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
@@ -87,6 +87,9 @@ height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gdvqv"]
+radius = 3.1
+
 [node name="StickerLamp" type="CharacterBody3D"]
 collision_layer = 512
 script = ExtResource("1_w5ix8")
@@ -168,3 +171,16 @@ light_color = Color(0.784314, 0.509804, 0, 1)
 light_energy = 0.0
 omni_range = 0.0
 omni_attenuation = 0.0
+
+[node name="LightArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightArea"]
+shape = SubResource("SphereShape3D_gdvqv")
+
+[connection signal="body_entered" from="LightArea" to="." method="_light_body_entered"]
+[connection signal="body_exited" from="LightArea" to="." method="_light_body_exited"]
