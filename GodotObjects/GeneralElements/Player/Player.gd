@@ -186,6 +186,8 @@ var onSettings: bool = false
 var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
+## OnPlayerEffect node reference.
+var onPlayerEffectRef: OnPlayerFan
 #endregion
 
 ## Called when the node enters the scene tree for the first time.

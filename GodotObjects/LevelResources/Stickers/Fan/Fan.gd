@@ -9,6 +9,9 @@ extends StickerBase
 ## Pushing area reference.
 @onready var fan: Fan = %Fan
 
+## OnPlayerEffect node reference.
+var onPlayerEffectRef: OnPlayerFan
+
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fanParticles.emitting = true
@@ -36,3 +39,13 @@ func grab(node: Node3D) -> void:
 func _process(_delta: float) -> void:
 	if not grabed and not placed and fan.isOn:
 		fan.switch_fan(false)
+
+## Activates the sticker effect when held by the player
+func activate_on_player_effect() -> void:
+	if onPlayerEffectRef == null:
+		onPlayerEffectRef = get_tree().get_first_node_in_group("OnPlayerFan")
+	onPlayerEffectRef.replenish_push()
+
+## Deactivates the sticker effect when held by the player
+func deactivate_on_player_effect() -> void:
+	onPlayerEffectRef.activate_push()

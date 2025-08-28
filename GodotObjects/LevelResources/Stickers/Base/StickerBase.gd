@@ -227,3 +227,11 @@ func zooming_out(zoomedOut: bool) -> void:
 		else: 
 			set_size(lastVisualMode)
 			if lastVisualMode == ScaleModes.DROPPED: start_rotation()
+
+## Activates the sticker effect when held by the player
+func activate_on_player_effect() -> void:
+	pass
+
+## Deactivates the sticker effect when held by the player
+func deactivate_on_player_effect() -> void:
+	pass

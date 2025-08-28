@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m8ogo00hrgbi"]
+[gd_scene load_steps=10 format=3 uid="uid://m8ogo00hrgbi"]
 
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="1_hi63f"]
 [ext_resource type="Script" uid="uid://cipgycmfw113v" path="res://GodotObjects/GeneralElements/Fan/OnPlayerFan.gd" id="1_iux6s"]
@@ -21,7 +21,13 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 1)
 
-[node name="OnPlayerFan" type="Node3D"]
+[sub_resource type="PrismMesh" id="PrismMesh_iux6s"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iux6s"]
+size = Vector3(0.25, 0.5, 0.5)
+
+[node name="OnPlayerFan" type="Node3D" groups=["OnPlayerFan"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_iux6s")
 
@@ -61,3 +67,11 @@ texture = SubResource("GradientTexture2D_6n66f")
 
 [node name="Origin" type="Marker3D" parent="PushArea"]
 unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269403, -1.1776e-08)
+mesh = SubResource("PrismMesh_iux6s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.222421, 9.72233e-09)
+mesh = SubResource("BoxMesh_iux6s")

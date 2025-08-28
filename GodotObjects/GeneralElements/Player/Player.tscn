@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=103 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://dfc82wqu3h2t5" path="res://Assets/Textures/Character/FLOAT/FLOAT 3.png" id="52_6fycs"]
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Textures/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
+[ext_resource type="PackedScene" uid="uid://m8ogo00hrgbi" path="res://GodotObjects/GeneralElements/Fan/OnPlayerFan.tscn" id="70_mseqm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -875,3 +876,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ihfjc")
 }
 autoplay = "preload"
+
+[node name="OnPlayerFan" parent="." instance=ExtResource("70_mseqm")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

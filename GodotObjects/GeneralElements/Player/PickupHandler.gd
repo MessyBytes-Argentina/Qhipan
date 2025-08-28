@@ -90,6 +90,7 @@ func do_grab() -> void:
 	currentPickup.reparent(self)
 	currentPickup.grab(self)
 	pickupOnHand = true
+	currentPickup.activate_on_player_effect()
 
 ## Checks for available areas to place a sticker
 func check_available_area(onReset: bool = false) -> bool:
@@ -103,6 +104,7 @@ func check_available_area(onReset: bool = false) -> bool:
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup:
+		currentPickup.deactivate_on_player_effect()
 		if not check_available_area(onReset):
 			if not canDrop: return
 			currentPickup.drop()

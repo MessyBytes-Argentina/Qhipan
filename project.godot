@@ -54,6 +54,7 @@ Checkpoints=""
 ResetButton=""
 Player=""
 Gridmap=""
+OnPlayerFan=""
 
 [godot_resource_groups]
 
