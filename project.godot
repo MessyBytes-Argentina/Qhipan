@@ -158,6 +158,7 @@ pause={
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Objects"
 3d_physics/layer_4="Darkness"
+3d_physics/layer_5="LightCollision"
 3d_physics/layer_10="Stickers"
 3d_physics/layer_11="StickerPlacement"
 3d_physics/layer_12="Doors"
