@@ -6,10 +6,11 @@ class_name OnPlayerFan
 
 var canPush: bool = false
 var playerRef: Player
-var playerSnappedPos: Vector3
 var currentPosition: Vector3
 var currentDirection: Vector3
-
+var directionTarget: Vector3
+## Reference to the current gridmap.
+var gridmap: GridMap
 
 func _ready() -> void:
 	playerRef = get_parent()
@@ -19,20 +20,38 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if canPush:
-		currentPosition = get_player_position()
-		currentDirection = get_player_direction()
+		get_player_position()
+		get_player_direction()
+		get_target_direction()
 		rotate_push_direction()
-		global_position = currentPosition + currentDirection
+		global_position = currentPosition + directionTarget
 
 func rotate_push_direction() -> void:
-	rotation.y = rad_to_deg(currentPosition.angle_to(playerSnappedPos))
+	match directionTarget:
+		Vector3(1,0,0):
+			global_rotation_degrees.y = 90
+		Vector3(-1,0,0):
+			global_rotation_degrees.y = -90
+		Vector3(0,0,1):
+			global_rotation_degrees.y = 0
+		Vector3(0,0,-1):
+			global_rotation_degrees.y = 180
 
-func get_player_position() -> Vector3:
-	return playerRef.global_position.snapped(Vector3(1, 0.5, 1))
+func get_target_direction() -> void:
+	directionTarget = Vector3.ZERO
+	if abs(currentDirection.x) > abs(currentDirection.z):
+		directionTarget.x = currentDirection.x
+	elif abs(currentDirection.z) > abs(currentDirection.x):
+		directionTarget.z = currentDirection.z
+	directionTarget = directionTarget.normalized()
 
-func get_player_direction() -> Vector3:
-	playerSnappedPos = playerRef.global_position.snapped(Vector3(0.25, 0.5, 0.25))
-	return currentPosition.direction_to(playerSnappedPos)
+func get_player_direction() -> void:
+	currentDirection = currentPosition.direction_to(playerRef.global_position.snapped(Vector3(0.0001, 0.5, 0.0001)))
+
+func get_player_position() -> void:
+	if not gridmap:
+		gridmap = playerRef.gridmap
+	currentPosition = Vector3(gridmap.local_to_map(playerRef.global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 func replenish_push() -> void:
 	canPush = true
