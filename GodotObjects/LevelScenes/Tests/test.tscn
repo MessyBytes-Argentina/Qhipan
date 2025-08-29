@@ -138,6 +138,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 10)
 
 [node name="Darkness" parent="." instance=ExtResource("16_5fpv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 7.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 7.5)
 material = SubResource("FogMaterial_5fpv5")
 collisionShape = SubResource("SphereShape3D_5fpv5")
