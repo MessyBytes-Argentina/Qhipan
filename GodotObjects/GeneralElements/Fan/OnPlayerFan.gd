@@ -46,12 +46,15 @@ func get_target_direction() -> void:
 	directionTarget = directionTarget.normalized()
 
 func get_player_direction() -> void:
-	currentDirection = currentPosition.direction_to(playerRef.global_position.snapped(Vector3(0.0001, 0.5, 0.0001)))
+	currentDirection = currentPosition.direction_to(playerRef.global_position)
 
 func get_player_position() -> void:
 	if not gridmap:
 		gridmap = playerRef.gridmap
-	currentPosition = Vector3(gridmap.local_to_map(playerRef.global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
+	var verticalDistance: float = (currentPosition * Vector3(0,1,0)).distance_squared_to(playerRef.global_position * Vector3(0,1,0))
+	var horizontalDistance: float = (currentPosition * Vector3(1,0,1)).distance_squared_to(playerRef.global_position * Vector3(1,0,1))
+	if horizontalDistance > 0.8 or verticalDistance > 0.5:
+		currentPosition = Vector3(gridmap.local_to_map(playerRef.global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 func replenish_push() -> void:
 	canPush = true
