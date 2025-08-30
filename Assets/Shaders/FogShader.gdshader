@@ -3,7 +3,7 @@
 
 shader_type fog;
 
-uniform float density : hint_range(0, 1, 0.0001) = 1.0;
+uniform float density : hint_range(0, 10, 0.0001) = 8.0;
 uniform vec4 albedo : source_color = vec4(1.0);
 uniform vec3 center_color : source_color = vec3(0, 0, 0);
 uniform vec3 edge_color : source_color = vec3(0, 0, 0);
