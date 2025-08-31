@@ -12,8 +12,6 @@ const LIGHTFADETIME: float = 0.3
 @onready var light: OmniLight3D = %Light
 ## Light area of effect
 @onready var lightArea: Area3D = %LightArea
-## Light Collision
-@onready var lightCollision: StaticBody3D = %LightCollision
 ## Player Detector
 @onready var playerDetector: Area3D = %PlayerDetector
 ## Holds top level shapes
@@ -42,9 +40,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if not hasPlayer: return
-	if (global_position * Vector3(1.0, 0.0, 1.0)).distance_to(player.global_position * Vector3(1.0, 0.0, 1.0)) > LIGHTAREAOFEFFECT or grabed: lightCollision.set_collision_layer_value(5, false)
-	elif len(playerDarknessManager.darknessAreas) > 0 and len(playerDarknessManager.lightAreaDetectors) == 1: lightCollision.set_collision_layer_value(5, true)
-	else: lightCollision.set_collision_layer_value(5, false)
+	if (global_position * Vector3(1.0, 0.0, 1.0)).distance_to(player.global_position * Vector3(1.0, 0.0, 1.0)) > LIGHTAREAOFEFFECT or grabed:
+		lightArea.set_collision_mask_value(5, false)
+	elif len(playerDarknessManager.darknessAreas) > 0 and len(playerDarknessManager.lightAreaDetectors) == 1:
+		lightArea.set_collision_mask_value(5, true)
+	else: 
+		lightArea.set_collision_mask_value(5, false)
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -54,6 +55,7 @@ func set_size(mode: ScaleModes) -> void:
 			floatingMesh.hide()
 			animate_light_fade(LIGHTRANGEGRABED)
 			lightArea.set_deferred("monitoring", false)
+			lightArea.set_deferred("monitorable", false)
 			playerDetector.set_deferred("monitoring", false)
 		ScaleModes.DROPPED:
 			floatingMesh.show()
@@ -64,6 +66,7 @@ func set_size(mode: ScaleModes) -> void:
 			mesh.show()
 			animate_light_fade(LIGHTRANGEPLACED)
 			lightArea.set_deferred("monitoring", true)
+			lightArea.set_deferred("monitorable", true)
 			playerDetector.set_deferred("monitoring", true)
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()

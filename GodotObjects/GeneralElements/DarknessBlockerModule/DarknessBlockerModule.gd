@@ -26,14 +26,14 @@ func _ready() -> void:
 func light_area_entered(lightArea: Node) -> void:
 	if lightArea in lightAreas: return
 	lightAreas.append(lightArea)
-	parent.set_collision_mask_value(4, false)
-	parent.set_collision_mask_value(5, true)
+	#parent.set_collision_mask_value(4, false)
+	#parent.set_collision_mask_value(5, true)
 
 func light_area_exited(lightArea: Node) -> void:
 	lightAreas.erase(lightArea)
-	if len(lightAreas) == 0: 
-		parent.set_collision_mask_value(4, true)
-		parent.set_collision_mask_value(5, false)
+	#if len(lightAreas) == 0: 
+		#parent.set_collision_mask_value(4, true)
+		#parent.set_collision_mask_value(5, false)
 
 func light_area_detector_entered(lightAreaDetector: Node) -> void:
 	if lightAreaDetector in lightAreaDetectors: return
