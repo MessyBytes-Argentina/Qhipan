@@ -53,7 +53,7 @@ func get_player_position() -> void:
 		gridmap = playerRef.gridmap
 	var verticalDistance: float = (currentPosition * Vector3(0,1,0)).distance_squared_to(playerRef.global_position * Vector3(0,1,0))
 	var horizontalDistance: float = (currentPosition * Vector3(1,0,1)).distance_squared_to(playerRef.global_position * Vector3(1,0,1))
-	if horizontalDistance > 0.8 or verticalDistance > 0.5:
+	if horizontalDistance > 1 or verticalDistance > 0.3:
 		currentPosition = Vector3(gridmap.local_to_map(playerRef.global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 func replenish_push() -> void:

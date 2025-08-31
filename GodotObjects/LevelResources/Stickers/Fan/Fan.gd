@@ -48,4 +48,4 @@ func activate_on_player_effect() -> void:
 
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
-	onPlayerEffectRef.activate_push()
+	onPlayerEffectRef.disable_push()
