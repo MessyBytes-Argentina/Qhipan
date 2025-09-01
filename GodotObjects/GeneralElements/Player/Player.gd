@@ -186,8 +186,8 @@ var onSettings: bool = false
 var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
-## OnPlayerEffect node reference.
-var onPlayerEffectRef: OnPlayerFan
+## OnPlayerFan node reference.
+var onPlayerFanRef: OnPlayerFan
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -244,10 +244,15 @@ func _physics_process(delta: float) -> void:
 			popupTween.kill()
 		message.scale = Vector3.ONE * 0.001
 
-## Blocks the player input. RIGHT NOW ONLY USED IN GOAL AREA.
+## Blocks the player input control.
 func block_inputs() -> void:
 	noMovement = true
 	grabArea.canGrab = false
+
+## Returns input control to the player.
+func enable_inputs() -> void:
+	noMovement = false
+	grabArea.canGrab = true
 
 ## Checks and handles flipping the character sprite.
 func sprite_flip_check() -> void:
@@ -527,4 +532,15 @@ func enter_no_gravity(node: Node3D) -> void:
 ## Removes a no gravity zone from the noGravityZones list
 func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
+#endregion
+
+#region On Player Sticker Functions
+## Returns true if not on the floor or floating
+func check_falling() -> bool:
+	var falling: bool = false
+	if not is_on_floor() and involuntaryPushModule.get_current_push() == Vector3.ZERO:
+		falling = true
+	else:
+		falling = false
+	return falling
 #endregion

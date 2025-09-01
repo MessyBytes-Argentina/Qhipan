@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 func activate_on_player_effect() -> void:
 	if onPlayerEffectRef == null:
 		onPlayerEffectRef = get_tree().get_first_node_in_group("OnPlayerFan")
-	onPlayerEffectRef.replenish_push()
+	onPlayerEffectRef.enable_push()
 
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:

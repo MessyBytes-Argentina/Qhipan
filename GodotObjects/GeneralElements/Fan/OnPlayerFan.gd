@@ -1,9 +1,12 @@
 extends Node3D
 class_name OnPlayerFan
 
+const horizontalBias: float = 1.0
+const verticalBias: float = 0.3
+
 @onready var pushArea: Fan = %PushArea
 
-
+var isPushActive: bool = false
 var canPush: bool = false
 var playerRef: Player
 var currentPosition: Vector3
@@ -14,12 +17,17 @@ var gridmap: GridMap
 
 func _ready() -> void:
 	playerRef = get_parent()
-	playerRef.onPlayerEffectRef = self
+	playerRef.onPlayerFanRef = self
 	reparent.call_deferred(playerRef.get_parent())
 	pushArea.body_exited.connect(end_push)
 
 func _physics_process(_delta: float) -> void:
-	if canPush:
+	if isPushActive:
+		var isPlayerFalling: bool = playerRef.check_falling()
+		if isPlayerFalling and canPush:
+			activate_push()
+		elif not isPlayerFalling and not canPush:
+			replenish_push()
 		get_player_position()
 		get_player_direction()
 		get_target_direction()
@@ -53,22 +61,34 @@ func get_player_position() -> void:
 		gridmap = playerRef.gridmap
 	var verticalDistance: float = (currentPosition * Vector3(0,1,0)).distance_squared_to(playerRef.global_position * Vector3(0,1,0))
 	var horizontalDistance: float = (currentPosition * Vector3(1,0,1)).distance_squared_to(playerRef.global_position * Vector3(1,0,1))
-	if horizontalDistance > 1 or verticalDistance > 0.3:
+	if horizontalDistance > horizontalBias or verticalDistance > verticalBias:
 		currentPosition = Vector3(gridmap.local_to_map(playerRef.global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 func replenish_push() -> void:
 	canPush = true
 
 func activate_push() -> void:
-	if canPush:
-		pushArea.switch_fan(canPush)
-		canPush = false
-	else :
-		return
-
-func disable_push() -> void:
+	switch_push()
 	canPush = false
+	playerRef.block_inputs()
+	isPushActive = false
+	get_tree().create_timer(1).timeout.connect(end_push)
+
+
+func enable_push() -> void:
+	isPushActive = true
+	replenish_push()
+
+func switch_push() -> void:
 	pushArea.switch_fan(canPush)
 
-func end_push(_body) -> void:
-	disable_push()
+func disable_push() -> void:
+	isPushActive = false
+	canPush = false
+	switch_push()
+
+func end_push(_body = null) -> void:
+	canPush = false
+	switch_push()
+	playerRef.enable_inputs()
+	isPushActive = true
