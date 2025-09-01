@@ -5,8 +5,6 @@ class_name DarknessArea
 const DARKNESSCOLLISIONRESOLUTION: int = 8
 const SHADERLIGHTSTRACKED: int = 6
 
-@export var areaShape: Shape3D
-
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
 @onready var darknessAreaShape: CollisionShape3D = %DarknessAreaShape
 var collisionMap: HeightMapShape3D
@@ -16,19 +14,7 @@ var lights: Array[Area3D] = []
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	#var tween: Tween = create_tween()
-	#tween.tween_method(light_test, 0.0, 1.0, 2.0)
-	#tween.set_loops(0)
-	#tween.play()
 	_collision_shape_set()
-
-#func light_test(progress: float) -> void:
-	#light.rotation.y = lerpf(0.0, PI * 2.0, progress)
-	#light.rotation.x = sinh(progress) * 0.5
-	#light.rotation.z = sinh(progress * 2.0) * 0.5
-	#light2.rotation.y = lerpf(PI * 2.0, 0.0, progress)
-	#light2.rotation.x = sinh(-progress * 2.0) * 0.5
-	#light2.rotation.z = sinh(progress * 3.0) * 0.5
 
 func _collision_shape_set() -> void:
 	if not is_node_ready():

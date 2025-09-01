@@ -46,7 +46,7 @@ fog_sky_affect = 0.0
 fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
-volumetric_fog_temporal_reprojection_amount = 0.92
+volumetric_fog_temporal_reprojection_amount = 0.91
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)

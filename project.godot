@@ -55,6 +55,7 @@ ResetButton=""
 Player=""
 Gridmap=""
 OnPlayerFan=""
+Fog=""
 
 [godot_resource_groups]
 

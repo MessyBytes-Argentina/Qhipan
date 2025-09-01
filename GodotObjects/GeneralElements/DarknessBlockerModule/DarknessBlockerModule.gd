@@ -3,6 +3,9 @@ extends Node
 ## Handles interaction with darkness and lamps
 class_name DarknessBlockerModule
 
+## Held sticker light range.
+const HELDLIGHTRANGE: float = 1.5
+
 ## Parent reference.
 @onready var parent: PhysicsBody3D
 ## Parent GrabArea reference.
@@ -16,6 +19,8 @@ var stickerLightAreas: Array[Node]
 var lightAreaDetectors: Array[Node]
 ## Accumultation of darkness areas.
 var darknessAreas: Array[Node]
+## Is holding a light.
+var holdingLight: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +48,7 @@ func sticker_light_area_exited(lightArea: Node) -> void:
 
 func holding_light(mode: bool) -> void:
 	parent.set_collision_mask_value(4, not mode)
+	holdingLight = mode
 
 func darkness_area_entered(darknessArea: Node) -> void:
 	if darknessArea in darknessAreas: return

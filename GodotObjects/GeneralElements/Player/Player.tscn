@@ -633,6 +633,7 @@ unique_name_in_owner = true
 script = ExtResource("2_bjorx")
 
 [node name="DarknessBlockerModule" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_2q27j")
 
 [node name="PlayerSounds" type="Node3D" parent="."]
@@ -780,21 +781,25 @@ unique_name_in_owner = true
 [node name="CameraRayCast1" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
 transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(0, -6, -0.05)
+collision_mask = 9
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="CameraRayCast2" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
 transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(0, -6, 0.2)
+collision_mask = 9
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="CameraRayCast3" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
 transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(0.05, -6, 0.076)
+collision_mask = 9
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="CameraRayCast4" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
 transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
 target_position = Vector3(-0.05, -6, 0.076)
+collision_mask = 9
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="LightDecal" type="Decal" parent="."]
