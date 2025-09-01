@@ -1,4 +1,5 @@
 extends StickerBase
+class_name LampSticker
 
 const LIGHTRANGEGRABED: float = 1.5
 const LIGHTRANGEPLACED: float = 3.5
@@ -12,10 +13,10 @@ const LIGHTFADETIME: float = 0.3
 @onready var light: OmniLight3D = %Light
 ## Light area of effect
 @onready var lightArea: Area3D = %LightArea
-## Player Detector
-@onready var playerDetector: Area3D = %PlayerDetector
-## Holds top level shapes
+## Area3d container
 @onready var shapes: Node3D = %Shapes
+## Light area for dropping stickers
+@onready var stickerLightArea: Area3D = %StickerLightArea
 
 ## Reference to the player character
 var player: Player
@@ -27,6 +28,7 @@ var lightTween: Tween
 var lastLightValue: float = 0.0
 ## Tracks if player inside this lights effect.
 var hasPlayer: bool = false
+
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,9 +56,9 @@ func set_size(mode: ScaleModes) -> void:
 		ScaleModes.GRABBED:
 			floatingMesh.hide()
 			animate_light_fade(LIGHTRANGEGRABED)
-			lightArea.set_deferred("monitoring", false)
-			lightArea.set_deferred("monitorable", false)
-			playerDetector.set_deferred("monitoring", false)
+			lightArea.set_collision_layer_value(5, false)
+			lightArea.set_collision_mask_value(2, false)
+			stickerLightArea.set_collision_mask_value(2, false)
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
@@ -65,9 +67,9 @@ func set_size(mode: ScaleModes) -> void:
 			floatingMesh.hide()
 			mesh.show()
 			animate_light_fade(LIGHTRANGEPLACED)
-			lightArea.set_deferred("monitoring", true)
-			lightArea.set_deferred("monitorable", true)
-			playerDetector.set_deferred("monitoring", true)
+			lightArea.set_collision_layer_value(5, true)
+			lightArea.set_collision_mask_value(2, true)
+			stickerLightArea.set_collision_mask_value(2, true)
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 	await get_tree().physics_frame
@@ -113,13 +115,11 @@ func prerender() -> void:
 
 ## Activates the sticker effect when held by the player
 func activate_on_player_effect() -> void:
-	_light_body_entered(player)
-	_detector_body_entered(player)
+	player.get_node("DarknessBlockerModule").holding_light(true)
 
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
-	_light_body_exited(player)
-	_detector_body_exited(player)
+	player.get_node("DarknessBlockerModule").holding_light(false)
 
 func _light_body_entered(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
@@ -129,12 +129,10 @@ func _light_body_exited(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
 		body.get_node("DarknessBlockerModule").light_area_exited(self)
 
-func _detector_body_entered(body: Node3D) -> void:
-	if body is Player: hasPlayer = true
+func _sticker_light_body_entered(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").light_area_detector_entered(self)
+		body.get_node("DarknessBlockerModule").sticker_light_area_entered(self)
 
-func _detector_body_exited(body: Node3D) -> void:
-	if body is Player: hasPlayer = false
+func _sticker_light_body_exited(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").light_area_detector_exited(self)
+		body.get_node("DarknessBlockerModule").sticker_light_area_exited(self)

@@ -72,7 +72,6 @@ func update_collision_shape() -> void:
 		if collisionMap.map_data[i] == 0.0: continue
 		var vertexFlatGlobalPosition = flatStartGlobalPosition + Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		for lightStart in lightDistances:
-			#prints(lightStart, vertexFlatGlobalPosition, lightDistances[lightStart], lightStart.distance_to(vertexFlatGlobalPosition) <= lightDistances[lightStart])
 			if lightStart.distance_to(vertexFlatGlobalPosition) <= lightDistances[lightStart]:
 				collisionMap.map_data[i] = 0.0
 				break

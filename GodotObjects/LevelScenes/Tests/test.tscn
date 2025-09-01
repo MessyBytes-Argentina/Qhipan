@@ -46,6 +46,7 @@ fog_sky_affect = 0.0
 fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+volumetric_fog_temporal_reprojection_amount = 0.92
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
@@ -131,4 +132,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 10)
 
 [node name="Darkness" parent="." instance=ExtResource("16_5fpv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 8)
+size = Vector3(6, 3, 3)

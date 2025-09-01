@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://uefmm3wnclty"]
+[gd_scene load_steps=10 format=3 uid="uid://uefmm3wnclty"]
 
 [ext_resource type="Script" uid="uid://dc8ouxotv186o" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.gd" id="1_7xcgd"]
 [ext_resource type="Shader" uid="uid://cq08ail3jifhi" path="res://Assets/Shaders/FogShader.gdshader" id="1_fwrbv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fwrbv"]
+noise_type = 2
+seed = 2
+fractal_lacunarity = 0.0
+cellular_distance_function = 1
+cellular_return_type = 6
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_s5ihy"]
 width = 128
@@ -11,28 +16,23 @@ height = 128
 depth = 128
 noise = SubResource("FastNoiseLite_fwrbv")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ggxyo"]
-seed = 2
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_wahue"]
-width = 128
-height = 128
-depth = 128
-noise = SubResource("FastNoiseLite_ggxyo")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s5ihy"]
 shader = ExtResource("1_fwrbv")
 shader_parameter/density = 8.0
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/center_color = Color(0.27451, 0, 0.352941, 1)
-shader_parameter/edge_color = Color(0, 0, 0.117647, 1)
+shader_parameter/edge_color = Color(0.27451, 0, 0.352941, 1)
 shader_parameter/center_edge = 0.35
 shader_parameter/noise_color = Color(0, 0.176471, 0.352941, 1)
-shader_parameter/noise_edge = 0.5
+shader_parameter/noise_edge = 0.75
 shader_parameter/noise1 = SubResource("NoiseTexture3D_s5ihy")
 shader_parameter/noise1_scroll = Vector3(0.5, 1, 0.5)
-shader_parameter/noise2 = SubResource("NoiseTexture3D_wahue")
+shader_parameter/noise2 = SubResource("NoiseTexture3D_s5ihy")
 shader_parameter/noise2_scroll = Vector3(-1, 0.5, -1)
+shader_parameter/sine_wave_influence = 1.0
+shader_parameter/sine_wave_speed = 0.25
+shader_parameter/sine_wave_frequency = 15.0
+shader_parameter/noise_density_influence_min = 0.5
 shader_parameter/height_falloff = 0.0
 shader_parameter/edge_fade = 0.1
 shader_parameter/light_sources = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -71,9 +71,8 @@ transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, -1.5, 0)
 shape = SubResource("HeightMapShape3D_7xcgd")
 
 [node name="DarknessArea" type="Area3D" parent="."]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 18
-monitorable = false
 
 [node name="DarknessAreaShape" type="CollisionShape3D" parent="DarknessArea"]
 unique_name_in_owner = true
