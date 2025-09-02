@@ -3,9 +3,6 @@ extends Node
 ## Handles interaction with darkness and lamps
 class_name DarknessBlockerModule
 
-## Held sticker light range.
-const HELDLIGHTRANGE: float = 1.5
-
 ## Parent reference.
 @onready var parent: PhysicsBody3D
 ## Parent GrabArea reference.
@@ -29,34 +26,38 @@ func _ready() -> void:
 	if parent.has_node("GrabArea"):
 		grabArea = parent.get_node("GrabArea")
 
-func light_area_entered(lightArea: Node) -> void:
-	if lightArea in lightAreas: return
-	lightAreas.append(lightArea)
+## Handles light area modifications.
+func light_area(lightArea: Node, entered: bool) -> void:
+	if entered:
+		if lightArea in lightAreas: return
+		lightAreas.append(lightArea)
+	else:
+		lightAreas.erase(lightArea)
 
-func light_area_exited(lightArea: Node) -> void:
-	lightAreas.erase(lightArea)
+## Handles sticker light area modifications, mainly here to make sure the player doesn't drop stickers too close to the darkness.
+func sticker_light_area(lightArea: Node, entered: bool) -> void:
+	if entered:
+		if lightArea in stickerLightAreas: return
+		stickerLightAreas.append(lightArea)
+		grabArea.inLight = true
+	else:
+		stickerLightAreas.erase(lightArea)
+		if len(stickerLightAreas) == 0: 
+			grabArea.inLight = false
 
-func sticker_light_area_entered(lightArea: Node) -> void:
-	if lightArea in stickerLightAreas: return
-	stickerLightAreas.append(lightArea)
-	grabArea.inLight = true
+## Handles darkness area modifications.
+func darkness_area(darknessArea: Node, entered: bool) -> void:
+	if entered:
+		if darknessArea in darknessAreas: return
+		darknessAreas.append(darknessArea)
+		if not grabArea: return
+		grabArea.inDarkness = true
+	else:
+		darknessAreas.erase(darknessArea)
+		if not grabArea: return
+		if len(darknessAreas) == 0: grabArea.inDarkness = false
 
-func sticker_light_area_exited(lightArea: Node) -> void:
-	stickerLightAreas.erase(lightArea)
-	if len(stickerLightAreas) == 0: 
-		grabArea.inLight = false
-
+## Handles holding a light.
 func holding_light(mode: bool) -> void:
 	parent.set_collision_mask_value(4, not mode)
 	holdingLight = mode
-
-func darkness_area_entered(darknessArea: Node) -> void:
-	if darknessArea in darknessAreas: return
-	darknessAreas.append(darknessArea)
-	if not grabArea: return
-	grabArea.inDarkness = true
-
-func darkness_area_exited(darknessArea: Node) -> void:
-	darknessAreas.erase(darknessArea)
-	if not grabArea: return
-	if len(darknessAreas) == 0: grabArea.inDarkness = false

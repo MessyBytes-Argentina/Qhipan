@@ -7,5 +7,5 @@ script = ExtResource("1_qrhsm")
 base_folder = "res://Assets/Materials/WithCutout"
 includes = Array[String](["*.tres"])
 excludes = Array[String](["CutoutMaterialsResourceGroup.tres"])
-paths = Array[String](["res://Assets/Materials/WithCutout/Arcilla-1.tres", "res://Assets/Materials/WithCutout/Baldosas-1.tres", "res://Assets/Materials/WithCutout/Door.tres", "res://Assets/Materials/WithCutout/GoalDoor.tres", "res://Assets/Materials/WithCutout/Patron-Andino-1.tres", "res://Assets/Materials/WithCutout/Darkness.tres", "res://Assets/Materials/WithCutout/Rust-1.tres"])
+paths = Array[String](["res://Assets/Materials/WithCutout/Arcilla-1.tres", "res://Assets/Materials/WithCutout/Baldosas-1.tres", "res://Assets/Materials/WithCutout/Darkness.tres", "res://Assets/Materials/WithCutout/Door.tres", "res://Assets/Materials/WithCutout/GoalDoor.tres", "res://Assets/Materials/WithCutout/Patron-Andino-1.tres", "res://Assets/Materials/WithCutout/Rust-1.tres"])
 metadata/_custom_type_script = "uid://xiaptyxfkqq7"
