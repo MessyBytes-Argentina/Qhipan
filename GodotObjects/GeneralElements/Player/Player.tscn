@@ -903,7 +903,7 @@ autoplay = "preload"
 [node name="OnPlayerFan" parent="." instance=ExtResource("70_mseqm")]
 
 [node name="LedgeDetection" type="Node3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.5, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.6, 0)
 script = ExtResource("72_4biwg")
 
 [node name="RayCast3D" type="RayCast3D" parent="LedgeDetection"]
@@ -913,11 +913,13 @@ debug_shape_custom_color = Color(1, 1, 0, 1)
 debug_shape_thickness = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LedgeDetection/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.25, -0.0500001)
 mesh = SubResource("SphereMesh_uxb7q")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
 
 [node name="RayCast3D2" type="RayCast3D" parent="LedgeDetection/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
-target_position = Vector3(0, -0.55, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, -0.75, 0)
+debug_shape_custom_color = Color(1, 0.490196, 0, 1)
+debug_shape_thickness = 5
