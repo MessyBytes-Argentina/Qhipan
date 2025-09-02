@@ -1,10 +1,15 @@
 extends StickerBase
+
+## Sticker that lights up darkness-blocked areas.
 class_name LampSticker
 
+## Range of the light while grabbed
 const LIGHTRANGEGRABED: float = 1.5
+## Range of the light while placed
 const LIGHTRANGEPLACED: float = 3.5
-const LIGHTAREAOFEFFECT: float = 3.5
+## Energy of the light while placed or grabbed
 const LIGHTENERGY: float = 1.0
+## Light fade animation time
 const LIGHTFADETIME: float = 0.3
 
 ## The floating mesh with no lighting on.
@@ -29,7 +34,6 @@ var lastLightValue: float = 0.0
 ## Tracks if player inside this lights effect.
 var hasPlayer: bool = false
 
-
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -39,15 +43,6 @@ func _ready() -> void:
 		await get_tree().process_frame
 	playerDarknessManager = player.get_node("DarknessBlockerModule")
 	shapes.top_level = true
-
-func _process(_delta: float) -> void:
-	if not hasPlayer: return
-	if (global_position * Vector3(1.0, 0.0, 1.0)).distance_to(player.global_position * Vector3(1.0, 0.0, 1.0)) > LIGHTAREAOFEFFECT or grabed:
-		lightArea.set_collision_mask_value(5, false)
-	elif len(playerDarknessManager.darknessAreas) > 0 and len(playerDarknessManager.lightAreaDetectors) == 1:
-		lightArea.set_collision_mask_value(5, true)
-	else: 
-		lightArea.set_collision_mask_value(5, false)
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -75,6 +70,7 @@ func set_size(mode: ScaleModes) -> void:
 	await get_tree().physics_frame
 	shapes.global_position = global_position
 
+## Animates the light area
 func animate_light_fade(newValue: float) -> void:
 	light.show()
 	if lightTween:
@@ -121,18 +117,22 @@ func activate_on_player_effect() -> void:
 func deactivate_on_player_effect() -> void:
 	player.get_node("DarknessBlockerModule").holding_light(false)
 
+## Signals that the body entered the light area
 func _light_body_entered(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").light_area_entered(self)
+		body.get_node("DarknessBlockerModule").light_area(self, true)
 
+## Signals that the body exited the light area
 func _light_body_exited(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").light_area_exited(self)
+		body.get_node("DarknessBlockerModule").light_area(self, false)
 
+## Signals that the body entered the sticker light area
 func _sticker_light_body_entered(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").sticker_light_area_entered(self)
+		body.get_node("DarknessBlockerModule").sticker_light_area(self, true)
 
+## Signals that the body exited the sticker light area
 func _sticker_light_body_exited(body: Node3D) -> void:
 	if body.has_node("DarknessBlockerModule"): 
-		body.get_node("DarknessBlockerModule").sticker_light_area_exited(self)
+		body.get_node("DarknessBlockerModule").sticker_light_area(self, false)

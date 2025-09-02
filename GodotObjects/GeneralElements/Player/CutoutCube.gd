@@ -62,7 +62,7 @@ func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("auxMode", auxMode)
 	updateMaterial.set_shader_parameter("auxBoxPosition", cubeCutoutAux.global_position)
 	updateMaterial.set_shader_parameter("auxBoxRotation", cubeCutoutAux.global_rotation.y)
-	updateMaterial.set_shader_parameter("player_sticker_radius", player.darknessBlockerModule.HELDLIGHTRANGE if player.darknessBlockerModule.holdingLight else 0.0)
+	updateMaterial.set_shader_parameter("player_sticker_radius", LampSticker.LIGHTRANGEGRABED if player.darknessBlockerModule.holdingLight else 0.0)
 
 ## Aligns the cylinder position using the provided offset.
 func align_position() -> void:

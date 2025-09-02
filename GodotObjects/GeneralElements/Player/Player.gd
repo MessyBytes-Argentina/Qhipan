@@ -126,6 +126,8 @@ enum States {Idle, Walk, Float}
 #region Variables
 ## Input axis for movement.
 var inputDirection: Vector3 = Vector3.ZERO
+## Actual movement direction.
+var moveDirection: Vector3 = Vector3.ZERO
 ## The rotation of the camera, used for lerping.
 var currentCameraRotation: float = 0.0
 ## The tween used for camera rotation.
@@ -200,7 +202,7 @@ func _ready() -> void:
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
-	postProcessing.show()
+	#postProcessing.show()
 	playerHighlight.scale = Vector3.ONE * 0.001
 	GeneralVariables.input_mode_changed.connect(control_scheme_switch)
 	control_scheme_switch(GeneralVariables.usingGamepad)
@@ -348,14 +350,14 @@ func current_grid_check() -> void:
 
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:
-	var moveDirection: Vector3 = inputDirection
+	moveDirection = inputDirection
 	moveDirection = moveDirection.rotated(Vector3.UP, rotation.y)
 	moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation)
 	return moveDirection
 
 ## Moves the player character.
 func move_character(delta: float) -> void:
-	var moveDirection: Vector3 = get_move_direction()
+	get_move_direction()
 	var pushForce: Vector3 = involuntaryPushModule.get_current_push()
 	if moved >= movementMaximum and not stopped and not disableMaximum:
 		do_popup()
