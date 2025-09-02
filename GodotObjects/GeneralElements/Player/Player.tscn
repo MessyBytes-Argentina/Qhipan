@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=107 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Textures/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
 [ext_resource type="PackedScene" uid="uid://m8ogo00hrgbi" path="res://GodotObjects/GeneralElements/Fan/OnPlayerFan.tscn" id="70_mseqm"]
+[ext_resource type="Script" uid="uid://bj6pdy5y6dt3q" path="res://GodotObjects/GeneralElements/Player/LedgeDetection.gd" id="72_4biwg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
@@ -618,6 +619,15 @@ _data = {
 &"preload": SubResource("Animation_xq41j")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_uxb7q"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_otkym"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 collision_layer = 2
@@ -891,3 +901,23 @@ libraries = {
 autoplay = "preload"
 
 [node name="OnPlayerFan" parent="." instance=ExtResource("70_mseqm")]
+
+[node name="LedgeDetection" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.5, 0)
+script = ExtResource("72_4biwg")
+
+[node name="RayCast3D" type="RayCast3D" parent="LedgeDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353553, -0.05, 0.353553)
+target_position = Vector3(-0.354, 0, -0.354)
+debug_shape_custom_color = Color(1, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LedgeDetection/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("SphereMesh_uxb7q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
+
+[node name="RayCast3D2" type="RayCast3D" parent="LedgeDetection/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+target_position = Vector3(0, -0.55, 0)
