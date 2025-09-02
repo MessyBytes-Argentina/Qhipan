@@ -22,17 +22,18 @@ func _ready() -> void:
 	pushArea.body_exited.connect(end_push)
 
 func _physics_process(_delta: float) -> void:
-	if isPushActive:
-		var isPlayerFalling: bool = playerRef.check_falling()
-		if isPlayerFalling and canPush:
-			activate_push()
-		elif not isPlayerFalling and not canPush:
-			replenish_push()
-		get_player_position()
-		get_player_direction()
-		get_target_direction()
-		rotate_push_direction()
-		global_position = currentPosition + directionTarget
+	if not isPushActive: return
+	
+	var isPlayerFalling: bool = playerRef.check_falling()
+	if isPlayerFalling and canPush:
+		activate_push()
+	elif not isPlayerFalling and not canPush:
+		replenish_push()
+	get_player_position()
+	get_player_direction()
+	get_target_direction()
+	rotate_push_direction()
+	global_position = currentPosition + directionTarget
 
 func rotate_push_direction() -> void:
 	match directionTarget:
@@ -78,6 +79,7 @@ func end_push(_body = null) -> void:
 	canPush = false
 	switch_push()
 	playerRef.enable_inputs()
+	await get_tree().create_timer(0.3).timeout
 	isPushActive = true
 
 func enable_push() -> void:

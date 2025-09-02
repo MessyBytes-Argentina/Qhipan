@@ -188,8 +188,6 @@ var onSettings: bool = false
 var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
-## OnPlayerFan node reference.
-var onPlayerFanRef: OnPlayerFan
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -544,6 +542,5 @@ func check_falling() -> bool:
 		falling = true
 	else:
 		falling = false
-	print(falling)
 	return falling
 #endregion
