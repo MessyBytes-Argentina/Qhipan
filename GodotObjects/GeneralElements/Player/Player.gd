@@ -538,7 +538,7 @@ func exit_no_gravity(node: Node3D) -> void:
 ## Returns true if not on the floor or floating
 func check_falling() -> bool:
 	var falling: bool = false
-	if not is_on_floor() and len(noGravityZones) == 0 and involuntaryPushModule.get_current_push() == Vector3.ZERO:
+	if not is_on_floor() and len(noGravityZones) == 0 and involuntaryPushModule.get_current_push() == Vector3.ZERO and fellDistance > 0.1:
 		falling = true
 	else:
 		falling = false

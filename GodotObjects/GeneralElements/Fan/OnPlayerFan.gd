@@ -1,7 +1,7 @@
 extends Node3D
 class_name OnPlayerFan
 
-const horizontalBias: float = 0.85
+const horizontalBias: float = 0.9
 const verticalBias: float = 0.3
 
 @onready var pushArea: Fan = %PushArea
