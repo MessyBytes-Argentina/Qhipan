@@ -17,7 +17,6 @@ var gridmap: GridMap
 
 func _ready() -> void:
 	playerRef = get_parent()
-	playerRef.onPlayerFanRef = self
 	reparent.call_deferred(playerRef.get_parent())
 	pushArea.body_exited.connect(end_push)
 
