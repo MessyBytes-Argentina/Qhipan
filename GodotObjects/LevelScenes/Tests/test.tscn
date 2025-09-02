@@ -131,4 +131,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 10)
 
 [node name="Darkness" parent="." instance=ExtResource("16_5fpv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2, 8)
+size = Vector3(6, 3, 3)

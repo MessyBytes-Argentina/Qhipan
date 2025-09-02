@@ -65,6 +65,12 @@ var lastVisualMode: ScaleModes = ScaleModes.DROPPED
 var originalParent: Node
 ## Placed position reference for overlaps.
 var placedPosition: Vector3
+## Tracks darkness areas.
+var darknessAreas: Array[Area3D] = []
+## Tracks light areas.
+var lightAreas: Array[Area3D] = []
+## Prevents player from grabbing this sticker if it's in full darkness.
+var inDarkness: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,6 +85,8 @@ func _ready() -> void:
 	prerender()
 	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
 	originalParent = get_parent()
+	areaChecker.area_entered.connect(_on_area_entered)
+	areaChecker.area_exited.connect(_on_area_exited)
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
@@ -235,3 +243,20 @@ func activate_on_player_effect() -> void:
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
 	pass
+
+## Tracks dark and light areas.
+func _on_area_entered(area: Area3D) -> void:
+	if area.get_collision_layer_value(4):
+		if area in darknessAreas: return
+		darknessAreas.append(area)
+		if len(lightAreas) == 0: inDarkness = true
+	if area.get_collision_layer_value(5):
+		if area in lightAreas: return
+		lightAreas.append(area)
+		inDarkness = false
+
+## Removes darkness and light areas from arrays.
+func _on_area_exited(area: Area3D) -> void:
+	darknessAreas.erase(area)
+	lightAreas.erase(area)
+	inDarkness = len(lightAreas) == 0 and len(darknessAreas) > 0

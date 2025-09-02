@@ -31,6 +31,8 @@ const MAXSURFACEDISTANCE: float = 2.25
 
 ## List of stickers in grabbing range
 var closeStickers: Array[StickerBase] = []
+## List of valid stickers
+var currentlyAvailableStickers: Array[StickerBase] = []
 ## List of areas in range for placement
 var closeAreas: Array[Area3D] = []
 ## Starting highlight height
@@ -47,6 +49,8 @@ var canGrab: bool = true
 var canDrop: bool = true
 ## Flag that allows or stops the player from being able to drop a sticker while in darkness
 var inDarkness: bool = false
+## Flag that allows or stops the player from being able to drop a sticker while in darkness and light
+var inLight: bool = false
 ## Flag turns true when zooming out
 var zoomedOut: bool = false
 ## Tween for the highlight bobbing animation
@@ -83,8 +87,8 @@ func _input(event: InputEvent) -> void:
 
 ## Grabs the closest sticker available
 func do_grab() -> void:
-	if len(closeStickers) == 0: return
-	currentPickup = closeStickers[0]
+	if len(currentlyAvailableStickers) == 0: return
+	currentPickup = currentlyAvailableStickers[0]
 	if currentPickup.placed:
 		removeSound.play_sound()
 		if surfacesWithStickers.has(currentPickup.placedPosition): surfacesWithStickers.remove_at(surfacesWithStickers.find(currentPickup.placedPosition))
@@ -107,7 +111,7 @@ func check_available_area(onReset: bool = false) -> bool:
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup:
 		if not check_available_area(onReset):
-			if not canDrop or inDarkness: return
+			if not canDrop or (inDarkness and not inLight): return
 			currentPickup.drop()
 			dropSound.play_sound()
 		currentPickup.deactivate_on_player_effect()
@@ -127,10 +131,12 @@ func _on_body_exited(body: Node3D) -> void:
 ## Sorts the closeSticker list by distance and shows sticker highlight when possible
 func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
-	if len(closeStickers) == 0 or pickupOnHand: 
+	currentlyAvailableStickers = closeStickers.duplicate()
+	currentlyAvailableStickers.filter(func(a: StickerBase): return not a.inDarkness)
+	if len(currentlyAvailableStickers) == 0 or pickupOnHand: 
 		if highlight: highlight.hide()
 	elif highlight:
-		highlightPivot.global_position = closeStickers[0].global_position
+		highlightPivot.global_position = currentlyAvailableStickers[0].global_position
 		highlight.show()
 
 ## When a placement area is detected it's added to the closeAreas list

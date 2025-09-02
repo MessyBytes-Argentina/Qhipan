@@ -25,11 +25,14 @@ var up: Marker3D
 var zoomedOut: bool = false
 ## Should we use the secondary cube for the cutout. Used for 45 degree angles to prevent cutting out blocks diagonally.
 var auxMode: bool = false
+## Reference to the player.
+var player: Player
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	hide()
+	player = get_tree().get_first_node_in_group("Player")
 	cylinder.hide()
 	if not up:
 		up = Marker3D.new()
@@ -46,6 +49,7 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	var anyRaycast: bool = not cameraRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
 	for updateMaterial: ShaderMaterial in GeneralVariables.cutoutMaterials: update_material(updateMaterial, anyRaycast)
+	for fog in get_tree().get_nodes_in_group("Fog"): update_material(fog.material, anyRaycast)
 
 ## Updates the cutout parameters to match the current cylinder and cube positions and rotations.
 func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
@@ -58,6 +62,7 @@ func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("auxMode", auxMode)
 	updateMaterial.set_shader_parameter("auxBoxPosition", cubeCutoutAux.global_position)
 	updateMaterial.set_shader_parameter("auxBoxRotation", cubeCutoutAux.global_rotation.y)
+	updateMaterial.set_shader_parameter("player_sticker_radius", player.darknessBlockerModule.HELDLIGHTRANGE if player.darknessBlockerModule.holdingLight else 0.0)
 
 ## Aligns the cylinder position using the provided offset.
 func align_position() -> void:

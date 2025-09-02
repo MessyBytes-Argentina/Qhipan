@@ -3,6 +3,9 @@ extends Node
 ## Handles interaction with darkness and lamps
 class_name DarknessBlockerModule
 
+## Held sticker light range.
+const HELDLIGHTRANGE: float = 1.5
+
 ## Parent reference.
 @onready var parent: PhysicsBody3D
 ## Parent GrabArea reference.
@@ -10,37 +13,42 @@ class_name DarknessBlockerModule
 
 ## Accumultation of light areas.
 var lightAreas: Array[Node]
+## Accumultation of sticker light areas.
+var stickerLightAreas: Array[Node]
 ## Accumultation of light areas.
 var lightAreaDetectors: Array[Node]
 ## Accumultation of darkness areas.
 var darknessAreas: Array[Node]
+## Is holding a light.
+var holdingLight: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parent = get_parent()
 	parent.set_collision_mask_value(4, true)
-	parent.set_collision_mask_value(5, false)
 	if parent.has_node("GrabArea"):
 		grabArea = parent.get_node("GrabArea")
 
 func light_area_entered(lightArea: Node) -> void:
 	if lightArea in lightAreas: return
 	lightAreas.append(lightArea)
-	#parent.set_collision_mask_value(4, false)
-	#parent.set_collision_mask_value(5, true)
 
 func light_area_exited(lightArea: Node) -> void:
 	lightAreas.erase(lightArea)
-	#if len(lightAreas) == 0: 
-		#parent.set_collision_mask_value(4, true)
-		#parent.set_collision_mask_value(5, false)
 
-func light_area_detector_entered(lightAreaDetector: Node) -> void:
-	if lightAreaDetector in lightAreaDetectors: return
-	lightAreaDetectors.append(lightAreaDetector)
+func sticker_light_area_entered(lightArea: Node) -> void:
+	if lightArea in stickerLightAreas: return
+	stickerLightAreas.append(lightArea)
+	grabArea.inLight = true
 
-func light_area_detector_exited(lightAreaDetector: Node) -> void:
-	lightAreaDetectors.erase(lightAreaDetector)
+func sticker_light_area_exited(lightArea: Node) -> void:
+	stickerLightAreas.erase(lightArea)
+	if len(stickerLightAreas) == 0: 
+		grabArea.inLight = false
+
+func holding_light(mode: bool) -> void:
+	parent.set_collision_mask_value(4, not mode)
+	holdingLight = mode
 
 func darkness_area_entered(darknessArea: Node) -> void:
 	if darknessArea in darknessAreas: return

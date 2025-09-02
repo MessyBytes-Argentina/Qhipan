@@ -119,6 +119,8 @@ enum States {Idle, Walk, Float}
 }
 ## Reference to the involuntary movement module.
 @onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
+## Reference to the darkness blocker module.
+@onready var darknessBlockerModule: DarknessBlockerModule = %DarknessBlockerModule
 #endregion
 
 #region Variables
