@@ -1,7 +1,7 @@
 extends Node3D
 class_name OnPlayerFan
 
-const horizontalBias: float = 1.0
+const horizontalBias: float = 0.85
 const verticalBias: float = 0.3
 
 @onready var pushArea: Fan = %PushArea
@@ -72,8 +72,13 @@ func activate_push() -> void:
 	canPush = false
 	playerRef.block_inputs()
 	isPushActive = false
-	get_tree().create_timer(1).timeout.connect(end_push)
+	get_tree().create_timer(0.5).timeout.connect(end_push)
 
+func end_push(_body = null) -> void:
+	canPush = false
+	switch_push()
+	playerRef.enable_inputs()
+	isPushActive = true
 
 func enable_push() -> void:
 	isPushActive = true
@@ -86,9 +91,3 @@ func disable_push() -> void:
 	isPushActive = false
 	canPush = false
 	switch_push()
-
-func end_push(_body = null) -> void:
-	canPush = false
-	switch_push()
-	playerRef.enable_inputs()
-	isPushActive = true
