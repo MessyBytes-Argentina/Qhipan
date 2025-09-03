@@ -99,8 +99,8 @@ func do_grab() -> void:
 	currentPickup.activate_on_player_effect()
 
 ## Checks for available areas to place a sticker
-func check_available_area(onReset: bool = false) -> bool:
-	if currentArea and not onReset:
+func check_available_area() -> bool:
+	if currentArea:
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
 		if currentArea == placeholderArea: surfacesWithStickers.append(placeholderArea.global_position)
 		stickSound.play_sound()
@@ -110,7 +110,9 @@ func check_available_area(onReset: bool = false) -> bool:
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false) -> void:
 	if pickupOnHand and currentPickup:
-		if not check_available_area(onReset):
+		if onReset:
+			currentPickup.reset_sticker()
+		elif not check_available_area():
 			if not canDrop or (inDarkness and not inLight): return
 			currentPickup.drop()
 			dropSound.play_sound()
@@ -155,7 +157,6 @@ func _fetch_valid_surfaces() -> void:
 
 ## Sorts the closeAreas list by distance and shows area highlight when possible
 func sort_close_areas() -> void:
-	## TEST
 	if len(stickerableSurfaces.keys()) > 0:
 		var surfaceArray: Array[Vector3] = stickerableSurfaces.keys()
 		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
