@@ -2,8 +2,6 @@ extends StickerBase
 
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
-## Fan particle emmiter.
-@onready var fanParticles: GPUParticles3D = %FanParticles
 ## Spinup sound player.
 @onready var spinupSound: RandomPitchPlayer = %SpinupSound
 ## Pushing area reference.
@@ -14,11 +12,11 @@ var onPlayerEffectRef: OnPlayerFan
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	fanParticles.emitting = true
+	fan.switch_fan(true)
 	super()
 	if not placed:
 		await get_tree().create_timer(0.5).timeout
-		fanParticles.emitting = false
+		fan.switch_fan(false)
 
 ## Plays sound and places the fan then starts the fan animation.
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
@@ -31,7 +29,6 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 func grab(node: Node3D) -> void:
 	super(node)
 	animationPlayer.play("RESET")
-	fanParticles.emitting = false
 	fan.switch_fan(false)
 	grabed = true
 

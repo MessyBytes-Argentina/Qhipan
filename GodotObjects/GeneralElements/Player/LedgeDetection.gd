@@ -34,5 +34,5 @@ func _physics_process(_delta: float) -> void:
 	meshSphere.global_position = raycast.get_collision_point() * Vector3(1, 0, 1) + Vector3(0, meshSphere.global_position.y, 0)
 	material.albedo_color = Color.GREEN
 	
-	if raycast.get_collision_point().distance_to(raycast.global_position) > LENGTH - JUMPDISTANCE:
-		print(raycast.get_collision_normal())
+	#if raycast.get_collision_point().distance_to(raycast.global_position) > LENGTH - JUMPDISTANCE:
+		#print(raycast.get_collision_normal())

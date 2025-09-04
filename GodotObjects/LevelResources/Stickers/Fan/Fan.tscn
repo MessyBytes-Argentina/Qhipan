@@ -87,18 +87,6 @@ tracks/1/keys = {
 "method": &"switch_fan"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Fan/FanParticles:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_j2x5e"]
 resource_name = "Spin"
@@ -161,18 +149,6 @@ tracks/2/keys = {
 "args": [true],
 "method": &"switch_fan"
 }]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Fan/FanParticles:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2x5e"]
@@ -249,6 +225,7 @@ collision_layer = 0
 collision_mask = 514
 monitorable = false
 script = ExtResource("3_6ngi6")
+lastRayCollision = null
 
 [node name="Area" type="CollisionShape3D" parent="Fan"]
 unique_name_in_owner = true
@@ -283,6 +260,14 @@ unique_name_in_owner = true
 [node name="FanParticles" parent="Fan" instance=ExtResource("5_tax0g")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
+lifetime = 0.4
+
+[node name="BlockingRaycast" type="RayCast3D" parent="Fan"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true

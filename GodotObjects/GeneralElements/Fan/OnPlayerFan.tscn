@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://m8ogo00hrgbi"]
+[gd_scene load_steps=11 format=3 uid="uid://m8ogo00hrgbi"]
 
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="1_hi63f"]
 [ext_resource type="Script" uid="uid://cipgycmfw113v" path="res://GodotObjects/GeneralElements/Fan/OnPlayerFan.gd" id="1_iux6s"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="2_iux6s"]
+[ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="4_x1de3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x1de3"]
 size = Vector3(0.8, 1, 0.8)
@@ -38,6 +39,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_hi63f")
 areaHeight = 1.0
+lastRayCollision = null
 
 [node name="Area" type="CollisionShape3D" parent="PushArea"]
 unique_name_in_owner = true
@@ -67,6 +69,17 @@ texture = SubResource("GradientTexture2D_6n66f")
 
 [node name="Origin" type="Marker3D" parent="PushArea"]
 unique_name_in_owner = true
+
+[node name="BlockingRaycast" type="RayCast3D" parent="PushArea"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="FanParticles" parent="PushArea" instance=ExtResource("4_x1de3")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.18557e-08)
+lifetime = 0.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269403, -1.1776e-08)
