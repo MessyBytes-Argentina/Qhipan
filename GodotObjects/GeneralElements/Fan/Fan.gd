@@ -41,7 +41,6 @@ const noGravityAreaMargin: float = 0.15
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
-	print(overridenSize)
 	if not is_node_ready(): await ready
 	area.shape.size = Vector3(areaDiameter, overridenSize, areaDiameter)
 	area.position.y = overridenSize / 2.0
