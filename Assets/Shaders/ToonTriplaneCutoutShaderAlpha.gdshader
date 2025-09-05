@@ -156,7 +156,7 @@ vec3 worldmap(vec3 world_pos, float y_normal, vec3 texture_scales) {
 	vec3 side_base_world_pos = fract(world_pos * vec3(1.00000 / side_texture_scale, 1.00000 / texture_scales.z, 1.00000 / texture_scales.z) + vec3(0.50000 / texture_scales.z, 0.00000, 0.50000 / texture_scales.z));
 	vec2 side_base_world_pos_off = mix(side_base_world_pos.xy, side_base_world_pos.zy, float(abs(world_normal.x) > 0.5)) * vec2(1.0, -1.0);
 	res = mix(res, side_base_world_pos_off, float(sideWorldMapped));
-	
+
 	return vec3(res, float(topWorldMapped && !sideWorldMapped) + float(sideWorldMapped) * 2.0);
 }
 
@@ -182,11 +182,11 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
-	
+
 	// Worldmapping
 	float y_normal = (world_normal.y + 1.0) / 2.0;
 	vec3 base_detail_uv = worldmap(world_pos, y_normal, vec3(bottom_detail_texture_scale, top_detail_texture_scale, side_detail_texture_scale));
-	
+
 	//Cylinder cutout
 	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
 	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
@@ -199,37 +199,37 @@ void fragment() {
 	resultShape = opSubtraction(sdfAuxBox, resultShape) * float(auxMode) + resultShape * float(auxMode == false);
 	if (resultShape < 0.0 && docutout) {discard;}
 	float borderDistance = smoothstep(0.0, borderSize, resultShape) * float(docutout) + float(docutout == false);
-	
+
 	// Albedo & Alpha
 	vec3 base_albedo_uv = worldmap(world_pos, y_normal, vec3(bottom_texture_scale, top_texture_scale, side_texture_scale));
 	vec4 base_albedo = texture(bottom_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 0.0) + texture(top_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 1.0) + texture(side_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 2.0);
 	ALBEDO = base_albedo.rgb * albedo.rgb;
 	ALPHA = base_albedo.a * albedo.a;
-	
+
 	// Roughness: Enabled
 	vec4 roughness_texture_channel = vec4(0.0, 1.0, 0.0, 0.0);
 	vec4 base_roughness = triple_condition_vec4(texture(bottom_texture_roughness, base_detail_uv.xy), texture(top_texture_roughness, base_detail_uv.xy), texture(side_texture_roughness, base_detail_uv.xy), base_detail_uv.z);
 	float roughness_tex = dot(base_roughness, roughness_texture_channel);
 	ROUGHNESS = roughness_tex * triple_condition_float(bottom_roughness, top_roughness, side_roughness, base_detail_uv.z);
-	
+
 	// Metallic: Enabled
 	vec4 base_metallic = triple_condition_vec4(texture(bottom_texture_metallic, base_detail_uv.xy), texture(top_texture_metallic, base_detail_uv.xy), texture(side_texture_metallic, base_detail_uv.xy), base_detail_uv.z);
 	float metallic_tex = dot(base_metallic, metallic_texture_channel);
 	METALLIC = metallic_tex * triple_condition_float(bottom_metallic, top_metallic, side_metallic, base_detail_uv.z);
 	SPECULAR = triple_condition_float(bottom_metallic_specular, top_metallic_specular, side_metallic_specular, base_detail_uv.z);
-	
+
 	if (enable_normal) {
 		// Normal Map: Enabled
 		NORMAL_MAP = (triple_condition_vec4(texture(bottom_texture_normal, base_detail_uv.xy), texture(top_texture_normal, base_detail_uv.xy), texture(side_texture_normal, base_detail_uv.xy), base_detail_uv.z)).rgb;
 		NORMAL_MAP_DEPTH = triple_condition_float(bottom_normal_scale, top_normal_scale, side_normal_scale, base_detail_uv.z);
 	}
-	
+
 	if (enable_emission) {
 		// Emission: Add
 		vec3 emission_tex = (triple_condition_vec4(texture(bottom_texture_emission, base_detail_uv.xy), texture(top_texture_emission, base_detail_uv.xy), texture(side_texture_emission, base_detail_uv.xy), base_detail_uv.z)).rgb;
 		EMISSION = (triple_condition_vec3(bottom_emission, top_emission, side_emission, base_detail_uv.z).rgb + emission_tex) * triple_condition_float(bottom_emission_energy_multiplier, top_emission_energy_multiplier, side_emission_energy_multiplier, base_detail_uv.z);
 	}
-	
+
 	if (enable_clearcoat) {
 		// Clearcoat: Enabled
 		vec2 clearcoat_tex = (triple_condition_vec4(texture(bottom_texture_clearcoat, base_detail_uv.xy), texture(top_texture_clearcoat, base_detail_uv.xy), texture(side_texture_clearcoat, base_detail_uv.xy), base_detail_uv.z)).xy;
@@ -238,20 +238,20 @@ void fragment() {
 		CLEARCOAT = clearcoat * clearcoat_tex.x;
 		CLEARCOAT_ROUGHNESS = clearcoat_roughness * clearcoat_tex.y;
 	}
-	
+
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
 		vec3 anisotropy_tex = (triple_condition_vec4(texture(bottom_texture_anisotropy_flowmap, base_detail_uv.xy), texture(top_texture_anisotropy_flowmap, base_detail_uv.xy), texture(side_texture_anisotropy_flowmap, base_detail_uv.xy), base_detail_uv.z)).rga;
 		ANISOTROPY = triple_condition_float(bottom_anisotropy, top_anisotropy, side_anisotropy, base_detail_uv.z) * anisotropy_tex.b;
 		ANISOTROPY_FLOW = anisotropy_tex.rg * 2.0 - 1.0;
 	}
-	
+
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
 		AO = dot(triple_condition_vec4(texture(bottom_texture_ambient_occlusion, base_detail_uv.xy), texture(top_texture_ambient_occlusion, base_detail_uv.xy), texture(side_texture_ambient_occlusion, base_detail_uv.xy), base_detail_uv.z), ao_texture_channel);
 		AO_LIGHT_AFFECT = triple_condition_float(bottom_ao_light_affect, top_ao_light_affect, side_ao_light_affect, base_detail_uv.z);
 	}
-	
+
 	// Cutout border painting
 	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
 	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);

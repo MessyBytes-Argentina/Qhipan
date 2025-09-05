@@ -37,7 +37,7 @@ const noGravityAreaMargin: float = 0.15
 @onready var fanParticles: GPUParticles3D = %FanParticles
 
 ## Last raycast collision length.
-@export var lastRayCollision: float = 0.0
+var lastRayCollision: float = 0.0
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
