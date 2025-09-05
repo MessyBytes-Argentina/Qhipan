@@ -6,6 +6,8 @@ class_name ToonMaterialMaker
 
 ## The ToonTriplaneCutout shader script.
 const ttcShader: String = "uid://j67qewi23t7g"
+## The ToonTriplaneCutoutAlpha shader script.
+const ttcaShader: String = "uid://wr3awr1nsjmu"
 ## The DecalToonTriplaneCutout shader script.
 const dttcShader: String = "uid://d70se0jvv0xj"
 ## The ToonCutout shader script.
@@ -20,7 +22,7 @@ const specialValueParameters: Array[String] = ["metallic", "metallic_specular", 
 const excludeToggleParameters: Array[String] = ["roughness", "metallic"]
 
 ## The types of materials to make.
-enum MaterialModes {GRIDMAP, DECAL, OTHER}
+enum MaterialModes {GRIDMAP, DECAL, TRIPLANE_WITH_ALPHA, OTHER}
 ## The currently chosen material type.
 @export var materialMode: MaterialModes = MaterialModes.GRIDMAP:
 	set(value):
@@ -72,6 +74,8 @@ func _get_property_list() -> Array[Dictionary]:
 				"hint": PROPERTY_HINT_RESOURCE_TYPE,
 				"hint_string": "Texture2D",
 			})
+			props.append_array(_get_ttc_properties())
+		MaterialModes.TRIPLANE_WITH_ALPHA:
 			props.append_array(_get_ttc_properties())
 		MaterialModes.OTHER:
 			props.append({
@@ -149,6 +153,9 @@ func make_material() -> void:
 		MaterialModes.DECAL:
 			finalizeShaderMaterial.shader = load(dttcShader)
 			finalizeShaderMaterial.set_shader_parameter("mask", UVMask)
+			make_TTC_material()
+		MaterialModes.TRIPLANE_WITH_ALPHA:
+			finalizeShaderMaterial.shader = load(ttcaShader)
 			make_TTC_material()
 		MaterialModes.OTHER:
 			finalizeShaderMaterial.shader = load(tcShader)

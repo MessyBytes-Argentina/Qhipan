@@ -27,39 +27,65 @@ const noGravityAreaMargin: float = 0.15
 @onready var origin: Marker3D = %Origin
 ## Pushing area collision shape reference
 @onready var area: CollisionShape3D = %Area
-
 ## NoGravity zone reference
 @onready var noGravity: NoGravityZone = %NoGravity
 ## NoGravity area collision shape reference
 @onready var noGravityCollision: CollisionShape3D = %NoGravityCollision
+## Raycast to detect wind-blocking structures.
+@onready var blockingRaycast: RayCast3D = %BlockingRaycast
+## Fan particle emmiter.
+@onready var fanParticles: GPUParticles3D = %FanParticles
+
+## Last raycast collision length.
+var lastRayCollision: float = 0.0
 
 ## Adjust push and noGravity size and position
-func set_area_size() -> void:
+func set_area_size(overridenSize: float = areaHeight) -> void:
 	if not is_node_ready(): await ready
-	area.shape.size = Vector3(areaDiameter, areaHeight, areaDiameter)
-	area.position.y = areaHeight / 2.0
-	noGravityCollision.shape.size = Vector3(areaDiameter, areaHeight + noGravityAreaMargin, areaDiameter)
-	noGravity.position.y = (areaHeight + noGravityAreaMargin) / 2.0
-	target.position.y = areaHeight + (noGravityAreaMargin if hasAntigravity else 0.0)
-	#TEMP
-	#if $MeshInstance3D:
-		#$MeshInstance3D.mesh.outer_radius = areaDiameter / 2.0
-		#$MeshInstance3D.mesh.inner_radius = areaDiameter / 5.0
+	area.shape.size = Vector3(areaDiameter, overridenSize, areaDiameter)
+	area.position.y = overridenSize / 2.0
+	noGravityCollision.shape.size = Vector3(areaDiameter, overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0), areaDiameter)
+	noGravity.position.y = (overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0)) / 2.0
+	target.position.y = overridenSize + ((noGravityAreaMargin if overridenSize == areaHeight else 0.0) if hasAntigravity else 0.0)
+	if fanParticles: 
+		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
+	if blockingRaycast.target_position.y == 0.0:
+		blockingRaycast.target_position.y = overridenSize + noGravityAreaMargin
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	#pushForce *= PUSHBASELINE
+	area.shape = area.shape.duplicate()
+	noGravityCollision.shape = noGravityCollision.shape.duplicate()
 	body_entered.connect(push)
 	body_exited.connect(stop_pushing)
 	set_area_size()
 	target.hide()
 	switch_fan(isOn)
 
+## Called during the physics processing step of the main loop.
+func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	check_obstacles()
+
+## Checks for wind blocking elements
+func check_obstacles() -> void:
+	if blockingRaycast.target_position.y == 0: return
+	if not blockingRaycast.is_colliding():
+		if lastRayCollision != 0.0:
+			set_area_size()
+			lastRayCollision = 0.0
+		return
+	var currentRayCollision: float = roundf(global_position.distance_to(blockingRaycast.get_collision_point()))
+	if lastRayCollision != currentRayCollision:
+		lastRayCollision = currentRayCollision
+		set_area_size(lastRayCollision)
+
 ## Turns on and off the fan
 func switch_fan(mode: bool = not isOn) -> void:
 	isOn = mode
 	set_deferred("monitoring", isOn)
+	if fanParticles: fanParticles.emitting = mode
 	noGravity.set_deferred("monitoring", isOn and hasAntigravity)
 
 ## On body_entered pushes the given body if pusheable

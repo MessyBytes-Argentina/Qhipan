@@ -19,9 +19,7 @@ uniform float sine_wave_frequency : hint_range(0, 100, 0.01) = 10.0;
 uniform float noise_density_influence_min : hint_range(0, 1, 0.01) = 0.5;
 uniform float height_falloff = 0.0;
 uniform float edge_fade = 0.1;
-const int lights_tracked = 6;
-uniform vec2 light_sources[lights_tracked];
-uniform float light_ranges[lights_tracked];
+uniform sampler2D light_mask;
 
 // Cutout Variables
 uniform float cylinderRadiusModifier : hint_range(-10, 10, 0.01) = 1.25;
@@ -40,9 +38,7 @@ void fog() {
 	float noise_value = mix(noise_scroll, noise_sine, sine_wave_influence);
 	noise_value = smoothstep(noise_edge, 1.0, noise_value);
 	DENSITY = density * clamp(exp2(-height_falloff * (WORLD_POSITION.y - OBJECT_POSITION.y)), 0.0, 1.0) * max(noise_density_influence_min, noise_value);
-	for (int i = 0; i < lights_tracked; i++) {
-		DENSITY *= light_ranges[i] > 0.0 ? float(distance(light_sources[i], WORLD_POSITION.xz) > light_ranges[i]) : 1.0;
-	}
+	DENSITY *= texture(light_mask, vec2(UVW.x, UVW.z)).r;
 	DENSITY *= player_sticker_radius > 0.0 ? float(distance(playerPosition, WORLD_POSITION) > player_sticker_radius) : 1.0;
 	
 	//Cylinder cutout

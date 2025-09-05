@@ -18,7 +18,7 @@ noise = SubResource("FastNoiseLite_fwrbv")
 [resource]
 shader = ExtResource("1_ks7mc")
 shader_parameter/density = 8.0
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo = Color(0, 0, 0, 1)
 shader_parameter/center_color = Color(0.27451, 0, 0.352941, 1)
 shader_parameter/edge_color = Color(0.27451, 0, 0.352941, 1)
 shader_parameter/center_edge = 0.35
@@ -34,8 +34,6 @@ shader_parameter/sine_wave_frequency = 15.0
 shader_parameter/noise_density_influence_min = 0.5
 shader_parameter/height_falloff = 0.0
 shader_parameter/edge_fade = 0.1
-shader_parameter/light_sources = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shader_parameter/light_ranges = PackedFloat32Array(0, 0, 0, 0, 0, 0)
 shader_parameter/cylinderRadiusModifier = 1.25
 shader_parameter/cylinderCutout = false
 shader_parameter/cylinderPosition = Vector3(0, 0, 0)

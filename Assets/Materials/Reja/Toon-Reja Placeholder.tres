@@ -1,32 +1,30 @@
-[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=10 format=3 uid="uid://1q6nxbasyidk"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://twqcp50kf00f"]
 
-[ext_resource type="Material" uid="uid://fy4jiyh07x0y" path="res://Assets/Materials/Reja/Reja Material.tres" id="1_kbmig"]
-[ext_resource type="Shader" uid="uid://wr3awr1nsjmu" path="res://Assets/Shaders/ToonTriplaneCutoutShaderAlpha.gdshader" id="2_7x2pr"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_jepp6"]
-[ext_resource type="Texture2D" uid="uid://is3k34e5d7ao" path="res://Assets/Materials/Reja/Reja Material_albedo.png" id="3_ceun7"]
-[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_e3gnc"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_jepp6"]
-[ext_resource type="Texture2D" uid="uid://bgkyf80dgopi7" path="res://Assets/Materials/Reja/Reja Material_orm.png" id="4_clnx7"]
-[ext_resource type="Texture2D" uid="uid://dkc7xn7e2f2l4" path="res://Assets/Materials/Reja/Reja Material_normal.png" id="5_cgqn5"]
+[ext_resource type="Shader" uid="uid://wr3awr1nsjmu" path="res://Assets/Shaders/ToonTriplaneCutoutShaderAlpha.gdshader" id="1_rl2d0"]
+[ext_resource type="Texture2D" uid="uid://is3k34e5d7ao" path="res://Assets/Materials/Reja/Reja Material_albedo.png" id="2_4snhk"]
+[ext_resource type="Texture2D" uid="uid://bgkyf80dgopi7" path="res://Assets/Materials/Reja/Reja Material_orm.png" id="3_x7xts"]
+[ext_resource type="Texture2D" uid="uid://dkc7xn7e2f2l4" path="res://Assets/Materials/Reja/Reja Material_normal.png" id="4_bqst5"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_qjuj3"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="6_c3c0u"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3rxl"]
+[resource]
 render_priority = 0
-shader = ExtResource("2_7x2pr")
+shader = ExtResource("1_rl2d0")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/light_gradient = ExtResource("3_jepp6")
-shader_parameter/fresnel_gradient = ExtResource("2_jepp6")
-shader_parameter/top_texture_albedo = ExtResource("3_ceun7")
-shader_parameter/bottom_texture_albedo = ExtResource("3_ceun7")
-shader_parameter/side_texture_albedo = ExtResource("3_ceun7")
+shader_parameter/light_gradient = ExtResource("6_c3c0u")
+shader_parameter/fresnel_gradient = ExtResource("5_qjuj3")
+shader_parameter/top_texture_albedo = ExtResource("2_4snhk")
+shader_parameter/bottom_texture_albedo = ExtResource("2_4snhk")
+shader_parameter/side_texture_albedo = ExtResource("2_4snhk")
 shader_parameter/top_texture_scale = 0.5
 shader_parameter/bottom_texture_scale = 0.5
 shader_parameter/side_texture_scale = 0.5
 shader_parameter/top_detail_texture_scale = 0.5
 shader_parameter/bottom_detail_texture_scale = 0.5
 shader_parameter/side_detail_texture_scale = 0.5
-shader_parameter/top_texture_roughness = ExtResource("4_clnx7")
-shader_parameter/bottom_texture_roughness = ExtResource("4_clnx7")
-shader_parameter/side_texture_roughness = ExtResource("4_clnx7")
+shader_parameter/top_texture_roughness = ExtResource("3_x7xts")
+shader_parameter/bottom_texture_roughness = ExtResource("3_x7xts")
+shader_parameter/side_texture_roughness = ExtResource("3_x7xts")
 shader_parameter/top_roughness = 1.0
 shader_parameter/bottom_roughness = 1.0
 shader_parameter/side_roughness = 1.0
@@ -45,9 +43,9 @@ shader_parameter/top_emission_energy_multiplier = 1.0
 shader_parameter/bottom_emission_energy_multiplier = 1.0
 shader_parameter/side_emission_energy_multiplier = 1.0
 shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = ExtResource("5_cgqn5")
-shader_parameter/bottom_texture_normal = ExtResource("5_cgqn5")
-shader_parameter/side_texture_normal = ExtResource("5_cgqn5")
+shader_parameter/top_texture_normal = ExtResource("4_bqst5")
+shader_parameter/bottom_texture_normal = ExtResource("4_bqst5")
+shader_parameter/side_texture_normal = ExtResource("4_bqst5")
 shader_parameter/top_normal_scale = 1.0
 shader_parameter/bottom_normal_scale = 1.0
 shader_parameter/side_normal_scale = 1.0
@@ -63,9 +61,9 @@ shader_parameter/top_anisotropy = 0.0
 shader_parameter/bottom_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
 shader_parameter/enable_ambient_occlusion = true
-shader_parameter/top_texture_ambient_occlusion = ExtResource("4_clnx7")
-shader_parameter/bottom_texture_ambient_occlusion = ExtResource("4_clnx7")
-shader_parameter/side_texture_ambient_occlusion = ExtResource("4_clnx7")
+shader_parameter/top_texture_ambient_occlusion = ExtResource("3_x7xts")
+shader_parameter/bottom_texture_ambient_occlusion = ExtResource("3_x7xts")
+shader_parameter/side_texture_ambient_occlusion = ExtResource("3_x7xts")
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/top_ao_light_affect = 0.0
 shader_parameter/bottom_ao_light_affect = 0.0
@@ -86,20 +84,3 @@ shader_parameter/playerPosition = Vector3(0, 0, 0)
 shader_parameter/auxMode = false
 shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
 shader_parameter/auxBoxRotation = 0.0
-
-[resource]
-script = ExtResource("3_e3gnc")
-materialMode = 2
-topSurfaceMaterial = ExtResource("1_kbmig")
-topAlbedoSize = 0.5
-topDetailSize = 0.5
-bottomSurfaceMaterial = ExtResource("1_kbmig")
-bottomAlbedoSize = 0.5
-bottomDetailSize = 0.5
-sideSurfaceMaterial = ExtResource("1_kbmig")
-sideAlbedoSize = 0.5
-sideDetailSize = 0.5
-lightGradient = ExtResource("3_jepp6")
-fresnelGradient = ExtResource("2_jepp6")
-finalizeShaderMaterial = SubResource("ShaderMaterial_i3rxl")
-metadata/_custom_type_script = "uid://duwq10b1isvmn"

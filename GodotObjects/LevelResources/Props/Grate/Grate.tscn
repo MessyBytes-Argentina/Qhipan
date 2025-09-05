@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://6mh0kqfnui1e"]
+
+[ext_resource type="Material" uid="uid://twqcp50kf00f" path="res://Assets/Materials/Reja/Toon-Reja Placeholder.tres" id="1_ns51y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efgxu"]
+size = Vector3(1, 1, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7spes"]
+material = ExtResource("1_ns51y")
+size = Vector3(1, 1, 0.25)
+
+[node name="Grate" type="StaticBody3D"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_efgxu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("BoxMesh_7spes")

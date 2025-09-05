@@ -71,6 +71,10 @@ var darknessAreas: Array[Area3D] = []
 var lightAreas: Array[Area3D] = []
 ## Prevents player from grabbing this sticker if it's in full darkness.
 var inDarkness: bool = false
+## Tracks the last location it was in last time it was grabbed.
+var lastLocation: Vector3
+## Tracks the state it was in last time it was grabbed.
+var lastMode: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -87,11 +91,17 @@ func _ready() -> void:
 	originalParent = get_parent()
 	areaChecker.area_entered.connect(_on_area_entered)
 	areaChecker.area_exited.connect(_on_area_exited)
+	await get_tree().create_timer(PLACEDCHECKTIME).timeout
+	check_placement()
+	lastLocation = global_position
+	lastMode = placed
+
+## Checks for nearby areas to place itself
+func check_placement() -> void:
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
 		start_rotation()
 	else:
-		await get_tree().create_timer(PLACEDCHECKTIME).timeout
 		var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
 		while len(grabArea.stickerableSurfaces) == 0:
 			await get_tree().process_frame
@@ -135,6 +145,7 @@ func prerender() -> void:
 
 ## Places the sticker on the given area facing the given direction
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+	stop_rotation()
 	set_size(ScaleModes.PLACED)
 	placedPosition = area.global_position
 	global_position = area.global_position + direction * 0.01
@@ -180,6 +191,8 @@ func set_size(mode: ScaleModes) -> void:
 
 ## Moves the sticker position to the given node position
 func grab(node: Node3D) -> void:
+	lastLocation = global_position
+	lastMode = placed
 	onPlayer = true
 	global_position = node.global_position
 	global_position.y = global_position.y + GRABHEIGHT
@@ -187,6 +200,14 @@ func grab(node: Node3D) -> void:
 	set_size(ScaleModes.GRABBED)
 	stop_rotation()
 	grabed = true
+	placed = false
+
+## Called when player reset is called
+func reset_sticker() -> void:
+	drop()
+	global_position = lastLocation
+	placed = lastMode
+	check_placement()
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:

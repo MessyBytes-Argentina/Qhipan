@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs536j1n36wmr"]
+[gd_scene load_steps=9 format=3 uid="uid://bs536j1n36wmr"]
 
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="1_igptx"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="2_gt347"]
+[ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="3_tnr13"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_jh37w"]
 inner_radius = 0.1
@@ -63,3 +64,15 @@ texture = SubResource("GradientTexture2D_ps2dv")
 
 [node name="Origin" type="Marker3D" parent="."]
 unique_name_in_owner = true
+
+[node name="BlockingRaycast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="FanParticles" parent="." instance=ExtResource("3_tnr13")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
+lifetime = 0.4

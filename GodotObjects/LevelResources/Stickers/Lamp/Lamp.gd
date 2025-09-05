@@ -37,7 +37,6 @@ var hasPlayer: bool = false
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	light.position.y = -GRABHEIGHT / 2.0
 	while not player:
 		player = get_tree().get_first_node_in_group("Player")
 		await get_tree().process_frame
@@ -54,10 +53,12 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_layer_value(5, false)
 			lightArea.set_collision_mask_value(2, false)
 			stickerLightArea.set_collision_mask_value(2, false)
+			light.position.y = -GRABHEIGHT / 2.0
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
 			animate_light_fade(0.0)
+			light.position.y = 0.0
 		ScaleModes.PLACED:
 			floatingMesh.hide()
 			mesh.show()
@@ -65,6 +66,7 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_layer_value(5, true)
 			lightArea.set_collision_mask_value(2, true)
 			stickerLightArea.set_collision_mask_value(2, true)
+			light.position.y = 0.0
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 	await get_tree().physics_frame

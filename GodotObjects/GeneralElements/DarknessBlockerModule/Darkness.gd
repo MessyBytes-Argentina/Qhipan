@@ -6,8 +6,6 @@ class_name DarknessArea
 ## The amount of vertices per meter that the fog collision is broken up into.
 ## Higher means higher collision quality but poorer performance.
 const DARKNESSCOLLISIONRESOLUTION: int = 8
-## The amount of lights that can affect the fog shader. This must match the value set up in the shader.
-const SHADERLIGHTSTRACKED: int = 6
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -50,31 +48,26 @@ func reset_collision_shape() -> void:
 ## Updates the collision shape details to match shiningh lights
 func update_collision_shape() -> void:
 	reset_collision_shape()
-	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - Vector2(size.x, size.z) / 2.0
-	var lightDistances: Dictionary[Vector2, float]
-	var lightPoints: PackedVector2Array = []
-	var lightRanges: PackedFloat32Array = []
+	var shaderMask: Image = Image.create(collisionMap.map_width, collisionMap.map_depth, false, Image.Format.FORMAT_L8)
+	shaderMask.fill(Color.WHITE)
+	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - (Vector2(size.x, size.z) / 2.0).rotated(-rotation.y)
+	var lightDistances: Dictionary[Vector3, float]
+	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	for lightArea in lights: 
-		lightDistances[Vector2(lightArea.global_position.x, lightArea.global_position.z)] = lightArea.get_node("CollisionShape3D").shape.radius
-	for lightPoint in lightDistances:
-		lightPoints.append(lightPoint)
-		lightRanges.append(lightDistances[lightPoint])
+		lightDistances[lightArea.global_position] = lightArea.get_node("CollisionShape3D").shape.radius
 	for i in range(len(collisionMap.map_data)):
-		if collisionMap.map_data[i] == 0.0: continue
-		var vertexFlatGlobalPosition = flatStartGlobalPosition + Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
+		var vertexFlatGlobalPosition: Vector2 = Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
+		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)
 		for lightStart in lightDistances:
-			if lightStart.distance_to(vertexFlatGlobalPosition) <= lightDistances[lightStart]:
+			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, lightStart.y, vertexFlatGlobalPosition.y)
+			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
+				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
+				raycast.collision_mask = 0x00000001
+				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
+				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
 				break
-	if len(lightPoints) > SHADERLIGHTSTRACKED:
-		lightPoints.resize(SHADERLIGHTSTRACKED)
-		lightRanges.resize(SHADERLIGHTSTRACKED)
-	else:
-		for _i in range(SHADERLIGHTSTRACKED - len(lightPoints)):
-			lightPoints.append(Vector2.ZERO)
-			lightRanges.append(0.0)
-	fogShader.set_shader_parameter("light_sources", lightPoints)
-	fogShader.set_shader_parameter("light_ranges", lightRanges)
+	fogShader.set_shader_parameter("light_mask", ImageTexture.create_from_image(shaderMask))
 
 ## Notifies when a light is shone up on the darkness area
 func _on_area_entered(area: Area3D) -> void:
