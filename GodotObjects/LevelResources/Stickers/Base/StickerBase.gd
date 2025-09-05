@@ -145,7 +145,6 @@ func prerender() -> void:
 
 ## Places the sticker on the given area facing the given direction
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	stop_rotation()
 	set_size(ScaleModes.PLACED)
 	placedPosition = area.global_position
 	global_position = area.global_position + direction * 0.01
@@ -160,6 +159,7 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 	else:
 		reparent(area)
 	grabed = false
+	stop_rotation()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
