@@ -344,9 +344,13 @@ func cutout_cube_rotation_check(rotationCheck: float) -> void:
 ## Checks and handles the cutout cube snapping to the gridmap.
 func current_grid_check() -> void:
 	if not gridmap: return
-	var currentGridPosition: Vector3 = Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
+	var currentGridPosition: Vector3 = get_grid_position()
 	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
 	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
+
+## Returns the position of the grid cell the player is in.
+func get_grid_position() -> Vector3:
+	return Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:

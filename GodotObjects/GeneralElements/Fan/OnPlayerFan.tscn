@@ -39,7 +39,6 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_hi63f")
 areaHeight = 1.0
-lastRayCollision = null
 
 [node name="Area" type="CollisionShape3D" parent="PushArea"]
 unique_name_in_owner = true
@@ -72,7 +71,7 @@ unique_name_in_owner = true
 
 [node name="BlockingRaycast" type="RayCast3D" parent="PushArea"]
 unique_name_in_owner = true
-target_position = Vector3(0, 0, 0)
+target_position = Vector3(0, 1.15, 0)
 debug_shape_custom_color = Color(0, 1, 0, 1)
 debug_shape_thickness = 5
 

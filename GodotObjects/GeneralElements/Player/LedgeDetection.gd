@@ -9,6 +9,8 @@ const JUMPDISTANCE: float = 0.05
 @onready var meshSphere: MeshInstance3D = $RayCast3D/MeshInstance3D
 @onready var player: Player = $".."
 
+@onready var forcedMovement: ForcedMovement = %ForcedMovement
+
 var material: ORMMaterial3D
 
 func _ready() -> void:
@@ -34,5 +36,12 @@ func _physics_process(_delta: float) -> void:
 	meshSphere.global_position = raycast.get_collision_point() * Vector3(1, 0, 1) + Vector3(0, meshSphere.global_position.y, 0)
 	material.albedo_color = Color.GREEN
 	
-	#if raycast.get_collision_point().distance_to(raycast.global_position) > LENGTH - JUMPDISTANCE:
-		#print(raycast.get_collision_normal())
+	if raycast.get_collision_point().distance_to(raycast.global_position) > LENGTH - JUMPDISTANCE:
+		var normalDirection: Vector3 = raycast.get_collision_normal()
+		if normalDirection == Vector3.ZERO or forcedMovement.forcingPlayer: return
+		print(normalDirection)
+		yeet_the_player(normalDirection)
+
+func yeet_the_player(direction: Vector3) -> void:
+	var targetPosition: Vector3 = player.get_grid_position() + direction
+	forcedMovement.force_player_to(targetPosition,10)
