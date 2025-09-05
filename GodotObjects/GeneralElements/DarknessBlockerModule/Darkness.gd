@@ -51,18 +51,18 @@ func update_collision_shape() -> void:
 	var shaderMask: Image = Image.create(collisionMap.map_width, collisionMap.map_depth, false, Image.Format.FORMAT_L8)
 	shaderMask.fill(Color.WHITE)
 	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - Vector2(size.x, size.z) / 2.0
-	var lightDistances: Dictionary[Vector2, float]
-	var lightPoints: PackedVector2Array = []
-	var lightRanges: PackedFloat32Array = []
+	var lightDistances: Dictionary[Vector3, float]
+	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	for lightArea in lights: 
-		lightDistances[Vector2(lightArea.global_position.x, lightArea.global_position.z)] = lightArea.get_node("CollisionShape3D").shape.radius
-	for lightPoint in lightDistances:
-		lightPoints.append(lightPoint)
-		lightRanges.append(lightDistances[lightPoint])
+		lightDistances[lightArea.global_position] = lightArea.get_node("CollisionShape3D").shape.radius
 	for i in range(len(collisionMap.map_data)):
-		var vertexFlatGlobalPosition = flatStartGlobalPosition + Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
+		var vertexFlatGlobalPosition: Vector2 = flatStartGlobalPosition + Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		for lightStart in lightDistances:
-			if lightStart.distance_to(vertexFlatGlobalPosition) <= lightDistances[lightStart]:
+			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, lightStart.y, vertexFlatGlobalPosition.y)
+			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
+				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
+				raycast.collision_mask = 0x00000001
+				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
 				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
 				break
