@@ -2,7 +2,7 @@ extends Node3D
 
 const MINLENGTH: float = 0.1
 const LENGTH: float = 0.75
-const JUMPDISTANCE: float = 0.05
+const JUMPDISTANCE: float = 0.15
 
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var raycast2: RayCast3D = $RayCast3D/RayCast3D2
@@ -12,6 +12,7 @@ const JUMPDISTANCE: float = 0.05
 @onready var forcedMovement: ForcedMovement = %ForcedMovement
 
 var material: ORMMaterial3D
+var previousDistance: float = 0
 
 func _ready() -> void:
 	material = meshSphere.get_surface_override_material(0)
@@ -20,28 +21,40 @@ func _physics_process(_delta: float) -> void:
 	if (player.moveDirection * Vector3(1, 0, 1)).length() > MINLENGTH:
 		raycast.position = LENGTH * player.moveDirection
 		raycast.target_position = -raycast.position
-	
+	var collisionPoint: Vector3
 	if raycast.is_colliding():
-		var collisionPoint = raycast.get_collision_point()
+		collisionPoint = raycast.get_collision_point()
 		if collisionPoint.distance_to(raycast.global_position) < MINLENGTH:
 			material.albedo_color = Color.TRANSPARENT
+			previousDistance = 0
 			return
 		var raycast2NewPosition = raycast.to_local(collisionPoint) * Vector3(1, 0, 1)
 		raycast2.position = raycast2NewPosition + raycast2.position * Vector3.UP - raycast2NewPosition.normalized() * MINLENGTH
-	
+	else:
+		previousDistance = 0
+		return
 	if raycast2.is_colliding():
 		material.albedo_color = Color.TRANSPARENT
+		previousDistance = 0
 		return
 	
 	meshSphere.global_position = raycast.get_collision_point() * Vector3(1, 0, 1) + Vector3(0, meshSphere.global_position.y, 0)
 	material.albedo_color = Color.GREEN
 	
-	if raycast.get_collision_point().distance_to(raycast.global_position) > LENGTH - JUMPDISTANCE:
+	var currentDistance: float = LENGTH - collisionPoint.distance_to(raycast.global_position)
+	prints(previousDistance,currentDistance)
+	if currentDistance < 0:
+		previousDistance = 0
+		return
+	
+	if currentDistance < JUMPDISTANCE and currentDistance < previousDistance:
+		
 		var normalDirection: Vector3 = raycast.get_collision_normal()
 		if normalDirection == Vector3.ZERO or forcedMovement.forcingPlayer: return
-		print(normalDirection)
 		yeet_the_player(normalDirection)
+	
+	previousDistance = currentDistance
 
 func yeet_the_player(direction: Vector3) -> void:
-	var targetPosition: Vector3 = player.get_grid_position() + direction
+	var targetPosition: Vector3 = player.get_grid_position() + (direction * 2)
 	forcedMovement.force_player_to(targetPosition,10)

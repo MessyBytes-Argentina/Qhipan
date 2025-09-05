@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=24 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -48,6 +48,9 @@ fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mbrd3"]
+size = Vector3(29.0721, 1, 26.7861)
+
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
 colors = PackedColorArray(1, 1, 1, 0.196078, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
@@ -93,6 +96,10 @@ placed = true
 
 [node name="DeathZone" parent="." instance=ExtResource("5_elc34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65826, -5.49185, 0)
+shape = SubResource("BoxShape3D_mbrd3")
 
 [node name="Player" parent="." instance=ExtResource("6_yctgy")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)

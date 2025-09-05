@@ -911,6 +911,7 @@ script = ExtResource("72_4biwg")
 [node name="RayCast3D" type="RayCast3D" parent="LedgeDetection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353553, -0.05, 0.353553)
 target_position = Vector3(-0.354, 0, -0.354)
+hit_back_faces = false
 debug_shape_custom_color = Color(1, 1, 0, 1)
 debug_shape_thickness = 5
 
@@ -921,7 +922,8 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
 
 [node name="RayCast3D2" type="RayCast3D" parent="LedgeDetection/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target_position = Vector3(0, -0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -1.35, 0)
+hit_back_faces = false
 debug_shape_custom_color = Color(1, 0.490196, 0, 1)
 debug_shape_thickness = 5
