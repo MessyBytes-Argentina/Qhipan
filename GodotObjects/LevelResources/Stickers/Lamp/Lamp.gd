@@ -83,8 +83,12 @@ func animate_light_fade(newValue: float) -> void:
 	lightTween.tween_property(light, "light_energy", energyGoal, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.parallel().tween_property(light, "omni_range", newValue, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.play()
-	lastLightValue = newValue
-	if newValue == 0.0: lightTween.finished.connect(light.hide)
+	lightTween.finished.connect(_on_light_fade_finish)
+
+## Executed after light fade tween finishes.
+func _on_light_fade_finish() -> void:
+	lastLightValue = light.omni_range
+	if lastLightValue == 0.0: light.hide()
 
 ## Cabeza fix to load visuals
 func prerender() -> void:

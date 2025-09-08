@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=24 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="15_ckktb"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="16_5fpv5"]
 [ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="17_mbrd3"]
+[ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="18_7sem2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -143,3 +144,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1,
 
 [node name="Grate" parent="Grate" instance=ExtResource("17_mbrd3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, -4.65)
+
+[node name="AntiStickerArea" parent="." instance=ExtResource("18_7sem2")]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 1, 1.51, 11.5)

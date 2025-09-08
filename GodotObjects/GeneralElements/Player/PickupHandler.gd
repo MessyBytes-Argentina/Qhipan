@@ -43,6 +43,8 @@ var currentArea: Area3D
 var pickupOnHand: bool = false
 ## Reference to the current pick up on the player
 var currentPickup: StickerBase
+## Flag that allows or stops the player from being able to grab a sticker when in a no sticker area
+var inNoStickerArea: bool = false
 ## Flag that allows or stops the player from being able to grab a sticker
 var canGrab: bool = true
 ## Flag that allows or stops the player from being able to drop a sticker
@@ -58,7 +60,7 @@ var stickerHighlightTween: Tween
 ## The valid surfaces for stickers
 var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
 ## Surfaces that already hold stickers
-var surfacesWithStickers: PackedVector3Array = []
+var surfacesWithStickers: Array[Vector3] = []
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,7 +81,7 @@ func _physics_process(_delta: float) -> void:
 ## Handles player input.
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	if event.is_action_pressed("interact") and not zoomedOut and canGrab:
+	if event.is_action_pressed("interact") and not zoomedOut and canGrab and not inNoStickerArea:
 		if not pickupOnHand:
 			do_grab()
 		else:
@@ -91,7 +93,10 @@ func do_grab() -> void:
 	currentPickup = currentlyAvailableStickers[0]
 	if currentPickup.placed:
 		removeSound.play_sound()
-		if surfacesWithStickers.has(currentPickup.placedPosition): surfacesWithStickers.remove_at(surfacesWithStickers.find(currentPickup.placedPosition))
+		for surface in surfacesWithStickers:
+			if (surface - currentPickup.placedPosition).is_zero_approx():
+				surfacesWithStickers.erase(surface)
+				break
 	else: pickupSound.play_sound()
 	currentPickup.reparent(self)
 	currentPickup.grab(self)
@@ -102,7 +107,7 @@ func do_grab() -> void:
 func check_available_area() -> bool:
 	if currentArea:
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
-		if currentArea == placeholderArea: surfacesWithStickers.append(placeholderArea.global_position)
+		if currentArea == placeholderArea and placeholderArea.global_position not in surfacesWithStickers: surfacesWithStickers.append(placeholderArea.global_position)
 		stickSound.play_sound()
 		return true
 	return false
@@ -135,7 +140,7 @@ func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	currentlyAvailableStickers = closeStickers.duplicate()
 	currentlyAvailableStickers.filter(func(a: StickerBase): return not a.inDarkness)
-	if len(currentlyAvailableStickers) == 0 or pickupOnHand: 
+	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 
 		if highlight: highlight.hide()
 	elif highlight:
 		highlightPivot.global_position = currentlyAvailableStickers[0].global_position
