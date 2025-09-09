@@ -43,6 +43,8 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 ## Reference to the involuntary movement module.
 @onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 
+## The collision mask for when the sticker is not on the player
+var collisionMask: int
 ## Parent node reference for placement.
 var sceneParent: Node
 ## Tween for rotation animation.
@@ -76,6 +78,7 @@ var lastMode: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	collisionMask = collision_mask
 	sceneParent = get_parent()
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -98,6 +101,7 @@ func _ready() -> void:
 func check_placement() -> void:
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
+		set_deferred("collision_mask", collisionMask)
 	else:
 		var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
 		while len(grabArea.stickerableSurfaces) == 0:
@@ -192,6 +196,7 @@ func set_size(mode: ScaleModes) -> void:
 
 ## Moves the sticker position to the given node position
 func grab(node: Node3D) -> void:
+	set_deferred("collision_mask", 0)
 	lastLocation = global_position
 	lastMode = placed
 	global_position = node.global_position
@@ -211,6 +216,7 @@ func reset_sticker() -> void:
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:
+	set_deferred("collision_mask", collisionMask)
 	set_size(ScaleModes.DROPPED)
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false

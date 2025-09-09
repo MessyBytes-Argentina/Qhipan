@@ -47,7 +47,9 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="StickerBase" type="CharacterBody3D"]
 collision_layer = 512
-collision_mask = 4097
+collision_mask = 4361
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
 script = ExtResource("1_8ww4f")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]

@@ -139,7 +139,12 @@ func _on_body_exited(body: Node3D) -> void:
 func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	currentlyAvailableStickers = closeStickers.duplicate()
-	currentlyAvailableStickers.filter(func(a: StickerBase): return not a.inDarkness)
+	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	currentlyAvailableStickers.filter(func(a: StickerBase): 
+		var raycast = PhysicsRayQueryParameters3D.create(global_position, a.global_position)
+		raycast.collision_mask = 4096
+		return not a.inDarkness and not spaceState.intersect_ray(raycast)
+	)
 	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 
 		if highlight: highlight.hide()
 	elif highlight:
