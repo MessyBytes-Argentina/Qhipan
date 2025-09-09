@@ -31,6 +31,8 @@ var playerDarknessManager: DarknessBlockerModule
 var lightTween: Tween
 ## Last light range.
 var lastLightValue: float = 0.0
+## Next light range.
+var nextLightValue: float = 0.0
 ## Tracks if player inside this lights effect.
 var hasPlayer: bool = false
 
@@ -76,7 +78,10 @@ func set_size(mode: ScaleModes) -> void:
 func animate_light_fade(newValue: float) -> void:
 	light.show()
 	if lightTween:
+		lightTween.finished.disconnect(_on_light_fade_finish)
+		lastLightValue = nextLightValue
 		lightTween.kill()
+	nextLightValue = newValue
 	var energyGoal: float = 0.0 if newValue == 0.0 else LIGHTENERGY
 	var goalTime: float = LIGHTFADETIME * inverse_lerp(newValue, lastLightValue, light.omni_range)
 	lightTween = create_tween()
@@ -87,7 +92,7 @@ func animate_light_fade(newValue: float) -> void:
 
 ## Executed after light fade tween finishes.
 func _on_light_fade_finish() -> void:
-	lastLightValue = light.omni_range
+	lastLightValue = nextLightValue
 	if lastLightValue == 0.0: light.hide()
 
 ## Cabeza fix to load visuals

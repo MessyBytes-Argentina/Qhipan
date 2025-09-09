@@ -139,11 +139,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 8)
 size = Vector3(5, 3, 3)
 
+[node name="Grate2" parent="." instance=ExtResource("17_mbrd3")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2.35, 1, 8)
+
 [node name="Grate" parent="." instance=ExtResource("17_mbrd3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1, 12)
 
-[node name="Grate" parent="Grate" instance=ExtResource("17_mbrd3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, -4.65)
+[node name="Grate3" parent="." instance=ExtResource("17_mbrd3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 1, 8)
 
 [node name="AntiStickerArea" parent="." instance=ExtResource("18_7sem2")]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 1, 1.51, 11.5)
