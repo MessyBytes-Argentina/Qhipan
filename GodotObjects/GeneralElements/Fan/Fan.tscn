@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs536j1n36wmr"]
+[gd_scene load_steps=9 format=3 uid="uid://bs536j1n36wmr"]
 
 [ext_resource type="Script" uid="uid://bpfcrrxnkncp6" path="res://GodotObjects/GeneralElements/Fan/Fan.gd" id="1_igptx"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="2_gt347"]
+[ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="3_tnr13"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_jh37w"]
 inner_radius = 0.1
@@ -10,17 +11,17 @@ rings = 8
 ring_segments = 8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
-size = Vector3(0.5, 1, 0.5)
+size = Vector3(0.8, 3, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
-size = Vector3(0.5, 1.5, 0.5)
+size = Vector3(0.8, 3.15, 0.8)
 
-[sub_resource type="Gradient" id="Gradient_gt347"]
+[sub_resource type="Gradient" id="Gradient_105mt"]
 offsets = PackedFloat32Array(0.25, 0.25)
 colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2dv"]
-gradient = SubResource("Gradient_gt347")
+gradient = SubResource("Gradient_105mt")
 width = 16
 height = 32
 fill = 1
@@ -31,7 +32,6 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("1_igptx")
-pushForce = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TorusMesh_jh37w")
@@ -64,3 +64,15 @@ texture = SubResource("GradientTexture2D_ps2dv")
 
 [node name="Origin" type="Marker3D" parent="."]
 unique_name_in_owner = true
+
+[node name="BlockingRaycast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 1, 0, 1)
+debug_shape_thickness = 5
+
+[node name="FanParticles" parent="." instance=ExtResource("3_tnr13")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
+lifetime = 0.4

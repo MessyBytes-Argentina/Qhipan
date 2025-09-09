@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://sllu7n8iy53k"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonShader.gdshader" id="1_dlcva"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_dlcva"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="2_epi6i"]
 [ext_resource type="Texture2D" uid="uid://dxwp6lowd56w0" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001Top.png" id="3_bof8u"]
 

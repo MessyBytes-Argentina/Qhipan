@@ -1,18 +1,20 @@
-extends Node3D
+extends Node
 
+## Plays all provided particles and sounds to make sure godot prebakes them.
+
+## Sounds to play
 @export var sounds: Array[AudioStream] = []
 
-@onready var poof: GPUParticles3D = %Poof
-@onready var particles_1: GPUParticles3D = %Particles1
-@onready var fan_particles: GPUParticles3D = %FanParticles
-@onready var poof_2: MultipleParticle3DEmitter = %Poof2
+## Reference to the particle collection.
+@onready var particles: Node3D = %Particles
+## Reference to the particle emitter collection.
+@onready var particleEmiters: Node3D = %ParticleEmitters
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MusicManager.set_synchro_clip_volume("main",[1],-60.0,0.1)
-	poof.emitting = true
-	particles_1.emitting = true
-	fan_particles.emitting = true
-	poof_2.emit_particles()
+	for particle in particles.get_children(): particle.emitting = true
+	for particleEmmitter in particleEmiters.get_children(): particleEmmitter.emit_particles()
 	var sceneManager: StoryWriterSceneManager = null
 	while not sceneManager:
 		await get_tree().process_frame

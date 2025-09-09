@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bpsltup5aeffb"]
 
-[ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="1_sgl7p"]
-[ext_resource type="Texture2D" uid="uid://bw25mw0ryfxe6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/CloseButton.png" id="2_dkoa1"]
+[ext_resource type="Shader" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="1_sgl7p"]
+[ext_resource type="Texture2D" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/CloseButton.png" id="2_dkoa1"]
 [ext_resource type="Script" uid="uid://brccl4c8a84dy" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/AnimatedTextureButton/AnimatedTextureButton.gd" id="3_qa8is"]
 [ext_resource type="Animation" uid="uid://c6m11xjao8bbn" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/RESET.res" id="4_psop6"]
 [ext_resource type="Animation" uid="uid://dijfkl740kipq" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/hover.res" id="5_4kiho"]
 [ext_resource type="Animation" uid="uid://0csbm78eb800" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/pressed.res" id="6_fmtjy"]
 [ext_resource type="Animation" uid="uid://epf048xdyi6x" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/focus.res" id="7_cw3el"]
-[ext_resource type="Script" uid="uid://y5tfp47a5yrk" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/MultipleParticleEmitter/MultipleParticleEmitterControl.gd" id="8_yphgf"]
-[ext_resource type="PackedScene" uid="uid://bk6ps7cpbkl5r" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/Particles/Fireworks2D.tscn" id="9_nrhrn"]
+[ext_resource type="Script" uid="uid://y5tfp47a5yrk" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticleEmitterControl.gd" id="8_yphgf"]
+[ext_resource type="PackedScene" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/Particles/Fireworks2D.tscn" id="9_nrhrn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
 shader = ExtResource("1_sgl7p")

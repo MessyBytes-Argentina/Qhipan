@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7st877p5uct1"]
 
-[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Sprites/Skybox/Skybox-Dawn.png" id="1_1f5hi"]
+[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_1f5hi"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_1f5hi")
@@ -9,18 +9,40 @@ energy_multiplier = 0.6
 [sub_resource type="Sky" id="Sky_v5vbm"]
 sky_material = SubResource("PanoramaSkyMaterial_wvbsw")
 
-[sub_resource type="Environment" id="Environment_8kaph"]
+[sub_resource type="Environment" id="Environment_pq035"]
 background_mode = 2
 background_color = Color(0.384314, 0.454902, 0.54902, 1)
 sky = SubResource("Sky_v5vbm")
 ambient_light_source = 2
 ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
+ambient_light_energy = 1.5
 tonemap_mode = 2
+tonemap_exposure = 1.5
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 4.0
+ssil_enabled = true
+sdfgi_energy = 7.275
+glow_strength = 0.53
+glow_bloom = 1.0
+fog_mode = 1
+fog_light_color = Color(0.827038, 0.452026, 0.194988, 1)
+fog_light_energy = 16.0
+fog_sun_scatter = 1.0
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_height_density = 0.5
+fog_depth_begin = 4000.0
+fog_depth_end = 4000.0
+volumetric_fog_density = 0.2228
+volumetric_fog_length = 2.0
+volumetric_fog_ambient_inject = 0.1
+volumetric_fog_sky_affect = 0.0
 
 [node name="EnvironmentObjects" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8kaph")
+environment = SubResource("Environment_pq035")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)

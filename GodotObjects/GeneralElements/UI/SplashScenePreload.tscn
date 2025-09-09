@@ -1,12 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://8ain4p6etldq"]
+[gd_scene load_steps=23 format=3 uid="uid://8ain4p6etldq"]
 
 [ext_resource type="Script" uid="uid://tokbh8plhxab" path="res://GodotObjects/GeneralElements/UI/SplashSceneShaderBaker.gd" id="1_dxbmg"]
 [ext_resource type="PackedScene" uid="uid://dx5y61ng147gp" path="res://GodotObjects/Managers/SceneManager/StartScene.tscn" id="2_fhpfe"]
-[ext_resource type="Shader" uid="uid://foqf6idimvb0" path="res://addons/decal_compatibility/decal.gdshader" id="2_tjpxc"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="2_tv7nj"]
 [ext_resource type="AudioStream" uid="uid://t07xlctfpaa4" path="res://Assets/Sounds/Sticker_Remove.mp3" id="3_0rg7o"]
-[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/spoof_particle.tscn" id="3_7th63"]
-[ext_resource type="Script" uid="uid://feckn7f3pmud" path="res://addons/decal_compatibility/decal_compatibility.gd" id="3_r1tmu"]
+[ext_resource type="PackedScene" uid="uid://dbo3auep3r0u" path="res://GodotObjects/GeneralElements/Particles/poof_particle.tscn" id="3_7th63"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="4_d0xu3"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://GodotObjects/GeneralElements/Particles/CheckpointParticles.tscn" id="4_tjpxc"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="5_38xoa"]
@@ -25,89 +23,65 @@
 [ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/GeneralElements/Player/poofEmitter.tscn" id="22_0rg7o"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("CanvasLayer/SubViewport")
 
-[sub_resource type="Gradient" id="Gradient_k62l1"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0, 0, 0, 0.588235, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_81nvi"]
-gradient = SubResource("Gradient_k62l1")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1wxo"]
-render_priority = 0
-shader = ExtResource("2_tjpxc")
-shader_parameter/albedo = SubResource("GradientTexture2D_81nvi")
-shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/albedo_mix = 1.0
-shader_parameter/scale_mod = Vector3(2, 0.2, 2)
-shader_parameter/cube_half_size = Vector3(0.25, 2.5, 0.25)
-shader_parameter/enable_y_fade = false
-shader_parameter/fade_start = 0.3
-shader_parameter/fade_end = 0.7
-shader_parameter/fade_power = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_dl6uw"]
-material = SubResource("ShaderMaterial_c1wxo")
-size = Vector3(0.5, 5, 0.5)
-
-[sub_resource type="Environment" id="Environment_tv7nj"]
-background_mode = 1
-
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node"]
 script = ExtResource("1_dxbmg")
 sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), ExtResource("7_ecpr7"), ExtResource("6_5ktst"), ExtResource("5_38xoa"), ExtResource("4_d0xu3"), ExtResource("3_0rg7o"), ExtResource("2_tv7nj"), ExtResource("10_s5eie"), ExtResource("11_p2227"), ExtResource("12_sg3fy"), ExtResource("13_28kp4"), ExtResource("14_as1pu"), ExtResource("15_6x7mq")])
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="CanvasLayer2"]
+visible = false
+pixel_size = 0.0098
 billboard = 1
+transparent = false
 double_sided = false
 no_depth_test = true
+texture_filter = 1
 render_priority = 5
 texture = SubResource("ViewportTexture_81nvi")
 
-[node name="ShadowDecal" type="MeshInstance3D" parent="Sprite3D"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
-cast_shadow = 0
-gi_lightmap_scale = 0
-mesh = SubResource("BoxMesh_dl6uw")
-Skeleton = null
-script = ExtResource("3_r1tmu")
-size = Vector3(0.5, 5, 0.5)
-texture = SubResource("GradientTexture2D_81nvi")
-enable_fade = false
-metadata/_custom_type_script = "uid://feckn7f3pmud"
-
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(1152, 648)
-
-[node name="StartScene" parent="SubViewport" instance=ExtResource("2_fhpfe")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15)
+current = true
 
-[node name="Poof" parent="." instance=ExtResource("3_7th63")]
+[node name="Particles" type="Node3D" parent="CanvasLayer2"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11)
 
-[node name="Particles1" parent="." instance=ExtResource("4_tjpxc")]
+[node name="Poof" parent="CanvasLayer2/Particles" instance=ExtResource("3_7th63")]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
 
-[node name="FanParticles" parent="." instance=ExtResource("5_r1tmu")]
+[node name="Particles1" parent="CanvasLayer2/Particles" instance=ExtResource("4_tjpxc")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -8)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 3.5)
 
-[node name="Poof2" parent="." instance=ExtResource("22_0rg7o")]
+[node name="FanParticles" parent="CanvasLayer2/Particles" instance=ExtResource("5_r1tmu")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3)
+
+[node name="ParticleEmitters" type="Node3D" parent="CanvasLayer2"]
 unique_name_in_owner = true
 
-[node name="PostProcessing" parent="." instance=ExtResource("6_fhpfe")]
+[node name="Poof2" parent="CanvasLayer2/ParticleEmitters" instance=ExtResource("22_0rg7o")]
+unique_name_in_owner = true
+
+[node name="PostProcessing" parent="CanvasLayer2" instance=ExtResource("6_fhpfe")]
 visible = true
+skeleton = NodePath("../..")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_tv7nj")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 14
+follow_viewport_enabled = true
+
+[node name="StartScene" parent="CanvasLayer" instance=ExtResource("2_fhpfe")]
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer"]
+disable_3d = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(1152, 648)
+render_target_clear_mode = 1
+render_target_update_mode = 4

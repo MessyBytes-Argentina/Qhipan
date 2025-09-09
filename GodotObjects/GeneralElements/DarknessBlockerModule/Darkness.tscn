@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://uefmm3wnclty"]
+
+[ext_resource type="Script" uid="uid://dc8ouxotv186o" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.gd" id="1_7xcgd"]
+[ext_resource type="Material" uid="uid://5w7vc5mxjyk0" path="res://Assets/Materials/WithCutout/Darkness.tres" id="1_fwrbv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7xcgd"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_7xcgd"]
+map_width = 12
+map_depth = 12
+map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwrbv"]
+size = Vector3(3, 3, 3)
+
+[node name="Darkness" type="FogVolume" groups=["Fog"]]
+size = Vector3(3, 3, 3)
+material = ExtResource("1_fwrbv")
+script = ExtResource("1_7xcgd")
+
+[node name="Collision" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7xcgd")
+
+[node name="DarknessCollisionShape" type="CollisionShape3D" parent="Collision"]
+unique_name_in_owner = true
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, -1.5, 0)
+shape = SubResource("HeightMapShape3D_7xcgd")
+
+[node name="DarknessArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 18
+
+[node name="DarknessAreaShape" type="CollisionShape3D" parent="DarknessArea"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_fwrbv")
+debug_color = Color(0.151906, 4.62055e-06, 0.67257, 0.42)
+
+[connection signal="area_entered" from="DarknessArea" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="DarknessArea" to="." method="_on_area_exited"]
+[connection signal="body_entered" from="DarknessArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="DarknessArea" to="." method="_on_body_exited"]

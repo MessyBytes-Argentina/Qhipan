@@ -1,32 +1,20 @@
-[gd_scene load_steps=22 format=3 uid="uid://bepcupksdg3h5"]
+[gd_scene load_steps=20 format=3 uid="uid://bepcupksdg3h5"]
 
-[ext_resource type="Shader" uid="uid://udajne5lqc4m" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/ShineBar/ShineBar.gdshader" id="1_y7cun"]
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_yfyft"]
 [ext_resource type="Script" uid="uid://dl548l3g84gvl" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/VolumeHSlider.gd" id="3_cqhlc"]
 [ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_2bmqm"]
 [ext_resource type="PackedScene" uid="uid://gt346rayh13u" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/MusicVolumeButton.tscn" id="4_qf23i"]
 [ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1ytef"]
-[ext_resource type="Texture2D" uid="uid://cxkg2knw1a3o6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicHover.png" id="5_moqiu"]
+[ext_resource type="Texture2D" uid="uid://cxkg2knw1a3o6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/MusicHover.png" id="5_moqiu"]
 [ext_resource type="PackedScene" uid="uid://bn3a8oiupqm6a" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/HSlider.tscn" id="5_rp3o8"]
-[ext_resource type="Texture2D" uid="uid://b6a1k8f6uxuya" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/MusicDisabled.png" id="6_4dvbu"]
+[ext_resource type="Texture2D" uid="uid://b6a1k8f6uxuya" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/MusicDisabled.png" id="6_4dvbu"]
 [ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="8_3ggm8"]
 [ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="9_t1gfv"]
 [ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Textures/Buttons/IDLE.png" id="10_v8tat"]
-[ext_resource type="Texture2D" uid="uid://xs4jg4hwr8xe" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXHover.png" id="10_ycww2"]
+[ext_resource type="Texture2D" uid="uid://xs4jg4hwr8xe" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXHover.png" id="10_ycww2"]
 [ext_resource type="Script" uid="uid://bmy4rxan6ndx0" path="res://GodotObjects/GeneralElements/UI/SettingsCloseButton.gd" id="11_cqhlc"]
 [ext_resource type="Script" uid="uid://dsbdtcedvujab" path="res://GodotObjects/GeneralElements/UI/RestartLevel.gd" id="11_qf23i"]
-[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXDisabled.png" id="11_qj3d8"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkoa"]
-shader = ExtResource("1_y7cun")
-shader_parameter/shineColor = Color(1, 1, 1, 1)
-shader_parameter/shineSize = 0.0
-shader_parameter/shineAngle = 315.0
-shader_parameter/lineSmoothness = 0.0
-shader_parameter/distortion = 0.0
-shader_parameter/useTime = false
-shader_parameter/speed = 1.0
-shader_parameter/progress = 0.0
+[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXDisabled.png" id="11_qj3d8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68xm"]
 bg_color = Color(0.0862745, 0.156863, 0.247059, 1)
@@ -53,7 +41,6 @@ texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [node name="SimpleSettingsMenu" type="MarginContainer"]
-material = SubResource("ShaderMaterial_omkoa")
 custom_minimum_size = Vector2(512, 300)
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,6 +84,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MusicVolumeHSlider" type="HBoxContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("_button", "_slider")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
@@ -124,6 +112,7 @@ focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/Close
 focus_neighbor_bottom = NodePath("../../SFXVolumeHSlider/HSlider")
 
 [node name="SFXVolumeHSlider" type="HBoxContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("_button", "_slider")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1

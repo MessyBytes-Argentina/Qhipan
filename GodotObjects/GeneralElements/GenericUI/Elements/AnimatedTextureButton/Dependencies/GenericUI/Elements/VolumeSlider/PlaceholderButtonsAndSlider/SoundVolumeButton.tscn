@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cghyvutm5ibfu"]
 
-[ext_resource type="Texture2D" uid="uid://dc0b1odllkuxt" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FX.png" id="1_h7wcs"]
-[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/dependencies/Extras/FXDisabled.png" id="2_myy6a"]
+[ext_resource type="Texture2D" uid="uid://dc0b1odllkuxt" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FX.png" id="1_h7wcs"]
+[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXDisabled.png" id="2_myy6a"]
 
 [node name="SoundsVolumeButton" type="TextureButton"]
 anchors_preset = 15

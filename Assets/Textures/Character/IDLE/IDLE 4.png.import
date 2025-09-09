@@ -3,31 +3,30 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2yad5pdl5lhc"
-path.s3tc="res://.godot/imported/IDLE 4.png-177be715c5e3ef5311acd769ff83965f.s3tc.ctex"
+path="res://.godot/imported/IDLE 4.png-177be715c5e3ef5311acd769ff83965f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Character/IDLE/IDLE 4.png"
-dest_files=["res://.godot/imported/IDLE 4.png-177be715c5e3ef5311acd769ff83965f.s3tc.ctex"]
+dest_files=["res://.godot/imported/IDLE 4.png-177be715c5e3ef5311acd769ff83965f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=true
-mipmaps/limit=-1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=4
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
