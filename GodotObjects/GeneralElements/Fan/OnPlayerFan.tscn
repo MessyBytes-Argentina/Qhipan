@@ -28,7 +28,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [sub_resource type="BoxMesh" id="BoxMesh_iux6s"]
 size = Vector3(0.25, 0.5, 0.5)
 
-[node name="OnPlayerFan" type="Node3D" groups=["OnPlayerFan"]]
+[node name="OnPlayerFan" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_iux6s")
 

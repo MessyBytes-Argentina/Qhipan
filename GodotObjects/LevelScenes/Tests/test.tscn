@@ -94,6 +94,9 @@ placed = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.55, 1, 12)
 placed = true
 
+[node name="FanSticker4" parent="." instance=ExtResource("4_sgigg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.194581, 1, 5.09579)
+
 [node name="DeathZone" parent="." instance=ExtResource("5_elc34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 

@@ -904,7 +904,7 @@ libraries = {
 }
 autoplay = "preload"
 
-[node name="LedgeDetection" type="Node3D" parent="."]
+[node name="LedgeDetection" type="Node3D" parent="." groups=["OnPlayerFan"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.6, 0)
 script = ExtResource("72_4biwg")
 

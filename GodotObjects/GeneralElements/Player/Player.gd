@@ -190,6 +190,8 @@ var onSettings: bool = false
 var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
+## Flag to stop the player gravity when forced
+var forcedNoGravity: bool = false
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -381,7 +383,7 @@ func move_character(delta: float) -> void:
 	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	if not is_on_floor() and len(noGravityZones) == 0:
+	if not is_on_floor() and len(noGravityZones) == 0 and not forcedNoGravity:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
 	else:
@@ -545,7 +547,7 @@ func exit_no_gravity(node: Node3D) -> void:
 ## Returns true if not on the floor or floating
 func check_falling() -> bool:
 	var falling: bool = false
-	if not is_on_floor() and len(noGravityZones) == 0 and involuntaryPushModule.get_current_push() == Vector3.ZERO and fellDistance > 0.1:
+	if (not is_on_floor() or len(noGravityZones) == 0) and not forcedNoGravity:
 		falling = true
 	else:
 		falling = false

@@ -1,8 +1,12 @@
 extends Node3D
+class_name LedgeDetection
 
 const MINLENGTH: float = 0.1
 const LENGTH: float = 0.75
 const JUMPDISTANCE: float = 0.15
+
+const FANPUSHDISTANCE: float = 2
+const FANPUSHSTEPS: float = 0.065
 
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var raycast2: RayCast3D = $RayCast3D/RayCast3D2
@@ -13,11 +17,21 @@ const JUMPDISTANCE: float = 0.15
 
 var material: ORMMaterial3D
 var previousDistance: float = 0
+var stickerOnHand: bool = false
+var ableToPush: bool = false
 
 func _ready() -> void:
 	material = meshSphere.get_surface_override_material(0)
 
 func _physics_process(_delta: float) -> void:
+	if not stickerOnHand: return
+	
+	if not ableToPush:
+		if not player.check_falling():
+			ableToPush = true
+		else:
+			return
+	
 	if (player.moveDirection * Vector3(1, 0, 1)).length() > MINLENGTH:
 		raycast.position = LENGTH * player.moveDirection
 		raycast.target_position = -raycast.position
@@ -42,7 +56,6 @@ func _physics_process(_delta: float) -> void:
 	material.albedo_color = Color.GREEN
 	
 	var currentDistance: float = LENGTH - collisionPoint.distance_to(raycast.global_position)
-	prints(previousDistance,currentDistance)
 	if currentDistance < 0:
 		previousDistance = 0
 		return
@@ -56,5 +69,14 @@ func _physics_process(_delta: float) -> void:
 	previousDistance = currentDistance
 
 func yeet_the_player(direction: Vector3) -> void:
-	var targetPosition: Vector3 = player.get_grid_position() + (direction * 2)
-	forcedMovement.force_player_to(targetPosition,10)
+	ableToPush = false
+	var targetPosition: Vector3 = player.get_grid_position() + (direction * FANPUSHDISTANCE)
+	forcedMovement.force_player_to(targetPosition,FANPUSHSTEPS)
+
+func enable_push() -> void:
+	stickerOnHand = true
+	ableToPush = true
+
+func disable_push() -> void:
+	stickerOnHand = false
+	ableToPush = false

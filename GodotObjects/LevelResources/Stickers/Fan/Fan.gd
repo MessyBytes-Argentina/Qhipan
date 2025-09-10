@@ -8,7 +8,7 @@ extends StickerBase
 @onready var fan: Fan = %Fan
 
 ## OnPlayerEffect node reference.
-var onPlayerEffectRef: OnPlayerFan
+var onPlayerEffectRef: LedgeDetection
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
