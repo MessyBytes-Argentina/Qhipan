@@ -106,6 +106,7 @@ func do_grab() -> void:
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
 	if currentArea:
+		#prints("pickup handler")
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
 		if currentArea == placeholderArea and placeholderArea.global_position not in surfacesWithStickers: surfacesWithStickers.append(placeholderArea.global_position)
 		stickSound.play_sound()

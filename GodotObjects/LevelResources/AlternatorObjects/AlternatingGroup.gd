@@ -10,7 +10,7 @@ func _ready() -> void:
 			altChildren.append(obj)
 
 
-func switch_children(node: AlternatingObject) -> void:
+func switch_children(activeObjects: Array[AlternatingObject]) -> void:
 	for obj in altChildren:
-		if obj != node:
+		if not activeObjects.has(obj):
 			obj.switch_state()
