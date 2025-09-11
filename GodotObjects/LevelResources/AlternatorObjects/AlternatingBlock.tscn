@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=4 uid="uid://bun480bt8ssjs"]
+
+[ext_resource type="Script" uid="uid://b2hxonrdflvq3" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingObject.gd" id="1_06fcw"]
+[ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="1_ipu0j"]
+[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Materials/WithCutout/Arcilla-1.tres" id="2_06fcw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hb3y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_ipu0j")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_svvih"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eg4bo"]
+resource_name = "BasePieces_Cube"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_svvih")
+
+[node name="AlternatingBlock" type="CharacterBody3D"]
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("1_06fcw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_2hb3y")
+
+[node name="ObjectMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("ArrayMesh_eg4bo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_06fcw")
+
+[node name="CubeCollider" type="StaticBody3D" parent="ObjectMesh"]
+
+[node name="ObjectCollider" type="CollisionShape3D" parent="ObjectMesh/CubeCollider"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_2hb3y")

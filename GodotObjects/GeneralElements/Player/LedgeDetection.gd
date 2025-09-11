@@ -5,8 +5,7 @@ const MINLENGTH: float = 0.1
 const LENGTH: float = 0.75
 const JUMPDISTANCE: float = 0.15
 
-const FANPUSHDISTANCE: float = 2
-const FANPUSHSTEPS: float = 0.065
+const FANPUSHDISTANCE: float = 1.5
 
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var raycast2: RayCast3D = $RayCast3D/RayCast3D2
@@ -63,7 +62,7 @@ func _physics_process(_delta: float) -> void:
 	if currentDistance < JUMPDISTANCE and currentDistance < previousDistance:
 		
 		var normalDirection: Vector3 = raycast.get_collision_normal()
-		if normalDirection == Vector3.ZERO or forcedMovement.forcingPlayer: return
+		if normalDirection == Vector3.ZERO or player.forcedNoGravity : return
 		yeet_the_player(normalDirection)
 	
 	previousDistance = currentDistance
@@ -71,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 func yeet_the_player(direction: Vector3) -> void:
 	ableToPush = false
 	var targetPosition: Vector3 = player.get_grid_position() + (direction * FANPUSHDISTANCE)
-	forcedMovement.force_player_to(targetPosition,FANPUSHSTEPS)
+	forcedMovement.force_player_to(targetPosition)
 
 func enable_push() -> void:
 	stickerOnHand = true

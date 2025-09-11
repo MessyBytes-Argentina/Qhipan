@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=3 uid="uid://djwsba7job37w"]
+
+[ext_resource type="Script" uid="uid://csgnlylxgx63a" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.gd" id="1_e4k1j"]
+[ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_5ap3j"]
+[ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="3_n2oqg"]
+[ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Textures/Stickers/Key/Key-Used.png" id="3_wts1r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
+radius = 0.131629
+
+[sub_resource type="QuadMesh" id="QuadMesh_h7mp7"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7e5t"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("3_wts1r")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
+flip_faces = true
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_c1wxo"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k62l1"]
+gradient = SubResource("Gradient_c1wxo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhy6c"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("3_n2oqg")
+detail_enabled = true
+detail_mask = SubResource("GradientTexture2D_k62l1")
+
+[sub_resource type="Gradient" id="Gradient_3jjt7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b7w4x"]
+gradient = SubResource("Gradient_3jjt7")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e4k1j"]
+radius = 1.0
+
+[node name="Alternator" type="CharacterBody3D"]
+collision_layer = 512
+script = ExtResource("1_e4k1j")
+
+[node name="InvoluntaryPushModule" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_5ap3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="Meshes" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Mesh" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+layers = 2
+mesh = SubResource("QuadMesh_h7mp7")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_r7e5t")
+
+[node name="Back" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+layers = 2
+mesh = SubResource("QuadMesh_8dhaa")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xhy6c")
+
+[node name="Billboard" type="Sprite3D" parent="Meshes"]
+unique_name_in_owner = true
+visible = false
+layers = 2
+pixel_size = 0.002
+billboard = 1
+render_priority = 2
+texture = ExtResource("3_n2oqg")
+
+[node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes"]
+unique_name_in_owner = true
+visible = false
+layers = 2
+pixel_size = 0.0005
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 2
+texture = ExtResource("3_n2oqg")
+
+[node name="AreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 1048
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
+shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="ShadowDecal" type="Decal" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.999999, -1.19209e-07, 0, -2.10734e-08, 1, 0, -0.499999, 3.68785e-08)
+size = Vector3(0.5, 2, 0.5)
+texture_albedo = SubResource("GradientTexture2D_b7w4x")
+lower_fade = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+cull_mask = 1048573
+
+[node name="HeldAreaChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 8192
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeldAreaChecker"]
+shape = SubResource("CylinderShape3D_e4k1j")

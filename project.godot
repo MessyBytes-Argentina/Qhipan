@@ -164,6 +164,7 @@ pause={
 3d_physics/layer_11="StickerPlacement"
 3d_physics/layer_12="Doors"
 3d_physics/layer_13="Grates"
+3d_physics/layer_14="AlternatingBlocks"
 
 [rendering]
 
