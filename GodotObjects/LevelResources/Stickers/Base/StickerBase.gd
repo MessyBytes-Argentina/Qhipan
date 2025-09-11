@@ -43,10 +43,10 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 ## Reference to the involuntary movement module.
 @onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 
+## The collision mask for when the sticker is not on the player
+var collisionMask: int
 ## Parent node reference for placement.
 var sceneParent: Node
-## Flag turns true when grabbed by the player (not used?).
-var onPlayer: bool = false
 ## Tween for rotation animation.
 var rotationTween: Tween
 ## Tween for bobbing animation.
@@ -57,7 +57,7 @@ var startSize: Vector2
 var meshMaterial: StandardMaterial3D
 ## back mesh material reference to make unique.
 var backMaterial: StandardMaterial3D
-## Flag to not show the sticke on zoom out.
+## Flag to not show the sticker on zoom out.
 var grabed: bool = false
 ## Current state of the sticker.
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
@@ -78,6 +78,7 @@ var lastMode: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	collisionMask = collision_mask
 	sceneParent = get_parent()
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -100,20 +101,23 @@ func _ready() -> void:
 func check_placement() -> void:
 	if not placed: 
 		set_size(ScaleModes.DROPPED)
-		start_rotation()
+		set_deferred("collision_mask", collisionMask)
 	else:
 		var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
 		while len(grabArea.stickerableSurfaces) == 0:
 			await get_tree().process_frame
 		var surfaceArray: Array[Vector3] = grabArea.stickerableSurfaces.keys()
 		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
+		if len(surfaceArray) == 0:
+			set_size(ScaleModes.DROPPED)
+			return
 		var closest: Vector3 = surfaceArray[0]
 		var temporaryArea: Area3D = Area3D.new()
 		add_child(temporaryArea)
 		temporaryArea.global_position = closest
 		place_sticker(temporaryArea, grabArea.stickerableSurfaces[closest], true)
 		temporaryArea.queue_free()
-		grabArea.surfacesWithStickers.append(closest)
+		if closest not in grabArea.surfacesWithStickers: grabArea.surfacesWithStickers.append(closest)
 		shadowDecal.hide()
 
 ## Executed on every physics frame.
@@ -145,12 +149,11 @@ func prerender() -> void:
 
 ## Places the sticker on the given area facing the given direction
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	stop_rotation()
 	set_size(ScaleModes.PLACED)
 	placedPosition = area.global_position
 	global_position = area.global_position + direction * 0.01
-	onPlayer = false
 	placed = true
+	grabed = false
 	if not Vector3.UP.cross(direction).is_zero_approx():
 		look_at(global_position - direction)
 	else:
@@ -159,7 +162,6 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 		reparent(originalParent)
 	else:
 		reparent(area)
-	grabed = false
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -170,18 +172,21 @@ func set_size(mode: ScaleModes) -> void:
 			mesh.hide()
 			back.hide()
 			billboardZoomedOut.hide()
+			stop_rotation()
 		ScaleModes.DROPPED:
 			billboard.hide()
 			mesh.show()
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE * BOBBINGSCALE
+			start_rotation()
 		ScaleModes.PLACED:
 			billboard.hide()
 			mesh.show()
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
+			stop_rotation()
 		ScaleModes.ZOOMEDOUT:
 			billboardZoomedOut.show()
 			billboard.hide()
@@ -191,32 +196,31 @@ func set_size(mode: ScaleModes) -> void:
 
 ## Moves the sticker position to the given node position
 func grab(node: Node3D) -> void:
+	set_deferred("collision_mask", 0)
 	lastLocation = global_position
 	lastMode = placed
-	onPlayer = true
 	global_position = node.global_position
 	global_position.y = global_position.y + GRABHEIGHT
 	rotation = Vector3.ZERO
 	set_size(ScaleModes.GRABBED)
-	stop_rotation()
 	grabed = true
 	placed = false
 
 ## Called when player reset is called
 func reset_sticker() -> void:
-	drop()
+	reparent(sceneParent)
+	grabed = false
 	global_position = lastLocation
 	placed = lastMode
 	check_placement()
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:
+	set_deferred("collision_mask", collisionMask)
 	set_size(ScaleModes.DROPPED)
 	global_position.y = global_position.y - GRABHEIGHT
-	onPlayer = false
 	placed = false
 	reparent(sceneParent)
-	start_rotation()
 	grabed = false
 
 ## Starts the floating animations 

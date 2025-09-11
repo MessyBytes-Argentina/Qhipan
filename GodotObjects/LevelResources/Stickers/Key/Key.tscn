@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bl5tesrbned68" path="res://Assets/Textures/Stickers/Key/Key-3.png" id="6_loxqr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
-radius = 0.6
+radius = 0.25
 
 [sub_resource type="QuadMesh" id="QuadMesh_mjg6o"]
 size = Vector2(0.8, 0.8)
@@ -139,6 +139,7 @@ _data = {
 
 [node name="KeySticker" type="CharacterBody3D"]
 collision_layer = 512
+collision_mask = 4361
 script = ExtResource("4_ws05p")
 validAreaIndexes = Array[int]([11, 12])
 

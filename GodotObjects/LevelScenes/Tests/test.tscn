@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=24 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -17,9 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="15_ckktb"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="16_5fpv5"]
 [ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="17_mbrd3"]
-[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="18_7sem2"]
-[ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="18_7teje"]
-[ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="20_2x6fn"]
+[ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="18_7sem2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -50,9 +48,6 @@ fog_sky_affect = 0.0
 fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mbrd3"]
-size = Vector3(29.0721, 1, 26.7861)
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
@@ -97,15 +92,8 @@ placed = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.55, 1, 12)
 placed = true
 
-[node name="FanSticker4" parent="." instance=ExtResource("4_sgigg")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.194581, 1, 5.09579)
-
 [node name="DeathZone" parent="." instance=ExtResource("5_elc34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DeathZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65826, -5.49185, 0)
-shape = SubResource("BoxShape3D_mbrd3")
 
 [node name="Player" parent="." instance=ExtResource("6_yctgy")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
@@ -149,27 +137,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
 
 [node name="Darkness" parent="." instance=ExtResource("16_5fpv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 8)
-visible = false
 size = Vector3(5, 3, 3)
+
+[node name="Grate2" parent="." instance=ExtResource("17_mbrd3")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2.35, 1, 8)
 
 [node name="Grate" parent="." instance=ExtResource("17_mbrd3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1, 12)
 
-[node name="Grate" parent="Grate" instance=ExtResource("17_mbrd3")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, -4.65)
+[node name="Grate3" parent="." instance=ExtResource("17_mbrd3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 1, 8)
 
-[node name="AlternatingGroup" type="Node3D" parent="."]
-script = ExtResource("18_7teje")
-metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
-
-[node name="AlternatingBlock" parent="AlternatingGroup" instance=ExtResource("18_7sem2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 5)
-
-[node name="AlternatingBlock2" parent="AlternatingGroup" instance=ExtResource("18_7sem2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 3)
-
-[node name="AlternatingBlock3" parent="AlternatingGroup" instance=ExtResource("18_7sem2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 5)
-
-[node name="Alternator" parent="." instance=ExtResource("20_2x6fn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 6)
+[node name="AntiStickerArea" parent="." instance=ExtResource("18_7sem2")]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 1, 1.51, 11.5)

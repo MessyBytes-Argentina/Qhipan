@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
-radius = 0.131629
+radius = 0.25
 
 [sub_resource type="QuadMesh" id="QuadMesh_h7mp7"]
 size = Vector2(0.8, 0.8)
@@ -97,6 +97,7 @@ radius = 2.5
 
 [node name="StickerLamp" type="CharacterBody3D"]
 collision_layer = 512
+collision_mask = 4361
 script = ExtResource("1_w5ix8")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
