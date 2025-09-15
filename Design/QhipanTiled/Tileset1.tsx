@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.2" name="Tileset1" tilewidth="64" tileheight="64" tilecount="56" columns="8">
- <image source="tileset.png" width="512" height="448"/>
+<tileset version="1.10" tiledversion="1.11.2" name="Tileset1" tilewidth="64" tileheight="64" tilecount="64" columns="8">
+ <image source="tileset.png" width="512" height="512"/>
  <tile id="0" type="ProSticker"/>
  <tile id="1" type="Switchable-On"/>
  <tile id="2" type="Switchable-Off"/>
@@ -37,22 +37,27 @@
  <tile id="33" type="Puerta"/>
  <tile id="34" type="Puerta"/>
  <tile id="35" type="Puerta"/>
- <tile id="36" type="Puerta"/>
- <tile id="37" type="Puerta"/>
- <tile id="38" type="Puerta"/>
- <tile id="39" type="Puerta"/>
+ <tile id="36" type="Viento"/>
+ <tile id="37" type="Viento"/>
+ <tile id="38" type="Viento"/>
+ <tile id="39" type="Viento"/>
  <tile id="40" type="Puente Unidireccional"/>
  <tile id="41" type="Puente Unidireccional"/>
  <tile id="42" type="Puente Unidireccional"/>
  <tile id="43" type="Puente Unidireccional"/>
- <tile id="44" type="Viento"/>
- <tile id="45" type="Viento"/>
- <tile id="46" type="Viento"/>
- <tile id="47" type="Viento"/>
- <tile id="48" type="Ascensor"/>
+ <tile id="44" type="Elevador Vertical"/>
+ <tile id="45" type="Elevador Vertical"/>
+ <tile id="46" type="Elevador Vertical"/>
+ <tile id="47" type="Null"/>
+ <tile id="48" type="Rampa"/>
  <tile id="49" type="Rampa"/>
  <tile id="50" type="Rampa"/>
  <tile id="51" type="Rampa"/>
- <tile id="52" type="Rampa"/>
- <tile id="53" type="Ramp"/>
+ <tile id="52" type="Elevador Horizontal"/>
+ <tile id="53" type="Elevador Horizontal"/>
+ <tile id="54" type="Elevador Horizontal"/>
+ <tile id="55" type="Switch Start"/>
+ <tile id="56" type="Movimiento Plataforma"/>
+ <tile id="57" type="Movimiento Plataforma"/>
+ <tile id="58" type="Movimiento Plataforma"/>
 </tileset>

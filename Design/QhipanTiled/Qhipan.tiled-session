@@ -3,17 +3,31 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Tileset1.tsx",
+    "activeFile": "Habitacion B.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
-        "Mini-HUB.tmx": {
-            "scale": 3,
-            "selectedLayer": 0,
+        "Habitacion B.tmx": {
+            "expandedObjectLayers": [
+                7
+            ],
+            "scale": 1.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 334.66666666666663,
-                "y": 9.5
+                "x": 213.33333333333331,
+                "y": -74
+            }
+        },
+        "Mini-HUB.tmx": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 607.3333333333334,
+                "y": 57.99999999999997
             }
         },
         "Sample.tmx": {
@@ -36,13 +50,15 @@
     "map.tileHeight": 32,
     "map.tileWidth": 64,
     "openFiles": [
+        "Tileset1.tsx",
         "Mini-HUB.tmx",
-        "Tileset1.tsx"
+        "Habitacion B.tmx"
     ],
     "project": "Qhipan.tiled-project",
     "recentFiles": [
-        "Mini-HUB.tmx",
         "Tileset1.tsx",
+        "Mini-HUB.tmx",
+        "Habitacion B.tmx",
         "Sample.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
