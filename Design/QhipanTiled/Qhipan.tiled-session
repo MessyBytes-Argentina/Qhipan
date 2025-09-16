@@ -12,11 +12,11 @@
             "expandedObjectLayers": [
                 7
             ],
-            "scale": 1.5,
-            "selectedLayer": 3,
+            "scale": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 213.33333333333331,
-                "y": -74
+                "x": 181,
+                "y": -37.5
             }
         },
         "Mini-HUB.tmx": {
@@ -39,7 +39,7 @@
             }
         },
         "Tileset1.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         }
     },
