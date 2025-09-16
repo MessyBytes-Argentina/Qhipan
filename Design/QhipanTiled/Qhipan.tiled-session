@@ -9,22 +9,25 @@
     ],
     "fileStates": {
         "Habitacion A.tmx": {
-            "scale": 3,
-            "selectedLayer": 3,
+            "expandedGroupLayers": [
+                2
+            ],
+            "scale": 1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 730.1666666666666,
-                "y": -77
+                "x": 810.5,
+                "y": -119
             }
         },
         "Habitacion B.tmx": {
             "expandedObjectLayers": [
                 7
             ],
-            "scale": 2,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 25.75,
-                "y": -137
+                "x": 85.5,
+                "y": -83
             }
         },
         "Mini-HUB.tmx": {
@@ -34,8 +37,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 640.3333333333334,
-                "y": 0
+                "x": 579,
+                "y": -42.66666666666663
             }
         },
         "Sample.tmx": {
