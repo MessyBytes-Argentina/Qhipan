@@ -1,5 +1,7 @@
 extends StickerBase
 
+const REMOVETIMER: float = 0.2
+
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
 
 var objectCollection: Array[AlternatingObject] = []
@@ -10,72 +12,91 @@ var activatedGroups: Array[AlternatingGroup]
 
 func _ready() -> void:
 	super()
-	heldAreaChecker.body_entered.connect(add_alternating_object)
-	heldAreaChecker.body_exited.connect(remove_alternating_object)
 
 func add_alternating_object(obj: AlternatingObject) -> void:
+	if stickerPlaced: return
 	if objectCollection.has(obj): return
+	remove_from_que(obj)
 	objectCollection.append(obj)
 	switch_object(obj)
 
 func remove_alternating_object(obj: AlternatingObject) -> void:
+	if stickerPlaced: return
+	if objectCollection.has(obj): objectCollection.erase(obj)
 	if removalQueue.has(obj): return
 	removalQueue.append(obj)
-	await get_tree().create_timer(0.1).timeout
+	#await get_tree().create_timer(REMOVETIMER).timeout
 	if not removalQueue.has(obj): return
-	if heldAreaChecker.monitoring:
-		if heldAreaChecker.get_overlapping_bodies().has(obj): 
-			removalQueue.erase(obj)
-			return
 	removalQueue.erase(obj)
-	objectCollection.erase(obj)
-	prints(obj.name," removed")
 	switch_object(obj)
+
+func remove_from_que(objectToRemove: AlternatingObject) -> void:
+	if removalQueue.has(objectToRemove): removalQueue.erase(objectToRemove)
 
 func switch_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
-	prints(obj.name," switched")
 	obj.switch_state()
 
-func switch_group() -> void:
-	force_area_check()
+func activate_group(objList: Array[Node3D]) -> void:
 	var groupsToActivate: Array[AlternatingGroup] = []
-	for obj in objectCollection:
+	for obj in objList:
+		remove_from_que(obj)
 		if not groupsToActivate.has(obj.groupParent):
 			groupsToActivate.append(obj.groupParent)
 	activatedGroups = groupsToActivate
 	for group in groupsToActivate:
 		group.switch_children(objectCollection)
-
-
-func force_area_check() -> void:
 	objectCollection.clear()
-	await get_tree().create_timer(0.1).timeout
-	var altObjects: Array = heldAreaChecker.get_overlapping_bodies()
-	for obj in altObjects:
-		add_alternating_object(obj)
+
+func deactivate_group() -> void:
+	for group: AlternatingGroup in activatedGroups:
+		for obj in group.altChildren:
+			remove_alternating_object(obj)
+	var objectsInRange: Array[Node3D] = await force_area_check()
+	add_obj_list(objectsInRange)
+	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
 	stickerPlaced = true
+	disable_area()
 	super(area,direction,isPlaceholderArea)
-	prints(objectCollection,"||",removalQueue)
-	for obj in objectCollection:
-		if removalQueue.has(obj):
-			removalQueue.erase(obj)
-	switch_group()
+	var objectsInRange: Array[Node3D] = await force_area_check(false)
+	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
 	super(node)
-	heldAreaChecker.monitoring = true
 	if stickerPlaced: 
-		switch_group()
-	else:
-		force_area_check()
-	stickerPlaced = false
+		stickerPlaced = false
+		deactivate_group()
+		return
+	enable_area()
+	add_obj_list(await force_area_check())
 
 func drop() -> void:
 	super()
-	heldAreaChecker.monitoring = false
+	disable_area()
 	stickerPlaced = false
 	for obj in objectCollection:
 		remove_alternating_object(obj)
+
+func force_area_check(maintainActive: bool = true) -> Array[Node3D]:
+	heldAreaChecker.monitoring = true
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	var objList: Array[Node3D] = heldAreaChecker.get_overlapping_bodies()
+	heldAreaChecker.monitoring = maintainActive
+	return objList
+
+func add_obj_list(objList: Array[Node3D]) -> void:
+	for obj in objList:
+		add_alternating_object(obj)
+
+func enable_area() -> void:
+	heldAreaChecker.monitoring = true
+	heldAreaChecker.body_entered.connect(add_alternating_object)
+	heldAreaChecker.body_exited.connect(remove_alternating_object)
+
+func disable_area() -> void:
+	heldAreaChecker.monitoring = false
+	heldAreaChecker.body_entered.disconnect(add_alternating_object)
+	heldAreaChecker.body_exited.disconnect(remove_alternating_object)
