@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Habitacion B.tmx",
+    "activeFile": "PUZZLES LAMPARA.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -29,8 +29,8 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 85.5,
-                "y": -83
+                "x": 128,
+                "y": 0
             }
         },
         "Mini-HUB.tmx": {
@@ -40,8 +40,19 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 579,
-                "y": -42.66666666666663
+                "x": 640,
+                "y": 0
+            }
+        },
+        "PUZZLES LAMPARA.tmx": {
+            "expandedGroupLayers": [
+                4
+            ],
+            "scale": 2,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": -637,
+                "y": -321.75
             }
         },
         "Sample.tmx": {
@@ -66,13 +77,15 @@
     "openFiles": [
         "Tileset1.tsx",
         "Mini-HUB.tmx",
-        "Habitacion B.tmx"
+        "Habitacion B.tmx",
+        "PUZZLES LAMPARA.tmx"
     ],
     "project": "Qhipan.tiled-project",
     "recentFiles": [
-        "Habitacion B.tmx",
-        "Mini-HUB.tmx",
         "Tileset1.tsx",
+        "Mini-HUB.tmx",
+        "Habitacion B.tmx",
+        "PUZZLES LAMPARA.tmx",
         "Sample.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

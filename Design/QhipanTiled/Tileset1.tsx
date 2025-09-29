@@ -60,4 +60,7 @@
  <tile id="56" type="Movimiento Plataforma"/>
  <tile id="57" type="Movimiento Plataforma"/>
  <tile id="58" type="Movimiento Plataforma"/>
+ <tile id="59" type="Darkness (off)"/>
+ <tile id="60" type="Ubicacion de Qhipan"/>
+ <tile id="61" type="Checkpoint"/>
 </tileset>
