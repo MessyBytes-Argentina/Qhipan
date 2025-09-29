@@ -1,12 +1,4 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
-    "activeFile": "PUZZLES LAMPARA.tmx",
-    "expandedProjectPaths": [
-        "."
-    ],
     "fileStates": {
         "Habitacion A.tmx": {
             "expandedGroupLayers": [
@@ -48,11 +40,11 @@
             "expandedGroupLayers": [
                 4
             ],
-            "scale": 2,
-            "selectedLayer": 4,
+            "scale": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": -637,
-                "y": -321.75
+                "x": 447,
+                "y": 65
             }
         },
         "Sample.tmx": {
@@ -67,30 +59,5 @@
             "scaleInDock": 0.75,
             "scaleInEditor": 1
         }
-    },
-    "last.imagePath": "C:/Users/nahue/Desktop/QhipanTiled",
-    "map.fixedSize": false,
-    "map.lastUsedFormat": "tmx",
-    "map.orientation": "2",
-    "map.tileHeight": 32,
-    "map.tileWidth": 64,
-    "openFiles": [
-        "Tileset1.tsx",
-        "Mini-HUB.tmx",
-        "Habitacion B.tmx",
-        "PUZZLES LAMPARA.tmx"
-    ],
-    "project": "Qhipan.tiled-project",
-    "recentFiles": [
-        "Tileset1.tsx",
-        "Mini-HUB.tmx",
-        "Habitacion B.tmx",
-        "PUZZLES LAMPARA.tmx",
-        "Sample.tmx"
-    ],
-    "tileset.lastUsedFormat": "tsx",
-    "tileset.tileSize": {
-        "height": 64,
-        "width": 64
     }
 }
