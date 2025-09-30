@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://bun480bt8ssjs"]
+[gd_scene load_steps=10 format=4 uid="uid://bun480bt8ssjs"]
 
 [ext_resource type="Script" uid="uid://b2hxonrdflvq3" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingObject.gd" id="1_06fcw"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="1_ipu0j"]
 [ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Materials/WithCutout/Arcilla-1.tres" id="2_06fcw"]
+[ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="4_2hb3y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2hb3y"]
 
@@ -44,6 +45,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_svvih")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_06fcw"]
+size = Vector3(0.9, 1.4, 0.9)
+
 [node name="AlternatingBlock" type="CharacterBody3D"]
 collision_layer = 8192
 collision_mask = 0
@@ -51,6 +55,7 @@ script = ExtResource("1_06fcw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 shape = SubResource("BoxShape3D_2hb3y")
 
 [node name="ObjectMesh" type="MeshInstance3D" parent="."]
@@ -65,3 +70,12 @@ surface_material_override/0 = ExtResource("2_06fcw")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_2hb3y")
+
+[node name="AntiDropArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_2hb3y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717346, 0)
+shape = SubResource("BoxShape3D_06fcw")

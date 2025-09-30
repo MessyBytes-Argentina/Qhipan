@@ -61,6 +61,8 @@ var stickerHighlightTween: Tween
 var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
 ## Surfaces that already hold stickers
 var surfacesWithStickers: Array[Vector3] = []
+## Collection of areas that stop the player from dropping or grabbing stickers
+var antiDropAreaCollection: Array[AntiDropArea] = []
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,6 +84,7 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if event.is_action_pressed("interact") and not zoomedOut and canGrab and not inNoStickerArea:
+		if len(antiDropAreaCollection) > 0: return
 		if not pickupOnHand:
 			do_grab()
 		else:
@@ -206,3 +209,12 @@ func bob_sticker_hightlight() -> void:
 	stickerHighlightTween.tween_property(highlight, "position:y", highlightHeight + STICKERHIGHLIGHTBOBDISTANCE, STICKERHIGHLIGHTBOBTIME).set_trans(Tween.TRANS_SINE)
 	stickerHighlightTween.set_loops()
 	stickerHighlightTween.play()
+
+## Adds the given area to antiDropAreaCollection
+func add_anti_drop_area(area: AntiDropArea) -> void:
+	if antiDropAreaCollection.has(area): return
+	antiDropAreaCollection.append(area)
+## Removes the given area to antiDropAreaCollection
+func remove_anti_drop_area(area: AntiDropArea) -> void:
+	if antiDropAreaCollection.has(area):
+		antiDropAreaCollection.erase(area)
