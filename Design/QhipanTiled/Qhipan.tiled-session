@@ -1,4 +1,7 @@
 {
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
     "fileStates": {
         "Habitacion A.tmx": {
             "expandedGroupLayers": [
@@ -43,7 +46,7 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 447,
+                "x": 446.5,
                 "y": 65
             }
         },
@@ -59,5 +62,12 @@
             "scaleInDock": 0.75,
             "scaleInEditor": 1
         }
-    }
+    },
+    "openFiles": [
+    ],
+    "project": "Qhipan.tiled-project",
+    "property.type": "color",
+    "recentFiles": [
+        "Tileset1.tsx"
+    ]
 }
