@@ -22,10 +22,26 @@
                 7
             ],
             "scale": 1,
-            "selectedLayer": 5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 128,
-                "y": 0
+                "x": 143.5,
+                "y": -57
+            }
+        },
+        "Lamp Tests.tmx": {
+            "expandedGroupLayers": [
+                46
+            ],
+            "expandedObjectLayers": [
+                45,
+                9,
+                41
+            ],
+            "scale": 0.75,
+            "selectedLayer": 39,
+            "viewCenter": {
+                "x": 1250,
+                "y": -314.66666666666663
             }
         },
         "Mini-HUB.tmx": {
