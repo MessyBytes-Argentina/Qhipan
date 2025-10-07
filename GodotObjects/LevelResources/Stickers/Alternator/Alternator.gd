@@ -5,7 +5,6 @@ const REMOVETIMER: float = 0.2
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
 
 var objectCollection: Array[AlternatingObject] = []
-var removalQueue: Array[AlternatingObject] = []
 
 var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
@@ -16,22 +15,13 @@ func _ready() -> void:
 func add_alternating_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
 	if objectCollection.has(obj): return
-	remove_from_que(obj)
 	objectCollection.append(obj)
 	switch_object(obj)
 
 func remove_alternating_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
 	if objectCollection.has(obj): objectCollection.erase(obj)
-	if removalQueue.has(obj): return
-	removalQueue.append(obj)
-	#await get_tree().create_timer(REMOVETIMER).timeout
-	if not removalQueue.has(obj): return
-	removalQueue.erase(obj)
 	switch_object(obj)
-
-func remove_from_que(objectToRemove: AlternatingObject) -> void:
-	if removalQueue.has(objectToRemove): removalQueue.erase(objectToRemove)
 
 func switch_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
@@ -40,7 +30,6 @@ func switch_object(obj: AlternatingObject) -> void:
 func activate_group(objList: Array[Node3D]) -> void:
 	var groupsToActivate: Array[AlternatingGroup] = []
 	for obj in objList:
-		remove_from_que(obj)
 		if not groupsToActivate.has(obj.groupParent):
 			groupsToActivate.append(obj.groupParent)
 	activatedGroups = groupsToActivate
