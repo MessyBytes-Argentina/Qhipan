@@ -79,3 +79,7 @@ script = ExtResource("4_2hb3y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717346, 0)
 shape = SubResource("BoxShape3D_06fcw")
+
+[node name="ModeSwitchTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

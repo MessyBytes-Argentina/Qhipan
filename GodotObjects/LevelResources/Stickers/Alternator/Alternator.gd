@@ -3,14 +3,15 @@ extends StickerBase
 const REMOVETIMER: float = 0.2
 
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
+@onready var pivot: Node3D = %Pivot
 
 var objectCollection: Array[AlternatingObject] = []
 
 var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
 
-func _ready() -> void:
-	super()
+#func _ready() -> void:
+	#super()
 
 func add_alternating_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
@@ -79,6 +80,16 @@ func force_area_check(maintainActive: bool = true) -> Array[Node3D]:
 func add_obj_list(objList: Array[Node3D]) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
+
+func set_size(mode: ScaleModes) -> void:
+	super(mode)
+	match mode:
+		ScaleModes.GRABBED:
+			pivot.top_level = false
+		_:
+			pivot.top_level = true
+	await get_tree().physics_frame
+	pivot.global_position = global_position
 
 func enable_area() -> void:
 	heldAreaChecker.monitoring = true
