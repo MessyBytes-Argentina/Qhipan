@@ -190,8 +190,8 @@ var onSettings: bool = false
 var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
-## OnPlayerEffect node reference.
-var onPlayerEffectRef: OnPlayerFan
+## Flag to stop the player gravity when forced
+var forcedNoGravity: bool = false
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -248,10 +248,15 @@ func _physics_process(delta: float) -> void:
 			popupTween.kill()
 		message.scale = Vector3.ONE * 0.001
 
-## Blocks the player input. RIGHT NOW ONLY USED IN GOAL AREA.
+## Blocks the player input control.
 func block_inputs() -> void:
 	noMovement = true
 	grabArea.canGrab = false
+
+## Returns input control to the player.
+func enable_inputs() -> void:
+	noMovement = false
+	grabArea.canGrab = true
 
 ## Checks and handles flipping the character sprite.
 func sprite_flip_check() -> void:
@@ -341,9 +346,13 @@ func cutout_cube_rotation_check(rotationCheck: float) -> void:
 ## Checks and handles the cutout cube snapping to the gridmap.
 func current_grid_check() -> void:
 	if not gridmap: return
-	var currentGridPosition: Vector3 = Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
+	var currentGridPosition: Vector3 = get_grid_position()
 	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
 	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
+
+## Returns the position of the grid cell the player is in.
+func get_grid_position() -> Vector3:
+	return Vector3(gridmap.local_to_map(global_position - gridmap.global_position)) * gridmap.cell_size + gridmap.global_position + gridmap.cell_size / 2.0
 
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:
@@ -374,7 +383,7 @@ func move_character(delta: float) -> void:
 	if not inCheckpoint: moved += movedAmount
 	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
-	if not is_on_floor() and len(noGravityZones) == 0:
+	if not is_on_floor() and len(noGravityZones) == 0 and not forcedNoGravity:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
 	else:
@@ -532,4 +541,15 @@ func enter_no_gravity(node: Node3D) -> void:
 ## Removes a no gravity zone from the noGravityZones list
 func exit_no_gravity(node: Node3D) -> void:
 	noGravityZones.erase(node)
+#endregion
+
+#region On Player Sticker Functions
+## Returns true if not on the floor or floating
+func check_falling() -> bool:
+	var falling: bool = false
+	if (not is_on_floor() or len(noGravityZones) == 0) and not forcedNoGravity:
+		falling = true
+	else:
+		falling = false
+	return falling
 #endregion
