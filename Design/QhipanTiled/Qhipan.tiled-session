@@ -1,8 +1,49 @@
 {
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
     "activeFile": "",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "Destileria/Lamp Tests.tmx": {
+            "scale": 0.28203125,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1664.7091412742384,
+                "y": 503.49030470914136
+            }
+        },
+        "Destileria/PUZZLES LAMPARA.tmx": {
+            "scale": 0.3223214285714286,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 383.1578947368421,
+                "y": 567.7562326869805
+            }
+        },
+        "Destileria/PrimerTercio.tmx": {
+            "expandedGroupLayers": [
+                74,
+                35
+            ],
+            "expandedObjectLayers": [
+                62,
+                67,
+                60,
+                35
+            ],
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1178,
+                "y": -250.66666666666663
+            }
+        },
+        "Destileria/Tileset1.tsx": {
+            "scaleInDock": 1
+        },
         "Habitacion A.tmx": {
             "expandedGroupLayers": [
                 2
@@ -22,7 +63,7 @@
                 7
             ],
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": -1,
             "viewCenter": {
                 "x": 143.5,
                 "y": -57
@@ -77,13 +118,37 @@
         "Tileset1.tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 1
+        },
+        "TutoRoom/Habitacion C.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 615.5,
+                "y": 260
+            }
         }
     },
+    "last.exportedFilePath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled/Destileria",
+    "last.externalTilesetPath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": "2",
+    "map.tileHeight": 20,
+    "map.tileWidth": 30,
     "openFiles": [
     ],
     "project": "Qhipan.tiled-project",
     "property.type": "color",
     "recentFiles": [
+        "TutoRoom/Habitacion C.tmx",
+        "Habitacion B.tmx",
+        "Habitacion A.tmx",
+        "Destileria/PUZZLES LAMPARA.tmx",
+        "Destileria/Lamp Tests.tmx",
         "Tileset1.tsx"
     ]
 }

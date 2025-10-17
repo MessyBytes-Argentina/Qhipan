@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="8" nextobjectid="3">
- <tileset firstgid="1" source="Tileset1.tsx"/>
+ <tileset firstgid="1" source="../Tileset1.tsx"/>
  <group id="3" name="Intro">
   <layer id="1" name="Nivel1" width="30" height="20">
    <data encoding="csv">
