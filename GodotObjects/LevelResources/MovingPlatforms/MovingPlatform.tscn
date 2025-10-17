@@ -18,7 +18,6 @@ size = Vector3(0.9, 0.3, 0.9)
 
 [node name="MovingPlatform" type="AnimatableBody3D"]
 collision_mask = 8192
-sync_to_physics = false
 script = ExtResource("1_qh56c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

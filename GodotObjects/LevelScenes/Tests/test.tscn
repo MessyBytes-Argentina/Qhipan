@@ -67,7 +67,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_20rno"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, -2, 0, 0, 0, 0, 0, 0, 0, 2, -6, 0, 0, 0, 0, 0, 0, 4, 4, -6),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2, 0, 0, 0, 0, 0, 0, 0, 1, -6, 0, 0, 0, 0, 0, 0, 4, 1, -6),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -179,7 +179,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
 
 [node name="MovingPlatform" parent="AlternatingGroup" node_paths=PackedStringArray("railReference") instance=ExtResource("22_y3p31")]
 transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, -5, 0.75, 1)
-sync_to_physics = true
 railReference = NodePath("../PlatformRail")
 isPermanent = true
 
