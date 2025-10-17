@@ -5,13 +5,10 @@ const REMOVETIMER: float = 0.2
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
 @onready var pivot: Node3D = %Pivot
 
-var objectCollection: Array[AlternatingObject] = []
+var objectCollection: Array = []
 
 var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
-
-#func _ready() -> void:
-	#super()
 
 func add_alternating_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
@@ -19,12 +16,12 @@ func add_alternating_object(obj: AlternatingObject) -> void:
 	objectCollection.append(obj)
 	switch_object(obj)
 
-func remove_alternating_object(obj: AlternatingObject) -> void:
+func remove_alternating_object(obj) -> void:
 	if stickerPlaced: return
 	if objectCollection.has(obj): objectCollection.erase(obj)
 	switch_object(obj)
 
-func switch_object(obj: AlternatingObject) -> void:
+func switch_object(obj) -> void:
 	if stickerPlaced: return
 	obj.switch_state()
 
@@ -42,7 +39,7 @@ func deactivate_group() -> void:
 	for group: AlternatingGroup in activatedGroups:
 		for obj in group.altChildren:
 			remove_alternating_object(obj)
-	var objectsInRange: Array[Node3D] = await force_area_check()
+	var objectsInRange: Array[Node3D] = await force_area_check(false)
 	add_obj_list(objectsInRange)
 	enable_area()
 
@@ -50,7 +47,7 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 	stickerPlaced = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
-	var objectsInRange: Array[Node3D] = await force_area_check(false)
+	var objectsInRange: Array[Node3D] = await force_area_check(true)
 	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
@@ -60,7 +57,7 @@ func grab(node: Node3D) -> void:
 		deactivate_group()
 		return
 	enable_area()
-	add_obj_list(await force_area_check())
+	add_obj_list(await force_area_check(false))
 
 func drop() -> void:
 	super()
@@ -69,14 +66,14 @@ func drop() -> void:
 	for obj in objectCollection:
 		remove_alternating_object(obj)
 
-func force_area_check(maintainActive: bool = true) -> Array[Node3D]:
+func force_area_check(checkAreas:bool) -> Array[Node3D]:
 	heldAreaChecker.monitoring = true
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	var objList: Array[Node3D] = heldAreaChecker.get_overlapping_bodies()
-	heldAreaChecker.monitoring = maintainActive
+	if checkAreas: objList.append_array(heldAreaChecker.get_overlapping_areas())
 	return objList
-
+#
 func add_obj_list(objList: Array[Node3D]) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
