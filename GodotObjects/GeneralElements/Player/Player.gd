@@ -374,7 +374,8 @@ func move_character(delta: float) -> void:
 	else:
 		lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
 	velocity = lastVoluntarySpeed
-	move_and_slide()
+	if not disableMaximum:
+		move_and_slide()
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	if movedAmount != 0:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
@@ -394,7 +395,7 @@ func move_character(delta: float) -> void:
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
 		animation_check()
-	velocity = lastInvoluntarySpeed
+	velocity = lastInvoluntarySpeed + (Vector3.ZERO if not disableMaximum else lastVoluntarySpeed)
 	move_and_slide()
 	if not is_on_floor():
 		fellDistance += (get_last_motion() * Vector3.UP).length()
