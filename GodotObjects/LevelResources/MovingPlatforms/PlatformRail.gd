@@ -22,7 +22,6 @@ func _ready() -> void:
 
 func start_tween(direction: int) -> void:
 	if moveTween: moveTween.kill()
-	prints("starts tween")
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	moveTween.tween_property(pathFollower,"progress_ratio", direction, get_time())
 	moveTween.connect("finished", switch_direction)
@@ -45,16 +44,13 @@ func get_time() -> float:
 	return time
 
 func start_moving() -> void:
-	prints("moving")
 	start_tween(currentDirection)
 
 func stop_moving() -> void:
-	prints("stoping")
 	if moveTween: moveTween.kill()
 	returnTimer.start()
 
 func return_to_origin() -> void:
-	prints("returning")
 	match currentDirection:
 		1:
 			start_tween(0)
