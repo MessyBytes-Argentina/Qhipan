@@ -13,8 +13,9 @@ var activatedGroups: Array[AlternatingGroup]
 func add_alternating_object(obj: AlternatingObject) -> void:
 	if stickerPlaced: return
 	if objectCollection.has(obj): return
-	objectCollection.append(obj)
-	switch_object(obj)
+	if obj is AlternatingObject:
+		objectCollection.append(obj)
+		switch_object(obj)
 
 func remove_alternating_object(obj) -> void:
 	if stickerPlaced: return
