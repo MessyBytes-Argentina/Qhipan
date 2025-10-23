@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cjlia21lpifxa"]
+
+[ext_resource type="Texture2D" uid="uid://d03j6ra3sqvxn" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_albedo.png" id="1_p4nql"]
+[ext_resource type="Texture2D" uid="uid://m2uwf3i3fshm" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_orm.png" id="2_ihaur"]
+[ext_resource type="Texture2D" uid="uid://p8otvyit1rau" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_normal.png" id="3_5xcev"]
+
+[resource]
+albedo_texture = ExtResource("1_p4nql")
+roughness_texture = ExtResource("2_ihaur")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 2.57
+normal_texture = ExtResource("3_5xcev")
+ao_enabled = true
+ao_texture = ExtResource("2_ihaur")

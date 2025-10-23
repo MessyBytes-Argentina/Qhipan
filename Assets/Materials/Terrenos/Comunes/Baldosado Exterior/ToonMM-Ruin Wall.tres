@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=6 format=3 uid="uid://coxrmbcgrcxx3"]
+
+[ext_resource type="Material" path="res://Assets/Materials/Terrenos/Comunes/Baldosado Exterior/Texturas/Ruin Wall.tres" id="1_geey4"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_sncit"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_havnp"]
+[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="2_qa2wg"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_saidt"]
+
+[resource]
+script = ExtResource("3_saidt")
+materialMode = 0
+topSurfaceMaterial = ExtResource("1_geey4")
+topAlbedoSize = 1.0
+topDetailSize = 1.0
+bottomSurfaceMaterial = ExtResource("1_geey4")
+bottomAlbedoSize = 1.0
+bottomDetailSize = 1.0
+sideSurfaceMaterial = ExtResource("1_geey4")
+sideAlbedoSize = 1.0
+sideDetailSize = 1.0
+lightGradient = ExtResource("2_havnp")
+fresnelGradient = ExtResource("1_sncit")
+finalizeShaderMaterial = ExtResource("2_qa2wg")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"

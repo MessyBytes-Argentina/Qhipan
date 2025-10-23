@@ -1,0 +1,2246 @@
+[gd_scene load_steps=66 format=4 uid="uid://bq8o70mwcgyk1"]
+
+[ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_g1mlp"]
+[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/Terrenos/Comunes/Arena/Toon-Arena.tres" id="2_yesjg"]
+[ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="3_htqx7"]
+[ext_resource type="Material" uid="uid://dm5sixfpi7xy2" path="res://Assets/Materials/Terrenos/Stickereables/Arena/Toon Sticker-Arena.tres" id="4_gfneu"]
+[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="5_uedv8"]
+[ext_resource type="Material" uid="uid://p0fe7trqbck6" path="res://Assets/Materials/Terrenos/Stickereables/Baldosa Exterior/Toon Sticker-Baldosa.tres" id="6_qqdhq"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="7_rn5q8"]
+[ext_resource type="Material" uid="uid://iq5k8fe4nr2m" path="res://Assets/Materials/Terrenos/Stickereables/Ladrillo Exterior/Toon Sticker-Ladrillo.tres" id="8_gqteo"]
+[ext_resource type="Material" uid="uid://efkvcpgrg4cs" path="res://Assets/Materials/Terrenos/Comunes/Tierra con Pasto/Toon-Tierra con Pasto.tres" id="9_gtxip"]
+[ext_resource type="Material" uid="uid://soo2vk53yyjp" path="res://Assets/Materials/Terrenos/Stickereables/Tierra con Pasto/Toon Sticker-Tierra con Pasto.tres" id="10_8udor"]
+[ext_resource type="Material" uid="uid://dq1ll1tbvj3xt" path="res://Assets/Materials/Terrenos/Comunes/Tierra Sola/Toon-Tierra Sola.tres" id="11_u8r2u"]
+[ext_resource type="Material" uid="uid://byl7yrblb2oac" path="res://Assets/Materials/Terrenos/Stickereables/Tierra Sola/Toon Sticker-Tierra Sola.tres" id="12_yv50f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b3cyf"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAACAAMAAQAAAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAAAAD/////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tyray"]
+resource_name = "BasePieces_Corner"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//f/9f/z//n/8//z///wAA//8AAP+//z///wAA/78AAP//"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD/////AAAAAAAAlvH//wAA//+W8QAA/////5bx//8AAP//AIAAAAAA//8AgAAA/////wCAAAAAAAAAAAAAAP////8AAAAAAAD//wAA/3//P/9//z//f/8/QUJxG0FCcRtBQnEb/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b3cyf")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y3lco"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g7cj2"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAwAAAAUABQAAAAQABgAEAAIABQAEAAYABgACAAEAAwAFAAYAAwAGAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP////8AAP////8AAAAAAAD//wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yk334"]
+resource_name = "BasePieces_CornerRemoved"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//1//P/+f/z//P///AAD//wAA/78AAP///z///wAA/7//n/9//9//P//f/3//n/8//1//f/+f/z//n/9/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAL3j/v8AAP//veMAAP////+94/7/AAD//wCAAAAAAP//AIAAAP////8AgP7/AAAAAAAA/v8AAP//AAD/////AAAAAAAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/////wAA//8AAP///////wAA//8AAP///3//P/9//z//f/8//3//P/9/////f////3////9///9AJtgPQCbYD0Am2A//f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqq/3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_g7cj2")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4rioy"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, 0.5, -0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_svvih"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fo54x"]
+resource_name = "BasePieces_Cube"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_svvih")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ketmp"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tx30f"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAAAAAIAAwAEAAIAAAAFAAEABQADAAEABQAAAAQABQAEAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/////wAAAAD///////8AAP7/AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0u141"]
+resource_name = "BasePieces_Ramp"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//vwAA//8AAP+//z////9f/3//n/8//5//f/9f/z8AAP+/AAD///8/////H/9//1//P/9f/3//H/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD///////8AAP//AAAAAAAA////////AACq6QAAAAD//6rpAAAAAAAAqun///////+q6f///////wAA/v8AAP//AAAAAAAA//8AAP7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TV/3//P/9//z//f/8//3//P/9/////f////3///wlqBLUJagS1CWoEtQlqBLX/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tx30f")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_er0k0"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t641t"]
+resource_name = "BasePieces_Slab"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//5//P/+f/3//X/8//1//P/+f/x//n/8//1//H/8//3//X/8//1//f/8//z//n/9//7//P/+//3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_72boo")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qyx1t"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tgnyn"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQADAAIABAAAAAIAAQAAAAQABAACAAMAAQAFAAMABQAEAAMAAQAEAAUA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAD+/wAAAAAAAAAAAAD//wAAAAD/////AAD///////8AAP////8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ol6mm"]
+resource_name = "BasePieces_Wedge"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//v/+f////X/+//1//v/+f/3//n/+//1//f/9f/3//X/8//5//P/9f/z//nwAA/5//P/9fAAD/H/9//1//P/9f/3//H/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAIAAkACgALAAwACgANAAsADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP///7/+/wAAAAD/vwAAAAD///+//v8AAAAA/98AAP//////3wAAAAD////f/////wAA/9//////AAD/////////////AAD//////////////////wAAAAD/////AAD////////+/wAA//////7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TVAAD/fwAA/38AAP9//3////9/////f////3////9//7//f/+//3//v/9//3//f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tgnyn")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4ku5o"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ku3jc"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAACAAMAAQAAAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAAAAD/////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_13sst"]
+resource_name = "BasePieces_SlabCorner"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//f/9f/z//n/8//z//HwAA/x8AAAAA/z//HwAAAAAAAP8f"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD/////AAAAAAAAyfX//wAA///J9QAA/////8n1//8AAP//AIAAAAAA//8AgAAA/////wCAAAAAAAAAAAAAAP////8AAAAAAAD//wAA/3//P/9//z//f/8/7UMIEO1DCBDtQwgQ/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ku3jc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pqycb"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, -0.5, 0, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oqv3l"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAAAAAIAAwAEAAIAAAAFAAEABQADAAEABQAAAAQABQAEAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/////wAAAAD///////8AAP7/AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4vbom"]
+resource_name = "BasePieces_SlabRamp"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//vwAA/x8AAAAA/z//H/9f/3//n/8//5//f/9f/z8AAAAAAAD/H/8//x//P/9//1//P/9f/3//P/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD///////8AAP//AAAAAAAA////////AACy8gAAAAD//7LyAAAAAAAAsvL///////+y8v///////wAA/v8AAP//AAAAAAAA//8AAP7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TV/3//P/9//z//f/8//3//P/9/////f////3///3xyPbl8cj25fHI9uXxyPbn/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_oqv3l")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xwmje"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it8m8"]
+resource_name = "Material.005"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lcjss"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQADAAIABAAAAAIAAQAAAAQABAACAAMAAQAFAAMABQAEAAMAAQAEAAUA"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAD+/wAAAAAAAAAAAAD//wAAAAD/////AAD///////8AAP////8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_spn8v"]
+resource_name = "BasePieces_SlabWedge"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//v/+f////X/+//1//n/+f/3//n/+f/1//f/9f/3//X/8//5//P/9f/z//n/8f/5//P/9f/x//P/9//1//P/9f/3//P/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAIAAkACgALAAwACgANAAsADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_it8m8"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP///7/+/wAAAAD/vwAAAAD///+//v8AAAAA/98AAP//////3wAAAAD////f/////wAA/9//////AAD/////////////AAD//////////////////wAAAAD/////AAD////////+/wAA//////7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TVAAD/fwAA/38AAP9//3////9/////f////3////9//7//f/+//3//v/9//3//f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lcjss")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_un63l"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i4bdm"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAwAAAAUABQAAAAQABgAEAAIABQAEAAYABgACAAEAAwAFAAYAAwAGAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP////8AAP////8AAAAAAAD//wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uyxvl"]
+resource_name = "BasePieces_SlabCornerRemoved"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//1//P/+f/z//P/8fAAD/HwAAAAAAAP8f/z//HwAAAAD/n/9//7//P/+//3//n/8//1//f/+f/z//n/9/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_6leej"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AADDw/v8AAP//MPAAAP////8w8P7/AAD//wCAAAAAAP//AIAAAP////8AgP7/AAAAAAAA/v8AAP//AAD/////AAAAAAAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/////wAA//8AAP///////wAA//8AAP///3//P/9//z//f/8//3//P/9/////f////3////9///8QLt8KEC7fChAu3wr/f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqq/3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_i4bdm")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v422e"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8w0t2"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sthk2"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAwABAAQAAgAFAAAAAgADAAUABQAEAAAAAwAEAAUA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAA//8AAAAAAAAAAP////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hqph8"]
+resource_name = "BasePieces_SlabRampUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA/x//P/8fAAAAAP9f/3//n/8//1//P/+f/38AAAAA/z//HwAA/x//X/9//z//P/9f/z//P/9/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_8w0t2"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABMDQAA/////0wN//8AAP//TA0AAP//AABMDf//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3///8DGe/LAxnvywMZ78sDGe/L/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sthk2")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s1jf3"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0.5, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ylg3e"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAADAAEAAgADAAAA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("////////AAAAAP////8AAAAA//8AAAAAAAAAAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oqnii"]
+resource_name = "BasePieces_SlabCornerUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1//P/+f/z//n/9//5//f/9f/3//X/8//z//HwAAAAAAAP8f/z//HwAA/x8AAAAA"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_8w0t2"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//////////8AAP///////wAA//8AAP//AAD//wAAWdYAAAAA//9Z1v///////1nW/////////n8AAAAA///+fwAA//////5/AAD//wAA//8AAP///////wAAAAD//////3//v/9//7//f/+/yVG/Q8lRv0PJUb9D/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ylg3e")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cvjla"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nmoqy"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAwABAAQAAgAFAAAAAgADAAUABQAEAAAAAwAEAAUA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAA//8AAAAAAAAAAP////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8sl3w"]
+resource_name = "BasePieces_RampUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA////P///AAD/v/9f/3//n/8//1//P/+f/38AAP+//z///wAA////X/9//x//P/9f/z//H/9/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_8w0t2"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABUFgAA/////1QW//8AAP//VBYAAP//AABUFv//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3////rKCOr6ygjq+soI6vrKCOr/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nmoqy")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c44re"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xlj1p"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAADAAEAAgADAAAA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("////////AAAAAP////8AAAAA//8AAAAAAAAAAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_twxyc"]
+resource_name = "BasePieces_CornerUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/19Uf/9f/z//n1U//5//P/+f/3//X/9//z///wAA/78AAP///z///wAA//8AAP+/"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_8w0t2"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("////////FdUAAP////8V1QAA//8AABXVAAD//wAAlvEAAAAA//+W8f///////5bx/////////n8AAAAA///+fwAA//////5/AAD//wAA//8AAP///////wAAAAD/////etX3KnrV9yp61fcqcZu9PXGbvT1xm709/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_xlj1p")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mibkh"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l05q"]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_211wu"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5piws"]
+resource_name = "BasePieces_SlabCornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+f/1//n/+f/3//n/9//1//P/+f/z//P/8fAAAAAAAA/x8AAP8fAAAAAP8//x//n/9//7//P/+f/z//v/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_8l05q"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAACCyAAAAAP//ILL+//////8gsv7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAKoqAAD/////qioAAAAA//+qKgAA//8AAKoq//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////hEv1P4RL9T+ES/U//f////3////9/////v/9//7//f/+//39U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_211wu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jl33f"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 1, 0.5, -0.5, 0.5, -0.5, -0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrvbc"]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nefu6"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ab6xl"]
+resource_name = "BasePieces_CornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+//1//v/+f/3//n/9//1//P/+f/z//P///AAD/vwAA//8AAP//AAD/v/8/////3/9//5//P//f/z//n/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_lrvbc"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAAJaxAAAAAP//lrH+//////+Wsf7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAFTVAAD/////VNUAAAAA//9U1QAA//8AAFTV//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////xF8058RfNOfEXzTn/f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqqAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nefu6")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_twle3"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5)
+
+[node name="Terrenos" type="Node3D"]
+
+[node name="Arena" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("2_yesjg")
+
+[node name="Corner__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Corner__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Corner__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/CornerRemoved__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/CornerRemoved__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Cube__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Cube__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Ramp__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Ramp__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Slab__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Slab__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/Wedge__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/Wedge__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabCorner__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabCorner__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabRamp__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabRamp__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabWedge__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabWedge__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabCornerRemoved__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabCornerRemoved__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabRampUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabRampUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabCornerUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabCornerUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/RampUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/RampUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/CornerUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/CornerUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/SlabCornerRemovedUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/SlabCornerRemovedUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Arena" type="MeshInstance3D" parent="Arena"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_yesjg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Arena/CornerRemovedUpsideDown__Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Arena/CornerRemovedUpsideDown__Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Sticker-Arena" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("4_gfneu")
+
+[node name="Corner__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/Corner__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/Corner__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/CornerRemoved__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/CornerRemoved__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/Cube__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/Cube__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/Ramp__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/Ramp__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/Slab__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/Slab__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/Wedge__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/Wedge__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabCorner__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabCorner__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabRamp__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabRamp__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabWedge__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabWedge__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabCornerRemoved__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabCornerRemoved__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabRampUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabRampUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabCornerUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabCornerUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/RampUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/RampUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/CornerUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/CornerUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/SlabCornerRemovedUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/SlabCornerRemovedUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Sticker-Arena" type="MeshInstance3D" parent="Sticker-Arena"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_gfneu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Arena/CornerRemovedUpsideDown__Sticker-Arena"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Arena/CornerRemovedUpsideDown__Sticker-Arena/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Baldosas Exterior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("5_uedv8")
+
+[node name="Corner__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/Corner__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/Corner__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/CornerRemoved__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/CornerRemoved__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/Cube__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/Cube__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/Ramp__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/Ramp__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/Slab__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/Slab__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/Wedge__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/Wedge__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabCorner__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabCorner__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabRamp__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabRamp__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabWedge__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabWedge__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabCornerRemoved__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabCornerRemoved__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabRampUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabRampUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabCornerUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabCornerUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/RampUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/RampUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/CornerUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/CornerUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/SlabCornerRemovedUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/SlabCornerRemovedUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Baldosas Exterior" type="MeshInstance3D" parent="Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosas Exterior/CornerRemovedUpsideDown__Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosas Exterior/CornerRemovedUpsideDown__Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Sticker-Baldosas Exterior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("6_qqdhq")
+
+[node name="Corner__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/Corner__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/Corner__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/CornerRemoved__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/CornerRemoved__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/Cube__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/Cube__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/Ramp__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/Ramp__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/Slab__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/Slab__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/Wedge__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/Wedge__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabCorner__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabCorner__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabRamp__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabRamp__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabWedge__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabWedge__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabCornerRemoved__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabCornerRemoved__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabRampUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabRampUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabCornerUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabCornerUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/RampUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/RampUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/CornerUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/CornerUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/SlabCornerRemovedUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/SlabCornerRemovedUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Sticker-Baldosas Exterior" type="MeshInstance3D" parent="Sticker-Baldosas Exterior"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("6_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosas Exterior/CornerRemovedUpsideDown__Sticker-Baldosas Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosas Exterior/CornerRemovedUpsideDown__Sticker-Baldosas Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Ladrillo Exterior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("7_rn5q8")
+
+[node name="Corner__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/Corner__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/Corner__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/CornerRemoved__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/CornerRemoved__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/Cube__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/Cube__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/Ramp__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/Ramp__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/Slab__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/Slab__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/Wedge__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/Wedge__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabCorner__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabCorner__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabRamp__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabRamp__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabWedge__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabWedge__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabCornerRemoved__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabCornerRemoved__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabRampUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabRampUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabCornerUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabCornerUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/RampUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/RampUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/CornerUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/CornerUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/SlabCornerRemovedUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/SlabCornerRemovedUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Ladrillo Exterior" type="MeshInstance3D" parent="Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Exterior/CornerRemovedUpsideDown__Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Exterior/CornerRemovedUpsideDown__Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Sticker-Ladrillo Exterior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("8_gqteo")
+
+[node name="Corner__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/Corner__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/Corner__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/CornerRemoved__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/CornerRemoved__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/Cube__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/Cube__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/Ramp__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/Ramp__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/Slab__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/Slab__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/Wedge__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/Wedge__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabCorner__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabCorner__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabRamp__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabRamp__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabWedge__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabWedge__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabCornerRemoved__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabCornerRemoved__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabRampUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabRampUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabCornerUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabCornerUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/RampUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/RampUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/CornerUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/CornerUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/SlabCornerRemovedUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/SlabCornerRemovedUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Sticker-Ladrillo Exterior" type="MeshInstance3D" parent="Sticker-Ladrillo Exterior"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Exterior/CornerRemovedUpsideDown__Sticker-Ladrillo Exterior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Exterior/CornerRemovedUpsideDown__Sticker-Ladrillo Exterior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Tierra con Pasto" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("9_gtxip")
+
+[node name="Corner__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/Corner__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/Corner__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/CornerRemoved__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/CornerRemoved__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/Cube__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/Cube__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/Ramp__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/Ramp__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/Slab__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/Slab__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/Wedge__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/Wedge__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabCorner__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabCorner__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabRamp__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabRamp__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabWedge__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabWedge__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabCornerRemoved__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabCornerRemoved__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabRampUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabRampUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabCornerUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabCornerUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/RampUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/RampUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/CornerUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/CornerUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/SlabCornerRemovedUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/SlabCornerRemovedUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Tierra con Pasto" type="MeshInstance3D" parent="Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_gtxip")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra con Pasto/CornerRemovedUpsideDown__Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra con Pasto/CornerRemovedUpsideDown__Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Sticker-Tierra con Pasto" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("10_8udor")
+
+[node name="Corner__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/Corner__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/Corner__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/CornerRemoved__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/CornerRemoved__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/Cube__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/Cube__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/Ramp__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/Ramp__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/Slab__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/Slab__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/Wedge__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/Wedge__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabCorner__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabCorner__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabRamp__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabRamp__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabWedge__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabWedge__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabCornerRemoved__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabCornerRemoved__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabRampUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabRampUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabCornerUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabCornerUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/RampUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/RampUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/CornerUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/CornerUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/SlabCornerRemovedUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/SlabCornerRemovedUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Sticker-Tierra con Pasto" type="MeshInstance3D" parent="Sticker-Tierra con Pasto"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("10_8udor")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra con Pasto/CornerRemovedUpsideDown__Sticker-Tierra con Pasto"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra con Pasto/CornerRemovedUpsideDown__Sticker-Tierra con Pasto/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Tierra Sola" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("11_u8r2u")
+
+[node name="Corner__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/Corner__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/Corner__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/CornerRemoved__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/CornerRemoved__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/Cube__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/Cube__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/Ramp__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/Ramp__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/Slab__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/Slab__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/Wedge__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/Wedge__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabCorner__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabCorner__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabRamp__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabRamp__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabWedge__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabWedge__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabCornerRemoved__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabCornerRemoved__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabRampUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabRampUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabCornerUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabCornerUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/RampUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/RampUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/CornerUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/CornerUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/SlabCornerRemovedUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/SlabCornerRemovedUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Tierra Sola" type="MeshInstance3D" parent="Tierra Sola"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_u8r2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tierra Sola/CornerRemovedUpsideDown__Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tierra Sola/CornerRemovedUpsideDown__Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Sticker-Tierra Sola" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("12_yv50f")
+
+[node name="Corner__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_tyray")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/Corner__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/Corner__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_y3lco")
+
+[node name="CornerRemoved__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_yk334")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/CornerRemoved__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/CornerRemoved__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4rioy")
+
+[node name="Cube__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_fo54x")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/Cube__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/Cube__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ketmp")
+
+[node name="Ramp__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_0u141")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/Ramp__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/Ramp__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_er0k0")
+
+[node name="Slab__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_t641t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/Slab__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/Slab__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="Wedge__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_ol6mm")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/Wedge__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/Wedge__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4ku5o")
+
+[node name="SlabCorner__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_13sst")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabCorner__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabCorner__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pqycb")
+
+[node name="SlabRamp__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_4vbom")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabRamp__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabRamp__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xwmje")
+
+[node name="SlabWedge__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_spn8v")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabWedge__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabWedge__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_un63l")
+
+[node name="SlabCornerRemoved__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_uyxvl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabCornerRemoved__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabCornerRemoved__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_v422e")
+
+[node name="SlabRampUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_hqph8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabRampUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabRampUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_s1jf3")
+
+[node name="SlabCornerUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_oqnii")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabCornerUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabCornerUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cvjla")
+
+[node name="RampUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_8sl3w")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/RampUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/RampUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_c44re")
+
+[node name="CornerUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_twxyc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/CornerUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/CornerUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mibkh")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_5piws")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/SlabCornerRemovedUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/SlabCornerRemovedUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jl33f")
+
+[node name="CornerRemovedUpsideDown__Sticker-Tierra Sola" type="MeshInstance3D" parent="Sticker-Tierra Sola"]
+mesh = SubResource("ArrayMesh_ab6xl")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("12_yv50f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Tierra Sola/CornerRemovedUpsideDown__Sticker-Tierra Sola"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/CornerRemovedUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_twle3")
