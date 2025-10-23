@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://bq8o70mwcgyk1"]
+[gd_scene load_steps=123 format=4 uid="uid://bq8o70mwcgyk1"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_g1mlp"]
 [ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/Terrenos/Comunes/Arena/Toon-Arena.tres" id="2_yesjg"]
@@ -12,6 +12,10 @@
 [ext_resource type="Material" uid="uid://soo2vk53yyjp" path="res://Assets/Materials/Terrenos/Stickereables/Tierra con Pasto/Toon Sticker-Tierra con Pasto.tres" id="10_8udor"]
 [ext_resource type="Material" uid="uid://dq1ll1tbvj3xt" path="res://Assets/Materials/Terrenos/Comunes/Tierra Sola/Toon-Tierra Sola.tres" id="11_u8r2u"]
 [ext_resource type="Material" uid="uid://byl7yrblb2oac" path="res://Assets/Materials/Terrenos/Stickereables/Tierra Sola/Toon Sticker-Tierra Sola.tres" id="12_yv50f"]
+[ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="13_uedv8"]
+[ext_resource type="Material" uid="uid://52rh8d8yiulv" path="res://Assets/Materials/Terrenos/Stickereables/Baldosa Interior/Toon Sticker-Baldosa Interior.tres" id="14_qqdhq"]
+[ext_resource type="Material" uid="uid://824j8fqqimf2" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
+[ext_resource type="Material" uid="uid://dyssjfweeypue" path="res://Assets/Materials/Terrenos/Stickereables/Ladrillo Interior/Toon Sticker-Ladrillo Interior.tres" id="16_gqteo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
 resource_name = "Material.001"
@@ -601,6 +605,596 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nefu6")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_twle3"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtxip"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8udor"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAACAAMAAQAAAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAAAAD/////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u8r2u"]
+resource_name = "BasePieces_Corner"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//f/9f/z//n/8//z///wAA//8AAP+//z///wAA/78AAP//"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD/////AAAAAAAAlvH//wAA//+W8QAA/////5bx//8AAP//AIAAAAAA//8AgAAA/////wCAAAAAAAAAAAAAAP////8AAAAAAAD//wAA/3//P/9//z//f/8/QUJxG0FCcRtBQnEb/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8udor")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yv50f"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lmdwc"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAwAAAAUABQAAAAQABgAEAAIABQAEAAYABgACAAEAAwAFAAYAAwAGAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP////8AAP////8AAAAAAAD//wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w32gy"]
+resource_name = "BasePieces_CornerRemoved"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//1//P/+f/z//P///AAD//wAA/78AAP///z///wAA/7//n/9//9//P//f/3//n/8//1//f/+f/z//n/9/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAL3j/v8AAP//veMAAP////+94/7/AAD//wCAAAAAAP//AIAAAP////8AgP7/AAAAAAAA/v8AAP//AAD/////AAAAAAAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/////wAA//8AAP///////wAA//8AAP///3//P/9//z//f/8//3//P/9/////f////3////9///9AJtgPQCbYD0Am2A//f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqq/3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lmdwc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4v6ds"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, 0.5, -0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tr6gc"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_oxyoc"]
+resource_name = "BasePieces_Cube"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tr6gc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jkvta"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yespp"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAAAAAIAAwAEAAIAAAAFAAEABQADAAEABQAAAAQABQAEAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/////wAAAAD///////8AAP7/AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8xvft"]
+resource_name = "BasePieces_Ramp"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//vwAA//8AAP+//z////9f/3//n/8//5//f/9f/z8AAP+/AAD///8/////H/9//1//P/9f/3//H/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD///////8AAP//AAAAAAAA////////AACq6QAAAAD//6rpAAAAAAAAqun///////+q6f///////wAA/v8AAP//AAAAAAAA//8AAP7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TV/3//P/9//z//f/8//3//P/9/////f////3///wlqBLUJagS1CWoEtQlqBLX/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yespp")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hj4p7"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1a42s"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hnmod"]
+resource_name = "BasePieces_Slab"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//5//P/+f/3//X/8//1//P/+f/x//n/8//1//H/8//3//X/8//1//f/8//z//n/9//7//P/+//3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1a42s")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gpnb6"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ti6bp"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQADAAIABAAAAAIAAQAAAAQABAACAAMAAQAFAAMABQAEAAMAAQAEAAUA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAD+/wAAAAAAAAAAAAD//wAAAAD/////AAD///////8AAP////8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uu3ko"]
+resource_name = "BasePieces_Wedge"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//v/+f////X/+//1//v/+f/3//n/+//1//f/9f/3//X/8//5//P/9f/z//nwAA/5//P/9fAAD/H/9//1//P/9f/3//H/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAIAAkACgALAAwACgANAAsADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP///7/+/wAAAAD/vwAAAAD///+//v8AAAAA/98AAP//////3wAAAAD////f/////wAA/9//////AAD/////////////AAD//////////////////wAAAAD/////AAD////////+/wAA//////7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TVAAD/fwAA/38AAP9//3////9/////f////3////9//7//f/+//3//v/9//3//f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ti6bp")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vlluh"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 1, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_elqej"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAACAAMAAQAAAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAP//AAAAAAAAAAAAAAAAAAD//wAAAAD/////AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q0c0e"]
+resource_name = "BasePieces_SlabCorner"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//f/9f/z//n/8//z//HwAA/x8AAAAA/z//HwAAAAAAAP8f"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//8AAP////8AAAAAAAD//wAAAAD/////AAAAAAAAyfX//wAA///J9QAA/////8n1//8AAP//AIAAAAAA//8AgAAA/////wCAAAAAAAAAAAAAAP////8AAAAAAAD//wAA/3//P/9//z//f/8/7UMIEO1DCBDtQwgQ/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_elqej")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_10pef"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, -0.5, 0, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_i0df1"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAAAAAIAAwAEAAIAAAAFAAEABQADAAEABQAAAAQABQAEAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/////wAAAAD///////8AAP7/AAAAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qpqb6"]
+resource_name = "BasePieces_SlabRamp"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//vwAA/x8AAAAA/z//H/9f/3//n/8//5//f/9f/z8AAAAAAAD/H/8//x//P/9//1//P/9f/3//P/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD///////8AAP//AAAAAAAA////////AACy8gAAAAD//7LyAAAAAAAAsvL///////+y8v///////wAA/v8AAP//AAAAAAAA//8AAP7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TV/3//P/9//z//f/8//3//P/9/////f////3///3xyPbl8cj25fHI9uXxyPbn/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_i0df1")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a4m78"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8b88"]
+resource_name = "Material.005"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bvxks"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAQADAAIABAAAAAIAAQAAAAQABAACAAMAAQAFAAMABQAEAAMAAQAEAAUA"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v8AAP//AAD+/wAAAAAAAAAAAAD//wAAAAD/////AAD///////8AAP////8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pmnsh"]
+resource_name = "BasePieces_SlabWedge"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//v/+f////X/+//1//n/+f/3//n/+f/1//f/9f/3//X/8//5//P/9f/z//n/8f/5//P/9f/x//P/9//1//P/9f/3//P/8/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUAAwAGAAQABwAIAAkACgALAAwACgANAAsADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_e8b88"),
+"name": "Material.005",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v8AAP///7/+/wAAAAD/vwAAAAD///+//v8AAAAA/98AAP//////3wAAAAD////f/////wAA/9//////AAD/////////////AAD//////////////////wAAAAD/////AAD////////+/wAA//////7/AAAAAFTV////////VNX/////AABU1f7/AAD//1TVAAD/fwAA/38AAP9//3////9/////f////3////9//7//f/+//3//v/9//3//f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bvxks")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mj4po"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mk7bc"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAwAAAAUABQAAAAQABgAEAAIABQAEAAYABgACAAEAAwAFAAYAAwAGAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP////8AAP////8AAAAAAAD//wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ih2l2"]
+resource_name = "BasePieces_SlabCornerRemoved"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//1//P/+f/z//P/8fAAD/HwAAAAAAAP8f/z//HwAAAAD/n/9//7//P/+//3//n/8//1//f/+f/z//n/9/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_gtxip"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AADDw/v8AAP//MPAAAP////8w8P7/AAD//wCAAAAAAP//AIAAAP////8AgP7/AAAAAAAA/v8AAP//AAD/////AAAAAAAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/////wAA//8AAP///////wAA//8AAP///3//P/9//z//f/8//3//P/9/////f////3////9///8QLt8KEC7fChAu3wr/f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqq/3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_mk7bc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8ctai"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blvve"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8jvof"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAwABAAQAAgAFAAAAAgADAAUABQAEAAAAAwAEAAUA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAA//8AAAAAAAAAAP////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7a2tu"]
+resource_name = "BasePieces_SlabRampUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA/x//P/8fAAAAAP9f/3//n/8//1//P/+f/38AAAAA/z//HwAA/x//X/9//z//P/9f/z//P/9/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_blvve"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABMDQAA/////0wN//8AAP//TA0AAP//AABMDf//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3///8DGe/LAxnvywMZ78sDGe/L/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8jvof")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j6prr"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0.5, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2061e"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAADAAEAAgADAAAA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("////////AAAAAP////8AAAAA//8AAAAAAAAAAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x8688"]
+resource_name = "BasePieces_SlabCornerUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1//P/+f/z//n/9//5//f/9f/3//X/8//z//HwAAAAAAAP8f/z//HwAA/x8AAAAA"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_blvve"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("//////////8AAP///////wAA//8AAP//AAD//wAAWdYAAAAA//9Z1v///////1nW/////////n8AAAAA///+fwAA//////5/AAD//wAA//8AAP///////wAAAAD//////3//v/9//7//f/+/yVG/Q8lRv0PJUb9D/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2061e")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3ub0h"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0.5, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_l0boc"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAwABAAQAAgAFAAAAAgADAAUABQAEAAAAAwAEAAUA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAA//8AAAAAAAAAAP////8AAP//AAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vq2k6"]
+resource_name = "BasePieces_RampUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//fwAA////P///AAD/v/9f/3//n/8//1//P/+f/38AAP+//z///wAA////X/9//x//P/9f/z//H/9/"),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABwAIAAkABwAKAAgACwAMAA0ADgAPABAADgARAA8A"),
+"material": SubResource("StandardMaterial3D_blvve"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAAAAAAA//8AAAAA//8AAAAAAAD//wAAAABUFgAA/////1QW//8AAP//VBYAAP//AABUFv//AAD/////AAD////////+//////////7///8AAFTV//8AAP//VNX+//////9U1f//AAAAAFTV////f////3////9/////f/9/////f////3////rKCOr6ygjq+soI6vrKCOr/f/9//3//f/9//3+qKqoqqiqqKqoqqiqqKqoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_l0boc")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5nfle"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ke51i"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAADAAEAAgADAAAA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("////////AAAAAP////8AAAAA//8AAAAAAAAAAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ah0as"]
+resource_name = "BasePieces_CornerUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/19Uf/9f/z//n1U//5//P/+f/3//X/9//z///wAA/78AAP///z///wAA//8AAP+/"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsA"),
+"material": SubResource("StandardMaterial3D_blvve"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("////////FdUAAP////8V1QAA//8AABXVAAD//wAAlvEAAAAA//+W8f///////5bx/////////n8AAAAA///+fwAA//////5/AAD//wAA//8AAP///////wAAAAD/////etX3KnrV9yp61fcqcZu9PXGbvT1xm709/3////9/////f////z//f/8//3//P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ke51i")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_23xl1"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tatt"]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m6vyl"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cs2m1"]
+resource_name = "BasePieces_SlabCornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0.5, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+f/1//n/+f/3//n/9//1//P/+f/z//P/8fAAAAAAAA/x8AAP8fAAAAAP8//x//n/9//7//P/+f/z//v/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_3tatt"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAACCyAAAAAP//ILL+//////8gsv7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAKoqAAD/////qioAAAAA//+qKgAA//8AAKoq//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////hEv1P4RL9T+ES/U//f////3////9/////v/9//7//f/+//39U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_m6vyl")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ja6cr"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0.5, -0.5, 0.5, 1, 0.5, -0.5, 0.5, -0.5, -0.5, 1, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5kmx"]
+resource_name = "Material.004"
+cull_mode = 2
+albedo_texture = ExtResource("3_htqx7")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vyie6"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAgAEAAAAAAAFAAMABAAFAAAABgADAAUABAAGAAUABgABAAMAAgAGAAQAAgABAAYA"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("/v//////AAAAAP//AAAAAP7///8AAAAAAAD/////AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ssos6"]
+resource_name = "BasePieces_CornerRemovedUpsideDown"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
+"attribute_data": PackedByteArray("/5//f/9f/z//n/8//1//f/9f/3//n/+//1//v/+f/3//n/9//1//P/+f/z//P///AAD/vwAA//8AAP//AAD/v/8/////3/9//5//P//f/z//n/9//5//f/9f/3//X/8/"),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACwAMAA0ADgAPABAAEQASABMAEQAUABIAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_f5kmx"),
+"name": "Material.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v///////78AAP//AAD/v/7///8AAP+/AAD//////7/+////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD/////AAAAAJaxAAAAAP//lrH+//////+Wsf7///////5/AAAAAP///n8AAP/////+f/7///8AAP////8AAAAA///+/////////wAAAAAAAFTVAAD/////VNUAAAAA//9U1QAA//8AAFTV//8AAAAA/78AAAAAAAD/vwAAAAD///+/////f////3////9/////f/9/////f////3////9////xF8058RfNOfEXzTn/f////3////9/////v/9//7//f/+//39UVaqqVFWqqlRVqqpUVaqqAAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vyie6")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b64xo"]
 data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 1, 0.5, -0.5, 0, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5)
 
 [node name="Terrenos" type="Node3D"]
@@ -2244,3 +2838,659 @@ surface_material_override/0 = ExtResource("12_yv50f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Tierra Sola/CornerRemovedUpsideDown__Sticker-Tierra Sola/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_twle3")
+
+[node name="Baldosa Interior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("13_uedv8")
+
+[node name="Corner__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_u8r2u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/Corner__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/Corner__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yv50f")
+
+[node name="CornerRemoved__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_w32gy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/CornerRemoved__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/CornerRemoved__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4v6ds")
+
+[node name="Cube__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_oxyoc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/Cube__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/Cube__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkvta")
+
+[node name="Ramp__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_8xvft")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/Ramp__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/Ramp__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hj4p7")
+
+[node name="Slab__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_hnmod")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/Slab__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/Slab__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gpnb6")
+
+[node name="Wedge__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_uu3ko")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/Wedge__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/Wedge__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vlluh")
+
+[node name="SlabCorner__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_q0c0e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabCorner__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabCorner__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_10pef")
+
+[node name="SlabRamp__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_qpqb6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabRamp__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabRamp__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a4m78")
+
+[node name="SlabWedge__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_pmnsh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabWedge__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabWedge__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mj4po")
+
+[node name="SlabCornerRemoved__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ih2l2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabCornerRemoved__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabCornerRemoved__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8ctai")
+
+[node name="SlabRampUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_7a2tu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabRampUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabRampUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6prr")
+
+[node name="SlabCornerUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_x8688")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabCornerUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabCornerUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3ub0h")
+
+[node name="RampUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_vq2k6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/RampUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/RampUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5nfle")
+
+[node name="CornerUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ah0as")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/CornerUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/CornerUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23xl1")
+
+[node name="SlabCornerRemovedUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_cs2m1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/SlabCornerRemovedUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/SlabCornerRemovedUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ja6cr")
+
+[node name="CornerRemovedUpsideDown__Baldosa Interior" type="MeshInstance3D" parent="Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ssos6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("13_uedv8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Baldosa Interior/CornerRemovedUpsideDown__Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baldosa Interior/CornerRemovedUpsideDown__Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b64xo")
+
+[node name="Sticker-Baldosa Interior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("14_qqdhq")
+
+[node name="Corner__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_u8r2u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/Corner__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/Corner__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yv50f")
+
+[node name="CornerRemoved__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_w32gy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/CornerRemoved__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/CornerRemoved__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4v6ds")
+
+[node name="Cube__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_oxyoc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/Cube__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/Cube__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkvta")
+
+[node name="Ramp__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_8xvft")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/Ramp__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/Ramp__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hj4p7")
+
+[node name="Slab__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_hnmod")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/Slab__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/Slab__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gpnb6")
+
+[node name="Wedge__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_uu3ko")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/Wedge__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/Wedge__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vlluh")
+
+[node name="SlabCorner__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_q0c0e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabCorner__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabCorner__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_10pef")
+
+[node name="SlabRamp__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_qpqb6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabRamp__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabRamp__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a4m78")
+
+[node name="SlabWedge__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_pmnsh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabWedge__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabWedge__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mj4po")
+
+[node name="SlabCornerRemoved__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ih2l2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabCornerRemoved__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabCornerRemoved__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8ctai")
+
+[node name="SlabRampUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_7a2tu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabRampUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabRampUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6prr")
+
+[node name="SlabCornerUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_x8688")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabCornerUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabCornerUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3ub0h")
+
+[node name="RampUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_vq2k6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/RampUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/RampUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5nfle")
+
+[node name="CornerUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ah0as")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/CornerUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/CornerUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23xl1")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_cs2m1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/SlabCornerRemovedUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/SlabCornerRemovedUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ja6cr")
+
+[node name="CornerRemovedUpsideDown__Sticker-Baldosa Interior" type="MeshInstance3D" parent="Sticker-Baldosa Interior"]
+mesh = SubResource("ArrayMesh_ssos6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("14_qqdhq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Baldosa Interior/CornerRemovedUpsideDown__Sticker-Baldosa Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Baldosa Interior/CornerRemovedUpsideDown__Sticker-Baldosa Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b64xo")
+
+[node name="Ladrillo Interior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("15_rn5q8")
+
+[node name="Corner__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_u8r2u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/Corner__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/Corner__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yv50f")
+
+[node name="CornerRemoved__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_w32gy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/CornerRemoved__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/CornerRemoved__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4v6ds")
+
+[node name="Cube__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_oxyoc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/Cube__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/Cube__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkvta")
+
+[node name="Ramp__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_8xvft")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/Ramp__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/Ramp__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hj4p7")
+
+[node name="Slab__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_hnmod")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/Slab__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/Slab__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gpnb6")
+
+[node name="Wedge__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_uu3ko")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/Wedge__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/Wedge__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vlluh")
+
+[node name="SlabCorner__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_q0c0e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabCorner__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabCorner__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_10pef")
+
+[node name="SlabRamp__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_qpqb6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabRamp__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabRamp__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a4m78")
+
+[node name="SlabWedge__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_pmnsh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabWedge__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabWedge__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mj4po")
+
+[node name="SlabCornerRemoved__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ih2l2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabCornerRemoved__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabCornerRemoved__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8ctai")
+
+[node name="SlabRampUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_7a2tu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabRampUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabRampUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6prr")
+
+[node name="SlabCornerUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_x8688")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabCornerUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabCornerUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3ub0h")
+
+[node name="RampUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_vq2k6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/RampUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/RampUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5nfle")
+
+[node name="CornerUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ah0as")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/CornerUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/CornerUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23xl1")
+
+[node name="SlabCornerRemovedUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_cs2m1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/SlabCornerRemovedUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/SlabCornerRemovedUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ja6cr")
+
+[node name="CornerRemovedUpsideDown__Ladrillo Interior" type="MeshInstance3D" parent="Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ssos6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("15_rn5q8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ladrillo Interior/CornerRemovedUpsideDown__Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ladrillo Interior/CornerRemovedUpsideDown__Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b64xo")
+
+[node name="Sticker-Ladrillo Interior" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("16_gqteo")
+
+[node name="Corner__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_u8r2u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/Corner__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/Corner__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yv50f")
+
+[node name="CornerRemoved__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_w32gy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/CornerRemoved__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/CornerRemoved__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4v6ds")
+
+[node name="Cube__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_oxyoc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/Cube__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/Cube__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkvta")
+
+[node name="Ramp__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_8xvft")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/Ramp__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/Ramp__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hj4p7")
+
+[node name="Slab__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_hnmod")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/Slab__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/Slab__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gpnb6")
+
+[node name="Wedge__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_uu3ko")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/Wedge__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/Wedge__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vlluh")
+
+[node name="SlabCorner__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_q0c0e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabCorner__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabCorner__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_10pef")
+
+[node name="SlabRamp__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_qpqb6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabRamp__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabRamp__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a4m78")
+
+[node name="SlabWedge__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_pmnsh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabWedge__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabWedge__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mj4po")
+
+[node name="SlabCornerRemoved__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ih2l2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabCornerRemoved__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabCornerRemoved__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8ctai")
+
+[node name="SlabRampUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_7a2tu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabRampUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabRampUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6prr")
+
+[node name="SlabCornerUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_x8688")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabCornerUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabCornerUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3ub0h")
+
+[node name="RampUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_vq2k6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/RampUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/RampUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5nfle")
+
+[node name="CornerUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ah0as")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/CornerUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/CornerUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23xl1")
+
+[node name="SlabCornerRemovedUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_cs2m1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/SlabCornerRemovedUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/SlabCornerRemovedUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ja6cr")
+
+[node name="CornerRemovedUpsideDown__Sticker-Ladrillo Interior" type="MeshInstance3D" parent="Sticker-Ladrillo Interior"]
+mesh = SubResource("ArrayMesh_ssos6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("16_gqteo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sticker-Ladrillo Interior/CornerRemovedUpsideDown__Sticker-Ladrillo Interior"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sticker-Ladrillo Interior/CornerRemovedUpsideDown__Sticker-Ladrillo Interior/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b64xo")
