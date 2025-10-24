@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=6 format=3 uid="uid://ck5fl4ast6h7v"]
+
+[ext_resource type="Material" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Exterior/Texturas/Bricks.tres" id="1_lseyq"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_o4oss"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_8t54b"]
+[ext_resource type="Material" uid="uid://iq5k8fe4nr2m" path="res://Assets/Materials/Terrenos/Stickereables/Ladrillo Exterior/Toon Sticker-Ladrillo.tres" id="2_aa0wc"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_lseyq"]
+
+[resource]
+script = ExtResource("3_lseyq")
+materialMode = 0
+topSurfaceMaterial = ExtResource("1_lseyq")
+topAlbedoSize = 1.0
+topDetailSize = 1.0
+bottomSurfaceMaterial = ExtResource("1_lseyq")
+bottomAlbedoSize = 1.0
+bottomDetailSize = 1.0
+sideSurfaceMaterial = ExtResource("1_lseyq")
+sideAlbedoSize = 1.0
+sideDetailSize = 1.0
+lightGradient = ExtResource("2_8t54b")
+fresnelGradient = ExtResource("1_o4oss")
+finalizeShaderMaterial = ExtResource("2_aa0wc")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"
