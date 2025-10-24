@@ -16,9 +16,6 @@ const VALIDFACES: Dictionary[String, PackedVector3Array] = {
 	"Wedge": [Vector3.RIGHT, Vector3.BACK]
 }
 
-## The list of names of the terrain types a sticker can be placed on.
-@export var stickerValidTerrainTypes: PackedStringArray
-
 ## The list of stickerable surfaces.
 var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
 ## Reference to the player grab area.
@@ -40,7 +37,7 @@ func fetch_stickerable_surfaces() -> void:
 	var stickerableMaterials: Dictionary[int, Array]
 	for material in mesh_library.get_item_list():
 		var currentMaterialConstruct: PackedStringArray = mesh_library.get_item_name(material).split("__")
-		if currentMaterialConstruct[1] not in stickerValidTerrainTypes or currentMaterialConstruct[0] not in VALIDFACES.keys(): continue
+		if not currentMaterialConstruct[1].begins_with("Sticker-") or currentMaterialConstruct[0] not in VALIDFACES.keys(): continue
 		stickerableMaterials[material] = VALIDFACES[currentMaterialConstruct[0]]
 	# Check for materials in grid and discard occupied faces.
 	var usedCells: Array[Vector3i] = get_used_cells()
