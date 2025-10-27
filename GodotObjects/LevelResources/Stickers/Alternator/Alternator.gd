@@ -11,10 +11,10 @@ var objectCollection: Array = []
 var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
 
-func add_alternating_object(obj: AlternatingObject) -> void:
+func add_alternating_object(obj) -> void:
 	if stickerPlaced: return
 	if objectCollection.has(obj): return
-	if obj is AlternatingObject:
+	if obj is AlternatingObject or obj is MovingPlatform:
 		objectCollection.append(obj)
 		switch_object(obj)
 
