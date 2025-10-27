@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody3D
 class_name AlternatingObject
 
@@ -6,7 +7,13 @@ const MATERIALS: Dictionary = {
 	"OFF": preload("uid://mijic4patrrf")
 }
 
-@export var isPowered: bool = false
+@export var isOff: bool = false:
+	set(value):
+		isOff = value
+		if isOff:
+			objMesh.set_surface_override_material(0, MATERIALS.OFF)
+		else:
+			objMesh.set_surface_override_material(0, MATERIALS.ON)
 
 @onready var objMesh: MeshInstance3D = %ObjectMesh
 @onready var objCollider: CollisionShape3D = %ObjectCollider
@@ -14,7 +21,8 @@ const MATERIALS: Dictionary = {
 var groupParent: AlternatingGroup
 
 func _ready() -> void:
-	if isPowered:
+	if Engine.is_editor_hint(): return
+	if isOff:
 		turn_off()
 	else:
 		turn_on()
@@ -25,11 +33,11 @@ func _ready() -> void:
 		prints(name," isn't in a group")
 
 func switch_state() -> void:
-	if isPowered:
+	if isOff:
 		turn_on()
 	else:
 		turn_off()
-	isPowered = !isPowered
+	isOff = !isOff
 
 func turn_on() -> void:
 	objMesh.set_surface_override_material(0, MATERIALS.ON)

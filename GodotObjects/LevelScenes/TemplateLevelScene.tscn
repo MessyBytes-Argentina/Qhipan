@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt1sfwp46ika"]
+[gd_scene load_steps=9 format=3 uid="uid://dt1sfwp46ika"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_uxics"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_84dco"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="5_rc43o"]
 [ext_resource type="PackedScene" uid="uid://w01wn76fthyg" path="res://GodotObjects/LevelResources/Gridmaps/StickerMap/StickerMap.tscn" id="6_s2evk"]
 [ext_resource type="PackedScene" uid="uid://2leyck81g2s0" path="res://GodotObjects/LevelResources/Gridmaps/DecalMap/DecalMap.tscn" id="7_gu5wx"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="8_evwya"]
 
 [node name="BaseLevelScene" type="Node3D"]
 
@@ -34,3 +35,6 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Doors" type="Node3D" parent="."]
+
+[node name="AlternatingBlock" parent="." instance=ExtResource("8_evwya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
