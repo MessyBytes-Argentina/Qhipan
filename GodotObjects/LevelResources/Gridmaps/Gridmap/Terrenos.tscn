@@ -1,21 +1,21 @@
 [gd_scene load_steps=123 format=4 uid="uid://bq8o70mwcgyk1"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_g1mlp"]
-[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/Terrenos/Comunes/Arena/Toon-Arena.tres" id="2_yesjg"]
+[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Toon-Arena.tres" id="2_yesjg"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="3_htqx7"]
-[ext_resource type="Material" uid="uid://dm5sixfpi7xy2" path="res://Assets/Materials/Terrenos/Stickereables/Arena/Toon Sticker-Arena.tres" id="4_gfneu"]
-[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="5_uedv8"]
-[ext_resource type="Material" uid="uid://p0fe7trqbck6" path="res://Assets/Materials/Terrenos/Stickereables/Baldosa Exterior/Toon Sticker-Baldosa.tres" id="6_qqdhq"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="7_rn5q8"]
-[ext_resource type="Material" uid="uid://iq5k8fe4nr2m" path="res://Assets/Materials/Terrenos/Stickereables/Ladrillo Exterior/Toon Sticker-Ladrillo.tres" id="8_gqteo"]
-[ext_resource type="Material" uid="uid://efkvcpgrg4cs" path="res://Assets/Materials/Terrenos/Comunes/Tierra con Pasto/Toon-Tierra con Pasto.tres" id="9_gtxip"]
-[ext_resource type="Material" uid="uid://soo2vk53yyjp" path="res://Assets/Materials/Terrenos/Stickereables/Tierra con Pasto/Toon Sticker-Tierra con Pasto.tres" id="10_8udor"]
-[ext_resource type="Material" uid="uid://dq1ll1tbvj3xt" path="res://Assets/Materials/Terrenos/Comunes/Tierra Sola/Toon-Tierra Sola.tres" id="11_u8r2u"]
-[ext_resource type="Material" uid="uid://byl7yrblb2oac" path="res://Assets/Materials/Terrenos/Stickereables/Tierra Sola/Toon Sticker-Tierra Sola.tres" id="12_yv50f"]
-[ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="13_uedv8"]
-[ext_resource type="Material" uid="uid://52rh8d8yiulv" path="res://Assets/Materials/Terrenos/Stickereables/Baldosa Interior/Toon Sticker-Baldosa Interior.tres" id="14_qqdhq"]
-[ext_resource type="Material" uid="uid://824j8fqqimf2" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
-[ext_resource type="Material" uid="uid://dyssjfweeypue" path="res://Assets/Materials/Terrenos/Stickereables/Ladrillo Interior/Toon Sticker-Ladrillo Interior.tres" id="16_gqteo"]
+[ext_resource type="Material" uid="uid://dm5sixfpi7xy2" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Arena/Toon Sticker-Arena.tres" id="4_gfneu"]
+[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="5_uedv8"]
+[ext_resource type="Material" uid="uid://p0fe7trqbck6" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Baldosa Exterior/Toon Sticker-Baldosa.tres" id="6_qqdhq"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="7_rn5q8"]
+[ext_resource type="Material" uid="uid://iq5k8fe4nr2m" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Ladrillo Exterior/Toon Sticker-Ladrillo.tres" id="8_gqteo"]
+[ext_resource type="Material" uid="uid://efkvcpgrg4cs" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Toon-Tierra con Pasto.tres" id="9_gtxip"]
+[ext_resource type="Material" uid="uid://soo2vk53yyjp" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Tierra con Pasto/Toon Sticker-Tierra con Pasto.tres" id="10_8udor"]
+[ext_resource type="Material" uid="uid://dq1ll1tbvj3xt" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Toon-Tierra Sola.tres" id="11_u8r2u"]
+[ext_resource type="Material" uid="uid://byl7yrblb2oac" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Tierra Sola/Toon Sticker-Tierra Sola.tres" id="12_yv50f"]
+[ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="13_uedv8"]
+[ext_resource type="Material" uid="uid://52rh8d8yiulv" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Baldosa Interior/Toon Sticker-Baldosa Interior.tres" id="14_qqdhq"]
+[ext_resource type="Material" uid="uid://824j8fqqimf2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
+[ext_resource type="Material" uid="uid://dyssjfweeypue" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Ladrillo Interior/Toon Sticker-Ladrillo Interior.tres" id="16_gqteo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
 resource_name = "Material.001"
@@ -1202,7 +1202,6 @@ data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5,
 [node name="Arena" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("2_yesjg")
-isStickerable = null
 
 [node name="Corner__Arena" type="MeshInstance3D" parent="Arena"]
 mesh = SubResource("ArrayMesh_tyray")
@@ -1462,7 +1461,6 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 [node name="BaldosasExterior" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("5_uedv8")
-isStickerable = null
 
 [node name="Corner__BaldosasExterior" type="MeshInstance3D" parent="BaldosasExterior"]
 mesh = SubResource("ArrayMesh_tyray")
@@ -1722,7 +1720,6 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 [node name="LadrilloExterior" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("7_rn5q8")
-isStickerable = null
 
 [node name="Corner__LadrilloExterior" type="MeshInstance3D" parent="LadrilloExterior"]
 mesh = SubResource("ArrayMesh_tyray")
@@ -1982,7 +1979,6 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 [node name="TierraConPasto" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("9_gtxip")
-isStickerable = null
 
 [node name="Corner__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_tyray")
@@ -2242,7 +2238,6 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 [node name="TierraSola" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("11_u8r2u")
-isStickerable = null
 
 [node name="Corner__TierraSola" type="MeshInstance3D" parent="TierraSola"]
 mesh = SubResource("ArrayMesh_tyray")
@@ -2502,7 +2497,6 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 [node name="BaldosaInterior" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("13_uedv8")
-isStickerable = null
 
 [node name="Corner__BaldosaInterior" type="MeshInstance3D" parent="BaldosaInterior"]
 mesh = SubResource("ArrayMesh_u8r2u")
@@ -2762,7 +2756,6 @@ shape = SubResource("ConcavePolygonShape3D_b64xo")
 [node name="LadrilloInterior" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("15_rn5q8")
-isStickerable = null
 
 [node name="Corner__LadrilloInterior" type="MeshInstance3D" parent="LadrilloInterior"]
 mesh = SubResource("ArrayMesh_u8r2u")
@@ -2927,7 +2920,6 @@ shape = SubResource("ConcavePolygonShape3D_b64xo")
 [node name="Sticker-LadrilloInterior" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("16_gqteo")
-isStickerable = null
 
 [node name="CornerRemoved__Sticker-LadrilloInterior" type="MeshInstance3D" parent="Sticker-LadrilloInterior"]
 mesh = SubResource("ArrayMesh_w32gy")

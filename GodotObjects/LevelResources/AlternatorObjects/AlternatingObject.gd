@@ -1,6 +1,11 @@
 extends CharacterBody3D
 class_name AlternatingObject
 
+const MATERIALS: Dictionary = {
+	"ON": preload("uid://cp14w7jqyffv3"),
+	"OFF": preload("uid://mijic4patrrf")
+}
+
 @export var isPowered: bool = false
 
 @onready var objMesh: MeshInstance3D = %ObjectMesh
@@ -27,9 +32,9 @@ func switch_state() -> void:
 	isPowered = !isPowered
 
 func turn_on() -> void:
-	objMesh.show()
+	objMesh.set_surface_override_material(0, MATERIALS.ON)
 	objCollider.set_deferred("disabled", false)
 
 func turn_off() -> void:
-	objMesh.hide()
+	objMesh.set_surface_override_material(0, MATERIALS.OFF)
 	objCollider.set_deferred("disabled", true)

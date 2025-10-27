@@ -64,6 +64,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Test" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="EnvironmentObjects" type="Node3D" parent="."]
 
@@ -98,7 +99,7 @@ placed = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="Player" parent="." instance=ExtResource("6_yctgy")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1, 6)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.5, 6)
 disableMaximum = true
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("7_bhylg")]
@@ -158,14 +159,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("19_2x6fn")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
-[node name="AlternatingBlock" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
-
 [node name="AlternatingBlock2" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
 [node name="AlternatingBlock3" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+
+[node name="AlternatingGroup2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("19_2x6fn")
+metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="AlternatingBlock" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
 
 [node name="Alternator" parent="." instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
