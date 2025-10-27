@@ -14,6 +14,8 @@ var button: Callable = _apply_material
 
 ## Gets all the MeshInstance3D children and applies the collectionMaterial to them
 func _apply_material() -> void:
+	if isStickerable and not name.begins_with("Sticker-"):
+		name = "Sticker-" + name
 	for child in get_children():
 		if child is MeshInstance3D:
 			child.set_surface_override_material(0, collectionMaterial)

@@ -55,8 +55,8 @@ uniform float ao_light_affect : hint_range(0.0, 1.0, 0.01);
 // Cutout Variables
 uniform bool cylinderCutout = false;
 uniform vec3 borderColor: source_color = vec3(1.0, 1.0, 1.0);
-uniform float borderSize = 0.25;
-uniform float borderEmission = 7.0;
+uniform float borderSize = 0.0;
+uniform float borderEmission = 0.0;
 uniform vec3 boxPosition;
 uniform vec3 boxSize;
 uniform float boxRotation;

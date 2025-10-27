@@ -3,8 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Molinos/Intro Ventilador.tmx",
     "expandedProjectPaths": [
+        ".",
+        "TutoRoom",
+        "Destileria",
+        "Molinos"
     ],
     "fileStates": {
         "Destileria/Lamp Tests.tmx": {
@@ -23,22 +27,31 @@
                 "y": 567.7562326869805
             }
         },
+        "Destileria/PrimerTercio..tmx": {
+            "scale": 0.30592041015625,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 1665.4658632935639,
+                "y": 0
+            }
+        },
         "Destileria/PrimerTercio.tmx": {
             "expandedGroupLayers": [
-                74,
-                35
+                74
             ],
             "expandedObjectLayers": [
                 62,
                 67,
-                60,
-                35
+                74,
+                35,
+                82,
+                60
             ],
             "scale": 0.75,
-            "selectedLayer": 1,
+            "selectedLayer": 65,
             "viewCenter": {
-                "x": 1178,
-                "y": -250.66666666666663
+                "x": 1668.6666666666665,
+                "y": -414.66666666666663
             }
         },
         "Destileria/Tileset1.tsx": {
@@ -96,6 +109,14 @@
                 "y": 0
             }
         },
+        "Molinos/Intro Ventilador.tmx": {
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 964.5,
+                "y": 760
+            }
+        },
         "PUZZLES LAMPARA.tmx": {
             "expandedGroupLayers": [
                 4
@@ -119,6 +140,22 @@
             "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
+        "TutoRoom/Habitacion A.tmx": {
+            "scale": 0.5640625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.1135734072022,
+                "y": 251.74515235457068
+            }
+        },
+        "TutoRoom/Habitacion B.tmx": {
+            "scale": 0.5640625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 128.5318559556788,
+                "y": 251.74515235457068
+            }
+        },
         "TutoRoom/Habitacion C.tmx": {
             "expandedObjectLayers": [
                 5
@@ -129,25 +166,43 @@
                 "x": 615.5,
                 "y": 260
             }
+        },
+        "TutoRoom/Mini-HUB.tmx": {
+            "scale": 0.5640625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.1135734072022,
+                "y": 251.74515235457068
+            }
+        },
+        "TutoRoom/Tileset1.tsx": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled/Destileria",
     "last.externalTilesetPath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled",
-    "map.fixedSize": false,
+    "map.fixedSize": true,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "map.orientation": "2",
-    "map.tileHeight": 20,
-    "map.tileWidth": 30,
+    "map.tileHeight": 32,
+    "map.tileWidth": 64,
     "openFiles": [
+        "Molinos/Intro Ventilador.tmx"
     ],
     "project": "Qhipan.tiled-project",
     "property.type": "color",
     "recentFiles": [
+        "Destileria/PrimerTercio.tmx",
+        "Destileria/PUZZLES LAMPARA.tmx",
+        "Destileria/PrimerTercio..tmx",
+        "TutoRoom/Mini-HUB.tmx",
         "TutoRoom/Habitacion C.tmx",
+        "TutoRoom/Habitacion A.tmx",
+        "TutoRoom/Habitacion B.tmx",
+        "Molinos/Intro Ventilador.tmx",
         "Habitacion B.tmx",
         "Habitacion A.tmx",
-        "Destileria/PUZZLES LAMPARA.tmx",
         "Destileria/Lamp Tests.tmx",
         "Tileset1.tsx"
     ]
