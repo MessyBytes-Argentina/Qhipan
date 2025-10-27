@@ -61,13 +61,11 @@ func return_to_origin() -> void:
 			start_tween(1)
 
 func call_platform(caller: int) -> void:
-	wasCalled = true
 	match caller:
 		1:
 			if pathFollower.progress_ratio == 1: return
-			currentDirection = 1
-			start_tween(1)
 		0:
 			if pathFollower.progress_ratio == 0: return
-			currentDirection = 0
-			start_tween(0)
+	currentDirection = caller
+	wasCalled = true
+	start_tween(currentDirection)

@@ -69,7 +69,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_octky"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -167,28 +167,26 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 1
 [node name="AntiStickerArea" parent="." instance=ExtResource("18_7sem2")]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 1, 1.51, 11.5)
 
-[node name="MovingPlatform" parent="." node_paths=PackedStringArray("railReference") instance=ExtResource("19_y3p31")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -1)
-railReference = NodePath("../PlatformRail")
-isPermanent = true
-
-[node name="PlatformRail" parent="." node_paths=PackedStringArray("platformReference") instance=ExtResource("20_konnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -1)
-curve = SubResource("Curve3D_octky")
-platformReference = NodePath("../MovingPlatform")
-
-[node name="PlatformCaller" parent="." node_paths=PackedStringArray("railReference") instance=ExtResource("21_konnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0)
-callTo = 1
-railReference = NodePath("../PlatformRail")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlatformCaller"]
-shape = SubResource("BoxShape3D_octky")
-
 [node name="AlternatingGroup" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("19_2x6fn")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="MovingPlatform" parent="AlternatingGroup" node_paths=PackedStringArray("railReference") instance=ExtResource("19_y3p31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+railReference = NodePath("../PlatformRail")
+
+[node name="PlatformRail" parent="AlternatingGroup" node_paths=PackedStringArray("platformReference") instance=ExtResource("20_konnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+curve = SubResource("Curve3D_octky")
+platformReference = NodePath("../MovingPlatform")
+
+[node name="PlatformCaller" parent="AlternatingGroup" node_paths=PackedStringArray("railReference") instance=ExtResource("21_konnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+railReference = NodePath("../PlatformRail")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlternatingGroup/PlatformCaller"]
+shape = SubResource("BoxShape3D_octky")
 
 [node name="LeyLine" parent="AlternatingGroup" instance=ExtResource("20_n3hqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 2)
