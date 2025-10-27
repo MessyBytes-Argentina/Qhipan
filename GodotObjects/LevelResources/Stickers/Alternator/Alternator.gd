@@ -3,6 +3,7 @@ extends StickerBase
 const REMOVETIMER: float = 0.2
 
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
+@onready var placedAreaChecker: Area3D = %PlacedAreaChecker
 @onready var pivot: Node3D = %Pivot
 
 var objectCollection: Array = []
@@ -26,7 +27,7 @@ func switch_object(obj) -> void:
 	if stickerPlaced: return
 	obj.switch_state()
 
-func activate_group(objList: Array[Node3D]) -> void:
+func activate_group(objList: Array) -> void:
 	var groupsToActivate: Array[AlternatingGroup] = []
 	for obj in objList:
 		if not groupsToActivate.has(obj.groupParent):
@@ -40,7 +41,7 @@ func deactivate_group() -> void:
 	for group: AlternatingGroup in activatedGroups:
 		for obj in group.altChildren:
 			remove_alternating_object(obj)
-	var objectsInRange: Array[Node3D] = await force_area_check(false)
+	var objectsInRange: Array = await force_area_check(false)
 	add_obj_list(objectsInRange)
 	enable_area()
 
@@ -48,7 +49,7 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 	stickerPlaced = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
-	var objectsInRange: Array[Node3D] = await force_area_check(true)
+	var objectsInRange: Array = await force_area_check(true)
 	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
@@ -67,13 +68,12 @@ func drop() -> void:
 	for obj in objectCollection:
 		remove_alternating_object(obj)
 
-func force_area_check(checkAreas:bool) -> Array[Node3D]:
+func force_area_check(checkAreas:bool) -> Array:
 	heldAreaChecker.monitoring = true
 	await get_tree().physics_frame
 	await get_tree().physics_frame
-	var objList: Array[Node3D] = heldAreaChecker.get_overlapping_bodies()
-	if checkAreas: objList.append_array(heldAreaChecker.get_overlapping_areas())
-	heldAreaChecker.monitoring = false
+	var objList: Array = heldAreaChecker.get_overlapping_bodies() if not checkAreas else []
+	if checkAreas: objList.append_array(placedAreaChecker.get_overlapping_areas())
 	return objList
 #
 func add_obj_list(objList: Array[Node3D]) -> void:
