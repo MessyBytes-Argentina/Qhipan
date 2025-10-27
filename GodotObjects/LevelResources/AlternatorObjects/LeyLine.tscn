@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4llfjretvmtq"]
+
+[ext_resource type="Script" uid="uid://cleoji6ng6n2x" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.gd" id="1_7bq5v"]
+[ext_resource type="Material" uid="uid://dpwnmlllhdi3j" path="res://Assets/Materials/Test/Azurita.tres" id="1_cc2ww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7bq5v"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5l3es"]
+material = ExtResource("1_cc2ww")
+size = Vector3(1, 0.1, 1)
+
+[node name="LeyLine" type="Area3D"]
+collision_layer = 8192
+collision_mask = 0
+script = ExtResource("1_7bq5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_7bq5v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_5l3es")

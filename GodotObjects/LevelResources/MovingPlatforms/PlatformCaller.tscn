@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d03r6mharc16r"]
+
+[ext_resource type="Script" uid="uid://dmr1ggy6fyex2" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.gd" id="1_j0210"]
+
+[node name="PlatformCaller" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_j0210")
