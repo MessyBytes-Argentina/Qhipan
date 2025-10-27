@@ -73,6 +73,7 @@ func force_area_check(checkAreas:bool) -> Array[Node3D]:
 	await get_tree().physics_frame
 	var objList: Array[Node3D] = heldAreaChecker.get_overlapping_bodies()
 	if checkAreas: objList.append_array(heldAreaChecker.get_overlapping_areas())
+	heldAreaChecker.monitoring = false
 	return objList
 #
 func add_obj_list(objList: Array[Node3D]) -> void:

@@ -56,3 +56,12 @@ func return_to_origin() -> void:
 			start_tween(0)
 		0:
 			start_tween(1)
+
+func call_platform(caller: int) -> void:
+	match caller:
+		1:
+			if pathFollower.progress_ratio == 1: return
+			start_tween(1)
+		0:
+			if pathFollower.progress_ratio == 0: return
+			start_tween(0)
