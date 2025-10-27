@@ -5,6 +5,7 @@ enum STATE {MOVING, STOPPED, RETURNING}
 
 @export var platformReference: MovingPlatform
 @export_range(0.1, 5, 0.05) var speed: float = 1
+@export_range(0.1, 5, 0.05) var returnSpeed: float = 5
 @export_range(0.1, 10, 0.05) var blockedTime: float = 3
 
 @onready var pathFollower: PathFollow3D = %PathFollower
@@ -13,6 +14,7 @@ enum STATE {MOVING, STOPPED, RETURNING}
 
 var currentDirection: int = 1
 var moveTween: Tween
+var wasCalled: bool = false
 
 func _ready() -> void:
 	pathFollower.loop = false
@@ -27,6 +29,7 @@ func start_tween(direction: int) -> void:
 	moveTween.connect("finished", switch_direction)
 
 func switch_direction() -> void:
+	wasCalled = false
 	match currentDirection:
 		1:
 			currentDirection = 0
@@ -34,13 +37,13 @@ func switch_direction() -> void:
 			currentDirection = 1
 
 func get_time() -> float:
-	var remainingLenght = curve.get_baked_length()
+	var remainingLength = curve.get_baked_length()
 	match currentDirection:
 		1:
-			remainingLenght *= 1 - pathFollower.progress_ratio
+			remainingLength *= 1 - pathFollower.progress_ratio
 		0:
-			remainingLenght *= pathFollower.progress_ratio
-	var time: float = remainingLenght / speed
+			remainingLength *= pathFollower.progress_ratio
+	var time: float = remainingLength / (speed if not wasCalled else returnSpeed)
 	return time
 
 func start_moving() -> void:
@@ -58,10 +61,13 @@ func return_to_origin() -> void:
 			start_tween(1)
 
 func call_platform(caller: int) -> void:
+	wasCalled = true
 	match caller:
 		1:
 			if pathFollower.progress_ratio == 1: return
+			currentDirection = 1
 			start_tween(1)
 		0:
 			if pathFollower.progress_ratio == 0: return
+			currentDirection = 0
 			start_tween(0)

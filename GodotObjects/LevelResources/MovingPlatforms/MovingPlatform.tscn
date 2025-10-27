@@ -25,13 +25,16 @@ collision_mask = 8192
 script = ExtResource("1_qh56c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("BoxMesh_kyxrx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_qquev")
 
 [node name="StopCheck" type="Area3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 collision_layer = 0
 collision_mask = 8192
 
@@ -40,7 +43,7 @@ shape = SubResource("BoxShape3D_qh56c")
 
 [node name="PlayerChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.306043, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -49,10 +52,11 @@ shape = SubResource("BoxShape3D_xivvd")
 debug_color = Color(0.956886, 0, 0.535538, 0.42)
 
 [node name="AntiDropArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_xivvd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.468811, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7x5hj")
