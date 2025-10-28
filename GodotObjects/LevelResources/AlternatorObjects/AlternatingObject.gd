@@ -10,6 +10,7 @@ const MATERIALS: Dictionary = {
 @export var isOff: bool = false:
 	set(value):
 		isOff = value
+		if not Engine.is_editor_hint(): return
 		if isOff:
 			objMesh.set_surface_override_material(0, MATERIALS.OFF)
 		else:

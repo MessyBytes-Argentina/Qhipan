@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=33 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -19,8 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="17_mbrd3"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="18_7sem2"]
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="19_2x6fn"]
+[ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="19_y3p31"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="20_an4xj"]
+[ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="20_konnu"]
+[ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="20_n3hqo"]
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="21_an4xj"]
+[ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="21_konnu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -62,6 +66,15 @@ width = 512
 height = 512
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve3D" id="Curve3D_octky"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_octky"]
 
 [node name="Test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -159,11 +172,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("19_2x6fn")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
+[node name="LeyLine" parent="AlternatingGroup" instance=ExtResource("20_n3hqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 2)
+
+[node name="LeyLine2" parent="AlternatingGroup" instance=ExtResource("20_n3hqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 1)
+
 [node name="AlternatingBlock2" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
 [node name="AlternatingBlock3" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
+
+[node name="Plat1" type="Node3D" parent="AlternatingGroup"]
+
+[node name="MovingPlatform" parent="AlternatingGroup/Plat1" node_paths=PackedStringArray("railReference") instance=ExtResource("19_y3p31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+railReference = NodePath("../PlatformRail")
+
+[node name="PlatformRail" parent="AlternatingGroup/Plat1" node_paths=PackedStringArray("platformReference") instance=ExtResource("20_konnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+curve = SubResource("Curve3D_octky")
+platformReference = NodePath("../MovingPlatform")
+
+[node name="PlatformCaller" parent="AlternatingGroup/Plat1" node_paths=PackedStringArray("railReference") instance=ExtResource("21_konnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+railReference = NodePath("../PlatformRail")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlternatingGroup/Plat1/PlatformCaller"]
+shape = SubResource("BoxShape3D_octky")
 
 [node name="AlternatingGroup2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -174,7 +211,7 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
 
 [node name="Alternator" parent="." instance=ExtResource("21_an4xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
 
 [node name="Alternator2" parent="." instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)

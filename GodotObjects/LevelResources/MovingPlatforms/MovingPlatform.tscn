@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://binvrpy31ahx6"]
+
+[ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
+[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/Materials/WithCutout/Rust-1.tres" id="2_xivvd"]
+[ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kyxrx"]
+material = ExtResource("2_xivvd")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qquev"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh56c"]
+size = Vector3(1.2, 0.7, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xivvd"]
+size = Vector3(0.9, 0.3, 0.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x5hj"]
+size = Vector3(0.8, 0.5, 0.8)
+
+[node name="MovingPlatform" type="AnimatableBody3D"]
+collision_layer = 8193
+collision_mask = 8192
+script = ExtResource("1_qh56c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_kyxrx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_qquev")
+
+[node name="StopCheck" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+collision_layer = 0
+collision_mask = 8192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopCheck"]
+shape = SubResource("BoxShape3D_qh56c")
+
+[node name="PlayerChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerChecker"]
+shape = SubResource("BoxShape3D_xivvd")
+debug_color = Color(0.956886, 0, 0.535538, 0.42)
+
+[node name="AntiDropArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_xivvd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_7x5hj")
