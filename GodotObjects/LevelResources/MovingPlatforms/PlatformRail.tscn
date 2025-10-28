@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b64kyok4cdqwe"]
+
+[ext_resource type="Script" uid="uid://damp7dq8hx3wq" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.gd" id="1_p6qci"]
+
+[node name="PlatformRail" type="Path3D"]
+script = ExtResource("1_p6qci")
+
+[node name="PathFollower" type="PathFollow3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.999995, 0, 0, 0, 1, 0, 0, 0, 0.999995, 0, 0, 0)
+rotation_mode = 0
+loop = false
+tilt_enabled = false
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollower"]
+unique_name_in_owner = true
+
+[node name="ReturnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
