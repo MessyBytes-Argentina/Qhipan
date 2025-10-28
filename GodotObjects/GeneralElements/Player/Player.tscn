@@ -110,7 +110,6 @@ specular_mode = 2
 albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("2_cphfr")
 albedo_texture_force_srgb = true
-detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
 
