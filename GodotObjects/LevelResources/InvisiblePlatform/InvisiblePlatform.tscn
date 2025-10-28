@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnyaxl7dggkt4"]
+
+[ext_resource type="Script" uid="uid://dvaobyrnylodq" path="res://GodotObjects/LevelResources/InvisiblePlatform/InvisiblePlatform.gd" id="1_s034f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kyxrx"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf1bf"]
+transparency = 1
+albedo_color = Color(0.588235, 0, 1, 0.0980392)
+emission_enabled = true
+emission = Color(0.588235, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s034f"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xivvd"]
+size = Vector3(0.75, 0.25, 0.75)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="InvisiblePlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_kyxrx")
+surface_material_override/0 = SubResource("StandardMaterial3D_cf1bf")
+script = ExtResource("1_s034f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_s034f")
+
+[node name="PlayerChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerChecker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_xivvd")
+debug_color = Color(0.956886, 0, 0.535538, 0.42)
+
+[connection signal="body_entered" from="PlayerChecker" to="InvisiblePlatform" method="_on_player_entered"]
+[connection signal="body_exited" from="PlayerChecker" to="InvisiblePlatform" method="_on_player_exited"]

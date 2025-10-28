@@ -89,11 +89,11 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gdvqv"]
 height = 4.0
-radius = 3.0
+radius = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w5ix8"]
 height = 4.0
-radius = 2.5
+radius = 4.5
 
 [node name="StickerLamp" type="CharacterBody3D"]
 collision_layer = 512
