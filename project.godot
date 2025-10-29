@@ -13,7 +13,7 @@ config_version=5
 config/name="Qhipan"
 config/version="1.1"
 run/main_scene="uid://dkdx1yrx643d4"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
 boot_splash/image="uid://dn8lpixxsjk3g"
@@ -45,7 +45,7 @@ window/name="Qhipan"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg")
 
 [global_group]
 
