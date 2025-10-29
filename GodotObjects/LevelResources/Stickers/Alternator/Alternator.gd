@@ -8,11 +8,10 @@ const REMOVETIMER: float = 0.2
 
 var objectCollection: Array = []
 
-var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
 
 func add_alternating_object(obj) -> void:
-	if stickerPlaced: return
+	if placed: return
 	if objectCollection.has(obj): return
 	if obj is AlternatingObject or obj is MovingPlatform:
 		objectCollection.append(obj)
@@ -28,7 +27,7 @@ func clear_alternating_objects() -> void:
 	objectCollection.clear()
 
 func switch_object(obj) -> void:
-	if stickerPlaced: return
+	if placed: return
 	obj.switch_state()
 
 func activate_group(objList: Array) -> void:
@@ -51,7 +50,7 @@ func deactivate_group() -> void:
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
 	clear_alternating_objects()
-	stickerPlaced = true
+	placed = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
 	var objectsInRange: Array = await force_area_check(true)
@@ -59,8 +58,8 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 
 func grab(node: Node3D) -> void:
 	super(node)
-	if stickerPlaced: 
-		stickerPlaced = false
+	if placed: 
+		placed = false
 		deactivate_group()
 		return
 	enable_area()
@@ -69,7 +68,7 @@ func grab(node: Node3D) -> void:
 func drop() -> void:
 	super()
 	disable_area()
-	stickerPlaced = false
+	placed = false
 	clear_alternating_objects()
 
 func force_area_check(checkAreas:bool) -> Array:
