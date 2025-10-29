@@ -6,5 +6,4 @@
 script = ExtResource("1_nnils")
 base_folder = "res://GodotObjects/Managers/PopupManager/Popups"
 includes = Array[String](["*.tres"])
-excludes = Array[String]([])
 paths = Array[String](["res://GodotObjects/Managers/PopupManager/Popups/Settings.tres"])

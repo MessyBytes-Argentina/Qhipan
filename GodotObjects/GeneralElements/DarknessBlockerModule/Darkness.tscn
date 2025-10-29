@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://uefmm3wnclty"]
+[gd_scene load_steps=8 format=3 uid="uid://uefmm3wnclty"]
 
 [ext_resource type="Script" uid="uid://dc8ouxotv186o" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.gd" id="1_7xcgd"]
 [ext_resource type="Material" uid="uid://5w7vc5mxjyk0" path="res://Assets/Materials/WithCutout/Darkness.tres" id="1_fwrbv"]
@@ -14,6 +14,16 @@ map_data = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwrbv"]
 size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fwrbv"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_s5ihy"]
+render_priority = -2
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+stencil_mode = 3
+stencil_flags = 2
 
 [node name="Darkness" type="FogVolume" groups=["Fog"]]
 size = Vector3(3, 3, 3)
@@ -38,6 +48,11 @@ collision_mask = 18
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_fwrbv")
 debug_color = Color(0.151906, 4.62055e-06, 0.67257, 0.42)
+
+[node name="OutlineBlocker" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_fwrbv")
+surface_material_override/0 = SubResource("ORMMaterial3D_s5ihy")
 
 [connection signal="area_entered" from="DarknessArea" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="DarknessArea" to="." method="_on_area_exited"]

@@ -1,5 +1,6 @@
 shader_type spatial;
-render_mode unshaded,vertex_lighting;
+render_mode unshaded, depth_test_disabled;
+stencil_mode read, 1, compare_not_equal;
 
 uniform sampler2D depth_texture : hint_depth_texture,filter_linear_mipmap;
 uniform sampler2D screen_texture: hint_screen_texture,filter_linear_mipmap;
@@ -50,7 +51,6 @@ float perlin(vec2 pos) {
 
 
 void vertex(){
-
 	POSITION = vec4(VERTEX.xy,1.0,1.0);
 }
 

@@ -11,6 +11,8 @@ const DARKNESSCOLLISIONRESOLUTION: int = 8
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
 ## Reference to the collision shape of the area of effect for the fog
 @onready var darknessAreaShape: CollisionShape3D = %DarknessAreaShape
+## Reference to the outline blocker
+@onready var outlineBlocker: MeshInstance3D = %OutlineBlocker
 ## Reference to the collision heightmap used on the fog
 var collisionMap: HeightMapShape3D
 ## Reference to the fog shader
@@ -22,6 +24,8 @@ var lights: Array[Area3D] = []
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
+	outlineBlocker.mesh.size = size - Vector3.ONE * 0.5
 	_collision_shape_set()
 
 ## Sets up the collision shape for the fog
