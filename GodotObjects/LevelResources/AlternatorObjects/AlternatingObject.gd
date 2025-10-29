@@ -22,7 +22,12 @@ const MATERIALS: Dictionary = {
 var groupParent: AlternatingGroup
 
 func _ready() -> void:
-	if Engine.is_editor_hint(): return
+	if Engine.is_editor_hint():
+		if isOff:
+			objMesh.set_surface_override_material(0, MATERIALS.OFF)
+		else:
+			objMesh.set_surface_override_material(0, MATERIALS.ON)
+		return
 	if isOff:
 		turn_off()
 	else:

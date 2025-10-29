@@ -19,9 +19,13 @@ func add_alternating_object(obj) -> void:
 		switch_object(obj)
 
 func remove_alternating_object(obj) -> void:
-	if stickerPlaced: return
 	if objectCollection.has(obj): objectCollection.erase(obj)
 	switch_object(obj)
+
+func clear_alternating_objects() -> void:
+	for obj in objectCollection:
+		switch_object(obj)
+	objectCollection.clear()
 
 func switch_object(obj) -> void:
 	if stickerPlaced: return
@@ -46,6 +50,7 @@ func deactivate_group() -> void:
 	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+	clear_alternating_objects()
 	stickerPlaced = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
@@ -65,8 +70,7 @@ func drop() -> void:
 	super()
 	disable_area()
 	stickerPlaced = false
-	for obj in objectCollection:
-		remove_alternating_object(obj)
+	clear_alternating_objects()
 
 func force_area_check(checkAreas:bool) -> Array:
 	heldAreaChecker.monitoring = true
@@ -76,7 +80,7 @@ func force_area_check(checkAreas:bool) -> Array:
 	if checkAreas: objList.append_array(placedAreaChecker.get_overlapping_areas())
 	return objList
 #
-func add_obj_list(objList: Array[Node3D]) -> void:
+func add_obj_list(objList: Array) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
 
@@ -97,5 +101,7 @@ func enable_area() -> void:
 
 func disable_area() -> void:
 	heldAreaChecker.monitoring = false
-	heldAreaChecker.body_entered.disconnect(add_alternating_object)
-	heldAreaChecker.body_exited.disconnect(remove_alternating_object)
+	if heldAreaChecker.body_entered.is_connected(add_alternating_object):
+		heldAreaChecker.body_entered.disconnect(add_alternating_object)
+	if heldAreaChecker.body_exited.is_connected(remove_alternating_object):
+		heldAreaChecker.body_exited.disconnect(remove_alternating_object)
