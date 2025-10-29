@@ -107,9 +107,9 @@ no_depth_test = true
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 2
+albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("2_cphfr")
 albedo_texture_force_srgb = true
-detail_enabled = true
 detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
 
@@ -780,6 +780,7 @@ fov = 55.0
 
 [node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
 unique_name_in_owner = true
+visible = true
 layers = 524288
 
 [node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]

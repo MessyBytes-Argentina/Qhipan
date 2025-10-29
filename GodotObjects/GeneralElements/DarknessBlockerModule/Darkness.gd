@@ -30,7 +30,8 @@ func _collision_shape_set() -> void:
 		await ready
 	darknessAreaShape.shape = BoxShape3D.new()
 	darknessAreaShape.shape.size = size
-	collisionMap = darknessCollisionShape.shape
+	collisionMap = darknessCollisionShape.shape.duplicate()
+	darknessCollisionShape.shape = collisionMap
 	fogShader = material.duplicate()
 	material = fogShader
 	update_collision_shape()

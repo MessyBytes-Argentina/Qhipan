@@ -165,6 +165,7 @@ func _on_area_exited(area: Area3D) -> void:
 
 ## Fetches valid surfaces for stickers.
 func _fetch_valid_surfaces() -> void:
+	if not get_tree(): return
 	for gridmap: StickerGridmap in get_tree().get_nodes_in_group("Gridmap"):
 		for key in gridmap.stickerableSurfaces:
 			stickerableSurfaces[key] = gridmap.stickerableSurfaces[key]

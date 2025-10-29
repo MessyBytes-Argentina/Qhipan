@@ -6,7 +6,7 @@ class_name LampSticker
 ## Range of the light while grabbed
 const LIGHTRANGEGRABED: float = 1.5
 ## Range of the light while placed
-const LIGHTRANGEPLACED: float = 3.5
+const LIGHTRANGEPLACED: float = 5.0
 ## Energy of the light while placed or grabbed
 const LIGHTENERGY: float = 1.0
 ## Light fade animation time
