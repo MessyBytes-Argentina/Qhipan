@@ -11,6 +11,8 @@ const LIGHTRANGEPLACED: float = 5.0
 const LIGHTENERGY: float = 1.0
 ## Light fade animation time
 const LIGHTFADETIME: float = 0.3
+## Light area fade animation time
+const LIGHTAREAFADETIME: float = 2.0
 
 ## The floating mesh with no lighting on.
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
@@ -18,6 +20,8 @@ const LIGHTFADETIME: float = 0.3
 @onready var light: OmniLight3D = %Light
 ## Light area of effect
 @onready var lightArea: Area3D = %LightArea
+## Light area of effect shape
+@onready var lightShape: CollisionShape3D = %LightShape
 ## Area3d container
 @onready var shapes: Node3D = %Shapes
 ## Light area for dropping stickers
@@ -52,6 +56,7 @@ func set_size(mode: ScaleModes) -> void:
 		ScaleModes.GRABBED:
 			floatingMesh.hide()
 			animate_light_fade(LIGHTRANGEGRABED)
+			lightShape.shape.radius = 0
 			lightArea.set_collision_layer_value(5, false)
 			lightArea.set_collision_mask_value(2, false)
 			stickerLightArea.set_collision_mask_value(2, false)
@@ -83,10 +88,12 @@ func animate_light_fade(newValue: float) -> void:
 		lightTween.kill()
 	nextLightValue = newValue
 	var energyGoal: float = 0.0 if newValue == 0.0 else LIGHTENERGY
-	var goalTime: float = LIGHTFADETIME * inverse_lerp(newValue, lastLightValue, light.omni_range)
+	var goalTime: float = (LIGHTFADETIME if newValue != LIGHTRANGEPLACED else LIGHTAREAFADETIME) * inverse_lerp(newValue, lastLightValue, light.omni_range)
 	lightTween = create_tween()
 	lightTween.tween_property(light, "light_energy", energyGoal, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.parallel().tween_property(light, "omni_range", newValue, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	if newValue == LIGHTRANGEPLACED:
+		lightTween.parallel().tween_property(lightShape.shape, "radius", newValue, LIGHTAREAFADETIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.play()
 	lightTween.finished.connect(_on_light_fade_finish)
 
