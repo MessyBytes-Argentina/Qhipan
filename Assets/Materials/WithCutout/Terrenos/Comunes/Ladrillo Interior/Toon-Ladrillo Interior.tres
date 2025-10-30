@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_4pj1y"]
 [ext_resource type="Texture2D" uid="uid://cc8ph5x50lpsx" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_albedo.png" id="2_b622v"]
-[ext_resource type="Texture2D" uid="uid://cisuqn11l6gsd" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_orm.png" id="3_yaoqg"]
+[ext_resource type="Texture2D" uid="uid://cr5ljv5ylxhcm" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_orm.png" id="3_yaoqg"]
 [ext_resource type="Texture2D" uid="uid://cnm0q04s1vgtt" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png" id="4_l7a1f"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_dgdee"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="6_fhlm2"]
@@ -16,7 +16,7 @@ shader_parameter/fresnel_gradient = ExtResource("5_dgdee")
 shader_parameter/top_texture_albedo = ExtResource("2_b622v")
 shader_parameter/bottom_texture_albedo = ExtResource("2_b622v")
 shader_parameter/side_texture_albedo = ExtResource("2_b622v")
-shader_parameter/top_texture_scale = 1.0
+shader_parameter/top_texture_scale = 1.5000000223518
 shader_parameter/bottom_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
 shader_parameter/top_detail_texture_scale = 1.0
