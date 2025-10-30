@@ -31,6 +31,12 @@ func check_door():
 		areaChecker.set_deferred("monitorable", false)
 		collisionShape3d.set_deferred("disabled", true)
 		animationPlayer.play("PowerUp")
+	elif superParent is Pedestal:
+		superParent.activate_pedestal()
+		areaChecker.set_deferred("monitoring", false)
+		areaChecker.set_deferred("monitorable", false)
+		collisionShape3d.set_deferred("disabled", true)
+		animationPlayer.play("PowerUp")
 
 ## Hodor isn't here
 func open_door() -> void:
