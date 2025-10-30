@@ -1,6 +1,8 @@
 extends AnimatableBody3D
 class_name MovingPlatform
 
+const waitTimer: float = 0.5
+
 @export var railReference: PlatformRail
 @export var isPermanent: bool = false
 @export var powered: bool = false
@@ -14,11 +16,12 @@ func _ready() -> void:
 
 func check_power(_body) -> void:
 	if powered or isPermanent:
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(waitTimer).timeout
 		railReference.start_moving()
 
-func stop_moving(_body) -> void:
-	railReference.stop_moving()
+func stop_moving(body) -> void:
+	if body == self: return
+	if body is AlternatingObject: if not body.isOff: railReference.stop_moving()
 
 func switch_state() -> void:
 	powered = !powered

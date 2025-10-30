@@ -63,9 +63,9 @@ func return_to_origin() -> void:
 func call_platform(caller: int) -> void:
 	match caller:
 		1:
-			if pathFollower.progress_ratio == 1: return
+			if pathFollower.progress_ratio == 1.0: return
 		0:
-			if pathFollower.progress_ratio == 0: return
+			if pathFollower.progress_ratio == 0.0: return
 	currentDirection = caller
 	wasCalled = true
 	start_tween(currentDirection)

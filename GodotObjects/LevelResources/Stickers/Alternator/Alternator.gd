@@ -8,11 +8,10 @@ const REMOVETIMER: float = 0.2
 
 var objectCollection: Array = []
 
-var stickerPlaced: bool = false
 var activatedGroups: Array[AlternatingGroup]
 
 func add_alternating_object(obj) -> void:
-	if stickerPlaced: return
+	if placed: return
 	if objectCollection.has(obj): return
 	if obj is AlternatingObject or obj is MovingPlatform:
 		objectCollection.append(obj)
@@ -28,7 +27,7 @@ func clear_alternating_objects() -> void:
 	objectCollection.clear()
 
 func switch_object(obj) -> void:
-	if stickerPlaced: return
+	if placed: return
 	obj.switch_state()
 
 func activate_group(objList: Array) -> void:
@@ -42,34 +41,31 @@ func activate_group(objList: Array) -> void:
 	objectCollection.clear()
 
 func deactivate_group() -> void:
-	for group: AlternatingGroup in activatedGroups:
-		for obj in group.altChildren:
-			remove_alternating_object(obj)
 	var objectsInRange: Array = await force_area_check(false)
-	add_obj_list(objectsInRange)
+	for group: AlternatingGroup in activatedGroups:
+		group.switch_children(objectsInRange)
+	objectCollection.append_array(objectsInRange)
 	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	clear_alternating_objects()
-	stickerPlaced = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
 	var objectsInRange: Array = await force_area_check(true)
 	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
-	super(node)
-	if stickerPlaced: 
-		stickerPlaced = false
+	if placed: 
+		super(node)
 		deactivate_group()
 		return
+	super(node)
 	enable_area()
 	add_obj_list(await force_area_check(false))
 
 func drop() -> void:
 	super()
 	disable_area()
-	stickerPlaced = false
+	placed = false
 	clear_alternating_objects()
 
 func force_area_check(checkAreas:bool) -> Array:
@@ -79,7 +75,7 @@ func force_area_check(checkAreas:bool) -> Array:
 	var objList: Array = heldAreaChecker.get_overlapping_bodies() if not checkAreas else []
 	if checkAreas: objList.append_array(placedAreaChecker.get_overlapping_areas())
 	return objList
-#
+
 func add_obj_list(objList: Array) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
