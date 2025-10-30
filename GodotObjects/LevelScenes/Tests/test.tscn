@@ -207,7 +207,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("19_2x6fn")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
-[node name="AlternatingBlock" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
+[node name="AlternatingBlock2" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
 
 [node name="Alternator" parent="." instance=ExtResource("21_an4xj")]

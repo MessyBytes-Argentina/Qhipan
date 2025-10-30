@@ -21,7 +21,7 @@ func check_power(_body) -> void:
 
 func stop_moving(body) -> void:
 	if body == self: return
-	railReference.stop_moving()
+	if body is AlternatingObject: if not body.isOff: railReference.stop_moving()
 
 func switch_state() -> void:
 	powered = !powered

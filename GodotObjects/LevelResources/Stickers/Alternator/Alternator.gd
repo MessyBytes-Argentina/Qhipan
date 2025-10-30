@@ -41,27 +41,26 @@ func activate_group(objList: Array) -> void:
 	objectCollection.clear()
 
 func deactivate_group() -> void:
-	for group: AlternatingGroup in activatedGroups:
-		for obj in group.altChildren:
-			remove_alternating_object(obj)
 	var objectsInRange: Array = await force_area_check(false)
+	for group: AlternatingGroup in activatedGroups:
+		group.switch_children(objectsInRange)
 	add_obj_list(objectsInRange)
 	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	clear_alternating_objects()
-	placed = true
+	#clear_alternating_objects()
 	disable_area()
 	super(area,direction,isPlaceholderArea)
 	var objectsInRange: Array = await force_area_check(true)
 	activate_group(objectsInRange)
+	objectCollection.clear()
 
 func grab(node: Node3D) -> void:
-	super(node)
 	if placed: 
-		placed = false
+		super(node)
 		deactivate_group()
 		return
+	super(node)
 	enable_area()
 	add_obj_list(await force_area_check(false))
 
@@ -78,7 +77,7 @@ func force_area_check(checkAreas:bool) -> Array:
 	var objList: Array = heldAreaChecker.get_overlapping_bodies() if not checkAreas else []
 	if checkAreas: objList.append_array(placedAreaChecker.get_overlapping_areas())
 	return objList
-#
+
 func add_obj_list(objList: Array) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
