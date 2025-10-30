@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c70ev27rfenr"]
+[gd_scene load_steps=47 format=3 uid="uid://c70ev27rfenr"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_36pyb"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_lhho8"]
@@ -6,20 +6,40 @@
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_vf84w"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_j7wrh"]
 [ext_resource type="Texture2D" uid="uid://wwi5je5202th" path="res://GodotObjects/LevelScenes/Tests/monke.png" id="3_sgkib"]
+[ext_resource type="Texture2D" uid="uid://78km3l7m37q7" path="res://Assets/Textures/Tutorial Screens/Keyboard/Move.png" id="4_nup82"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="4_v3d5a"]
+[ext_resource type="Texture2D" uid="uid://ba8pag57qauga" path="res://Assets/Textures/Tutorial Screens/Joystick/Move.png" id="5_k6f0q"]
 [ext_resource type="Script" uid="uid://cjhk2w754i6t" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/StickerGridmap.gd" id="6_d1fj5"]
+[ext_resource type="Texture2D" uid="uid://d0wd5650rdxn5" path="res://Assets/Textures/Tutorial Screens/Keyboard/Camera.png" id="6_jq6ov"]
+[ext_resource type="Texture2D" uid="uid://bjw4hx081ykmr" path="res://Assets/Textures/Tutorial Screens/Joystick/Camera.png" id="7_57jsn"]
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="7_j7wrh"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="7_vf84w"]
+[ext_resource type="Texture2D" uid="uid://5yqj8isqe5kv" path="res://Assets/Textures/Eagle eye icon.png" id="8_57jsn"]
+[ext_resource type="Texture2D" uid="uid://o5ey1px8lqc0" path="res://Assets/Textures/Tutorial Screens/Keyboard/Pick Up.png" id="8_e4tx2"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="8_j7wrh"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="9_4jsui"]
+[ext_resource type="Texture2D" uid="uid://b3igvucrpv1gq" path="res://Assets/Textures/Tutorial Screens/Joystick/Pick Up.png" id="9_j58ca"]
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="9_v3d5a"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/LevelResources/Props/Door/Door.tscn" id="10_khjxh"]
+[ext_resource type="Texture2D" uid="uid://jxvras1tcbad" path="res://Assets/Textures/Tutorial Screens/Keyboard/Place.png" id="10_oin4o"]
 [ext_resource type="PackedScene" uid="uid://boyck3nkn4lct" path="res://GodotObjects/LevelResources/Props/Door/GoalDoor.tscn" id="11_2dpqf"]
+[ext_resource type="Texture2D" uid="uid://c652vtgll6wtx" path="res://Assets/Textures/Tutorial Screens/Joystick/Place.png" id="11_hgowq"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="14_tfbny"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="15_jpt52"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="16_f1mir"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="17_37ad3"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="18_f1mir"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jjhji"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4tx2"]
+transparency = 1
+albedo_texture = ExtResource("8_57jsn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oin4o"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("8_57jsn")
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_f1mir"]
 
@@ -132,7 +152,6 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgkib"]
-size = Vector3(1.5, 1, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_37ad3"]
 _data = {
@@ -158,8 +177,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -37.5)
 infoSpriteKeyboard = ExtResource("3_sgkib")
 infoSpriteController = ExtResource("3_sgkib")
 
+[node name="InfoCrystal2" parent="Props" instance=ExtResource("2_37ad3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -2.5, 11)
+infoSpriteKeyboard = ExtResource("4_nup82")
+infoSpriteController = ExtResource("5_k6f0q")
+
+[node name="InfoCrystal3" parent="Props" instance=ExtResource("2_37ad3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -2.5, -1.5)
+infoSpriteKeyboard = ExtResource("6_jq6ov")
+infoSpriteController = ExtResource("7_57jsn")
+
+[node name="InfoCrystal4" parent="Props" instance=ExtResource("2_37ad3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -2.5, 11)
+infoSpriteKeyboard = ExtResource("8_e4tx2")
+infoSpriteController = ExtResource("9_j58ca")
+
+[node name="InfoCrystal5" parent="Props" instance=ExtResource("2_37ad3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -0.5)
+infoSpriteKeyboard = ExtResource("10_oin4o")
+infoSpriteController = ExtResource("11_hgowq")
+
+[node name="Surprise" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -2, -3.501)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Surprise"]
+transform = Transform3D(-0.827, 0, 6.5683174e-08, 0, 0.435, 0, -1.2487354e-07, 0, -0.435, 0, 0, 0)
+mesh = SubResource("QuadMesh_jjhji")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4tx2")
+
+[node name="Surprise2" type="Node3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.75, -21.499)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Surprise2"]
+transform = Transform3D(-0.827, 0, 6.5683174e-08, 0, 0.435, 0, -1.2487354e-07, 0, -0.435, 0, 0, 0)
+mesh = SubResource("QuadMesh_jjhji")
+surface_material_override/0 = SubResource("StandardMaterial3D_oin4o")
+
 [node name="Player" parent="." instance=ExtResource("2_vf84w")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.5, 0.5, 0)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17, -2.5, 11.5)
 disableMaximum = true
 
 [node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("3_j7wrh")]
@@ -167,7 +222,7 @@ playerReference = NodePath("../Player")
 startCheckpoint = NodePath("Checkpoint")
 
 [node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("4_v3d5a")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0.5, -11)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.5, -2.5, 11.5)
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_lhho8")]
 data = {
@@ -179,7 +234,7 @@ metadata/_editor_floor_ = Vector3(0, -8, 0)
 [node name="HubStickers" type="Node3D" parent="."]
 
 [node name="KeySticker" parent="HubStickers" instance=ExtResource("9_4jsui")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -2.5, 10.5)
 
 [node name="HubDoors" type="Node3D" parent="."]
 
@@ -347,11 +402,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
 railReference = NodePath("../PlatformRail")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room 2/Plat2/PlatformCaller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0, 0.5)
 shape = SubResource("BoxShape3D_sgkib")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Room 2/Plat2/PlatformCaller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_sgkib")
 
 [node name="Plat3" type="Node3D" parent="Room 2"]
@@ -388,7 +443,7 @@ script = ExtResource("9_v3d5a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -3, -11)
 
 [node name="AlternatingBlock" parent="Room 2/AlternatingGroup1" instance=ExtResource("7_vf84w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, 17, -1, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9, 17, 0.5, -11)
 isOff = true
 
 [node name="Layline Objects" type="Node3D" parent="Room 2/AlternatingGroup1"]
@@ -453,7 +508,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_jq6ov")
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, -1, 1.3113416e-07, -3.821371e-15, -1.3113416e-07, -1, 4.371139e-08, 16.5, 0, -12)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Room 2/AlternatingGroup1/Layline Objects/Layline Marker13"]
-transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(-4.371138e-09, 0.99999994, -4.371139e-09, -0.1, -4.371138e-08, 4.3711395e-09, 4.3711395e-09, 4.3711385e-08, 0.099999994, -0.5, 0, 0)
+mesh = SubResource("TubeTrailMesh_f1mir")
+surface_material_override/0 = SubResource("ShaderMaterial_jq6ov")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room 2/AlternatingGroup1/Layline Objects/Layline Marker13"]
+transform = Transform3D(0.1, -1.4210855e-14, -1.2703156e-15, 0, 0.99999994, -8.881784e-16, 1.141199e-15, -3.5527137e-15, 0.099999994, -1.0000001, -0.5, 0)
 mesh = SubResource("TubeTrailMesh_f1mir")
 surface_material_override/0 = SubResource("ShaderMaterial_jq6ov")
 
