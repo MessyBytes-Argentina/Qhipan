@@ -14,7 +14,6 @@ func _ready() -> void:
 		if obj is AlternatingObject or obj is MovingPlatform:
 			altChildren.append(obj)
 
-
 func switch_children(activeObjects: Array) -> void:
 	for obj in altChildren:
 		if not activeObjects.has(obj):

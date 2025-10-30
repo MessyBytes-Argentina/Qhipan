@@ -44,16 +44,14 @@ func deactivate_group() -> void:
 	var objectsInRange: Array = await force_area_check(false)
 	for group: AlternatingGroup in activatedGroups:
 		group.switch_children(objectsInRange)
-	add_obj_list(objectsInRange)
+	objectCollection.append_array(objectsInRange)
 	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	#clear_alternating_objects()
 	disable_area()
 	super(area,direction,isPlaceholderArea)
 	var objectsInRange: Array = await force_area_check(true)
 	activate_group(objectsInRange)
-	objectCollection.clear()
 
 func grab(node: Node3D) -> void:
 	if placed: 
