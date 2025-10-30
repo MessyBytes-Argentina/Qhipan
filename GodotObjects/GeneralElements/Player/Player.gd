@@ -204,7 +204,8 @@ func _ready() -> void:
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
-	#postProcessing.show()
+	if not get_tree().debug_collisions_hint:
+		postProcessing.show()
 	playerHighlight.scale = Vector3.ONE * 0.001
 	GeneralVariables.input_mode_changed.connect(control_scheme_switch)
 	control_scheme_switch(GeneralVariables.usingGamepad)
