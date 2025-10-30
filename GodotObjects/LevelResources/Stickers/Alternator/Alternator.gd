@@ -7,8 +7,8 @@ const REMOVETIMER: float = 0.2
 @onready var pivot: Node3D = %Pivot
 
 var objectCollection: Array = []
-
 var activatedGroups: Array[AlternatingGroup]
+var disablingArea: bool = false
 
 func add_alternating_object(obj) -> void:
 	if placed: return
@@ -18,6 +18,7 @@ func add_alternating_object(obj) -> void:
 		switch_object(obj)
 
 func remove_alternating_object(obj) -> void:
+	if disablingArea: return
 	if objectCollection.has(obj): objectCollection.erase(obj)
 	switch_object(obj)
 
@@ -27,10 +28,10 @@ func clear_alternating_objects() -> void:
 	objectCollection.clear()
 
 func switch_object(obj) -> void:
-	if placed: return
 	obj.switch_state()
 
 func activate_group(objList: Array) -> void:
+	activatedGroups.clear()
 	var groupsToActivate: Array[AlternatingGroup] = []
 	for obj in objList:
 		if not groupsToActivate.has(obj.groupParent):
@@ -48,13 +49,16 @@ func deactivate_group() -> void:
 	enable_area()
 
 func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+	disablingArea = true
 	disable_area()
 	super(area,direction,isPlaceholderArea)
+	disablingArea = false
 	var objectsInRange: Array = await force_area_check(true)
+	if objectsInRange.is_empty(): clear_alternating_objects()
 	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
-	if placed: 
+	if placed and not activatedGroups.is_empty(): 
 		super(node)
 		deactivate_group()
 		return
