@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03at8exceiht"
-path.s3tc="res://.godot/imported/Bricks_orm.png-0242eec77a5c4f0a5e7bd17b40c4ad61.s3tc.ctex"
+uid="uid://cfciwk6rpvoga"
+path="res://.godot/imported/Bricks_orm.png-0242eec77a5c4f0a5e7bd17b40c4ad61.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Texturas/Bricks_orm.png"
-dest_files=["res://.godot/imported/Bricks_orm.png-0242eec77a5c4f0a5e7bd17b40c4ad61.s3tc.ctex"]
+dest_files=["res://.godot/imported/Bricks_orm.png-0242eec77a5c4f0a5e7bd17b40c4ad61.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

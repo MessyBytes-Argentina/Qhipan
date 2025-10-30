@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lfk4lk2kicu1"
-path.s3tc="res://.godot/imported/Ladrillo Interior_albedo.png-b4fab30330a162143a2edcd67b006563.s3tc.ctex"
+path="res://.godot/imported/Ladrillo Interior_albedo.png-b4fab30330a162143a2edcd67b006563.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Ladrillo Interior/Texturas/Ladrillo Interior_albedo.png"
-dest_files=["res://.godot/imported/Ladrillo Interior_albedo.png-b4fab30330a162143a2edcd67b006563.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ladrillo Interior_albedo.png-b4fab30330a162143a2edcd67b006563.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
