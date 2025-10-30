@@ -176,6 +176,7 @@ func sort_close_areas() -> void:
 		var surfaceArray: Array[Vector3] = stickerableSurfaces.keys()
 		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
 		surfaceArray = surfaceArray.filter(func(s: Vector3): return s not in surfacesWithStickers)
+		if len(surfaceArray) == 0: return
 		if global_position.distance_to(surfaceArray[0]) > MAXSURFACEDISTANCE:
 			placeholderArea.set_deferred("monitorable", false)
 		else:
