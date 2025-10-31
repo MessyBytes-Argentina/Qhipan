@@ -316,6 +316,10 @@ unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
+[node name="CloseTimer" type="Timer" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -334,4 +338,5 @@ metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [connection signal="body_entered" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_in_range"]
 [connection signal="body_exited" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_out_of_range"]
-[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/PushTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="timer_ended"]
+[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/PushTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="push_timer_ended"]
+[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/CloseTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="close_timer_ended"]
