@@ -1,16 +1,16 @@
 extends Area3D
 
+@export var doorRef: PushDoor
+
 @onready var directionMarker: Marker3D = %DirectionMarker
 @onready var pushTimer: Timer = %PushTimer
 
-var doorRef: PushDoor
 var playerRef: Player
 var isPlayerInRange: bool = false
 var pushDir: Vector3
 
 
 func _ready() -> void:
-	doorRef = get_parent()
 	playerRef = get_tree().get_first_node_in_group("Player")
 	pushDir = global_position.direction_to(directionMarker.global_position).round()
 

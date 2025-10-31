@@ -7,9 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_ekaqn"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_wpwc1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
-size = Vector3(0.1, 1, 1)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
 _surfaces = [{
 "aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
@@ -43,6 +40,9 @@ shadow_mesh = SubResource("ArrayMesh_72boo")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qyx1t"]
 data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
+size = Vector3(0.1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_5h8iw"]
 length = 0.001
@@ -268,28 +268,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 script = ExtResource("1_m727r")
 openAnimation = 4
 
-[node name="PlayerPushChecker" type="Area3D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("4_55ifw")
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="PlayerPushChecker"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_iyqt8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="DirectionMarker" type="Marker3D" parent="PlayerPushChecker"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, 0.5, 2.18557e-08)
-
-[node name="PushTimer" type="Timer" parent="PlayerPushChecker"]
-unique_name_in_owner = true
-wait_time = 0.75
-one_shot = true
-
 [node name="Centered" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 
@@ -314,6 +292,30 @@ collision_layer = 2049
 unique_name_in_owner = true
 shape = SubResource("ConcavePolygonShape3D_qyx1t")
 
+[node name="PlayerPushChecker" type="Area3D" parent="Centered/UpPivot/DownPivot" node_paths=PackedStringArray("doorRef")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_55ifw")
+doorRef = NodePath("../../../..")
+metadata/pointing = Vector3(0, 0, 1)
+
+[node name="AreaShape1" type="CollisionShape3D" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_iyqt8")
+debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
+
+[node name="DirectionMarker" type="Marker3D" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, 0.5, 2.18557e-08)
+
+[node name="PushTimer" type="Timer" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -330,6 +332,6 @@ minPitchScale = 0.5
 maxPitchScale = 0.6
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
-[connection signal="body_entered" from="PlayerPushChecker" to="PlayerPushChecker" method="player_in_range"]
-[connection signal="body_exited" from="PlayerPushChecker" to="PlayerPushChecker" method="player_out_of_range"]
-[connection signal="timeout" from="PlayerPushChecker/PushTimer" to="PlayerPushChecker" method="timer_ended"]
+[connection signal="body_entered" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_in_range"]
+[connection signal="body_exited" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_out_of_range"]
+[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/PushTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="timer_ended"]
