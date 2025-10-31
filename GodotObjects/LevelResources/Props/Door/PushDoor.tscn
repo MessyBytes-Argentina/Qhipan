@@ -1,0 +1,342 @@
+[gd_scene load_steps=19 format=4 uid="uid://xwsbpt7bioko"]
+
+[ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
+[ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_55ifw"]
+[ext_resource type="Material" uid="uid://cch5x4exg8o71" path="res://Assets/Materials/WithCutout/Door.tres" id="3_hu4jo"]
+[ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
+[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_ekaqn"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_wpwc1"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iyqt8"]
+resource_name = "BasePieces_Slab"
+_surfaces = [{
+"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//5//P/+f/3//X/8//1//P/+f/x//n/8//1//H/8//3//X/8//1//f/8//z//n/9//7//P/+//3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_72boo")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qyx1t"]
+data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, 0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, -0.5, 0.5, -0.5, -0.5, 0, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -5.96046e-08, 0.5, -0.5, 0, 0.5, 0.5, -5.96046e-08, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -5.96046e-08, -0.5, 0.5, -5.96046e-08, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
+size = Vector3(0.1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_5h8iw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered/UpPivot/DownPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Centered:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.18557e-08, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Centered:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gmc35"]
+resource_name = "RotateToCeiling"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, -3, -3),
+"update": 0,
+"values": [Vector3(0, -2.18557e-08, 0.5), Vector3(0, -2.18557e-08, 0.5), Vector3(0, 0, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_iyqt8"]
+resource_name = "RotateToFloor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lv0gf"]
+resource_name = "SlideDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.02, 0.5), Vector3(0, 0.02, -0.501)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-3),
+"update": 0,
+"values": [Vector3(1, 0.9, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qoht4"]
+resource_name = "SlideLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.02, 0.5), Vector3(-1.01, 0.02, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-3),
+"update": 0,
+"values": [Vector3(1, 0.9, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nhf5t"]
+resource_name = "SlideRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.02, 0.5), Vector3(1.01, 0.02, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-3),
+"update": 0,
+"values": [Vector3(1, 0.9, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hdbo"]
+resource_name = "SlideUp"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.02, 0.5), Vector3(0, 0.02, 1.501)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.9, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmc35"]
+_data = {
+&"RESET": SubResource("Animation_5h8iw"),
+&"RotateToCeiling": SubResource("Animation_gmc35"),
+&"RotateToFloor": SubResource("Animation_iyqt8"),
+&"SlideDown": SubResource("Animation_lv0gf"),
+&"SlideLeft": SubResource("Animation_qoht4"),
+&"SlideRight": SubResource("Animation_nhf5t"),
+&"SlideUp": SubResource("Animation_2hdbo")
+}
+
+[node name="PushDoor" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_m727r")
+openAnimation = 4
+
+[node name="Centered" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
+
+[node name="UpPivot" type="Node3D" parent="Centered"]
+
+[node name="DownPivot" type="Node3D" parent="Centered/UpPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.37114e-08, -1)
+script = ExtResource("2_55ifw")
+
+[node name="Door" type="MeshInstance3D" parent="Centered/UpPivot/DownPivot"]
+transform = Transform3D(0.99, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
+mesh = SubResource("ArrayMesh_iyqt8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_hu4jo")
+
+[node name="DoorBody" type="StaticBody3D" parent="Centered/UpPivot/DownPivot/Door"]
+unique_name_in_owner = true
+collision_layer = 2049
+
+[node name="BodyShape" type="CollisionShape3D" parent="Centered/UpPivot/DownPivot/Door/DoorBody"]
+unique_name_in_owner = true
+shape = SubResource("ConcavePolygonShape3D_qyx1t")
+
+[node name="PlayerPushChecker" type="Area3D" parent="Centered/UpPivot/DownPivot" node_paths=PackedStringArray("doorRef")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_55ifw")
+doorRef = NodePath("../../../..")
+metadata/pointing = Vector3(0, 0, 1)
+
+[node name="AreaShape1" type="CollisionShape3D" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_iyqt8")
+debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
+
+[node name="DirectionMarker" type="Marker3D" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, 0.5, 2.18557e-08)
+
+[node name="PushTimer" type="Timer" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="CloseTimer" type="Timer" parent="Centered/UpPivot/DownPivot/PlayerPushChecker"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gmc35")
+}
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_ekaqn")
+volume_db = -5.0
+bus = &"SFX"
+script = ExtResource("5_wpwc1")
+minPitchScale = 0.5
+maxPitchScale = 0.6
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
+
+[connection signal="body_entered" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_in_range"]
+[connection signal="body_exited" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_out_of_range"]
+[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/PushTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="push_timer_ended"]
+[connection signal="timeout" from="Centered/UpPivot/DownPivot/PlayerPushChecker/CloseTimer" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="close_timer_ended"]
