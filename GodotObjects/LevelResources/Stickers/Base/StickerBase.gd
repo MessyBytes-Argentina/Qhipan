@@ -115,7 +115,6 @@ func check_placement() -> void:
 		var temporaryArea: Area3D = Area3D.new()
 		add_child(temporaryArea)
 		temporaryArea.global_position = closest
-		#prints("sticker base")
 		place_sticker(temporaryArea, grabArea.stickerableSurfaces[closest], true)
 		temporaryArea.queue_free()
 		if closest not in grabArea.surfacesWithStickers: grabArea.surfacesWithStickers.append(closest)

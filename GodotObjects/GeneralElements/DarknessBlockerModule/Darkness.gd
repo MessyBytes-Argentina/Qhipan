@@ -20,6 +20,8 @@ var fogShader: ShaderMaterial
 
 ## Lights currently affecting the fog
 var lights: Array[Area3D] = []
+## Light stickers currently tweening that are affecting the fog
+var lightsTweening: Array[LampSticker] = []
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +29,10 @@ func _ready() -> void:
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
 	outlineBlocker.mesh.size = size - Vector3.ONE * 0.5
 	_collision_shape_set()
+
+## Called on every physics frame.
+func _physics_process(_delta: float) -> void:
+	if len(lightsTweening) > 0: update_collision_shape()
 
 ## Sets up the collision shape for the fog
 func _collision_shape_set() -> void:
@@ -59,7 +65,17 @@ func update_collision_shape() -> void:
 	var lightDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	for lightArea in lights: 
-		lightDistances[lightArea.global_position] = lightArea.get_node("CollisionShape3D").shape.radius
+		if lightArea.has_node("LightShape"): 
+			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
+			var sticker: LampSticker = lightArea.get_node(lightArea.get_meta("Sticker"))
+			lightDistances[lightArea.global_position] = lightShape.shape.radius
+			if sticker.lightTween: 
+				if sticker.lightTween.is_running(): 
+					if sticker not in lightsTweening: lightsTweening.append(sticker)
+				else:
+					lightsTweening.erase(sticker)
+			else:
+				lightsTweening.erase(sticker)
 	for i in range(len(collisionMap.map_data)):
 		var vertexFlatGlobalPosition: Vector2 = Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)

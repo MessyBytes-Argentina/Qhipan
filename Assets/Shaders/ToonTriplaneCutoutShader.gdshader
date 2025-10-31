@@ -202,7 +202,7 @@ void fragment() {
 	
 	// Albedo & Alpha
 	vec3 base_albedo_uv = worldmap(world_pos, y_normal, vec3(bottom_texture_scale, top_texture_scale, side_texture_scale));
-	vec4 base_albedo = texture(bottom_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 0.0) + texture(top_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 1.0) + texture(side_texture_albedo, base_albedo_uv.xy) * float(base_albedo_uv.z == 2.0);
+	vec4 base_albedo = triple_condition_vec4(texture(bottom_texture_albedo, base_albedo_uv.xy), texture(top_texture_albedo, base_albedo_uv.xy), texture(side_texture_albedo, base_albedo_uv.xy), base_albedo_uv.z);
 	ALBEDO = base_albedo.rgb * albedo.rgb;
 	
 	// Roughness: Enabled

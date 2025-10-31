@@ -139,7 +139,7 @@ _data = {
 
 [node name="KeySticker" type="CharacterBody3D"]
 collision_layer = 512
-collision_mask = 4361
+collision_mask = 4353
 script = ExtResource("4_ws05p")
 validAreaIndexes = Array[int]([11, 12])
 
@@ -174,6 +174,7 @@ visible = false
 layers = 2
 pixel_size = 0.002
 billboard = 1
+shaded = true
 render_priority = 2
 texture = ExtResource("2_mjg6o")
 
