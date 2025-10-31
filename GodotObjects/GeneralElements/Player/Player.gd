@@ -316,6 +316,7 @@ func camera_rotation_finished() -> void:
 func camera_zoom_check() -> void:
 	if zooming: return
 	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
+	#if not zoomedOut and inputDirection != Vector3.ZERO: doZoom = false
 	if not doZoom: return
 	cubeCutout.zoomedOut = not zoomedOut
 	zooming_out.emit(not zoomedOut)
