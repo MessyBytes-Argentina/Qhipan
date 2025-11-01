@@ -8,6 +8,7 @@ uniform sampler2D screen_texture: hint_screen_texture,filter_linear_mipmap;
 uniform vec3 edge_color : source_color = vec3(0.0, 0.0, 0.0);
 uniform float edge_threshold: hint_range(0.0001, 0.2, 0.0001) = 0.01;
 uniform float normal_influence: hint_range(0.0001, 0.2, 0.0001) = 0.001;
+uniform float depth_affect: hint_range(0.0001, 20.0, 0.0001) = 0.1;
 
 uniform float noise_frequency : hint_range(0.1, 20.0, 0.1)= 10.0 ;
 uniform float noise_offset_intensity : hint_range(0.0, 0.2, 0.001) = 0.002;
@@ -112,12 +113,12 @@ void fragment() {
 
 	vec4 texture_color;
 	texture_color = texture(screen_texture,uv);
-	
-    if (magnitude > edge_threshold) {
+
+    if (magnitude > edge_threshold * (1.0 - pow(texture(depth_texture, uv).r, depth_affect))) {
         ALBEDO = edge_color;
     } else {
-        // 使用纹理颜色
         ALBEDO = texture_color.rgb;
     }
+	//ALBEDO = vec3(sqrt(texture(depth_texture, uv).r));
 
 }

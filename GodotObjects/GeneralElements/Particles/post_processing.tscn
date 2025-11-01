@@ -11,6 +11,7 @@ render_priority = -1
 shader = ExtResource("1_p18uu")
 shader_parameter/edge_color = Color(0, 0, 0, 1)
 shader_parameter/edge_threshold = 0.01
+shader_parameter/normal_influence = 0.0027999999291600003
 shader_parameter/noise_frequency = 10.0
 shader_parameter/noise_offset_intensity = 0.002
 
