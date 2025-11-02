@@ -3,7 +3,6 @@
 [ext_resource type="MeshLibrary" uid="uid://dxt4jj2rx1xyb" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Gridmap.tres" id="1_xs4vi"]
 
 [node name="GridmapObject" type="GridMap" groups=["Gridmap"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 mesh_library = ExtResource("1_xs4vi")
 cell_size = Vector3(1, 0.5, 1)
 cell_center_y = false
