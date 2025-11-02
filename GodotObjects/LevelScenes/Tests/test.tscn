@@ -78,7 +78,7 @@ point_count = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_octky"]
 
 [node name="Test" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
 
 [node name="EnvironmentObjects" type="Node3D" parent="."]
 

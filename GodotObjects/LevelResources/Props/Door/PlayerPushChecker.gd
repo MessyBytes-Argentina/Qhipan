@@ -20,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 		if not doorRef.isOneWay: return
 		if closeTimer.is_stopped() and isDoorDown:
 			closeTimer.start()
+		else: return
 	if isDoorDown: return
 	var playerPushing: bool = check_player_direction()
 	if playerPushing:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://0cxlakla58w0"]
+[gd_scene load_steps=36 format=4 uid="uid://0cxlakla58w0"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_xe1mk"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_olile"]
@@ -17,15 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/LevelResources/Props/Door/Door.tscn" id="15_ix3bf"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="16_en2b8"]
 
-[sub_resource type="Sky" id="Sky_fbjkx"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_en2b8"]
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_ix3bf"]
+sky_material = SubResource("ProceduralSkyMaterial_en2b8")
 
 [sub_resource type="Environment" id="Environment_gxiiq"]
 background_mode = 2
 background_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky = SubResource("Sky_fbjkx")
+sky = SubResource("Sky_ix3bf")
 ambient_light_source = 2
 ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
-ambient_light_energy = 0.5
+ambient_light_energy = 0.25
 tonemap_mode = 2
 tonemap_exposure = 1.5
 ssao_enabled = true
@@ -97,16 +103,6 @@ radius = 1.0
 [sub_resource type="QuadMesh" id="QuadMesh_ix3bf"]
 size = Vector2(50, 10)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ix3bf"]
-load_path = "res://.godot/imported/Ladrillo Interior_albedo.png-36669befce285f460b26768435e0b8d9.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ylax1"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3klpv"]
-load_path = "res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u8paw"]
-
 [sub_resource type="Gradient" id="Gradient_vqboj"]
 offsets = PackedFloat32Array(0.75, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
@@ -124,22 +120,14 @@ gradient = SubResource("Gradient_lvs7r")
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nqvkc"]
 load_path = "res://.godot/imported/Ladrillo Interior_albedo.png-36669befce285f460b26768435e0b8d9.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6aay1"]
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ewfo1"]
 load_path = "res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_605ed"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5h122"]
 load_path = "res://.godot/imported/Ladrillo Interior_albedo.png-36669befce285f460b26768435e0b8d9.s3tc.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y2onv"]
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y51cu"]
 load_path = "res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mt8rd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53vrk"]
 render_priority = 0
@@ -147,61 +135,38 @@ shader = ExtResource("16_en2b8")
 shader_parameter/albedo = Color(0.5529556, 0.55295557, 0.55295557, 1)
 shader_parameter/light_gradient = SubResource("GradientTexture1D_184cb")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_yven4")
-shader_parameter/top_texture_albedo = SubResource("CompressedTexture2D_5h122")
-shader_parameter/bottom_texture_albedo = SubResource("CompressedTexture2D_ix3bf")
-shader_parameter/side_texture_albedo = SubResource("CompressedTexture2D_nqvkc")
 shader_parameter/top_texture_scale = 1.0
-shader_parameter/bottom_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
-shader_parameter/top_detail_texture_scale = 1.0
-shader_parameter/bottom_detail_texture_scale = 1.0
-shader_parameter/side_detail_texture_scale = 1.0
-shader_parameter/top_texture_roughness = SubResource("CompressedTexture2D_mt8rd")
-shader_parameter/bottom_texture_roughness = SubResource("CompressedTexture2D_u8paw")
-shader_parameter/side_texture_roughness = SubResource("CompressedTexture2D_605ed")
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = SubResource("CompressedTexture2D_5h122")
+shader_parameter/side_texture_albedo = SubResource("CompressedTexture2D_nqvkc")
+shader_parameter/enable_normal = true
+shader_parameter/top_texture_normal = SubResource("CompressedTexture2D_y51cu")
+shader_parameter/side_texture_normal = SubResource("CompressedTexture2D_ewfo1")
+shader_parameter/top_normal_scale = 1.0
+shader_parameter/side_normal_scale = 1.0
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/top_roughness = 1.0
-shader_parameter/bottom_roughness = 1.0
 shader_parameter/side_roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/top_metallic_specular = 0.5
-shader_parameter/bottom_metallic_specular = 0.5
 shader_parameter/side_metallic_specular = 0.5
 shader_parameter/top_metallic = 0.0
-shader_parameter/bottom_metallic = 0.0
 shader_parameter/side_metallic = 0.0
 shader_parameter/enable_emission = false
 shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/bottom_emission = Color(0, 0, 0, 1)
 shader_parameter/side_emission = Color(0, 0, 0, 1)
 shader_parameter/top_emission_energy_multiplier = 1.0
-shader_parameter/bottom_emission_energy_multiplier = 1.0
 shader_parameter/side_emission_energy_multiplier = 1.0
-shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = SubResource("CompressedTexture2D_y51cu")
-shader_parameter/bottom_texture_normal = SubResource("CompressedTexture2D_3klpv")
-shader_parameter/side_texture_normal = SubResource("CompressedTexture2D_ewfo1")
-shader_parameter/top_normal_scale = 1.0
-shader_parameter/bottom_normal_scale = 1.0
-shader_parameter/side_normal_scale = 1.0
 shader_parameter/enable_clearcoat = false
 shader_parameter/top_clearcoat = 1.0
-shader_parameter/bottom_clearcoat = 1.0
 shader_parameter/side_clearcoat = 1.0
 shader_parameter/top_clearcoat_roughness = 0.5
-shader_parameter/bottom_clearcoat_roughness = 0.5
 shader_parameter/side_clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/top_anisotropy = 0.0
-shader_parameter/bottom_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/top_texture_ambient_occlusion = SubResource("CompressedTexture2D_y2onv")
-shader_parameter/bottom_texture_ambient_occlusion = SubResource("CompressedTexture2D_ylax1")
-shader_parameter/side_texture_ambient_occlusion = SubResource("CompressedTexture2D_6aay1")
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/bottom_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/cylinderCutout = false
 shader_parameter/borderColor = Color(1, 1, 1, 1)
 shader_parameter/borderSize = 0.0
@@ -220,6 +185,7 @@ shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
 shader_parameter/auxBoxRotation = 0.0
 
 [node name="BaseLevelScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
 
 [node name="EnvironmentObjects" type="Node3D" parent="."]
 
