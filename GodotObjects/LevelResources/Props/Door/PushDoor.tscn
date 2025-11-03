@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_55ifw"]
-[ext_resource type="Material" uid="uid://cch5x4exg8o71" path="res://Assets/Materials/WithCutout/Door.tres" id="3_hu4jo"]
+[ext_resource type="Material" uid="uid://by6612cmuprks" path="res://Assets/Materials/Puente Empujable Demo/Toon-Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_ekaqn"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_wpwc1"]
@@ -282,7 +282,7 @@ script = ExtResource("2_55ifw")
 transform = Transform3D(0.99, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 mesh = SubResource("ArrayMesh_iyqt8")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_hu4jo")
+surface_material_override/0 = ExtResource("3_55ifw")
 
 [node name="DoorBody" type="StaticBody3D" parent="Centered/UpPivot/DownPivot/Door"]
 unique_name_in_owner = true
