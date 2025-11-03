@@ -168,11 +168,11 @@ func set_size(mode: ScaleModes) -> void:
 	if mode != ScaleModes.ZOOMEDOUT: lastVisualMode = mode
 	match mode:
 		ScaleModes.GRABBED:
+			stop_rotation()
 			billboard.show()
 			mesh.hide()
 			back.hide()
 			billboardZoomedOut.hide()
-			stop_rotation()
 		ScaleModes.DROPPED:
 			billboard.hide()
 			mesh.show()
@@ -181,13 +181,14 @@ func set_size(mode: ScaleModes) -> void:
 			meshes.scale = Vector3.ONE * BOBBINGSCALE
 			start_rotation()
 		ScaleModes.PLACED:
+			stop_rotation()
 			billboard.hide()
 			mesh.show()
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
-			stop_rotation()
 		ScaleModes.ZOOMEDOUT:
+			stop_rotation()
 			billboardZoomedOut.show()
 			billboard.hide()
 			mesh.hide()
@@ -255,11 +256,9 @@ func stop_rotation() -> void:
 func zooming_out(zoomedOut: bool) -> void:
 	if not grabed: 
 		if zoomedOut: 
-			if lastVisualMode == ScaleModes.DROPPED: stop_rotation()
 			set_size(ScaleModes.ZOOMEDOUT)
 		else: 
 			set_size(lastVisualMode)
-			if lastVisualMode == ScaleModes.DROPPED: start_rotation()
 
 ## Activates the sticker effect when held by the player
 func activate_on_player_effect() -> void:

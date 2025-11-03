@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h8indc4tai7e"
-path.s3tc="res://.godot/imported/Sticker_Sandwave_albedo.png-4a1fecb4065184594147948ef4a5629c.s3tc.ctex"
+path="res://.godot/imported/Sticker_Sandwave_albedo.png-4a1fecb4065184594147948ef4a5629c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Arena/Texturas/Sticker_Sandwave_albedo.png"
-dest_files=["res://.godot/imported/Sticker_Sandwave_albedo.png-4a1fecb4065184594147948ef4a5629c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sticker_Sandwave_albedo.png-4a1fecb4065184594147948ef4a5629c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

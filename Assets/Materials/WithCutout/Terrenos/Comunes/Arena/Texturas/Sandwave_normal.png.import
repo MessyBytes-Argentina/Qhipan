@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rcoptgnp4eee"
-path.s3tc="res://.godot/imported/Sandwave_normal.png-6d650e5988ecbe6e74ac410d401a883f.s3tc.ctex"
+path="res://.godot/imported/Sandwave_normal.png-6d650e5988ecbe6e74ac410d401a883f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Texturas/Sandwave_normal.png"
-dest_files=["res://.godot/imported/Sandwave_normal.png-6d650e5988ecbe6e74ac410d401a883f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sandwave_normal.png-6d650e5988ecbe6e74ac410d401a883f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

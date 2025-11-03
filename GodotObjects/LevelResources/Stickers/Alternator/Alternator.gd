@@ -30,6 +30,10 @@ func clear_alternating_objects() -> void:
 func switch_object(obj) -> void:
 	obj.switch_state()
 
+func check_out_of_group(groups: Array) -> void:
+	for obj in objectCollection:
+		if not groups.has(obj.groupParent): switch_object(obj)
+
 func activate_group(objList: Array) -> void:
 	activatedGroups.clear()
 	var groupsToActivate: Array[AlternatingGroup] = []
@@ -39,6 +43,7 @@ func activate_group(objList: Array) -> void:
 	activatedGroups = groupsToActivate
 	for group in groupsToActivate:
 		group.switch_children(objectCollection)
+	check_out_of_group(groupsToActivate)
 	objectCollection.clear()
 
 func deactivate_group() -> void:

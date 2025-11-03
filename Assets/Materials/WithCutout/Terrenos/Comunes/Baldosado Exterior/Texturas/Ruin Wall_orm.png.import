@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1tbx0tsc6hi0"
-path.s3tc="res://.godot/imported/Ruin Wall_orm.png-560e841e1856aa17e62bacb74ebd30ee.s3tc.ctex"
+path="res://.godot/imported/Ruin Wall_orm.png-560e841e1856aa17e62bacb74ebd30ee.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Texturas/Ruin Wall_orm.png"
-dest_files=["res://.godot/imported/Ruin Wall_orm.png-560e841e1856aa17e62bacb74ebd30ee.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ruin Wall_orm.png-560e841e1856aa17e62bacb74ebd30ee.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

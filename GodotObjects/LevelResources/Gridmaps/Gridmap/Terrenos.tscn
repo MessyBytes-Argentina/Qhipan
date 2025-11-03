@@ -14,7 +14,7 @@
 [ext_resource type="Material" uid="uid://byl7yrblb2oac" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Tierra Sola/Toon Sticker-Tierra Sola.tres" id="12_yv50f"]
 [ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="13_uedv8"]
 [ext_resource type="Material" uid="uid://52rh8d8yiulv" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Baldosa Interior/Toon Sticker-Baldosa Interior.tres" id="14_qqdhq"]
-[ext_resource type="Material" uid="uid://824j8fqqimf2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
 [ext_resource type="Material" uid="uid://dyssjfweeypue" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Ladrillo Interior/Toon Sticker-Ladrillo Interior.tres" id="16_gqteo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]

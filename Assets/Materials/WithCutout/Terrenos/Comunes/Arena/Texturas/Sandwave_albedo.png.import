@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4j0f12ggrwlf"
-path.s3tc="res://.godot/imported/Sandwave_albedo.png-c8da4596ebb6d09e40a9108b97d1b57d.s3tc.ctex"
+path="res://.godot/imported/Sandwave_albedo.png-c8da4596ebb6d09e40a9108b97d1b57d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Texturas/Sandwave_albedo.png"
-dest_files=["res://.godot/imported/Sandwave_albedo.png-c8da4596ebb6d09e40a9108b97d1b57d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sandwave_albedo.png-c8da4596ebb6d09e40a9108b97d1b57d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

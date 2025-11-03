@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnm0q04s1vgtt"
-path.s3tc="res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
+uid="uid://bmm3aecm8a3ll"
+path="res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png"
-dest_files=["res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -26,8 +25,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/Materials/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

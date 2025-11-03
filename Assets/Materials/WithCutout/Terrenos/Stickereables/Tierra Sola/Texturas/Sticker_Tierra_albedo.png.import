@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjlxcrh38cx0j"
-path.s3tc="res://.godot/imported/Sticker_Tierra_albedo.png-348e790cd277f88f62bf3904be53b2a0.s3tc.ctex"
+path="res://.godot/imported/Sticker_Tierra_albedo.png-348e790cd277f88f62bf3904be53b2a0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Tierra Sola/Texturas/Sticker_Tierra_albedo.png"
-dest_files=["res://.godot/imported/Sticker_Tierra_albedo.png-348e790cd277f88f62bf3904be53b2a0.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sticker_Tierra_albedo.png-348e790cd277f88f62bf3904be53b2a0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

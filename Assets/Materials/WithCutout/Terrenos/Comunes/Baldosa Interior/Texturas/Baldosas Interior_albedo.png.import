@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://caqmksfnxthuh"
-path.s3tc="res://.godot/imported/Baldosas Interior_albedo.png-4615051f619280c97c14ebe2aa5ea90d.s3tc.ctex"
+path="res://.godot/imported/Baldosas Interior_albedo.png-4615051f619280c97c14ebe2aa5ea90d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Texturas/Baldosas Interior_albedo.png"
-dest_files=["res://.godot/imported/Baldosas Interior_albedo.png-4615051f619280c97c14ebe2aa5ea90d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Baldosas Interior_albedo.png-4615051f619280c97c14ebe2aa5ea90d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

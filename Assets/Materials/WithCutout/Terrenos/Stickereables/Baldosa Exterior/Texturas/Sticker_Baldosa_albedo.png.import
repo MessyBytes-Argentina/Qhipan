@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do24tw5gcf0w"
-path.s3tc="res://.godot/imported/Sticker_Baldosa_albedo.png-53d193e188fb4b6e8f84c2674963bbf2.s3tc.ctex"
+path="res://.godot/imported/Sticker_Baldosa_albedo.png-53d193e188fb4b6e8f84c2674963bbf2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Baldosa Exterior/Texturas/Sticker_Baldosa_albedo.png"
-dest_files=["res://.godot/imported/Sticker_Baldosa_albedo.png-53d193e188fb4b6e8f84c2674963bbf2.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sticker_Baldosa_albedo.png-53d193e188fb4b6e8f84c2674963bbf2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

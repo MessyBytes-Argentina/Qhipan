@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://824j8fqqimf2"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://tqe7ogvjw6u2"]
 
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_4pj1y"]
-[ext_resource type="Texture2D" uid="uid://cc8ph5x50lpsx" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_albedo.png" id="2_b622v"]
-[ext_resource type="Texture2D" uid="uid://cr5ljv5ylxhcm" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_orm.png" id="3_yaoqg"]
-[ext_resource type="Texture2D" uid="uid://cnm0q04s1vgtt" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png" id="4_l7a1f"]
+[ext_resource type="Texture2D" uid="uid://hoc7w0n21mym" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_albedo.png" id="2_b622v"]
+[ext_resource type="Texture2D" uid="uid://dk7kv1aluylm0" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_orm.png" id="3_yaoqg"]
+[ext_resource type="Texture2D" uid="uid://bmm3aecm8a3ll" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png" id="4_l7a1f"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_dgdee"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="6_fhlm2"]
 
@@ -13,61 +13,40 @@ shader = ExtResource("1_4pj1y")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("6_fhlm2")
 shader_parameter/fresnel_gradient = ExtResource("5_dgdee")
-shader_parameter/top_texture_albedo = ExtResource("2_b622v")
-shader_parameter/bottom_texture_albedo = ExtResource("2_b622v")
-shader_parameter/side_texture_albedo = ExtResource("2_b622v")
 shader_parameter/top_texture_scale = 3.0000000447036004
-shader_parameter/bottom_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
-shader_parameter/top_detail_texture_scale = 3.0000000447036004
-shader_parameter/bottom_detail_texture_scale = 1.0
-shader_parameter/side_detail_texture_scale = 1.0
-shader_parameter/top_texture_roughness = ExtResource("3_yaoqg")
-shader_parameter/bottom_texture_roughness = ExtResource("3_yaoqg")
-shader_parameter/side_texture_roughness = ExtResource("3_yaoqg")
+shader_parameter/blend_sharpness = 10.000000475
+shader_parameter/top_texture_albedo = ExtResource("2_b622v")
+shader_parameter/side_texture_albedo = ExtResource("2_b622v")
+shader_parameter/enable_normal = true
+shader_parameter/top_texture_normal = ExtResource("4_l7a1f")
+shader_parameter/side_texture_normal = ExtResource("4_l7a1f")
+shader_parameter/top_normal_scale = 1.000000807500001
+shader_parameter/side_normal_scale = 1.0
+shader_parameter/top_texture_orm = ExtResource("3_yaoqg")
+shader_parameter/side_texture_orm = ExtResource("3_yaoqg")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/top_roughness = 1.0
-shader_parameter/bottom_roughness = 1.0
 shader_parameter/side_roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/top_metallic_specular = 0.5
-shader_parameter/bottom_metallic_specular = 0.5
 shader_parameter/side_metallic_specular = 0.5
 shader_parameter/top_metallic = 0.0
-shader_parameter/bottom_metallic = 0.0
 shader_parameter/side_metallic = 0.0
 shader_parameter/enable_emission = false
 shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/bottom_emission = Color(0, 0, 0, 1)
 shader_parameter/side_emission = Color(0, 0, 0, 1)
 shader_parameter/top_emission_energy_multiplier = 1.0
-shader_parameter/bottom_emission_energy_multiplier = 1.0
 shader_parameter/side_emission_energy_multiplier = 1.0
-shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = ExtResource("4_l7a1f")
-shader_parameter/bottom_texture_normal = ExtResource("4_l7a1f")
-shader_parameter/side_texture_normal = ExtResource("4_l7a1f")
-shader_parameter/top_normal_scale = 1.0
-shader_parameter/bottom_normal_scale = 1.0
-shader_parameter/side_normal_scale = 1.0
 shader_parameter/enable_clearcoat = false
 shader_parameter/top_clearcoat = 1.0
-shader_parameter/bottom_clearcoat = 1.0
 shader_parameter/side_clearcoat = 1.0
 shader_parameter/top_clearcoat_roughness = 0.5
-shader_parameter/bottom_clearcoat_roughness = 0.5
 shader_parameter/side_clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/top_anisotropy = 0.0
-shader_parameter/bottom_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/top_texture_ambient_occlusion = ExtResource("3_yaoqg")
-shader_parameter/bottom_texture_ambient_occlusion = ExtResource("3_yaoqg")
-shader_parameter/side_texture_ambient_occlusion = ExtResource("3_yaoqg")
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/bottom_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/cylinderCutout = false
 shader_parameter/borderColor = Color(1, 1, 1, 1)
 shader_parameter/borderSize = 0.0

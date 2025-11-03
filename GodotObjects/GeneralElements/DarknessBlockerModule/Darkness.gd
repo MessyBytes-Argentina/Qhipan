@@ -6,6 +6,8 @@ class_name DarknessArea
 ## The amount of vertices per meter that the fog collision is broken up into.
 ## Higher means higher collision quality but poorer performance.
 const DARKNESSCOLLISIONRESOLUTION: int = 8
+## How far into the darkness should the outline blocker be pushed.
+const OUTLINEBLOCKEROFFSET: float = 0.5
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -27,7 +29,7 @@ var lightsTweening: Array[LampSticker] = []
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
-	outlineBlocker.mesh.size = size - Vector3.ONE * 0.5
+	outlineBlocker.mesh.size = size - Vector3.ONE * OUTLINEBLOCKEROFFSET
 	_collision_shape_set()
 
 ## Called on every physics frame.
