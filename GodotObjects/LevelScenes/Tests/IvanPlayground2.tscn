@@ -24,7 +24,7 @@ script = ExtResource("6_a4etr")
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="AntiStickerArea" parent="." instance=ExtResource("7_8r1lh")]
-transform = Transform3D(11, 0, 0, 0, 0.5, 0, 0, 0, 11, 0, -0.76, -13)
+transform = Transform3D(3, 0, 0, 0, 2.97, 0, 0, 0, 4, 3.5, 0.5, -8)
 
 [node name="Player" parent="." instance=ExtResource("2_udg72")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.5, -0.5)
@@ -41,14 +41,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("8_pr6d8")
 
 [node name="AlternatingBlock" parent="AlternatingGroup 1" instance=ExtResource("9_oset2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, -12.5)
 isOff = true
 
 [node name="StickerGroup" type="Node3D" parent="."]
 
 [node name="Alternator" parent="StickerGroup" instance=ExtResource("3_oset2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -11.5)
 
 [node name="FanSticker" parent="StickerGroup" instance=ExtResource("11_bc30p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -10.5)
 placed = true
