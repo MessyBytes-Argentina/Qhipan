@@ -13,9 +13,9 @@ const dttcShader: String = "uid://d70se0jvv0xj"
 ## The ToonCutout shader script.
 const tcShader: String = "uid://dsnxr718iap3n"
 ## The list of texture types.
-const textureTypes: Array[String] = ["albedo_texture", "roughness_texture", "metallic_texture", "emission_texture", "normal_texture", "clearcoat_texture", "anisotropy_flowmap", "ao_texture"]
+const textureTypes: Array[String] = ["albedo_texture", "roughness_texture", "emission_texture", "normal_texture", "clearcoat_texture", "anisotropy_flowmap"]
 ## The list of texture types alias.
-const textureTypesAlias: Array[String] = ["albedo", "roughness", "metallic", "emission", "normal", "clearcoat", "anisotropy_flowmap", "ambient_occlusion"]
+const textureTypesAlias: Array[String] = ["albedo", "orm", "emission", "normal", "clearcoat", "anisotropy_flowmap"]
 ## The list of special value parameters.
 const specialValueParameters: Array[String] = ["metallic", "metallic_specular", "roughness", "emission", "emission_energy_multiplier", "normal_scale", "clearcoat", "clearcoat_roughness", "anisotropy", "ao_light_affect"]
 ## The list of toggles to exclude.
@@ -40,12 +40,6 @@ var topSurfaceMaterial: StandardMaterial3D
 var topAlbedoSize: float = 1
 ## The top surface detail size.
 var topDetailSize: float = 1
-## The bottom surface of the piece.
-var bottomSurfaceMaterial: StandardMaterial3D
-## The bottom surface albedo size.
-var bottomAlbedoSize: float = 1
-## The bottom surface detail size.
-var bottomDetailSize: float = 1
 ## The side surface of the piece.
 var sideSurfaceMaterial: StandardMaterial3D
 ## The side surface albedo size.
@@ -122,7 +116,7 @@ func _get_property_list() -> Array[Dictionary]:
 ## Gets TTC Material property list.
 func _get_ttc_properties() -> Array[Dictionary]:
 	var props: Array[Dictionary] = []
-	for surface in ["top", "bottom", "side"]:
+	for surface in ["top", "side"]:
 		props.append({
 			"name": surface + "SurfaceMaterial",
 			"type": TYPE_OBJECT,
@@ -130,13 +124,7 @@ func _get_ttc_properties() -> Array[Dictionary]:
 			"hint_string": "StandardMaterial3D",
 		})
 		props.append({
-			"name": surface + "AlbedoSize",
-			"type": TYPE_FLOAT,
-			"hint": PROPERTY_HINT_RANGE,
-			"hint_string": "0.01,10.0,0.01",
-		})
-		props.append({
-			"name": surface + "DetailSize",
+			"name": surface + "Size",
 			"type": TYPE_FLOAT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.01,10.0,0.01",
@@ -180,14 +168,12 @@ func make_TTC_material() -> void:
 	finalizeShaderMaterial.set_shader_parameter("fresnel_gradient", fresnelGradient)
 	var baseMaterials: Dictionary[String, StandardMaterial3D] = {
 		"top": topSurfaceMaterial,
-		"bottom": bottomSurfaceMaterial,
 		"side": sideSurfaceMaterial
 	}
 	var validModes: Dictionary[String, bool] = {}
 	textureTypesAlias.map(func(a: String): if a not in excludeToggleParameters: validModes[a] = false)
 	for surface in baseMaterials:
-		finalizeShaderMaterial.set_shader_parameter(surface + "_texture_scale", get(surface + "AlbedoSize"))
-		finalizeShaderMaterial.set_shader_parameter(surface + "_detail_texture_scale", get(surface + "DetailSize"))
+		finalizeShaderMaterial.set_shader_parameter(surface + "_texture_scale", get(surface + "Size"))
 		for i in range(len(textureTypes)):
 			if not baseMaterials[surface][textureTypes[i]]: continue
 			finalizeShaderMaterial.set_shader_parameter(surface + "_texture_" + textureTypesAlias[i], baseMaterials[surface][textureTypes[i]])

@@ -3,11 +3,13 @@ render_mode unshaded, depth_test_disabled;
 stencil_mode read, 1, compare_not_equal;
 
 uniform sampler2D depth_texture : hint_depth_texture,filter_linear_mipmap;
+uniform sampler2D normal_texture : hint_normal_roughness_texture,filter_linear_mipmap;
 uniform sampler2D screen_texture: hint_screen_texture,filter_linear_mipmap;
-
 
 uniform vec3 edge_color : source_color = vec3(0.0, 0.0, 0.0);
 uniform float edge_threshold: hint_range(0.0001, 0.2, 0.0001) = 0.01;
+uniform float normal_influence: hint_range(0.0000, 0.2, 0.0001) = 0.001;
+uniform float depth_affect: hint_range(0.0001, 20.0, 0.0001) = 0.1;
 
 uniform float noise_frequency : hint_range(0.1, 20.0, 0.1)= 10.0 ;
 uniform float noise_offset_intensity : hint_range(0.0, 0.2, 0.001) = 0.002;
@@ -51,6 +53,7 @@ float perlin(vec2 pos) {
 
 
 void vertex(){
+
 	POSITION = vec4(VERTEX.xy,1.0,1.0);
 }
 
@@ -80,29 +83,43 @@ void fragment() {
     float depthSobelX = 0.0;
     float depthSobelY = 0.0;
 
+    float normalSobelX = 0.0;
+    float normalSobelY = 0.0;
+
     for(int i = -1; i <= 1; i++) {
         for(int j = -1; j <= 1; j++) {
 			float depth = texture(depth_texture, uv + vec2(float(i) * dx, float(j) * dy)).r;
+			vec3 normal = normalize(texture(normal_texture, uv + vec2(float(i) * dx, float(j) * dy)).rgb * 2.0 - 1.0);
 			depthSobelX += Gx[i+1][j+1] * depth;
 			depthSobelY += Gy[i+1][j+1] * depth;
+			normalSobelX += Gx[i+1][j+1] * normal.x;
+			normalSobelY += Gy[i+1][j+1] * normal.y;
         }
     }
 
     float depthMagnitude = length(vec2(depthSobelX, depthSobelY));
+    float normalMagnitude = length(vec2(normalSobelX, normalSobelY));
 
     // Combine the results
-    float magnitude = depthMagnitude;
+    float magnitude = depthMagnitude + normalMagnitude * normal_influence;
+
+
+	// distort the hatching
+	vec3 normal_sample = normalize(texture(normal_texture, uv).rgb * 2.0 - 1.0);
+	vec2 distorted_uv = uv + normal_sample.xy * 2.0 ;
 
 
 	vec3 screen_color = texture(screen_texture,uv).rgb;
 	float luminance = dot(screen_color, vec3(0.299, 0.587, 0.114));
 
-	vec4 texture_color = texture(screen_texture,uv);
-    if (magnitude > edge_threshold) {
+	vec4 texture_color;
+	texture_color = texture(screen_texture,uv);
+
+    if (magnitude > edge_threshold * (1.0 - pow(texture(depth_texture, uv).r, depth_affect))) {
         ALBEDO = edge_color;
     } else {
-        // 使用纹理颜色
         ALBEDO = texture_color.rgb;
     }
+	//ALBEDO = vec3(sqrt(texture(depth_texture, uv).r));
 
 }
