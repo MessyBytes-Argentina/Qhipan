@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://0cxlakla58w0"]
+[gd_scene load_steps=26 format=4 uid="uid://0cxlakla58w0"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_xe1mk"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_olile"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="13_gxiiq"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="14_en2b8"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/LevelResources/Props/Door/Door.tscn" id="15_ix3bf"]
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="16_en2b8"]
+[ext_resource type="PackedScene" uid="uid://dx2n1ylng4vpn" path="res://GodotObjects/LevelResources/Walls/WallTest.tscn" id="16_en2b8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_en2b8"]
 sky_horizon_color = Color(0, 0, 0, 1)
@@ -99,90 +99,6 @@ roughness = 0.5
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ynn0r"]
 height = 4.5
 radius = 1.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_ix3bf"]
-size = Vector2(50, 10)
-
-[sub_resource type="Gradient" id="Gradient_vqboj"]
-offsets = PackedFloat32Array(0.75, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_yven4"]
-gradient = SubResource("Gradient_vqboj")
-
-[sub_resource type="Gradient" id="Gradient_lvs7r"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_184cb"]
-gradient = SubResource("Gradient_lvs7r")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nqvkc"]
-load_path = "res://.godot/imported/Ladrillo Interior_albedo.png-36669befce285f460b26768435e0b8d9.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ewfo1"]
-load_path = "res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5h122"]
-load_path = "res://.godot/imported/Ladrillo Interior_albedo.png-36669befce285f460b26768435e0b8d9.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y51cu"]
-load_path = "res://.godot/imported/Ladrillo Interior_normal.png-2d74ef36e57d87023eebaed0e536d47b.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_53vrk"]
-render_priority = 0
-shader = ExtResource("16_en2b8")
-shader_parameter/albedo = Color(0.5529556, 0.55295557, 0.55295557, 1)
-shader_parameter/light_gradient = SubResource("GradientTexture1D_184cb")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_yven4")
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("CompressedTexture2D_5h122")
-shader_parameter/side_texture_albedo = SubResource("CompressedTexture2D_nqvkc")
-shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = SubResource("CompressedTexture2D_y51cu")
-shader_parameter/side_texture_normal = SubResource("CompressedTexture2D_ewfo1")
-shader_parameter/top_normal_scale = 1.0
-shader_parameter/side_normal_scale = 1.0
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 1.0
-shader_parameter/side_roughness = 1.0
-shader_parameter/top_metallic_specular = 0.5
-shader_parameter/side_metallic_specular = 0.5
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 1.0
-shader_parameter/side_emission_energy_multiplier = 1.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 1.0
-shader_parameter/side_clearcoat = 1.0
-shader_parameter/top_clearcoat_roughness = 0.5
-shader_parameter/side_clearcoat_roughness = 0.5
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [node name="BaseLevelScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
@@ -327,7 +243,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, -9)
 [node name="KeySticker2" parent="Stickers" instance=ExtResource("14_en2b8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.5, -42)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5, -2, -13.5)
-mesh = SubResource("QuadMesh_ix3bf")
-surface_material_override/0 = SubResource("ShaderMaterial_53vrk")
+[node name="StaticBody3D" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -1.5, 1, 1)
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -1.5, 0.5, 0)
+
+[node name="StaticBody3D4" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -1.5, 0, -1)
+
+[node name="StaticBody3D5" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -1.5, -0.5, -2)
+
+[node name="StaticBody3D6" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 5, -1.5, -1, -5)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -1.5, 1.5, 3.5)
