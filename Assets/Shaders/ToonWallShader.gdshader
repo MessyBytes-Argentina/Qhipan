@@ -1,9 +1,11 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+stencil_mode write, 2, compare_always;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
 // Base
+uniform bool goesDown = false;
 uniform vec4 albedo : source_color = vec4(1.0);
 uniform sampler2D obfuscate_gradient;
 uniform int texture_number : hint_range(1, 5, 1) = 1;
@@ -113,6 +115,7 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
+	base_uv.y = (1.0 - base_uv.y) * float(goesDown) + base_uv.y * float(!goesDown);
 	int current_texture = 0;
 	for (int i = texture_number - 1; i >= 0; i--) {
 		current_texture += int(texture_divisions[i] >= base_uv.y);

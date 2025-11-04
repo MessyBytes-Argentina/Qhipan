@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://duqlyfcy6ckyy" path="res://Assets/Textures/Character/IDLE BACK/BACK 3.png" id="16_vmy0v"]
 [ext_resource type="Texture2D" uid="uid://brl7tlmrv10ry" path="res://Assets/Textures/Character/IDLE BACK/BACK 4.png" id="17_84qwu"]
 [ext_resource type="Texture2D" uid="uid://b72ik3kxud5rh" path="res://Assets/Textures/Character/WALK BACK/BW 1.png" id="18_yiccp"]
+[ext_resource type="Shader" uid="uid://cb0b3u03ens4d" path="res://Assets/Shaders/ScreenVerticalVignette.gdshader" id="19_uxb7q"]
 [ext_resource type="Texture2D" uid="uid://bxu0ow1ccn7v8" path="res://Assets/Textures/Character/WALK BACK/BW 2.png" id="19_w2rxr"]
 [ext_resource type="Texture2D" uid="uid://bu10dw62umb1b" path="res://Assets/Textures/Character/WALK BACK/BW 3.png" id="20_l1a28"]
 [ext_resource type="Texture2D" uid="uid://d267o8r7pgii8" path="res://Assets/Textures/Character/WALK BACK/BW 4.png" id="21_0t7aq"]
@@ -135,6 +136,22 @@ albedo_color = Color(0.490196, 1, 1, 0.784314)
 [sub_resource type="BoxMesh" id="BoxMesh_k5k78"]
 material = SubResource("ORMMaterial3D_k5k78")
 size = Vector3(4, 4, 4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="Gradient_uxb7q"]
+offsets = PackedFloat32Array(0.025, 0.1, 0.9, 0.975)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_otkym"]
+gradient = SubResource("Gradient_uxb7q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otkym"]
+render_priority = -1
+shader = ExtResource("19_uxb7q")
+shader_parameter/vignete_gradient = SubResource("GradientTexture1D_otkym")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
 top_radius = 0.0
@@ -778,9 +795,22 @@ cull_mask = 786431
 current = true
 fov = 55.0
 
-[node name="PostProcessing" parent="CameraPivot/CameraZoomPivot/Camera3D" instance=ExtResource("10_3jjt7")]
+[node name="PostProcessing" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
 unique_name_in_owner = true
+visible = false
+
+[node name="Outlines" parent="CameraPivot/CameraZoomPivot/Camera3D/PostProcessing" instance=ExtResource("10_3jjt7")]
+visible = true
 layers = 524288
+skeleton = NodePath("../..")
+
+[node name="VerticalVignette" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D/PostProcessing"]
+layers = 524288
+extra_cull_margin = 16384.0
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_vq31v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_otkym")
 
 [node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
 unique_name_in_owner = true
