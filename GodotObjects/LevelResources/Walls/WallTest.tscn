@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dx2n1ylng4vpn"]
+[gd_scene load_steps=24 format=3 uid="uid://dx2n1ylng4vpn"]
 
 [ext_resource type="Shader" uid="uid://jpx38fwrtxta" path="res://Assets/Shaders/ToonWallShader.gdshader" id="1_uode6"]
 [ext_resource type="Texture2D" uid="uid://clkg2wg01hac6" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_albedo.png" id="2_i2hll"]
@@ -37,11 +37,28 @@ offsets = PackedFloat32Array(0.07539683, 0.11111111)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j1oqn"]
 gradient = SubResource("Gradient_5sda3")
 
+[sub_resource type="Gradient" id="Gradient_i2hll"]
+offsets = PackedFloat32Array(0.025, 0.1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fv5ss"]
+gradient = SubResource("Gradient_i2hll")
+
+[sub_resource type="Gradient" id="Gradient_uode6"]
+offsets = PackedFloat32Array(0.1, 0.15)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i2hll"]
+gradient = SubResource("Gradient_uode6")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53vrk"]
 render_priority = 0
 shader = ExtResource("1_uode6")
+shader_parameter/goesDown = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/obfuscate_gradient = SubResource("GradientTexture1D_j1oqn")
+shader_parameter/screen_obfuscate_gradient = SubResource("GradientTexture1D_fv5ss")
+shader_parameter/selective_obfuscate_gradient = SubResource("GradientTexture1D_i2hll")
+shader_parameter/selective_obfuscate_mask = ExtResource("4_j1oqn")
+shader_parameter/selective_obfuscate_mask_channel = Vector4(0, 0, 1, 0)
 shader_parameter/texture_number = 3
 shader_parameter/texture_divisions = PackedFloat32Array(0.3, 0.55)
 shader_parameter/light_gradient = SubResource("GradientTexture1D_184cb")

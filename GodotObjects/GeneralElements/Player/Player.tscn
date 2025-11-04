@@ -805,6 +805,7 @@ layers = 524288
 skeleton = NodePath("../..")
 
 [node name="VerticalVignette" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D/PostProcessing"]
+visible = false
 layers = 524288
 extra_cull_margin = 16384.0
 ignore_occlusion_culling = true

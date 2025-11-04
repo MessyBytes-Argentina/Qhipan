@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://0cxlakla58w0"]
+[gd_scene load_steps=49 format=4 uid="uid://0cxlakla58w0"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_xe1mk"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_olile"]
@@ -113,8 +113,8 @@ radius = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_0x1d8"]
 size = Vector3(0.5, 5, 1)
 
-[sub_resource type="QuadMesh" id="QuadMesh_a6rsa"]
-size = Vector2(1, 5)
+[sub_resource type="QuadMesh" id="QuadMesh_6aay1"]
+size = Vector2(1, 6)
 
 [sub_resource type="Gradient" id="Gradient_vqboj"]
 offsets = PackedFloat32Array(0.75, 1)
@@ -136,12 +136,28 @@ offsets = PackedFloat32Array(0.07539683, 0.11111111)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j1oqn"]
 gradient = SubResource("Gradient_5sda3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf420"]
+[sub_resource type="Gradient" id="Gradient_i2hll"]
+offsets = PackedFloat32Array(0.025, 0.1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fv5ss"]
+gradient = SubResource("Gradient_i2hll")
+
+[sub_resource type="Gradient" id="Gradient_uode6"]
+offsets = PackedFloat32Array(0.1, 0.15)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i2hll"]
+gradient = SubResource("Gradient_uode6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6aay1"]
 render_priority = 0
 shader = ExtResource("17_6aay1")
 shader_parameter/goesDown = true
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/obfuscate_gradient = SubResource("GradientTexture1D_j1oqn")
+shader_parameter/screen_obfuscate_gradient = SubResource("GradientTexture1D_fv5ss")
+shader_parameter/selective_obfuscate_gradient = SubResource("GradientTexture1D_i2hll")
+shader_parameter/selective_obfuscate_mask = ExtResource("20_5h122")
+shader_parameter/selective_obfuscate_mask_channel = Vector4(0, 0, 1, 0)
 shader_parameter/texture_number = 3
 shader_parameter/texture_divisions = PackedFloat32Array(0.3, 0.55)
 shader_parameter/light_gradient = SubResource("GradientTexture1D_184cb")
@@ -328,8 +344,11 @@ transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -1.5, -0.5, -2)
 [node name="StaticBody3D6" parent="." instance=ExtResource("16_en2b8")]
 transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 5, -1.5, -1, -5)
 
+[node name="StaticBody3D2" parent="." instance=ExtResource("16_en2b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -1.5, 1.5, 3.5)
+
 [node name="StaticBody3D7" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 4, 1.5009999, -1, 3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 1.51, -3.5, 3.5)
 collision_layer = 32
 collision_mask = 32
 
@@ -338,10 +357,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
 shape = SubResource("BoxShape3D_0x1d8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D7"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.0000002, 0, -1.0000002, 0, -4.3711402e-08, 0, -2.5, 0)
-mesh = SubResource("QuadMesh_a6rsa")
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, 0)
+mesh = SubResource("QuadMesh_6aay1")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_tf420")
-
-[node name="StaticBody3D2" parent="." instance=ExtResource("16_en2b8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -1.5, 1.5, 3.5)
+surface_material_override/0 = SubResource("ShaderMaterial_6aay1")
