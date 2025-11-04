@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0ubnhljssp07"]
+
+[ext_resource type="Script" uid="uid://br7snlhsty813" path="res://GodotObjects/LevelResources/LampSpecials/SpecialLightArea.gd" id="1_sxscc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_os36r"]
+height = 4.0
+radius = 3.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sxscc"]
+height = 4.0
+radius = 2.5
+
+[node name="SpecialLightArea" type="OmniLight3D"]
+light_color = Color(0.784314, 0.509804, 0, 1)
+light_energy = 0.0
+light_cull_mask = 4293918721
+shadow_enabled = true
+shadow_caster_mask = 4293918721
+omni_range = 0.0
+omni_attenuation = 0.0
+script = ExtResource("1_sxscc")
+metadata/SpecialAlternation = true
+
+[node name="LightArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+metadata/Parent = NodePath("..")
+
+[node name="LightShape" type="CollisionShape3D" parent="LightArea"]
+unique_name_in_owner = true
+shape = SubResource("CylinderShape3D_os36r")
+debug_color = Color(0.83014625, 0.3939382, 0, 0.41960785)
+
+[node name="StickerLightArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StickerLightArea"]
+shape = SubResource("CylinderShape3D_sxscc")
+debug_color = Color(0.986798, 0, 0.31983, 0.42)
+
+[connection signal="body_entered" from="LightArea" to="." method="_light_body_entered"]
+[connection signal="body_exited" from="LightArea" to="." method="_light_body_exited"]
+[connection signal="body_entered" from="StickerLightArea" to="." method="_sticker_light_body_entered"]
+[connection signal="body_exited" from="StickerLightArea" to="." method="_sticker_light_body_exited"]
