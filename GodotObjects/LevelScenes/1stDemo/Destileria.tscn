@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://0cxlakla58w0"]
+[gd_scene load_steps=49 format=4 uid="uid://0cxlakla58w0"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_xe1mk"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_olile"]
@@ -16,6 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="14_en2b8"]
 [ext_resource type="PackedScene" uid="uid://b0sqkoo60eyuw" path="res://GodotObjects/LevelResources/Props/Door/Door.tscn" id="15_ix3bf"]
 [ext_resource type="PackedScene" uid="uid://dx2n1ylng4vpn" path="res://GodotObjects/LevelResources/Walls/WallTest.tscn" id="16_en2b8"]
+[ext_resource type="Shader" uid="uid://jpx38fwrtxta" path="res://Assets/Shaders/ToonWallShader.gdshader" id="17_6aay1"]
+[ext_resource type="Texture2D" uid="uid://clkg2wg01hac6" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_albedo.png" id="18_ewfo1"]
+[ext_resource type="Texture2D" uid="uid://dmwpypdqdxhyw" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_albedo.png" id="19_605ed"]
+[ext_resource type="Texture2D" uid="uid://d2nk867vnj0n7" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_albedo.png" id="20_5h122"]
+[ext_resource type="Texture2D" uid="uid://dsmfd83hxy5ws" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_normal.png" id="21_y2onv"]
+[ext_resource type="Texture2D" uid="uid://b6swvfdqty0ij" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_normal.png" id="22_y51cu"]
+[ext_resource type="Texture2D" uid="uid://cn2m6uyv3qydi" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_normal.png" id="23_mt8rd"]
+[ext_resource type="Texture2D" uid="uid://b6jn1dld8qlt5" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_orm.png" id="24_53vrk"]
+[ext_resource type="Texture2D" uid="uid://c1p3eog3nrjuu" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_orm.png" id="25_bd8a6"]
+[ext_resource type="Texture2D" uid="uid://v6c0qkc42yb5" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_orm.png" id="26_ubqdx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_en2b8"]
 sky_horizon_color = Color(0, 0, 0, 1)
@@ -100,6 +110,82 @@ roughness = 0.5
 height = 4.5
 radius = 1.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x1d8"]
+size = Vector3(0.5, 5, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_6aay1"]
+size = Vector2(1, 6)
+
+[sub_resource type="Gradient" id="Gradient_vqboj"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yven4"]
+gradient = SubResource("Gradient_vqboj")
+
+[sub_resource type="Gradient" id="Gradient_lvs7r"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_184cb"]
+gradient = SubResource("Gradient_lvs7r")
+
+[sub_resource type="Gradient" id="Gradient_5sda3"]
+offsets = PackedFloat32Array(0.07539683, 0.11111111)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j1oqn"]
+gradient = SubResource("Gradient_5sda3")
+
+[sub_resource type="Gradient" id="Gradient_i2hll"]
+offsets = PackedFloat32Array(0.025, 0.1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fv5ss"]
+gradient = SubResource("Gradient_i2hll")
+
+[sub_resource type="Gradient" id="Gradient_uode6"]
+offsets = PackedFloat32Array(0.1, 0.15)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i2hll"]
+gradient = SubResource("Gradient_uode6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6aay1"]
+render_priority = 0
+shader = ExtResource("17_6aay1")
+shader_parameter/goesDown = true
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/obfuscate_gradient = SubResource("GradientTexture1D_j1oqn")
+shader_parameter/screen_obfuscate_gradient = SubResource("GradientTexture1D_fv5ss")
+shader_parameter/selective_obfuscate_gradient = SubResource("GradientTexture1D_i2hll")
+shader_parameter/selective_obfuscate_mask = ExtResource("20_5h122")
+shader_parameter/selective_obfuscate_mask_channel = Vector4(0, 0, 1, 0)
+shader_parameter/texture_number = 3
+shader_parameter/texture_divisions = PackedFloat32Array(0.3, 0.55)
+shader_parameter/light_gradient = SubResource("GradientTexture1D_184cb")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_yven4")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/textures_albedo = Array[Texture2D]([ExtResource("18_ewfo1"), ExtResource("19_605ed"), ExtResource("20_5h122")])
+shader_parameter/enable_normal = true
+shader_parameter/textures_normal = Array[Texture2D]([ExtResource("21_y2onv"), ExtResource("22_y51cu"), ExtResource("23_mt8rd")])
+shader_parameter/normal_scale = 2.570000882075
+shader_parameter/textures_orm = Array[Texture2D]([ExtResource("24_53vrk"), ExtResource("25_bd8a6"), ExtResource("26_ubqdx")])
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/textures_emission = null
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/textures_clearcoat = null
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/textures_anisotropy_flowmap = null
+shader_parameter/anisotropy = 0.0
+
 [node name="BaseLevelScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
@@ -179,7 +265,7 @@ data = {
 "cells": PackedInt32Array(-393217, 65532, 1441949, -262145, 65534, 1441949, -524289, 65532, 1048738, -524289, 65531, 1048728, -524289, 65529, 655487, -524289, 65528, 655487, -524289, 65527, 655487, -524289, 65526, 655487, -524289, 65525, 655487, -524289, 65530, 655512, -589824, 65530, 655512, -589824, 65529, 655512, -589824, 65528, 655512, -589824, 65527, 655512, -589824, 65526, 655512, -589824, 65525, 655512, -589824, 65524, 655512, -524289, 65524, 655487, -524290, 65530, 655512, -524290, 65529, 655512, -524290, 65528, 655512, -524290, 65527, 655512, -524290, 65526, 655512, -524290, 65525, 655512, -524290, 65524, 655512, -589823, 65530, 655512, -589823, 65529, 655512, -589823, 65528, 655512, -589823, 65527, 655512, -589823, 65526, 655512, -589822, 65530, 655512, -589822, 65529, 655512, -589822, 65528, 655512, -589822, 65527, 655512, -589822, 65526, 655527, -589822, 65525, 655512, -589823, 65525, 655512, -458751, 65525, 1048731, -458750, 65525, 655512, -458751, 65527, 155, -458751, 65528, 655512, -458751, 65529, 655512, -524289, 65523, 655487, -589824, 65523, 655512, -524290, 65523, 655512, -589824, 65522, 655512, -524289, 65522, 655512, -524290, 65522, 655512, -196609, 65535, 1441949, -327681, 65535, 1048736, -393217, 65534, 1048736, -458753, 65533, 1048736, -262145, 65535, 1048730, -262145, 0, 1048728, -327681, 65533, 1441949, -524289, 65520, 1048728, -589824, 65520, 1048728, -589824, 65519, 1048728, -524289, 65519, 1048728, -524290, 65519, 1048728, -524290, 65520, 1048728, -589824, 65518, 1048728, -524289, 65518, 1048728, -524290, 65518, 1048728, -589824, 65517, 1048728, -524289, 65517, 1048728, -524290, 65517, 1048728, -524290, 65516, 1048728, -524289, 65516, 1048728, -589824, 65516, 1048728, -589824, 65515, 1048728, -524289, 65515, 1048728, -524289, 65514, 1048728, -524290, 65514, 1048728, -524290, 65515, 1048728, -524290, 65513, 1048728, -524290, 65512, 1048728, -524289, 65512, 1048728, -524289, 65513, 1048728, -589824, 65513, 1048728, -589824, 65514, 1048728, -589824, 65512, 1048728, -589824, 65511, 1048728, -589824, 65510, 1048728, -524289, 65510, 1048728, -524290, 65510, 1048728, -524290, 65511, 1048728, -524289, 65511, 1048728, -589823, 65510, 1048728, -589823, 65511, 1048728, -589823, 65512, 1048728, -524291, 65511, 1048728, -524291, 65510, 1048728, -524291, 65512, 1048728, -524290, 65509, 1048728, -524289, 65509, 1048728, -589824, 65509, 1048728, -458751, 65512, 655517, -458751, 65511, 655517, -458751, 65510, 655517, -589824, 65508, 655512, -524289, 65508, 655512, -524290, 65508, 655512, -524290, 65507, 655512, -524289, 65507, 655512, -589824, 65507, 655512, -589824, 65506, 655512, -524289, 65506, 655512, -524290, 65505, 655512, -524290, 65504, 655512, -524289, 65503, 655512, -524289, 65504, 655512, -589824, 65504, 655512, -524289, 65505, 655512, -589824, 65505, 655512, -524290, 65506, 655512, -524290, 65503, 655512, -589824, 65503, 655512, -524290, 65502, 655512, -524290, 65501, 655512, -524289, 65501, 655512, -589824, 65501, 655512, -589824, 65502, 655512, -524289, 65502, 655512, -524289, 65500, 655512, -524289, 65499, 655512, -589824, 65499, 655512, -589823, 65499, 655512, -589823, 65498, 655512, -589823, 65497, 655512, -589823, 65496, 655512, -589824, 65496, 655512, -524289, 65496, 655512, -524290, 65496, 655512, -524291, 65496, 655512, -524291, 65495, 655512, -524291, 65494, 655512, -524290, 65494, 655512, -524289, 65494, 655512, -524289, 65493, 655512, -524290, 65493, 1048728, -524291, 65493, 655512, -524291, 65492, 655512, -524290, 65492, 655512, -524289, 65492, 655512, -589824, 65492, 655513, -589824, 65493, 655513, -720895, 65493, 655513, -720895, 65492, 655513, -720896, 65492, 1048728, -720896, 65493, 1048728, -851967, 65493, 1048703, -851967, 65492, 1048703, -851966, 65493, 127, -851966, 65492, 127, -851966, 65491, 127, -851966, 65490, 1048703, -524291, 65485, 1048728, -524290, 65485, 1048728, -524289, 65485, 1048728, -524291, 65484, 1048728, -524291, 65483, 1048728, -524290, 65483, 1048728, -524290, 65484, 1048728, -524289, 65484, 1048728, -524289, 65483, 1048728, -851966, 65489, 1048703, -851966, 65488, 1048703, -851968, 65492, 1048703, -786433, 65492, 1048703, -786434, 65492, 1048703, -851968, 65493, 1048703, -786433, 65493, 1048703, -786434, 65493, 1048703, -786435, 65493, 1048703, -786435, 65492, 1048703, -851966, 65486, 1048703, -851966, 65487, 1048703, -851967, 65486, 1048703, -851968, 65486, 1048703, -786433, 65486, 1048703, -786434, 65486, 1048703, -786435, 65486, 1048703, -786435, 65487, 1048703, -786435, 65488, 1048703, -786435, 65489, 1048703, -786435, 65490, 1048703, -786435, 65491, 1048703, -786434, 65491, 1048703, -786433, 65491, 1048703, -851968, 65491, 1048703, -851967, 65491, 1048703, -851967, 65490, 1048703, -851967, 65489, 1048703, -851967, 65488, 1048703, -851967, 65487, 1048703, -851968, 65487, 1048703, -786433, 65487, 1048703, -786434, 65487, 1048703, -786434, 65488, 1048703, -786434, 65489, 1048703, -786434, 65490, 1048703, -786433, 65490, 1048703, -851968, 65490, 1048703, -851968, 65489, 1048703, -851968, 65488, 1048703, -786433, 65488, 1048703, -786433, 65489, 1048703, -655363, 65492, 1048728, -655362, 65492, 1048728, -655361, 65492, 1048728, -655363, 65493, 1048728, -655362, 65493, 1048728, -655361, 65493, 1048728, -655361, 65485, 1048728, -655361, 65484, 1048728, -655361, 65483, 1048728, -655362, 65483, 1048728, -655363, 65483, 1048728, -655362, 65484, 1048728, -655362, 65485, 1048728, -655363, 65485, 1048728, -655363, 65484, 1048728, -786435, 65485, 1048703, -786435, 65484, 1048703, -786435, 65483, 1048703, -786434, 65484, 1048703, -786434, 65483, 1048703, -786433, 65484, 1048703, -786433, 65483, 1048703, -786433, 65485, 1048703, -786434, 65485, 1048703, -262146, 0, 152, -327680, 0, 152, -524290, 65531, 152, -589824, 65531, 152, -393218, 65532, 1441949, -458752, 65532, 1441949, -393216, 65533, 1441949, -327682, 65533, 1441949, -262146, 65534, 1441949, -327680, 65534, 1441949, -196610, 65535, 1441949, -262144, 65535, 1441949, -524288, 65533, 1048736, -458754, 65533, 1048736, -393218, 65534, 1048736, -458752, 65534, 1048728, -327680, 65535, 1048730, -262146, 65535, 1048730, -524290, 65532, 1048738, -589824, 65532, 1048728, -524290, 65521, 1048728, -589824, 65521, 1048728, -458752, 65521, 1048728, -393218, 65521, 1048728, -262146, 65521, 1048728, -327680, 65521, 1048728, -262145, 65521, 1048728, -196608, 65521, 1048728, -131073, 65521, 1048728, -131074, 65521, 1048728, -65536, 65521, 1048728, -1, 65521, 1048728, -2, 65521, 1048728, 131070, 65521, 1048728, 131071, 65521, 1048728, 65536, 65521, 1048728, 196608, 65521, 1048728, 262143, 65521, 1048728, 262142, 65521, 1048728, 393214, 65521, 1048728, 393215, 65521, 1048728, 327680, 65521, 1048728, -458752, 0, 1048728, -393217, 0, 1048728, -393218, 0, 1048728, -589824, 0, 1048728, -524289, 0, 1048728, -524290, 0, 1048728, -720896, 0, 1048728, -655361, 0, 1048728, -655362, 0, 1048728, -851968, 0, 1048728, -786433, 0, 1048728, -786434, 0, 1048728, -327680, 1, 1048728, -262145, 1, 1048728, -262146, 1, 1048728, -262146, 2, 1048728, -262146, 3, 1048728, -262146, 4, 1048728, -262145, 4, 1048728, -327680, 4, 1048728, -327680, 3, 1048728, -327680, 2, 1048728, -262145, 2, 1048728, -262145, 3, 1048728, -196608, 1, 1048728, -131073, 1, 1048728, -131074, 1, 1048728, -131074, 2, 1048728, -131074, 3, 1048728, -131074, 4, 1048728, -131073, 4, 1048728, -196608, 4, 1048728, -196608, 3, 1048728, -131073, 2, 1048728, -196608, 2, 1048728, -131073, 3, 1048728, -458752, 1, 1048728, -589824, 1, 1048728, -720896, 1, 1048728, -851968, 1, 1048728, -851968, 2, 1048728, -851968, 3, 1048728, -851968, 4, 1048728, -720896, 4, 1048728, -720896, 3, 1048728, -720896, 2, 1048728, -589824, 2, 1048728, -589824, 3, 1048728, -589824, 4, 1048728, -458752, 4, 1048728, -458752, 3, 1048728, -458752, 2, 1048728, -458752, 65535, 1048728, -589824, 65534, 1048728, -589824, 65535, 1048728, -589824, 65533, 1048728, -720896, 65532, 1048728, -720896, 65533, 1048728, -720896, 65534, 1048728, -720896, 65535, 1048728, -720896, 65531, 1048728, -851968, 65531, 1048728, -851968, 65532, 1048728, -851968, 65533, 1048728, -851968, 65534, 1048728, -851968, 65535, 1048728, -851968, 65530, 1048728, -851967, 65530, 1048728, -851966, 65530, 1048728, -851966, 65529, 1048728, -851966, 65528, 1048728, -720894, 65530, 1048728, -720895, 65530, 1048728, -720896, 65530, 1048728, -720894, 65529, 1048728, -720894, 65528, 1048728, -720894, 65527, 1048743, -720894, 65526, 1048728, -720894, 65525, 1048728, -851966, 65527, 1048728, -851966, 65526, 1048728, -851966, 65525, 1048728, -589821, 65527, 1048728, -589821, 65528, 1048728, -589821, 65529, 1048728, -589821, 65530, 1048728, -720893, 65530, 1048728, -851965, 65530, 1048728, -851965, 65529, 1048728, -851965, 65528, 1048728, -851965, 65526, 1048728, -851965, 65525, 1048728, -851965, 65527, 1048728, -720893, 65529, 1048728, -720893, 65528, 1048728, -720893, 65527, 1048728, -720893, 65526, 1048728, -720893, 65525, 1048728, -589821, 65525, 1048728, -458749, 65525, 1048728, -458752, 65533, 1048730, -589821, 65526, 1048728)
 }
 script = ExtResource("6_bbcfm")
-metadata/_editor_floor_ = Vector3(0, -9, 0)
+metadata/_editor_floor_ = Vector3(0, -7, 0)
 
 [node name="Props" type="Node3D" parent="."]
 
@@ -260,3 +346,18 @@ transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 5, -1.5, -1, -5)
 
 [node name="StaticBody3D2" parent="." instance=ExtResource("16_en2b8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, -1.5, 1.5, 3.5)
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 1.51, -3.5, 3.5)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
+shape = SubResource("BoxShape3D_0x1d8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D7"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.5, 0)
+mesh = SubResource("QuadMesh_6aay1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_6aay1")

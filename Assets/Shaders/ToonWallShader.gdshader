@@ -4,8 +4,13 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
 // Base
+uniform bool goesDown = false;
 uniform vec4 albedo : source_color = vec4(1.0);
 uniform sampler2D obfuscate_gradient;
+uniform sampler2D screen_obfuscate_gradient;
+uniform sampler2D selective_obfuscate_gradient;
+uniform sampler2D selective_obfuscate_mask : source_color, filter_linear_mipmap, repeat_enable;
+uniform vec4 selective_obfuscate_mask_channel = vec4(0.0, 0.0, 1.0, 0.0);
 uniform int texture_number : hint_range(1, 5, 1) = 1;
 // From 0.0 to 1.0
 uniform float[4] texture_divisions;
@@ -58,9 +63,6 @@ uniform sampler2D[5] textures_anisotropy_flowmap : filter_linear_mipmap, repeat_
 uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 
 // Globals
-varying vec3 world_normal;
-varying vec3 view_normal;
-varying vec3 worldVector;
 varying float shortestDistance;
 varying vec3 triplanar_pos;
 varying vec3 power_normal;
@@ -89,10 +91,6 @@ void vertex() {
 				COLOR.rgb * (1.0 / 12.92),
 				lessThan(COLOR.rgb, vec3(0.04045)));
 	}
-	vec3 temp_normal = normalize((MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz);
-	world_normal = (INV_VIEW_MATRIX * vec4(temp_normal, 0.0)).xyz;
-	view_normal = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
-	worldVector = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
 	power_normal = pow(abs(normal), vec3(blend_sharpness));
 	triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -113,15 +111,22 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
+	base_uv.y = (1.0 - base_uv.y) * float(goesDown) + base_uv.y * float(!goesDown);
+	vec2 screen_uv = SCREEN_UV;
+	screen_uv.y = (1.0 - screen_uv.y) * float(goesDown) + screen_uv.y * float(!goesDown);
 	int current_texture = 0;
 	for (int i = texture_number - 1; i >= 0; i--) {
 		current_texture += int(texture_divisions[i] >= base_uv.y);
 	}
-	vec3 obfuscation = texture(obfuscate_gradient, vec2(base_uv.y)).rgb;
+	vec3 top_obfuscation = texture(obfuscate_gradient, vec2(base_uv.y)).rgb;
+	vec3 screen_obfuscation = texture(screen_obfuscate_gradient, vec2(screen_uv.y)).rgb;
+	vec3 selective_screen_obfuscation = vec3(1.0) - texture(selective_obfuscate_gradient, vec2(screen_uv.y)).rgb;
+	float temp_mask = 1.0 - step(0.01, dot(triplanar_texture(selective_obfuscate_mask, power_normal, triplanar_pos), selective_obfuscate_mask_channel));
+	selective_screen_obfuscation = vec3(temp_mask) * selective_screen_obfuscation + (vec3(1.0) - selective_screen_obfuscation);
 
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(textures_albedo[current_texture], power_normal, triplanar_pos);
-	ALBEDO = base_albedo.rgb * albedo.rgb * obfuscation;
+	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation;
 
 	// ORM Sampler
 	vec4 base_ORM = triplanar_texture(textures_orm[current_texture], power_normal, triplanar_pos);

@@ -69,15 +69,15 @@ func update_collision_shape() -> void:
 	for lightArea in lights: 
 		if lightArea.has_node("LightShape"): 
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
-			var sticker: LampSticker = lightArea.get_node(lightArea.get_meta("Sticker"))
+			var parent: Node = lightArea.get_node(lightArea.get_meta("Parent"))
 			lightDistances[lightArea.global_position] = lightShape.shape.radius
-			if sticker.lightTween: 
-				if sticker.lightTween.is_running(): 
-					if sticker not in lightsTweening: lightsTweening.append(sticker)
+			if parent.lightTween: 
+				if parent.lightTween.is_running(): 
+					if parent not in lightsTweening: lightsTweening.append(parent)
 				else:
-					lightsTweening.erase(sticker)
+					lightsTweening.erase(parent)
 			else:
-				lightsTweening.erase(sticker)
+				lightsTweening.erase(parent)
 	for i in range(len(collisionMap.map_data)):
 		var vertexFlatGlobalPosition: Vector2 = Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)
@@ -94,7 +94,7 @@ func update_collision_shape() -> void:
 
 ## Notifies when a light is shone up on the darkness area
 func _on_area_entered(area: Area3D) -> void:
-	if area not in lights and area.get_collision_layer_value(5): 
+	if area not in lights and area.get_collision_layer_value(5):
 		lights.append(area)
 		update_collision_shape()
 

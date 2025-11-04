@@ -7,10 +7,10 @@ flip_faces = true
 size = Vector2(2, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fj5th"]
-render_priority = -1
+render_priority = -2
 shader = ExtResource("1_p18uu")
 shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/edge_threshold = 0.0049999998734999995
+shader_parameter/edge_threshold = 0.00499999987349999
 shader_parameter/normal_influence = 0.0
 shader_parameter/depth_affect = 0.149999996205
 shader_parameter/noise_frequency = 10.0
