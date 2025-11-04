@@ -78,7 +78,6 @@ func update_collision_shape() -> void:
 					lightsTweening.erase(parent)
 			else:
 				lightsTweening.erase(parent)
-			print(parent.name)
 	for i in range(len(collisionMap.map_data)):
 		var vertexFlatGlobalPosition: Vector2 = Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)
