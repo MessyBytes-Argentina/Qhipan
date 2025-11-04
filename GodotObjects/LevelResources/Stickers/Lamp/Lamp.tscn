@@ -188,7 +188,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 0
-metadata/Sticker = NodePath("../..")
+metadata/Parent = NodePath("../..")
 
 [node name="LightShape" type="CollisionShape3D" parent="Shapes/LightArea"]
 unique_name_in_owner = true

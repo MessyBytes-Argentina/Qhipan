@@ -35,8 +35,8 @@ func _ready() -> void:
 	var parent = get_parent()
 	if parent is AlternatingGroup: 
 		groupParent = parent
-	else:
-		prints(name," isn't in a group")
+	#else:
+		#prints(name," isn't in a group")
 
 func switch_state() -> void:
 	if isOff:

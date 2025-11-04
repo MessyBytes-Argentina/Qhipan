@@ -1,6 +1,9 @@
 extends CharacterBody3D
 class_name StickerBase
 
+## Signals that the sticker was placed or removed
+signal just_placed(bool)
+
 ## Size of the sticker when the camera zooms out.
 const ZOOMOUTSCALE: float = 0.5
 ## Size of the sticker when floating on the ground.
@@ -153,6 +156,7 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 	placedPosition = area.global_position
 	global_position = area.global_position + direction * 0.01
 	placed = true
+	just_placed.emit(placed)
 	grabed = false
 	if not Vector3.UP.cross(direction).is_zero_approx():
 		look_at(global_position - direction)
@@ -187,6 +191,7 @@ func set_size(mode: ScaleModes) -> void:
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
+			just_placed.emit(true)
 		ScaleModes.ZOOMEDOUT:
 			stop_rotation()
 			billboardZoomedOut.show()
@@ -206,6 +211,7 @@ func grab(node: Node3D) -> void:
 	set_size(ScaleModes.GRABBED)
 	grabed = true
 	placed = false
+	just_placed.emit(placed)
 
 ## Called when player reset is called
 func reset_sticker() -> void:
@@ -213,6 +219,7 @@ func reset_sticker() -> void:
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
+	just_placed.emit(placed)
 	check_placement()
 
 ## Drops the sticker on the ground reparenting it to the scene
@@ -221,6 +228,7 @@ func drop() -> void:
 	set_size(ScaleModes.DROPPED)
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false
+	just_placed.emit(placed)
 	reparent(sceneParent)
 	grabed = false
 
