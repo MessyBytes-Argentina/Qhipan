@@ -133,9 +133,9 @@ void vertex() {
 
 vec4 triplanar_texture(sampler2D top_sampler, sampler2D side_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
 	vec4 samp = vec4(0.0);
-	samp += texture(side_sampler, p_triplanar_pos.xy / side_texture_scale) * p_weights.z;
+	samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * p_weights.z;
 	samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * p_weights.y;
-	samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0) / side_texture_scale) * p_weights.x;
+	samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * p_weights.x;
 	return samp;
 }
 

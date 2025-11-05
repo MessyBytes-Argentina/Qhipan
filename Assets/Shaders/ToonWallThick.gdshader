@@ -69,6 +69,7 @@ varying vec3 worldVector;
 varying float shortestDistance;
 varying vec3 triplanar_pos;
 varying vec3 power_normal;
+varying vec3 binormal;
 
 float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
@@ -76,7 +77,7 @@ float fresnel(float amount, vec3 normal, vec3 view) {
 
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
-
+	binormal = BINORMAL;
 	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
@@ -118,7 +119,8 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
-	base_uv.y = (1.0 - base_uv.y) * float(goesDown) + base_uv.y * float(!goesDown);
+	base_uv.y = (1.0 - base_uv.y) * float(!goesDown) + base_uv.y * float(goesDown);
+	base_uv.y = fract(base_uv.y * 8.0);
 	vec2 screen_uv = SCREEN_UV;
 	screen_uv.y = (1.0 - screen_uv.y) * float(goesDown) + screen_uv.y * float(!goesDown);
 	int current_texture = 0;
@@ -133,10 +135,12 @@ void fragment() {
 
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(textures_albedo[current_texture], power_normal, triplanar_pos);
-	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation;
+	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
+	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
+	// FALTA SMOOTHING ENTRE LAYERS DE TEXTURA
 
 	// ORM Sampler
-	vec4 base_ORM = triplanar_texture(textures_orm[current_texture], power_normal, triplanar_pos);
+	vec4 base_ORM = triplanar_texture(textures_orm[current_texture], power_normal, triplanar_pos) * ALPHA;
 
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
@@ -158,8 +162,8 @@ void fragment() {
 
 	if (enable_normal) {
 		// Normal Map: Enabled
-		NORMAL_MAP = triplanar_texture(textures_normal[current_texture], power_normal, triplanar_pos).rgb;
-		NORMAL_MAP_DEPTH = normal_scale;
+		NORMAL_MAP = triplanar_texture(textures_normal[current_texture], power_normal, triplanar_pos).rgb * ALPHA;
+		NORMAL_MAP_DEPTH = normal_scale * ALPHA;
 	}
 
 	if (enable_emission) {
