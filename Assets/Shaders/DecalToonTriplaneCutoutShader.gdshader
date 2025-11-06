@@ -28,8 +28,8 @@ uniform float top_normal_scale : hint_range(-16.0, 16.0) = 1.0;
 uniform float side_normal_scale : hint_range(-16.0, 16.0) = 1.0;
 
 // ORM
-uniform sampler2D top_texture_orm : hint_roughness_g, filter_linear_mipmap, repeat_enable;
-uniform sampler2D side_texture_orm : hint_roughness_g, filter_linear_mipmap, repeat_enable;
+uniform sampler2D top_texture_orm : filter_linear_mipmap, repeat_enable;
+uniform sampler2D side_texture_orm : filter_linear_mipmap, repeat_enable;
 
 // Ambient Oclussion
 uniform bool enable_ambient_occlusion = false;

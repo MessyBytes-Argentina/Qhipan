@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=55 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -26,20 +26,19 @@
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="21_an4xj"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="21_konnu"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="26_octky"]
-[ext_resource type="Shader" uid="uid://dtchoida7t0is" path="res://Assets/Shaders/ToonWallThick.gdshader" id="27_0qu2a"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="27_my0mw"]
+[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="27_nj6ah"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="28_3qv1u"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="28_04thu"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="29_sjsp2"]
-[ext_resource type="Texture2D" uid="uid://d2nk867vnj0n7" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_albedo.png" id="30_47lso"]
-[ext_resource type="Texture2D" uid="uid://clkg2wg01hac6" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_albedo.png" id="31_450tj"]
-[ext_resource type="Texture2D" uid="uid://dmwpypdqdxhyw" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_albedo.png" id="32_m1qyg"]
-[ext_resource type="Texture2D" uid="uid://dsmfd83hxy5ws" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_normal.png" id="33_u75lp"]
-[ext_resource type="Texture2D" uid="uid://b6swvfdqty0ij" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_normal.png" id="34_7hhmt"]
-[ext_resource type="Texture2D" uid="uid://cn2m6uyv3qydi" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_normal.png" id="35_6umby"]
-[ext_resource type="Texture2D" uid="uid://b6jn1dld8qlt5" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 1/Tier 1_orm.png" id="36_vh84o"]
-[ext_resource type="Texture2D" uid="uid://c1p3eog3nrjuu" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 2/Tier 2_orm.png" id="37_c0feh"]
-[ext_resource type="Texture2D" uid="uid://v6c0qkc42yb5" path="res://Assets/Materials/Paredes/Ladrillado Interior Tiers/Tier 3/Tier 3_orm.png" id="38_1ejws"]
+[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/MaskGradient.tres" id="30_0qu2a"]
+[ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_albedo.png" id="30_47lso"]
+[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenMaskGradient.tres" id="31_04thu"]
+[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenVerticalFade.tres" id="32_sjsp2"]
+[ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="33_47lso"]
+[ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_normal.png" id="35_6umby"]
+[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/VerticalFade.tres" id="37_450tj"]
+[ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_orm.png" id="38_1ejws"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -91,60 +90,38 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_octky"]
 
-[sub_resource type="Gradient" id="Gradient_5sda3"]
-offsets = PackedFloat32Array(0.07539683, 0.11111111)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s7rx2"]
-gradient = SubResource("Gradient_5sda3")
-
-[sub_resource type="Gradient" id="Gradient_i2hll"]
-offsets = PackedFloat32Array(0.025, 0.1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ln5w3"]
-gradient = SubResource("Gradient_i2hll")
-
-[sub_resource type="Gradient" id="Gradient_uode6"]
-offsets = PackedFloat32Array(0.1, 0.15)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_f24om"]
-gradient = SubResource("Gradient_uode6")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4f1mp"]
 render_priority = 0
-shader = ExtResource("27_0qu2a")
+shader = ExtResource("27_nj6ah")
 shader_parameter/goesDown = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/obfuscate_gradient = SubResource("GradientTexture1D_s7rx2")
-shader_parameter/screen_obfuscate_gradient = SubResource("GradientTexture1D_ln5w3")
-shader_parameter/selective_obfuscate_gradient = SubResource("GradientTexture1D_f24om")
-shader_parameter/selective_obfuscate_mask = ExtResource("30_47lso")
-shader_parameter/selective_obfuscate_mask_channel = Vector4(0, 0, 1, 0)
-shader_parameter/texture_number = 3
-shader_parameter/texture_divisions = PackedFloat32Array(0.3, 0.55)
+shader_parameter/vertical_fade = ExtResource("37_450tj")
+shader_parameter/screen_vertical_fade = ExtResource("32_sjsp2")
+shader_parameter/mask_gradient = ExtResource("30_0qu2a")
+shader_parameter/screen_mask_gradient_fade = ExtResource("31_04thu")
+shader_parameter/selective_obfuscate_mask = ExtResource("33_47lso")
+shader_parameter/blur_range = 0.25
 shader_parameter/light_gradient = ExtResource("29_sjsp2")
 shader_parameter/fresnel_gradient = ExtResource("28_04thu")
 shader_parameter/texture_scale = 2.500000037253
 shader_parameter/blend_sharpness = 10.0
-shader_parameter/textures_albedo = Array[Texture2D]([ExtResource("31_450tj"), ExtResource("32_m1qyg"), ExtResource("30_47lso")])
+shader_parameter/texture_albedo = ExtResource("30_47lso")
 shader_parameter/enable_normal = true
-shader_parameter/textures_normal = Array[Texture2D]([ExtResource("33_u75lp"), ExtResource("34_7hhmt"), ExtResource("35_6umby")])
+shader_parameter/texture_normal = ExtResource("35_6umby")
 shader_parameter/normal_scale = 2.570000882075
-shader_parameter/textures_orm = Array[Texture2D]([ExtResource("36_vh84o"), ExtResource("37_c0feh"), ExtResource("38_1ejws")])
+shader_parameter/texture_orm = ExtResource("38_1ejws")
 shader_parameter/enable_ambient_occlusion = true
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/roughness = 0.0
 shader_parameter/metallic_specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/enable_emission = false
-shader_parameter/textures_emission = null
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy_multiplier = 0.0
 shader_parameter/enable_clearcoat = false
-shader_parameter/textures_clearcoat = null
 shader_parameter/clearcoat = 0.0
 shader_parameter/clearcoat_roughness = 0.0
 shader_parameter/enable_anisotropy = false
-shader_parameter/textures_anisotropy_flowmap = null
 shader_parameter/anisotropy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_3qv1u"]
