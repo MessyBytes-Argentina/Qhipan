@@ -1,7 +1,10 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
+
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
 
 // Base
 uniform bool goesDown = false;
@@ -112,6 +115,11 @@ vec4 triplanar_texture(sampler2D sampler, vec3 p_weights, vec3 p_triplanar_pos) 
 	return samp;
 }
 
+vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
+	vec3 world_pos = (inv_view_matrix * vec4(vert, 1.0)).xyz;
+	return world_pos;
+}
+
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
@@ -130,7 +138,8 @@ void fragment() {
 
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
-	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
+	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);// Distance Fade: Pixel Alpha
+	//ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, length(VERTEX)), 0.0, 1.0);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
 
 	// ORM Sampler

@@ -31,9 +31,35 @@ float sdBox( vec3 p, vec3 b )
   return length(max(q,0.0)) + min(max(q.x,max(q.y,q.z)),0.0);
 }
 
+float sdBox2d( vec2 p, vec2 b )
+{
+  vec2 q = abs(p) - b;
+  return length(max(q,0.0)) + min(max(q.x,q.y),0.0);
+}
+
 float sdBoxRotated( vec3 p, vec3 b , float r ) {
 	p.xz *= rot(r);
 	return sdBox(p, b);
+}
+
+float sdBoxRotated2d( vec2 p, vec2 b , float r ) {
+	p *= rot(r);
+	return sdBox2d(p, b);
+}
+
+float sdEquilateralTriangle( in vec2 p, in float r )
+{
+    const float k = sqrt(3.0);
+    p.x = abs(p.x) - r;
+    p.y = p.y + r/k;
+    if( p.x+k*p.y>0.0 ) p = vec2(p.x-k*p.y,-k*p.x-p.y)/2.0;
+    p.x -= clamp( p.x, -2.0*r, 0.0 );
+    return -length(p)*sign(p.y);
+}
+
+float sdEquilateralRotated( in vec2 p, in float r , in float rr)
+{
+    return sdEquilateralTriangle(rot(rr) * p, r);
 }
 
 float sdCappedCylinder( vec3 p, vec3 a, vec3 b, float r )

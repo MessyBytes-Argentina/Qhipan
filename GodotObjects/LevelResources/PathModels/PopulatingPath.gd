@@ -1,5 +1,6 @@
 @tool
 extends Path3D
+class_name PathPopulator
 
 const PRECISIONPOINT: float = 0.001
 
