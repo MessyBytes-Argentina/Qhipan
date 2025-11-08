@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=52 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -27,18 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="21_konnu"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="26_octky"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="27_my0mw"]
-[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="27_nj6ah"]
+[ext_resource type="Texture2D" uid="uid://h4yeub8rtwsd" path="res://test.png" id="27_pcewb"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="28_3qv1u"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="28_04thu"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="29_sjsp2"]
-[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/MaskGradient.tres" id="30_0qu2a"]
-[ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_albedo.png" id="30_47lso"]
-[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenMaskGradient.tres" id="31_04thu"]
-[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenVerticalFade.tres" id="32_sjsp2"]
-[ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="33_47lso"]
-[ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_normal.png" id="35_6umby"]
-[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/VerticalFade.tres" id="37_450tj"]
-[ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_orm.png" id="38_1ejws"]
+[ext_resource type="Script" uid="uid://cpiv1eys17w7w" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylineGenerator.gd" id="29_q12un"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -90,39 +81,47 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_octky"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f1mp"]
-render_priority = 0
-shader = ExtResource("27_nj6ah")
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/vertical_fade = ExtResource("37_450tj")
-shader_parameter/screen_vertical_fade = ExtResource("32_sjsp2")
-shader_parameter/mask_gradient = ExtResource("30_0qu2a")
-shader_parameter/screen_mask_gradient_fade = ExtResource("31_04thu")
-shader_parameter/selective_obfuscate_mask = ExtResource("33_47lso")
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = ExtResource("29_sjsp2")
-shader_parameter/fresnel_gradient = ExtResource("28_04thu")
-shader_parameter/texture_scale = 2.500000037253
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("30_47lso")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("35_6umby")
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/texture_orm = ExtResource("38_1ejws")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
+[sub_resource type="Gradient" id="Gradient_phoa1"]
+offsets = PackedFloat32Array(0.35, 0.46, 0.5, 0.54, 0.65)
+colors = PackedColorArray(0, 1, 1, 0, 0.5882353, 1, 1, 1, 0.78431374, 1, 1, 1, 0.5882353, 1, 1, 1, 0, 0.99215686, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k0mlu"]
+gradient = SubResource("Gradient_phoa1")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut7ax"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("27_pcewb")
+emission = Color(0, 1, 1, 1)
+emission_texture = SubResource("GradientTexture2D_k0mlu")
+uv1_scale = Vector3(1, 5.75, 1)
+stencil_mode = 3
+stencil_flags = 2
+stencil_reference = 2
+
+[sub_resource type="Gradient" id="Gradient_k0mlu"]
+offsets = PackedFloat32Array(0.45, 0.475, 0.5, 0.525, 0.55)
+colors = PackedColorArray(0, 0.78431374, 0.78431374, 0, 0.5882353, 0.78431374, 0.78431374, 1, 1, 1, 1, 1, 0.5882353, 0.78431374, 0.78431374, 1, 0, 0.78431374, 0.78431374, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ut7ax"]
+gradient = SubResource("Gradient_k0mlu")
+width = 124
+height = 128
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5c7o"]
+render_priority = 1
+transparency = 1
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_texture = SubResource("GradientTexture2D_ut7ax")
+uv1_scale = Vector3(1, 5.75, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 2
 
 [sub_resource type="Curve3D" id="Curve3D_3qv1u"]
 _data = {
@@ -159,6 +158,13 @@ applyOnlyToNodes = true
 useOffsetEnd = false
 normalAlwaysPointsUp = true
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="Curve3D" id="Curve3D_pcewb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5, 1, -2, 0, 0, 0, 0, 0, 0, -3, 1, -2, 0, 0, 0, 0, 0, 0, -3, 1, -6, 0, 0, 0, 0, 0, 0, -3, 1, -10, 0, 0, 0, 0, 0, 0, -10, 1, -10, 0, 0, 0, 0, 0, 0, -10, 1, 0, 0, 0, 0, 0, 0, 0, -10, -3, 4, 0, 0, 0, 0, 0, 0, -10, -3, 10),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
 
 [node name="Test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -326,25 +332,52 @@ isOneWay = true
 
 [node name="@CSGPolygon3D@57045" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.5, -4.5)
+visible = false
 use_collision = true
 collision_mask = 0
-polygon = PackedVector2Array(-0.25, -0.25, -0.25, 5, 0.25, 5, 0.25, -0.25)
+polygon = PackedVector2Array(0.25, 0.01, 0.25, 0, -0.25, 0, -0.25, 0.01)
 mode = 2
 path_node = NodePath("../Path3D")
 path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 15.0
+path_interval = 0.01
+path_simplify_angle = 1.0
 path_rotation = 2
 path_rotation_accurate = false
 path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("ShaderMaterial_4f1mp")
+material = SubResource("StandardMaterial3D_ut7ax")
+
+[node name="_CSGPolygon3D_57045" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.51, -4.5)
+visible = false
+use_collision = true
+collision_mask = 0
+polygon = PackedVector2Array(0.5, 0.01, 0.5, 0, -0.5, 0, -0.5, 0.01)
+mode = 2
+path_node = NodePath("../LeylinePath")
+path_interval_type = 0
+path_interval = 0.01
+path_simplify_angle = 1.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_e5c7o")
 
 [node name="Path3D" type="Path3D" parent="."]
+visible = false
 curve = SubResource("Curve3D_3qv1u")
 script = ExtResource("27_my0mw")
 multiMeshResources = Array[ExtResource("28_3qv1u")]([SubResource("Resource_phoa1"), SubResource("Resource_pcewb")])
 collisionLayer = 1
 colliderSize = Vector2(0.5, 0.5)
+
+[node name="LeylinePath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_pcewb")
+script = ExtResource("29_q12un")
+stencilMaterial = SubResource("StandardMaterial3D_ut7ax")
+glowMaterial = SubResource("StandardMaterial3D_e5c7o")
