@@ -121,6 +121,8 @@ enum States {Idle, Walk, Float}
 @onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 ## Reference to the darkness blocker module.
 @onready var darknessBlockerModule: DarknessBlockerModule = %DarknessBlockerModule
+## Reference to the camera.
+@onready var cameraCubeWallCutout: Marker3D = %CameraCubeWallCutout
 #endregion
 
 #region Variables
@@ -284,8 +286,10 @@ func camera_rotation_check() -> void:
 	if cameraRotationTween: return
 	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
 	if cameraRotation == 0: return
+	cubeCutout.rotatingCamera = true
 	currentCameraRotation += cameraRotation
 	cutout_cube_rotation_check(cameraPivot.rotation.y + cameraRotation)
+	await get_tree().physics_frame
 	cameraRotationTween = create_tween()
 	cameraRotationTween.tween_method(
 		func(rotationValue: float): 
@@ -311,6 +315,7 @@ func camera_rotation_finished() -> void:
 	if cameraRotationTween: 
 		cameraRotationTween.kill()
 		cameraRotationTween = null
+	cubeCutout.rotatingCamera = false
 
 ## Checks and handles the camera zoom.
 func camera_zoom_check() -> void:

@@ -1,0 +1,54 @@
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://bkr6tjvk18oqm"]
+
+[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="1_y3ats"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_ojxk8"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_byjbx"]
+[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/MaskGradient.tres" id="4_mw5gm"]
+[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenMaskGradient.tres" id="5_jfp6j"]
+[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenVerticalFade.tres" id="6_4fy4a"]
+[ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="7_kcafe"]
+[ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_albedo.png" id="8_kcalm"]
+[ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_normal.png" id="9_1usnh"]
+[ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_orm.png" id="10_np28j"]
+[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/VerticalFade.tres" id="11_rryoy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_y3ats")
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 0.249999994412
+shader_parameter/goesDown = false
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/vertical_fade = ExtResource("11_rryoy")
+shader_parameter/screen_vertical_fade = ExtResource("6_4fy4a")
+shader_parameter/mask_gradient = ExtResource("4_mw5gm")
+shader_parameter/screen_mask_gradient_fade = ExtResource("5_jfp6j")
+shader_parameter/selective_obfuscate_mask = ExtResource("7_kcafe")
+shader_parameter/blur_range = 0.25
+shader_parameter/light_gradient = ExtResource("3_byjbx")
+shader_parameter/fresnel_gradient = ExtResource("2_ojxk8")
+shader_parameter/texture_scale = 2.0000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("8_kcalm")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("9_1usnh")
+shader_parameter/normal_scale = 2.570000882075
+shader_parameter/texture_orm = ExtResource("10_np28j")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
+shader_parameter/cameraMiddleRotation = 0.0
+shader_parameter/squareSize = 0.0
+shader_parameter/auxMode = false
+shader_parameter/rotating = false

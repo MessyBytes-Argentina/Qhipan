@@ -63,6 +63,12 @@ uniform bool enable_anisotropy = false;
 uniform sampler2D texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 
+uniform vec3 cameraMiddlePoint;
+uniform float cameraMiddleRotation;
+uniform float squareSize;
+uniform bool auxMode;
+uniform bool rotating;
+
 // Globals
 varying vec3 world_normal;
 varying vec3 view_normal;
@@ -138,8 +144,11 @@ void fragment() {
 
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
-	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);// Distance Fade: Pixel Alpha
-	//ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, length(VERTEX)), 0.0, 1.0);
+	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
+	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
+	// Distance Fade: Pixel Alpha
+	bool doCutout = !rotating && auxMode;
+	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
 
 	// ORM Sampler

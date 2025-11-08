@@ -3,6 +3,7 @@ extends Path3D
 class_name WallGenerator
 
 const WALLWIDTH: float = 0.01
+const SHADOWWALLWIDTH: float = 1.0
 const PATHINTERVAL: float = 0.15
 const PATHSIMPLIFYANGLE: float = 15
 
@@ -12,6 +13,7 @@ const PATHSIMPLIFYANGLE: float = 15
 @export_tool_button("Flip Path", "AnimationAutoFit") var flipPath: Callable = flip_path
 
 var polygon: CSGPolygon3D
+var shadowPolygon: CSGPolygon3D
 
 func _ready() -> void:
 	regenerate_wall_shape()
@@ -36,17 +38,26 @@ func flip_path() -> void:
 func regenerate_wall_shape() -> void:
 	var wallShape: PackedVector2Array = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, wallHeight), Vector2(WALLWIDTH, wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
 	if not polygon:
-		polygon = CSGPolygon3D.new()
+		polygon = _create_polygon()
+		shadowPolygon = polygon.duplicate()
 		add_child(polygon)
-		polygon.mode = CSGPolygon3D.MODE_PATH
-		polygon.path_node = "../"
-		polygon.path_interval = PATHINTERVAL
-		polygon.path_simplify_angle = PATHSIMPLIFYANGLE
-		polygon.path_rotation = CSGPolygon3D.PATH_ROTATION_PATH_FOLLOW
-		polygon.path_local = true
-		polygon.calculate_tangents = true
+		add_child(shadowPolygon)
 		polygon.use_collision = true
 		polygon.collision_mask = 0
+		polygon.layers = 2
+		shadowPolygon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	polygon.material = material
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
+	shadowPolygon.polygon = [Vector2(0.0, -SHADOWWALLWIDTH), Vector2(0.0, wallHeight), Vector2(SHADOWWALLWIDTH, wallHeight), Vector2(SHADOWWALLWIDTH, -SHADOWWALLWIDTH)]
+
+func _create_polygon() -> CSGPolygon3D:
+	var newPolygon = CSGPolygon3D.new()
+	newPolygon.mode = CSGPolygon3D.MODE_PATH
+	newPolygon.path_node = "../"
+	newPolygon.path_interval = PATHINTERVAL
+	newPolygon.path_simplify_angle = PATHSIMPLIFYANGLE
+	newPolygon.path_rotation = CSGPolygon3D.PATH_ROTATION_PATH_FOLLOW
+	newPolygon.path_local = true
+	newPolygon.calculate_tangents = true
+	return newPolygon
