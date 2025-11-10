@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="21_konnu"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="26_octky"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="27_my0mw"]
-[ext_resource type="Texture2D" uid="uid://h4yeub8rtwsd" path="res://test.png" id="27_pcewb"]
+[ext_resource type="Texture2D" uid="uid://h4yeub8rtwsd" path="res://Assets/Textures/LeylineTest.png" id="27_pcewb"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="28_3qv1u"]
 [ext_resource type="Script" uid="uid://cpiv1eys17w7w" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylineGenerator.gd" id="29_q12un"]
 

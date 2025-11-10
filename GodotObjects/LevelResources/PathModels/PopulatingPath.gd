@@ -1,19 +1,26 @@
 @tool
 extends Path3D
+## This node populates the path with a list of meshes. Useful to make fences, detailed paths, ivys, etc.
 class_name PathPopulator
 
+## How precisely to follow the path.
 const PRECISIONPOINT: float = 0.001
 
+## List of meshes to use for populating the path.
 @export var multiMeshResources: Array[MultiMeshResource] = []
+## Updates the path's content.
 @export_tool_button("Regenerate", "CSGPolygon3D") var execute: Callable = _update_multimesh
+## Collision layer for a provided collider
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 0
+## Collider size that will follow this path
 @export var colliderSize: Vector2 = Vector2.ONE
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.is_editor_hint(): curve_changed.connect(_update_multimesh)
 	else: _update_multimesh()
 
+## Repopulates the path with the multimeshes.
 func _update_multimesh():
 	for child in get_children(): child.queue_free()
 	var pathLength: float = curve.get_baked_length()
@@ -56,6 +63,7 @@ func _update_multimesh():
 				var curveDistance = multiMeshResource.offsetStart + (multiMeshResource.offsetEnd if i == count - 1 and multiMeshResource.useOffsetEnd else 0.0) + multiMeshResource.distanceBetweenPieces * i
 				multimesh.multimesh.set_instance_transform(i, _create_transform_distance(curveDistance, multiMeshResource.normalAlwaysPointsUp))
 
+## auxilliary function to create valid points for the meshes to be populated at.
 func _create_transform_distance(curveDistance: float, normalUp: bool) -> Transform3D:
 	var meshPosition: Vector3 = curve.sample_baked(curveDistance, true)
 	var meshBasis: Basis = Basis()

@@ -15,7 +15,7 @@ emission = Color(0.588235, 0, 1, 1)
 size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xivvd"]
-size = Vector3(0.75, 0.25, 0.75)
+size = Vector3(0.65, 0.25, 0.65)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 

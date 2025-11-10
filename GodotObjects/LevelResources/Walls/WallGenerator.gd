@@ -1,25 +1,54 @@
 @tool
 extends Path3D
+## This class handles creations of one way walls with gradients and solid collitions from a single path
 class_name WallGenerator
 
+## The width of the wall polygon.
 const WALLWIDTH: float = 0.01
+## The width of the wall that projects shadows.
 const SHADOWWALLWIDTH: float = 1.0
+## How ofthen to generate polygons for smooth walls.
 const PATHINTERVAL: float = 0.01
+## Simplifies path angles for aproximation.
 const PATHSIMPLIFYANGLE: float = 15
 
-@export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0
-@export var duplicateDown: bool = false
-@export var material: Material
-@export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 0
+## How tall is the wall.
+@export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0:
+	set(value):
+		wallHeight = value
+		if Engine.is_editor_hint() and is_node_ready():
+			regenerate_wall_shape()
+## Create a second wall going down for when looking the other way around.
+@export var duplicateDown: bool = false:
+	set(value):
+		duplicateDown = value
+		if Engine.is_editor_hint() and is_node_ready():
+			regenerate_wall_shape()
+## Wall material.
+@export var material: Material:
+	set(value):
+		material = value
+		if Engine.is_editor_hint() and is_node_ready():
+			regenerate_wall_shape()
+## Wall collision layer.
+@export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
+## Flips the path in case the wall is drawn on the opposite side.
 @export_tool_button("Flip Path", "AnimationAutoFit") var flipPath: Callable = flip_path
 
+## Reference to the wall polygon.
 var polygon: CSGPolygon3D
+## Reference to the duplicate wall polygon.
 var downPolygon: CSGPolygon3D
+## Reference to the shadow proyecting polygon.
 var shadowPolygon: CSGPolygon3D
 
+## Executed when node first enters the scene.
 func _ready() -> void:
 	regenerate_wall_shape()
+	if Engine.is_editor_hint():
+		curve_changed.connect(regenerate_wall_shape)
 
+## Reverts the path points.
 func flip_path() -> void:
 	var flippedPathPoints: PackedVector3Array = []
 	var flippedPathIn: PackedVector3Array = []
@@ -37,6 +66,7 @@ func flip_path() -> void:
 		curve.set_point_out(i, flippedPathOut[i])
 	regenerate_wall_shape()
 
+## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
 	var wallShape: PackedVector2Array = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, wallHeight), Vector2(WALLWIDTH, wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
 	if not polygon:
@@ -61,6 +91,7 @@ func regenerate_wall_shape() -> void:
 		downPolygon.material = downPolygon.material.duplicate()
 		downPolygon.material.set_shader_parameter("goesDown", true)
 
+## Creates the wall polygon
 func _create_polygon() -> CSGPolygon3D:
 	var newPolygon = CSGPolygon3D.new()
 	newPolygon.mode = CSGPolygon3D.MODE_PATH
