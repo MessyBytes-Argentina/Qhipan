@@ -3,8 +3,8 @@ render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
-uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01);
-uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01) = 0.0;
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01) = 0.25;
 
 // Base
 uniform bool goesDown = false;
@@ -84,7 +84,7 @@ float fresnel(float amount, vec3 normal, vec3 view) {
 
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
-	binormal = BINORMAL;
+	binormal = BINORMAL * (goesDown ? -1.0 : 1.0);
 	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
@@ -131,7 +131,7 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
-	base_uv.y = (1.0 - base_uv.y) * float(!goesDown) + base_uv.y * float(goesDown);
+	base_uv.y = 1.0 - base_uv.y;
 	base_uv.y = fract(base_uv.y * 8.0);
 	vec2 screen_uv = SCREEN_UV;
 	screen_uv.y = (1.0 - screen_uv.y) * float(goesDown) + screen_uv.y * float(!goesDown);

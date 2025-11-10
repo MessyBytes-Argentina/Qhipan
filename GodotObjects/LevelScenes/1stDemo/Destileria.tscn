@@ -286,11 +286,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.5, -42)
 [node name="Wall" type="Path3D" parent="."]
 curve = SubResource("Curve3D_eqxkx")
 script = ExtResource("27_ewfo1")
+duplicateDown = true
 material = ExtResource("17_ix3bf")
 collisionLayer = 32
 
 [node name="Wall2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_ix3bf")
 script = ExtResource("27_ewfo1")
+duplicateDown = true
 material = ExtResource("17_ix3bf")
 collisionLayer = 32

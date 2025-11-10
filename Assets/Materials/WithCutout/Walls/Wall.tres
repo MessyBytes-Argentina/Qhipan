@@ -3,14 +3,14 @@
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="1_y3ats"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_ojxk8"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_byjbx"]
-[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/MaskGradient.tres" id="4_mw5gm"]
-[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenMaskGradient.tres" id="5_jfp6j"]
-[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/ScreenVerticalFade.tres" id="6_4fy4a"]
+[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="4_mw5gm"]
+[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/ToonGradients/ScreenMaskGradient.tres" id="5_jfp6j"]
+[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/ToonGradients/ScreenVerticalFade.tres" id="6_4fy4a"]
 [ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="7_kcafe"]
 [ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_albedo.png" id="8_kcalm"]
 [ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_normal.png" id="9_1usnh"]
 [ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Tier 1/Brick Wall Azul Tier 1_orm.png" id="10_np28j"]
-[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/VerticalFade.tres" id="11_rryoy"]
+[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/ToonGradients/VerticalFade.tres" id="11_rryoy"]
 
 [resource]
 render_priority = 0

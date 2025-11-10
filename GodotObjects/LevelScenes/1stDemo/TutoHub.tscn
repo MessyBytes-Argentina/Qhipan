@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://c70ev27rfenr"]
+[gd_scene load_steps=58 format=3 uid="uid://c70ev27rfenr"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_36pyb"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_lhho8"]
@@ -25,13 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://c652vtgll6wtx" path="res://Assets/Textures/Tutorial Screens/Joystick/Place.png" id="11_hgowq"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="14_hkned"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="14_tfbny"]
+[ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderPedestal.tscn" id="15_2lyb6"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="15_jpt52"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="16_f1mir"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="17_37ad3"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="18_f1mir"]
-[ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/Pedestal.gd" id="28_l25qv"]
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="29_bbs5y"]
-[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="30_slia4"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="32_0uw4l"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jjhji"]
@@ -45,14 +43,6 @@ transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("8_57jsn")
 
-[sub_resource type="BoxMesh" id="BoxMesh_mtel8"]
-material = ExtResource("29_bbs5y")
-size = Vector3(0.5, 0.25, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bek0u"]
-material = ExtResource("30_slia4")
-size = Vector3(0.75, 0.75, 0.25)
-
 [sub_resource type="Gradient" id="Gradient_d72c4"]
 offsets = PackedFloat32Array(0.65405405, 0.7189189)
 colors = PackedColorArray(0.6032072, 0.5297548, 0, 1, 0.6580423, 0.3184435, 0, 1)
@@ -65,144 +55,12 @@ fill_to = Vector2(0.8, 0.5)
 repeat = 1
 metadata/_snap_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_841xi"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_2eawf")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_2eawf")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
-size = Vector3(0.5, 1, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mtel8"]
-size = Vector3(0.1, 0.75, 0.75)
-
-[sub_resource type="Gradient" id="Gradient_2eawf"]
-offsets = PackedFloat32Array(0.65405405, 0.7189189)
-colors = PackedColorArray(0.62869304, 0.4399307, 0.7181906, 1, 0.7349629, 5.2269996e-05, 0.5743593, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_841xi"]
-gradient = SubResource("Gradient_2eawf")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.5)
-repeat = 1
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq3qu"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_841xi")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_841xi")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
 [sub_resource type="Gradient" id="Gradient_hkned"]
 offsets = PackedFloat32Array(0.6864865, 0.8)
 colors = PackedColorArray(0.8507659, 0.0011903697, 0.9360264, 1, 1, 0.7490384, 0.8736715, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rpa5y"]
 gradient = SubResource("Gradient_hkned")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_rpa5y"]
-offsets = PackedFloat32Array(0.6864865, 0.8)
-colors = PackedColorArray(0.72718805, 0.48850143, 0, 1, 0.9999996, 0.79791087, 0.46802127, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l25qv"]
-gradient = SubResource("Gradient_rpa5y")
 width = 128
 height = 128
 fill = 1
@@ -297,68 +155,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_owgmc"]
-offsets = PackedFloat32Array(0.65405405, 0.7189189)
-colors = PackedColorArray(0.27058825, 0.6, 0.4745098, 1, 0, 0.4509804, 0.69411767, 1)
+[sub_resource type="Gradient" id="Gradient_yg4in"]
+offsets = PackedFloat32Array(0.7, 0.8)
+colors = PackedColorArray(0, 0.6313726, 0.54901963, 1, 0, 1, 0.4, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d72c4"]
-gradient = SubResource("Gradient_owgmc")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0uw4l"]
+gradient = SubResource("Gradient_yg4in")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.5)
-repeat = 1
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2eawf"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_d72c4")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_d72c4")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_jpt52"]
 _data = {
@@ -452,71 +259,15 @@ transform = Transform3D(-0.827, 0, 6.5683174e-08, 0, 0.435, 0, -1.2487354e-07, 0
 mesh = SubResource("QuadMesh_jjhji")
 surface_material_override/0 = SubResource("StandardMaterial3D_oin4o")
 
-[node name="Pedestal" type="StaticBody3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -12)
-script = ExtResource("28_l25qv")
+[node name="Pedestal1" parent="Props" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -12)
+texture = SubResource("GradientTexture2D_2eawf")
 pedestalName = "room_2"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_841xi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Props/Pedestal/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Props/Pedestal/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
-
-[node name="Pedestal2" type="StaticBody3D" parent="Props"]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 6, 0, -12)
-script = ExtResource("28_l25qv")
+[node name="Pedestal2" parent="Props" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+texture = SubResource("GradientTexture2D_rpa5y")
 pedestalName = "room_3"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_vq3qu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Props/Pedestal2/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Props/Pedestal2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
 
 [node name="PlaceholderMetaprogressionBlock4" parent="Props" instance=ExtResource("14_hkned")]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, -15)
@@ -525,7 +276,7 @@ pedestalName = "room_3"
 
 [node name="PlaceholderMetaprogressionBlock5" parent="Props" instance=ExtResource("14_hkned")]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 5, 0, -11)
-texture = SubResource("GradientTexture2D_l25qv")
+texture = SubResource("GradientTexture2D_2eawf")
 pedestalName = "room_2"
 
 [node name="Player" parent="." instance=ExtResource("2_vf84w")]
@@ -657,46 +408,17 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 2, -9, 0, -13.5)
 texture = SubResource("GradientTexture2D_w56md")
 pedestalName = "room_1"
 
-[node name="Pedestal" type="StaticBody3D" parent="Room 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
-script = ExtResource("28_l25qv")
-pedestalName = "room_1"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_2eawf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Room 1/Pedestal"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Room 1/Pedestal/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Room 1/Pedestal/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
-
 [node name="PushDoor" parent="Room 1" instance=ExtResource("32_0uw4l")]
 transform = Transform3D(-1, 8.742277e-08, 3.8213714e-15, 0, -4.37114e-08, 1, 8.742277e-08, 1, 4.37114e-08, -17, 0.5, -15.599999)
 
 [node name="PushDoor2" parent="Room 1" instance=ExtResource("32_0uw4l")]
 transform = Transform3D(-4.371138e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371138e-08, 1.9106855e-15, -7, 0.5, -11)
 isOneWay = true
+
+[node name="Pedestal" parent="Room 1" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
+texture = SubResource("GradientTexture2D_0uw4l")
+pedestalName = "room_1"
 
 [node name="Room 2" type="Node3D" parent="."]
 
