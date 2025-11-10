@@ -32,6 +32,7 @@ VolumeManager="*res://GodotObjects/Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://GodotObjects/Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://GodotObjects/Managers/LevelManager/LevelManager.tscn"
 GeneralVariables="*res://GodotObjects/Managers/GeneralVariables/GeneralVariables.gd"
+PlayerInventory="*res://GodotObjects/GeneralElements/Inventory/Inventory.gd"
 
 [display]
 

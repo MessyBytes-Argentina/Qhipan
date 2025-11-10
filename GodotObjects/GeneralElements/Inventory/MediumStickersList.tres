@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="StickersList" load_steps=2 format=3 uid="uid://3g2wpeak0ule"]
+
+[ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/GeneralElements/Inventory/StickersList.gd" id="1_yovnq"]
+
+[resource]
+script = ExtResource("1_yovnq")
