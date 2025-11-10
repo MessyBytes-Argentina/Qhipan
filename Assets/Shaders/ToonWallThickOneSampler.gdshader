@@ -1,16 +1,26 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
+uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01) = 0.0;
+uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01) = 0.25;
+
 // Base
+uniform bool goesDown = false;
 uniform vec4 albedo : source_color = vec4(1.0);
+uniform sampler2D vertical_fade;
+uniform sampler2D screen_vertical_fade;
+uniform sampler2D mask_gradient;
+uniform sampler2D screen_mask_gradient_fade;
+uniform sampler2D selective_obfuscate_mask : source_color, filter_linear_mipmap, repeat_enable;
+uniform float blur_range : hint_range(0.01, 0.5, 0.01) = 0.25;
 
 // Toon shader variables
 uniform sampler2D light_gradient;
 uniform sampler2D fresnel_gradient;
 
-//Worldspace triplanar parameters
+// Worldspace triplanar parameters
 uniform float texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float blend_sharpness : hint_range(0.0, 150.0, 0.001) = 10.0;
 
@@ -38,7 +48,7 @@ uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
 // Emission
 uniform bool enable_emission = false;
-uniform sampler2D texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_emission : source_color, filter_linear_mipmap, repeat_enable;
 uniform vec3 emission : source_color;
 uniform float emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
 
@@ -53,28 +63,20 @@ uniform bool enable_anisotropy = false;
 uniform sampler2D texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 
-// Cutout Variables
-uniform bool cylinderCutout = false;
-uniform vec3 borderColor: source_color = vec3(1.0, 1.0, 1.0);
-uniform float borderSize = 0.0;
-uniform float borderEmission = 0.0;
-uniform vec3 boxPosition;
-uniform vec3 boxSize;
-uniform float boxRotation;
-uniform vec3 cylinderPosition;
-uniform vec3 cylinderRotation;
-uniform float cylinderRadius1;
-uniform float cylinderRadius2;
-uniform float cylinderHeight;
-uniform vec3 playerPosition;
-uniform bool auxMode = false;
-uniform vec3 auxBoxPosition;
-uniform float auxBoxRotation;
+uniform vec3 cameraMiddlePoint;
+uniform float cameraMiddleRotation;
+uniform float squareSize;
+uniform bool auxMode;
+uniform bool rotating;
 
 // Globals
 varying vec3 world_normal;
 varying vec3 view_normal;
 varying vec3 worldVector;
+varying float shortestDistance;
+varying vec3 triplanar_pos;
+varying vec3 power_normal;
+varying vec3 binormal;
 
 float fresnel(float amount, vec3 normal, vec3 view) {
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
@@ -82,7 +84,7 @@ float fresnel(float amount, vec3 normal, vec3 view) {
 
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
-
+	binormal = BINORMAL * (goesDown ? -1.0 : 1.0);
 	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
@@ -104,6 +106,19 @@ void vertex() {
 	world_normal = (INV_VIEW_MATRIX * vec4(temp_normal, 0.0)).xyz;
 	view_normal = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
 	worldVector = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+
+	power_normal = pow(abs(normal), vec3(blend_sharpness));
+	triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	power_normal /= dot(power_normal, vec3(1.0));
+	triplanar_pos *= vec3(1.0, -1.0, 1.0);
+}
+
+vec4 triplanar_texture(sampler2D sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+	vec4 samp = vec4(0.0);
+	samp += texture(sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / texture_scale) * p_weights.z;
+	samp += texture(sampler, p_triplanar_pos.xz / texture_scale) * p_weights.y;
+	samp += texture(sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / texture_scale) * p_weights.x;
+	return samp;
 }
 
 vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
@@ -113,30 +128,31 @@ vec3 wpos(mat4 inv_view_matrix, vec3 vert) {
 
 void fragment() {
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
-	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
-
-	//Cylinder cutout
-	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
-	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
-	float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
-	vec3 boxWorldPosition = worldVector - boxPosition;
-	float sdfBox = sdBoxRotated(boxWorldPosition, boxSize, boxRotation);
-	float resultShape = opSubtraction(sdfBox, sdfCylinder);
-	vec3 auxBoxWorldPosition = worldVector - auxBoxPosition;
-	float sdfAuxBox = sdBoxRotated(auxBoxWorldPosition, boxSize, auxBoxRotation);
-	resultShape = opSubtraction(sdfAuxBox, resultShape) * float(auxMode) + resultShape * float(auxMode == false);
-	if (resultShape < 0.0 && docutout) {discard;}
-	float borderDistance = smoothstep(0.0, borderSize, resultShape) * float(docutout) + float(docutout == false);
+	base_uv.y = 1.0 - base_uv.y;
+	base_uv.y = fract(base_uv.y * 8.0);
+	vec2 screen_uv = SCREEN_UV;
+	screen_uv.y = (1.0 - screen_uv.y) * float(goesDown) + screen_uv.y * float(!goesDown);
+	vec3 top_obfuscation = texture(vertical_fade, vec2(base_uv.y)).rgb;
+	vec3 screen_obfuscation = texture(screen_vertical_fade, vec2(screen_uv.y)).rgb;
+	float selective_screen_obfuscation = texture(screen_mask_gradient_fade, vec2(screen_uv.y)).r;
+	selective_screen_obfuscation = 1.0 - smoothstep(selective_screen_obfuscation - blur_range, selective_screen_obfuscation + blur_range, triplanar_texture(selective_obfuscate_mask, power_normal, triplanar_pos).r);
+	float current_selective_mask = 1.0 - texture(mask_gradient, vec2(base_uv.y)).r;
+	current_selective_mask = smoothstep(current_selective_mask - blur_range, current_selective_mask + blur_range, triplanar_texture(selective_obfuscate_mask, power_normal, triplanar_pos).r);
 
 	// Albedo & Alpha
-	vec4 base_albedo = texture(texture_albedo, base_uv);
-	ALBEDO = base_albedo.rgb * albedo.rgb;
+	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
+	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
+	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
+	// Distance Fade: Pixel Alpha
+	bool doCutout = !rotating && auxMode;
+	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
+	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
 
 	// ORM Sampler
-	vec4 base_ORM = texture(texture_orm, base_uv);
+	vec4 base_ORM = triplanar_texture(texture_orm, power_normal, triplanar_pos) * ALPHA * current_selective_mask;
 
 	if (enable_ambient_occlusion) {
 		// Ambient Occlusion: Enabled
@@ -158,33 +174,29 @@ void fragment() {
 
 	if (enable_normal) {
 		// Normal Map: Enabled
-		NORMAL_MAP = texture(texture_normal, base_uv).rgb;
-		NORMAL_MAP_DEPTH = normal_scale;
+		NORMAL_MAP = triplanar_texture(texture_normal, power_normal, triplanar_pos).rgb * ALPHA * current_selective_mask;
+		NORMAL_MAP_DEPTH = normal_scale * ALPHA;
 	}
 
 	if (enable_emission) {
 		// Emission: Add
-		vec3 base_emission = texture(texture_emission, base_uv).rgb;
+		vec3 base_emission = triplanar_texture(texture_emission, power_normal, triplanar_pos).rgb * current_selective_mask;
 		EMISSION = (emission + base_emission) * emission_energy_multiplier;
 	}
 
 	if (enable_clearcoat) {
 		// Clearcoat: Enabled
-		vec2 base_clearcoat = texture(texture_clearcoat, base_uv).rg;
+		vec2 base_clearcoat = triplanar_texture(texture_clearcoat, power_normal, triplanar_pos).rg * current_selective_mask;
 		CLEARCOAT = clearcoat * base_clearcoat.r;
 		CLEARCOAT_ROUGHNESS = clearcoat_roughness * base_clearcoat.g;
 	}
 
 	if (enable_anisotropy) {
 		// Anisotropy: Enabled
-		vec3 base_anisotropy = texture(texture_anisotropy_flowmap, base_uv).rgb;
+		vec3 base_anisotropy = triplanar_texture(texture_anisotropy_flowmap, power_normal, triplanar_pos).rgb;
 		ANISOTROPY = anisotropy * base_anisotropy.b;
 		ANISOTROPY_FLOW = base_anisotropy.rg * 2.0 - 1.0;
 	}
-
-	// Cutout border painting
-	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
-	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
 }
 
 void light() {

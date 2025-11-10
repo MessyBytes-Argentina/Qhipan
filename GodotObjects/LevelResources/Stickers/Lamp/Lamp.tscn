@@ -174,10 +174,7 @@ cull_mask = 1048573
 unique_name_in_owner = true
 visible = false
 light_color = Color(0.784314, 0.509804, 0, 1)
-light_energy = 0.0
-light_cull_mask = 4293918721
 shadow_enabled = true
-shadow_caster_mask = 4293918721
 omni_range = 0.0
 omni_attenuation = 0.0
 

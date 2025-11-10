@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://c70ev27rfenr"]
+[gd_scene load_steps=58 format=3 uid="uid://c70ev27rfenr"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_36pyb"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_lhho8"]
@@ -25,16 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://c652vtgll6wtx" path="res://Assets/Textures/Tutorial Screens/Joystick/Place.png" id="11_hgowq"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="14_hkned"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="14_tfbny"]
+[ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderPedestal.tscn" id="15_2lyb6"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="15_jpt52"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="16_f1mir"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="17_37ad3"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="18_f1mir"]
-[ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/Pedestal.gd" id="28_l25qv"]
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="29_bbs5y"]
-[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="30_slia4"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="32_0uw4l"]
-[ext_resource type="PackedScene" uid="uid://nwnxhvcnai" path="res://Assets/Models/Pedestales/Pedestal Key.tscn" id="34_b1k5i"]
-[ext_resource type="Material" path="res://Assets/Materials/Murales/Mural Papa/Relieve 2/Mural Papa Test relieve 2.tres" id="35_tt63a"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jjhji"]
 
@@ -46,14 +42,6 @@ albedo_texture = ExtResource("8_57jsn")
 transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("8_57jsn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_mtel8"]
-material = ExtResource("29_bbs5y")
-size = Vector3(0.5, 0.25, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bek0u"]
-material = ExtResource("30_slia4")
-size = Vector3(0.75, 0.75, 0.25)
 
 [sub_resource type="Gradient" id="Gradient_d72c4"]
 offsets = PackedFloat32Array(0.65405405, 0.7189189)
@@ -67,144 +55,12 @@ fill_to = Vector2(0.8, 0.5)
 repeat = 1
 metadata/_snap_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_841xi"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_2eawf")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_2eawf")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
-size = Vector3(0.70224, 1.1085205, 0.5118408)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mtel8"]
-size = Vector3(0.1, 0.75, 0.75)
-
-[sub_resource type="Gradient" id="Gradient_2eawf"]
-offsets = PackedFloat32Array(0.65405405, 0.7189189)
-colors = PackedColorArray(0.62869304, 0.4399307, 0.7181906, 1, 0.7349629, 5.2269996e-05, 0.5743593, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_841xi"]
-gradient = SubResource("Gradient_2eawf")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.5)
-repeat = 1
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vq3qu"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_841xi")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_841xi")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
 [sub_resource type="Gradient" id="Gradient_hkned"]
 offsets = PackedFloat32Array(0.6864865, 0.8)
 colors = PackedColorArray(0.8507659, 0.0011903697, 0.9360264, 1, 1, 0.7490384, 0.8736715, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rpa5y"]
 gradient = SubResource("Gradient_hkned")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_rpa5y"]
-offsets = PackedFloat32Array(0.6864865, 0.8)
-colors = PackedColorArray(0.72718805, 0.48850143, 0, 1, 0.9999996, 0.79791087, 0.46802127, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l25qv"]
-gradient = SubResource("Gradient_rpa5y")
 width = 128
 height = 128
 fill = 1
@@ -299,68 +155,17 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_owgmc"]
-offsets = PackedFloat32Array(0.65405405, 0.7189189)
-colors = PackedColorArray(0.27058825, 0.6, 0.4745098, 1, 0, 0.4509804, 0.69411767, 1)
+[sub_resource type="Gradient" id="Gradient_yg4in"]
+offsets = PackedFloat32Array(0.7, 0.8)
+colors = PackedColorArray(0, 0.6313726, 0.54901963, 1, 0, 1, 0.4, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_d72c4"]
-gradient = SubResource("Gradient_owgmc")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0uw4l"]
+gradient = SubResource("Gradient_yg4in")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.5)
-repeat = 1
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2eawf"]
-render_priority = 0
-shader = ExtResource("18_f1mir")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_d72c4")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_d72c4")
-shader_parameter/enable_normal = false
-shader_parameter/top_normal_scale = 0.0
-shader_parameter/side_normal_scale = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
-shader_parameter/top_roughness = 0.0
-shader_parameter/side_roughness = 0.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 0.0
-shader_parameter/side_emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 0.0
-shader_parameter/side_clearcoat = 0.0
-shader_parameter/top_clearcoat_roughness = 0.0
-shader_parameter/side_clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_jpt52"]
 _data = {
@@ -398,68 +203,6 @@ size = Vector3(1.5, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nup82"]
 size = Vector3(2, 1, 3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a80o"]
-resource_name = "Material"
-albedo_color = Color(0.8, 0.8, 0.8, 1)
-metallic = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_smemk"]
-_surfaces = [{
-"aabb": AABB(-3.042394, 0.004527, -0.395473, 1.0405068, 0.790946, 0.790946),
-"format": 34896613377,
-"index_count": 84,
-"index_data": PackedByteArray("CAAJAAoAAQAJAAgAAQAGAAkACgAJAAsACwAJAAYAAQAMAAYAAQAIAAwABgANAAsACgALAA4ACwANAA4ABgAMAA8ADwANAAYAAAAPAAwADAAIAAAADQAAAAgABwAPAAAABwANAA8ABwAAAA0ACAAKAAMADQAIAAQABAAIAAMADQAEAA4AAwAKAAIAAwACAAQACgAOAAIADgAEAAUABAACAAUAAgAOAAUA"),
-"lods": [0.47073132, PackedByteArray("AAABAAIAAAACAAMAAwACAAQABAAAAAMAAgABAAUABAACAAUABQABAAYABwAAAAQABwAEAAUAAAAHAAEABgAHAAUABgABAAcA")],
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 16,
-"vertex_data": PackedByteArray("wdr//y/+AACl7R/xeCcAACLvAAAAAAAA//8AAP//AAAAAAAA//8AAOMZAAAAAAAAwA4f8XgnAABoHv//L/4AADLx/38X/wAAC+o1zYYsAAA849t2GiIAAGIJ15eGLAAA+uz//0BKAACbF/9/F/8AAAQV23YaIgAAaw///wFwAAA=")
-}, {
-"aabb": AABB(-2.965507, 0.797545, 0.247244, 0.81069493, 1.149842, 0.16031301),
-"format": 34896613377,
-"index_count": 156,
-"index_data": PackedByteArray("DgABAAgACgAOAAgADgAPAAEAEAAOAAoAEAAPAA4ADwARAAEACAABAAkAAQARAAkACAAJAAIAAgAKAAgAAgAJAAMACQASAAMAAwASAAIAEQASAAkABQAKAAIAAgASAAUAEQATABIAEgATAAUADwATABEACwAKAAUABQATAAsACwAAAAoACgAAABAAEAAUAA8AFAATAA8AAAAUABAADAATABQAAAAMABQAEwAHAAsAFQAAAAsACwAHABUABwATABYAFgATAAwAFgAXAAcAFQAHABgAGAAHABcAGQAAABUAGAAZABUADQAMAAAADQAAABkABgAZABgADQAaAAwADAAaABYADQAZABsAGwAZAAYAGwAaAA0ABgAYAAQABAAbAAYAGgAbAAQAFgAaAAQABAAYABcABAAXABYA"),
-"lods": [0.2205147, PackedByteArray("AAABAAgACAABAAkAAQADAAkACAAJAAIAAgAJAAMAAgAKAAgACgAAAAgABQAKAAIAAgADAAUACwAKAAUABQADAAsACwAAAAoADAADAAEAAAAMAAEAAwAHAAsABwADAAwABgAAAAsACwAHAAYADQAAAAYADQAMAAAABAAGAAcABAANAAYABwAMAAQADAANAAQA"), 0.74176055, PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEABQAAAAIAAgADAAUABAAAAAYABgAAAAUABwADAAQABAAGAAcAAwAHAAUABQAHAAYA")],
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 28,
-"vertex_data": PackedByteArray("b4Xm/JKZAACjF/bU/eQAAMIrPxv5CwAAhR4+EIxpAAD//wh7j6wAAPlJKggAAAAAh/MWdVlEAADmwAAAW18AAGcKxGE5OAAAAACMYPGbAADUX0hnrzsAAMht2AhtAAAAmbWd9hz6AACZtVPwr5EAAGYgLdZFgQAA61Kd9hz6AAAzXc3yPJMAABBAEWZnnwAA+UkAAFtfAAAJbgAAW18AAG+F/////wAA5sCBCdcAAADOyuRu8aQAABbxbxXObAAAhOU1HtQNAADcsRxwOUEAAMLlaMSb2gAAb9qgxeN2AAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_3lk3g"]
-_surfaces = [{
-"aabb": AABB(-3.042394, 0.004527, -0.395473, 1.0405068, 0.790946, 0.790946),
-"attribute_data": PackedByteArray("/5//P0ec0Xv/X/9//1//P/+fAAD/n/8//18AAP9f/z//H/8//1//f/8f/3//X/8//1//f/+f/3//X/+//5//v/+f/z//3/8//5//f//f/3//n////1////9f/79HnC3E/3//P02T/3//f/9/TZP/v/9/////f/+//38AAP9//z//f/9/TZP/v/9//7//f/8//3//f/9//z//n99x/3//f02T/39Nk/+//9/fcf+f33H/f////3//v/+fH87/f////5/fcf/f33FHnNF7TZP/f/9//z9HnC3E/3///02T/7//n/+/TZP/f/9/////nx/O/3//f/9//78="),
-"format": 34896613399,
-"index_count": 84,
-"index_data": PackedByteArray("GAAZABoAGwAcAB0AHgAfAAYABgAfAAcAHgAFAB8ABAAFAB4ACAAJAAoACwAJAAgAIAAhACIAIwAkAAMAAwAkAAIAAQAlACYAJgAlAAAAJwAoACkAKQAoAA8AEQAqABAAEAAqACsALAAVAC0ALQAVABYALgAvABcAEgAwABMAEwAwADEAMgAzADQANQA2ADcADQA4ADkAFAA6ADsAPAA9AAwADAA9AA4A"),
-"lods": [0.47073132, PackedByteArray("AAABAAIAAAACAAMABAAFAAYABgAFAAcACAAJAAoACwAJAAgADAANAA4ADgANAA8AEAARABIAEwASABEAFAAVABYAFwAUABYA")],
-"material": SubResource("StandardMaterial3D_2a80o"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 62,
-"vertex_data": PackedByteArray("wdr//y/+u9el7R/xeCeb1iLvAAAAAJTh//8AAP//1dxoHv//L/4nvcHa//8v/iTGAAAAAP//07r//wAA//8lxgAAAAD///+/Iu8AAAAA/7/jGQAAAAD/v///AAD///+/Iu8AAAAAZPil7R/xeCe3++MZAAAAACv4wA4f8Xgn6f7B2v//L/5Z/Wge//8v/v//pe0f8XgncP/ADh/xeCeg/Gge//8v/o7QAAAAAP//ytLjGQAAAACazsAOH/F4J13FMvH/fxf/ydcL6jXNhizJ1zzj23YaIsnXYgnXl4YsotibF/9/F/+i2AQV23YaIqLYmxf/fxf/D7sy8f9/F/+PxTzj23YaIjb5YgnXl4YsNvkEFdt2GiI2+TLx/38X/7faPOPbdhoilt8y8f9/F/+Y1/rs//9AStzWPOPbdhoi5/4L6jXNhizn/mIJ15eGLOj+aw///wFwh/767P//QEpJ/JsX/38X/9fUBBXbdhoiRtBrD///AXBdxZsX/38X/13F+uz//0BK/f5rD///AXBg/KXtH/F4J4PMC+o1zYYsg8wy8f9/F/+DzMAOH/F4JyLWmxf/fxf/ItZiCdeXhiwi1sAOH/F4J7f7C+o1zYYst/ubF/9/F/+O0GsP//8BcI7QPOPbdhoie/gEFdt2GiJA+K4rHiTQLHYjyCb2K98r6yiL/3sAi/9jAIv/gwCL/2MAAAD/fwAA/38AAP9/AAD/f3S4uL7/PQ9GJbo8vSXCFb3fgo++/3//v4Z/b8iRg7TGdthB1ZvTXdLhzH7VGLhY5tgmLjDYJi4w2CYuMLXICue1yArntcgK54v/ggCL/2QAKK7mxiiu5sYorubGUS51J9wouCrRKwokjSydI+HCXLy+wn+8R8LzvJuBMb//g/+9gNYE0bjPLNQYuFjmGLhY5i6Amsjqg4LG6DfVKeg31SnoN9Upmt3f0Zrd39Ga3d/R/z0PRv89D0Z22EHVdthB1cq3TL+Ducq9")
-}, {
-"aabb": AABB(-2.965507, 0.797545, 0.247244, 0.81069493, 1.149842, 0.16031301),
-"attribute_data": PackedByteArray("47xgNHzvyE025mvIaYTIiCiKe41Q7NfOfaGA2UrY8NTjvGA0iGTO1QIZ4NIteYiCnwjRUpX1KJpg+iiasqazN7KmnzzKx37Uysd+1DfOiZaV9SiasqafPJ4F6J/DTmQ1cuvITS15isWdYfeMN2jiU40+uNkOOIwxiCEOOpwiSJkELmzbStiA2WuovpCdkHrGuZWkWH2hD9RuzwA7Stjw1HLryE025mvIuZWkWICQpFiV9SiaYPoomjbma8hQ7NfOgJCkWLmVpFgoinuNKIp7jZ2QesZphMiISItwy+O8jDFuzwA7K9SzN6zHgNl9oQ/UfaEP1H2hgNmdkHrGSItwy7KmnzyyprM347xgNOO8jDFuzwA7K9SzN3LryE1878hNStiA2azHgNlK2PDUysd+1A=="),
-"format": 34896613399,
-"index_count": 156,
-"index_data": PackedByteArray("GAABAA0ADQABAA4ACwAZABoAGgAZAAkAGgAbAAsAFwAbABoACQAcABoAGgAcABcAFwAcAB0AHQAcAB4AHgAcAB8AHgAfAAwAHwAcACAADAAfABYAHwAgABYAFgAgAAoABQAhAAIAAgAhAAcABAAiACMAJAAiAAQAFQAiACQAIwAiACUAFQAIACIAIgAIACUAJQAIABIAEgAIABMAEwAIACYAEgATACcAJgAoABMAJwATACkAEwAoABQAKQATABQAKgArABAAEAArAA8ALAAtAC4ALgAtAC8AMAAxAAMAAwAxADIAMwA0ADUANQA0ADYAAAA3ADgAOAA3ADkAOgAGABEAEQAGADsAPAA9AD4APgA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsA"),
-"lods": [0.2205147, PackedByteArray("AAABAA0ADQABAA4AAAAPAAEAEAAPAAAADwAQAAMAAwAQAAQADQAOAAIAAwAEAAYAAgAOAAUABQAGABEABwAFABEAAgAFAAcAEgAGAAQABwATAAIAEgATAAcAAgATABQAEwAIABQAEgAIABMABAAIABIAFQAIAAQADAAKABYAFwAKAAwACQAKABcACQAXAAsA"), 0.74176055, PackedByteArray("AAABAAIAAAADAAEAAwAAAAQAAgABAAUAAwAEAAYAAgAFAAcABQAGAAcABwAGAAQABwAIAAIABAAIAAcACQAKAAsACwAKAAwA")],
-"material": ExtResource("35_tt63a"),
-"name": "Material",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 76,
-"vertex_data": PackedByteArray("b4Xm/JKZGuWjF/bU/eRc0sIrPxv5Cxzn//8Ie4+s6deH8xZ1WUT//4UePhCMaYjo5sAAAFtfj//5SSoIAAA942+F5vySmf//5sAAAFtffYWFHj4QjGl9hf//CHuPrH2Foxf21P3kfYVnCsRhOThk0gAAjGDxm2TSmbWd9hz6T9KZtVPwr5F00sht2AhtAMT/yG3YCG0A///UX0hnrzv//2cKxGE5OP//mbVT8K+R//8AAIxg8Zt9hZm1nfYc+n2FZiAt1kWBW9IW8W8Vzmx9hc7K5G7xpH2FwuVoxJvafYUJbgAAW199hW+F/////32F61Kd9hz6fYUQQBFmZ599hflJAABbX32F+UkAAFtfNOXcsRxwOUH//4TlNR7UDf//b9qgxeN2///mwIEJ1wD//zNdzfI8k///+UkqCAAA//9mIC3WRYH//8IrPxv5C///b9qgxeN2XtPC5WjEm9ol02cKxGE5OGfZAACMYPGbbdnCKz8b+QuM2YUePhCMaZHZwuVoxJvay9dv2qDF43bQ14fzFnVZROzXh/MWdVlEddaE5TUe1A111v//CHuPrHXWFvFvFc5sddZvhf////9L5zNdzfI8k7zq61Kd9hz6bOwJbgAAW1/R/+bAgQnXAIL/5sCBCdcA8OLmwAAAW1/o44TlNR7UDTjlFvFvFc5s7OWZtVPwr5Gx6Zm1nfYc+hvpb4Xm/JKZ2+dvhf////855zNdzfI8k+ze61Kd9hz6Bd5mIC3WRYGF2qMX9tT95LTZ+UkAAFtfkv8JbgAAW18F//lJKggAAET/yG3YCG0AuP51k9LBgIGE8oJW2/RlkrQC/3+j+sFYOfmIf0AsNlCb6P9/o/qMRgt9jEYLfYxGC32MRgt9GoGm8hGBqfIjqZ8O/qgcDvx/9Cv/f6P6/3+j+v9/o/r/f6P6jEYLfYxGC32KgYHyi0YLfYxGC32MRgt9i0YLfYxGC32MRgt9i0YLfYtGC312U+7u/3+j+v9/o/r/f6P6/3+j+v9/o/r/f6P6/3+j+v9/o/oUqO0KS6itC5JtCvXFbX71tG6X99Vu5PfVks4Dw5KfA1eSkQK8eXMG/XlXBsd5bwYDelUGQpBMwzyLncW/iMPGG4AELGp/Uyx5bFgudm/eLGhz6SqBdeApRbrkC6u6xAyEu58O8ruPD3OKJc0/jHnMdpPHyTaVIMlEgGktG3/OLaB/eS17fjQu")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_smemk")
 
 [node name="TutoHub" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
@@ -516,71 +259,15 @@ transform = Transform3D(-0.827, 0, 6.5683174e-08, 0, 0.435, 0, -1.2487354e-07, 0
 mesh = SubResource("QuadMesh_jjhji")
 surface_material_override/0 = SubResource("StandardMaterial3D_oin4o")
 
-[node name="Pedestal" type="StaticBody3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -12)
-script = ExtResource("28_l25qv")
+[node name="Pedestal1" parent="Props" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -12)
+texture = SubResource("GradientTexture2D_2eawf")
 pedestalName = "room_2"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_841xi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Props/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Props/Pedestal/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Props/Pedestal/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
-
-[node name="Pedestal2" type="StaticBody3D" parent="Props"]
-transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000001, 6, 0, -12)
-script = ExtResource("28_l25qv")
+[node name="Pedestal2" parent="Props" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+texture = SubResource("GradientTexture2D_rpa5y")
 pedestalName = "room_3"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_vq3qu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Props/Pedestal2"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Props/Pedestal2/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Props/Pedestal2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
 
 [node name="PlaceholderMetaprogressionBlock4" parent="Props" instance=ExtResource("14_hkned")]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, -15)
@@ -589,7 +276,7 @@ pedestalName = "room_3"
 
 [node name="PlaceholderMetaprogressionBlock5" parent="Props" instance=ExtResource("14_hkned")]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 5, 0, -11)
-texture = SubResource("GradientTexture2D_l25qv")
+texture = SubResource("GradientTexture2D_2eawf")
 pedestalName = "room_2"
 
 [node name="Player" parent="." instance=ExtResource("2_vf84w")]
@@ -721,51 +408,17 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 2, -9, 0, -13.5)
 texture = SubResource("GradientTexture2D_w56md")
 pedestalName = "room_1"
 
-[node name="Pedestal" type="StaticBody3D" parent="Room 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
-script = ExtResource("28_l25qv")
-pedestalName = "room_1"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
-visible = false
-mesh = SubResource("BoxMesh_mtel8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
-visible = false
-mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_2eawf")
-
-[node name="Model" parent="Room 1/Pedestal" instance=ExtResource("34_b1k5i")]
-transform = Transform3D(1.3512765, 0, 0, 0, 1.3512765, 0, 0, 0, 1.3512765, 0.0022125244, -0.008248836, -0.10824585)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room 1/Pedestal"]
-transform = Transform3D(1.3512765, 0, 0, 0, 1.3512765, 0, 0, 0, 1.3512765, -0.014806747, 0.65149313, 0.055934906)
-shape = SubResource("BoxShape3D_bi05e")
-
-[node name="Area3D" type="Area3D" parent="Room 1/Pedestal"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -0.24706666, 0.96899855, 0, -0.96899855, -0.24706666, 0, 0.5955549, 0.31484795)
-collision_layer = 2048
-collision_mask = 0
-monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
-
-[node name="AreaShape1" type="CollisionShape3D" parent="Room 1/Pedestal/Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
-shape = SubResource("BoxShape3D_mtel8")
-debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
-
-[node name="Marker3D" type="Marker3D" parent="Room 1/Pedestal/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5498e-08, -0.5, -2.18557e-08)
-
 [node name="PushDoor" parent="Room 1" instance=ExtResource("32_0uw4l")]
 transform = Transform3D(-1, 8.742277e-08, 3.8213714e-15, 0, -4.37114e-08, 1, 8.742277e-08, 1, 4.37114e-08, -17, 0.5, -15.599999)
 
 [node name="PushDoor2" parent="Room 1" instance=ExtResource("32_0uw4l")]
 transform = Transform3D(-4.371138e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371138e-08, 1.9106855e-15, -7, 0.5, -11)
 isOneWay = true
+
+[node name="Pedestal" parent="Room 1" instance=ExtResource("15_2lyb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
+texture = SubResource("GradientTexture2D_0uw4l")
+pedestalName = "room_1"
 
 [node name="Room 2" type="Node3D" parent="."]
 
@@ -1246,7 +899,3 @@ transform = Transform3D(-4.9, 0, -8.7422805e-08, 0, 1, 0, 4.283716e-07, 0, -1.00
 [node name="AlternatingBlock4" parent="Room 3" instance=ExtResource("7_vf84w")]
 transform = Transform3D(-4.9, 0, -8.7422805e-08, 0, 1, 0, 4.283716e-07, 0, -1.0000004, 0, 0, -34)
 isOff = true
-
-[node name="AltarPequeño" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.9485726, 0, 0.3165598, 0, 1, 0, -0.3165598, 0, -0.9485726, -1.6390202, 0, -12.405134)
-mesh = SubResource("ArrayMesh_3lk3g")

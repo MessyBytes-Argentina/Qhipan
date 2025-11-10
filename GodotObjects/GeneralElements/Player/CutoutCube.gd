@@ -27,12 +27,15 @@ var zoomedOut: bool = false
 var auxMode: bool = false
 ## Reference to the player.
 var player: Player
+## Rotating camera.
+var rotatingCamera: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	hide()
 	player = get_tree().get_first_node_in_group("Player")
+	if not player.is_node_ready(): await player.ready
 	cylinder.hide()
 	if not up:
 		up = Marker3D.new()
@@ -43,9 +46,10 @@ func _ready() -> void:
 		updateMaterial.set_shader_parameter("cylinderRadius2", cylinder.mesh.bottom_radius)
 		updateMaterial.set_shader_parameter("cylinderRadius1", cylinder.mesh.top_radius)
 		updateMaterial.set_shader_parameter("cylinderHeight", cylinder.mesh.height)
+		updateMaterial.set_shader_parameter("squareSize", abs(player.cameraCubeWallCutout.position.z) / sqrt(2.0))
 
 ## Called during the processing step of the main loop.
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	var anyRaycast: bool = not cameraRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
 	for updateMaterial: ShaderMaterial in GeneralVariables.cutoutMaterials: update_material(updateMaterial, anyRaycast)
@@ -59,7 +63,10 @@ func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinder.global_position)
 	updateMaterial.set_shader_parameter("cylinderRotation", cylinder.global_position - up.global_position)
 	updateMaterial.set_shader_parameter("playerPosition", playerFloor.global_position)
+	updateMaterial.set_shader_parameter("cameraMiddlePoint", player.cameraCubeWallCutout.global_position)
+	updateMaterial.set_shader_parameter("cameraMiddleRotation", global_rotation.y)
 	updateMaterial.set_shader_parameter("auxMode", auxMode)
+	updateMaterial.set_shader_parameter("rotating", rotatingCamera)
 	updateMaterial.set_shader_parameter("auxBoxPosition", cubeCutoutAux.global_position)
 	updateMaterial.set_shader_parameter("auxBoxRotation", cubeCutoutAux.global_rotation.y)
 	updateMaterial.set_shader_parameter("player_sticker_radius", LampSticker.LIGHTRANGEGRABED if player.darknessBlockerModule.holdingLight else 0.0)

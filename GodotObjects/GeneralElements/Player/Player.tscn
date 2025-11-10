@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=104 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://duqlyfcy6ckyy" path="res://Assets/Textures/Character/IDLE BACK/BACK 3.png" id="16_vmy0v"]
 [ext_resource type="Texture2D" uid="uid://brl7tlmrv10ry" path="res://Assets/Textures/Character/IDLE BACK/BACK 4.png" id="17_84qwu"]
 [ext_resource type="Texture2D" uid="uid://b72ik3kxud5rh" path="res://Assets/Textures/Character/WALK BACK/BW 1.png" id="18_yiccp"]
-[ext_resource type="Shader" uid="uid://cb0b3u03ens4d" path="res://Assets/Shaders/ScreenVerticalVignette.gdshader" id="19_uxb7q"]
 [ext_resource type="Texture2D" uid="uid://bxu0ow1ccn7v8" path="res://Assets/Textures/Character/WALK BACK/BW 2.png" id="19_w2rxr"]
 [ext_resource type="Texture2D" uid="uid://bu10dw62umb1b" path="res://Assets/Textures/Character/WALK BACK/BW 3.png" id="20_l1a28"]
 [ext_resource type="Texture2D" uid="uid://d267o8r7pgii8" path="res://Assets/Textures/Character/WALK BACK/BW 4.png" id="21_0t7aq"]
@@ -74,6 +73,9 @@
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
 [ext_resource type="Script" uid="uid://bj6pdy5y6dt3q" path="res://GodotObjects/GeneralElements/Player/LedgeDetection.gd" id="72_4biwg"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
+size = Vector2(0.9, 0.9)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
 transparency = 1
@@ -83,34 +85,6 @@ specular_mode = 1
 albedo_texture = ExtResource("2_cphfr")
 backlight_enabled = true
 backlight = Color(0.72464263, 0.7246426, 0.7246426, 1)
-backlight_texture = ExtResource("2_cphfr")
-disable_receive_shadows = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
-material = SubResource("StandardMaterial3D_ghylh")
-size = Vector2(0.9, 0.9)
-
-[sub_resource type="Gradient" id="Gradient_cphfr"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 100, 100, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fj5th"]
-gradient = SubResource("Gradient_cphfr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cphfr"]
-render_priority = 1
-next_pass = SubResource("StandardMaterial3D_ghylh")
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 2
-no_depth_test = true
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 2
-albedo_color = Color(1, 1, 1, 0)
-albedo_texture = ExtResource("2_cphfr")
-albedo_texture_force_srgb = true
-detail_albedo = SubResource("GradientTexture2D_fj5th")
 disable_receive_shadows = true
 
 [sub_resource type="Gradient" id="Gradient_mseqm"]
@@ -136,22 +110,6 @@ albedo_color = Color(0.490196, 1, 1, 0.784314)
 [sub_resource type="BoxMesh" id="BoxMesh_k5k78"]
 material = SubResource("ORMMaterial3D_k5k78")
 size = Vector3(4, 4, 4)
-
-[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
-flip_faces = true
-size = Vector2(2, 2)
-
-[sub_resource type="Gradient" id="Gradient_uxb7q"]
-offsets = PackedFloat32Array(0.025, 0.1, 0.9, 0.975)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_otkym"]
-gradient = SubResource("Gradient_uxb7q")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_otkym"]
-render_priority = -1
-shader = ExtResource("19_uxb7q")
-shader_parameter/vignete_gradient = SubResource("GradientTexture1D_otkym")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
 top_radius = 0.0
@@ -650,7 +608,6 @@ collision_layer = 2
 collision_mask = 6181
 slide_on_ceiling = false
 floor_constant_speed = true
-floor_block_on_wall = false
 floor_max_angle = 1.0472
 script = ExtResource("1_iw8fe")
 
@@ -706,7 +663,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 0, 1, 0.0353553, -0.0362
 layers = 2
 mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_cphfr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
 
 [node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
 unique_name_in_owner = true
@@ -804,15 +761,6 @@ visible = true
 layers = 524288
 skeleton = NodePath("../..")
 
-[node name="VerticalVignette" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D/PostProcessing"]
-visible = false
-layers = 524288
-extra_cull_margin = 16384.0
-ignore_occlusion_culling = true
-mesh = SubResource("QuadMesh_vq31v")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_otkym")
-
 [node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 5.96046e-08, -1, 0, 1, 5.96046e-08, 0, 0, -3.5)
@@ -846,6 +794,10 @@ transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 
 target_position = Vector3(-0.05, -6, 0.076)
 collision_mask = 9
 debug_shape_custom_color = Color(0, 0, 0, 0)
+
+[node name="CameraCubeWallCutout" type="Marker3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="LightDecal" type="Decal" parent="."]
 unique_name_in_owner = true

@@ -1,16 +1,94 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvr78l4xvakoj"]
+[gd_scene load_steps=15 format=3 uid="uid://cvr78l4xvakoj"]
 
 [ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/Pedestal.gd" id="1_4hne7"]
-[ext_resource type="Material" uid="uid://824j8fqqimf2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="1_xtwdd"]
-[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="2_4hne7"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="1_xtwdd"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="3_4hne7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mtel8"]
 material = ExtResource("1_xtwdd")
 size = Vector3(0.5, 0.25, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bek0u"]
-material = ExtResource("2_4hne7")
 size = Vector3(0.75, 0.75, 0.25)
+
+[sub_resource type="Gradient" id="Gradient_d2mit"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l3cxi"]
+gradient = SubResource("Gradient_d2mit")
+
+[sub_resource type="Gradient" id="Gradient_8eo4r"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_60emq"]
+gradient = SubResource("Gradient_8eo4r")
+
+[sub_resource type="Gradient" id="Gradient_2wiv4"]
+offsets = PackedFloat32Array(0.7, 0.8)
+colors = PackedColorArray(0, 0.6313726, 0.54901963, 1, 0, 1, 0.4, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w56md"]
+gradient = SubResource("Gradient_2wiv4")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtel8"]
+render_priority = 0
+shader = ExtResource("3_4hne7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = SubResource("GradientTexture1D_60emq")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_l3cxi")
+shader_parameter/top_texture_scale = 0.20000000298024
+shader_parameter/side_texture_scale = 0.20000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_w56md")
+shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_w56md")
+shader_parameter/enable_normal = true
+shader_parameter/top_normal_scale = 0.38
+shader_parameter/side_normal_scale = 0.38
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.5
+shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
 size = Vector3(0.5, 1, 0.5)
@@ -25,9 +103,11 @@ script = ExtResource("1_4hne7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 mesh = SubResource("BoxMesh_mtel8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Wall" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
 mesh = SubResource("BoxMesh_bek0u")
+surface_material_override/0 = SubResource("ShaderMaterial_mtel8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

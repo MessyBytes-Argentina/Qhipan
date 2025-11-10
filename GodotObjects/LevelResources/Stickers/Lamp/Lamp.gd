@@ -59,6 +59,8 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_mask_value(2, false)
 			stickerLightArea.set_collision_mask_value(2, false)
 			light.position.y = -GRABHEIGHT / 2.0
+			light.light_size = 1.0
+			light.shadow_bias = 10.0
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
@@ -72,6 +74,8 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_mask_value(2, true)
 			stickerLightArea.set_collision_mask_value(2, true)
 			light.position.y = 0.0
+			light.light_size = 0.0
+			light.shadow_bias = 0.1
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 	await get_tree().physics_frame

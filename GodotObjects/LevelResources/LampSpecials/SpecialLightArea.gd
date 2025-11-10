@@ -25,6 +25,7 @@ var nextLightValue: float = 0.0
 ## Tracks if player inside this lights effect.
 var hasPlayer: bool = false
 
+## Executed when node first enters the scene tree.
 func _ready() -> void:
 	var player: Player = get_tree().get_first_node_in_group("Player")
 	while not player:
@@ -33,6 +34,7 @@ func _ready() -> void:
 	playerDarknessManager = player.get_node("DarknessBlockerModule")
 	lightShape.shape.radius = 0.0001
 
+## To trigger form alternating surfaces.
 func switch_state(state: bool) -> void:
 	animate_light_fade(LIGHTRANGE if state else 0.0)
 	lightArea.set_collision_layer_value(5, state)
