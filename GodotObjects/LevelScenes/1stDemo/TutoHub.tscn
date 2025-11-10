@@ -34,7 +34,7 @@
 [ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="30_slia4"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="32_0uw4l"]
 [ext_resource type="PackedScene" uid="uid://nwnxhvcnai" path="res://Assets/Models/Pedestales/Pedestal Key.tscn" id="34_b1k5i"]
-[ext_resource type="Material" uid="uid://dbbswtruuigdx" path="res://Assets/Materials/Murales/Mural Papa/Toon-Mural Papa Test.tres" id="35_tt63a"]
+[ext_resource type="Material" path="res://Assets/Materials/Murales/Mural Papa/Relieve 2/Mural Papa Test relieve 2.tres" id="35_tt63a"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jjhji"]
 
