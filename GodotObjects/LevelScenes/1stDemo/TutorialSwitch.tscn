@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlnloaf3y33u3"]
+
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_ategh"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_pn7h0"]
+[ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_ycpgd"]
+[ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="4_ubum7"]
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="5_bqquc"]
+[ext_resource type="Script" uid="uid://cjhk2w754i6t" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/StickerGridmap.gd" id="6_pfr2c"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="7_82h3y"]
+
+[node name="BaseLevelScene" type="Node3D"]
+
+[node name="GridmapObject" parent="." instance=ExtResource("5_bqquc")]
+data = {
+"cells": PackedInt32Array(-262144, 0, 77, -196609, 0, 77, -196609, 65535, 77, -262144, 65535, 77, -262143, 65535, 77, -196610, 65535, 77, -196610, 65534, 77, -196610, 65533, 77, -196609, 65533, 77, -262144, 65533, 77, -262143, 65533, 77, -262143, 65534, 77, -262144, 65534, 77, -196609, 65534, 77, -196610, 65532, 77, -196609, 65532, 27, -262144, 65532, 27, -262143, 65532, 77, -262143, 65531, 77, -262144, 65531, 27, -196609, 65531, 27, -196610, 65531, 77, -262143, 65530, 52, -196610, 65530, 52, -65538, 65530, 52, -131071, 65530, 52, -196609, 65529, 127, -262144, 65529, 127, -196609, 65530, 27, -262144, 65530, 27)
+}
+script = ExtResource("6_pfr2c")
+metadata/_editor_floor_ = Vector3(0, -4, 0)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_ategh")]
+
+[node name="Player" parent="." instance=ExtResource("2_pn7h0")]
+disableMaximum = true
+
+[node name="CheckpointManager" parent="." node_paths=PackedStringArray("playerReference", "startCheckpoint") instance=ExtResource("3_ycpgd")]
+playerReference = NodePath("../Player")
+startCheckpoint = NodePath("Checkpoint")
+
+[node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("4_ubum7")]
+
+[node name="AlternatingBlock" parent="." instance=ExtResource("7_82h3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
