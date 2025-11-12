@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c70ev27rfenr"]
+[gd_scene load_steps=59 format=3 uid="uid://c70ev27rfenr"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_36pyb"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_lhho8"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="17_37ad3"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="18_f1mir"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="32_0uw4l"]
+[ext_resource type="PackedScene" uid="uid://bmh1flra6kkbc" path="res://Assets/Models/Plataformas Moviles/plataforma_movil.tscn" id="32_yg4in"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jjhji"]
 
@@ -899,3 +900,6 @@ transform = Transform3D(-4.9, 0, -8.7422805e-08, 0, 1, 0, 4.283716e-07, 0, -1.00
 [node name="AlternatingBlock4" parent="Room 3" instance=ExtResource("7_vf84w")]
 transform = Transform3D(-4.9, 0, -8.7422805e-08, 0, 1, 0, 4.283716e-07, 0, -1.0000004, 0, 0, -34)
 isOff = true
+
+[node name="Plataforma Movil" parent="." instance=ExtResource("32_yg4in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -10.5)

@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://binvrpy31ahx6"]
+[gd_scene load_steps=4 format=4 uid="uid://bmh1flra6kkbc"]
 
-[ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
-[ext_resource type="Material" uid="uid://4h2jtjsdgvsd" path="res://Assets/Materials/Plataforma Movil/Toon-Ucu Test Post MM.tres" id="2_xivvd"]
-[ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
+[ext_resource type="Material" path="res://Assets/Materials/Plataforma Movil/Ucu Test Post MM.tres" id="1_6xntk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4usj4"]
 _surfaces = [{
@@ -19,7 +17,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7x5hj"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5y86j"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0.2, -0.5, 1, 0.18055399, 1),
 "attribute_data": PackedByteArray("l6mhTqm4oU6XqRipqbgYqVOyJ/81vgCzNb7D/lOynbJYVAqcWFSAT05bAKNOW4lI1wAAo9cAiUjOBwqczgeAT1m6oU5ryaFOWboYqWvJGKkby6FOLdqhThvLGKkt2hip3duhTu/qoU7d2xip7+oYqe9gNfuyrDX7/lwn/6OwJ//+XIGrsqxzr+9gc6+jsIGrvfTSqb30LFap+NKpqfgsVuS/nbLGywCzxsvD/uS/J/9Z+tKpWfosVkX+0qlF/ixW1Pgn/9T4gavB/Cf/wfyBq1n6fVRZ+tcARf59VEX+1wBABL775Ve++9cAJ/9OWyf/1wCwpOVXGahABBmoTluwpOin0qn+XNKp6KfoXv5c6F4N808SDfM4XZ/syRKf7L5cJPc9tCT3J/+28Li0tvCs/gbvPbQG7yf/mOi4tJjorP4N8+hen+xXqZ/sY18N89KpV9kAs1fZw/52zZ2yds0n/+jmALPo5sP+B9udsgfbJ//+XDhd/lxEE/KmOF3ypkQTbqvnTfe2501uq9Kp+LbSqYhZYP2IWXamngJg/Z4CdqZPswCzT7PD/uVXl5/lV/JLiFk6oYhZT0qeAjqhQATyS0AEl5+eAk9KL7znTbnH500vvNKpucfSqfHM50172OdN8czSqXvY0qnaBv2cS1X9nIwFaZ6aVmmejAUgTUtVjE7aBoxOmlYgTbPd50096edNs93SqT3p0qngwACz4MDD/ppWIE2MBSBN5VfyS0AE8ktyzgCzcs7D/ppWaZ6aViBN5VeXn+VX8ksD3ACzA9zD/owFaZ6aVmmeQASXn+VXl5+MBSBNjAVpnkAE8ktABJefngJg/YhZYP172OdNe9jSqYhZT0qeAk9K8czSqfHM502IWWD9iFl2pk5bJ//3tudN+LbSqYhZOqGIWU9KTluJSG6r0qluq+dNiFl2pp4CdqZOW7CkucfnTbnH0qmeAjqhiFk6oU5bAKMvvNKpL7znTZ4CdqaeAmD91wCwpNcAJ/896edNPenSqZ4CT0qeAjqh1wCJSNcAAKOz3dKps93nTdXtTxLV7ThdKW0NTSltbyPHlg1Nx5ZvI+zxPbTs8Sf/zuk9tM7pJ//V7ehe1e3SqSpecBTHpXAU7PE9tOzxJ//+XEQTKl4NXCpecBTO6T20zukn//5cOF3HpQ1cKl4NXNXtTxLV7Thd8qZEE/KmOF3HpXAUx6UNXNXt6F7V7dKpT7MAs0+zw/5LVYxO2gaMTnLOALNyzsP+WFSAT0tV/ZxLVYxOA9wAswPcw/5YVAqc2gb9nEtV/ZzgwACz4MDD/s4HgE/OBwqc2gaMTtoG/ZzHlm8jKW1vI8elcBQqXnAUKW1vIyltDU0qXnAUKl4NXCltDU3Hlg1NKl4NXMelDVzHlg1Nx5ZvI8elDVzHpXAU"),
@@ -27,7 +25,7 @@ _surfaces = [{
 "index_count": 444,
 "index_data": PackedByteArray("YABhAGIAYgBhAGMAOQA9AGQAZAA9AGUAZgA5AGQAPQA+AGUAOAA5AGYAZQA+AGcAPgA4AGcAZwA4AGYAaAAFAGkAaQAFAAYAagBrAGwAbABrAG0AbgBqAGwAawBvAG0AcABqAG4AbQBvAHEAbwBwAHEAcQBwAG4AcgBzAHQAdABzAHUAdgB3AHgAeAB3AHkAegB7AHwAfAB7AH0AfgB6AHwAewB/AH0AgAB6AH4AfQB/AIEAfwCAAIEAgQCAAH4AggCDAIQAhACDAIUAHAAdAB4AHgAdAB8AIAAcAB4AHQAhAB8AIgAcACAAHwAhACMAIQAiACMAIwAiACAAJAAlACYAJgAlACcAhgApAIcAhwApACoAiACJAIoAigCJAIsALAAtAC4ALgAtAC8AjABUAI0AjQBUAFUAjgCPAJAAkACPAJEAMAAxADIAMgAxADMAkgBYAJMAkwBYAFkAlACVAJYAlgCVAJcANAA1ADYANgA1ADcAmACZAJoAmgCZAJsAnACdADoAOgCdADsAFQAXAJ4AngAXAJ8AoAChAAsACwChAA0AFgAUAKIAogAUAKMApAClAKYApgClAD8AAQADAKcApwADAKgAqQCqAAoACgCqAKsAAgAAAKwArAAAAK0ArgCvALAAsACvADwAEQATALEAsQATALIAswC0AAwADAC0ALUAEgAQALYAtgAQALcAuAC5ALoAugC5ALsAGQAbALwAvAAbAL0AvgC/AMAAwAC/AMEAGgAYAMIAwgAYAMMAQABBAEIAQgBBAEMARABFAMQAxABFAMUAxgDHAMgAyADHAMkASABJAMoAygBJAMsATABNAMwAzABNAM0AzgDPAFIAUgDPAFEAXQBfANAA0ABfANEA0gDTAEoASgDTAEsAXADUANUA1QDUANYA1wDYAE4ATgDYAE8AXgDZANoA2gDZANsA3ADdAEYARgDdAEcA3gDfAOAA4ADfAOEAUABTAOIA4gBTAOMA5ADlAAcABwDlAAQACQAPAOYA5gAPAOcA6ADpAFYAVgDpAFcACADqAOsA6wDqAOwA7QDuAFoAWgDuAFsADgDvAPAA8ADvAPEA8gDzACgAKADzACsA9AD1APYA9gD1APcA+AD5APoA+gD5APsA/AD9AP4A/gD9AP8AAAEBAQIBAgEBAQMBBAEFAQYBBgEFAQcB"),
 "lods": [0.44881916, PackedByteArray("AAABAAIAAgABAAMABAAFAAYABQAEAAcACAAJAAoACgAJAAsADAAIAAoACQANAAsADgAIAAwADQAOAAwACQAPAA0ADwAOAA0AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AIAAcAB4AHQAhAB8AIgAcACAAHwAhACMAIQAiACMAIwAiACAAJAAlACYAJgAlACcAKAApACoAKAAqACsALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA4ADoAOQA9ADsAPgA4ADwAOwA9AD8APQA+AD8APwA+ADwAQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUABTAFEAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAXABdAF4AXgBdAF8A")],
-"material": ExtResource("2_xivvd"),
+"material": ExtResource("1_6xntk"),
 "name": "UCU-Tile_Test",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -37,57 +35,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4usj4")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qquev"]
-size = Vector3(1, 0.5, 1)
+[node name="Plataforma Movil" type="Node3D"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qh56c"]
-size = Vector3(1, 0.5, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xivvd"]
-size = Vector3(0.9, 0.3, 0.9)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7x5hj"]
-size = Vector3(0.8, 0.5, 0.8)
-
-[node name="MovingPlatform" type="AnimatableBody3D"]
-collision_layer = 8193
-collision_mask = 8192
-script = ExtResource("1_qh56c")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = SubResource("ArrayMesh_7x5hj")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-shape = SubResource("BoxShape3D_qquev")
-
-[node name="StopCheck" type="Area3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-collision_layer = 0
-collision_mask = 8192
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StopCheck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, 0)
-shape = SubResource("BoxShape3D_qh56c")
-
-[node name="PlayerChecker" type="Area3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerChecker"]
-shape = SubResource("BoxShape3D_xivvd")
-debug_color = Color(0.956886, 0, 0.535538, 0.42)
-
-[node name="AntiDropArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("3_xivvd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_7x5hj")
+[node name="PlataformaTest" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_5y86j")

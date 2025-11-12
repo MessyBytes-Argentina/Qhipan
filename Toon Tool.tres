@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=6 format=3 uid="uid://c06vxf7obur0w"]
 
-[ext_resource type="Material" uid="uid://cyjs66jbjbhy8" path="res://Assets/Materials/Murales/Mural Papa/Relieve 2/Toon-Mural Papa Test relieve 2.tres" id="1_cpg3p"]
+[ext_resource type="Material" uid="uid://4h2jtjsdgvsd" path="res://Assets/Materials/Plataforma Movil/Toon-Ucu Test Post MM.tres" id="1_cpg3p"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_6j2on"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_s6528"]
 [ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="4_15xbp"]
-[ext_resource type="Material" path="res://Assets/Materials/Murales/Mural Papa/Relieve 2/Mural Papa Test relieve 2.tres" id="5_6j2on"]
+[ext_resource type="Material" path="res://Assets/Materials/Plataforma Movil/Ucu Test Post MM.tres" id="5_6j2on"]
 
 [resource]
 script = ExtResource("4_15xbp")
-materialMode = 3
+materialMode = 4
 surfaceMaterial = ExtResource("5_6j2on")
 UVSize = Vector2(1, 1)
 lightGradient = ExtResource("3_s6528")
