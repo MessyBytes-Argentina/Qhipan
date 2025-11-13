@@ -1,4 +1,5 @@
 extends CharacterBody3D
+## The basic sticker skeleton.
 class_name StickerBase
 
 ## Signals that the sticker was placed or removed
@@ -200,7 +201,7 @@ func set_size(mode: ScaleModes) -> void:
 			back.hide()
 			meshes.scale = Vector3.ONE * ZOOMOUTSCALE
 
-## Moves the sticker position to the given node position
+## Moves the sticker position to the given node position.
 func grab(node: Node3D) -> void:
 	set_deferred("collision_mask", 0)
 	lastLocation = global_position
@@ -213,7 +214,7 @@ func grab(node: Node3D) -> void:
 	placed = false
 	just_placed.emit(placed)
 
-## Called when player reset is called
+## Called when player reset is called.
 func reset_sticker() -> void:
 	reparent(sceneParent)
 	grabed = false

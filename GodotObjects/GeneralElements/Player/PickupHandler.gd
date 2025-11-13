@@ -81,7 +81,7 @@ func _physics_process(_delta: float) -> void:
 	sort_close_areas()
 
 ## Handles player input.
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if event.is_action_pressed("interact") and not zoomedOut and canGrab and not inNoStickerArea:
 		if len(antiDropAreaCollection) > 0: return
@@ -109,7 +109,6 @@ func do_grab() -> void:
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
 	if currentArea:
-		#prints("pickup handler")
 		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
 		if currentArea == placeholderArea and placeholderArea.global_position not in surfacesWithStickers: surfacesWithStickers.append(placeholderArea.global_position)
 		stickSound.play_sound()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=64 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -30,6 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://h4yeub8rtwsd" path="res://Assets/Textures/LeylineTest.png" id="27_pcewb"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="28_3qv1u"]
 [ext_resource type="Script" uid="uid://cpiv1eys17w7w" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylineGenerator.gd" id="29_q12un"]
+[ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="31_k0mlu"]
+[ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="32_ut7ax"]
+[ext_resource type="PackedScene" uid="uid://bgdkxk5wsw8hx" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderInventoryPedestal.tscn" id="33_e5c7o"]
+[ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="34_3q00n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wvbsw"]
 panorama = ExtResource("1_8elk3")
@@ -165,6 +169,53 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="Gradient" id="Gradient_ut7ax"]
+offsets = PackedFloat32Array(0.65, 0.65)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e5c7o"]
+gradient = SubResource("Gradient_ut7ax")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_3q00n"]
+offsets = PackedFloat32Array(0.65, 0.65)
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tof7f"]
+gradient = SubResource("Gradient_3q00n")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_e5c7o"]
+script = ExtResource("32_ut7ax")
+name = "test"
+image = SubResource("GradientTexture2D_tof7f")
+backImage = SubResource("GradientTexture2D_e5c7o")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="Gradient" id="Gradient_tof7f"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0.39215687, 0, 1, 0, 1, 0, 1, 0, 0.39215687, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3g0t"]
+gradient = SubResource("Gradient_tof7f")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gv342"]
+gradient = SubResource("Gradient_tof7f")
+width = 128
+height = 128
+fill = 2
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -381,3 +432,17 @@ curve = SubResource("Curve3D_pcewb")
 script = ExtResource("29_q12un")
 stencilMaterial = SubResource("StandardMaterial3D_ut7ax")
 glowMaterial = SubResource("StandardMaterial3D_e5c7o")
+
+[node name="InventorySticker" parent="." instance=ExtResource("31_k0mlu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 5.5)
+sticker = SubResource("Resource_e5c7o")
+
+[node name="InventoryPedestal" parent="." instance=ExtResource("33_e5c7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 5)
+texture = SubResource("GradientTexture2D_s3g0t")
+pedestalName = "test"
+
+[node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("34_3q00n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 5)
+texture = SubResource("GradientTexture2D_gv342")
+pedestalName = "test"
