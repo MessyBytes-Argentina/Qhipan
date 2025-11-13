@@ -1,7 +1,7 @@
 @tool
 extends StaticBody3D
 ## Node handles triggering pedestal events.
-class_name Pedestal
+class_name SmallPedestal
 
 ## Debug texture for this pedestal
 @export var texture: Texture2D:
