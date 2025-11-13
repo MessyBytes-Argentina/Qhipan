@@ -68,16 +68,17 @@ func update_texture() -> void:
 func _on_player_entered(body: Node3D) -> void:
 	if body is not Player: return
 	playerInArea = body
-	playerInArea.grabArea.canDrop = false
-	playerInArea.grabArea.canGrab = false
 	playerHasSticker = GeneralVariables.inventory.has_sticker(pedestalName) != null
 	if playerHasSticker:
 		highlight.show()
+		playerInArea.grabArea.canDrop = false
+		playerInArea.grabArea.canGrab = false
 
 func _on_player_exited(body: Node3D) -> void:
 	if body != playerInArea: return
-	playerInArea.grabArea.canDrop = true
-	playerInArea.grabArea.canGrab = true
+	if playerHasSticker:
+		playerInArea.grabArea.canDrop = true
+		playerInArea.grabArea.canGrab = true
 	playerInArea = null
 	highlight.hide()
 
