@@ -1,23 +1,54 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlnloaf3y33u3"]
+[gd_scene load_steps=13 format=3 uid="uid://dlnloaf3y33u3"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_ategh"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_pn7h0"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="3_6gkku"]
+[ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="3_pb0bo"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_ycpgd"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Wall.tres" id="4_pb0bo"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="4_ubum7"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="5_bqquc"]
 [ext_resource type="Script" uid="uid://cjhk2w754i6t" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/StickerGridmap.gd" id="6_pfr2c"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="7_82h3y"]
 
+[sub_resource type="Curve3D" id="Curve3D_6gkku"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, -1, -8, 0, 0, 0, 0, 0, 0, -1, -1, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_pb0bo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, -1, -8, 0, 0, 0, 0, 0, 0, 1, -1, -6),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="BaseLevelScene" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("5_bqquc")]
 data = {
-"cells": PackedInt32Array(-262144, 0, 77, -196609, 0, 77, -196609, 65535, 77, -262144, 65535, 77, -262143, 65535, 77, -196610, 65535, 77, -196610, 65534, 77, -196610, 65533, 77, -196609, 65533, 77, -262144, 65533, 77, -262143, 65533, 77, -262143, 65534, 77, -262144, 65534, 77, -196609, 65534, 77, -196610, 65532, 77, -196609, 65532, 27, -262144, 65532, 27, -262143, 65532, 77, -262143, 65531, 77, -262144, 65531, 27, -196609, 65531, 27, -196610, 65531, 77, -262143, 65530, 52, -196610, 65530, 52, -65538, 65530, 52, -131071, 65530, 52, -196609, 65529, 127, -262144, 65529, 127, -196609, 65530, 27, -262144, 65530, 27)
+"cells": PackedInt32Array(-262144, 0, 77, -196609, 0, 77, -196609, 65535, 77, -262144, 65535, 77, -262143, 65535, 77, -196610, 65535, 77, -196610, 65534, 77, -196610, 65533, 77, -196609, 65533, 77, -262144, 65533, 77, -262143, 65533, 77, -262143, 65534, 77, -262144, 65534, 77, -196609, 65534, 77, -196610, 65532, 77, -196609, 65532, 27, -262144, 65532, 27, -262143, 65532, 77, -262143, 65531, 77, -262144, 65531, 27, -196609, 65531, 27, -196610, 65531, 77, -262143, 65530, 52, -196610, 65530, 52, -65538, 65530, 52, -131071, 65530, 52, -196609, 65529, 127, -262144, 65529, 127, -196609, 65530, 27, -262144, 65530, 27, -196609, 65528, 127, -262144, 65528, 127, -196609, 65527, 27, -262144, 65527, 27, -262143, 65529, 52, -262143, 65528, 52, -262143, 65527, 52, -131071, 65527, 52, -65538, 65527, 52, -196610, 65527, 52, -196610, 65528, 52, -196610, 65529, 52, -327682, 65530, 52, -327682, 65529, 52, -327682, 65528, 52, -327682, 65527, 52, -458754, 65530, 52, -458754, 65529, 52, -458754, 65528, 52, -458754, 65527, 52, -589826, 65530, 52, -589826, 65529, 52, -589826, 65528, 52, -589826, 65527, 52, -655359, 65530, 52, -655359, 65529, 52, -655359, 65528, 52, -655359, 65527, 52, -524287, 65530, 52, -524287, 65529, 52, -524287, 65528, 52, -524287, 65527, 52, -393215, 65530, 52, -393215, 65529, 52, -393215, 65528, 52, -393215, 65527, 52, -196609, 65526, 27, -262144, 65526, 27, -196609, 65525, 27, -262144, 65525, 27, -196609, 65524, 27, -262144, 65524, 27, -196609, 65523, 27, -262144, 65523, 27, -196610, 65524, 27, -196609, 65522, 27, -262144, 65522, 27, -196609, 65521, 27, -262144, 65521, 27, -196609, 65520, 27, -262144, 65520, 27, -262144, 65519, 27, -196609, 65519, 27, -262143, 65520, 27, -262143, 65519, 27, -196611, 65524, 127, -196612, 65524, 127, -196613, 65524, 127, -196614, 65524, 127, -196615, 65524, 127, -196617, 65524, 127, -196616, 65524, 127, -196618, 65524, 127)
 }
 script = ExtResource("6_pfr2c")
 metadata/_editor_floor_ = Vector3(0, -4, 0)
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("1_ategh")]
+
+[node name="Walls" type="Node3D" parent="EnvironmentObjects"]
+
+[node name="Wall" type="Path3D" parent="EnvironmentObjects/Walls"]
+curve = SubResource("Curve3D_6gkku")
+script = ExtResource("3_6gkku")
+duplicateDown = true
+material = ExtResource("4_pb0bo")
+
+[node name="Wall2" type="Path3D" parent="EnvironmentObjects/Walls"]
+curve = SubResource("Curve3D_pb0bo")
+script = ExtResource("3_6gkku")
+duplicateDown = true
+material = ExtResource("4_pb0bo")
 
 [node name="Player" parent="." instance=ExtResource("2_pn7h0")]
 disableMaximum = true
@@ -30,3 +61,9 @@ startCheckpoint = NodePath("Checkpoint")
 
 [node name="AlternatingBlock" parent="." instance=ExtResource("7_82h3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -2.5)
+
+[node name="Puzzle1" type="Node3D" parent="."]
+
+[node name="PushDoor1" parent="Puzzle1" instance=ExtResource("3_pb0bo")]
+transform = Transform3D(-4.371138e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371138e-08, 1.9106855e-15, -4.5, -0.5, -11.5)
+isOneWay = true
