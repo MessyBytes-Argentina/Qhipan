@@ -13,11 +13,16 @@ const MOUSEMOVEMENTTHRESHOLD: float = 15
 var usingGamepad: bool = false
 ## The collection of materials that have a cutout mode.
 var cutoutMaterials: Array[ShaderMaterial] = []
+## The Sticker inventory.
+var inventory: StickerInventory
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var materials: ResourceGroup = load(materialsResourceGroup)
 	materials.load_all_into(cutoutMaterials)
+	inventory = StickerInventory.new()
+	inventory.name = "Inventory"
+	add_child(inventory)
 
 ## Handles switching input modes from keyboard to gamepad.
 func _input(event: InputEvent) -> void:

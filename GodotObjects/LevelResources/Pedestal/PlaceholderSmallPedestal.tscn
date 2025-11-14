@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvr78l4xvakoj"]
+[gd_scene load_steps=13 format=3 uid="uid://cvr78l4xvakoj"]
 
-[ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/Pedestal.gd" id="1_4hne7"]
+[ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/SmallPedestal.gd" id="1_4hne7"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="1_xtwdd"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="3_4hne7"]
 
@@ -25,19 +25,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_60emq"]
 gradient = SubResource("Gradient_8eo4r")
 
-[sub_resource type="Gradient" id="Gradient_2wiv4"]
-offsets = PackedFloat32Array(0.7, 0.8)
-colors = PackedColorArray(0, 0.6313726, 0.54901963, 1, 0, 1, 0.4, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w56md"]
-gradient = SubResource("Gradient_2wiv4")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtel8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjqlm"]
 render_priority = 0
 shader = ExtResource("3_4hne7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -46,8 +34,6 @@ shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_l3cxi")
 shader_parameter/top_texture_scale = 0.20000000298024
 shader_parameter/side_texture_scale = 0.20000000298024
 shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_w56md")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_w56md")
 shader_parameter/enable_normal = true
 shader_parameter/top_normal_scale = 0.38
 shader_parameter/side_normal_scale = 0.38
@@ -96,7 +82,7 @@ size = Vector3(0.5, 1, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtel8"]
 size = Vector3(0.1, 0.75, 0.75)
 
-[node name="Pedestal" type="StaticBody3D"]
+[node name="SmallPedestal" type="StaticBody3D"]
 script = ExtResource("1_4hne7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -107,7 +93,7 @@ mesh = SubResource("BoxMesh_mtel8")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.125)
 mesh = SubResource("BoxMesh_bek0u")
-surface_material_override/0 = SubResource("ShaderMaterial_mtel8")
+surface_material_override/0 = SubResource("ShaderMaterial_xjqlm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -119,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 collision_layer = 2048
 collision_mask = 0
 monitoring = false
-metadata/pointing = Vector3(0, 0, 1)
+metadata/pointing = Vector3(1.50996e-07, 0, 1)
 
 [node name="AreaShape1" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)

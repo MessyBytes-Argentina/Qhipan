@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://bgdkxk5wsw8hx"]
+
+[ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_kqx7f"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="2_1pe02"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="3_t30h2"]
+[ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_1pe02"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mtel8"]
+material = ExtResource("2_1pe02")
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xk1kp"]
+height = 0.25
+
+[sub_resource type="Gradient" id="Gradient_d2mit"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l3cxi"]
+gradient = SubResource("Gradient_d2mit")
+
+[sub_resource type="Gradient" id="Gradient_8eo4r"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_60emq"]
+gradient = SubResource("Gradient_8eo4r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqx7f"]
+render_priority = 0
+shader = ExtResource("3_t30h2")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = SubResource("GradientTexture1D_60emq")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_l3cxi")
+shader_parameter/top_texture_scale = 0.20000000298024
+shader_parameter/side_texture_scale = 0.20000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/enable_normal = true
+shader_parameter/top_normal_scale = 0.38
+shader_parameter/side_normal_scale = 0.38
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.5
+shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xk1kp"]
+radius = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1pe02"]
+
+[sub_resource type="Gradient" id="Gradient_t30h2"]
+offsets = PackedFloat32Array(0.65, 0.65)
+colors = PackedColorArray(1, 0, 1, 1, 1, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wjphb"]
+gradient = SubResource("Gradient_t30h2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofq2c"]
+render_priority = 2
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_wjphb")
+
+[node name="InventoryPedestal" type="StaticBody3D"]
+script = ExtResource("1_kqx7f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("BoxMesh_mtel8")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.675, -0.125)
+mesh = SubResource("CylinderMesh_xk1kp")
+surface_material_override/0 = SubResource("ShaderMaterial_kqx7f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_bi05e")
+
+[node name="Area3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+metadata/pointing = Vector3(1.50996e-07, 0, 1)
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
+shape = SubResource("SphereShape3D_xk1kp")
+debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
+
+[node name="PlacedSticker" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675, 0.01)
+visible = false
+mesh = SubResource("QuadMesh_1pe02")
+surface_material_override/0 = SubResource("StandardMaterial3D_ofq2c")
+
+[node name="Highlight" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.75, 0)
+visible = false
+pixel_size = 0.003
+billboard = 1
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_1pe02")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_player_exited"]
