@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b6tp61pv66wnl"]
+
+[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/Sticker Placements/Chakana Placeholder_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/Sticker Placements/Chakana Placeholder_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/Sticker Placements/Chakana Placeholder_normal.png" id="3"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3")
+ao_enabled = true
+ao_texture = ExtResource("2")
