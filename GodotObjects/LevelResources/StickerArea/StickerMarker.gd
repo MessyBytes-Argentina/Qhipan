@@ -1,18 +1,26 @@
 @tool
+@icon("uid://jtcedud2gc5m")
 extends Node3D
+## A valid stickerable surface. If it's in the scene then a sticker can be placed here.
 class_name StickerMarker
 
+## Constants for thebug shape of the sticker surface.
 const PLACEHOLDERDIRECTION: Dictionary[String, Variant] = {"color": Color.DEEP_PINK * Color(Color.WHITE, 0.85), "radius": 0.25, "height": 0.25}
+## Constants for thebug shape of the sticker up direction.
 const PLACEHOLDERUP: Dictionary[String, Variant] = {"color": Color.SKY_BLUE * Color(Color.WHITE, 0.85), "radius": 0.1, "height": 0.5}
 
+## Emmited when a sticker is placed or removed
 signal sticker(placed: bool)
 
+## Which stickers can be placed here.
 @export_flags("Alternator", "Fan", "Key", "Lamp") var validStickers: int = 15
+## Scale of the placed sticker
 @export_range(0.0, 5.0, 0.01) var specialStickerScale: float = 1.0
 
-var pointingTo: Node3D
+## Surface data.
 var data: StickerableSurfaceData
 
+## Executed when node first enters the scene tree
 func _ready() -> void:
 	_setup_shape()
 	if Engine.is_editor_hint(): return
@@ -24,11 +32,9 @@ func _notification(what: int) -> void:
 		NOTIFICATION_PREDELETE:
 			_on_delete_requested()
 
+## Sets up the debug shape.
 func _setup_shape() -> void:
 	for child in get_children(): child.queue_free()
-	pointingTo = Node3D.new()
-	pointingTo.position = Vector3.UP
-	add_child(pointingTo)
 	if not Engine.is_editor_hint(): return
 	var virtualMarker: MeshInstance3D = MeshInstance3D.new()
 	var shape: CylinderMesh = CylinderMesh.new()
@@ -57,7 +63,11 @@ func _setup_shape() -> void:
 	virtualUpMarker.position.z = -PLACEHOLDERUP.height / 2.0
 	add_child(virtualUpMarker)
 
+## Exports data to the surface manager.
 func _save_data() -> void:
+	var pointingTo: Marker3D = Node3D.new()
+	pointingTo.position = Vector3.UP
+	add_child(pointingTo)
 	data = StickerableSurfaceData.new()
 	data.node = self
 	data.direction = global_position.direction_to(pointingTo.global_position)
@@ -67,7 +77,9 @@ func _save_data() -> void:
 	while not GeneralVariables.stickerableSurfacesManager:
 		await get_tree().process_frame
 	GeneralVariables.stickerableSurfacesManager.load_data(data)
+	pointingTo.queue_free()
 
+## Called when a sticker is placed or removed.
 func sticker_activity() -> void:
 	sticker.emit(data.used != null)
 

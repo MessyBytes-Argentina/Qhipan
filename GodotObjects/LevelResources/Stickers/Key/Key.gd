@@ -1,4 +1,5 @@
 extends StickerBase
+## Key sticker class.
 class_name KeySticker
 
 ## Animation player reference.
