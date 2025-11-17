@@ -21,6 +21,8 @@ const TILTANGLE: float = deg_to_rad(-30)
 const GRABHEIGHT: float = 0.6
 ## Wait time to place when loading.
 const PLACEDCHECKTIME: float = 0.25
+## Maximum preplaced distance check.
+const MAXPREPLACEDDISTANCE: float = 1.0
 
 ## State of the sticker.
 enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
@@ -107,21 +109,22 @@ func check_placement() -> void:
 		set_size(ScaleModes.DROPPED)
 		set_deferred("collision_mask", collisionMask)
 	else:
-		var grabArea: PickupHandler = get_tree().get_first_node_in_group("Player").grabArea
-		while len(grabArea.stickerableSurfaces) == 0:
+		while not GeneralVariables.stickerableSurfacesManager:
 			await get_tree().process_frame
-		var surfaceArray: Array[Vector3] = grabArea.stickerableSurfaces.keys()
-		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
-		if len(surfaceArray) == 0:
+		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
+		if closest == null: 
 			set_size(ScaleModes.DROPPED)
+			set_deferred("collision_mask", collisionMask)
+			placed = false
 			return
-		var closest: Vector3 = surfaceArray[0]
-		var temporaryArea: Area3D = Area3D.new()
-		add_child(temporaryArea)
-		temporaryArea.global_position = closest
-		place_sticker(temporaryArea, grabArea.stickerableSurfaces[closest], true)
-		temporaryArea.queue_free()
-		if closest not in grabArea.surfacesWithStickers: grabArea.surfacesWithStickers.append(closest)
+		if closest.globalPosition.distance_to(global_position) > MAXPREPLACEDDISTANCE: 
+			set_size(ScaleModes.DROPPED)
+			set_deferred("collision_mask", collisionMask)
+			placed = false
+			return
+		place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
+		closest.node.sticker_activity()
+		closest.used = self
 		shadowDecal.hide()
 
 ## Executed on every physics frame.
@@ -152,10 +155,11 @@ func prerender() -> void:
 	billboardZoomedOut.hide()
 
 ## Places the sticker on the given area facing the given direction
-func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
 	set_size(ScaleModes.PLACED)
-	placedPosition = area.global_position
-	global_position = area.global_position + direction * 0.01
+	meshes.scale = overrideSize
+	placedPosition = pos
+	global_position = pos + direction * 0.01
 	placed = true
 	just_placed.emit(placed)
 	grabed = false
@@ -163,10 +167,7 @@ func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = f
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	if isPlaceholderArea:
-		reparent(originalParent)
-	else:
-		reparent(area)
+	reparent(originalParent)
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:

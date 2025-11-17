@@ -1,4 +1,6 @@
 extends StickerBase
+## Alternator sticker class
+class_name AlternatorSticker
 
 const REMOVETIMER: float = 0.2
 
@@ -53,14 +55,13 @@ func deactivate_group() -> void:
 	objectCollection.append_array(objectsInRange)
 	enable_area()
 
-func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
 	disablingArea = true
 	disable_area()
-	super(area,direction,isPlaceholderArea)
+	super(pos, direction, overrideSize)
 	disablingArea = false
 	var objectsInRange: Array = await force_area_check(true)
 	if objectsInRange.is_empty(): clear_alternating_objects()
-	activate_group(objectsInRange)
 
 func grab(node: Node3D) -> void:
 	if placed and not activatedGroups.is_empty(): 

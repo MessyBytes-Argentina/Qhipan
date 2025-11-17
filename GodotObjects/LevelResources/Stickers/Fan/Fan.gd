@@ -1,4 +1,6 @@
 extends StickerBase
+## Fan sticker class.
+class_name FanSticker
 
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
@@ -19,10 +21,10 @@ func _ready() -> void:
 		fan.switch_fan(false)
 
 ## Plays sound and places the fan then starts the fan animation.
-func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
 	if grabed:
 		spinupSound.play_sound()
-	super(area, direction, isPlaceholderArea)
+	super(pos, direction, overrideSize)
 	animationPlayer.play("SpinUp")
 
 ## Turns off the fan and grabs it
