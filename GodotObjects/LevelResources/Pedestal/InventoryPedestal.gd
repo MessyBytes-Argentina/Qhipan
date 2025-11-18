@@ -20,19 +20,24 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 @onready var mesh: MeshInstance3D = %Wall
 ## Sticker highlight sprite reference
 @onready var highlight: Sprite3D = %Highlight
+## Reference to the placed sticker mesh
 @onready var placedSticker: MeshInstance3D = %PlacedSticker
+## Reference to the area.
+@onready var area: Area3D = %Area3D
 
+## Is the player inside the area.
 var playerInArea: Player
 ## Tween for the highlight bobbing animation
 var stickerHighlightTween: Tween
+## check for whether the player has the required sticker in the inventory
 var playerHasSticker: bool = false
-@onready var area: Area3D = %Area3D
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
 	update_texture()
 	bob_sticker_hightlight()
 
+## Executed on input.
 func _unhandled_input(event: InputEvent) -> void:
 	if not playerInArea: return
 	if not event.is_action_pressed("interact"): return
@@ -65,6 +70,7 @@ func update_texture() -> void:
 	material.set_shader_parameter("side_texture_albedo", texture)
 	mesh.set_surface_override_material(0, material)
 
+## Called when the player enters this pedestal's area.
 func _on_player_entered(body: Node3D) -> void:
 	if body is not Player: return
 	playerInArea = body
@@ -74,6 +80,7 @@ func _on_player_entered(body: Node3D) -> void:
 		playerInArea.grabArea.canDrop = false
 		playerInArea.grabArea.canGrab = false
 
+## Called when the player exits this pedestal's area.
 func _on_player_exited(body: Node3D) -> void:
 	if body != playerInArea: return
 	if playerHasSticker:

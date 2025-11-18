@@ -1,5 +1,6 @@
 extends StickerBase
-class_name Key
+## Key sticker class.
+class_name KeySticker
 
 ## Animation player reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
@@ -15,8 +16,8 @@ func _ready() -> void:
 	animationPlayer.play("RESET")
 
 ## Places the sticker and checks for door
-func place_sticker(area: Area3D, direction: Vector3, isPlaceholderArea: bool = false) -> void:
-	super(area, direction, isPlaceholderArea)
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
+	super(pos, direction, overrideSize)
 	await get_tree().create_timer(0.1).timeout
 	check_door()
 

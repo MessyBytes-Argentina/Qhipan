@@ -37,8 +37,6 @@ var currentlyAvailableStickers: Array[StickerBase] = []
 var closeAreas: Array[Area3D] = []
 ## Starting highlight height
 var highlightHeight: float
-## Current closest area available for placement
-var currentArea: Area3D
 ## Flag that turns true when 
 var pickupOnHand: bool = false
 ## Reference to the current pick up on the player
@@ -57,10 +55,6 @@ var inLight: bool = false
 var zoomedOut: bool = false
 ## Tween for the highlight bobbing animation
 var stickerHighlightTween: Tween
-## The valid surfaces for stickers
-var stickerableSurfaces: Dictionary[Vector3, Vector3] = {}
-## Surfaces that already hold stickers
-var surfacesWithStickers: Array[Vector3] = []
 ## Collection of areas that stop the player from dropping or grabbing stickers
 var antiDropAreaCollection: Array[AntiDropArea] = []
 
@@ -78,7 +72,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	sort_close_stickers()
-	sort_close_areas()
+	get_closest_surface()
 
 ## Handles player input.
 func _unhandled_input(event: InputEvent) -> void:
@@ -96,10 +90,10 @@ func do_grab() -> void:
 	currentPickup = currentlyAvailableStickers[0]
 	if currentPickup.placed:
 		removeSound.play_sound()
-		for surface in surfacesWithStickers:
-			if (surface - currentPickup.placedPosition).is_zero_approx():
-				surfacesWithStickers.erase(surface)
-				break
+		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_sticker(currentPickup)
+		if surface: 
+			surface.node.sticker_activity()
+			surface.used = null
 	else: pickupSound.play_sound()
 	currentPickup.reparent(self)
 	currentPickup.grab(self)
@@ -108,9 +102,12 @@ func do_grab() -> void:
 
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
-	if currentArea:
-		currentPickup.place_sticker(currentArea, currentArea.get_meta("pointing"), currentArea == placeholderArea)
-		if currentArea == placeholderArea and placeholderArea.global_position not in surfacesWithStickers: surfacesWithStickers.append(placeholderArea.global_position)
+	if areaHighlight.visible:
+		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_position(placeholderArea.global_position)
+		if surface: surface.used = currentPickup
+		currentPickup.place_sticker(surface.globalPosition, surface.direction, surface.specialScale)
+		surface.node.sticker_activity()
+		surface.used = currentPickup
 		stickSound.play_sound()
 		return true
 	return false
@@ -155,53 +152,32 @@ func sort_close_stickers() -> void:
 		highlight.show()
 
 ## When a placement area is detected it's added to the closeAreas list
-func _on_area_entered(area: Area3D) -> void:
-	closeAreas.append(area)
+func _on_area_entered(_area: Area3D) -> void:
+	areaHighlight.show()
 
 ## When a placement area exits the placement area it's removed from the closeAreas list
-func _on_area_exited(area: Area3D) -> void:
-	closeAreas.erase(area)
-
-## Fetches valid surfaces for stickers.
-func _fetch_valid_surfaces() -> void:
-	if not get_tree(): return
-	for gridmap: StickerGridmap in get_tree().get_nodes_in_group("Gridmap"):
-		for key in gridmap.stickerableSurfaces:
-			stickerableSurfaces[key] = gridmap.stickerableSurfaces[key]
+func _on_area_exited(_area: Area3D) -> void:
+	areaHighlight.hide()
 
 ## Sorts the closeAreas list by distance and shows area highlight when possible
-func sort_close_areas() -> void:
-	if len(stickerableSurfaces.keys()) > 0:
-		var surfaceArray: Array[Vector3] = stickerableSurfaces.keys()
-		surfaceArray.sort_custom(func(sa: Vector3, sb: Vector3): return global_position.distance_to(sa) < global_position.distance_to(sb))
-		surfaceArray = surfaceArray.filter(func(s: Vector3): return s not in surfacesWithStickers)
-		if len(surfaceArray) == 0: return
-		if global_position.distance_to(surfaceArray[0]) > MAXSURFACEDISTANCE:
-			placeholderArea.set_deferred("monitorable", false)
-		else:
-			placeholderArea.global_position = surfaceArray[0]
-			placeholderArea.set_deferred("monitorable", true)
-			placeholderArea.set_meta("pointing", stickerableSurfaces[surfaceArray[0]])
-	
-	closeAreas.sort_custom(func(a: Area3D, b: Area3D): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
+func get_closest_surface() -> void:
 	if not pickupOnHand:
 		if areaHighlight: areaHighlight.hide()
-	elif areaHighlight:
-		var currentIndex: int = closeAreas.find_custom(get_closest_valid)
-		currentArea = closeAreas[currentIndex] if currentIndex > -1 else null
-		if not currentArea:
-			areaHighlight.hide()
-			return
-		areaHighlight.global_position = currentArea.global_position + currentArea.get_meta("pointing") * AREAHIGHLIGHTOFFSET
-		if not Vector3.UP.cross(currentArea.get_meta("pointing")).is_zero_approx():
-			areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"))
-		else:
-			areaHighlight.look_at(areaHighlight.global_position + currentArea.get_meta("pointing"), Vector3.FORWARD)
-		areaHighlight.show()
-
-## Returns true if the given area is valid for placing the current sticker
-func get_closest_valid(area: Area3D) -> bool:
-	return currentPickup.validAreaIndexes.any(func(index: int): return area.get_collision_layer_value(index)) and not area.get_children().any(func(child: Node3D): return child is StickerBase)
+		return
+	var closestSurface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, currentPickup)
+	if closestSurface == null: return
+	if global_position.distance_to(closestSurface.globalPosition) > MAXSURFACEDISTANCE:
+		placeholderArea.set_deferred("monitorable", false)
+		areaHighlight.hide()
+		return
+	placeholderArea.global_position = closestSurface.globalPosition
+	placeholderArea.set_deferred("monitorable", true)
+	areaHighlight.global_position = closestSurface.globalPosition + closestSurface.direction * AREAHIGHLIGHTOFFSET
+	if not Vector3.UP.cross(closestSurface.direction).is_zero_approx():
+		areaHighlight.look_at(areaHighlight.global_position + closestSurface.direction)
+	else:
+		areaHighlight.look_at(areaHighlight.global_position + closestSurface.direction, Vector3.FORWARD)
+	if overlaps_area(placeholderArea): areaHighlight.show()
 
 ## Starts the sticker highlight bobbing animation
 func bob_sticker_hightlight() -> void:

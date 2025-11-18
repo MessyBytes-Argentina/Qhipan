@@ -1,5 +1,4 @@
 extends StickerBase
-
 ## Sticker that lights up darkness-blocked areas.
 class_name LampSticker
 

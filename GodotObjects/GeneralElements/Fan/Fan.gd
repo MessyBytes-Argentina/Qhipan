@@ -3,6 +3,8 @@ extends Area3D
 ## The wind propelling fan object. Used inside Fan stickers too.
 class_name Fan
 
+const STICKERFLAG: int = 2
+
 ## Fan activation flag
 @export var isOn: bool = false
 ## Antigravity on/off flag

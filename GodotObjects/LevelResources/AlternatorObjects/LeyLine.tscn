@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4llfjretvmtq"]
 
 [ext_resource type="Script" uid="uid://cleoji6ng6n2x" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.gd" id="1_7bq5v"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7bq5v"]
-size = Vector3(1, 0.1, 1)
+[ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="2_7bq5v"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cc2ww"]
 transparency = 1
@@ -15,13 +13,15 @@ emission = Color(0, 1, 0, 1)
 material = SubResource("ORMMaterial3D_cc2ww")
 size = Vector3(1, 0.01, 1)
 
-[node name="LeyLine" type="Area3D"]
-collision_layer = 8192
-collision_mask = 0
+[node name="LeyLine" type="Node3D"]
 script = ExtResource("1_7bq5v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_7bq5v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_5l3es")
+
+[node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
+unique_name_in_owner = true
+script = ExtResource("2_7bq5v")
+metadata/_custom_type_script = "uid://cpapjcv8gch4b"
+
+[connection signal="sticker" from="MeshInstance3D/StickerMarker" to="." method="_on_sticker"]
