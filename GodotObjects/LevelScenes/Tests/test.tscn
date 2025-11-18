@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=47 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_8elk3"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="21_an4xj"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="21_konnu"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="26_octky"]
+[ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="29_q12un"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="31_k0mlu"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="32_ut7ax"]
 [ext_resource type="PackedScene" uid="uid://bgdkxk5wsw8hx" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderInventoryPedestal.tscn" id="33_e5c7o"]
@@ -125,6 +126,11 @@ width = 128
 height = 128
 fill = 2
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q12un"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pcewb"]
+size = Vector3(0.5, 1, 1)
 
 [node name="Test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -298,3 +304,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 6.5)
 
 [node name="Placeholder Sticker Area2" parent="." instance=ExtResource("36_tof7f")]
 transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -5.5, 1, 12)
+
+[node name="ChunkLoadingHotspot" type="Node3D" parent="." groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 0)
+script = ExtResource("29_q12un")
+hotspotName = "test_1"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/TutoHub.tscn"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
+shape = SubResource("BoxShape3D_q12un")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+shape = SubResource("BoxShape3D_pcewb")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
