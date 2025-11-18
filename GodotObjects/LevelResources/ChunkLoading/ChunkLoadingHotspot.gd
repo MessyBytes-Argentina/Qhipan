@@ -1,31 +1,52 @@
 @tool
 extends Node3D
+## This element loads a new scene into the main scene container.
 class_name ChunkLoadingHotspot
 
+## Visual data for the sphere.
 const VISUALSPHEREDATA: Dictionary[String, Variant] = {"color": Color.PURPLE * Color(Color.WHITE, 0.85), "radius": 0.25}
+## Visual data for the colliders.
 const DEBUGCOLORS: Dictionary[String, Color] = {"LoadShape": Color.ORANGE * Color(Color.WHITE, 0.5), "UnloadShape": Color.CRIMSON * Color(Color.WHITE, 0.5)}
+## Tiem to wait on previsualizing scene position.
 const PREVIEWTIME: float = 5
 
+## The name of the hotspot. This is used to identify where to spawn scenes.
 @export var hotspotName: String
+## Path to the scene to load.
 @export_file_path("*.tscn") var sceneToLoad: String:
 	set(value):
 		sceneToLoad = value
 		if Engine.is_editor_hint() and is_node_ready(): loadedScene = null
+## Buton to test for the current positioning of scenes.
 @export_tool_button("Test Position", "Debug") var testPosition: Callable = test_position 
+## Group to hide storage only variables because export storage doesn-'t seem to do the thing.
+@export_group("Root Reference")
+## Reference to the scene root.
+@export var rootNode: Node
 
+## Reference to the Area3D used to load the new scene.
 var loadArea: Area3D
+## Reference to the Area3D used to unload the new scene.
 var unloadArea: Area3D
+## Reference to the CollisionShape3D used to load the new scene.
 var loadShape: CollisionShape3D
+## Reference to the CollisionShape3D used to unload the new scene.
 var unloadShape: CollisionShape3D
+## Reference to the loaded scene.
 var loadedScene: Node = null
+## Reference to the loaded scene's matching hotspot.
+var loadedHotspot: ChunkLoadingHotspot
 
+## Executed when node first enters the scene tree.
 func _ready() -> void:
 	_reset_shapes()
 	if Engine.is_editor_hint():
 		_show_sphere()
+		rootNode = get_tree().edited_scene_root
 	else:
 		_setup_areas()
 
+## Resets debug shapes.
 func _reset_shapes() -> void:
 	add_to_group("ChunkLoadingHotspots", true)
 	for shape: String in ["LoadShape", "UnloadShape"]:
@@ -39,6 +60,7 @@ func _reset_shapes() -> void:
 		else:
 			set(shape.to_camel_case(), get_node(shape))
 
+## Shows debug sphere.
 func _show_sphere() -> void:
 	var visualInstance: MeshInstance3D = MeshInstance3D.new()
 	var sphere: SphereMesh = SphereMesh.new()
@@ -51,6 +73,7 @@ func _show_sphere() -> void:
 	visualInstance.mesh = sphere
 	add_child(visualInstance)
 
+## Setups areas to be used during execution.
 func _setup_areas() -> void:
 	for mode in ["load", "unload"]:
 		var area: Area3D = Area3D.new()
@@ -65,7 +88,9 @@ func _setup_areas() -> void:
 	loadArea.body_entered.connect(_start_load.unbind(1))
 	unloadArea.body_entered.connect(_do_unload.unbind(1))
 
+## Loads new scene into preselected location.
 func _start_load() -> void:
+	if loadedScene: return
 	ResourceLoader.load_threaded_request(sceneToLoad, "PackedScene", true)
 	while ResourceLoader.load_threaded_get_status(sceneToLoad) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		await get_tree().process_frame
@@ -73,12 +98,21 @@ func _start_load() -> void:
 		push_error("An error occurred while loading scene '" + sceneToLoad + "'.")
 		return
 	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
-	get_tree().current_scene.add_child(loadedScene)
+	rootNode.get_parent().add_child(loadedScene)
 	set_hotspot_position()
+	loadedHotspot.loadedHotspot = self
+	loadedHotspot.loadedScene = rootNode
 
+## Unloads scene.
 func _do_unload() -> void:
-	print("unload")
+	if not loadedScene: return
+	#var packedScene = PackedScene.new()
+	#packedScene.pack(loadedScene)
+	loadedScene.queue_free()
+	loadedScene = null
+	loadedHotspot = null
 
+## Shows the packed scene for checking alignment
 func test_position() -> void:
 	if loadedScene == null:
 		loadedScene = load(sceneToLoad).instantiate()
@@ -87,8 +121,10 @@ func test_position() -> void:
 	await get_tree().create_timer(PREVIEWTIME).timeout
 	remove_child(loadedScene)
 
+## Aligns scene to match hotspots.
 func set_hotspot_position() -> void:
 	loadedScene.global_position = Vector3.ZERO
 	var hotspots: Array[Node] = get_tree().get_nodes_in_group("ChunkLoadingHotspots")
 	hotspots = hotspots.filter(func(a: ChunkLoadingHotspot): return a.hotspotName == hotspotName and a != self)
-	if len(hotspots) > 0: loadedScene.global_position = -hotspots[0].global_position + global_position
+	loadedHotspot = hotspots[0]
+	if len(hotspots) > 0: loadedScene.global_position = -loadedHotspot.global_position + global_position

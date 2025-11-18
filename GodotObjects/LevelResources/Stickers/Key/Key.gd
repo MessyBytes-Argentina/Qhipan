@@ -24,7 +24,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 ## Checks if it has a door as an ancestor
 ## if true disables the key and starts the animation
 func check_door():
-	if get_parent() == originalParent: return
+	if get_parent() == sceneParent: return
 	var superParent: Node3D = get_parent().get_parent()
 	if superParent is DoorBody:
 		door = superParent

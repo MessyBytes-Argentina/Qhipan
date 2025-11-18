@@ -67,8 +67,6 @@ var backMaterial: StandardMaterial3D
 var grabed: bool = false
 ## Current state of the sticker.
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
-## Reference to the original parent of this sticker
-var originalParent: Node
 ## Placed position reference for overlaps.
 var placedPosition: Vector3
 ## Tracks darkness areas.
@@ -95,7 +93,6 @@ func _ready() -> void:
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	prerender()
 	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
-	originalParent = get_parent()
 	areaChecker.area_entered.connect(_on_area_entered)
 	areaChecker.area_exited.connect(_on_area_exited)
 	await get_tree().create_timer(PLACEDCHECKTIME).timeout
@@ -167,7 +164,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	reparent(originalParent)
+	do_reparent()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -217,12 +214,19 @@ func grab(node: Node3D) -> void:
 
 ## Called when player reset is called.
 func reset_sticker() -> void:
-	reparent(sceneParent)
+	do_reparent()
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
 	just_placed.emit(placed)
 	check_placement()
+
+## Special reparent for scene loading workaround
+func do_reparent() -> void:
+	if not sceneParent:
+		var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
+		sceneParent = mainScene.get_child(mainScene.get_child_count() - 1)
+	reparent(sceneParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:
@@ -231,7 +235,7 @@ func drop() -> void:
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false
 	just_placed.emit(placed)
-	reparent(sceneParent)
+	do_reparent()
 	grabed = false
 
 ## Starts the floating animations 
