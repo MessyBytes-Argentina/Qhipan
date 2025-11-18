@@ -65,7 +65,7 @@ func _setup_shape() -> void:
 
 ## Exports data to the surface manager.
 func _save_data() -> void:
-	var pointingTo: Marker3D = Node3D.new()
+	var pointingTo: Node3D = Node3D.new()
 	pointingTo.position = Vector3.UP
 	add_child(pointingTo)
 	data = StickerableSurfaceData.new()
