@@ -440,6 +440,7 @@ func reset_aura() -> void:
 
 ## Restarts player at last checkpoint.
 func restart_at_checkpoint() -> void:
+	if not currentCheckpointPosition: return
 	respawnFall = true
 	respawning = true
 	if not hasSpawned:

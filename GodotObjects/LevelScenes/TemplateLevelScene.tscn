@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt1sfwp46ika"]
+[gd_scene load_steps=6 format=3 uid="uid://dt1sfwp46ika"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_uxics"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_84dco"]
 [ext_resource type="PackedScene" uid="uid://c8ef8qmyhh7pd" path="res://GodotObjects/LevelResources/Checkpoints/CheckpointManager.tscn" id="3_r0f3w"]
 [ext_resource type="PackedScene" uid="uid://d2oqm8r8jgsxc" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.tscn" id="4_x16w4"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="5_rc43o"]
-[ext_resource type="Script" uid="uid://cjhk2w754i6t" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/StickerGridmap.gd" id="6_ru53a"]
 
 [node name="BaseLevelScene" type="Node3D"]
 
@@ -21,5 +20,4 @@ startCheckpoint = NodePath("Checkpoint")
 [node name="Checkpoint" parent="CheckpointManager" instance=ExtResource("4_x16w4")]
 
 [node name="GridmapObject" parent="." instance=ExtResource("5_rc43o")]
-script = ExtResource("6_ru53a")
 metadata/_editor_floor_ = Vector3(0, -3, 0)
