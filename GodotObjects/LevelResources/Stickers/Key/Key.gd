@@ -1,3 +1,4 @@
+@tool
 extends StickerBase
 ## Key sticker class.
 class_name KeySticker
@@ -13,6 +14,7 @@ var used: bool = false
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	if Engine.is_editor_hint(): return
 	animationPlayer.play("RESET")
 
 ## Places the sticker and checks for door

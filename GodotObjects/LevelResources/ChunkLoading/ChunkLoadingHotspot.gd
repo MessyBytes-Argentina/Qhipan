@@ -19,7 +19,7 @@ const PREVIEWTIME: float = 5
 		if Engine.is_editor_hint() and is_node_ready(): loadedScene = null
 ## Buton to test for the current positioning of scenes.
 @export_tool_button("Test Position", "Debug") var testPosition: Callable = test_position 
-## Group to hide storage only variables because export storage doesn-'t seem to do the thing.
+## Group to hide storage only variables because export storage doesn't seem to do the thing.
 @export_group("Root Reference")
 ## Reference to the scene root.
 @export var rootNode: Node

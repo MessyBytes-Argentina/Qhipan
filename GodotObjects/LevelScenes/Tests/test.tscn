@@ -111,17 +111,20 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -7, 0)
 
-[node name="FanSticker" parent="." instance=ExtResource("4_sgigg")]
+[node name="FanSticker" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_sgigg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.55, 1, 13)
 placed = true
+sceneParent = NodePath("..")
 
-[node name="FanSticker3" parent="." instance=ExtResource("4_sgigg")]
+[node name="FanSticker3" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_sgigg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.55, 1, 11.05)
 placed = true
+sceneParent = NodePath("..")
 
-[node name="FanSticker2" parent="." instance=ExtResource("4_sgigg")]
+[node name="FanSticker2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_sgigg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.55, 1, 12)
 placed = true
+sceneParent = NodePath("..")
 
 [node name="DeathZone" parent="." instance=ExtResource("5_elc34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
@@ -129,11 +132,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 [node name="Door2" parent="." instance=ExtResource("9_bn7jo")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 1, 4.5)
 
-[node name="Key" parent="." instance=ExtResource("10_2ohs3")]
+[node name="Key" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_2ohs3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
+sceneParent = NodePath("..")
 
-[node name="Key2" parent="." instance=ExtResource("10_2ohs3")]
+[node name="Key2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_2ohs3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50402, 1, 5.59612)
+sceneParent = NodePath("..")
 
 [node name="GoalZone" parent="." instance=ExtResource("11_dxq8q")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 1, 5)
@@ -146,11 +151,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 1, 0.5)
 infoSpriteKeyboard = SubResource("GradientTexture2D_ckktb")
 infoSpriteController = ExtResource("15_5fpv5")
 
-[node name="StickerLamp2" parent="." instance=ExtResource("15_ckktb")]
+[node name="StickerLamp2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_ckktb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 4)
+sceneParent = NodePath("..")
 
-[node name="StickerLamp" parent="." instance=ExtResource("15_ckktb")]
+[node name="StickerLamp" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_ckktb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
+sceneParent = NodePath("..")
 
 [node name="Darkness" parent="." instance=ExtResource("16_5fpv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 8)
@@ -230,25 +237,28 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 [node name="AlternatingBlock2" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
 
-[node name="Alternator" parent="." instance=ExtResource("21_an4xj")]
+[node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
+sceneParent = NodePath("..")
 
-[node name="Alternator2" parent="." instance=ExtResource("21_an4xj")]
+[node name="Alternator2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+sceneParent = NodePath("..")
 
-[node name="PushDoor" parent="." instance=ExtResource("26_octky")]
+[node name="PushDoor" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("26_octky")]
 transform = Transform3D(1, -1.7484555e-07, -7.6427436e-15, 0, -4.37114e-08, 1, -1.7484555e-07, -1, -4.37114e-08, -2, 1, 4.5)
-isOneWay = true
+sceneParent = NodePath("..")
 
-[node name="InventorySticker" parent="." instance=ExtResource("31_k0mlu")]
+[node name="InventorySticker" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("31_k0mlu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, 5.5)
 sticker = SubResource("Resource_e5c7o")
-validAreaIndexes = Array[int]([])
+sceneParent = NodePath("..")
 
-[node name="InventoryPedestal" parent="." instance=ExtResource("33_e5c7o")]
+[node name="InventoryPedestal" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("33_e5c7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 5)
 texture = SubResource("GradientTexture2D_s3g0t")
 pedestalName = "test"
+sceneParent = NodePath("..")
 
 [node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("34_3q00n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 5)

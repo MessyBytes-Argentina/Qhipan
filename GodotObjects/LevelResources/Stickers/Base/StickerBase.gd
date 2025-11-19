@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody3D
 ## The basic sticker skeleton.
 class_name StickerBase
@@ -29,8 +30,10 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 ## If true checks for areas to place after loading.
 @export var placed: bool = false
-## Collision layer for sticker placement.
-@export var validAreaIndexes: Array[int] = [11]
+## Group to hide storage only variables because export storage doesn't seem to do the thing.
+@export_group("Root Reference")
+## Parent node reference for placement.
+@export var sceneParent: Node
 
 ## Area3D to check for placement.
 @onready var areaChecker: Area3D = %AreaChecker
@@ -55,8 +58,6 @@ var collisionMask: int
 var originalParent: String
 ## The path for the scene this node whas picked up from
 var originalParentPath: String
-## Parent node reference for placement.
-var sceneParent: Node
 ## Tween for rotation animation.
 var rotationTween: Tween
 ## Tween for bobbing animation.
@@ -92,8 +93,10 @@ var hasBeenMoved: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		sceneParent = get_tree().edited_scene_root
+		return
 	collisionMask = collision_mask
-	sceneParent = get_parent()
 	originalParent = sceneParent.name
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -140,6 +143,7 @@ func check_placement() -> void:
 
 ## Executed on every physics frame.
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if placed or grabed: return
 	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
 	velocity = currentPush * delta

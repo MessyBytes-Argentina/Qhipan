@@ -20,9 +20,19 @@ class StickerSave:
 		if changedSticker is KeySticker: stickerType = StickerTypes.KEY
 		if changedSticker is LampSticker: stickerType = StickerTypes.LAMP
 
+class InventoryPedestalSave:
+	var nodePath: NodePath
+	var sticker: PocketSticker
+	
+	func _init(changedPedestal: InventoryPedestal) -> void:
+		nodePath = changedPedestal.get_path().slice(1)
+		sticker = changedPedestal.sticker
+
 class SceneSave:
 	var stickerModifications: Dictionary[int, StickerSave] = {}
 	var removedStickers: Array[NodePath]
+	var activePedestals: Array[InventoryPedestalSave]
+	var openDoors: Array[NodePath]
 
 func store_change(changedObject: Node, sceneParent: Node) -> void:
 	var currentScene: SceneSave
@@ -31,6 +41,8 @@ func store_change(changedObject: Node, sceneParent: Node) -> void:
 		currentScene = SceneSave.new()
 		sceneChanges[sceneParent.name] = currentScene
 	if changedObject is StickerBase: save_sticker(currentScene, changedObject); return
+	if changedObject is InventoryPedestal: currentScene.activePedestals.append(InventoryPedestalSave.new(changedObject)); return
+	if changedObject is PushDoor: currentScene.openDoors.append(changedObject.get_path().slice(1)); return
 
 func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 	var save: StickerSave = StickerSave.new(sticker)
@@ -43,6 +55,14 @@ func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 		sceneChanges[sticker.originalParent].removedStickers.append(save.nodePath)
 	currentScene.stickerModifications[sticker.UUID] = save
 	sticker.isSaveCreated = true
+
+func delete_inventory_sticker(sticker: InventorySticker) -> void:
+	var currentScene: SceneSave
+	if sceneChanges.has(sticker.sceneParent.name): currentScene = sceneChanges[sticker.sceneParent.name]
+	else:
+		currentScene = SceneSave.new()
+		sceneChanges[sticker.sceneParent.name] = currentScene
+	sceneChanges[sticker.sceneParent.name].removedStickers.append(NodePath(sticker.originalParentPath))
 
 func delete_sticker(sticker: StickerBase) -> void:
 	var currentScene: SceneSave
@@ -66,6 +86,13 @@ func load_changes(scene: Node) -> void:
 		GeneralVariables.get_tree().root.get_node(sticker).queue_free()
 	for sticker in currentSave.stickerModifications:
 		new_sticker(sticker, currentSave.stickerModifications[sticker], scene)
+	for pedestal in currentSave.activePedestals:
+		var pedestalNode: InventoryPedestal = GeneralVariables.get_tree().root.get_node(pedestal.nodePath)
+		pedestalNode.sticker = pedestal.sticker
+		pedestalNode.activate_pedestal()
+	for door in currentSave.openDoors:
+		var doorNode: PushDoor = GeneralVariables.get_tree().root.get_node(door)
+		doorNode.open_door(false)
 
 func new_sticker(UUID: int, sticker: StickerSave, scene: Node) -> void:
 	var newSticker: StickerBase = GeneralVariables.saveManager.stickerBases[StickerTypes.keys()[sticker.stickerType]].instantiate()

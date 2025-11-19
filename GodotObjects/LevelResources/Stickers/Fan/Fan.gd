@@ -1,3 +1,4 @@
+@tool
 extends StickerBase
 ## Fan sticker class.
 class_name FanSticker
@@ -14,8 +15,9 @@ var onPlayerEffectRef: LedgeDetection
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	fan.switch_fan(true)
+	if not Engine.is_editor_hint(): fan.switch_fan(true)
 	super()
+	if Engine.is_editor_hint(): return
 	if not placed:
 		await get_tree().create_timer(0.5).timeout
 		fan.switch_fan(false)
@@ -36,6 +38,7 @@ func grab(node: Node3D) -> void:
 
 ## Checks every frame to turn the fan off when not grabed or placed
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if not grabed and not placed and fan.isOn:
 		fan.switch_fan(false)
 
