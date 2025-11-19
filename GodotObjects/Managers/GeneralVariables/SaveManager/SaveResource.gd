@@ -45,7 +45,6 @@ func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 	sticker.isSaveCreated = true
 
 func delete_sticker(sticker: StickerBase) -> void:
-	print(sticker.UUID)
 	var currentScene: SceneSave
 	if sceneChanges.has(sticker.sceneParent.name): currentScene = sceneChanges[sticker.sceneParent.name]
 	else:
