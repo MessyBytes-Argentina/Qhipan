@@ -1,0 +1,65 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dyssjfweeypue"]
+
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_uu0rt"]
+[ext_resource type="Texture2D" uid="uid://lfk4lk2kicu1" path="res://Assets/Materials/WithCutout/Terrenos/Stickereables/Ladrillo Interior/Texturas/Ladrillo Interior_albedo.png" id="2_20cj6"]
+[ext_resource type="Texture2D" uid="uid://dk7kv1aluylm0" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_orm.png" id="3_ewhmj"]
+[ext_resource type="Texture2D" uid="uid://bmm3aecm8a3ll" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Texturas/Ladrillo Interior_normal.png" id="4_1vbmp"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_sbjro"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="6_rmgd6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uu0rt")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("6_rmgd6")
+shader_parameter/fresnel_gradient = ExtResource("5_sbjro")
+shader_parameter/top_texture_scale = 1.0000000149012
+shader_parameter/side_texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = ExtResource("2_20cj6")
+shader_parameter/side_texture_albedo = ExtResource("2_20cj6")
+shader_parameter/enable_normal = true
+shader_parameter/top_texture_normal = ExtResource("4_1vbmp")
+shader_parameter/side_texture_normal = ExtResource("4_1vbmp")
+shader_parameter/top_normal_scale = 1.0
+shader_parameter/side_normal_scale = 1.0
+shader_parameter/top_texture_orm = ExtResource("3_ewhmj")
+shader_parameter/side_texture_orm = ExtResource("3_ewhmj")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.5
+shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
