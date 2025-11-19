@@ -1,40 +1,38 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dbbswtruuigdx"]
 
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_cqnau"]
-[ext_resource type="Texture2D" uid="uid://q0i7adunbvfp" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Test_albedo.png" id="2_7a5x4"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_v2axd"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="4_clbxa"]
-[ext_resource type="Texture2D" uid="uid://bv80gqlgypt3y" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Test_normal.png" id="5_jcphl"]
-[ext_resource type="Texture2D" uid="uid://chl4i3v64xxtw" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Test_orm.png" id="6_g8kyx"]
+[ext_resource type="Texture2D" uid="uid://lkehnqm616gf" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Incompleto relieve 2_albedo.png" id="4_cqnau"]
+[ext_resource type="Texture2D" uid="uid://bfko0y5ui0fxn" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Incompleto relieve 2_normal.png" id="5_7a5x4"]
+[ext_resource type="Texture2D" uid="uid://4ppbswfrkwu3" path="res://Assets/Materials/Murales/Mural Papa/Mural Papa Incompleto relieve 2_orm.png" id="6_v2axd"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_cqnau")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("2_7a5x4")
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/light_gradient = ExtResource("4_clbxa")
 shader_parameter/fresnel_gradient = ExtResource("3_v2axd")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_cqnau")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_7a5x4")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("6_v2axd")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
 shader_parameter/roughness = 1.0
-shader_parameter/roughness_texture = ExtResource("6_g8kyx")
 shader_parameter/metallic_specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/enable_emission = true
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy_multiplier = 1.0
-shader_parameter/enable_normal = true
-shader_parameter/normal_texture = ExtResource("5_jcphl")
-shader_parameter/normal_scale = 1.0
 shader_parameter/enable_clearcoat = true
 shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/ao_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/ao_light_affect = 0.0
 shader_parameter/cylinderCutout = false
 shader_parameter/borderColor = Color(1, 1, 1, 1)
 shader_parameter/borderSize = 0.0
