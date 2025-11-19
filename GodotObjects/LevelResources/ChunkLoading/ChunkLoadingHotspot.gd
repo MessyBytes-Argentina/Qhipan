@@ -102,6 +102,7 @@ func _start_load() -> void:
 	set_hotspot_position()
 	loadedHotspot.loadedHotspot = self
 	loadedHotspot.loadedScene = rootNode
+	GeneralVariables.saveManager.request_scene_load(loadedScene)
 
 ## Unloads scene.
 func _do_unload() -> void:

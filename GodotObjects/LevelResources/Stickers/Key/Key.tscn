@@ -137,7 +137,7 @@ _data = {
 &"RESET": SubResource("Animation_o0lwf")
 }
 
-[node name="KeySticker" type="CharacterBody3D"]
+[node name="KeySticker" type="CharacterBody3D" groups=["SaveObjects"]]
 collision_layer = 512
 collision_mask = 4353
 script = ExtResource("4_ws05p")

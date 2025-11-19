@@ -51,6 +51,10 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 ## The collision mask for when the sticker is not on the player
 var collisionMask: int
+## Original parent node reference for saves.
+var originalParent: String
+## The path for the scene this node whas picked up from
+var originalParentPath: String
 ## Parent node reference for placement.
 var sceneParent: Node
 ## Tween for rotation animation.
@@ -79,11 +83,18 @@ var inDarkness: bool = false
 var lastLocation: Vector3
 ## Tracks the state it was in last time it was grabbed.
 var lastMode: bool = false
+## Has this sticker been created by a save.
+var isSaveCreated: bool = false
+## This node's UUID.
+var UUID: int
+## Has this node been moved by the player.
+var hasBeenMoved: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collisionMask = collision_mask
 	sceneParent = get_parent()
+	originalParent = sceneParent.name
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
 	mesh.mesh = mesh.mesh.duplicate()
@@ -99,6 +110,9 @@ func _ready() -> void:
 	check_placement()
 	lastLocation = global_position
 	lastMode = placed
+	if not isSaveCreated:
+		UUID = get_instance_id()
+		originalParentPath = get_path().slice(1)
 
 ## Checks for nearby areas to place itself
 func check_placement() -> void:
@@ -165,6 +179,8 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
 	do_reparent()
+	if hasBeenMoved:
+		_push_save()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -211,6 +227,8 @@ func grab(node: Node3D) -> void:
 	grabed = true
 	placed = false
 	just_placed.emit(placed)
+	GeneralVariables.saveManager.delete_sticker(self)
+	hasBeenMoved = true
 
 ## Called when player reset is called.
 func reset_sticker() -> void:
@@ -237,6 +255,7 @@ func drop() -> void:
 	just_placed.emit(placed)
 	do_reparent()
 	grabed = false
+	_push_save()
 
 ## Starts the floating animations 
 func start_rotation() -> void:
@@ -298,3 +317,8 @@ func _on_area_exited(area: Area3D) -> void:
 	darknessAreas.erase(area)
 	lightAreas.erase(area)
 	inDarkness = len(lightAreas) == 0 and len(darknessAreas) > 0
+
+## Saves modifications to this sticker
+func _push_save() -> void:
+	GeneralVariables.saveManager.store_change(self, sceneParent)
+	hasBeenMoved = true

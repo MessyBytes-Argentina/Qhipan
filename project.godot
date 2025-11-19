@@ -58,6 +58,7 @@ OnPlayerFan=""
 Fog=""
 Metaprogression=""
 ChunkLoadingHotspots=""
+SaveObjects=""
 
 [godot_resource_groups]
 

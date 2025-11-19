@@ -17,6 +17,8 @@ var cutoutMaterials: Array[ShaderMaterial] = []
 var inventory: StickerInventory
 ## The Stickerable Surface Manager
 var stickerableSurfacesManager: StickerableSurfacesManager
+## The save manager
+var saveManager: SaveManager
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +30,9 @@ func _ready() -> void:
 	stickerableSurfacesManager = StickerableSurfacesManager.new()
 	stickerableSurfacesManager.name = "StickerableSurfacesManager"
 	add_child(stickerableSurfacesManager)
+	saveManager = SaveManager.new()
+	saveManager.name = "SaveManager"
+	add_child(saveManager)
 
 ## Handles switching input modes from keyboard to gamepad.
 func _input(event: InputEvent) -> void:
