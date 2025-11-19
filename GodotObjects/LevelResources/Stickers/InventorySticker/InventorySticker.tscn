@@ -111,7 +111,7 @@ shaded = true
 render_priority = 2
 texture = SubResource("GradientTexture2D_bug3e")
 
-[node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes" groups=["SaveObjects"]]
+[node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
 visible = false
 layers = 2
