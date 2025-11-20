@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody3D
 ## The basic sticker skeleton.
 class_name StickerBase
@@ -29,8 +30,10 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 ## If true checks for areas to place after loading.
 @export var placed: bool = false
-## Collision layer for sticker placement.
-@export var validAreaIndexes: Array[int] = [11]
+## Group to hide storage only variables because export storage doesn't seem to do the thing.
+@export_group("Root Reference")
+## Parent node reference for placement.
+@export var sceneParent: Node
 
 ## Area3D to check for placement.
 @onready var areaChecker: Area3D = %AreaChecker
@@ -51,8 +54,10 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 ## The collision mask for when the sticker is not on the player
 var collisionMask: int
-## Parent node reference for placement.
-var sceneParent: Node
+## Original parent node reference for saves.
+var originalParent: String
+## The path for the scene this node whas picked up from
+var originalParentPath: String
 ## Tween for rotation animation.
 var rotationTween: Tween
 ## Tween for bobbing animation.
@@ -67,8 +72,6 @@ var backMaterial: StandardMaterial3D
 var grabed: bool = false
 ## Current state of the sticker.
 var lastVisualMode: ScaleModes = ScaleModes.DROPPED
-## Reference to the original parent of this sticker
-var originalParent: Node
 ## Placed position reference for overlaps.
 var placedPosition: Vector3
 ## Tracks darkness areas.
@@ -81,11 +84,20 @@ var inDarkness: bool = false
 var lastLocation: Vector3
 ## Tracks the state it was in last time it was grabbed.
 var lastMode: bool = false
+## Has this sticker been created by a save.
+var isSaveCreated: bool = false
+## This node's UUID.
+var UUID: int
+## Has this node been moved by the player.
+var hasBeenMoved: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		sceneParent = get_tree().edited_scene_root
+		return
 	collisionMask = collision_mask
-	sceneParent = get_parent()
+	originalParent = sceneParent.name
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
 	mesh.mesh = mesh.mesh.duplicate()
@@ -95,13 +107,15 @@ func _ready() -> void:
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	prerender()
 	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
-	originalParent = get_parent()
 	areaChecker.area_entered.connect(_on_area_entered)
 	areaChecker.area_exited.connect(_on_area_exited)
 	await get_tree().create_timer(PLACEDCHECKTIME).timeout
 	check_placement()
 	lastLocation = global_position
 	lastMode = placed
+	if not isSaveCreated:
+		UUID = get_instance_id()
+		originalParentPath = get_path().slice(1)
 
 ## Checks for nearby areas to place itself
 func check_placement() -> void:
@@ -129,6 +143,7 @@ func check_placement() -> void:
 
 ## Executed on every physics frame.
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if placed or grabed: return
 	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
 	velocity = currentPush * delta
@@ -167,7 +182,9 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	reparent(originalParent)
+	do_reparent()
+	if hasBeenMoved:
+		_push_save()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -214,15 +231,24 @@ func grab(node: Node3D) -> void:
 	grabed = true
 	placed = false
 	just_placed.emit(placed)
+	GeneralVariables.saveManager.delete_sticker(self)
+	hasBeenMoved = true
 
 ## Called when player reset is called.
 func reset_sticker() -> void:
-	reparent(sceneParent)
+	do_reparent()
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
 	just_placed.emit(placed)
 	check_placement()
+
+## Special reparent for scene loading workaround
+func do_reparent() -> void:
+	if not sceneParent:
+		var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
+		sceneParent = mainScene.get_child(mainScene.get_child_count() - 1)
+	reparent(sceneParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:
@@ -231,8 +257,9 @@ func drop() -> void:
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false
 	just_placed.emit(placed)
-	reparent(sceneParent)
+	do_reparent()
 	grabed = false
+	_push_save()
 
 ## Starts the floating animations 
 func start_rotation() -> void:
@@ -294,3 +321,8 @@ func _on_area_exited(area: Area3D) -> void:
 	darknessAreas.erase(area)
 	lightAreas.erase(area)
 	inDarkness = len(lightAreas) == 0 and len(darknessAreas) > 0
+
+## Saves modifications to this sticker
+func _push_save() -> void:
+	GeneralVariables.saveManager.store_change(self, sceneParent)
+	hasBeenMoved = true

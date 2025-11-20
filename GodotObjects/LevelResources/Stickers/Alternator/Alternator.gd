@@ -1,3 +1,4 @@
+@tool
 extends StickerBase
 ## Alternator sticker class
 class_name AlternatorSticker

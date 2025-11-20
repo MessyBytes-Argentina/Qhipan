@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 class_name PushDoor
 
@@ -8,6 +9,10 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 @export var openAnimation: Animations = Animations.SlideLeft
 ## Flag that closes the door after activation
 @export var isOneWay: bool = false
+## Group to hide storage only variables because export storage doesn't seem to do the thing.
+@export_group("Root Reference")
+## Parent node reference for placement.
+@export var sceneParent: Node
 
 ## Node reference to connect open signal.
 @onready var doorBody: DoorBody = %DownPivot
@@ -18,12 +23,17 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		sceneParent = get_tree().edited_scene_root
+		return
 	doorBody.open.connect(open_door)
 
 ## Opens the door.
-func open_door() -> void:
+func open_door(update: bool = true) -> void:
 	animationPlayer.play(Animations.keys()[openAnimation])
-	openSound.play_sound()
+	if update: 
+		openSound.play_sound()
+		if not isOneWay: GeneralVariables.saveManager.store_change(self, sceneParent)
 
 ## Closes the door.
 func close_door() -> void:

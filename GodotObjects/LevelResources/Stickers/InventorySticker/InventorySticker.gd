@@ -12,17 +12,18 @@ class_name InventorySticker
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		super()
-		if not sticker: return
+	if Engine.is_editor_hint():
+		sceneParent = get_tree().edited_scene_root
 	else:
-		if not sticker: return
-		meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
-		mesh.set_surface_override_material(0, meshMaterial)
-		mesh.mesh = mesh.mesh.duplicate()
-		backMaterial = back.get_surface_override_material(0).duplicate()
-		back.set_surface_override_material(0, backMaterial)
+		super()
+	if not sticker: return
+	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
+	mesh.set_surface_override_material(0, meshMaterial)
+	mesh.mesh = mesh.mesh.duplicate()
+	backMaterial = back.get_surface_override_material(0).duplicate()
+	back.set_surface_override_material(0, backMaterial)
 	set_image()
+	originalParentPath = get_path().slice(1)
 
 ## Sets the image of the sticker to match the one in the [PocketSticker] resource.
 func set_image() -> void:
@@ -33,6 +34,7 @@ func set_image() -> void:
 
 ## Moves the sticker position to the given node position.
 func grab(_node: Node3D) -> void:
+	GeneralVariables.saveManager.delete_sticker(self)
 	GeneralVariables.inventory.add_sticker(sticker)
 	await get_tree().process_frame
 	get_tree().get_first_node_in_group("Player").grabArea.pickupOnHand = false

@@ -57,6 +57,7 @@ Gridmap=""
 OnPlayerFan=""
 Fog=""
 Metaprogression=""
+ChunkLoadingHotspots=""
 
 [godot_resource_groups]
 

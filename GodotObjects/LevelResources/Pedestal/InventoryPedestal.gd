@@ -24,6 +24,10 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 @onready var placedSticker: MeshInstance3D = %PlacedSticker
 ## Reference to the area.
 @onready var area: Area3D = %Area3D
+## Group to hide storage only variables because export storage doesn't seem to do the thing.
+@export_group("Root Reference")
+## Parent node reference for placement.
+@export var sceneParent: Node
 
 ## Is the player inside the area.
 var playerInArea: Player
@@ -31,9 +35,12 @@ var playerInArea: Player
 var stickerHighlightTween: Tween
 ## check for whether the player has the required sticker in the inventory
 var playerHasSticker: bool = false
+## The placed sticker
+var sticker: PocketSticker
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
+	if Engine.is_editor_hint(): sceneParent = get_tree().edited_scene_root
 	update_texture()
 	bob_sticker_hightlight()
 
@@ -42,25 +49,26 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not playerInArea: return
 	if not event.is_action_pressed("interact"): return
 	if not playerHasSticker: return
-	var sticker: PocketSticker = GeneralVariables.inventory.remove_sticker(pedestalName)
-	highlight.hide()
-	stickerHighlightTween.kill()
-	highlight.queue_free()
+	sticker = GeneralVariables.inventory.remove_sticker(pedestalName)
 	activate_pedestal()
-	var material: StandardMaterial3D = placedSticker.get_surface_override_material(0).duplicate()
-	material.albedo_texture = sticker.image
-	placedSticker.set_surface_override_material(0, material)
-	placedSticker.show()
+	GeneralVariables.saveManager.store_change(self, sceneParent)
 	playerInArea.grabArea.canDrop = true
 	playerInArea.grabArea.canGrab = true
 	playerInArea = null
-	area.set_deferred("monitoring", false)
-	await get_tree().process_frame
-	area.queue_free()
 
 ## Activates pedestal.
 func activate_pedestal() -> void:
 	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName)
+	highlight.hide()
+	stickerHighlightTween.kill()
+	highlight.queue_free()
+	var material: StandardMaterial3D = placedSticker.get_surface_override_material(0).duplicate()
+	material.albedo_texture = sticker.image
+	placedSticker.set_surface_override_material(0, material)
+	placedSticker.show()
+	area.set_deferred("monitoring", false)
+	await get_tree().process_frame
+	area.queue_free()
 
 ## Updates debug texture.
 func update_texture() -> void:
