@@ -4,14 +4,11 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://cbdyfdgd6hgfo"
-path="res://.godot/imported/Altar Mediano.obj-3e1f6a9a06d486b431e0cdf4a8149379.mesh"
+valid=false
 
 [deps]
 
-files=["res://.godot/imported/Altar Mediano.obj-3e1f6a9a06d486b431e0cdf4a8149379.mesh"]
-
 source_file="res://Assets/Models/Altares/Altar Mediano.obj"
-dest_files=["res://.godot/imported/Altar Mediano.obj-3e1f6a9a06d486b431e0cdf4a8149379.mesh", "res://.godot/imported/Altar Mediano.obj-3e1f6a9a06d486b431e0cdf4a8149379.mesh"]
 
 [params]
 
