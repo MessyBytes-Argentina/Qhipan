@@ -34,6 +34,8 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 @export_group("Root Reference")
 ## Parent node reference for placement.
 @export var sceneParent: Node
+## Original parent node reference for saves.
+@export var originalParent: String
 
 ## Area3D to check for placement.
 @onready var areaChecker: Area3D = %AreaChecker
@@ -54,8 +56,6 @@ enum ScaleModes {GRABBED, DROPPED, PLACED, ZOOMEDOUT}
 
 ## The collision mask for when the sticker is not on the player
 var collisionMask: int
-## Original parent node reference for saves.
-var originalParent: String
 ## The path for the scene this node whas picked up from
 var originalParentPath: String
 ## Tween for rotation animation.
@@ -95,9 +95,9 @@ var hasBeenMoved: bool = false
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		sceneParent = get_tree().edited_scene_root
+		originalParent = sceneParent.name
 		return
 	collisionMask = collision_mask
-	originalParent = sceneParent.name
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
 	mesh.mesh = mesh.mesh.duplicate()
@@ -151,23 +151,33 @@ func _physics_process(delta: float) -> void:
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
+	billboardZoomedOut.no_depth_test = false
+	billboardZoomedOut.fixed_size = false
+	var zoomsize = billboardZoomedOut.pixel_size
+	billboardZoomedOut.pixel_size = 0.0001
+	var billboardsize = billboard.pixel_size
+	billboard.pixel_size = 0.0001
 	mesh.show()
 	back.show()
 	billboard.show()
 	billboardZoomedOut.show()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	mesh.hide()
 	back.hide()
 	billboard.hide()
 	billboardZoomedOut.hide()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	mesh.show()
 	back.show()
 	billboard.show()
 	billboardZoomedOut.show()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	billboard.hide()
 	billboardZoomedOut.hide()
+	billboardZoomedOut.no_depth_test = true
+	billboardZoomedOut.fixed_size = true
+	billboardZoomedOut.pixel_size = zoomsize
+	billboard.pixel_size = billboardsize
 
 ## Places the sticker on the given area facing the given direction
 func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
