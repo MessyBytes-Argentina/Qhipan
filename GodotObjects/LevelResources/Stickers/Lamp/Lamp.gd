@@ -1,3 +1,4 @@
+@tool
 extends StickerBase
 ## Sticker that lights up darkness-blocked areas.
 class_name LampSticker
@@ -40,6 +41,7 @@ var nextLightValue: float = 0.0
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	if Engine.is_editor_hint(): return
 	while not player:
 		player = get_tree().get_first_node_in_group("Player")
 		await get_tree().process_frame

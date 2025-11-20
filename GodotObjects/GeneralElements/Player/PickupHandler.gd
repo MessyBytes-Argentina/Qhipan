@@ -191,6 +191,7 @@ func bob_sticker_hightlight() -> void:
 func add_anti_drop_area(area: AntiDropArea) -> void:
 	if antiDropAreaCollection.has(area): return
 	antiDropAreaCollection.append(area)
+
 ## Removes the given area to antiDropAreaCollection
 func remove_anti_drop_area(area: AntiDropArea) -> void:
 	if antiDropAreaCollection.has(area):
