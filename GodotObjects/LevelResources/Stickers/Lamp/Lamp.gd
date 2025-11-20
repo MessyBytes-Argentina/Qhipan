@@ -109,28 +109,38 @@ func _on_light_fade_finish() -> void:
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
+	billboardZoomedOut.no_depth_test = false
+	billboardZoomedOut.fixed_size = false
+	var zoomsize = billboardZoomedOut.pixel_size
+	billboardZoomedOut.pixel_size = 0.0001
+	var billboardsize = billboard.pixel_size
+	billboard.pixel_size = 0.0001
 	mesh.show()
 	floatingMesh.show()
 	back.show()
 	billboard.show()
 	billboardZoomedOut.show()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	mesh.hide()
 	floatingMesh.hide()
 	back.hide()
 	billboard.hide()
 	billboardZoomedOut.hide()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	mesh.show()
 	floatingMesh.show()
 	back.show()
 	billboard.show()
 	billboardZoomedOut.show()
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().physics_frame
 	floatingMesh.show()
 	mesh.hide()
 	billboard.hide()
 	billboardZoomedOut.hide()
+	billboardZoomedOut.no_depth_test = true
+	billboardZoomedOut.fixed_size = true
+	billboardZoomedOut.pixel_size = zoomsize
+	billboard.pixel_size = billboardsize
 
 ## Activates the sticker effect when held by the player
 func activate_on_player_effect() -> void:

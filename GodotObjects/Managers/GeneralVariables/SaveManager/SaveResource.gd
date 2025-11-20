@@ -66,10 +66,11 @@ func delete_inventory_sticker(sticker: InventorySticker) -> void:
 
 func delete_sticker(sticker: StickerBase) -> void:
 	var currentScene: SceneSave
-	if sceneChanges.has(sticker.sceneParent.name): currentScene = sceneChanges[sticker.sceneParent.name]
+	var sceneParent: Node = sticker.sceneParent if sticker.sceneParent else sticker.get_parent()
+	if sceneChanges.has(sceneParent.name): currentScene = sceneChanges[sceneParent.name]
 	else:
 		currentScene = SceneSave.new()
-		sceneChanges[sticker.sceneParent.name] = currentScene
+		sceneChanges[sceneParent.name] = currentScene
 	if sticker.isSaveCreated:
 		for scene in sceneChanges:
 			if sceneChanges[scene].stickerModifications.has(sticker.UUID):
