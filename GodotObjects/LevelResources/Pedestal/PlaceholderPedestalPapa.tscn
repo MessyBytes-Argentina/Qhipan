@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsigoafx0orqy"]
+
+[ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_jeycl"]
+[ext_resource type="PackedScene" uid="uid://c1hxffl4y7pty" path="res://Assets/Models/Altares/Papa.tscn" id="2_jeycl"]
+[ext_resource type="Texture2D" uid="uid://x6d56bhuclgo" path="res://Assets/Textures/Stickers/Papa/Sticker Papa.png" id="3_4gwa1"]
+[ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_f1egv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
+size = Vector3(1.0479126, 0.68078613, 0.664917)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xk1kp"]
+radius = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1pe02"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofq2c"]
+render_priority = 2
+transparency = 1
+albedo_texture = ExtResource("3_4gwa1")
+
+[node name="InventoryPedestal" type="StaticBody3D" node_paths=PackedStringArray("sceneParent")]
+script = ExtResource("1_jeycl")
+pedestalName = "Papa"
+sceneParent = NodePath(".")
+
+[node name="Mural Papa" parent="." instance=ExtResource("2_jeycl")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012298584, 0.34039307, 0.082458496)
+shape = SubResource("BoxShape3D_bi05e")
+
+[node name="Area3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.625, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+metadata/pointing = Vector3(1.50996e-07, 0, 1)
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 0, -0.05, 0)
+shape = SubResource("SphereShape3D_xk1kp")
+debug_color = Color(0.766757, 0.447441, 1.15514e-06, 0.42)
+
+[node name="PlacedSticker" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.60873175, 0, 5.3217025e-08, 4.6381694e-09, 0.6064154, 0.053054467, -5.3014517e-08, 0.053054467, -0.6064154, 0, 1.2072095, 0.30692345)
+visible = false
+mesh = SubResource("QuadMesh_1pe02")
+surface_material_override/0 = SubResource("StandardMaterial3D_ofq2c")
+
+[node name="Highlight" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.7695985, 0)
+visible = false
+pixel_size = 0.003
+billboard = 1
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("4_f1egv")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_player_exited"]

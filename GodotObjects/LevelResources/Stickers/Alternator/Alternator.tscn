@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://djwsba7job37w"]
+[gd_scene load_steps=15 format=3 uid="uid://djwsba7job37w"]
 
 [ext_resource type="Script" uid="uid://csgnlylxgx63a" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.gd" id="1_e4k1j"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_5ap3j"]
-[ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="3_n2oqg"]
+[ext_resource type="Texture2D" uid="uid://cwttjkrp2u6bv" path="res://Assets/Textures/Stickers/Pila/Pila.png" id="3_e4k1j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.131629
@@ -10,23 +10,10 @@ radius = 0.131629
 [sub_resource type="QuadMesh" id="QuadMesh_h7mp7"]
 size = Vector2(0.8, 0.8)
 
-[sub_resource type="Gradient" id="Gradient_e4k1j"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.95)
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wts1r"]
-gradient = SubResource("Gradient_e4k1j")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7e5t"]
 render_priority = 2
 transparency = 1
-albedo_texture = SubResource("GradientTexture2D_wts1r")
+albedo_texture = ExtResource("3_e4k1j")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
 flip_faces = true
@@ -42,25 +29,9 @@ gradient = SubResource("Gradient_c1wxo")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhy6c"]
 render_priority = 2
 transparency = 1
-albedo_texture = ExtResource("3_n2oqg")
+albedo_texture = ExtResource("3_e4k1j")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f7etb"]
-gradient = SubResource("Gradient_e4k1j")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ci8xp"]
-gradient = SubResource("Gradient_e4k1j")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
@@ -80,9 +51,11 @@ radius = 1.6
 [sub_resource type="SphereShape3D" id="SphereShape3D_f7etb"]
 radius = 0.25
 
-[node name="Alternator" type="CharacterBody3D"]
+[node name="Alternator" type="CharacterBody3D" node_paths=PackedStringArray("sceneParent")]
 collision_layer = 512
 script = ExtResource("1_e4k1j")
+sceneParent = NodePath(".")
+originalParent = "Alternator"
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true
@@ -116,7 +89,7 @@ pixel_size = 0.002
 billboard = 1
 shaded = true
 render_priority = 2
-texture = SubResource("GradientTexture2D_f7etb")
+texture = ExtResource("3_e4k1j")
 
 [node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
@@ -127,7 +100,7 @@ billboard = 1
 no_depth_test = true
 fixed_size = true
 render_priority = 2
-texture = SubResource("GradientTexture2D_ci8xp")
+texture = ExtResource("3_e4k1j")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
