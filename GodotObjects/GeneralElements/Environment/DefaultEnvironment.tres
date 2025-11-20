@@ -1,0 +1,51 @@
+[gd_resource type="Environment" load_steps=7 format=3 uid="uid://bjvxddp7ihpwv"]
+
+[ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
+[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_u3ji6"]
+
+[sub_resource type="Gradient" id="Gradient_ricvt"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.38431373, 0.45490196, 0.54901963, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqc3i"]
+gradient = SubResource("Gradient_ricvt")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
+shader = ExtResource("1_ricvt")
+shader_parameter/startPanorama = ExtResource("1_u3ji6")
+shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
+shader_parameter/panoramaProgress = 0.0
+shader_parameter/skyContribution = 0.75
+
+[sub_resource type="Sky" id="Sky_k8jv3"]
+sky_material = SubResource("ShaderMaterial_jqc3i")
+
+[resource]
+background_mode = 2
+background_color = Color(0.384314, 0.454902, 0.54902, 1)
+sky = SubResource("Sky_k8jv3")
+ambient_light_source = 2
+ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 2
+tonemap_exposure = 1.5
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 4.0
+ssil_enabled = true
+sdfgi_energy = 7.275
+glow_enabled = true
+glow_levels/4 = 1.0
+glow_levels/5 = 3.0
+glow_strength = 0.4
+glow_bloom = 0.5
+glow_blend_mode = 1
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
