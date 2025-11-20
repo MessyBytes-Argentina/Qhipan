@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_55ifw"]
-[ext_resource type="Material" uid="uid://by6612cmuprks" path="res://Assets/Materials/Puente Empujable Demo/Toon-Demo Puente Empujable.tres" id="3_55ifw"]
+[ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Toon-Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_ekaqn"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_wpwc1"]
@@ -288,10 +288,11 @@ _data = {
 &"SlideUp": SubResource("Animation_2hdbo")
 }
 
-[node name="PushDoor" type="Node3D"]
+[node name="PushDoor" type="Node3D" node_paths=PackedStringArray("sceneParent")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_m727r")
 openAnimation = 4
+sceneParent = NodePath(".")
 
 [node name="Centered" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
