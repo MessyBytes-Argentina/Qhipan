@@ -1,50 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcdehfefvxgu6"]
+[gd_scene load_steps=4 format=3 uid="uid://dcdehfefvxgu6"]
 
-[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_xfeqy"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_xfeqy"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_8td0u"]
 [ext_resource type="PackedScene" uid="uid://vam88ax0grfk" path="res://GodotObjects/LevelScenes/Tests/test.tscn" id="3_2t645"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ae1y6"]
-panorama = ExtResource("1_xfeqy")
-energy_multiplier = 0.6
-
-[sub_resource type="Sky" id="Sky_konnu"]
-sky_material = SubResource("PanoramaSkyMaterial_ae1y6")
-
-[sub_resource type="Environment" id="Environment_hmtjj"]
-background_mode = 2
-background_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky = SubResource("Sky_konnu")
-ambient_light_source = 2
-ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
-ambient_light_energy = 1.5
-tonemap_mode = 2
-tonemap_exposure = 1.5
-ssao_enabled = true
-ssao_radius = 2.0
-ssao_intensity = 4.0
-ssil_enabled = true
-sdfgi_energy = 7.275
-glow_strength = 0.53
-glow_bloom = 1.0
-fog_mode = 1
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_begin = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-
 [node name="MainTest" type="Node3D"]
 
-[node name="EnvironmentObjects" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentObjects"]
-environment = SubResource("Environment_hmtjj")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.05
-shadow_enabled = true
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_xfeqy")]
 
 [node name="Player" parent="." instance=ExtResource("2_8td0u")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.5, 6)
