@@ -1,8 +1,39 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1itoeoceqq0o"]
+[gd_scene load_steps=22 format=3 uid="uid://c1itoeoceqq0o"]
 
 [ext_resource type="Script" uid="uid://djq1n6uqo7io4" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.gd" id="1_pdvbf"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_1efht"]
+[ext_resource type="Shader" uid="uid://celtex7phkf37" path="res://Assets/Shaders/Shine.gdshader" id="2_weoec"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="3_weoec"]
+
+[sub_resource type="Gradient" id="Gradient_b4s83"]
+offsets = PackedFloat32Array(0.43359375, 1)
+colors = PackedColorArray(1, 0.7294118, 0, 0.39215687, 1, 1, 0.46666667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5a7iv"]
+gradient = SubResource("Gradient_b4s83")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bug3e"]
+render_priority = 0
+shader = ExtResource("2_weoec")
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/color = Color(1, 1, 0, 1)
+shader_parameter/gradient = SubResource("GradientTexture1D_5a7iv")
+shader_parameter/spread = 0.6
+shader_parameter/cutoff = 1.0
+shader_parameter/size = 1.25
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 10.0
+shader_parameter/ray2_density = 10.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/core_intensity = 0.0
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_1oybu"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("ShaderMaterial_bug3e")
+add_uv2 = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -70,12 +101,17 @@ height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="InventorySticker" type="CharacterBody3D"]
+[node name="InventorySticker" type="CharacterBody3D" node_paths=PackedStringArray("sceneParent")]
 collision_layer = 512
 collision_mask = 4353
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
+sceneParent = NodePath(".")
+
+[node name="Shine" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("QuadMesh_1oybu")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true
