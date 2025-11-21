@@ -70,12 +70,13 @@ height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="InventorySticker" type="CharacterBody3D"]
+[node name="InventorySticker" type="CharacterBody3D" node_paths=PackedStringArray("sceneParent")]
 collision_layer = 512
 collision_mask = 4353
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
+sceneParent = NodePath(".")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true
