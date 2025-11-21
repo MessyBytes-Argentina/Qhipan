@@ -6,18 +6,16 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_sc
 uniform vec3 uv1_scale;
 uniform vec3 uv1_offset;
 
-uniform vec3 color : source_color;
-uniform sampler2D gradient;
-uniform float spread = 0.5;
-uniform float cutoff = 0.1;
-uniform float size = 1.0;
 uniform float speed = 1.0;
-uniform float ray1_density = 8.0;
-uniform float ray2_density = 30.0;
-uniform float ray2_intensity = 0.3;
-uniform float core_intensity = 2.0;
-uniform bool hdr = false;
-uniform float seed = 5.0;
+uniform vec4 gradientColor : source_color = vec4(1.0);
+uniform float glowEdge: hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform float glowCenter: hint_range(0.0, 1.0, 0.01) = 0.25;
+uniform vec4 rayColor : source_color = vec4(1.0);
+uniform float rayEdge = 0.5;
+uniform vec3 rays = vec3(9.0, 14.0, 19.0);
+uniform vec4 secondRayColor : source_color = vec4(1.0);
+uniform vec3 secondRays = vec3(12.0, 17.0, 22.0);
+uniform float secondRayEdge = 0.5;
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
@@ -31,45 +29,42 @@ void vertex() {
 	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 }
 
-float random(vec2 _uv) {
-    return fract(sin(dot(_uv.xy, vec2(12.9898, 78.233))) * 43758.5453123);
-}
-
-float noise(in vec2 uv) {
-    vec2 i = floor(uv);
-    vec2 f = fract(uv);
-    float a = random(i);
-    float b = random(i + vec2(1.0, 0.0));
-    float c = random(i + vec2(0.0, 1.0));
-    float d = random(i + vec2(1.0, 1.0));
-    vec2 u = f * f * (3.0-2.0 * f);
-    return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
-}
-
 void fragment() {
-    vec2 centered_uv = (UV - 0.5) * size;
-    float radius = length(centered_uv);
-    float angle = atan(centered_uv.y, centered_uv.x) + PI; // Add PI to fix left side cutoff
-    
-    vec2 ray1 = vec2(angle * ray1_density + TIME * speed + seed + sin(angle * 3.0), radius * 2.0);
-    vec2 ray2 = vec2(angle * ray2_density + TIME * speed * 1.5 + seed + cos(angle * 2.0), radius * 2.0);
-    
-    float cut = 1.0 - smoothstep(cutoff, cutoff + 0.2, radius);
-    ray1 *= cut;
-    ray2 *= cut;
-    
-    float rays = hdr ? 
-        noise(ray1) + (noise(ray2) * ray2_intensity) :
-        clamp(noise(ray1) + (noise(ray2) * ray2_intensity), 0., 1.);
-    
-    rays *= smoothstep(spread, spread * 0.3, radius);
-    float core = smoothstep(0.2, 0.0, radius) * core_intensity;
-    rays += core;
-    
-    vec4 gradient_color = texture(gradient, vec2(rays, 0.5));
-    vec3 shine = vec3(rays) * gradient_color.rgb;
-    
-    vec4 final = vec4(shine, rays * gradient_color.a);
-	ALBEDO = final.rgb;
-	ALPHA = final.a;
+    float time = TIME * speed;
+    vec2 uv = (UV - vec2(0.5)) * vec2(2.0);
+    float dist = length(uv);
+	float centerDistance = smoothstep(1.0 - glowEdge, 1.0 - glowCenter, 1.0 - dist);
+    float angle = atan(uv.y, uv.x);
+	
+    float rayGradient = clamp((sin(angle * rays.x + time) + 1.0) * 0.5 + (cos(angle * rays.y + time) + 1.0) * 0.5 - (sin(angle * rays.z + time) + 1.0) * 0.5, 0.0, 1.0);
+	rayGradient = step(rayGradient, rayEdge);
+    rayGradient *= centerDistance;
+	vec4 ray_color = mix(vec4(0.0), rayColor, rayGradient);
+	float secondRayGradient = clamp((sin(angle * secondRays.x + time) + 1.0) * 0.5 + (cos(angle * secondRays.y + time) + 1.0) * 0.5 - (sin(angle * secondRays.z + time) + 1.0) * 0.5, 0.0, 1.0);
+	secondRayGradient = step(secondRayGradient, secondRayEdge);
+    secondRayGradient *= centerDistance;
+	vec4 second_ray_color = mix(vec4(0.0), secondRayColor, secondRayGradient);
+	vec4 smoothColor = mix(vec4(0.0), gradientColor, centerDistance);
+    vec4 mixed = mix(smoothColor, mix(ray_color, second_ray_color, float(secondRayGradient >= rayGradient)) , float(max(rayGradient, secondRayGradient) >= centerDistance));
+	ALBEDO = mixed.rgb;
+	ALPHA = mixed.a;
+	//ALPHA = max(rayGradient * ray_color.a, centerDistance * smoothColor.a);
 }
+
+
+//Leave comments if you want If you want a white light effect with a transparent background
+//shader_type canvas_item;
+
+//void fragment() {
+    //float time = TIME;
+    //
+    //vec2 uv = (UV - vec2(0.5)) * vec2(2.0);
+    //float dist = length(uv);
+    //float angle = atan(uv.y, uv.x);
+    //
+   //float opacity = sin(angle * 5.0 + time) * 0.5 + 0.5;
+    //
+    //opacity *= smoothstep(0.0, 1.0, 1.0 - dist);
+    //
+    //COLOR = vec4(1.0, 1.0, 1.0, opacity);
+//}
