@@ -35,18 +35,29 @@ var lastDistance: float = 0
 var lastPoint: int = 0
 ## Distance covered up to last point covered on previous tween instance
 var lastPointDistance: float = 0
+## State flag used to switch with alternating groups
+var currentOnState: bool = false
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
 	reset_shapes()
 	if startsFull:
 		loadPath.curve = curve.duplicate()
+		currentOnState = true
+
+## Switches between the on and off state
+func switch_state() -> void:
+	if currentOnState:
+		unfollow_path()
+	else:
+		follow_path()
 
 ## Resets the path to off state.
 func reset_path() -> void:
 	if progressTween:
 		progressTween.kill()
 	loadPath.curve.clear_points()
+	currentOnState = false
 
 ## Resets path shapes.
 func reset_shapes() -> void:
@@ -75,6 +86,7 @@ func reset_shapes() -> void:
 
 ## Starts animation for filling path.
 func follow_path() -> void:
+	currentOnState = true
 	loadPath.curve.clear_points()
 	if progressTween:
 		progressTween.kill()
@@ -100,6 +112,7 @@ func add_path_points(distance: float) -> void:
 
 ## Starts animationfor emptying path.
 func unfollow_path() -> void:
+	currentOnState = false
 	loadPath.curve = curve.duplicate()
 	if progressTween:
 		progressTween.kill()

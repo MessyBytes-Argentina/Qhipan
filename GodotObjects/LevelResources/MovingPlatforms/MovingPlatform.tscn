@@ -91,3 +91,6 @@ script = ExtResource("3_xivvd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7x5hj")
+
+[connection signal="body_entered" from="StopCheck" to="." method="stop_moving"]
+[connection signal="body_entered" from="PlayerChecker" to="." method="check_power"]
