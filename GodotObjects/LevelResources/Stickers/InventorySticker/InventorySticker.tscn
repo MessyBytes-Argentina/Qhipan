@@ -1,30 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1itoeoceqq0o"]
+[gd_scene load_steps=17 format=3 uid="uid://c1itoeoceqq0o"]
 
 [ext_resource type="Script" uid="uid://djq1n6uqo7io4" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.gd" id="1_pdvbf"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_1efht"]
-[ext_resource type="Shader" uid="uid://celtex7phkf37" path="res://Assets/Shaders/Shine.gdshader" id="2_weoec"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="3_weoec"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bug3e"]
-render_priority = 0
-shader = ExtResource("2_weoec")
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/speed = 1.0
-shader_parameter/gradientColor = Color(1, 1, 1, 0.49803922)
-shader_parameter/glowEdge = 0.999999977648
-shader_parameter/glowCenter = 0.249999994412
-shader_parameter/rayColor = Color(1, 1, 1, 1)
-shader_parameter/rayEdge = 0.5
-shader_parameter/rays = Vector3(9, 14, 19)
-shader_parameter/secondRayColor = Color(1, 1, 1, 0.6862745)
-shader_parameter/secondRays = Vector3(12, 17, 22)
-shader_parameter/secondRayEdge = 0.5
-
-[sub_resource type="QuadMesh" id="QuadMesh_1oybu"]
-lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("ShaderMaterial_bug3e")
-add_uv2 = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -99,10 +77,6 @@ slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
 sceneParent = NodePath(".")
-
-[node name="Shine" type="MeshInstance3D" parent="."]
-layers = 2
-mesh = SubResource("QuadMesh_1oybu")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true

@@ -65,6 +65,11 @@ func _setup_shape() -> void:
 
 ## Exports data to the surface manager.
 func _save_data() -> void:
+	var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
+	mainScene = mainScene.get_child(mainScene.get_child_count() - 1)
+	if not mainScene.is_node_ready():
+		await mainScene.ready
+	await get_tree().process_frame
 	var pointingTo: Node3D = Node3D.new()
 	pointingTo.position = Vector3.UP
 	add_child(pointingTo)

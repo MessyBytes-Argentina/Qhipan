@@ -125,6 +125,12 @@ func check_placement() -> void:
 	else:
 		while not GeneralVariables.stickerableSurfacesManager:
 			await get_tree().process_frame
+		var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
+		mainScene = mainScene.get_child(mainScene.get_child_count() - 1)
+		if not mainScene.is_node_ready():
+			await mainScene.ready
+		await get_tree().process_frame
+		await get_tree().process_frame
 		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
 		if closest == null: 
 			set_size(ScaleModes.DROPPED)
