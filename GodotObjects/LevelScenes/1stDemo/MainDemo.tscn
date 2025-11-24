@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_waxg3"]
 [ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="3_cyu1j"]
 
-[node name="MainTest" type="Node3D"]
+[node name="MainDemo" type="Node3D"]
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("1_hihkw")]
 
