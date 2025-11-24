@@ -13,6 +13,18 @@ const gravityTweak: float = 0.4
 var targetPosition: Vector3
 var playerStartPosition: Vector3
 
+## Vector de fuerza para el salto
+## Componente en x = Distancia / Tiempo de salto
+## Componente en y = 2 * Altura de salto / (Player.gravity * Tiempo de salto)
+
+## Rotar este vector para que x apunte a la direccion correcta:
+## Vector de direccionDeSalto es Player.global_position.direction_to(targetPosition)
+## Vector de fuerza final es Vector3(direccionDeSalto.x * componenteX, componenteY, direccionDeSalto.z * componenteX)
+
+## Desactivas control al player
+## Aplicar fuerza final al player
+## Devolver control al player cuando toque el suelo
+
 func force_player_to(target: Vector3, inputBlock: bool = true) -> void:
 	player.forcedNoGravity = true
 	targetPosition = target
