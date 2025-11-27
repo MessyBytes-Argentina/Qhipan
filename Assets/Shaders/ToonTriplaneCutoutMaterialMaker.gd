@@ -192,6 +192,7 @@ func make_material() -> void:
 			finalizeShaderMaterial.set_shader_parameter("screen_vertical_fade", screenVerticalFade)
 			finalizeShaderMaterial.set_shader_parameter("mask_gradient", maskGradient)
 			finalizeShaderMaterial.set_shader_parameter("screen_mask_gradient", screenMaskGradient)
+			print(screenMaskGradient)
 		MaterialModes.OTHER:
 			finalizeShaderMaterial.shader = load(tcShader)
 			make_TC_material()
@@ -210,6 +211,9 @@ func make_TC_material() -> void:
 		if textureTypesAlias[i] in validModes.keys(): validModes[textureTypesAlias[i]] = true
 	for prop in specialValueParameters:
 		finalizeShaderMaterial.set_shader_parameter(prop, surfaceMaterial[prop])
+	for mode in validModes:
+		if (mode + "_enabled") in surfaceMaterial:
+			if surfaceMaterial[mode + "_enabled"] == false: validModes[mode] = false
 	for mode in validModes:
 		finalizeShaderMaterial.set_shader_parameter("enable_" + mode if mode != "anisotropy_flowmap" else "anisotropy", validModes[mode])
 
