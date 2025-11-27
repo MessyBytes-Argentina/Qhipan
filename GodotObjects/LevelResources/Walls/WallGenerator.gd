@@ -11,6 +11,8 @@ const SHADOWWALLWIDTH: float = 1.0
 const PATHINTERVAL: float = 0.01
 ## Simplifies path angles for aproximation.
 const PATHSIMPLIFYANGLE: float = 15
+## Wall modes.
+enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 
 ## How tall is the wall.
 @export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0:
@@ -19,9 +21,9 @@ const PATHSIMPLIFYANGLE: float = 15
 		if Engine.is_editor_hint() and is_node_ready():
 			regenerate_wall_shape()
 ## Create a second wall going down for when looking the other way around.
-@export var duplicateDown: bool = false:
+@export var wallMode: WallModes = WallModes.ONLY_UP:
 	set(value):
-		duplicateDown = value
+		wallMode = value
 		if Engine.is_editor_hint() and is_node_ready():
 			regenerate_wall_shape()
 ## Wall material.
@@ -68,6 +70,7 @@ func flip_path() -> void:
 
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
+	if downPolygon: downPolygon.queue_free()
 	var wallShape: PackedVector2Array = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, wallHeight), Vector2(WALLWIDTH, wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
 	if not polygon:
 		polygon = _create_polygon()
@@ -82,14 +85,18 @@ func regenerate_wall_shape() -> void:
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	shadowPolygon.polygon = [Vector2(0.0, -SHADOWWALLWIDTH), Vector2(0.0, wallHeight), Vector2(SHADOWWALLWIDTH, wallHeight), Vector2(SHADOWWALLWIDTH, -SHADOWWALLWIDTH)]
-	if duplicateDown:
-		if downPolygon: downPolygon.queue_free()
-		downPolygon = polygon.duplicate()
-		add_child(downPolygon)
-		downPolygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
-		downPolygon.use_collision = false
-		downPolygon.material = downPolygon.material.duplicate()
-		downPolygon.material.set_shader_parameter("goesDown", true)
+	match wallMode:
+		WallModes.BOTH_WAYS:
+			downPolygon = polygon.duplicate()
+			add_child(downPolygon)
+			downPolygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
+			downPolygon.use_collision = false
+			downPolygon.material = downPolygon.material.duplicate()
+			downPolygon.material.set_shader_parameter("goesDown", true)
+		WallModes.ONLY_DOWN:
+			polygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
+			polygon.material = downPolygon.material.duplicate()
+			polygon.material.set_shader_parameter("goesDown", true)
 
 ## Creates the wall polygon
 func _create_polygon() -> CSGPolygon3D:

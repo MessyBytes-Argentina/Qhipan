@@ -272,23 +272,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -4, -49)
 
 [node name="Stickers" type="Node3D" parent="."]
 
-[node name="StickerLamp" parent="Stickers" instance=ExtResource("13_gxiiq")]
+[node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("13_gxiiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, -6)
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
 
-[node name="KeySticker" parent="Stickers" instance=ExtResource("14_en2b8")]
+[node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_en2b8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, -9)
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
 
-[node name="KeySticker2" parent="Stickers" instance=ExtResource("14_en2b8")]
+[node name="KeySticker2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_en2b8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.5, -42)
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
 
 [node name="Wall" type="Path3D" parent="."]
 curve = SubResource("Curve3D_eqxkx")
 script = ExtResource("27_ewfo1")
-duplicateDown = true
+wallMode = 2
 material = ExtResource("17_ix3bf")
 
 [node name="Wall2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_ix3bf")
 script = ExtResource("27_ewfo1")
-duplicateDown = true
+wallMode = 2
 material = ExtResource("17_ix3bf")

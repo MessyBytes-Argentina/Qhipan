@@ -1,11 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://by6612cmuprks"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://g8mif02pabbp"]
 
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_orgb0"]
-[ext_resource type="Texture2D" uid="uid://briac3ibubbm3" path="res://Assets/Materials/Puente Empujable Demo/Puente empujable_albedo.png" id="2_8dlqq"]
+[ext_resource type="Texture2D" uid="uid://bsuag6mjhx2xp" path="res://Assets/Materials/Puente Empujable Demo/Puente empujable_albedo.png" id="2_8dlqq"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_8wfw3"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="4_jawyb"]
-[ext_resource type="Texture2D" uid="uid://bfvpt00y3lxb8" path="res://Assets/Materials/Puente Empujable Demo/Puente empujable_normal.png" id="5_yk6ke"]
-[ext_resource type="Texture2D" uid="uid://cb7wqx1pps1db" path="res://Assets/Materials/Puente Empujable Demo/Puente empujable_orm.png" id="6_23x4u"]
 
 [resource]
 render_priority = 0
@@ -16,21 +14,19 @@ shader_parameter/fresnel_gradient = ExtResource("3_8wfw3")
 shader_parameter/texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0
 shader_parameter/texture_albedo = ExtResource("2_8dlqq")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("5_yk6ke")
-shader_parameter/normal_scale = 2.0
-shader_parameter/texture_orm = ExtResource("6_23x4u")
+shader_parameter/enable_normal = false
+shader_parameter/normal_scale = 1.0
 shader_parameter/enable_ambient_occlusion = false
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/roughness = 1.0
 shader_parameter/metallic_specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = true
+shader_parameter/enable_emission = false
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 1.0
-shader_parameter/enable_clearcoat = true
-shader_parameter/clearcoat = 1.0
-shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
 shader_parameter/cylinderCutout = false

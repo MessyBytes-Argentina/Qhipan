@@ -16,8 +16,7 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 ## Used to identify which objects to trigger
 @export var pedestalName: String
 
-## Reference to the pedestal wall.
-@onready var mesh: MeshInstance3D = %Wall
+
 ## Sticker highlight sprite reference
 @onready var highlight: Sprite3D = %Highlight
 ## Reference to the placed sticker mesh
@@ -29,6 +28,8 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 ## Parent node reference for placement.
 @export var sceneParent: Node
 
+## Reference to the pedestal wall.
+var wallMesh: MeshInstance3D
 ## Is the player inside the area.
 var playerInArea: Player
 ## Tween for the highlight bobbing animation
@@ -72,11 +73,13 @@ func activate_pedestal() -> void:
 
 ## Updates debug texture.
 func update_texture() -> void:
-	var material: ShaderMaterial = mesh.get_surface_override_material(0).duplicate()
+	if not has_node("Wall"): return
+	wallMesh = get_node("Wall")
+	var material: ShaderMaterial = wallMesh.get_surface_override_material(0).duplicate()
 	material.set_shader_parameter("top_texture_albedo", texture)
 	material.set_shader_parameter("bottom_texture_albedo", texture)
 	material.set_shader_parameter("side_texture_albedo", texture)
-	mesh.set_surface_override_material(0, material)
+	wallMesh.set_surface_override_material(0, material)
 
 ## Called when the player enters this pedestal's area.
 func _on_player_entered(body: Node3D) -> void:

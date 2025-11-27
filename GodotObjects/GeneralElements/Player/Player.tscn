@@ -130,7 +130,7 @@ fill_to = Vector2(1, 0.529915)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
-height = 1.5
+height = 1.2
 
 [sub_resource type="Gradient" id="Gradient_xq41j"]
 offsets = PackedFloat32Array(0, 0.488889, 0.563235, 0.569118, 0.67619, 0.692064)
