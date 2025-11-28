@@ -174,7 +174,7 @@ pedestalName = "Puzzle2"
 sceneParent = NodePath("../..")
 
 [node name="InventoryPedestalPuzzle3" parent="metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("7_3flle")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -1.5, -0.5, -12.5)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -3, -0.5, -12.5)
 texture = SubResource("GradientTexture2D_3fjpl")
 pedestalName = "Puzzle3"
 sceneParent = NodePath("../..")
