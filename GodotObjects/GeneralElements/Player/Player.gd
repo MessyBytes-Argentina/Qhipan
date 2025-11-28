@@ -556,7 +556,8 @@ func exit_no_gravity(node: Node3D) -> void:
 ## Returns true if not on the floor or floating
 func check_falling() -> bool:
 	var falling: bool = false
-	if (not is_on_floor() or len(noGravityZones) == 0) and not forcedNoGravity:
+	#if (not is_on_floor() or len(noGravityZones) == 0) and not forcedNoGravity:
+	if not is_on_floor() and not forcedNoGravity:
 		falling = true
 	else:
 		falling = false

@@ -25,6 +25,21 @@ var playerStartPosition: Vector3
 ## Aplicar fuerza final al player
 ## Devolver control al player cuando toque el suelo
 
+func push_player(target: Vector3, inputBlock: bool = true) -> void:
+	if inputBlock:
+		player.block_inputs()
+	var jumpDirection: Vector3 = player.global_position.direction_to(target)
+	jumpDirection *= player.global_position.distance_to(target) / jumpDuration
+	var jumpY: float = 2 * jumpHeight / jumpDuration
+	var pushVector: Vector3  = Vector3(jumpDirection.x, jumpY, jumpDirection.z)
+	player.involuntaryPushModule.push(player, pushVector.normalized(), pushVector.length()*50)
+	prints( pushVector.normalized(), pushVector.length()*50,"V:",player.velocity)
+	get_tree().create_timer(jumpDuration).timeout.connect(end_jump)
+
+func end_jump() -> void:
+	player.involuntaryPushModule.stop_pushing(player)
+	player.enable_inputs()
+
 func force_player_to(target: Vector3, inputBlock: bool = true) -> void:
 	player.forcedNoGravity = true
 	targetPosition = target

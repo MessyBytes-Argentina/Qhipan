@@ -23,6 +23,7 @@ func _physics_process(_delta: float) -> void:
 		if not player.check_falling():
 			ableToPush = true
 			set_raycasts_detection(true)
+			return
 		else:
 			return
 	var zeroCount: int = 0
@@ -40,7 +41,7 @@ func yeet_the_player(direction: Vector3) -> void:
 	ableToPush = false
 	set_raycasts_detection(false)
 	var targetPosition: Vector3 = player.global_position + (direction * FANPUSHDISTANCE)
-	forcedMovement.force_player_to(targetPosition)
+	forcedMovement.push_player(targetPosition)
 
 func set_raycasts_detection(value: bool) -> void:
 	for raycast: DetectionRaycast in raycastCollection:
