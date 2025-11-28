@@ -10,7 +10,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_vqufd")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo = Color(0.60784316, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("3_uagk8")
 shader_parameter/fresnel_gradient = ExtResource("2_ilckh")
 shader_parameter/texture_scale = 1.0

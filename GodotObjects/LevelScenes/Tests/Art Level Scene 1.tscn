@@ -1,18 +1,24 @@
-[gd_scene load_steps=29 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=38 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="2_j7y3f"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="3_2ttod"]
-[ext_resource type="Material" uid="uid://bxp20wr2sum5t" path="res://Assets/Materials/Piedras/Piedras.tres" id="4_g6n8e"]
+[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/WithCutout/Piedras.tres" id="4_g6n8e"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="5_yw3fi"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="6_2ttod"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Ladera Terrosa Wall.tres" id="7_77sra"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="7_77sra"]
 [ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="8_tdxur"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="9_7et3a"]
 [ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="10_b33up"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="11_xnpb1"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="12_vuau8"]
 [ext_resource type="Texture2D" uid="uid://bwe6vkm3gep6u" path="res://Assets/Materials/Meta Progression Blocks/Planta/Planta Tile.png" id="13_6xgfa"]
+[ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="14_3x3m0"]
+[ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="15_7plp1"]
+[ext_resource type="Texture2D" uid="uid://cmyv6ddvanyye" path="res://Assets/Materials/Meta Progression Blocks/Planta/Inti Tile.png" id="16_e0u7l"]
+[ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="17_i6qu1"]
+[ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="18_82fvh"]
+[ext_resource type="Texture2D" uid="uid://coxbb0g8px7gi" path="res://Assets/Materials/Meta Progression Blocks/Planta/Pajara Tile.png" id="19_k8e34"]
 
 [sub_resource type="Curve3D" id="Curve3D_oo5l3"]
 bake_interval = 358.25
@@ -161,11 +167,32 @@ _data = {
 }
 point_count = 14
 
+[sub_resource type="Curve3D" id="Curve3D_3x3m0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.69593763, 0, -9.192491, 0, 0, 0, 0, 0, 0, 4.2263784, 0, -5.6653023, 0, 0, 0, 0, 0, 0, 2.9785588, 0, -5.5149755, 0, 0, 0, 0, 0, 0, 0.6909394, 0, -4.943966, 0, 0, 0, 0, 0, 0, -1.2081115, 0, -4.4533195, 0, 0, 0, 0, 0, 0, -3.5686014, 0, -2.1157339, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
 [sub_resource type="Resource" id="Resource_g7jkd"]
 script = ExtResource("11_xnpb1")
 name = "Planta"
 image = ExtResource("10_b33up")
 backImage = ExtResource("10_b33up")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="Resource" id="Resource_xop5o"]
+script = ExtResource("11_xnpb1")
+name = "Inti"
+image = ExtResource("15_7plp1")
+backImage = ExtResource("15_7plp1")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="Resource" id="Resource_e65bf"]
+script = ExtResource("11_xnpb1")
+name = "Pajara"
+image = ExtResource("18_82fvh")
+backImage = ExtResource("18_82fvh")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [node name="Art Level Scene 1" type="Node3D"]
@@ -191,7 +218,7 @@ metadata/_custom_type_script = "uid://pvc1wchcttc2"
 [node name="Sticker" type="Node3D" parent="."]
 
 [node name="StickerLamp" parent="Sticker" node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_yw3fi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.100000024, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -0.100000024, 3.1)
 sceneParent = NodePath("../..")
 originalParent = "Art Level Scene 1"
 
@@ -204,16 +231,53 @@ wallMode = 2
 material = ExtResource("7_77sra")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="InventoryPedestal" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("8_tdxur")]
-transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 2.7, -0.5, 0)
+[node name="WallGenerator2" type="Path3D" parent="."]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -1.9, -0.5, -1)
+curve = SubResource("Curve3D_3x3m0")
+script = ExtResource("6_2ttod")
+wallHeight = 6.0
+wallMode = 2
+material = ExtResource("7_77sra")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="InventoryPedestal Planta" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("8_tdxur")]
+transform = Transform3D(-0.7660445, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, -0.7660445, 2, -0.5, 1.8000002)
 sceneParent = NodePath("..")
 
-[node name="InventorySticker2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+[node name="Inventory Sticker Planta" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 1, 2, 0, -0.10000001)
 sticker = SubResource("Resource_g7jkd")
 sceneParent = NodePath("..")
 
-[node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("12_vuau8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.9, 4.2000003, -0.5, 0)
+[node name="Planta MP Block" parent="." instance=ExtResource("12_vuau8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000035, -0.5, 2.4)
 texture = ExtResource("13_6xgfa")
 pedestalName = "Planta"
+
+[node name="InventoryPedestal Inti" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_3x3m0")]
+transform = Transform3D(-0.08715583, 0, -0.9961948, 0, 1, 0, 0.9961948, 0, -0.08715583, 3.4, -0.5, -0.099999905)
+sceneParent = NodePath("..")
+
+[node name="Inventory Sticker Inti" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -0.099999905)
+sticker = SubResource("Resource_xop5o")
+sceneParent = NodePath("..")
+
+[node name="Inti MP Block" parent="." instance=ExtResource("12_vuau8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.2000003, -0.5, -1.3)
+texture = ExtResource("16_e0u7l")
+pedestalName = "Inti"
+
+[node name="InventoryPedestal Pajara" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("17_i6qu1")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1.6000001, -0.5, -1.6999998)
+sceneParent = NodePath("..")
+
+[node name="Inventory Sticker Pajara" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, -0.2000001)
+sticker = SubResource("Resource_e65bf")
+sceneParent = NodePath("..")
+
+[node name="Pajara MP Block" parent="." instance=ExtResource("12_vuau8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4000003, -0.5, -2.6)
+texture = ExtResource("19_k8e34")
+pedestalName = "Pajara"

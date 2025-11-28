@@ -1,10 +1,103 @@
-[gd_scene load_steps=12 format=4 uid="uid://csn828pr3n3ji"]
+[gd_scene load_steps=21 format=4 uid="uid://csn828pr3n3ji"]
 
 [ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_nc26k"]
-[ext_resource type="Material" uid="uid://clsh5or3lqcrk" path="res://Assets/Materials/Murales/Mural Placeholder/MuralPlaceholder.tres" id="2_11tag"]
-[ext_resource type="Material" uid="uid://bxp20wr2sum5t" path="res://Assets/Materials/Piedras/Piedras.tres" id="2_enevi"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="2_nbqd5"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_2uk4j"]
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="3_nc26k"]
 [ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_llk78"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="4_njia7"]
+[ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="5_pfsmr"]
+[ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Piedras/Piedras_normal.png" id="6_nsk0n"]
+[ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="7_6vklf"]
+[ext_resource type="Texture2D" uid="uid://c06ypx4pygwbf" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_albedo.png" id="8_2lqrc"]
+[ext_resource type="Texture2D" uid="uid://b6n6287g07h1k" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_normal.png" id="9_suyim"]
+[ext_resource type="Texture2D" uid="uid://0vge8j8j5h3e" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_orm.png" id="10_k11ib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mcae"]
+render_priority = 0
+shader = ExtResource("2_nbqd5")
+shader_parameter/albedo = Color(0.6095386, 0.91232544, 0.906715, 1)
+shader_parameter/light_gradient = ExtResource("4_njia7")
+shader_parameter/fresnel_gradient = ExtResource("3_2uk4j")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("5_pfsmr")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("6_nsk0n")
+shader_parameter/normal_scale = 9.4730012099675
+shader_parameter/texture_orm = ExtResource("7_6vklf")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.27999999374144
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcfmb"]
+render_priority = 0
+shader = ExtResource("2_nbqd5")
+shader_parameter/albedo = Color(0, 0.85085183, 1.6978991, 1)
+shader_parameter/light_gradient = ExtResource("4_njia7")
+shader_parameter/fresnel_gradient = ExtResource("3_2uk4j")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("8_2lqrc")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("9_suyim")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("10_k11ib")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_p73bw"]
 _surfaces = [{
@@ -40,7 +133,7 @@ _surfaces = [{
 "index_count": 72,
 "index_data": PackedByteArray("FAABABUAFQABABYAFgABAAMAFwAYAA4ADgAYAA8ABAAFABkAGQAFABoAGwAHABwAHAAHAAYACAAJAB0AHQAJAAoAHgAfABIAEgAfABMAIAAMACEAIQAMAA0AIgAjAAsAJAAlACYAJgAlACcAKAACACkAKQACAAAAKgARABAAEAARACsAKwARACwALAARAC0A"),
 "lods": [0.1660431, PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACAAKAAsADAANAA4ADgANAA8AEAARABIAEgARABMA")],
-"material": ExtResource("2_enevi"),
+"material": SubResource("ShaderMaterial_0mcae"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -53,7 +146,7 @@ _surfaces = [{
 "index_count": 156,
 "index_data": PackedByteArray("GAABAA0ADQABAA4ACwAZABoAGgAZAAkAGgAbAAsAFwAbABoACQAcABoAGgAcABcAFwAcAB0AHQAcAB4AHgAcAB8AHgAfAAwAHwAcACAADAAfABYAHwAgABYAFgAgAAoABQAhAAIAAgAhAAcABAAiACMAJAAiAAQAFQAiACQAIwAiACUAFQAIACIAIgAIACUAJQAIABIAEgAIABMAEwAIACYAEgATACcAJgAoABMAJwATACkAEwAoABQAKQATABQAKgArABAAEAArAA8ALAAtAC4ALgAtAC8AMAAxAAMAAwAxADIAMwA0ADUANQA0ADYAAAA3ADgAOAA3ADkAOgAGABEAEQAGADsAPAA9AD4APgA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsA"),
 "lods": [0.22051433, PackedByteArray("AAABAA0ADQABAA4AAAAPAAEAEAAPAAAADwAQAAMAAwAQAAQADQAOAAIAAwAEAAYAAgAOAAUABQAGABEABwAFABEAAgAFAAcAEgAGAAQABwATAAIAEgATAAcAAgATABQAEwAIABQAEgAIABMABAAIABIAFQAIAAQADAAKABYAFwAKAAwACwAKABcACQAKAAsA"), 0.7417602, PackedByteArray("AAABAAIAAAADAAEAAwAAAAQAAgABAAUAAwAEAAYAAgAFAAcABQAGAAcABwAGAAQABwAIAAIABAAIAAcACQAKAAsACwAKAAwA")],
-"material": ExtResource("2_11tag"),
+"material": SubResource("ShaderMaterial_pcfmb"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -113,7 +206,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_11tag")
 
 [node name="Highlight" type="Sprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 2.0571847, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 2.0580692, 0)
 visible = false
 pixel_size = 0.003
 billboard = 1
