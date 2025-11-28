@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_feuco"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
-[ext_resource type="PackedScene" uid="uid://cox3tjjx4wgok" path="res://GodotObjects/LevelScenes/Art Level Scene 1.tscn" id="3_feuco"]
+[ext_resource type="PackedScene" uid="uid://cox3tjjx4wgok" path="res://GodotObjects/LevelScenes/Tests/Art Level Scene 1.tscn" id="3_feuco"]
 
 [node name="Art Main Test" type="Node3D"]
 

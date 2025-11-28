@@ -1,17 +1,23 @@
-[gd_scene load_steps=22 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=29 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="2_j7y3f"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="3_2ttod"]
-[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/Piedras/Toon-Material Piedras.tres" id="4_g6n8e"]
+[ext_resource type="Material" uid="uid://bxp20wr2sum5t" path="res://Assets/Materials/Piedras/Piedras.tres" id="4_g6n8e"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="5_yw3fi"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="6_2ttod"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/Paredes/Ladera Terrosa Exterior/Toon Ladera Terrosa Wall.tres" id="7_77sra"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Ladera Terrosa Wall.tres" id="7_77sra"]
+[ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="8_tdxur"]
+[ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="9_7et3a"]
+[ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="10_b33up"]
+[ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="11_xnpb1"]
+[ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="12_vuau8"]
+[ext_resource type="Texture2D" uid="uid://bwe6vkm3gep6u" path="res://Assets/Materials/Meta Progression Blocks/Planta/Planta Tile.png" id="13_6xgfa"]
 
 [sub_resource type="Curve3D" id="Curve3D_oo5l3"]
 bake_interval = 358.25
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.49907923, -5.9604645e-08, 0.59524727, 0, 0, 0, 0, 0, 0, -0.49907923, -0.3, 1.7962053, 0, 0, 0, 0, 0, 0, -1.3995581, 0.19999993, 1.7962053, 0, 0, 0, 0, 0, 0, -1.5008855, -0.100000024, 3.9832106, 0, 0, 0, 0, 0, 0, 1.270498, -0.10000008, 3.7832108, 0, 0, 0, 0, 0, 0, 3.1676474, -5.9604645e-08, 2.6519432, 0, 0, 0, 0, 0, 0, 4.028104, -5.9604645e-08, 2.2825997, 0, 0, 0, 0, 0, 0, 4.545525, -5.9604645e-08, 2.0101755, 0, 0, 0, 0, 0, 0, 5.3896136, 0.039253414, 0.9978429, 0, 0, 0, 0, 0, 0, 6.4645457, 0.26318312, 0.46142006, 0, 0, 0, 0, 0, 0, 7.280593, 0.97048014, 3.7376475, 0, 0, 0, 0, 0, 0, 9.113254, 1.0567837, 2.9951653, 0, 0, 0, 0, 0, 0, 9.153654, 1.278609, 1.3944502, 0, 0, 0, 0, 0, 0, 9.326304, 0.22325128, 0.028492212, 0, 0, 0, 0, 0, 0, 8.778368, 0.24688143, -1.7436076, 0, 0, 0, 0, 0, 0, 8.470938, -0.069789946, -2.5166388, 0, 0, 0, 0, 0, 0, 5.20224, -0.026893318, -3.1665409, 0, 0, 0, 0, 0, 0, 3.1586797, -0.09064454, -4.034045, 0, 0, 0, 0, 0, 0, 1.0894952, 0.12074274, -5.523676, 0, 0, 0, 0, 0, 0, -0.75445724, -0.14979059, -4.7870064, 0, 0, 0, 0, 0, 0, -0.40956593, 0.12339097, -3.8716853, 0, 0, 0, 0, 0, 0, 0.55444574, -0.3880921, -1.6644468),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.49907923, -5.9604645e-08, 0.59524727, 0, 0, 0, 0, 0, 0, -0.49907923, -0.3, 1.7962053, 0, 0, 0, 0, 0, 0, -1.3995581, 0.19999993, 1.7962053, 0, 0, 0, 0, 0, 0, -1.5008855, -0.100000024, 3.9832106, 0, 0, 0, 0, 0, 0, 1.270498, -0.10000008, 3.7832108, 0, 0, 0, 0, 0, 0, 3.1676474, -5.9604645e-08, 2.6519432, 0, 0, 0, 0, 0, 0, 4.028104, -5.9604645e-08, 2.2825997, 0, 0, 0, 0, 0, 0, 4.545525, -5.9604645e-08, 2.0101755, 0, 0, 0, 0, 0, 0, 5.3896136, 0.039253414, 0.9978429, 0, 0, 0, 0, 0, 0, 6.4645457, 0.1631831, 0.061420083, 0, 0, 0, 0, 0, 0, 7.280593, 0.97048014, 3.7376475, 0, 0, 0, 0, 0, 0, 9.113254, 0.95678365, 2.9951653, 0, 0, 0, 0, 0, 0, 9.153654, 0.97860897, 1.3944502, 0, 0, 0, 0, 0, 0, 9.326304, 0.023251295, 0.028492212, 0, 0, 0, 0, 0, 0, 8.778368, -0.15311855, -1.7436076, 0, 0, 0, 0, 0, 0, 8.470938, -0.069789946, -2.5166388, 0, 0, 0, 0, 0, 0, 5.20224, -0.026893318, -3.1665409, 0, 0, 0, 0, 0, 0, 3.1586797, -0.09064454, -4.034045, 0, 0, 0, 0, 0, 0, 1.0894952, -0.07925725, -5.523676, 0, 0, 0, 0, 0, 0, -0.75445724, -0.14979059, -4.7870064, 0, 0, 0, 0, 0, 0, -0.40956593, 0.12339097, -3.8716853, 0, 0, 0, 0, 0, 0, 0.55444574, -0.3880921, -1.6644468),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 22
@@ -55,10 +61,8 @@ mesh = SubResource("ArrayMesh_yw3fi")
 [sub_resource type="Resource" id="Resource_4ohip"]
 script = ExtResource("3_2ttod")
 multiMesh = SubResource("MultiMesh_qor2s")
-distanceBetweenPieces = 4.0
-offsetStart = 3.0
+offsetStart = 3.3
 useOffsetEnd = false
-normalAlwaysPointsUp = true
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7q5s7"]
@@ -100,8 +104,8 @@ mesh = SubResource("ArrayMesh_2ttod")
 [sub_resource type="Resource" id="Resource_vu17s"]
 script = ExtResource("3_2ttod")
 multiMesh = SubResource("MultiMesh_ox6f7")
-distanceBetweenPieces = 4.0
-offsetStart = 1.5
+distanceBetweenPieces = 2.0
+offsetStart = 1.7
 useOffsetEnd = false
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
@@ -144,7 +148,7 @@ mesh = SubResource("ArrayMesh_j7y3f")
 [sub_resource type="Resource" id="Resource_784jw"]
 script = ExtResource("3_2ttod")
 multiMesh = SubResource("MultiMesh_j0klb")
-distanceBetweenPieces = 4.0
+distanceBetweenPieces = 3.0
 useOffsetEnd = false
 normalAlwaysPointsUp = true
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
@@ -156,6 +160,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 14
+
+[sub_resource type="Resource" id="Resource_g7jkd"]
+script = ExtResource("11_xnpb1")
+name = "Planta"
+image = ExtResource("10_b33up")
+backImage = ExtResource("10_b33up")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [node name="Art Level Scene 1" type="Node3D"]
 
@@ -171,10 +182,10 @@ metadata/_editor_floor_ = Vector3(0, -4, 0)
 
 [node name="PathPopulator" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.7, 1)
-visible = false
 curve = SubResource("Curve3D_oo5l3")
 script = ExtResource("2_j7y3f")
 multiMeshResources = Array[ExtResource("3_2ttod")]([SubResource("Resource_4ohip"), SubResource("Resource_vu17s"), SubResource("Resource_784jw")])
+collisionLayer = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"
 
 [node name="Sticker" type="Node3D" parent="."]
@@ -186,9 +197,23 @@ originalParent = "Art Level Scene 1"
 
 [node name="WallGenerator" type="Path3D" parent="."]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -0.4000001, -0.5, -1)
-visible = false
 curve = SubResource("Curve3D_566d7")
 script = ExtResource("6_2ttod")
-wallHeight = 4.0
+wallHeight = 6.0
+wallMode = 2
 material = ExtResource("7_77sra")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="InventoryPedestal" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("8_tdxur")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 2.7, -0.5, 0)
+sceneParent = NodePath("..")
+
+[node name="InventorySticker2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+sticker = SubResource("Resource_g7jkd")
+sceneParent = NodePath("..")
+
+[node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("12_vuau8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.9, 4.2000003, -0.5, 0)
+texture = ExtResource("13_6xgfa")
+pedestalName = "Planta"

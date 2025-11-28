@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://diwbsna0bi13" path="res://Assets/Materials/Paredes/Ladera Terrosa Exterior/Tier 1/Ladera Tierra Mask.png" id="1_2d3iq"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_is05e"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/Paredes/Ladera Terrosa Exterior/Toon Ladera Terrosa Wall.tres" id="2_o2787"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Ladera Terrosa Wall.tres" id="2_o2787"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_wtec4"]
 [ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_67mid"]
 [ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="5_7j8yp"]
