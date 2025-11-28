@@ -132,20 +132,15 @@ func check_placement() -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
-		if closest == null: 
-			set_size(ScaleModes.DROPPED)
-			set_deferred("collision_mask", collisionMask)
-			placed = false
-			return
-		if closest.globalPosition.distance_to(global_position) > MAXPREPLACEDDISTANCE: 
-			set_size(ScaleModes.DROPPED)
-			set_deferred("collision_mask", collisionMask)
-			placed = false
-			return
-		place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
-		closest.node.sticker_activity()
-		closest.used = self
-		shadowDecal.hide()
+		if closest != null: 
+			if closest.globalPosition.distance_to(global_position) <= MAXPREPLACEDDISTANCE: 
+				place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
+				closest.used = self
+				closest.node.sticker_activity()
+				return
+		set_size(ScaleModes.DROPPED)
+		set_deferred("collision_mask", collisionMask)
+		placed = false
 
 ## Executed on every physics frame.
 func _physics_process(delta: float) -> void:
