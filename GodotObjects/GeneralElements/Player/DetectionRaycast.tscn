@@ -13,6 +13,7 @@ albedo_color = Color(1, 1, 1, 0)
 
 [node name="DetectionRaycast" type="RayCast3D"]
 target_position = Vector3(-0.354, 0, -0.354)
+collision_mask = 16385
 hit_back_faces = false
 debug_shape_custom_color = Color(1, 1, 0, 1)
 debug_shape_thickness = 5
@@ -29,6 +30,7 @@ surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 target_position = Vector3(0, -1.35, 0)
+collision_mask = 16385
 hit_back_faces = false
 debug_shape_custom_color = Color(1, 0.490196, 0, 1)
 debug_shape_thickness = 5
