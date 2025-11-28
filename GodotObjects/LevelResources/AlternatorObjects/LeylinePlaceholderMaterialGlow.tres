@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c577hil3xnlae"]
+
+[sub_resource type="Gradient" id="Gradient_3q00n"]
+offsets = PackedFloat32Array(0.45, 0.475, 0.5)
+colors = PackedColorArray(0.39215687, 1, 1, 1, 1, 1, 1, 1, 0.39215687, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tof7f"]
+gradient = SubResource("Gradient_3q00n")
+fill_to = Vector2(0, 0.9188034)
+
+[resource]
+render_priority = 1
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_tof7f")
+emission_enabled = true
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_reference = 3
