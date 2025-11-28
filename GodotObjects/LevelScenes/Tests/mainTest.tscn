@@ -10,6 +10,5 @@
 
 [node name="Player" parent="." instance=ExtResource("2_8td0u")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.5, 1.5, -2)
-disableMaximum = true
 
 [node name="test" parent="." instance=ExtResource("3_2t645")]

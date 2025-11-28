@@ -1,59 +1,31 @@
 extends Node
 class_name ForcedMovement
 
-const axisXZ: Vector3 = Vector3(1,0,1)
-const DISTANCETOTARGET: float = 0.05
-const jumpDuration: float = 0.375
-const jumpHeight: float = 0.5
-const jumpReturnControlAfter: float = 0.35
-const gravityTweak: float = 0.4
+const jumpDuration: float = 0.3
+const jumpAngle: float = PI / 4
 
 @onready var player: Player = $".."
 
-var targetPosition: Vector3
-var playerStartPosition: Vector3
-
-## Vector de fuerza para el salto
-## Componente en x = Distancia / Tiempo de salto
-## Componente en y = 2 * Altura de salto / (Player.gravity * Tiempo de salto)
-
-## Rotar este vector para que x apunte a la direccion correcta:
-## Vector de direccionDeSalto es Player.global_position.direction_to(targetPosition)
-## Vector de fuerza final es Vector3(direccionDeSalto.x * componenteX, componenteY, direccionDeSalto.z * componenteX)
-
-## Desactivas control al player
-## Aplicar fuerza final al player
-## Devolver control al player cuando toque el suelo
+var forceApplied: bool = false
 
 func push_player(target: Vector3, inputBlock: bool = true) -> void:
+	if forceApplied: return
+	forceApplied = true
 	if inputBlock:
 		player.block_inputs()
 	var jumpDirection: Vector3 = player.global_position.direction_to(target)
-	jumpDirection *= player.global_position.distance_to(target) / jumpDuration
-	var jumpY: float = 2 * jumpHeight / jumpDuration
-	var pushVector: Vector3  = Vector3(jumpDirection.x, jumpY, jumpDirection.z)
-	player.involuntaryPushModule.push(player, pushVector.normalized(), pushVector.length()*50)
-	prints( pushVector.normalized(), pushVector.length()*50,"V:",player.velocity)
-	get_tree().create_timer(jumpDuration).timeout.connect(end_jump)
+	var velocity2D: Vector2 = sqrt(player.global_position.distance_to(target) * player.gravity) / sin(2 * jumpAngle) * Vector2.RIGHT.rotated(-jumpAngle)
+	jumpDirection *= velocity2D.x
+	var pushVector: Vector3  = Vector3(jumpDirection.x, -velocity2D.y , jumpDirection.z)
+	player.velocity = Vector3.ZERO
+	player.lastVoluntarySpeed = Vector3.ZERO
+	player.jumping = true
+	player.lastInvoluntarySpeed = pushVector
+	get_tree().create_timer(player.global_position.distance_to(target) / velocity2D.x).timeout.connect(end_jump)
+
 
 func end_jump() -> void:
-	player.involuntaryPushModule.stop_pushing(player)
+	player.lastInvoluntarySpeed = Vector3(0,player.lastInvoluntarySpeed.y,0)
 	player.enable_inputs()
-
-func force_player_to(target: Vector3, inputBlock: bool = true) -> void:
-	player.forcedNoGravity = true
-	targetPosition = target
-	playerStartPosition = player.global_position
-	if inputBlock:
-		player.block_inputs()
-	var playerJumpTween: Tween = create_tween()
-	playerJumpTween.tween_method(jump, 0.0, 1.0, jumpDuration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
-	playerJumpTween.play()
-
-func jump(progress: float) -> void:
-	var newPosition: Vector3 = lerp(playerStartPosition, targetPosition, progress)
-	var newHeight: float = (-4 * pow(progress, 2.0) + 4 * progress) * jumpHeight
-	player.global_position = newPosition * axisXZ + (playerStartPosition.y + newHeight) * Vector3.UP
-	if progress >= jumpReturnControlAfter and player.forcedNoGravity:
-		player.enable_inputs()
-		player.forcedNoGravity = false
+	forceApplied = false
+	player.jumping = false

@@ -36,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 			var normalDirection: Vector3 = raycast.get_collision_normal()
 			if normalDirection == Vector3.ZERO or player.forcedNoGravity : return
 			yeet_the_player(normalDirection)
+			return
 
 func yeet_the_player(direction: Vector3) -> void:
 	ableToPush = false
