@@ -10,7 +10,7 @@ const PLACEHOLDERDIRECTION: Dictionary[String, Variant] = {"color": Color.DEEP_P
 const PLACEHOLDERUP: Dictionary[String, Variant] = {"color": Color.SKY_BLUE * Color(Color.WHITE, 0.85), "radius": 0.1, "height": 0.5}
 
 ## Emmited when a sticker is placed or removed
-signal sticker(placed: bool)
+signal sticker(placed: StickerBase)
 
 ## Which stickers can be placed here.
 @export_flags("Alternator", "Fan", "Key", "Lamp") var validStickers: int = 15
@@ -86,7 +86,7 @@ func _save_data() -> void:
 
 ## Called when a sticker is placed or removed.
 func sticker_activity() -> void:
-	sticker.emit(data.used != null)
+	sticker.emit(data.used)
 
 ## Runs before it's freed.
 func _on_delete_requested() -> void:
