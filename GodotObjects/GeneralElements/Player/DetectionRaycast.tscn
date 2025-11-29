@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkkr2vvil6tit"]
+
+[ext_resource type="Script" uid="uid://bhl4xeb7jhhh2" path="res://GodotObjects/GeneralElements/Player/DetectionRaycast.gd" id="1_ryn7a"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uxb7q"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_otkym"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="DetectionRaycast" type="RayCast3D"]
+target_position = Vector3(-0.354, 0, -0.354)
+collision_mask = 16385
+hit_back_faces = false
+debug_shape_custom_color = Color(1, 1, 0, 1)
+debug_shape_thickness = 5
+script = ExtResource("1_ryn7a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.25, -0.0500001)
+mesh = SubResource("SphereMesh_uxb7q")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
+
+[node name="VerticalRayCast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -1.35, 0)
+collision_mask = 16385
+hit_back_faces = false
+debug_shape_custom_color = Color(1, 0.490196, 0, 1)
+debug_shape_thickness = 5
