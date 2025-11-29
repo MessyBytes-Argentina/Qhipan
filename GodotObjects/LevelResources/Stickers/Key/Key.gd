@@ -19,8 +19,6 @@ func _ready() -> void:
 
 ## Checks if it has a pedestal as an ancestor, if true disables the key and starts the animation
 func on_pedestal():
-	areaChecker.set_deferred("monitoring", false)
-	areaChecker.set_deferred("monitorable", false)
 	collisionShape3d.set_deferred("disabled", true)
 	animationPlayer.play("PowerUp")
 	used = true

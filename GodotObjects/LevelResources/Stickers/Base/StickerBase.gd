@@ -90,6 +90,8 @@ var isSaveCreated: bool = false
 var UUID: int
 ## Has this node been moved by the player.
 var hasBeenMoved: bool = false
+## Area to get scene parent.
+var parentChecker: Area3D
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,6 +99,8 @@ func _ready() -> void:
 		sceneParent = get_tree().edited_scene_root
 		originalParent = sceneParent.name
 		return
+	if self is not InventorySticker:
+		parentChecker = %ParentChecker
 	collisionMask = collision_mask
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -256,9 +260,11 @@ func reset_sticker() -> void:
 
 ## Special reparent for scene loading workaround
 func do_reparent() -> void:
-	if not sceneParent:
-		var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
-		sceneParent = mainScene.get_child(mainScene.get_child_count() - 1)
+	var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
+	for body in bodies:
+		if body is GridMap:
+			sceneParent = body.get_parent()
+			break
 	reparent(sceneParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
