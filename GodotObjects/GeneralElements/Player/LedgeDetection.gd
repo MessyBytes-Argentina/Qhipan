@@ -18,9 +18,8 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not stickerOnHand: return
-	
 	if not ableToPush:
-		if not player.check_falling():
+		if not player.check_falling() or len(player.noGravityZones) > 0:
 			ableToPush = true
 			set_raycasts_detection(true)
 			return
