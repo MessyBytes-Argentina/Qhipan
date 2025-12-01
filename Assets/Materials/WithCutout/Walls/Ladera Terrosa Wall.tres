@@ -1,10 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://cn1sf4r5byqob"]
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://cn1sf4r5byqob"]
 
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="1_5nqqi"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_k8q6y"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_e8mw2"]
 [ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="4_0tmnu"]
 [ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/ToonGradients/ScreenVerticalFade.tres" id="5_pk3w3"]
+[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/ToonGradients/ScreenMaskGradient.tres" id="5_wnueu"]
 [ext_resource type="Texture2D" uid="uid://c64trvw0mple1" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada Mask.png" id="6_8awk4"]
 [ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="7_wnueu"]
 [ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="8_r2p2y"]
@@ -21,6 +22,7 @@ shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/vertical_fade = ExtResource("10_ggt6e")
 shader_parameter/screen_vertical_fade = ExtResource("5_pk3w3")
 shader_parameter/mask_gradient = ExtResource("4_0tmnu")
+shader_parameter/screen_mask_gradient_fade = ExtResource("5_wnueu")
 shader_parameter/selective_obfuscate_mask = ExtResource("6_8awk4")
 shader_parameter/blur_range = 0.25
 shader_parameter/light_gradient = ExtResource("3_e8mw2")

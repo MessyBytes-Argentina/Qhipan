@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="17_i6qu1"]
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="18_82fvh"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="18_g7jkd"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="19_3x3m0"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Wall.tres" id="19_3x3m0"]
 [ext_resource type="Texture2D" uid="uid://coxbb0g8px7gi" path="res://Assets/Materials/Meta Progression Blocks/Planta/Pajara Tile.png" id="19_k8e34"]
 
 [sub_resource type="Curve3D" id="Curve3D_oo5l3"]
