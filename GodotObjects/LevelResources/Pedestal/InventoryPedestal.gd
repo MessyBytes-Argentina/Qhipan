@@ -51,9 +51,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("interact"): return
 	if not playerHasSticker: return
 	sticker = GeneralVariables.inventory.remove_sticker(pedestalName)
-	activate_pedestal()
+	await activate_pedestal()
 	GeneralVariables.saveManager.store_change(self, sceneParent)
 	await get_tree().process_frame
+	playerInArea = get_tree().get_first_node_in_group("Player")
 	playerInArea.grabArea.canDrop = true
 	playerInArea.grabArea.canGrab = true
 	playerInArea = null
