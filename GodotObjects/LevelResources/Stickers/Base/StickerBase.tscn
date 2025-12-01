@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://205amao8uwa2"]
+[gd_scene load_steps=14 format=3 uid="uid://205amao8uwa2"]
 
 [ext_resource type="Script" uid="uid://d2p44ct5iuibl" path="res://GodotObjects/LevelResources/Stickers/Base/StickerBase.gd" id="1_8ww4f"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_p36o8"]
@@ -33,6 +33,9 @@ albedo_texture = ExtResource("2_r43o5")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_p36o8"]
+radius = 1.0
+
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5)
@@ -45,12 +48,14 @@ height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="StickerBase" type="CharacterBody3D"]
+[node name="StickerBase" type="CharacterBody3D" node_paths=PackedStringArray("sceneParent")]
 collision_layer = 512
 collision_mask = 4353
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_8ww4f")
+sceneParent = NodePath(".")
+originalParent = "StickerBase"
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true
@@ -101,9 +106,17 @@ texture = ExtResource("2_r43o5")
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 1048
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
 shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="ParentChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParentChecker"]
+shape = SubResource("SphereShape3D_p36o8")
 
 [node name="ShadowDecal" type="Decal" parent="."]
 unique_name_in_owner = true

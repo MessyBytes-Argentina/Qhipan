@@ -113,8 +113,8 @@
             "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 964.5,
-                "y": 760
+                "x": 793.5,
+                "y": 599
             }
         },
         "PUZZLES LAMPARA.tmx": {
@@ -181,7 +181,7 @@
     },
     "last.exportedFilePath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled/Destileria",
     "last.externalTilesetPath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled",
-    "map.fixedSize": true,
+    "map.fixedSize": false,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "map.orientation": "2",

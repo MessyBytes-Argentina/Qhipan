@@ -38,7 +38,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4usj4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qquev"]
-size = Vector3(1, 0.5, 1)
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qh56c"]
 size = Vector3(1, 0.5, 1)
@@ -55,12 +55,13 @@ collision_mask = 8192
 script = ExtResource("1_qh56c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, 0)
 mesh = SubResource("ArrayMesh_7x5hj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049999997, 0)
 shape = SubResource("BoxShape3D_qquev")
+debug_color = Color(0.9831807, 0, 0.3597093, 0.41960785)
 
 [node name="StopCheck" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -71,6 +72,7 @@ collision_mask = 8192
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StopCheck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, 0, 0)
 shape = SubResource("BoxShape3D_qh56c")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="PlayerChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -80,7 +82,7 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerChecker"]
 shape = SubResource("BoxShape3D_xivvd")
-debug_color = Color(0.956886, 0, 0.535538, 0.42)
+debug_color = Color(0.95686275, 0, 0.5372549, 0)
 
 [node name="AntiDropArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -91,3 +93,7 @@ script = ExtResource("3_xivvd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AntiDropArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7x5hj")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[connection signal="body_entered" from="StopCheck" to="." method="stop_moving"]
+[connection signal="body_entered" from="PlayerChecker" to="." method="check_power"]

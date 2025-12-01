@@ -53,6 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	sticker = GeneralVariables.inventory.remove_sticker(pedestalName)
 	activate_pedestal()
 	GeneralVariables.saveManager.store_change(self, sceneParent)
+	await get_tree().process_frame
 	playerInArea.grabArea.canDrop = true
 	playerInArea.grabArea.canGrab = true
 	playerInArea = null

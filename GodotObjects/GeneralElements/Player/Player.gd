@@ -56,18 +56,6 @@ signal zooming_out(zoomingOut: bool)
 ## Animation states.
 enum States {Idle, Walk, Float}
 
-#region Exports
-## How far from the checkpoint the player can travel.
-@export_range(0, 100, .1) var movementMaximum: float = 10:
-	set(value):
-		movementMaximum = value
-		if Engine.is_editor_hint(): set_decal_size()
-## Player has no traveling limit.
-@export var disableMaximum: bool = false:
-	set(value):
-		disableMaximum = value
-		if Engine.is_editor_hint(): set_decal_size()
-#endregion
 
 #region On Ready Variables
 ## Reference to the camera pivot for rotations.
@@ -76,8 +64,6 @@ enum States {Idle, Walk, Float}
 @onready var spritePivot: Node3D = %SpritePivot
 ## Reference to the player sprite.
 @onready var sprite: MeshInstance3D = %Sprite
-## Reference to the player area decal. TO BE REIMPLEMENTED.
-@onready var lightDecal: Decal = %LightDecal
 ## Reference to the camera post processing effects.
 @onready var postProcessing: Node3D = %PostProcessing
 ## Reference to the [PickupHandler], the player's grab area.
@@ -104,10 +90,6 @@ enum States {Idle, Walk, Float}
 @onready var camZoomOut: AudioStreamPlayer = %CamZoomOut
 ## Reference to the player highlight sprite for zooming out.
 @onready var playerHighlight: Sprite3D = %PlayerHighlight
-## Reference to the reset message popup sprite.
-@onready var message: Sprite3D = %Message
-## Reference to the popup sound player.
-@onready var popUpSound: RandomPitchPlayer = %PopUpSound
 ## Reference to the camera cutout cube.
 @onready var cubeCutout: CutoutCube = %CubeCutout
 ## Reference to the camera cutout cube pivot.
@@ -172,8 +154,6 @@ var fallSoundPlayed: bool = false
 var respawnFall: bool = true
 ## The tween used to popup the reset message.
 var popupTween: Tween
-## Flag for when the player has exceeded their movement limit.
-var stopped: bool = false
 ## Flag for when the player camera is zooming.
 var zooming: bool = false
 ## Flag for when the player camera is zoomed out.
@@ -194,13 +174,15 @@ var respawning: bool = false
 var fellDistance: float = 0.0
 ## Flag to stop the player gravity when forced
 var forcedNoGravity: bool = false
+## Flag that is true when the player is jumping
+var jumping: bool = false
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	set_decal_size()
+	#set_decal_size()
 	poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
@@ -209,8 +191,6 @@ func _ready() -> void:
 	if not get_tree().debug_collisions_hint:
 		postProcessing.show()
 	playerHighlight.scale = Vector3.ONE * 0.001
-	GeneralVariables.input_mode_changed.connect(control_scheme_switch)
-	control_scheme_switch(GeneralVariables.usingGamepad)
 	while not gridmap:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
@@ -245,11 +225,6 @@ func _physics_process(delta: float) -> void:
 	animation_check()
 	current_grid_check()
 	grabArea.canDrop = is_on_floor()
-	if not stopped:
-		if not resetPoppingOut: do_popout()
-		if popupTween:
-			popupTween.kill()
-		message.scale = Vector3.ONE * 0.001
 
 ## Blocks the player input control.
 func block_inputs() -> void:
@@ -372,29 +347,23 @@ func get_move_direction() -> Vector3:
 func move_character(delta: float) -> void:
 	get_move_direction()
 	var pushForce: Vector3 = involuntaryPushModule.get_current_push()
-	if moved >= movementMaximum and not stopped and not disableMaximum:
-		do_popup()
-		stopped = true
-	if moveDirection != Vector3.ZERO and (moved < movementMaximum or disableMaximum):
-		lastVoluntarySpeed += (moveDirection * acceleration) * delta
-		lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
-	else:
-		lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
-	velocity = lastVoluntarySpeed
-	if not disableMaximum:
-		move_and_slide()
+	if not jumping: 
+		if moveDirection != Vector3.ZERO:# and (moved < movementMaximum or disableMaximum):
+			lastVoluntarySpeed += (moveDirection * acceleration) * delta
+			lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
+		else:
+			lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	if movedAmount != 0:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
 	else:
 		MusicManager.set_synchro_clip_volume("main", [1], -60.0, STEPSOUNDTWEENTIME)
 	if not inCheckpoint: moved += movedAmount
-	set_decal_size()
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0 and not forcedNoGravity:
 		lastInvoluntarySpeed.y -= gravity * delta
 		fallSoundPlayed = false
-	else:
+	elif not jumping:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
 	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawning else Vector3.ZERO
@@ -402,7 +371,7 @@ func move_character(delta: float) -> void:
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
 		animation_check()
-	velocity = lastInvoluntarySpeed + (Vector3.ZERO if not disableMaximum else lastVoluntarySpeed)
+	velocity = lastInvoluntarySpeed + lastVoluntarySpeed
 	move_and_slide()
 	if not is_on_floor():
 		fellDistance += (get_last_motion() * Vector3.UP).length()
@@ -421,23 +390,6 @@ func play_fall_sound() -> void:
 	fallSound.volume_db = lerpf(MINFALLVOLUME, MAXFALLVOLUME, min(1.0, inverse_lerp(MINFALLDISTANCE, MAXFALLDISTANCE, fellDistance)))
 	fallSound.play()
 
-## Sets the movement area decal size to match the expected size.
-func set_decal_size() -> void:
-	if Engine.is_editor_hint() and not lightDecal: return
-	while not lightDecal:
-		await get_tree().process_frame
-	if disableMaximum:
-		if lightDecal: lightDecal.hide()
-		return
-	else: lightDecal.show()
-	lightDecal.size.x = (movementMaximum - moved) * 2.0
-	lightDecal.size.z = lightDecal.size.x
-
-## Resets the player movement limit.
-func reset_aura() -> void:
-	moved = 0
-	set_decal_size()
-
 ## Restarts player at last checkpoint.
 func restart_at_checkpoint() -> void:
 	if not currentCheckpointPosition: return
@@ -445,14 +397,12 @@ func restart_at_checkpoint() -> void:
 	respawning = true
 	if not hasSpawned:
 		global_position = currentCheckpointPosition
-		reset_aura()
 		hasSpawned = true
 		await get_tree().process_frame
 		await get_tree().physics_frame
 		get_tree().call_group("Checkpoints","enable_sounds")
 		respawning = false
 		return
-	do_popout()
 	noMovement = true
 	grabArea.canGrab = false
 	grabArea.drop(true)
@@ -471,7 +421,6 @@ func restart_at_checkpoint() -> void:
 	involuntaryPushModule.clear()
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	global_position = currentCheckpointPosition
-	reset_aura()
 	poof.emit_particles(global_position, sprite.global_rotation)
 	if transparencyTween:
 		transparencyTween.kill()
@@ -483,7 +432,6 @@ func restart_at_checkpoint() -> void:
 	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
 	noMovement = false
 	grabArea.canGrab = true
-	stopped = false
 	respawning = false
 
 ## Checks for required animation state changes.
@@ -498,36 +446,6 @@ func animation_check() -> void:
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
-
-## Handle showing, hiding, and modifying reset popup.
-#region Reset Popup Functions
-## Shows the reset popup.
-func do_popup() -> void:
-	resetPoppingOut = false
-	await get_tree().create_timer(RESETBUTTONWAIT).timeout
-	if not stopped: return
-	if popupTween:
-		popupTween.kill()
-	popupTween = create_tween()
-	popupTween.tween_property(message, "scale", Vector3.ONE, POPUPTIME * (1.0 - message.scale.x)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	popupTween.play()
-	popUpSound.play_sound()
-
-## Hides the reset popup.
-func do_popout() -> void:
-	if popupTween:
-		popupTween.kill()
-	resetPoppingOut = true
-	popupTween = create_tween()
-	popupTween.tween_property(message, "scale", Vector3.ONE * 0.001, POPUPTIME * message.scale.x).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	popupTween.play()
-	popupTween.finished.connect(set.bind("resetPoppingOut", false))
-
-## Switches reset poupup sprite to match control scheme.
-func control_scheme_switch(isController: bool) -> void:
-	if isController: message.texture = resetAssets.controller
-	else: message.texture = resetAssets.keyboard
-#endregion
 
 ## Handle entering and exiting checkpoints.
 #region Checkpoint Area Functions
@@ -556,7 +474,7 @@ func exit_no_gravity(node: Node3D) -> void:
 ## Returns true if not on the floor or floating
 func check_falling() -> bool:
 	var falling: bool = false
-	if (not is_on_floor() or len(noGravityZones) == 0) and not forcedNoGravity:
+	if not is_on_floor() and (not forcedNoGravity or len(noGravityZones) == 0):
 		falling = true
 	else:
 		falling = false

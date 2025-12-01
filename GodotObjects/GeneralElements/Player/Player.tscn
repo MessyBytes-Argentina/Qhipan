@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=99 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -23,11 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/GeneralElements/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
-[ext_resource type="Texture2D" uid="uid://dd8k35t2irrpo" path="res://Assets/Textures/Tutorial Screens/Reset Bubble.png" id="10_xq41j"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Textures/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="11_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Textures/Character/WALK/WALK 2.png" id="11_lpbw1"]
-[ext_resource type="AudioStream" uid="uid://dv22tmgvxhca6" path="res://Assets/Sounds/Crytal Pop up.mp3" id="11_xq41j"]
 [ext_resource type="Texture2D" uid="uid://5yqj8isqe5kv" path="res://Assets/Textures/Eagle eye icon.png" id="11_xvk8m"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/Sticker_Sticked.mp3" id="12_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Textures/Character/WALK/WALK 3.png" id="12_wm78n"]
@@ -72,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Textures/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
 [ext_resource type="Script" uid="uid://bj6pdy5y6dt3q" path="res://GodotObjects/GeneralElements/Player/LedgeDetection.gd" id="72_4biwg"]
+[ext_resource type="PackedScene" uid="uid://dkkr2vvil6tit" path="res://GodotObjects/GeneralElements/Player/DetectionRaycast.tscn" id="73_uxb7q"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
@@ -115,18 +114,6 @@ size = Vector3(4, 4, 4)
 top_radius = 0.0
 bottom_radius = 1.25
 height = 7.0
-
-[sub_resource type="Gradient" id="Gradient_hlfjp"]
-offsets = PackedFloat32Array(0.025, 0.03, 0.035, 0.045, 0.05, 0.055429, 0.0660592, 0.0690964, 0.0721336, 0.877256, 0.95, 0.95, 0.96, 0.96, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0.796751, 0.622936, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0.986229, 0.807665, 1, 0.486275, 0, 0, 0, 0, 0, 0, 0, 0, 0.85115, 0.591557, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0.235294, 0, 1, 0, 0.470588, 5.86594e-08, 0.143815, 9.62615e-08, 1, 0, 0.145098, 0, 0, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjorx"]
-gradient = SubResource("Gradient_hlfjp")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.529915)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
@@ -593,15 +580,6 @@ _data = {
 &"preload": SubResource("Animation_xq41j")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_uxb7q"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_otkym"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0)
-
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 collision_layer = 2
@@ -679,21 +657,6 @@ no_depth_test = true
 fixed_size = true
 render_priority = 3
 texture = ExtResource("11_xvk8m")
-
-[node name="Message" type="Sprite3D" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 2.98024e-10, 0, -2.98024e-10, 0.001, 0.858579, 0.651631, 0.432892)
-pixel_size = 0.0025
-no_depth_test = true
-render_priority = 3
-texture = ExtResource("10_xq41j")
-
-[node name="PopUpSound" type="AudioStreamPlayer" parent="SpritePivot/Message"]
-unique_name_in_owner = true
-stream = ExtResource("11_xq41j")
-volume_db = -20.0
-script = ExtResource("10_8hsli")
-metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="ShadowDecal" type="Decal" parent="SpritePivot"]
 unique_name_in_owner = true
@@ -799,18 +762,6 @@ debug_shape_custom_color = Color(0, 0, 0, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
-[node name="LightDecal" type="Decal" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.999999, -1.19209e-07, 0, -2.10734e-08, 1, 0, 0, 0)
-visible = false
-size = Vector3(20, 10, 20)
-texture_albedo = SubResource("GradientTexture2D_bjorx")
-texture_emission = SubResource("GradientTexture2D_bjorx")
-lower_fade = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-cull_mask = 524285
-
 [node name="GrabArea" type="Area3D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
@@ -888,25 +839,17 @@ libraries = {
 autoplay = "preload"
 
 [node name="LedgeDetection" type="Node3D" parent="." groups=["OnPlayerFan"]]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.6, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -0.6, 0)
 script = ExtResource("72_4biwg")
 
-[node name="RayCast3D" type="RayCast3D" parent="LedgeDetection"]
+[node name="DetectionRaycast" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353553, -0.05, 0.353553)
-target_position = Vector3(-0.354, 0, -0.354)
-hit_back_faces = false
-debug_shape_custom_color = Color(1, 1, 0, 1)
-debug_shape_thickness = 5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LedgeDetection/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.25, -0.0500001)
-mesh = SubResource("SphereMesh_uxb7q")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ORMMaterial3D_otkym")
+[node name="DetectionRaycast2" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
+transform = Transform3D(-5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -5.9604645e-08, 0.353553, -0.050000012, -0.35355335)
 
-[node name="RayCast3D2" type="RayCast3D" parent="LedgeDetection/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-target_position = Vector3(0, -1.35, 0)
-hit_back_faces = false
-debug_shape_custom_color = Color(1, 0.490196, 0, 1)
-debug_shape_thickness = 5
+[node name="DetectionRaycast3" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
+transform = Transform3D(-0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -0.99999994, -0.35355335, -0.050000012, -0.35355335)
+
+[node name="DetectionRaycast4" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
+transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -0.35355335, -0.050000012, 0.353553)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djwsba7job37w"]
+[gd_scene load_steps=16 format=3 uid="uid://djwsba7job37w"]
 
 [ext_resource type="Script" uid="uid://csgnlylxgx63a" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.gd" id="1_e4k1j"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_5ap3j"]
@@ -32,6 +32,9 @@ transparency = 1
 albedo_texture = ExtResource("3_e4k1j")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e4k1j"]
+radius = 1.0
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
@@ -106,9 +109,17 @@ texture = ExtResource("3_e4k1j")
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 1048
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
 shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="ParentChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParentChecker"]
+shape = SubResource("SphereShape3D_e4k1j")
 
 [node name="ShadowDecal" type="Decal" parent="."]
 unique_name_in_owner = true
