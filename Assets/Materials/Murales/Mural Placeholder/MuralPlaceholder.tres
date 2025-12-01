@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://clsh5or3lqcrk"]
+
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_vqufd"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_ilckh"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_uagk8"]
+[ext_resource type="Texture2D" uid="uid://c06ypx4pygwbf" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_albedo.png" id="4_2t8fi"]
+[ext_resource type="Texture2D" uid="uid://b6n6287g07h1k" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_normal.png" id="5_2ql44"]
+[ext_resource type="Texture2D" uid="uid://0vge8j8j5h3e" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_orm.png" id="6_m1arj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vqufd")
+shader_parameter/albedo = Color(0.60784316, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_uagk8")
+shader_parameter/fresnel_gradient = ExtResource("2_ilckh")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_2t8fi")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_2ql44")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("6_m1arj")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
