@@ -197,7 +197,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	do_reparent()
+	await do_reparent()
 	if hasBeenMoved:
 		_push_save()
 
@@ -251,7 +251,7 @@ func grab(node: Node3D) -> void:
 
 ## Called when player reset is called.
 func reset_sticker() -> void:
-	do_reparent()
+	await do_reparent()
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
@@ -260,11 +260,15 @@ func reset_sticker() -> void:
 
 ## Special reparent for scene loading workaround
 func do_reparent() -> void:
-	var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
-	for body in bodies:
-		if body is GridMap:
-			sceneParent = body.get_parent()
-			break
+	sceneParent = null
+	await get_tree().process_frame
+	while sceneParent == null:
+		await get_tree().process_frame
+		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
+		for body in bodies:
+			if body is GridMap:
+				sceneParent = body.get_parent()
+				break
 	reparent(sceneParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
@@ -274,7 +278,7 @@ func drop() -> void:
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false
 	just_placed.emit(placed)
-	do_reparent()
+	await do_reparent()
 	grabed = false
 	_push_save()
 
