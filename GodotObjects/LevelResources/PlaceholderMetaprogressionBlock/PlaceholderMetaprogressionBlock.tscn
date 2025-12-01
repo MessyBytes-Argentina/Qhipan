@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfbre5vkar3l4"]
+[gd_scene load_steps=12 format=3 uid="uid://bfbre5vkar3l4"]
 
 [ext_resource type="Script" uid="uid://b55t504l4o7vc" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.gd" id="1_mc7gx"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="2_uwrcv"]
@@ -17,18 +17,6 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7eynr"]
 
-[sub_resource type="Gradient" id="Gradient_4vi63"]
-offsets = PackedFloat32Array(0.7, 0.8)
-colors = PackedColorArray(0, 0.6313726, 0.54901963, 1, 0, 1, 0.4, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a4aab"]
-gradient = SubResource("Gradient_4vi63")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_d2mit"]
 offsets = PackedFloat32Array(0.75, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
@@ -43,58 +31,42 @@ colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_60emq"]
 gradient = SubResource("Gradient_8eo4r")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_epy5a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc7gx"]
 render_priority = 0
 shader = ExtResource("2_uwrcv")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = SubResource("GradientTexture1D_60emq")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_l3cxi")
-shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_a4aab")
-shader_parameter/bottom_texture_albedo = SubResource("GradientTexture2D_a4aab")
-shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_a4aab")
-shader_parameter/top_texture_scale = 0.20000000298024
-shader_parameter/bottom_texture_scale = 0.20000000298024
-shader_parameter/side_texture_scale = 0.20000000298024
-shader_parameter/top_detail_texture_scale = 1.0
-shader_parameter/bottom_detail_texture_scale = 1.0
-shader_parameter/side_detail_texture_scale = 1.0
+shader_parameter/top_texture_scale = 0.5000000074506
+shader_parameter/side_texture_scale = 0.5000000074506
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = SubResource("GradientTexture2D_w56md")
+shader_parameter/side_texture_albedo = SubResource("GradientTexture2D_w56md")
+shader_parameter/enable_normal = true
+shader_parameter/top_normal_scale = 0.38
+shader_parameter/side_normal_scale = 0.38
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/top_roughness = 1.0
-shader_parameter/bottom_roughness = 1.0
 shader_parameter/side_roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/top_metallic_specular = 0.5
-shader_parameter/bottom_metallic_specular = 0.5
 shader_parameter/side_metallic_specular = 0.5
 shader_parameter/top_metallic = 0.0
-shader_parameter/bottom_metallic = 0.0
 shader_parameter/side_metallic = 0.0
 shader_parameter/enable_emission = false
 shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/bottom_emission = Color(0, 0, 0, 1)
 shader_parameter/side_emission = Color(0, 0, 0, 1)
 shader_parameter/top_emission_energy_multiplier = 1.0
-shader_parameter/bottom_emission_energy_multiplier = 1.0
 shader_parameter/side_emission_energy_multiplier = 1.0
-shader_parameter/enable_normal = true
-shader_parameter/top_normal_scale = 0.38
-shader_parameter/bottom_normal_scale = 0.38
-shader_parameter/side_normal_scale = 0.38
 shader_parameter/enable_clearcoat = false
 shader_parameter/top_clearcoat = 1.0
-shader_parameter/bottom_clearcoat = 1.0
 shader_parameter/side_clearcoat = 1.0
 shader_parameter/top_clearcoat_roughness = 0.5
-shader_parameter/bottom_clearcoat_roughness = 0.5
 shader_parameter/side_clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/top_anisotropy = 0.0
-shader_parameter/bottom_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/bottom_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/cylinderCutout = false
 shader_parameter/borderColor = Color(1, 1, 1, 1)
 shader_parameter/borderSize = 0.0
@@ -122,7 +94,7 @@ texture = SubResource("GradientTexture2D_w56md")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_7eynr")
-surface_material_override/0 = SubResource("ShaderMaterial_epy5a")
+surface_material_override/0 = SubResource("ShaderMaterial_mc7gx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
