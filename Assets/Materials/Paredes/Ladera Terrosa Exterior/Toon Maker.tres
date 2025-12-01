@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=11 format=3 uid="uid://bkqbbq5rras44"]
 
-[ext_resource type="Texture2D" uid="uid://diwbsna0bi13" path="res://Assets/Materials/Paredes/Ladera Terrosa Exterior/Tier 1/Ladera Tierra Mask.png" id="1_2d3iq"]
+[ext_resource type="Texture2D" uid="uid://c64trvw0mple1" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada Mask.png" id="1_2d3iq"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_is05e"]
 [ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="2_o2787"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_wtec4"]
@@ -8,13 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="5_7j8yp"]
 [ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/ToonGradients/ScreenMaskGradient.tres" id="6_l3il2"]
 [ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/ToonGradients/ScreenVerticalFade.tres" id="7_33eow"]
-[ext_resource type="Material" path="res://Assets/Materials/Paredes/Ladera Terrosa Exterior/Tier 1/Tier 1.tres" id="9_c1ulk"]
+[ext_resource type="Material" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada.tres" id="9_o2787"]
 [ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/ToonGradients/VerticalFade.tres" id="10_71wen"]
 
 [resource]
 script = ExtResource("3_67mid")
 materialMode = 3
-surfaceMaterial = ExtResource("9_c1ulk")
+surfaceMaterial = ExtResource("9_o2787")
 textureScale = 1.0
 UVMask = ExtResource("1_2d3iq")
 verticalFade = ExtResource("10_71wen")
