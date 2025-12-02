@@ -95,7 +95,7 @@ func regenerate_wall_shape() -> void:
 			downPolygon.material.set_shader_parameter("goesDown", true)
 		WallModes.ONLY_DOWN:
 			polygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
-			polygon.material = downPolygon.material.duplicate()
+			polygon.material = material.duplicate()
 			polygon.material.set_shader_parameter("goesDown", true)
 
 ## Creates the wall polygon
