@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ibjwoqj3to1"]
+
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_4uksw"]
+
+[node name="BaseLevelScene" type="Node3D"]
+
+[node name="GridmapObject" parent="." instance=ExtResource("1_4uksw")]
+data = {
+"cells": PackedInt32Array(-131073, 0, 82, -131073, 65535, 82, -196608, 65535, 82, -196608, 0, 82)
+}
+metadata/_editor_floor_ = Vector3(0, -3, 0)
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="StickerPlacements" type="Node3D" parent="."]

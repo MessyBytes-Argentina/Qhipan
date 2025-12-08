@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="7_q6li1"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="8_rpi8k"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="10_ra0fd"]
-[ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallPedestal.tscn" id="11_yvhtq"]
+[ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://Assets/Materials/WithCutout/PlaceholderSmallPedestal.tscn" id="11_yvhtq"]
 [ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="13_flqb5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4lr78"]
