@@ -1,7 +1,7 @@
 [gd_resource type="Environment" load_steps=7 format=3 uid="uid://bjvxddp7ihpwv"]
 
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
-[ext_resource type="Texture2D" uid="uid://mperlevrkt6b" path="res://Assets/Textures/Skybox/Skybox-Dawn.png" id="1_u3ji6"]
+[ext_resource type="Texture2D" uid="uid://c683si2xxi08y" path="res://Assets/Textures/Skybox/Skybox-Exterior Woods.png" id="2_ricvt"]
 
 [sub_resource type="Gradient" id="Gradient_ricvt"]
 offsets = PackedFloat32Array(0.5, 1)
@@ -15,7 +15,7 @@ fill_from = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
 shader = ExtResource("1_ricvt")
-shader_parameter/startPanorama = ExtResource("1_u3ji6")
+shader_parameter/startPanorama = ExtResource("2_ricvt")
 shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
 shader_parameter/panoramaProgress = 0.0
 shader_parameter/skyContribution = 0.75

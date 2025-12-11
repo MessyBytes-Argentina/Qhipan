@@ -14,7 +14,7 @@ class StickerSave:
 	func _init(changedSticker: StickerBase) -> void:
 		nodePath = changedSticker.originalParentPath
 		placed = changedSticker.placed
-		position = changedSticker.global_position
+		position = changedSticker.position
 		if changedSticker is AlternatorSticker: stickerType = StickerTypes.ALTERNATOR
 		if changedSticker is FanSticker: stickerType = StickerTypes.FAN
 		if changedSticker is KeySticker: stickerType = StickerTypes.KEY
@@ -102,5 +102,6 @@ func new_sticker(UUID: int, sticker: StickerSave, scene: Node) -> void:
 	newSticker.hasBeenMoved = true
 	newSticker.UUID = UUID
 	newSticker.originalParentPath = sticker.nodePath
+	newSticker.sceneParent = scene
 	scene.add_child(newSticker)
-	newSticker.global_position = sticker.position
+	newSticker.position = sticker.position

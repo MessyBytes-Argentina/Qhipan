@@ -13,6 +13,6 @@ func _ready() -> void:
 		prints(name," isn't in a group")
 
 ## Triggered when a sticker is placed or removed.
-func _on_sticker(_placed: bool) -> void:
+func _on_sticker(_placed: StickerBase) -> void:
 	if stickerMarker.data.used is not AlternatorSticker: return
 	groupParent.switch_children()

@@ -90,6 +90,8 @@ var isSaveCreated: bool = false
 var UUID: int
 ## Has this node been moved by the player.
 var hasBeenMoved: bool = false
+## Area to get scene parent.
+var parentChecker: Area3D
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,6 +99,8 @@ func _ready() -> void:
 		sceneParent = get_tree().edited_scene_root
 		originalParent = sceneParent.name
 		return
+	if self is not InventorySticker:
+		parentChecker = %ParentChecker
 	collisionMask = collision_mask
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -132,20 +136,15 @@ func check_placement() -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
-		if closest == null: 
-			set_size(ScaleModes.DROPPED)
-			set_deferred("collision_mask", collisionMask)
-			placed = false
-			return
-		if closest.globalPosition.distance_to(global_position) > MAXPREPLACEDDISTANCE: 
-			set_size(ScaleModes.DROPPED)
-			set_deferred("collision_mask", collisionMask)
-			placed = false
-			return
-		place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
-		closest.node.sticker_activity()
-		closest.used = self
-		shadowDecal.hide()
+		if closest != null: 
+			if closest.globalPosition.distance_to(global_position) <= MAXPREPLACEDDISTANCE: 
+				place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
+				closest.used = self
+				closest.node.sticker_activity()
+				return
+		set_size(ScaleModes.DROPPED)
+		set_deferred("collision_mask", collisionMask)
+		placed = false
 
 ## Executed on every physics frame.
 func _physics_process(delta: float) -> void:
@@ -198,7 +197,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	do_reparent()
+	await do_reparent()
 	if hasBeenMoved:
 		_push_save()
 
@@ -252,7 +251,7 @@ func grab(node: Node3D) -> void:
 
 ## Called when player reset is called.
 func reset_sticker() -> void:
-	do_reparent()
+	await do_reparent()
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
@@ -261,9 +260,15 @@ func reset_sticker() -> void:
 
 ## Special reparent for scene loading workaround
 func do_reparent() -> void:
-	if not sceneParent:
-		var mainScene: Node = get_tree().get_first_node_in_group("Player").get_parent()
-		sceneParent = mainScene.get_child(mainScene.get_child_count() - 1)
+	sceneParent = null
+	await get_tree().process_frame
+	while sceneParent == null:
+		await get_tree().process_frame
+		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
+		for body in bodies:
+			if body is GridMap:
+				sceneParent = body.get_parent()
+				break
 	reparent(sceneParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
@@ -273,7 +278,7 @@ func drop() -> void:
 	global_position.y = global_position.y - GRABHEIGHT
 	placed = false
 	just_placed.emit(placed)
-	do_reparent()
+	await do_reparent()
 	grabed = false
 	_push_save()
 

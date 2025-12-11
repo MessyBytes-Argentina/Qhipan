@@ -14,6 +14,8 @@ const PRECISIONPOINT: float = 0.001
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 0
 ## Collider size that will follow this path
 @export var colliderSize: Vector2 = Vector2.ONE
+## Show the polygon collider
+@export_tool_button("Show Collider", "GuiVisibilityXray") var showCollider: Callable = show_collider
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,19 +27,7 @@ func _update_multimesh():
 	for child in get_children(): child.queue_free()
 	var pathLength: float = curve.get_baked_length()
 	if collisionLayer > 0:
-		var halfSize: Vector2 = colliderSize / 2.0
-		var profile: PackedVector2Array = [-halfSize, halfSize * Vector2(-1.0, 1.0), halfSize, halfSize * Vector2(1.0, -1.0)]
-		var polygon: CSGPolygon3D = CSGPolygon3D.new()
-		add_child(polygon)
-		polygon.polygon = profile
-		polygon.mode = CSGPolygon3D.MODE_PATH
-		polygon.path_local = true
-		polygon.path_simplify_angle = 1.0
-		polygon.use_collision = true
-		polygon.collision_layer = collisionLayer
-		polygon.collision_mask = 0
-		polygon.path_node = "../"
-		polygon.layers = 0
+		_make_polygon()
 	for multiMeshResource in multiMeshResources:
 		var multimesh = MultiMeshInstance3D.new()
 		multimesh.multimesh = multiMeshResource.multiMesh.duplicate()
@@ -63,6 +53,22 @@ func _update_multimesh():
 				var curveDistance = multiMeshResource.offsetStart + (multiMeshResource.offsetEnd if i == count - 1 and multiMeshResource.useOffsetEnd else 0.0) + multiMeshResource.distanceBetweenPieces * i
 				multimesh.multimesh.set_instance_transform(i, _create_transform_distance(curveDistance, multiMeshResource.normalAlwaysPointsUp))
 
+## Makes collision polygon
+func _make_polygon() -> CSGPolygon3D:
+	var profile: PackedVector2Array = [colliderSize * Vector2(-0.5, 0.0), colliderSize * Vector2(-0.5, 1.0), colliderSize * Vector2(0.5, 1.0), colliderSize * Vector2(0.5, 0.0)]
+	var polygon: CSGPolygon3D = CSGPolygon3D.new()
+	add_child(polygon)
+	polygon.polygon = profile
+	polygon.mode = CSGPolygon3D.MODE_PATH
+	polygon.path_local = true
+	polygon.path_simplify_angle = 1.0
+	polygon.use_collision = true
+	polygon.collision_layer = collisionLayer
+	polygon.collision_mask = 0
+	polygon.path_node = "../"
+	polygon.layers = 0
+	return polygon
+
 ## auxilliary function to create valid points for the meshes to be populated at.
 func _create_transform_distance(curveDistance: float, normalUp: bool) -> Transform3D:
 	var meshPosition: Vector3 = curve.sample_baked(curveDistance, true)
@@ -73,3 +79,29 @@ func _create_transform_distance(curveDistance: float, normalUp: bool) -> Transfo
 	meshBasis.x = forward.cross(up).normalized()
 	meshBasis.z = -forward
 	return Transform3D(meshBasis, meshPosition)
+
+## Shows object cocllider.
+func show_collider() -> void:
+	if collisionLayer == 0: return
+	var polygon: CSGPolygon3D = _make_polygon()
+	polygon.owner = get_tree().edited_scene_root
+	await get_tree().create_timer(5).timeout
+	polygon.queue_free()
+
+## Reverts the path points.
+func flip_path() -> void:
+	var flippedPathPoints: PackedVector3Array = []
+	var flippedPathIn: PackedVector3Array = []
+	var flippedPathOut: PackedVector3Array = []
+	var flippedPathTilts: PackedFloat32Array = []
+	for i in range(curve.point_count - 1, -1, -1):
+		flippedPathPoints.append(curve.get_point_position(i))
+		flippedPathTilts.append(curve.get_point_tilt(i))
+		flippedPathIn.append(curve.get_point_out(i))
+		flippedPathOut.append(curve.get_point_in(i))
+	for i in range(curve.point_count):
+		curve.set_point_position(i, flippedPathPoints[i])
+		curve.set_point_tilt(i, flippedPathTilts[i])
+		curve.set_point_in(i, flippedPathIn[i])
+		curve.set_point_out(i, flippedPathOut[i])
+	_update_multimesh()
