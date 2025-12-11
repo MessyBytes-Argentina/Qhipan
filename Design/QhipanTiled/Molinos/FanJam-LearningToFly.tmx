@@ -994,7 +994,7 @@
 </chunk>
     <chunk x="32" y="-16" width="16" height="16">
 0,0,0,0,0,59,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 1,1,1,0,0,49,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,31,0,0,0,0,0,0,0,0,0,0,
@@ -1268,9 +1268,6 @@
    </object>
    <object id="3" x="1068" y="-328">
     <polyline points="-25,17 -24,-208 -33,-139 -10,-142 -21,-199"/>
-   </object>
-   <object id="4" x="789.25" y="-862.25" width="415" height="83">
-    <text wrap="1">Este nivel puede ser dificil de entender in isometrico. El objetivo es irse con un ventilador. El piso de arriba existe como la unica forma de recuperar el ventilador que se usa para sacar el ventilador que esta en la cuevita</text>
    </object>
    <object id="5" x="1097" y="-529">
     <polyline points="0,0 -106,-110 -214,-118 -194,-134 -193,-99 -213,-119"/>
