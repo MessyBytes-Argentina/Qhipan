@@ -155,7 +155,7 @@ sceneParent = NodePath("..")
 originalParent = "test"
 
 [node name="FanSticker5" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_sgigg")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.95, 1, -2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.05000019, 2, -4.5)
 placed = true
 sceneParent = NodePath("..")
 originalParent = "test"
@@ -241,7 +241,7 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 2)
 
 [node name="LeyLine2" parent="AlternatingGroup" instance=ExtResource("20_n3hqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.5, 1.5, -4.5)
 
 [node name="AlternatingBlock2" parent="AlternatingGroup" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)

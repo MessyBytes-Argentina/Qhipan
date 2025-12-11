@@ -1,13 +1,17 @@
 extends Node
 class_name ForcedMovement
 
+## Duration of the jump
 const jumpDuration: float = 0.3
+## Angle of the jump
 const jumpAngle: float = PI / 4
 
+## Player reference
 @onready var player: Player = $".."
-
+## Flag that turns on when pushing the player
 var forceApplied: bool = false
 
+## Makes the player jump to the given position, blocking player input by default
 func push_player(target: Vector3, inputBlock: bool = true) -> void:
 	if forceApplied: return
 	forceApplied = true
@@ -23,7 +27,7 @@ func push_player(target: Vector3, inputBlock: bool = true) -> void:
 	player.lastInvoluntarySpeed = pushVector
 	get_tree().create_timer(player.global_position.distance_to(target) / velocity2D.x).timeout.connect(end_jump)
 
-
+## Called when the jump ends unlocking player input
 func end_jump() -> void:
 	player.lastInvoluntarySpeed = Vector3(0,player.lastInvoluntarySpeed.y,0)
 	player.enable_inputs()
