@@ -1,24 +1,35 @@
 extends RayCast3D
 class_name DetectionRaycast
 
+## Minimum length for the detection raycasts
 const MINLENGTH: float = 0.1
+## Maximum length for the detection raycasts
 const LENGTH: float = 0.75
 
+## Vertical raycast reference
 @onready var verticalRaycast: RayCast3D = %VerticalRayCast
+## Debug sphere mesh reference
 @onready var meshSphere: MeshInstance3D = %MeshInstance3D
 
+## Material for the debug sphere mesh
 var material: ORMMaterial3D
+## Last detected distance to an edge
 var previousDistance: float = 0
+## Flag that enables or disables the detection of the raycasts
 var isDetecting: bool = false
+## Current detected distance to an edge
 var currentDistance: float = 1
 
+## Called when the node enters the scene tree for the first time
 func _ready() -> void:
 	material = meshSphere.get_surface_override_material(0).duplicate()
 	meshSphere.set_surface_override_material(0, material)
 
+## Sets isDetecting to the value given
 func set_detecting(value: bool) -> void:
 	isDetecting = value
 
+## Executed once per physics frame
 func _physics_process(_delta: float) -> void:
 	if not isDetecting: return
 	
