@@ -10,13 +10,19 @@ const jumpAngle: float = PI / 4
 @onready var player: Player = $".."
 ## Flag that turns on when pushing the player
 var forceApplied: bool = false
+## Tracks the last delta physics time
+var lastDelta: float = 0
+
+## Tracks the last delta physics time
+func _physics_process(delta: float) -> void:
+	lastDelta = delta
 
 ## Makes the player jump to the given position, blocking player input by default
 func push_player(target: Vector3, inputBlock: bool = true) -> void:
 	if forceApplied: return
 	forceApplied = true
 	if inputBlock:
-		player.block_inputs()
+		player.noMovement = true
 	var jumpDirection: Vector3 = player.global_position.direction_to(target)
 	var velocity2D: Vector2 = sqrt(player.global_position.distance_to(target) * player.gravity) / sin(2 * jumpAngle) * Vector2.RIGHT.rotated(-jumpAngle)
 	jumpDirection *= velocity2D.x
@@ -29,7 +35,7 @@ func push_player(target: Vector3, inputBlock: bool = true) -> void:
 
 ## Called when the jump ends unlocking player input
 func end_jump() -> void:
-	player.lastInvoluntarySpeed = Vector3(0,player.lastInvoluntarySpeed.y,0)
-	player.enable_inputs()
-	forceApplied = false
 	player.jumping = false
+	player.lastInvoluntarySpeed = Vector3(0,player.lastInvoluntarySpeed.y,0) + player.involuntaryPushModule.get_current_push() * lastDelta
+	player.noMovement = false
+	forceApplied = false

@@ -126,8 +126,6 @@ var lastHorizontal: float = 1
 var facingBack: bool = false
 ## Accumultation of nogravity areas.
 var noGravityZones: Array[Node3D] = []
-## How much the player moved after last checkpoint.
-var moved: float = 0.0
 ## Saving last movement distance for distance checking.
 var lastVoluntarySpeed: Vector3 = Vector3.ZERO
 ## Saving last involuntary movement distance for distance checking.
@@ -158,18 +156,12 @@ var popupTween: Tween
 var zooming: bool = false
 ## Flag for when the player camera is zoomed out.
 var zoomedOut: bool = false
-## Flag for when the player is inside a checkpoint area.
-var inCheckpoint: bool = true
 ## Flag for when the reset popup is being popped out
 var resetPoppingOut: bool = false
 ## Reference to the current gridmap.
 var gridmap: GridMap
-## Current position to respawn to.
-var currentCheckpointPosition: Vector3
 ## Flag to stop player input in settings.
 var onSettings: bool = false
-## Flag for when the player is respawning.
-var respawning: bool = false
 ## Currently fell distance.
 var fellDistance: float = 0.0
 ## Flag to stop the player gravity when forced
@@ -182,7 +174,6 @@ var jumping: bool = false
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	#set_decal_size()
 	poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
@@ -204,9 +195,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 		inputDirection = Vector3.ZERO
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
-	if Input.is_action_just_pressed("reset_player") and not noMovement:
-		restart_at_checkpoint()
-		return
 	if Input.is_action_just_pressed("pause"):
 		onSettings = true
 		PopupManager.show_popup("Settings")
@@ -358,7 +346,6 @@ func move_character(delta: float) -> void:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
 	else:
 		MusicManager.set_synchro_clip_volume("main", [1], -60.0, STEPSOUNDTWEENTIME)
-	if not inCheckpoint: moved += movedAmount
 	lastInvoluntarySpeed -= lastPushForce
 	if not is_on_floor() and len(noGravityZones) == 0 and not forcedNoGravity:
 		lastInvoluntarySpeed.y -= gravity * delta
@@ -366,7 +353,9 @@ func move_character(delta: float) -> void:
 	elif not jumping:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
-	lastInvoluntarySpeed = (lastInvoluntarySpeed + lastPushForce) if not respawning else Vector3.ZERO
+	prints(lastInvoluntarySpeed, lastPushForce)
+	lastInvoluntarySpeed = lastInvoluntarySpeed + lastPushForce
+	print(lastInvoluntarySpeed)
 	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
@@ -390,50 +379,6 @@ func play_fall_sound() -> void:
 	fallSound.volume_db = lerpf(MINFALLVOLUME, MAXFALLVOLUME, min(1.0, inverse_lerp(MINFALLDISTANCE, MAXFALLDISTANCE, fellDistance)))
 	fallSound.play()
 
-## Restarts player at last checkpoint.
-func restart_at_checkpoint() -> void:
-	if not currentCheckpointPosition: return
-	respawnFall = true
-	respawning = true
-	if not hasSpawned:
-		global_position = currentCheckpointPosition
-		hasSpawned = true
-		await get_tree().process_frame
-		await get_tree().physics_frame
-		get_tree().call_group("Checkpoints","enable_sounds")
-		respawning = false
-		return
-	noMovement = true
-	grabArea.canGrab = false
-	grabArea.drop(true)
-	poofSound.play_sound()
-	if transparencyTween:
-		transparencyTween.kill()
-	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 0.0, TRANSPARENCYTIME)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 0.0, TRANSPARENCYTIME)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 0.0, TRANSPARENCYTIME)
-	transparencyTween.play()
-	poof.emit_particles(global_position, sprite.global_rotation)
-	lastInvoluntarySpeed = Vector3.ZERO
-	lastPushForce = Vector3.ZERO
-	noGravityZones.clear()
-	involuntaryPushModule.clear()
-	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
-	global_position = currentCheckpointPosition
-	poof.emit_particles(global_position, sprite.global_rotation)
-	if transparencyTween:
-		transparencyTween.kill()
-	transparencyTween = create_tween()
-	transparencyTween.tween_property(material, "albedo_color:a", 1.0, TRANSPARENCYTIME)
-	transparencyTween.parallel().tween_property(submaterial, "albedo_color:a", 1.0, TRANSPARENCYTIME)
-	transparencyTween.parallel().tween_property(shadowDecal, "modulate:a", 1.0, TRANSPARENCYTIME)
-	transparencyTween.play()
-	await get_tree().create_timer(PLAYERRESTARTWAITTIME).timeout
-	noMovement = false
-	grabArea.canGrab = true
-	respawning = false
-
 ## Checks for required animation state changes.
 func check_movement_animation(currentInputDirection: Vector3) -> void:
 	if currentState != States.Float: currentState = States.Walk if currentInputDirection.length() > 0 else States.Idle
@@ -446,18 +391,6 @@ func animation_check() -> void:
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
-
-## Handle entering and exiting checkpoints.
-#region Checkpoint Area Functions
-## Handle entering a checkpoint.
-func checkpoint_entered() -> void:
-	inCheckpoint = true
-	moved = 0
-
-## Handle exiting a checkpoint.
-func checkpoint_exited() -> void:
-	inCheckpoint = false
-#endregion
 
 ## External forces functions
 #region External Forces
