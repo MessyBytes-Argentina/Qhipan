@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="82" nextobjectid="31">
+<map version="1.10" tiledversion="1.11.2" orientation="isometric" renderorder="right-down" width="30" height="20" tilewidth="64" tileheight="32" infinite="1" nextlayerid="83" nextobjectid="32">
+ <editorsettings>
+  <export target="PrimerTercio..tmx" format="tmx"/>
+ </editorsettings>
  <tileset firstgid="1" source="../Tileset1.tsx"/>
  <group id="35" name="5" visible="0">
   <layer id="81" name="F-2" width="30" height="20" tintcolor="#ffff7f">
@@ -449,7 +452,7 @@
    </object>
   </objectgroup>
  </group>
- <group id="15" name="4">
+ <group id="15" name="4" visible="0">
   <layer id="16" name="F0" width="30" height="20">
    <data encoding="csv">
     <chunk x="-16" y="-16" width="16" height="16">
@@ -458,7 +461,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,
 0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,0,
 0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,0,
-0,0,0,0,0,0,0,0,0,0,0,0,9,9,9,9,
+0,0,0,0,0,0,0,0,0,0,0,0,42,42,42,9,
 0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,
 0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,
 0,0,0,0,0,0,0,0,0,9,9,9,9,9,9,9,
@@ -526,24 +529,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,36,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-</chunk>
-    <chunk x="0" y="-16" width="16" height="16">
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </chunk>
    </data>
@@ -2691,7 +2676,7 @@
    </data>
   </layer>
  </group>
- <group id="74" name="WSwitch4" visible="0">
+ <group id="74" name="WSwitch4">
   <layer id="79" name="F-2" width="30" height="20" tintcolor="#ffff7f">
    <data encoding="csv">
     <chunk x="0" y="-48" width="16" height="16">
@@ -3130,5 +3115,10 @@
 </chunk>
    </data>
   </layer>
+  <objectgroup id="82" name="Object Layer 4">
+   <object id="31" x="-309.583" y="-642.75" width="344.333" height="63">
+    <text wrap="1">Tinta invisible de nuevo. El player trae lampara del cuarto anterior. Los alternadores en los nexos alternan los cubos en el siguiente cuarto</text>
+   </object>
+  </objectgroup>
  </group>
 </map>
