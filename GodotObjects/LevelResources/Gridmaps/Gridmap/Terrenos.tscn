@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_g1mlp"]
 [ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Toon-Arena.tres" id="2_yesjg"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="3_htqx7"]
-[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Toon-Baldosa Exterior.tres" id="5_uedv8"]
+[ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Baldosa Exterior.tres" id="5_uedv8"]
+[ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Tierra con Pasto.tres" id="6_130gx"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="7_rn5q8"]
-[ext_resource type="Material" uid="uid://efkvcpgrg4cs" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Toon-Tierra con Pasto.tres" id="9_gtxip"]
 [ext_resource type="Material" uid="uid://dq1ll1tbvj3xt" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Toon-Tierra Sola.tres" id="11_u8r2u"]
 [ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="13_uedv8"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="15_rn5q8"]
@@ -1193,6 +1193,7 @@ data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5,
 [node name="Terrenos" type="Node3D"]
 
 [node name="Arena" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("2_yesjg")
 
@@ -1357,6 +1358,7 @@ surface_material_override/0 = ExtResource("2_yesjg")
 shape = SubResource("ConcavePolygonShape3D_twle3")
 
 [node name="BaldosasExterior" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("5_uedv8")
 
@@ -1521,6 +1523,7 @@ surface_material_override/0 = ExtResource("5_uedv8")
 shape = SubResource("ConcavePolygonShape3D_twle3")
 
 [node name="LadrilloExterior" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("7_rn5q8")
 
@@ -1686,12 +1689,12 @@ shape = SubResource("ConcavePolygonShape3D_twle3")
 
 [node name="TierraConPasto" type="Node3D" parent="."]
 script = ExtResource("1_g1mlp")
-collectionMaterial = ExtResource("9_gtxip")
+collectionMaterial = ExtResource("6_130gx")
 
 [node name="Corner__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_tyray")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/Corner__TierraConPasto"]
 
@@ -1701,7 +1704,7 @@ shape = SubResource("ConcavePolygonShape3D_y3lco")
 [node name="CornerRemoved__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_yk334")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/CornerRemoved__TierraConPasto"]
 
@@ -1711,7 +1714,7 @@ shape = SubResource("ConcavePolygonShape3D_4rioy")
 [node name="Cube__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_fo54x")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/Cube__TierraConPasto"]
 
@@ -1721,7 +1724,7 @@ shape = SubResource("ConcavePolygonShape3D_ketmp")
 [node name="Ramp__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_0u141")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/Ramp__TierraConPasto"]
 
@@ -1731,7 +1734,7 @@ shape = SubResource("ConcavePolygonShape3D_er0k0")
 [node name="Slab__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_t641t")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/Slab__TierraConPasto"]
 
@@ -1741,7 +1744,7 @@ shape = SubResource("ConcavePolygonShape3D_qyx1t")
 [node name="Wedge__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_ol6mm")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/Wedge__TierraConPasto"]
 
@@ -1751,7 +1754,7 @@ shape = SubResource("ConcavePolygonShape3D_4ku5o")
 [node name="SlabCorner__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_13sst")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabCorner__TierraConPasto"]
 
@@ -1761,7 +1764,7 @@ shape = SubResource("ConcavePolygonShape3D_pqycb")
 [node name="SlabRamp__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_4vbom")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabRamp__TierraConPasto"]
 
@@ -1771,7 +1774,7 @@ shape = SubResource("ConcavePolygonShape3D_xwmje")
 [node name="SlabWedge__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_spn8v")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabWedge__TierraConPasto"]
 
@@ -1781,7 +1784,7 @@ shape = SubResource("ConcavePolygonShape3D_un63l")
 [node name="SlabCornerRemoved__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_uyxvl")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabCornerRemoved__TierraConPasto"]
 
@@ -1791,7 +1794,7 @@ shape = SubResource("ConcavePolygonShape3D_v422e")
 [node name="SlabRampUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_hqph8")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabRampUpsideDown__TierraConPasto"]
 
@@ -1801,7 +1804,7 @@ shape = SubResource("ConcavePolygonShape3D_s1jf3")
 [node name="SlabCornerUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_oqnii")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabCornerUpsideDown__TierraConPasto"]
 
@@ -1811,7 +1814,7 @@ shape = SubResource("ConcavePolygonShape3D_cvjla")
 [node name="RampUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_8sl3w")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/RampUpsideDown__TierraConPasto"]
 
@@ -1821,7 +1824,7 @@ shape = SubResource("ConcavePolygonShape3D_c44re")
 [node name="CornerUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_twxyc")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/CornerUpsideDown__TierraConPasto"]
 
@@ -1831,7 +1834,7 @@ shape = SubResource("ConcavePolygonShape3D_mibkh")
 [node name="SlabCornerRemovedUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_5piws")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/SlabCornerRemovedUpsideDown__TierraConPasto"]
 
@@ -1841,7 +1844,7 @@ shape = SubResource("ConcavePolygonShape3D_jl33f")
 [node name="CornerRemovedUpsideDown__TierraConPasto" type="MeshInstance3D" parent="TierraConPasto"]
 mesh = SubResource("ArrayMesh_ab6xl")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("9_gtxip")
+surface_material_override/0 = ExtResource("6_130gx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TierraConPasto/CornerRemovedUpsideDown__TierraConPasto"]
 
@@ -1849,6 +1852,7 @@ surface_material_override/0 = ExtResource("9_gtxip")
 shape = SubResource("ConcavePolygonShape3D_twle3")
 
 [node name="TierraSola" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("11_u8r2u")
 
@@ -2013,6 +2017,7 @@ surface_material_override/0 = ExtResource("11_u8r2u")
 shape = SubResource("ConcavePolygonShape3D_twle3")
 
 [node name="BaldosaInterior" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("13_uedv8")
 
@@ -2177,6 +2182,7 @@ surface_material_override/0 = ExtResource("13_uedv8")
 shape = SubResource("ConcavePolygonShape3D_b64xo")
 
 [node name="LadrilloInterior" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 collectionMaterial = ExtResource("15_rn5q8")
 

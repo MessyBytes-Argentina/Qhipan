@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ch7c4ljy76b8b"
+path="res://.godot/imported/Rope Segment.obj-ac96e312a91e90fee77137f653a67905.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Rope Segment.obj-ac96e312a91e90fee77137f653a67905.mesh"]
+
+source_file="res://Assets/Models/Fences/Rope Rail/Rope Segment.obj"
+dest_files=["res://.godot/imported/Rope Segment.obj-ac96e312a91e90fee77137f653a67905.mesh", "res://.godot/imported/Rope Segment.obj-ac96e312a91e90fee77137f653a67905.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
