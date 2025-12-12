@@ -8,6 +8,8 @@ class_name DarknessArea
 const DARKNESSCOLLISIONRESOLUTION: int = 8
 ## How far into the darkness should the outline blocker be pushed.
 const OUTLINEBLOCKEROFFSET: float = 0.5
+## Times to update the darkness during light expansion
+const ONLIGHTUPDATETIMES: int = 5
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -32,10 +34,6 @@ func _ready() -> void:
 	outlineBlocker.mesh.size = size - Vector3.ONE * OUTLINEBLOCKEROFFSET
 	_collision_shape_set()
 
-## Called on every physics frame.
-func _physics_process(_delta: float) -> void:
-	if len(lightsTweening) > 0: update_collision_shape()
-
 ## Sets up the collision shape for the fog
 func _collision_shape_set() -> void:
 	if not is_node_ready():
@@ -58,7 +56,7 @@ func reset_collision_shape() -> void:
 		else: collisionMap.map_data[i] = size.y * (1.0 / darknessCollisionShape.scale.y)
 	darknessCollisionShape.position.y = - size.y / 2.0
 
-## Updates the collision shape details to match shiningh lights
+## Updates the collision shape details to match shining lights
 func update_collision_shape() -> void:
 	reset_collision_shape()
 	var shaderMask: Image = Image.create(collisionMap.map_width, collisionMap.map_depth, false, Image.Format.FORMAT_L8)
@@ -96,12 +94,14 @@ func update_collision_shape() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	if area not in lights and area.get_collision_layer_value(5):
 		lights.append(area)
+		area.get_node(area.get_meta("Parent")).light_updated.connect(update_collision_shape)
 		update_collision_shape()
 
 ## Notifies when a light is no longer shining up on the darkness area
 func _on_area_exited(area: Area3D) -> void:
 	if area in lights:
 		lights.erase(area)
+		area.get_node(area.get_meta("Parent")).light_updated.disconnect(update_collision_shape)
 		update_collision_shape()
 
 ## Notifies when a body enters the darkness
