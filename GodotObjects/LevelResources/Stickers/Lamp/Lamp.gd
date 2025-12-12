@@ -47,6 +47,7 @@ func _ready() -> void:
 		await get_tree().process_frame
 	playerDarknessManager = player.get_node("DarknessBlockerModule")
 	shapes.top_level = true
+	lightShape.shape = lightShape.shape.duplicate()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
