@@ -28,11 +28,14 @@
             }
         },
         "Destileria/PrimerTercio..tmx": {
-            "scale": 0.30592041015625,
-            "selectedLayer": 7,
+            "expandedGroupLayers": [
+                15
+            ],
+            "scale": 1.5,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 1665.4658632935639,
-                "y": 0
+                "x": 829,
+                "y": -139.33333333333331
             }
         },
         "Destileria/PrimerTercio.tmx": {
@@ -124,8 +127,8 @@
             "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1338.5,
-                "y": 812
+                "x": 590.5,
+                "y": 676
             }
         },
         "PUZZLES LAMPARA.tmx": {
@@ -204,9 +207,9 @@
     "project": "Qhipan.tiled-project",
     "property.type": "color",
     "recentFiles": [
+        "Destileria/PrimerTercio..tmx",
         "Destileria/PrimerTercio.tmx",
         "Destileria/PUZZLES LAMPARA.tmx",
-        "Destileria/PrimerTercio..tmx",
         "TutoRoom/Mini-HUB.tmx",
         "TutoRoom/Habitacion C.tmx",
         "TutoRoom/Habitacion A.tmx",
