@@ -353,9 +353,7 @@ func move_character(delta: float) -> void:
 	elif not jumping:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
-	prints(lastInvoluntarySpeed, lastPushForce)
 	lastInvoluntarySpeed = lastInvoluntarySpeed + lastPushForce
-	print(lastInvoluntarySpeed)
 	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
