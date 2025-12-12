@@ -61,7 +61,7 @@ shape = SubResource("BoxShape3D_l5b67")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterpuzzle3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 shape = SubResource("BoxShape3D_4t2lx")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 
