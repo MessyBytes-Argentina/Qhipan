@@ -1,15 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://b75pvcex0op7o"]
+[gd_scene load_steps=14 format=3 uid="uid://b75pvcex0op7o"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_rpiuo"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_yk5ka"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="3_22rri"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="3_miufg"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="4_bilnp"]
-[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="4_ehr50"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="4_tx2y6"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="5_42rlj"]
-[ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="8_ehr50"]
-[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="9_bilnp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yk5ka"]
 size = Vector3(3, 1, 2)
@@ -17,9 +14,12 @@ size = Vector3(3, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyp4y"]
 size = Vector3(3, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_42rlj"]
+size = Vector3(3, 1, 9)
+
 [sub_resource type="Curve3D" id="Curve3D_miufg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.5, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -35,9 +35,9 @@ size = Vector3(2, 1, 3)
 [node name="GridmapObject" parent="." instance=ExtResource("1_rpiuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.5)
 data = {
-"cells": PackedInt32Array(-131073, 0, 82, -131073, 65535, 82, -196608, 65535, 82, -196608, 0, 82, -131074, 65535, 82, -131074, 0, 82, -131074, 1, 82, -131074, 2, 82, -131074, 3, 82, -131074, 4, 82, -131074, 5, 82, -131074, 6, 82, -131074, 7, 82, -131073, 7, 82, -196608, 7, 82, -196608, 6, 82, -196608, 5, 82, -196608, 4, 82, -196608, 3, 82, -196608, 2, 82, -196608, 1, 82, -131073, 1, 82, -131073, 2, 82, -131073, 3, 82, -131073, 4, 82, -131073, 5, 82, -131073, 6, 82, 262139, 2, 98, 262139, 3, 98, 262139, 4, 98, 262139, 5, 98, 262139, 6, 98, 262139, 7, 98, 262139, 8, 98, 262139, 9, 98, 262139, 10, 98, 262140, 2, 98, 262140, 3, 98, 262140, 4, 98, 262140, 5, 98, 262140, 6, 98, 262140, 7, 98, 262140, 8, 98, 262140, 9, 98, 262140, 10, 98, 262141, 2, 98, 262141, 3, 98, 262141, 4, 98, 262141, 5, 98, 262141, 6, 98, 262141, 7, 98, 262141, 8, 98, 262141, 9, 98, 262141, 10, 98, 262142, 2, 98, 262142, 3, 98, 262142, 4, 98, 262142, 8, 98, 262142, 9, 98, 262142, 10, 98, 262143, 9, 98, 262143, 10, 98, 196608, 2, 98, 196608, 3, 98, 196608, 4, 98, 196608, 8, 98, 196608, 9, 98, 196608, 10, 98, 196609, 2, 98, 196609, 3, 98, 196609, 4, 98, 196610, 2, 98, 196610, 3, 98, 196610, 4, 98, 196611, 1, 98, 196611, 2, 98, 196611, 3, 98, 196611, 4, 98, 196611, 5, 98, 196612, 1, 98, 196612, 2, 98, 196612, 3, 98, 196612, 4, 98, 196612, 5, 98, 196613, 1, 98, 196613, 2, 98, 196613, 3, 98, 196613, 4, 98, 196613, 5, 98, 196614, 1, 98, 196614, 2, 98, 196614, 3, 98, 196614, 4, 98, 196614, 5, 98, 196615, 1, 98, 196615, 2, 98, 196615, 3, 98, 196615, 4, 98, 196615, 5, 98)
+"cells": PackedInt32Array(-131073, 0, 82, -131073, 65535, 82, -196608, 65535, 82, -196608, 0, 82, -131074, 65535, 82, -131074, 0, 82, -131074, 1, 82, -131074, 2, 82, -131074, 3, 82, -131074, 4, 82, -131074, 5, 82, -131074, 6, 82, -131074, 7, 82, -131073, 7, 82, -196608, 7, 82, -196608, 6, 82, -196608, 5, 82, -196608, 4, 82, -196608, 3, 82, -196608, 2, 82, -196608, 1, 82, -131073, 1, 82, -131073, 2, 82, -131073, 3, 82, -131073, 4, 82, -131073, 5, 82, -131073, 6, 82, 327680, 8, 100, 327680, 9, 100, 327680, 10, 100, 393215, 10, 100, 393215, 9, 100, 393214, 9, 100, 393214, 10, 100, 393213, 10, 100, 393212, 10, 100, 393211, 10, 100, 393211, 9, 100, 393212, 9, 100, 393213, 9, 100, 393213, 8, 100, 393214, 8, 100, 393212, 8, 100, 393211, 8, 100)
 }
-metadata/_editor_floor_ = Vector3(0, 3, 0)
+metadata/_editor_floor_ = Vector3(0, 5, 0)
 
 [node name="ChunkLoadingHotspot" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.5)
@@ -57,6 +57,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
 shape = SubResource("BoxShape3D_gyp4y")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 
+[node name="ChunkLoadingHotspot2" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 9.5)
+script = ExtResource("2_yk5ka")
+hotspotName = "destileria-enterpuzzle4-5"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle4-5.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -2, 1)
+shape = SubResource("BoxShape3D_yk5ka")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -3, -4.5)
+shape = SubResource("BoxShape3D_42rlj")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+
 [node name="Stickers" type="Node3D" parent="."]
 
 [node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_miufg")]
@@ -64,18 +82,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3.5)
 sceneParent = NodePath("../..")
 originalParent = "Destileria_puzzle4"
 
-[node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_ehr50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 5)
-sceneParent = NodePath("../..")
-originalParent = "Destileria_puzzle4"
-
 [node name="StickerPlacements" type="Node3D" parent="."]
 
 [node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("4_bilnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 5)
-
-[node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("4_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 5)
 
 [node name="Elevator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 10)
@@ -107,34 +117,5 @@ isPermanent = true
 [node name="Grates" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.375, 5)
 
-[node name="Grate" parent="Grates" instance=ExtResource("8_ehr50")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
-
-[node name="Grate2" parent="Grates" instance=ExtResource("8_ehr50")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-
-[node name="Grate3" parent="Grates" instance=ExtResource("8_ehr50")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1)
-
 [node name="Darkness Clumps" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 5)
-
-[node name="Darkness" parent="Darkness Clumps" instance=ExtResource("9_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.75, 0)
-size = Vector3(2, 2.5, 3)
-
-[node name="Darkness2" parent="Darkness Clumps" instance=ExtResource("9_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.25, 0)
-size = Vector3(1, 1.5, 5)
-
-[node name="Darkness3" parent="Darkness Clumps" instance=ExtResource("9_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.25, 0)
-size = Vector3(1, 1.5, 5)
-
-[node name="Darkness4" parent="Darkness Clumps" instance=ExtResource("9_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.25, -2)
-size = Vector3(4, 1.5, 1)
-
-[node name="Darkness5" parent="Darkness Clumps" instance=ExtResource("9_bilnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.25, 2)
-size = Vector3(4, 1.5, 1)
