@@ -109,12 +109,23 @@
                 "y": 0
             }
         },
+        "Molinos/FanJam-LearningToFly.tmx": {
+            "expandedGroupLayers": [
+                23
+            ],
+            "scale": 1.5,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 1865.6666666666665,
+                "y": 36.666666666666686
+            }
+        },
         "Molinos/Intro Ventilador.tmx": {
             "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1209.5,
-                "y": 742
+                "x": 1338.5,
+                "y": 812
             }
         },
         "PUZZLES LAMPARA.tmx": {
