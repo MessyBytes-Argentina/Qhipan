@@ -265,11 +265,16 @@ func do_reparent() -> void:
 	while sceneParent == null:
 		await get_tree().process_frame
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
-		for body in bodies:
-			if body is GridMap:
-				sceneParent = body.get_parent()
-				break
+		sceneParent = get_root_parent(bodies[0])
 	reparent(sceneParent)
+
+## Special recursive check to get root scene.
+func get_root_parent(node: Node) -> Node:
+	var tempParent: Node = node.get_parent()
+	if tempParent.has_meta("isRoot"):
+		return tempParent
+	else:
+		return get_root_parent(tempParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:

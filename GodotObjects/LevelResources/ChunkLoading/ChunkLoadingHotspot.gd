@@ -99,6 +99,7 @@ func _start_load() -> void:
 		return
 	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
 	rootNode.get_parent().add_child(loadedScene)
+	loadedScene.set_meta("isRoot", true)
 	set_hotspot_position()
 	loadedHotspot.loadedHotspot = self
 	loadedHotspot.loadedScene = rootNode

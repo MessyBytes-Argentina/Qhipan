@@ -8,8 +8,10 @@ class_name DarknessArea
 const DARKNESSCOLLISIONRESOLUTION: int = 8
 ## How far into the darkness should the outline blocker be pushed.
 const OUTLINEBLOCKEROFFSET: float = 0.5
-## Times to update the darkness during light expansion
+## Times to update the darkness during light expansion.
 const ONLIGHTUPDATETIMES: int = 5
+## Darkness margin for releasing stickers.
+const MARGIN: float = 0.5
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -39,7 +41,7 @@ func _collision_shape_set() -> void:
 	if not is_node_ready():
 		await ready
 	darknessAreaShape.shape = BoxShape3D.new()
-	darknessAreaShape.shape.size = size
+	darknessAreaShape.shape.size = size + Vector3(MARGIN, 0, MARGIN)
 	collisionMap = darknessCollisionShape.shape.duplicate()
 	darknessCollisionShape.shape = collisionMap
 	fogShader = material.duplicate()
@@ -64,7 +66,7 @@ func update_collision_shape() -> void:
 	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - (Vector2(size.x, size.z) / 2.0).rotated(-rotation.y)
 	var lightDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var yPos: float = global_position.y + size.y / 2
+	var yPos: float = global_position.y - size.y / 2
 	for lightArea in lights: 
 		if lightArea.has_node("LightShape"): 
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
@@ -84,7 +86,7 @@ func update_collision_shape() -> void:
 			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, yPos, vertexFlatGlobalPosition.y)
 			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
-				raycast.collision_mask = 0x00000001
+				raycast.collision_mask = 1
 				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
 				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
