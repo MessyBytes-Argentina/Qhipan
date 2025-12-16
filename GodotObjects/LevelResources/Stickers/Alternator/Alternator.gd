@@ -56,11 +56,8 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 
 ## Places the sticker on the player and enables the held area
 func grab(node: Node3D) -> void:
-	if placed and not activatedGroups.is_empty(): 
-		super(node)
-		#deactivate_group()
-		return
 	super(node)
+	if placed and not activatedGroups.is_empty(): return
 	enable_area()
 	add_obj_list(await force_area_check())
 
