@@ -41,6 +41,8 @@ var lastLightValue: float = 0.0
 var nextLightValue: float = 0.0
 ## Current light update count
 var lightUpdated: int = 0
+## Check to make sure we dont tween the light on startup.
+var isReadyToTween: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +54,8 @@ func _ready() -> void:
 	playerDarknessManager = player.get_node("DarknessBlockerModule")
 	shapes.top_level = true
 	lightShape.shape = lightShape.shape.duplicate()
+	await get_tree().create_timer(0.5).timeout
+	isReadyToTween = true
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -96,6 +100,14 @@ func animate_light_fade(newValue: float) -> void:
 		lightTween.kill()
 	nextLightValue = newValue
 	var energyGoal: float = 0.0 if newValue == 0.0 else LIGHTENERGY
+	if not isReadyToTween:
+		light.light_energy = energyGoal
+		light.omni_range = newValue
+		if newValue == LIGHTRANGEPLACED:
+			lightShape.shape.radius = newValue
+		else:
+			lightShape.shape.radius = 0.0001
+		return
 	var goalTime: float = (LIGHTFADETIME if newValue != LIGHTRANGEPLACED else LIGHTAREAFADETIME) * inverse_lerp(newValue, lastLightValue, light.omni_range)
 	lightTween = create_tween()
 	lightTween.tween_property(light, "light_energy", energyGoal, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)

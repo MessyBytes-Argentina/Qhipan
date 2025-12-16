@@ -285,6 +285,7 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="AlternatingBlock2" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
+isOff = true
 
 [node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
