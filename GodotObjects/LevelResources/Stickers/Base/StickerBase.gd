@@ -197,7 +197,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	await do_reparent()
+	await do_reparent(pos + direction * 0.01)
 	if hasBeenMoved:
 		_push_save()
 
@@ -259,7 +259,7 @@ func reset_sticker() -> void:
 	check_placement()
 
 ## Special reparent for scene loading workaround
-func do_reparent() -> void:
+func do_reparent(newPos: Vector3 = global_position) -> void:
 	sceneParent = null
 	await get_tree().process_frame
 	while sceneParent == null:
@@ -267,6 +267,7 @@ func do_reparent() -> void:
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
 		sceneParent = get_root_parent(bodies[0])
 	reparent(sceneParent)
+	global_position = newPos
 
 ## Special recursive check to get root scene.
 func get_root_parent(node: Node) -> Node:
