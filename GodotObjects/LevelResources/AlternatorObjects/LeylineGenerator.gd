@@ -4,6 +4,10 @@ class_name LeylinePath
 
 ## Animation speed.
 const SPEED: float = 15.0
+## Minimum time.
+const MINTIME: float = 1.0
+## Maximum time.
+const MAXTIME: float = 2.0
 ## Leylien width
 const WIDTH: float = 0.5
 
@@ -95,7 +99,7 @@ func follow_path() -> void:
 	lastPointDistance = 0
 	loadPath.curve.add_point(curve.get_point_position(0))
 	progressTween = create_tween()
-	progressTween.tween_method(add_path_points, 0.0, curve.get_baked_length(), curve.get_baked_length() / SPEED).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	progressTween.tween_method(add_path_points, 0.0, curve.get_baked_length(), clamp(curve.get_baked_length() / SPEED, MINTIME, MAXTIME)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	progressTween.finished.connect(loadPath.set.bind("curve", curve.duplicate()))
 	progressTween.play()
 
@@ -120,7 +124,7 @@ func unfollow_path() -> void:
 	lastPoint = curve.point_count - 1
 	lastPointDistance = lastDistance
 	progressTween = create_tween()
-	progressTween.tween_method(remove_path_points, lastDistance, 0.0, lastDistance / SPEED).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	progressTween.tween_method(remove_path_points, lastDistance, 0.0, clamp(lastDistance / SPEED, MINTIME, MAXTIME)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	progressTween.finished.connect(loadPath.curve.clear_points)
 	progressTween.play()
 

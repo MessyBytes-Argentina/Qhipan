@@ -196,7 +196,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 	await do_reparent(pos + direction * 0.01)
 	if hasBeenMoved:
 		_push_save()
-	if not placed: return
+	if not placed or not is_inside_tree(): return
 	if not Vector3.UP.cross(direction).is_zero_approx():
 		look_at(global_position - direction)
 	else:

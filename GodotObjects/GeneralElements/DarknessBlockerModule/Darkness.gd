@@ -35,7 +35,6 @@ var isReadyToCheck: bool = false
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
-	outlineBlocker.mesh.size = size - Vector3.ONE * OUTLINEBLOCKEROFFSET
 	_collision_shape_set()
 
 ## Sets up the collision shape for the fog
