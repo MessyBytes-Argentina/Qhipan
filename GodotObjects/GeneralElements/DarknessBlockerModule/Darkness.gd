@@ -65,6 +65,8 @@ func reset_collision_shape() -> void:
 ## Updates the collision shape details to match shining lights
 func update_collision_shape() -> void:
 	if not isReadyToCheck: return
+	isReadyToCheck = false
+	await get_tree().process_frame
 	reset_collision_shape()
 	var shaderMask: Image = Image.create(collisionMap.map_width, collisionMap.map_depth, false, Image.Format.FORMAT_L8)
 	shaderMask.fill(Color.WHITE)
@@ -97,6 +99,7 @@ func update_collision_shape() -> void:
 				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
 				break
 	fogShader.set_shader_parameter("light_mask", ImageTexture.create_from_image(shaderMask))
+	isReadyToCheck = true
 
 ## Notifies when a light is shone up on the darkness area
 func _on_area_entered(area: Area3D) -> void:
