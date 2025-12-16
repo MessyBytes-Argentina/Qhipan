@@ -161,13 +161,13 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 [node name="LeyLine" parent="AltGroupA" instance=ExtResource("6_ub5a7")]
 
 [node name="AlternatingBlock" parent="AltGroupA" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, -1)
 
 [node name="AlternatingBlock2" parent="AltGroupA" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.5, -1)
 
 [node name="AlternatingBlock3" parent="AltGroupA" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1.5, -1)
 
 [node name="AltGroupB" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.5, -0.5)
@@ -177,16 +177,16 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 [node name="LeyLine" parent="AltGroupB" instance=ExtResource("6_ub5a7")]
 
 [node name="AlternatingBlock" parent="AltGroupB" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, -1)
 
 [node name="AlternatingBlock2" parent="AltGroupB" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.5, -1)
 
 [node name="AlternatingBlock3" parent="AltGroupB" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1.5, -1)
 
 [node name="AlternatingBlock4" parent="AltGroupB" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -2, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1.5, 2)
 
 [node name="AltGroupC" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.5, 2.5)
@@ -196,7 +196,7 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 [node name="LeyLine" parent="AltGroupC" instance=ExtResource("6_ub5a7")]
 
 [node name="AlternatingBlock" parent="AltGroupC" instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.5, -1)
 
 [node name="AltGroupD" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -1.5, -1.5)
@@ -217,7 +217,7 @@ glowMaterial = ExtResource("11_8ll6i")
 metadata/_custom_type_script = "uid://cpiv1eys17w7w"
 
 [node name="AlternatingBlock" parent="." instance=ExtResource("8_0keh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -4, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -3.5, 1.5)
 
 [node name="Grates" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -1.625, -3.5)
