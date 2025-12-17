@@ -199,6 +199,7 @@ originalParent = "test"
 
 [node name="StickerLamp3" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_ckktb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 11)
+placed = true
 sceneParent = NodePath("..")
 originalParent = "test"
 
@@ -283,7 +284,8 @@ script = ExtResource("19_2x6fn")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="AlternatingBlock2" parent="AlternatingGroup2" instance=ExtResource("20_an4xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
+isOff = true
 
 [node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("21_an4xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
@@ -316,7 +318,7 @@ transform = Transform3D(1, -4.371139e-08, 4.3711392e-08, 4.371139e-08, -4.371139
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 6.5)
 
 [node name="Placeholder Sticker Area4" parent="." instance=ExtResource("36_tof7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 11)
 
 [node name="Placeholder Sticker Area2" parent="." instance=ExtResource("36_tof7f")]
 transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -5.5, 1, 12)

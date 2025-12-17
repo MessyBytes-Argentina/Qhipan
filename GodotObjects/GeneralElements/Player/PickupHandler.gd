@@ -95,8 +95,8 @@ func do_grab() -> void:
 			surface.node.sticker_activity()
 			surface.used = null
 	else: pickupSound.play_sound()
-	currentPickup.reparent(self)
 	currentPickup.grab(self)
+	currentPickup.reparent(self)
 	pickupOnHand = true
 	currentPickup.activate_on_player_effect()
 

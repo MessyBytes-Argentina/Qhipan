@@ -193,13 +193,14 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 	placed = true
 	just_placed.emit(placed)
 	grabed = false
+	await do_reparent(pos + direction * 0.01)
+	if hasBeenMoved:
+		_push_save()
+	if not placed or not is_inside_tree(): return
 	if not Vector3.UP.cross(direction).is_zero_approx():
 		look_at(global_position - direction)
 	else:
 		look_at(global_position - direction, Vector3.FORWARD)
-	await do_reparent()
-	if hasBeenMoved:
-		_push_save()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -259,17 +260,22 @@ func reset_sticker() -> void:
 	check_placement()
 
 ## Special reparent for scene loading workaround
-func do_reparent() -> void:
+func do_reparent(newPos: Vector3 = global_position) -> void:
 	sceneParent = null
-	await get_tree().process_frame
 	while sceneParent == null:
-		await get_tree().process_frame
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
-		for body in bodies:
-			if body is GridMap:
-				sceneParent = body.get_parent()
-				break
+		if len(bodies) == 0: await get_tree().process_frame
+		else: sceneParent = get_root_parent(bodies[0])
 	reparent(sceneParent)
+	global_position = newPos
+
+## Special recursive check to get root scene.
+func get_root_parent(node: Node) -> Node:
+	var tempParent: Node = node.get_parent()
+	if tempParent.has_meta("isRoot"):
+		return tempParent
+	else:
+		return get_root_parent(tempParent)
 
 ## Drops the sticker on the ground reparenting it to the scene
 func drop() -> void:

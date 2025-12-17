@@ -48,7 +48,11 @@ func switch_state() -> void:
 func turn_on() -> void:
 	objMesh.set_surface_override_material(0, MATERIALS.ON)
 	objCollider.set_deferred("disabled", false)
+	await get_tree().process_frame
+	get_tree().call_deferred("call_group", "Fog", "update_collision_shape")
 
 func turn_off() -> void:
 	objMesh.set_surface_override_material(0, MATERIALS.OFF)
 	objCollider.set_deferred("disabled", true)
+	await get_tree().process_frame
+	get_tree().call_deferred("call_group", "Fog", "update_collision_shape")

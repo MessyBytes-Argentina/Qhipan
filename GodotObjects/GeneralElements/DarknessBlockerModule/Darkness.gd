@@ -5,11 +5,13 @@ class_name DarknessArea
 
 ## The amount of vertices per meter that the fog collision is broken up into.
 ## Higher means higher collision quality but poorer performance.
-const DARKNESSCOLLISIONRESOLUTION: int = 8
+const DARKNESSCOLLISIONRESOLUTION: int = 4
 ## How far into the darkness should the outline blocker be pushed.
 const OUTLINEBLOCKEROFFSET: float = 0.5
-## Times to update the darkness during light expansion
+## Times to update the darkness during light expansion.
 const ONLIGHTUPDATETIMES: int = 5
+## Darkness margin for releasing stickers.
+const MARGIN: float = 0.5
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -26,12 +28,13 @@ var fogShader: ShaderMaterial
 var lights: Array[Area3D] = []
 ## Light stickers currently tweening that are affecting the fog
 var lightsTweening: Array[LampSticker] = []
+## Is ready to check for lights
+var isReadyToCheck: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
-	outlineBlocker.mesh.size = size - Vector3.ONE * OUTLINEBLOCKEROFFSET
 	_collision_shape_set()
 
 ## Sets up the collision shape for the fog
@@ -39,11 +42,13 @@ func _collision_shape_set() -> void:
 	if not is_node_ready():
 		await ready
 	darknessAreaShape.shape = BoxShape3D.new()
-	darknessAreaShape.shape.size = size
+	darknessAreaShape.shape.size = size + Vector3(MARGIN, 0, MARGIN)
 	collisionMap = darknessCollisionShape.shape.duplicate()
 	darknessCollisionShape.shape = collisionMap
 	fogShader = material.duplicate()
 	material = fogShader
+	await get_tree().create_timer(0.5).timeout
+	isReadyToCheck = true
 	update_collision_shape()
 
 ## Resets the collision shape details.
@@ -58,13 +63,16 @@ func reset_collision_shape() -> void:
 
 ## Updates the collision shape details to match shining lights
 func update_collision_shape() -> void:
+	if not isReadyToCheck: return
+	isReadyToCheck = false
+	await get_tree().process_frame
 	reset_collision_shape()
 	var shaderMask: Image = Image.create(collisionMap.map_width, collisionMap.map_depth, false, Image.Format.FORMAT_L8)
 	shaderMask.fill(Color.WHITE)
 	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - (Vector2(size.x, size.z) / 2.0).rotated(-rotation.y)
 	var lightDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var yPos: float = global_position.y + size.y / 2
+	var yPos: float = global_position.y - size.y / 2
 	for lightArea in lights: 
 		if lightArea.has_node("LightShape"): 
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
@@ -84,18 +92,22 @@ func update_collision_shape() -> void:
 			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, yPos, vertexFlatGlobalPosition.y)
 			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
-				raycast.collision_mask = 0x00000001
+				raycast.collision_mask = 1
 				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
 				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
 				break
 	fogShader.set_shader_parameter("light_mask", ImageTexture.create_from_image(shaderMask))
+	isReadyToCheck = true
 
 ## Notifies when a light is shone up on the darkness area
 func _on_area_entered(area: Area3D) -> void:
 	if area not in lights and area.get_collision_layer_value(5):
+		var areaParent: Node = area.get_node(area.get_meta("Parent"))
+		if areaParent is not LampSticker: return
+		if not areaParent.placed: return
 		lights.append(area)
-		area.get_node(area.get_meta("Parent")).light_updated.connect(update_collision_shape)
+		areaParent.light_updated.connect(update_collision_shape)
 		update_collision_shape()
 
 ## Notifies when a light is no longer shining up on the darkness area

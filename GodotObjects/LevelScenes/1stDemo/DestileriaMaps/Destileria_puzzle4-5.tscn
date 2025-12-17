@@ -39,7 +39,7 @@ originalParent = "Destileria_puzzle4"
 [node name="StickerPlacements" type="Node3D" parent="."]
 
 [node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("5_8rapv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 5)
 
 [node name="Grate" parent="." instance=ExtResource("9_glfkv")]
 transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -1, 0, 3, -4.371139e-08, -1, 2.875, 5)

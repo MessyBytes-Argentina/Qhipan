@@ -16,6 +16,8 @@ const offset: float = 0.0
 @onready var playerFloor: Marker3D = %PlayerFloor
 ## Reference to the camera ray casts group.
 @onready var cameraRayCasts: Node3D = %CameraRayCasts
+## Reference to the fog ray casts group.
+@onready var fogRayCasts: Node3D = %FogRayCasts
 ## Reference to the secondary cutout cube.
 @onready var cubeCutoutAux: MeshInstance3D = %CubeCutoutAux
 
@@ -52,8 +54,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	var anyRaycast: bool = not cameraRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
+	var anyFogRaycast: bool = not fogRayCasts.get_children().any(func(a: RayCast3D): return not a.is_colliding())
 	for updateMaterial: ShaderMaterial in GeneralVariables.cutoutMaterials: update_material(updateMaterial, anyRaycast)
-	for fog in get_tree().get_nodes_in_group("Fog"): update_material(fog.material, anyRaycast)
+	for fog in get_tree().get_nodes_in_group("Fog"): update_material(fog.material, anyFogRaycast)
 
 ## Updates the cutout parameters to match the current cylinder and cube positions and rotations.
 func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
