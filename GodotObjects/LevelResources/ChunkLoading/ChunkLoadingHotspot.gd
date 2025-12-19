@@ -44,7 +44,17 @@ var loadedHotspot: ChunkLoadingHotspot
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
 	var children: Array[Node] = get_children()
-	children.map(func(a: Node): if a.has_meta("LoadShape"): loadShapes.append(a) elif a.has_meta("UnloadShape"): unloadShapes.append(a))
+	children.map(func(a: Node): 
+		if a.has_meta("LoadShape"): loadShapes.append(a) 
+		elif a.has_meta("UnloadShape"): unloadShapes.append(a)
+		else:
+			if a.name == "LoadShape":
+				loadShapes.append(a)
+				a.set_meta("LoadShape", true)
+			elif a.name == "UnloadShape":
+				loadShapes.append(a)
+				a.set_meta("UnloadShape", true)
+		)
 	_reset_shapes()
 	if Engine.is_editor_hint():
 		_show_sphere()
