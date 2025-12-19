@@ -1,8 +1,4 @@
 {
-    "Map/SizeTest": {
-        "height": 4300,
-        "width": 2
-    },
     "activeFile": "Molinos/Intro Ventilador.tmx",
     "expandedProjectPaths": [
         ".",
@@ -28,11 +24,14 @@
             }
         },
         "Destileria/PrimerTercio..tmx": {
-            "scale": 0.30592041015625,
-            "selectedLayer": 7,
+            "expandedGroupLayers": [
+                15
+            ],
+            "scale": 1.5,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 1665.4658632935639,
-                "y": 0
+                "x": 829,
+                "y": -139.33333333333331
             }
         },
         "Destileria/PrimerTercio.tmx": {
@@ -109,12 +108,64 @@
                 "y": 0
             }
         },
+        "Molinos/FanJam-LearningToFly.tmx": {
+            "expandedGroupLayers": [
+                23
+            ],
+            "scale": 1.5,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 1865.6666666666665,
+                "y": 36.333333333333314
+            }
+        },
         "Molinos/Intro Ventilador.tmx": {
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1209.5,
-                "y": 742
+                "x": 854,
+                "y": 455.33333333333337
+            }
+        },
+        "Molinos/Mix it up.tmx": {
+            "expandedObjectLayers": [
+                18
+            ],
+            "scale": 0.5,
+            "selectedLayer": 15,
+            "viewCenter": {
+                "x": 775,
+                "y": -857
+            }
+        },
+        "Molinos/PlacementPlaza.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 404.5,
+                "y": -243.5
+            }
+        },
+        "Molinos/Toughie 1.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 795.6666666666665,
+                "y": -165
+            }
+        },
+        "Molinos/Toughie 2.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 878.5,
+                "y": -105.5
             }
         },
         "PUZZLES LAMPARA.tmx": {
@@ -179,31 +230,22 @@
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled/Destileria",
-    "last.externalTilesetPath": "C:/Godot/Projects/GMTK2025/Design/QhipanTiled",
-    "map.fixedSize": false,
-    "map.lastUsedExportFilter": "All Files (*)",
-    "map.lastUsedFormat": "tmx",
-    "map.orientation": "2",
-    "map.tileHeight": 32,
-    "map.tileWidth": 64,
     "openFiles": [
         "Molinos/Intro Ventilador.tmx"
     ],
     "project": "Qhipan.tiled-project",
-    "property.type": "color",
     "recentFiles": [
+        "Molinos/Mix it up.tmx",
+        "Molinos/FanJam-LearningToFly.tmx",
+        "Molinos/Toughie 2.tmx",
+        "Molinos/Toughie 1.tmx",
+        "Molinos/PlacementPlaza.tmx",
+        "Molinos/Intro Ventilador.tmx",
+        "Tileset1.tsx",
+        "Destileria/PrimerTercio..tmx",
         "Destileria/PrimerTercio.tmx",
         "Destileria/PUZZLES LAMPARA.tmx",
-        "Destileria/PrimerTercio..tmx",
         "TutoRoom/Mini-HUB.tmx",
-        "TutoRoom/Habitacion C.tmx",
-        "TutoRoom/Habitacion A.tmx",
-        "TutoRoom/Habitacion B.tmx",
-        "Molinos/Intro Ventilador.tmx",
-        "Habitacion B.tmx",
-        "Habitacion A.tmx",
-        "Destileria/Lamp Tests.tmx",
-        "Tileset1.tsx"
+        "TutoRoom/Habitacion C.tmx"
     ]
 }
