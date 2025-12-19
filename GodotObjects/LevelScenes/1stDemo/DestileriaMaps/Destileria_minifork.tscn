@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnpng5fe5gs5v"]
+
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_57xuv"]
+[ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_1rtt0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1rtt0"]
+size = Vector3(1, 1, 8.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxhlr"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5b67"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4t2lx"]
+size = Vector3(8, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnlsy"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_on487"]
+size = Vector3(8, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tprke"]
+size = Vector3(1, 1, 8.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gshld"]
+size = Vector3(1, 1, 11)
+
+[node name="Destileria_minifork" type="Node3D"]
+
+[node name="GridmapObject" parent="." instance=ExtResource("1_57xuv")]
+data = {
+"cells": PackedInt32Array(-131073, 0, 82, -131073, 65535, 82, -196608, 65535, 82, -196608, 0, 82, -131073, 1, 82, -196608, 1, 82, -131074, 65535, 82, -131074, 0, 82, -131074, 1, 82, -131075, 65534, 82, -131075, 65535, 82, -131075, 0, 82, -131075, 1, 82, -131075, 2, 82, -131076, 2, 82, -131076, 65534, 82, -131076, 65535, 82, -131076, 0, 82, -131076, 1, 82, -131077, 3, 82, -131077, 2, 82, -131077, 1, 82, -131077, 0, 82, -131077, 65535, 82, -131077, 65534, 82, -131077, 65533, 82, -131078, 3, 82, -131078, 2, 82, -131078, 65534, 82, -131078, 65533, 82, -131077, 4, 82, -131078, 4, 82, -131078, 65532, 82, -131077, 65532, 82, -131079, 3, 82, -131079, 4, 82, -131079, 65532, 82, -131079, 65533, 82, -131080, 65531, 82, -131080, 65532, 82, -131080, 65533, 82, -131081, 65531, 82, -131081, 65532, 82, -131081, 65533, 82, -131082, 65531, 82, -131082, 65532, 82, -131082, 65533, 82, -131080, 3, 82, -131080, 4, 82, -131080, 5, 82, -131081, 3, 82, -131081, 4, 82, -131081, 5, 82, -131082, 3, 82, -131082, 4, 82, -131082, 5, 82, -131081, 6, 82, -131081, 65530, 82, -131083, 3, 82, -131084, 2, 82, -131084, 0, 82, -131084, 65535, 82, -131084, 1, 82, -131084, 65534, 82, -131083, 65533, 82, -131084, 65533, 82, -131084, 3, 82, -131083, 4, 82, -131084, 4, 82, -131083, 65532, 82, -131084, 65532, 82, -131078, 65535, 82, -131078, 0, 82, -131078, 1, 82, -131079, 2, 82, -131080, 2, 82, -131080, 1, 82, -131079, 0, 82, -131079, 65535, 82, -131079, 65534, 82, -131080, 65534, 82, -131080, 65535, 82, -131080, 0, 82, -131079, 1, 82, -131081, 65535, 82, -131081, 65534, 82, -131082, 65535, 82, -131082, 0, 82, -131082, 1, 82, -131082, 2, 82, -131083, 2, 82, -131083, 1, 82, -131083, 0, 82, -131083, 65535, 82, -131083, 65534, 82, -131082, 65534, 82, -131081, 1, 82, -131081, 2, 82, -131081, 0, 82, -13, 65535, 655443, -13, 0, 655443, -13, 1, 655443, -14, 0, 655442, -14, 1, 655442, -14, 65535, 655442)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="ChunkLoadingHotspot-enterminifork" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0.5)
+script = ExtResource("2_1rtt0")
+hotspotName = "destileria-enterMinifork"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle2.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterminifork"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+shape = SubResource("BoxShape3D_1rtt0")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterminifork"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0)
+shape = SubResource("BoxShape3D_hxhlr")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+
+[node name="ChunkLoadingHotspot-enterpuzzle3" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -6)
+script = ExtResource("2_1rtt0")
+hotspotName = "destileria-enterpuzzle3"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle3.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterpuzzle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+shape = SubResource("BoxShape3D_l5b67")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterpuzzle3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
+shape = SubResource("BoxShape3D_4t2lx")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+
+[node name="ChunkLoadingHotspot-enterpuzzle4" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 7)
+script = ExtResource("2_1rtt0")
+hotspotName = "destileria-enterpuzzle4"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle4.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterpuzzle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+shape = SubResource("BoxShape3D_fnlsy")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterpuzzle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -3.5)
+shape = SubResource("BoxShape3D_on487")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+
+[node name="ChunkLoadingHotspot-enterfinale" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.5, 0.5)
+script = ExtResource("2_1rtt0")
+hotspotName = "ChunkLoadingHotspot-enterfinale"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_finale.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterfinale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, 0.25)
+shape = SubResource("BoxShape3D_tprke")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-enterfinale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
+shape = SubResource("BoxShape3D_gshld")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="StickerPlacements" type="Node3D" parent="."]

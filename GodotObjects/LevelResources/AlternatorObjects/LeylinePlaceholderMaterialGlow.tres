@@ -11,6 +11,7 @@ fill_to = Vector2(0, 0.9188034)
 [resource]
 render_priority = 1
 transparency = 1
+no_depth_test = true
 albedo_texture = SubResource("GradientTexture2D_tof7f")
 emission_enabled = true
 stencil_mode = 3

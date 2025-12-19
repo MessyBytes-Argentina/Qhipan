@@ -8,6 +8,8 @@ signal input_mode_changed(isGamepad: bool)
 const materialsResourceGroup: String = "uid://b0jco1ngdo5fe"
 ## Threshold to consider the mouse movement into inputs.
 const MOUSEMOVEMENTTHRESHOLD: float = 15
+## Root nodes to ignore for root tagging.
+const IGNOREROOTNODES: PackedStringArray = ["EnvironmentObjects", "Player"]
 
 ## Is the player using a gamepad.
 var usingGamepad: bool = false
@@ -33,6 +35,16 @@ func _ready() -> void:
 	saveManager = SaveManager.new()
 	saveManager.name = "SaveManager"
 	add_child(saveManager)
+	tag_first_scene()
+
+## Tags first loaded scene with meta tag for scene roots.
+func tag_first_scene() -> void:
+	await get_tree().process_frame
+	for node in get_parent().get_children():
+		if node is Node3D:
+			for child in node.get_children():
+				if child is Node3D and child.name not in IGNOREROOTNODES:
+					child.set_meta("isRoot", true)
 
 ## Handles switching input modes from keyboard to gamepad.
 func _input(event: InputEvent) -> void:

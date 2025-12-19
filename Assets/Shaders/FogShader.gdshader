@@ -40,14 +40,14 @@ void fog() {
 	DENSITY = density * clamp(exp2(-height_falloff * (WORLD_POSITION.y - OBJECT_POSITION.y)), 0.0, 1.0) * max(noise_density_influence_min, noise_value);
 	DENSITY *= texture(light_mask, vec2(UVW.x, UVW.z)).r;
 	DENSITY *= player_sticker_radius > 0.0 ? float(distance(playerPosition, WORLD_POSITION) > player_sticker_radius) : 1.0;
-	
+
 	//Cylinder cutout
 	vec3 cylinderWorldPosition = WORLD_POSITION - cylinderPosition;
 	float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1 * cylinderRadiusModifier, cylinderRadius2 * cylinderRadiusModifier);
 	DENSITY *= float(sdfCylinder > 0.0 || (!cylinderCutout && player_sticker_radius == 0.0));
-	
+
 	DENSITY *= pow(clamp(-2.0 * SDF / min(min(SIZE.x, SIZE.y), SIZE.z), 0.0, 1.0), edge_fade);
-	
+
 	ALBEDO = albedo.rgb;
 	EMISSION = mix(center_color, edge_color, sdSphere(UVW * 2.0 - 1.0, center_edge));
 	EMISSION = mix(EMISSION, noise_color, noise_value);

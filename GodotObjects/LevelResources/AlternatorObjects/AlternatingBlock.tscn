@@ -65,6 +65,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_2hb3y")
 
 [node name="CubeCollider" type="StaticBody3D" parent="ObjectMesh"]
+unique_name_in_owner = true
 
 [node name="ObjectCollider" type="CollisionShape3D" parent="ObjectMesh/CubeCollider"]
 unique_name_in_owner = true

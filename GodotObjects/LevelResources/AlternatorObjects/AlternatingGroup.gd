@@ -8,7 +8,7 @@ var altChildren: Array = []
 func _ready() -> void:
 	var children: Array[Node] = recursive_get_children(self)
 	for child in children:
-		if child is AlternatingObject or child is MovingPlatform  or child is LeylinePath:
+		if child is AlternatingObject or child is MovingPlatform or child is LeylinePath:
 			altChildren.append(child)
 
 ## Returns an array with all the children nodes of this group
