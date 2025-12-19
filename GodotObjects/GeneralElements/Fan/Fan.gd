@@ -17,7 +17,7 @@ const STICKERFLAG: int = 2
 		set_area_size()
 
 ## Amount of force the player is pushed by
-const pushForce: float = 250.0
+const pushForce: float = 300.0
 ## Pushing area diameter
 const areaDiameter: float = 0.8
 ## Extra lenght of no gravity
@@ -92,8 +92,8 @@ func switch_fan(mode: bool = not isOn) -> void:
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
-	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce)
+	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:
-	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").stop_pushing(self)
+	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").stop_pushing(self, true)

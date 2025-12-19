@@ -342,6 +342,8 @@ func move_character(delta: float) -> void:
 			lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
 		else:
 			lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
+		if involuntaryPushModule.blockingMovement > 0 and not is_on_wall():
+			lastVoluntarySpeed = Vector3.ZERO
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	if movedAmount != 0:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)
