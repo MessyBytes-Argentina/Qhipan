@@ -193,7 +193,12 @@ sceneParent = NodePath("..")
 originalParent = "test"
 
 [node name="StickerLamp" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_ckktb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 1)
+sceneParent = NodePath("..")
+originalParent = "test"
+
+[node name="StickerLamp3" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_ckktb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 11)
 sceneParent = NodePath("..")
 originalParent = "test"
 
@@ -309,6 +314,9 @@ transform = Transform3D(1, -4.371139e-08, 4.3711392e-08, 4.371139e-08, -4.371139
 
 [node name="Placeholder Sticker Area" parent="." instance=ExtResource("36_tof7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 6.5)
+
+[node name="Placeholder Sticker Area4" parent="." instance=ExtResource("36_tof7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 10)
 
 [node name="Placeholder Sticker Area2" parent="." instance=ExtResource("36_tof7f")]
 transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -5.5, 1, 12)

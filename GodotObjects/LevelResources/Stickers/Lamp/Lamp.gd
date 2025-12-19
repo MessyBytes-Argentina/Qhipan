@@ -3,6 +3,8 @@ extends StickerBase
 ## Sticker that lights up darkness-blocked areas.
 class_name LampSticker
 
+signal light_updated()
+
 ## Range of the light while grabbed
 const LIGHTRANGEGRABED: float = 1.5
 ## Range of the light while placed
@@ -37,6 +39,8 @@ var lightTween: Tween
 var lastLightValue: float = 0.0
 ## Next light range.
 var nextLightValue: float = 0.0
+## Current light update count
+var lightUpdated: int = 0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,6 +51,7 @@ func _ready() -> void:
 		await get_tree().process_frame
 	playerDarknessManager = player.get_node("DarknessBlockerModule")
 	shapes.top_level = true
+	lightShape.shape = lightShape.shape.duplicate()
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -97,13 +102,21 @@ func animate_light_fade(newValue: float) -> void:
 	lightTween.parallel().tween_property(light, "omni_range", newValue, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	if newValue == LIGHTRANGEPLACED:
 		lightTween.parallel().tween_property(lightShape.shape, "radius", newValue, LIGHTAREAFADETIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		lightTween.parallel().tween_method(check_darkness_update, 0, DarknessArea.ONLIGHTUPDATETIMES, LIGHTAREAFADETIME)
 	else:
 		lightShape.shape.radius = 0.0001
 	lightTween.play()
 	lightTween.finished.connect(_on_light_fade_finish)
 
+## Checks to trigger darkness recalculation.
+func check_darkness_update(times: float):
+	if int(times) > lightUpdated:
+		lightUpdated = int(times)
+		light_updated.emit()
+
 ## Executed after light fade tween finishes.
 func _on_light_fade_finish() -> void:
+	lightUpdated = 0
 	lastLightValue = nextLightValue
 	if lastLightValue == 0.0: light.hide()
 
