@@ -334,11 +334,13 @@ rootNode = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, -0.25, -2)
 shape = SubResource("BoxShape3D_q12un")
 debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, -0.25, -2)
 shape = SubResource("BoxShape3D_pcewb")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
 
 [node name="EnvironmentLerper" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 11.5)
