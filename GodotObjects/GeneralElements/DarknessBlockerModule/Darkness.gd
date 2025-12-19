@@ -12,6 +12,8 @@ const OUTLINEBLOCKEROFFSET: float = 0.5
 const ONLIGHTUPDATETIMES: int = 5
 ## Darkness margin for releasing stickers.
 const MARGIN: float = 0.5
+## Darkness margin for detecting light.
+const DARKMARGIN: float = 0.25
 
 ## Reference to the collision shape of the fog
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -72,7 +74,7 @@ func update_collision_shape() -> void:
 	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - (Vector2(size.x, size.z) / 2.0).rotated(-rotation.y)
 	var lightDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var yPos: float = global_position.y - size.y / 2
+	var yPos: float = global_position.y - size.y / 2 + DARKMARGIN
 	for lightArea in lights: 
 		if lightArea.has_node("LightShape"): 
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
