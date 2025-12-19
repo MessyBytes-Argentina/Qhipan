@@ -677,8 +677,8 @@
   <object id="15" x="-720.75" y="-100.25" width="333" height="67">
    <text wrap="1">El unico camino correcto es este. Para resolverlo el player tiene que traer todos los ventiladores del otro camino por este mismo.</text>
   </object>
-  <object id="16" x="-805.25" y="-939.75" width="392" height="104">
-   <text wrap="1">Es muy posible que la verticalidad joda mucho visualmente en este puzzle. Creo que estaria bueno o hacer que aca lso ventiladores sean mas fuertes, o agregar mas caminos seprenteantes de ventiladores para cada piso de subida.</text>
+  <object id="16" x="-805.25" y="-939.75" width="278.667" height="104">
+   <text wrap="1">Es muy posible que la verticalidad joda mucho visualmente en este puzzle. Deberiamos usar chunk loaders.</text>
   </object>
   <object id="17" x="-1131.67" y="-879">
    <polyline points="0,0 -5,-29.6667 95,70.3333 59.3333,56.6667 78.3333,36.3333 93,68.3333"/>
