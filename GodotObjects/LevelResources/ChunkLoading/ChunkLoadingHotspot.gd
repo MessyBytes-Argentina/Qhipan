@@ -8,7 +8,7 @@ const VISUALSPHEREDATA: Dictionary[String, Variant] = {"color": Color.PURPLE * C
 ## Visual data for the colliders.
 const DEBUGCOLORS: Dictionary[String, Color] = {"LoadShape": Color.ORANGE * Color(Color.WHITE, 0.5), "UnloadShape": Color.CRIMSON * Color(Color.WHITE, 0.5)}
 ## Tiem to wait on previsualizing scene position.
-const PREVIEWTIME: float = 5
+const PREVIEWTIME: float = 20
 
 ## The name of the hotspot. This is used to identify where to spawn scenes.
 @export var hotspotName: String
@@ -19,19 +19,23 @@ const PREVIEWTIME: float = 5
 		if Engine.is_editor_hint() and is_node_ready(): loadedScene = null
 ## Buton to test for the current positioning of scenes.
 @export_tool_button("Test Position", "Debug") var testPosition: Callable = test_position 
+## Buton to test for the current positioning of scenes.
+@export_tool_button("Add Load Shape", "BoxShape3D") var addLoadShape: Callable = add_shape.bind("LoadShape") 
+## Buton to test for the current positioning of scenes.
+@export_tool_button("Add Unload Shape", "BoxMesh") var addUnloadShape: Callable = add_shape.bind("UnloadShape")
 ## Group to hide storage only variables because export storage doesn't seem to do the thing.
 @export_group("Root Reference")
 ## Reference to the scene root.
 @export var rootNode: Node
 
-## Reference to the Area3D used to load the new scene.
-var loadArea: Area3D
-## Reference to the Area3D used to unload the new scene.
-var unloadArea: Area3D
-## Reference to the CollisionShape3D used to load the new scene.
-var loadShape: CollisionShape3D
-## Reference to the CollisionShape3D used to unload the new scene.
-var unloadShape: CollisionShape3D
+## Reference to the Area3Ds used to load the new scene.
+var loadAreas: Array[Area3D]
+## Reference to the Area3Ds used to unload the new scene.
+var unloadAreas: Array[Area3D]
+## Reference to the CollisionShape3Ds used to load the new scene.
+var loadShapes: Array[CollisionShape3D] = []
+## Reference to the CollisionShape3Ds used to unload the new scene.
+var unloadShapes: Array[CollisionShape3D] = []
 ## Reference to the loaded scene.
 var loadedScene: Node = null
 ## Reference to the loaded scene's matching hotspot.
@@ -39,6 +43,18 @@ var loadedHotspot: ChunkLoadingHotspot
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
+	var children: Array[Node] = get_children()
+	children.map(func(a: Node): 
+		if a.has_meta("LoadShape"): loadShapes.append(a) 
+		elif a.has_meta("UnloadShape"): unloadShapes.append(a)
+		else:
+			if a.name == "LoadShape":
+				loadShapes.append(a)
+				a.set_meta("LoadShape", true)
+			elif a.name == "UnloadShape":
+				loadShapes.append(a)
+				a.set_meta("UnloadShape", true)
+		)
 	_reset_shapes()
 	if Engine.is_editor_hint():
 		_show_sphere()
@@ -49,16 +65,17 @@ func _ready() -> void:
 ## Resets debug shapes.
 func _reset_shapes() -> void:
 	add_to_group("ChunkLoadingHotspots", true)
-	for shape: String in ["LoadShape", "UnloadShape"]:
-		if not has_node(shape):
-			var currentShape: CollisionShape3D = CollisionShape3D.new()
-			set(shape.to_camel_case(), currentShape)
-			add_child(currentShape)
-			currentShape.name = shape
-			currentShape.debug_color = DEBUGCOLORS.get(shape)
-			if Engine.is_editor_hint(): currentShape.owner = get_tree().edited_scene_root
-		else:
-			set(shape.to_camel_case(), get_node(shape))
+	if len(loadShapes) == 0: add_shape("LoadShape")
+	if len(unloadShapes) == 0: add_shape("UnloadShape")
+
+func add_shape(shape: String) -> void:
+	var currentShape: CollisionShape3D = CollisionShape3D.new()
+	add_child(currentShape)
+	currentShape.set_meta(shape, true)
+	currentShape.name = shape
+	currentShape.debug_color = DEBUGCOLORS.get(shape)
+	if Engine.is_editor_hint(): currentShape.owner = get_tree().edited_scene_root
+	get(shape.to_camel_case()).append(currentShape)
 
 ## Shows debug sphere.
 func _show_sphere() -> void:
@@ -75,18 +92,25 @@ func _show_sphere() -> void:
 
 ## Setups areas to be used during execution.
 func _setup_areas() -> void:
-	for mode in ["load", "unload"]:
-		var area: Area3D = Area3D.new()
-		set(mode + "Area", area)
-		add_child(area)
-		get(mode + "Shape").reparent(area)
-		area.monitorable = false
-		area.monitoring = true
-		area.set_collision_mask_value(1, false)
-		area.set_collision_mask_value(2, true)
-		area.name = mode + "Area"
-	loadArea.body_entered.connect(_start_load.unbind(1))
-	unloadArea.body_entered.connect(_do_unload.unbind(1))
+	loadShapes.map(func(a: CollisionShape3D): _make_area(a, "load"))
+	unloadShapes.map(func(a: CollisionShape3D): _make_area(a, "unload"))
+
+## Makes detection areas.
+func _make_area(shape: CollisionShape3D, mode: String) -> void:
+	var area: Area3D = Area3D.new()
+	if mode == "load": 
+		loadAreas.append(area)
+		area.body_entered.connect(_start_load.unbind(1))
+	else: 
+		unloadAreas.append(area)
+		area.body_entered.connect(_do_unload.unbind(1))
+	area.name = "Area_" + shape.name
+	add_child(area)
+	shape.reparent(area)
+	area.monitorable = false
+	area.monitoring = true
+	area.set_collision_mask_value(1, false)
+	area.set_collision_mask_value(2, true)
 
 ## Loads new scene into preselected location.
 func _start_load() -> void:
@@ -99,6 +123,7 @@ func _start_load() -> void:
 		return
 	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
 	rootNode.get_parent().add_child(loadedScene)
+	loadedScene.set_meta("isRoot", true)
 	set_hotspot_position()
 	loadedHotspot.loadedHotspot = self
 	loadedHotspot.loadedScene = rootNode
@@ -107,8 +132,6 @@ func _start_load() -> void:
 ## Unloads scene.
 func _do_unload() -> void:
 	if not loadedScene: return
-	#var packedScene = PackedScene.new()
-	#packedScene.pack(loadedScene)
 	loadedScene.queue_free()
 	loadedScene = null
 	loadedHotspot = null

@@ -315,7 +315,8 @@ func cutout_cube_rotation_check(rotationCheck: float) -> void:
 
 ## Checks and handles the cutout cube snapping to the gridmap.
 func current_grid_check() -> void:
-	if not gridmap: return
+	while not gridmap:
+		gridmap = get_tree().get_first_node_in_group("Gridmap")
 	var currentGridPosition: Vector3 = get_grid_position()
 	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
 	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
@@ -341,6 +342,8 @@ func move_character(delta: float) -> void:
 			lastVoluntarySpeed = lastVoluntarySpeed.limit_length(maxSpeed)
 		else:
 			lastVoluntarySpeed = lastVoluntarySpeed.lerp(Vector3.ZERO, decceleration * delta)
+		if involuntaryPushModule.blockingMovement > 0 and not is_on_wall():
+			lastVoluntarySpeed = Vector3.ZERO
 	var movedAmount = (get_last_motion() * Vector3(1.0, 0.0, 1.0)).length()
 	if movedAmount != 0:
 		MusicManager.set_synchro_clip_volume("main", [1], 0.0, STEPSOUNDTWEENTIME)

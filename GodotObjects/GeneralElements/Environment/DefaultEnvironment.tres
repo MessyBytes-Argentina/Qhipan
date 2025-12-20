@@ -49,3 +49,4 @@ fog_sky_affect = 0.0
 fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+volumetric_fog_temporal_reprojection_amount = 0.95
