@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=60 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_sgigg"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="36_s3g0t"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="36_tof7f"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="37_gv342"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="38_gv342"]
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
@@ -139,6 +140,13 @@ mesh = SubResource("BoxMesh_0qu2a")
 randomRotation = Vector3(0, 1.9433019, 1.6151975)
 baseOffset = Vector2(0, 0)
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="Curve3D" id="Curve3D_0qu2a"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -393,3 +401,12 @@ script = ExtResource("36_s3g0t")
 multiMeshResources = Array[ExtResource("37_gv342")]([SubResource("Resource_sjsp2")])
 collisionLayer = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"
+
+[node name="WallGenerator" type="Path3D" parent="."]
+curve = SubResource("Curve3D_0qu2a")
+script = ExtResource("38_gv342")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WallGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 2)
+operation = 2

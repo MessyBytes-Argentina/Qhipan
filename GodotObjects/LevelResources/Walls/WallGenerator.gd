@@ -36,6 +36,8 @@ enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
 ## Flips the path in case the wall is drawn on the opposite side.
 @export_tool_button("Flip Path", "AnimationAutoFit") var flipPath: Callable = flip_path
+## Updates cut shapes.
+@export_tool_button("Update Cut Shapes", "ActionCut") var cutShapes: Callable = organize_cut_shapes
 
 ## Reference to the wall polygon.
 var polygon: CSGPolygon3D
@@ -97,6 +99,22 @@ func regenerate_wall_shape() -> void:
 			polygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
 			polygon.material = material.duplicate()
 			polygon.material.set_shader_parameter("goesDown", true)
+	organize_cut_shapes()
+
+## Moves cut shapes to polygon wall.
+func organize_cut_shapes() -> void:
+	for child in polygon.get_children(): child.queue_free()
+	for child in get_children():
+		if child in [polygon, shadowPolygon, downPolygon]: continue
+		if child is not CSGShape3D: continue
+		if Engine.is_editor_hint():
+			var duplicated: CSGShape3D = child.duplicate()
+			polygon.add_child(duplicated)
+			child.hide()
+			duplicated.show()
+		else:
+			child.reparent(polygon)
+			child.show()
 
 ## Creates the wall polygon
 func _create_polygon() -> CSGPolygon3D:
