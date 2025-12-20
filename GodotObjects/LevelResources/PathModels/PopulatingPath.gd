@@ -5,6 +5,8 @@ class_name PathPopulator
 
 ## How precisely to follow the path.
 const PRECISIONPOINT: float = 0.001
+## How long to show collider for
+const COLLIDERTIMER: float = 10
 
 ## List of meshes to use for populating the path.
 @export var multiMeshResources: Array[MultiMeshResource] = []
@@ -14,6 +16,12 @@ const PRECISIONPOINT: float = 0.001
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 0
 ## Collider size that will follow this path
 @export var colliderSize: Vector2 = Vector2.ONE
+## Collision snapping points in reference to the path.
+enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT}
+## Where to snap the collision path in reference to the path.
+@export var collisionSnapPointToPath: SnapPoints = SnapPoints.CENTER
+## Collider deviation from the path in local coordinates (rotates with the path).
+@export_custom(PROPERTY_HINT_RANGE, "-1000.0, 1000.0, 0.01") var collisionOffsetFromPath: Vector2 = Vector2.ZERO
 ## Show the polygon collider
 @export_tool_button("Show Collider", "GuiVisibilityXray") var showCollider: Callable = show_collider
 
@@ -29,8 +37,11 @@ func _update_multimesh():
 	if collisionLayer > 0:
 		_make_polygon()
 	for multiMeshResource in multiMeshResources:
+		if not multiMeshResource.mesh: return
 		var multimesh = MultiMeshInstance3D.new()
-		multimesh.multimesh = multiMeshResource.multiMesh.duplicate()
+		multimesh.multimesh = MultiMesh.new()
+		multimesh.multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.multimesh.mesh = multiMeshResource.mesh.duplicate()
 		add_child(multimesh)
 		if multiMeshResource.applyOnlyToNodes:
 			var count = curve.point_count
@@ -41,21 +52,41 @@ func _update_multimesh():
 					currentDistance = pathLength - PRECISIONPOINT
 					var lastTransform: Transform3D = _create_transform_distance(currentDistance, multiMeshResource.normalAlwaysPointsUp)
 					lastTransform.origin = curve.sample_baked(pathLength, true)
-					multimesh.multimesh.set_instance_transform(i, lastTransform)
+					multimesh.multimesh.set_instance_transform(i, multiMeshResource._get_mesh_offset(i, lastTransform))
 					continue
 				elif i > 0:
 					currentDistance += curve.get_point_position(i - 1).distance_to(curve.get_point_position(i))
-				multimesh.multimesh.set_instance_transform(i, _create_transform_distance(currentDistance, multiMeshResource.normalAlwaysPointsUp))
+				multimesh.multimesh.set_instance_transform(i, multiMeshResource._get_mesh_offset(i, _create_transform_distance(currentDistance, multiMeshResource.normalAlwaysPointsUp)))
 		else:
 			var count = floor(pathLength / multiMeshResource.distanceBetweenPieces) + 1.0
 			multimesh.multimesh.instance_count = count
 			for i in range(0, count):
 				var curveDistance = multiMeshResource.offsetStart + (multiMeshResource.offsetEnd if i == count - 1 and multiMeshResource.useOffsetEnd else 0.0) + multiMeshResource.distanceBetweenPieces * i
-				multimesh.multimesh.set_instance_transform(i, _create_transform_distance(curveDistance, multiMeshResource.normalAlwaysPointsUp))
+				multimesh.multimesh.set_instance_transform(i, multiMeshResource._get_mesh_offset(i, _create_transform_distance(curveDistance, multiMeshResource.normalAlwaysPointsUp)))
 
 ## Makes collision polygon
 func _make_polygon() -> CSGPolygon3D:
-	var profile: PackedVector2Array = [colliderSize * Vector2(-0.5, 0.0), colliderSize * Vector2(-0.5, 1.0), colliderSize * Vector2(0.5, 1.0), colliderSize * Vector2(0.5, 0.0)]
+	var collisionOffset: Vector2 = collisionOffsetFromPath
+	match collisionSnapPointToPath:
+		SnapPoints.CENTER:
+			collisionOffset += Vector2.ZERO
+		SnapPoints.TOP:
+			collisionOffset += Vector2(0.0, colliderSize.y / 2.0)
+		SnapPoints.TOP_RIGHT:
+			collisionOffset += Vector2(colliderSize.x / 2.0, colliderSize.y / 2.0)
+		SnapPoints.RIGHT:
+			collisionOffset += Vector2(colliderSize.x / 2.0, 0.0)
+		SnapPoints.BOTTOM_RIGHT:
+			collisionOffset += Vector2(colliderSize.x / 2.0, -colliderSize.y / 2.0)
+		SnapPoints.BOTTOM:
+			collisionOffset += Vector2(0.0, -colliderSize.y / 2.0)
+		SnapPoints.BOTTOM_LEFT:
+			collisionOffset += Vector2(-colliderSize.x / 2.0, -colliderSize.y / 2.0)
+		SnapPoints.LEFT:
+			collisionOffset += Vector2(-colliderSize.x / 2.0, 0.0)
+		SnapPoints.TOP_LEFT:
+			collisionOffset += Vector2(-colliderSize.x / 2.0, colliderSize.y / 2.0)
+	var profile: PackedVector2Array = [colliderSize * Vector2(-0.5, -0.5) + collisionOffset, colliderSize * Vector2(-0.5, 0.5) + collisionOffset, colliderSize * Vector2(0.5, 0.5) + collisionOffset, colliderSize * Vector2(0.5, -0.5) + collisionOffset]
 	var polygon: CSGPolygon3D = CSGPolygon3D.new()
 	add_child(polygon)
 	polygon.polygon = profile
@@ -83,10 +114,18 @@ func _create_transform_distance(curveDistance: float, normalUp: bool) -> Transfo
 ## Shows object cocllider.
 func show_collider() -> void:
 	if collisionLayer == 0: return
+	for child in get_children():
+		if child is CSGPolygon3D:
+			child.queue_free()
+			break
 	var polygon: CSGPolygon3D = _make_polygon()
+	polygon.layers = 1
+	polygon.material = ORMMaterial3D.new()
+	polygon.material.albedo_color = Color(Color.PURPLE, 0.5)
+	polygon.material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
 	polygon.owner = get_tree().edited_scene_root
-	await get_tree().create_timer(5).timeout
-	polygon.queue_free()
+	await get_tree().create_timer(COLLIDERTIMER).timeout
+	if polygon: polygon.queue_free()
 
 ## Reverts the path points.
 func flip_path() -> void:
