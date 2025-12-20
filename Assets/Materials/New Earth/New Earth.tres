@@ -1,28 +1,31 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c8vavedstuk0q"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://bqmrgnm5xpy4h"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_xttsk"]
-[ext_resource type="Texture2D" uid="uid://caqmksfnxthuh" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Texturas/Baldosas Interior_albedo.png" id="2_ur1so"]
-[ext_resource type="Texture2D" uid="uid://bwkntgtjrgxp1" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Texturas/Baldosas Interior_normal.png" id="4_k7pe1"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_upah0"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="6_qxw5f"]
+[ext_resource type="Texture2D" uid="uid://dex5ifjlfkdj4" path="res://Assets/Materials/New Earth/New Earth_albedo.png" id="1"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_m0vp2"]
+[ext_resource type="Texture2D" uid="uid://dawbxyjqknwkn" path="res://Assets/Materials/New Earth/New Earth_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_txnbg"]
+[ext_resource type="Texture2D" uid="uid://lxsn5ev3g72n" path="res://Assets/Materials/New Earth/New Earth_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_hf03i"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_xttsk")
+shader = ExtResource("1_m0vp2")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/light_gradient = ExtResource("6_qxw5f")
-shader_parameter/fresnel_gradient = ExtResource("5_upah0")
-shader_parameter/top_texture_scale = 2.5000000372530002
-shader_parameter/side_texture_scale = 2.5000000372530002
+shader_parameter/light_gradient = ExtResource("3_hf03i")
+shader_parameter/fresnel_gradient = ExtResource("2_txnbg")
+shader_parameter/top_texture_scale = 2.0000000298024
+shader_parameter/side_texture_scale = 2.0000000298024
 shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = ExtResource("2_ur1so")
-shader_parameter/side_texture_albedo = ExtResource("2_ur1so")
+shader_parameter/top_texture_albedo = ExtResource("1")
+shader_parameter/side_texture_albedo = ExtResource("1")
 shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = ExtResource("4_k7pe1")
-shader_parameter/side_texture_normal = ExtResource("4_k7pe1")
-shader_parameter/top_normal_scale = 5.78
-shader_parameter/side_normal_scale = 5.78
-shader_parameter/enable_ambient_occlusion = true
+shader_parameter/top_texture_normal = ExtResource("3")
+shader_parameter/side_texture_normal = ExtResource("3")
+shader_parameter/top_normal_scale = 0.68
+shader_parameter/side_normal_scale = 1.5000008312499986
+shader_parameter/top_texture_orm = ExtResource("2")
+shader_parameter/side_texture_orm = ExtResource("2")
+shader_parameter/enable_ambient_occlusion = false
 shader_parameter/top_ao_light_affect = 0.0
 shader_parameter/side_ao_light_affect = 0.0
 shader_parameter/top_roughness = 1.0

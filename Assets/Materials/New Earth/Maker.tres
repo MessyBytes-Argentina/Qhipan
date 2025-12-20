@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=6 format=3 uid="uid://2rbop3h3lhwk"]
+
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_1q2yu"]
+[ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/New Earth/New Earth.tres" id="1_n0ijp"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_tg2tj"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_n0ijp"]
+[ext_resource type="Material" path="res://Assets/Materials/New Earth/New EarthDELETE.tres" id="5_bonbo"]
+
+[resource]
+script = ExtResource("3_n0ijp")
+topSurfaceMaterial = ExtResource("5_bonbo")
+topSize = null
+sideSurfaceMaterial = ExtResource("5_bonbo")
+sideSize = null
+lightGradient = ExtResource("2_tg2tj")
+fresnelGradient = ExtResource("1_1q2yu")
+finalizeShaderMaterial = ExtResource("1_n0ijp")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"
