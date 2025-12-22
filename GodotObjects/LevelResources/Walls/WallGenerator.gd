@@ -86,7 +86,6 @@ func regenerate_wall_shape() -> void:
 		polygon.collision_mask = 0
 		polygon.layers = 2
 		shadowPolygon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
-	polygon.owner = get_tree().edited_scene_root
 	if not blocksLight:
 		polygon.layers = 2
 	polygon.material = material
@@ -104,7 +103,6 @@ func regenerate_wall_shape() -> void:
 			downPolygon.use_collision = false
 			downPolygon.material = downPolygon.material.duplicate()
 			downPolygon.material.set_shader_parameter("goesDown", true)
-			downPolygon.owner = get_tree().edited_scene_root
 			if not blocksLight:
 				downPolygon.layers = 2
 		WallModes.ONLY_DOWN:

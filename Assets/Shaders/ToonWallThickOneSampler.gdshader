@@ -9,6 +9,8 @@ uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01) = 0.25;
 // Base
 uniform bool goesDown = false;
 uniform vec4 albedo : source_color = vec4(1.0);
+uniform vec3 fade_color_up : source_color = vec3(0.0);
+uniform vec3 fade_color_down : source_color = vec3(0.0);
 uniform sampler2D vertical_fade;
 uniform sampler2D screen_vertical_fade;
 uniform sampler2D mask_gradient;
@@ -162,6 +164,7 @@ void fragment() {
 	bool doCutout = !rotating && auxMode;
 	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
+	ALBEDO = mix(ALBEDO, goesDown ? fade_color_down : fade_color_up, 1.0 - smoothstep(0.0, 1.0, top_obfuscation.r * screen_obfuscation.r * selective_screen_obfuscation * smoothstep(0.0, 0.5, current_selective_mask)));
 
 	// ORM Sampler
 	vec4 base_ORM = triplanar_texture(texture_orm, power_normal, triplanar_pos) * ALPHA * current_selective_mask;
