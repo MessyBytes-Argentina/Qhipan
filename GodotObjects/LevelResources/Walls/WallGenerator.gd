@@ -32,6 +32,8 @@ enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 		material = value
 		if Engine.is_editor_hint() and is_node_ready():
 			regenerate_wall_shape()
+## Does this model block phisical light? For effect light use colliders.
+@export var blocksLight: bool = true
 ## Wall collision layer.
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
 ## Flips the path in case the wall is drawn on the opposite side.
@@ -83,6 +85,8 @@ func regenerate_wall_shape() -> void:
 		polygon.collision_mask = 0
 		polygon.layers = 2
 		shadowPolygon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	if not blocksLight:
+		polygon.layers = 2
 	polygon.material = material
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
@@ -95,6 +99,8 @@ func regenerate_wall_shape() -> void:
 			downPolygon.use_collision = false
 			downPolygon.material = downPolygon.material.duplicate()
 			downPolygon.material.set_shader_parameter("goesDown", true)
+			if not blocksLight:
+				downPolygon.layers = 2
 		WallModes.ONLY_DOWN:
 			polygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
 			polygon.material = material.duplicate()

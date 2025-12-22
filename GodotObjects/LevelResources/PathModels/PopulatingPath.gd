@@ -12,6 +12,8 @@ const COLLIDERTIMER: float = 10
 @export var multiMeshResources: Array[MultiMeshResource] = []
 ## Updates the path's content.
 @export_tool_button("Regenerate", "CSGPolygon3D") var execute: Callable = _update_multimesh
+## Separator for collision parameters.
+@export_category("Collision Parameters")
 ## Collision layer for a provided collider
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 0
 ## Collider size that will follow this path
@@ -42,6 +44,8 @@ func _update_multimesh():
 		multimesh.multimesh = MultiMesh.new()
 		multimesh.multimesh.transform_format = MultiMesh.TRANSFORM_3D
 		multimesh.multimesh.mesh = multiMeshResource.mesh.duplicate()
+		if not multiMeshResource.blocksLight:
+			multimesh.layers = 2
 		add_child(multimesh)
 		if multiMeshResource.applyOnlyToNodes:
 			var count = curve.point_count
