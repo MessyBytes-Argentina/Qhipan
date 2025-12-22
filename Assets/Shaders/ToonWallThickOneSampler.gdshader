@@ -63,6 +63,10 @@ uniform bool enable_anisotropy = false;
 uniform sampler2D texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 
+// Unique values
+uniform float height = 0.0;
+
+// Camera values
 uniform vec3 cameraMiddlePoint;
 uniform float cameraMiddleRotation;
 uniform float squareSize;
@@ -74,6 +78,7 @@ varying vec3 world_normal;
 varying vec3 view_normal;
 varying vec3 worldVector;
 varying float shortestDistance;
+varying vec3 position;
 varying vec3 triplanar_pos;
 varying vec3 power_normal;
 varying vec3 binormal;
@@ -84,7 +89,7 @@ float fresnel(float amount, vec3 normal, vec3 view) {
 
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
-	binormal = BINORMAL * (goesDown ? -1.0 : 1.0);
+	binormal = BINORMAL * (goesDown && height ==0.0 ? -1.0 : 1.0);
 	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
 	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
@@ -106,7 +111,7 @@ void vertex() {
 	world_normal = (INV_VIEW_MATRIX * vec4(temp_normal, 0.0)).xyz;
 	view_normal = (VIEW_MATRIX * vec4(world_normal, 0.0)).xyz;
 	worldVector = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-
+	position = VERTEX;
 	power_normal = pow(abs(normal), vec3(blend_sharpness));
 	triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	power_normal /= dot(power_normal, vec3(1.0));
@@ -116,7 +121,6 @@ void vertex() {
 vec4 triplanar_texture(sampler2D sampler, vec3 p_weights, vec3 p_triplanar_pos) {
 	vec4 samp = vec4(0.0);
 	samp += texture(sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / texture_scale) * p_weights.z;
-	samp += texture(sampler, p_triplanar_pos.xz / texture_scale) * p_weights.y;
 	samp += texture(sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / texture_scale) * p_weights.x;
 	return samp;
 }
@@ -131,8 +135,15 @@ void fragment() {
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
 	vec2 base_uv = UV;
-	base_uv.y = 1.0 - base_uv.y;
-	base_uv.y = fract(base_uv.y * 8.0);
+	if (height == 0.0) {
+		base_uv.y = 1.0 - base_uv.y;
+		base_uv.y = fract(base_uv.y * 8.0);
+	} else {
+		base_uv.y = position.y / height;
+		if (!goesDown) {
+			base_uv.y = 1.0 - base_uv.y;
+		}
+	}
 	vec2 screen_uv = SCREEN_UV;
 	screen_uv.y = (1.0 - screen_uv.y) * float(goesDown) + screen_uv.y * float(!goesDown);
 	vec3 top_obfuscation = texture(vertical_fade, vec2(base_uv.y)).rgb;
@@ -145,6 +156,7 @@ void fragment() {
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
 	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
+	ALPHA = step(0.01, ALPHA);
 	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
 	// Distance Fade: Pixel Alpha
 	bool doCutout = !rotating && auxMode;
