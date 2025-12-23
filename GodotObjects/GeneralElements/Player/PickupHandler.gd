@@ -142,7 +142,7 @@ func sort_close_stickers() -> void:
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
 		var raycast = PhysicsRayQueryParameters3D.create(global_position, a.global_position)
-		raycast.collision_mask = 4096
+		raycast.collision_mask = 4361
 		return not a.inDarkness and not spaceState.intersect_ray(raycast)
 	)
 	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 
