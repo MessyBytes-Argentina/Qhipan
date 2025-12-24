@@ -4,8 +4,8 @@ class_name MultiMeshResource
 
 ## Mesh to instantiate along path.
 @export var mesh: Mesh
-## Does this model block phisical light? For effect light use colliders.
-@export var blocksLight: bool = true
+## Does this model block physical light? For effect light use colliders.
+@export var blocksLight: bool = false
 ## Appleis mesh only to vertices in the path.
 @export var applyOnlyToNodes: bool = false
 ## Distance between instances of this mesh.

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_prepass_alpha, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
 // Base
 uniform bool isBillboard = false;
@@ -78,7 +78,7 @@ void vertex() {
 				COLOR.rgb * (1.0 / 12.92),
 				lessThan(COLOR.rgb, vec3(0.04045)));
 	}
-	
+
 	if (isBillboard) {
 	// Billboard Mode: Enabled
 		MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
@@ -88,7 +88,7 @@ void vertex() {
 				MODEL_MATRIX[3]);
 		MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
 	}
-	
+
 	VERTEX.x += sin(NODE_POSITION_WORLD.x + TIME * swaySpeed.x + UV.y) * (1.0 - UV.y) * swayAmount.x;
     VERTEX.y += cos(NODE_POSITION_WORLD.y + TIME * swaySpeed.y + UV.y) * (1.0 - UV.y) * swayAmount.y;
     VERTEX.z += cos(NODE_POSITION_WORLD.z + TIME * swaySpeed.y + UV.y) * (1.0 - UV.y) * swayAmount.z;
