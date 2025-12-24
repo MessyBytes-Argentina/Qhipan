@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=61 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_sgigg"]
@@ -73,17 +73,6 @@ name = "Papa"
 image = ExtResource("23_k0mlu")
 backImage = ExtResource("23_k0mlu")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
-
-[sub_resource type="Gradient" id="Gradient_tof7f"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0.39215687, 0, 1, 0, 1, 0, 1, 0, 0.39215687, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gv342"]
-gradient = SubResource("Gradient_tof7f")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q12un"]
 size = Vector3(9.5, 2.5, 8)
@@ -344,7 +333,8 @@ sceneParent = NodePath("..")
 
 [node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("34_3q00n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 5)
-texture = SubResource("GradientTexture2D_gv342")
+color = Color(0, 1, 0, 1)
+texture = ExtResource("23_k0mlu")
 pedestalName = "Papa"
 
 [node name="Placeholder Sticker Area3" parent="." instance=ExtResource("36_tof7f")]

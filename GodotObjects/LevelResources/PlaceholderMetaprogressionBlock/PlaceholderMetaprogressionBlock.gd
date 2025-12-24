@@ -5,6 +5,8 @@ extends StaticBody3D
 const PARTICLES: int = 6
 ## Standard particle duration
 const PARTICLESLIFE: float = 2.0
+## Time to disappear
+const ANIMATIONTIME: float = 1.0
 
 ## Placeholderr color for the block.
 @export var color: Color = Color.WHITE:
@@ -50,4 +52,11 @@ func update_texture() -> void:
 ## Called when pedestal is activated.
 func pedestal_activated(activatedPedestal: String) -> void:
 	if activatedPedestal == pedestalName:
+		gpuParticles3d.emitting = false
+		mesh.mesh = mesh.mesh.duplicate()
+		var tween: Tween = create_tween()
+		tween.tween_property(mesh.mesh, "size", Vector3(1.0, 0.0, 1.0), ANIMATIONTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		tween.parallel().tween_property(mesh, "position", Vector3(0.0, 0.0, 0.0), ANIMATIONTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		tween.play()
+		await tween.finished
 		queue_free()
