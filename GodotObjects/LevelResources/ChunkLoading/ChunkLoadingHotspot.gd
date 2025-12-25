@@ -75,7 +75,7 @@ func add_shape(shape: String) -> void:
 	currentShape.name = shape
 	currentShape.debug_color = DEBUGCOLORS.get(shape)
 	if Engine.is_editor_hint(): currentShape.owner = get_tree().edited_scene_root
-	get(shape.to_camel_case()).append(currentShape)
+	get(shape.to_camel_case() + "s").append(currentShape)
 
 ## Shows debug sphere.
 func _show_sphere() -> void:

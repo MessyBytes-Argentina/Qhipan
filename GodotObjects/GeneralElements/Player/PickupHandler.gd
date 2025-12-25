@@ -9,8 +9,12 @@ const AREAHIGHLIGHTOFFSET: float = 0.01
 const STICKERHIGHLIGHTBOBDISTANCE: float = 0.1
 ## Amount of time the bobbing animation takes.
 const STICKERHIGHLIGHTBOBTIME: float = 0.5
-## Maximum surface distance
+## Maximum surface distance.
 const MAXSURFACEDISTANCE: float = 2.25
+## Collision layers to block raycast.
+const RAYCOLLISIONLAYERS: Array[int] = [1, 4, 9, 13]
+## Sticker area radius.
+const STICKERRADIUS: float = 0.132
 
 ## Pick up sound player reference
 @onready var pickupSound: RandomPitchPlayer = $Pickup
@@ -57,6 +61,8 @@ var zoomedOut: bool = false
 var stickerHighlightTween: Tween
 ## Collection of areas that stop the player from dropping or grabbing stickers
 var antiDropAreaCollection: Array[AntiDropArea] = []
+## Layers turned into usable mask
+var layerMask: int
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,6 +73,7 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	bob_sticker_hightlight()
+	layerMask = RAYCOLLISIONLAYERS.reduce(func(accum: int, a: int = 0): return accum + pow(2, a - 1))
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
@@ -141,8 +148,8 @@ func sort_close_stickers() -> void:
 	currentlyAvailableStickers = closeStickers.duplicate()
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
-		var raycast = PhysicsRayQueryParameters3D.create(global_position, a.global_position)
-		raycast.collision_mask = 4096
+		var raycast = PhysicsRayQueryParameters3D.create(global_position, global_position.direction_to(a.global_position) * (global_position.distance_to(a.global_position) - STICKERRADIUS) + global_position)
+		raycast.collision_mask = layerMask
 		return not a.inDarkness and not spaceState.intersect_ray(raycast)
 	)
 	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 

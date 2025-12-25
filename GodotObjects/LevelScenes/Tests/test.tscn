@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=68 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_sgigg"]
@@ -37,6 +37,11 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="36_s3g0t"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="36_tof7f"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="37_gv342"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="38_gv342"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="39_0qu2a"]
+[ext_resource type="Shader" uid="uid://lradknr5rryg" path="res://Assets/Shaders/ToonGrassShader.gdshader" id="40_0qu2a"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="41_sjsp2"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="42_47lso"]
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
@@ -71,17 +76,6 @@ name = "Papa"
 image = ExtResource("23_k0mlu")
 backImage = ExtResource("23_k0mlu")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
-
-[sub_resource type="Gradient" id="Gradient_tof7f"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0.39215687, 0, 1, 0, 1, 0, 1, 0, 0.39215687, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gv342"]
-gradient = SubResource("Gradient_tof7f")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q12un"]
 size = Vector3(9.5, 2.5, 8)
@@ -139,6 +133,63 @@ mesh = SubResource("BoxMesh_0qu2a")
 randomRotation = Vector3(0, 1.9433019, 1.6151975)
 baseOffset = Vector2(0, 0)
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="Curve3D" id="Curve3D_0qu2a"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0qu2a"]
+_data = [Vector2(0, 0), 0.0, 0.38039216, 0, 0, Vector2(0.625, 0.27234244), 0.52522683, 0.6685481, 0, 1, Vector2(1, 0.523048), 0.6685481, 7.2468734, 1, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_1ejws"]
+_data = [Vector2(0.5637255, 0), 0.0, 0.0, 0, 0, Vector2(0.60539216, 0.37017876), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="QuadMesh" id="QuadMesh_04thu"]
+size = Vector2(0.5, 0.5)
+center_offset = Vector3(0, 0.25, 0)
+
+[sub_resource type="Gradient" id="Gradient_450tj"]
+offsets = PackedFloat32Array(0.20903955, 0.59322035, 0.6242938)
+colors = PackedColorArray(1.8049032e-07, 0.4538483, 5.7756904e-07, 1, 0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m1qyg"]
+gradient = SubResource("Gradient_450tj")
+fill = 1
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjsp2"]
+render_priority = 0
+shader = ExtResource("40_0qu2a")
+shader_parameter/isBillboard = true
+shader_parameter/swaySpeed = Vector2(0.8, 0.7)
+shader_parameter/swayAmount = Vector2(0.2, 0.1)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("42_47lso")
+shader_parameter/fresnel_gradient = ExtResource("41_sjsp2")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_m1qyg")
+shader_parameter/enable_normal = false
+shader_parameter/normal_scale = 1.0
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
 
 [node name="test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -236,7 +287,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 1,
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 1, 8)
 
 [node name="AntiStickerArea" parent="." instance=ExtResource("18_7sem2")]
-transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 1, 1.51, 11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.01, 11.5)
 
 [node name="Plat2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 0)
@@ -327,7 +378,8 @@ sceneParent = NodePath("..")
 
 [node name="PlaceholderMetaprogressionBlock" parent="." instance=ExtResource("34_3q00n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0.5, 5)
-texture = SubResource("GradientTexture2D_gv342")
+color = Color(0, 1, 0, 1)
+texture = ExtResource("23_k0mlu")
 pedestalName = "Papa"
 
 [node name="Placeholder Sticker Area3" parent="." instance=ExtResource("36_tof7f")]
@@ -393,3 +445,21 @@ script = ExtResource("36_s3g0t")
 multiMeshResources = Array[ExtResource("37_gv342")]([SubResource("Resource_sjsp2")])
 collisionLayer = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"
+
+[node name="WallGenerator" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+curve = SubResource("Curve3D_0qu2a")
+script = ExtResource("38_gv342")
+wallMode = 2
+material = ExtResource("39_0qu2a")
+customProfileShape = SubResource("Curve_0qu2a")
+customProfileShapeDown = SubResource("Curve_1ejws")
+customWallWidth = 2.0
+customDownWallWidth = 2.0
+resolution = 3.0
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5.5)
+mesh = SubResource("QuadMesh_04thu")
+surface_material_override/0 = SubResource("ShaderMaterial_sjsp2")

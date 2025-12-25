@@ -15,27 +15,34 @@ const PATHSIMPLIFYANGLE: float = 15
 enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 
 ## How tall is the wall.
-@export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0:
-	set(value):
-		wallHeight = value
-		if Engine.is_editor_hint() and is_node_ready():
-			regenerate_wall_shape()
+@export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0
 ## Create a second wall going down for when looking the other way around.
-@export var wallMode: WallModes = WallModes.ONLY_UP:
-	set(value):
-		wallMode = value
-		if Engine.is_editor_hint() and is_node_ready():
-			regenerate_wall_shape()
+@export var wallMode: WallModes = WallModes.ONLY_UP
 ## Wall material.
-@export var material: Material:
-	set(value):
-		material = value
-		if Engine.is_editor_hint() and is_node_ready():
-			regenerate_wall_shape()
+@export var material: Material
+## Custom shape group.
+@export_group("Custom Shape Parameters")
+## Custom wall shape.
+@export var customProfileShape: Curve
+## Custom wall mode
+@export var customProfileShapeDown: Curve
+## Custom wall width.
+@export_range(0.1, 20, 0.1) var customWallWidth: float = 1.0
+## Custom wall width.
+@export_range(0.1, 20, 0.1) var customDownWallWidth: float = 1.0
+## Wall resolution.
+@export_range(0, 5, 1) var resolution: float = 0
+## Collider parameters
+@export_category("Collider Parameters")
+## Does this model block phisical light? For effect light use colliders.
+@export var blocksLight: bool = true
 ## Wall collision layer.
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
+@export_tool_button("Regenerate Wall", "ArrayMesh") var regenerateWall: Callable = regenerate_wall_shape
 ## Flips the path in case the wall is drawn on the opposite side.
 @export_tool_button("Flip Path", "AnimationAutoFit") var flipPath: Callable = flip_path
+## Updates cut shapes.
+@export_tool_button("Update Cut Shapes", "ActionCut") var cutShapes: Callable = organize_cut_shapes
 
 ## Reference to the wall polygon.
 var polygon: CSGPolygon3D
@@ -47,8 +54,6 @@ var shadowPolygon: CSGPolygon3D
 ## Executed when node first enters the scene.
 func _ready() -> void:
 	regenerate_wall_shape()
-	if Engine.is_editor_hint():
-		curve_changed.connect(regenerate_wall_shape)
 
 ## Reverts the path points.
 func flip_path() -> void:
@@ -71,7 +76,7 @@ func flip_path() -> void:
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
 	if downPolygon: downPolygon.queue_free()
-	var wallShape: PackedVector2Array = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, wallHeight), Vector2(WALLWIDTH, wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
+	var wallShape: PackedVector2Array = _create_wall_shape(false, false)
 	if not polygon:
 		polygon = _create_polygon()
 		shadowPolygon = polygon.duplicate()
@@ -81,22 +86,45 @@ func regenerate_wall_shape() -> void:
 		polygon.collision_mask = 0
 		polygon.layers = 2
 		shadowPolygon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	if not blocksLight:
+		polygon.layers = 2
 	polygon.material = material
+	if customProfileShape and material is ShaderMaterial: 
+		polygon.material = material.duplicate()
+		polygon.material.set_shader_parameter("height", wallHeight)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
-	shadowPolygon.polygon = [Vector2(0.0, -SHADOWWALLWIDTH), Vector2(0.0, wallHeight), Vector2(SHADOWWALLWIDTH, wallHeight), Vector2(SHADOWWALLWIDTH, -SHADOWWALLWIDTH)]
+	shadowPolygon.polygon = _create_wall_shape(true, false)
 	match wallMode:
 		WallModes.BOTH_WAYS:
 			downPolygon = polygon.duplicate()
 			add_child(downPolygon)
-			downPolygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
+			downPolygon.polygon = _create_wall_shape(false, true)
 			downPolygon.use_collision = false
 			downPolygon.material = downPolygon.material.duplicate()
 			downPolygon.material.set_shader_parameter("goesDown", true)
+			if not blocksLight:
+				downPolygon.layers = 2
 		WallModes.ONLY_DOWN:
-			polygon.polygon = [Vector2(0.0, -WALLWIDTH), Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, -WALLWIDTH)]
+			polygon.polygon = _create_wall_shape(false, true)
 			polygon.material = material.duplicate()
 			polygon.material.set_shader_parameter("goesDown", true)
+	organize_cut_shapes()
+
+## Moves cut shapes to polygon wall.
+func organize_cut_shapes() -> void:
+	for child in polygon.get_children(): child.queue_free()
+	for child in get_children():
+		if child in [polygon, shadowPolygon, downPolygon]: continue
+		if child is not CSGShape3D: continue
+		if Engine.is_editor_hint():
+			var duplicated: CSGShape3D = child.duplicate()
+			polygon.add_child(duplicated)
+			child.hide()
+			duplicated.show()
+		else:
+			child.reparent(polygon)
+			child.show()
 
 ## Creates the wall polygon
 func _create_polygon() -> CSGPolygon3D:
@@ -109,3 +137,45 @@ func _create_polygon() -> CSGPolygon3D:
 	newPolygon.path_local = true
 	newPolygon.calculate_tangents = true
 	return newPolygon
+
+## Create wall shape
+func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector2Array:
+	if not customProfileShape or (isDownWall and not customProfileShapeDown):
+		if not isShadowPolygon: 
+			if isDownWall: return [Vector2.ZERO, Vector2(0.0, -wallHeight), Vector2(WALLWIDTH, -wallHeight), Vector2(WALLWIDTH, 0.0)]
+			else: return [Vector2.ZERO, Vector2(0.0, wallHeight), Vector2(WALLWIDTH, wallHeight), Vector2(WALLWIDTH, 0.0)]
+		else: return [Vector2.ZERO, Vector2(0.0, wallHeight), Vector2(SHADOWWALLWIDTH, wallHeight), Vector2(SHADOWWALLWIDTH, 0.0)]
+	else:
+		var shape = customProfileShape if not isDownWall else customProfileShapeDown
+		var sizeMultiplier: Vector2 = Vector2(customWallWidth if not isDownWall else customDownWallWidth, wallHeight)
+		var res: PackedVector2Array = [Vector2.ZERO]
+		for i in shape.point_count:
+			if i == 0:
+				if shape.get_point_position(i) != res[0]:
+					res.append(shape.get_point_position(i) * sizeMultiplier)
+				continue
+			if resolution > 0 and (shape.get_point_right_mode(i - 1) == Curve.TANGENT_FREE or shape.get_point_left_tangent(i) == Curve.TANGENT_FREE):
+				var start: float = shape.get_point_position(i - 1).x
+				var segment: float = (shape.get_point_position(i).x - start) / resolution
+				for j in range(1, resolution):
+					var currentX: float = start + segment * j
+					res.append(Vector2(currentX, shape.sample_baked(currentX)) * sizeMultiplier)
+				res.append(shape.get_point_position(i) * sizeMultiplier)
+			else:
+				res.append(shape.get_point_position(i) * sizeMultiplier)
+		if not isDownWall:
+			if res[len(res) - 1] != sizeMultiplier: res.append(sizeMultiplier)
+			res.append(sizeMultiplier * Vector2.RIGHT)
+			for i in len(res):
+				res[i].x -= customWallWidth
+		else:
+			for i in len(res): 
+				res[i].x *= -1
+				if wallMode == WallModes.BOTH_WAYS:
+					res[i].x += customDownWallWidth - customWallWidth
+				else:
+					res[i].x += customDownWallWidth
+				res[i].y -= wallHeight
+			downPolygon.flip_faces = true
+			res[0] = Vector2(res[1].x, 0.0)
+		return res
