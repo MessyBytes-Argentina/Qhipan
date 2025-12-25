@@ -1,27 +1,28 @@
-[gd_scene load_steps=74 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=87 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
-[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="2_j7y3f"]
-[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="3_2ttod"]
+[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="5_yw3fi"]
-[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/wood_fence.tscn" id="6_fmo6p"]
-[ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/stone_fence.tscn" id="7_8vtx8"]
-[ext_resource type="PackedScene" uid="uid://coi3r40vtute" path="res://GodotObjects/LevelResources/PathModels/Presets/big_rocks.tscn" id="8_fd1tw"]
+[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="7_3cv2g"]
 [ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="8_tdxur"]
+[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/ToonGradients/ScreenMaskGradient.tres" id="8_u6mfu"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="9_7et3a"]
-[ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/bridge.tscn" id="9_wrucn"]
+[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/ToonGradients/ScreenVerticalFade.tres" id="9_wv30b"]
 [ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="10_b33up"]
-[ext_resource type="PackedScene" uid="uid://ckaxdwpab2b6f" path="res://GodotObjects/LevelResources/PathModels/Presets/bushes.tscn" id="10_c4td8"]
+[ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="10_ifqh1"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="11_8xqb0"]
-[ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/rope_rail.tscn" id="11_f2hbe"]
+[ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_albedo.png" id="11_vfhvc"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="11_xnpb1"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="12_88a7k"]
+[ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_normal.png" id="12_erkkb"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://Assets/Models/Doors/Chackana Door/Chackana Door.tscn" id="12_i6t01"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="12_vuau8"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="13_4gqna"]
 [ext_resource type="Texture2D" uid="uid://bwe6vkm3gep6u" path="res://Assets/Materials/Meta Progression Blocks/Planta/Planta Tile.png" id="13_6xgfa"]
+[ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_orm.png" id="13_hkor5"]
 [ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="14_3x3m0"]
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="14_e3ug4"]
+[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/ToonGradients/VerticalFade.tres" id="14_xtso4"]
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="15_7plp1"]
 [ext_resource type="Texture2D" uid="uid://d1tx1ykhpk5fp" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_albedo.png" id="15_e3ug4"]
 [ext_resource type="Texture2D" uid="uid://b7oav4ywpqpg0" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_normal.png" id="16_bl5bk"]
@@ -41,7 +42,15 @@
 [ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="25_d47uu"]
 [ext_resource type="Texture2D" uid="uid://c683si2xxi08y" path="res://Assets/Textures/Skybox/Skybox-Exterior Woods.png" id="26_ks1a4"]
 [ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="27_i6t01"]
-[ext_resource type="Material" uid="uid://etwcqmb62vpm" path="res://Assets/Materials/Fringes/Grass Fringe.tres" id="42_7u3pm"]
+[ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe_face_y.tscn" id="34_4gqna"]
+[ext_resource type="PackedScene" uid="uid://cdb24nrpobwah" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe_face_x.tscn" id="35_e3ug4"]
+[ext_resource type="PackedScene" uid="uid://bnu25kbsqkfdo" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe_face_x.tscn" id="36_bl5bk"]
+[ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe_face_y.tscn" id="37_cc28h"]
+[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="47_x2mod"]
+[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="48_8kh8k"]
+[ext_resource type="Texture2D" uid="uid://dk427p3nqt2pp" path="res://Assets/Materials/Fringes/Sand Fringe_albedo.png" id="49_uhkat"]
+[ext_resource type="Texture2D" uid="uid://b41hyahiq3302" path="res://Assets/Materials/Fringes/Sand Fringe_normal.png" id="50_dew16"]
+[ext_resource type="Texture2D" uid="uid://cnd2kkl22pr1j" path="res://Assets/Materials/Fringes/Sand Fringe_orm.png" id="51_ysvin"]
 
 [sub_resource type="Curve3D" id="Curve3D_3x3m0"]
 _data = {
@@ -49,6 +58,50 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8wva"]
+render_priority = 0
+shader = ExtResource("4_0ntye")
+shader_parameter/distance_fade_min = 0.0
+shader_parameter/distance_fade_max = 511.8999885580112
+shader_parameter/goesDown = false
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/fade_color_up = Color(1.022, 0.8798364, 0.5710594, 1)
+shader_parameter/fade_color_down = Color(0, 0, 0, 1)
+shader_parameter/vertical_fade = ExtResource("14_xtso4")
+shader_parameter/screen_vertical_fade = ExtResource("9_wv30b")
+shader_parameter/mask_gradient = ExtResource("7_3cv2g")
+shader_parameter/screen_mask_gradient_fade = ExtResource("8_u6mfu")
+shader_parameter/selective_obfuscate_mask = ExtResource("10_ifqh1")
+shader_parameter/blur_range = 0.17999999597664
+shader_parameter/light_gradient = ExtResource("13_4gqna")
+shader_parameter/fresnel_gradient = ExtResource("12_88a7k")
+shader_parameter/texture_scale = 2.0000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("11_vfhvc")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("12_erkkb")
+shader_parameter/normal_scale = 2.570000882075
+shader_parameter/texture_orm = ExtResource("13_hkor5")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/height = 0.0
+shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
+shader_parameter/cameraMiddleRotation = 0.0
+shader_parameter/squareSize = 0.0
+shader_parameter/auxMode = false
+shader_parameter/rotating = false
 
 [sub_resource type="Curve3D" id="Curve3D_e0u7l"]
 _data = {
@@ -446,39 +499,94 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_35vhv")
 
-[sub_resource type="Curve3D" id="Curve3D_df2nb"]
+[sub_resource type="Curve3D" id="Curve3D_8t86a"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_tkid2"]
-material = ExtResource("42_7u3pm")
-size = Vector2(2, 2)
-orientation = 1
-
-[sub_resource type="Resource" id="Resource_0ntye"]
-script = ExtResource("3_2ttod")
-mesh = SubResource("QuadMesh_tkid2")
-distanceBetweenPieces = 0.4
-randomOffset = Vector3(0.15, 0, 0)
-randomRotation = Vector3(0, 0.43633232, 0)
-baseOffset = Vector2(0, 0)
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="Curve3D" id="Curve3D_fmo6p"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5.8, 0, 0, 0, 0, 0, 0, 0, 0, 5.8, 0, 2, 0, 0, 0, 0, 0, 0, 7, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 2
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_8vtx8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5.9, 0, 0, 0, 0, 0, 0, 0, 0, 5.8, 0, -2),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_4k2l6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, -2, -7),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hm4er"]
+render_priority = 0
+shader = ExtResource("11_8xqb0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("13_4gqna")
+shader_parameter/fresnel_gradient = ExtResource("12_88a7k")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("49_uhkat")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("50_dew16")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("51_ysvin")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_4qh0s"]
+material = SubResource("ShaderMaterial_hm4er")
+center_offset = Vector3(0.15, 0, -0.01)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_x22vt"]
+script = ExtResource("48_8kh8k")
+mesh = SubResource("QuadMesh_4qh0s")
+offsetStart = 0.5
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [node name="Art Level Scene 1" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_i253s")]
 data = {
-"cells": PackedInt32Array(-131073, 0, 18, -131073, 65535, 18, -196608, 65535, 18, -196608, 0, 18, -131073, 65534, 50, -196608, 65534, 50, -196608, 65533, 50, -131073, 65533, 50, -131073, 1, 50, -196608, 1, 50, -131073, 2, 50, -196608, 2, 50, -196608, 3, 50, -131073, 3, 50, -131074, 2, 50, -131074, 3, 50, -131074, 65533, 50, -196607, 3, 50, -196607, 2, 50, -196607, 65533, 50, -196607, 0, 18, -196607, 65535, 18, -196606, 0, 18, -196606, 65535, 18, -196607, 1, 50, -196606, 1, 50, -196605, 1, 50, -196606, 2, 50, -196605, 2, 50, -131073, 4, 50, -131075, 3, 50, -131074, 1, 50, -131074, 65534, 50, -196607, 65534, 50, -196606, 65534, 50, -196605, 65534, 50, -196605, 65533, 50, -196606, 65533, 50, -196608, 4, 50, -131074, 4, 50, -131075, 4, 50, -196605, 65535, 18, -196605, 0, 18, -196604, 1, 66, -196604, 0, 66, -196604, 65535, 66, -196604, 65534, 66, -196603, 1, 18, -196603, 0, 66, -196603, 65535, 66, -196603, 65534, 66, -196602, 65534, 66, -196602, 65535, 66, -196602, 0, 66, -196602, 1, 18, -196601, 1, 1441794, -196601, 0, 66, -196601, 65535, 66, -196601, 65534, 66, -196601, 2, 34, -196602, 2, 34, -196603, 2, 34, -65529, 2, 2, -65530, 2, 2, -65531, 2, 34, -65529, 3, 2, -65530, 3, 2, -65531, 3, 1441826, -65529, 4, 2, -65530, 4, 2, -65531, 4, 1441826, -65529, 1, 1441795, -65530, 1, 1441795, -65531, 1, 1441827, -262141, 65533, 84, -262142, 65533, 84, -262143, 65533, 84, -262144, 65533, 84, -196609, 65533, 84, -196610, 65533, 84, -196610, 65534, 84, -196609, 65534, 84, -262144, 65534, 84, -262143, 65534, 84, -262142, 65534, 84, -262141, 65534, 84, -262140, 65534, 84, -262139, 65534, 84, -262138, 65534, 84, -262137, 65534, 84, -196609, 65535, 84, -262144, 65535, 84, -262143, 65535, 84, -262142, 65535, 84, -262141, 65535, 84, -262140, 65535, 84, -262139, 65535, 84, -262138, 65535, 84, -262137, 65535, 84, -262137, 0, 84, -262138, 0, 84, -262139, 0, 84, -262140, 0, 84, -262141, 0, 84, -262142, 0, 84, -262143, 0, 84, -262144, 0, 84, -196609, 0, 84, -196609, 1, 84, -262144, 1, 84, -262143, 1, 84, -262142, 1, 84, -262141, 1, 84, -262140, 1, 84, -262139, 1, 84, -262138, 1, 84, -262137, 1, 84, -262141, 2, 84, -262142, 2, 84, -262143, 2, 84, -262144, 2, 84, -196609, 2, 84, -196610, 2, 84, -196610, 1, 84, -262143, 3, 84, -262144, 3, 84, -196609, 3, 84, -196611, 4, 84, -196611, 3, 84, -196610, 3, 84, -196610, 4, 84, -196609, 4, 84, -262144, 4, 84, -131065, 3, 84, -131066, 3, 84, -131067, 3, 84, -131067, 4, 84, -131066, 4, 84, -131065, 4, 84, -131074, 0, 18, -131074, 65535, 18, -196610, 0, 20, -196610, 65535, 20, -589826, 65535, 18, -589826, 0, 18, -458754, 65535, 18, -458754, 0, 18, -327682, 65535, 18, -327682, 0, 18, -196602, 65533, 66, -196603, 65533, 66, -196602, 65532, 66, -196603, 65532, 66, -196603, 65531, 66, -196602, 65531, 66, -196603, 65530, 66, -196602, 65530, 66, -196602, 65529, 66, -196603, 65529, 66, -262138, 65533, 84, -262138, 65532, 84, -262138, 65531, 84, -262138, 65530, 84, -262138, 65529, 84, -262139, 65533, 84, -262139, 65532, 84, -262139, 65531, 84, -262139, 65530, 84, -262139, 65529, 84, -196611, 5, 84, -196610, 5, 84, -196609, 5, 84, -262144, 5, 84, -262143, 4, 84, -262142, 3, 84, -262141, 3, 84, -262143, 5, 84, -262142, 4, 655444, -262140, 2, 655444, -131075, 5, 655410, -131074, 5, 655410, -131073, 5, 655410, -196608, 5, 655410, -196607, 4, 655410, -196606, 3, 655410, -196605, 3, 655410, -262140, 3, 655444, -262141, 4, 655444, -262140, 4, 84, -196607, 5, 50, -196606, 4, 655410, -196604, 2, 66, -196604, 3, 655410, -196605, 4, 655410, -196604, 4, 50, -262142, 5, 84, -262141, 5, 84, -262140, 5, 84, -196606, 5, 50, -196605, 5, 50, -196604, 5, 50, -131067, 5, 84, -131066, 5, 84, -65531, 5, 1441826, -65530, 5, 2, -131067, 6, 84, -65531, 6, 1441826, -131066, 6, 1441796, -131065, 5, 1441796, -65530, 6, 2, -65529, 5, 2, -196604, 65533, 66, -262140, 65533, 1441796, -131065, 6, 1441796, -131064, 5, 1441796, -131066, 7, 1441796, -131064, 4, 1441796, -131064, 3, 1441796, -131064, 2, 1441796, -131064, 1, 1441796, -131064, 0, 1441796, -131064, 65535, 1441796, -131064, 65534, 1441796, -131067, 7, 1441796, -65531, 7, 1441793, -65529, 6, 1, -65528, 65534, 655363, -65528, 65535, 655363, -65528, 0, 655363, -65528, 1, 655363, -65528, 2, 655363, -65528, 3, 655363, -65528, 4, 655363, -65528, 5, 655363, -65530, 7, 1, -65529, 7, 1441792, -65528, 6, 1441792, -131064, 6, 655368, -131065, 7, 655368, -131064, 65533, 1441800, -65528, 65533, 0, -65528, 65532, 1441792, -65528, 65531, 0, -65528, 65530, 1441792, -65528, 65529, 0, -131064, 65532, 655368, -131064, 65530, 655368, -131064, 65531, 1441800, -131064, 65529, 1441800)
+"cells": PackedInt32Array(-131073, 0, 18, -131073, 65535, 18, -196608, 65535, 18, -196608, 0, 18, -131073, 65534, 50, -196608, 65534, 50, -196608, 65533, 50, -131073, 65533, 50, -131073, 1, 50, -196608, 1, 50, -131073, 2, 50, -196608, 2, 50, -196608, 3, 50, -131073, 3, 50, -131074, 2, 50, -131074, 3, 50, -131074, 65533, 50, -196607, 3, 50, -196607, 2, 50, -196607, 65533, 50, -196607, 0, 18, -196607, 65535, 18, -196606, 0, 18, -196606, 65535, 18, -196607, 1, 50, -196606, 1, 50, -196605, 1, 50, -196606, 2, 50, -196605, 2, 50, -131073, 4, 50, -131075, 3, 50, -131074, 1, 50, -131074, 65534, 50, -196607, 65534, 50, -196606, 65534, 50, -196605, 65534, 50, -196605, 65533, 50, -196606, 65533, 50, -196608, 4, 50, -131074, 4, 50, -131075, 4, 50, -196605, 65535, 18, -196605, 0, 18, -196604, 1, 66, -196604, 0, 66, -196604, 65535, 66, -196604, 65534, 66, -196603, 1, 18, -196603, 0, 66, -196603, 65535, 66, -196603, 65534, 66, -196602, 65534, 66, -196602, 65535, 66, -196602, 0, 66, -196602, 1, 18, -196601, 1, 1441794, -196601, 0, 66, -196601, 65535, 66, -196601, 65534, 66, -196601, 2, 34, -196602, 2, 34, -196603, 2, 34, -65529, 2, 2, -65530, 2, 2, -65531, 2, 34, -65529, 3, 2, -65530, 3, 2, -65531, 3, 1441826, -65529, 4, 2, -65530, 4, 2, -65531, 4, 1441826, -65529, 1, 1441795, -65530, 1, 1441795, -65531, 1, 1441827, -262141, 65533, 84, -262142, 65533, 84, -262143, 65533, 84, -262144, 65533, 84, -196609, 65533, 84, -196610, 65533, 84, -196610, 65534, 84, -196609, 65534, 84, -262144, 65534, 84, -262143, 65534, 84, -262142, 65534, 84, -262141, 65534, 84, -262140, 65534, 84, -262139, 65534, 84, -262138, 65534, 84, -262137, 65534, 84, -196609, 65535, 84, -262144, 65535, 84, -262143, 65535, 84, -262142, 65535, 84, -262141, 65535, 84, -262140, 65535, 84, -262139, 65535, 84, -262138, 65535, 84, -262137, 65535, 84, -262137, 0, 84, -262138, 0, 84, -262139, 0, 84, -262140, 0, 84, -262141, 0, 84, -262142, 0, 84, -262143, 0, 84, -262144, 0, 84, -196609, 0, 84, -196609, 1, 84, -262144, 1, 84, -262143, 1, 84, -262142, 1, 84, -262141, 1, 84, -262140, 1, 84, -262139, 1, 84, -262138, 1, 84, -262137, 1, 84, -262141, 2, 84, -262142, 2, 84, -262143, 2, 84, -262144, 2, 84, -196609, 2, 84, -196610, 2, 84, -196610, 1, 84, -262143, 3, 84, -262144, 3, 84, -196609, 3, 84, -196611, 4, 84, -196611, 3, 84, -196610, 3, 84, -196610, 4, 84, -196609, 4, 84, -262144, 4, 84, -131065, 3, 84, -131066, 3, 84, -131067, 3, 84, -131067, 4, 84, -131066, 4, 84, -131065, 4, 84, -131074, 0, 18, -131074, 65535, 18, -196610, 0, 20, -196610, 65535, 20, -589826, 65535, 18, -589826, 0, 18, -458754, 65535, 18, -458754, 0, 18, -327682, 65535, 18, -327682, 0, 18, -196602, 65533, 66, -196603, 65533, 66, -196602, 65532, 66, -196603, 65532, 66, -196603, 65531, 66, -196602, 65531, 66, -196603, 65530, 66, -196602, 65530, 66, -196602, 65529, 66, -196603, 65529, 66, -262138, 65533, 84, -262138, 65532, 84, -262138, 65531, 84, -262138, 65530, 84, -262138, 65529, 84, -262139, 65533, 84, -262139, 65532, 84, -262139, 65531, 84, -262139, 65530, 84, -262139, 65529, 84, -196611, 5, 84, -196610, 5, 84, -196609, 5, 84, -262144, 5, 84, -262143, 4, 84, -262142, 3, 84, -262141, 3, 84, -262143, 5, 84, -262142, 4, 655444, -262140, 2, 655444, -131075, 5, 655410, -131074, 5, 655410, -131073, 5, 655410, -196608, 5, 655410, -196607, 4, 655410, -196606, 3, 655410, -196605, 3, 655410, -262140, 3, 655444, -262141, 4, 655444, -262140, 4, 84, -196607, 5, 50, -196606, 4, 655410, -196604, 2, 66, -196604, 3, 655410, -196605, 4, 655410, -196604, 4, 50, -262142, 5, 84, -262141, 5, 84, -262140, 5, 84, -196606, 5, 50, -196605, 5, 50, -196604, 5, 50, -131067, 5, 84, -131066, 5, 84, -65531, 5, 1441826, -65530, 5, 2, -131067, 6, 84, -65531, 6, 1441826, -131066, 6, 1441796, -131065, 5, 1441796, -65530, 6, 2, -65529, 5, 2, -196604, 65533, 66, -262140, 65533, 1441796)
 }
 metadata/_editor_floor_ = Vector3(0, -2, 0)
 
@@ -497,7 +605,7 @@ originalParent = "Art Level Scene 1"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.5, 3)
 curve = SubResource("Curve3D_3x3m0")
 script = ExtResource("18_g7jkd")
-material = ExtResource("19_3x3m0")
+material = SubResource("ShaderMaterial_h8wva")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator2" type="Path3D" parent="Walls"]
@@ -552,25 +660,8 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Fences" type="Node3D" parent="."]
 
-[node name="Wood Fence" parent="Fences" instance=ExtResource("6_fmo6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-
-[node name="Stone Fence" parent="Fences" instance=ExtResource("7_8vtx8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, 0)
-
-[node name="Big Rocks" parent="Fences" instance=ExtResource("8_fd1tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 0)
-
-[node name="Bridge" parent="Fences" instance=ExtResource("9_wrucn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
-
-[node name="Bushes" parent="Fences" instance=ExtResource("10_c4td8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, 0)
-
-[node name="Rope Rail" parent="Fences" instance=ExtResource("11_f2hbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
-
 [node name="Props" type="Node3D" parent="."]
+visible = false
 
 [node name="Node3D" parent="Props" instance=ExtResource("12_i6t01")]
 transform = Transform3D(-1.55, 0, 1.355053e-07, 0, 1.55, 0, -1.355053e-07, 0, -1.55, -0.5, -0.5, 4)
@@ -615,6 +706,7 @@ sceneParent = NodePath("..")
 
 [node name="Planta MP Block" parent="." instance=ExtResource("12_vuau8")]
 transform = Transform3D(0.5324984, 0, 0, 0, 1, 0, 0, 0, 0.29589587, 0.45307344, -0.5, 1.093775)
+color = Color(3.3426837e-05, 1.0214914, 0.45470193, 1)
 texture = ExtResource("13_6xgfa")
 pedestalName = "Planta"
 
@@ -629,7 +721,9 @@ sceneParent = NodePath("..")
 
 [node name="Inti MP Block" parent="." instance=ExtResource("12_vuau8")]
 transform = Transform3D(-1.5431765e-07, 0, 0.17613877, 0, 1, 0, -3.5303764, 0, -7.6992706e-09, 3.957118, -0.5, -0.840039)
+color = Color(0.7564044, 0.28891, 0, 1)
 texture = ExtResource("16_e0u7l")
+forceScale = Vector3(1.195, 1.11, 4.865)
 pedestalName = "Inti"
 
 [node name="InventoryPedestal Pajara" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("17_i6qu1")]
@@ -643,6 +737,7 @@ sceneParent = NodePath("..")
 
 [node name="Pajara MP Block" parent="." instance=ExtResource("12_vuau8")]
 transform = Transform3D(-1.534607e-08, 0, 1.9016888, 0, 1, 0, -0.35107714, 0, -8.3125464e-08, 5.8792706, -0.5, -4.260798)
+color = Color(0, 1.1178702, 1.1178702, 1)
 texture = ExtResource("19_k8e34")
 pedestalName = "Pajara"
 
@@ -671,20 +766,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
 [node name="PorticoA" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, -0.5, 4)
+visible = false
 mesh = SubResource("ArrayMesh_yptji")
 
 [node name="Fringes" type="Node3D" parent="."]
 
-[node name="Grass Fringe" type="Path3D" parent="Fringes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -0.499, 1)
-curve = SubResource("Curve3D_df2nb")
-script = ExtResource("2_j7y3f")
-multiMeshResources = Array[ExtResource("3_2ttod")]([SubResource("Resource_0ntye")])
-metadata/_custom_type_script = "uid://pvc1wchcttc2"
+[node name="Earth Fringe Face Y" parent="Fringes" instance=ExtResource("34_4gqna")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.49, 1)
+curve = SubResource("Curve3D_8t86a")
 
-[node name="Grass Fringe2" type="Path3D" parent="Fringes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -0.499, -1)
+[node name="Earth Fringe Face X" parent="Fringes" instance=ExtResource("35_e3ug4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.49, 3.0871878)
+
+[node name="Grass Fringe Face X" parent="Fringes" instance=ExtResource("36_bl5bk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9824853, -0.5, 3.2)
+
+[node name="Grass Fringe Face Y" parent="Fringes" instance=ExtResource("37_cc28h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.489, 1)
 curve = SubResource("Curve3D_fmo6p")
-script = ExtResource("2_j7y3f")
-multiMeshResources = Array[ExtResource("3_2ttod")]([SubResource("Resource_0ntye")])
+
+[node name="Grass Fringe Face Y2" parent="Fringes" instance=ExtResource("37_cc28h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.489, -1)
+curve = SubResource("Curve3D_8vtx8")
+
+[node name="Sand Fringe Face Y" type="Path3D" parent="Fringes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.501, 7)
+curve = SubResource("Curve3D_4k2l6")
+script = ExtResource("47_x2mod")
+multiMeshResources = Array[ExtResource("48_8kh8k")]([SubResource("Resource_x22vt")])
 metadata/_custom_type_script = "uid://pvc1wchcttc2"

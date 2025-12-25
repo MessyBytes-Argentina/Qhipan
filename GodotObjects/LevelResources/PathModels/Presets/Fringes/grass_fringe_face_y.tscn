@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw86nervtqicu"]
+
+[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_i63tt"]
+[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_ggonm"]
+[ext_resource type="Material" uid="uid://etwcqmb62vpm" path="res://Assets/Materials/Fringes/Grass Fringe.tres" id="3_rucnj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_tkid2"]
+material = ExtResource("3_rucnj")
+size = Vector2(2, 2)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_0ntye"]
+script = ExtResource("2_ggonm")
+mesh = SubResource("QuadMesh_tkid2")
+distanceBetweenPieces = 0.4
+randomOffset = Vector3(0.15, 0.012, 0)
+randomRotation = Vector3(0, 0.43633232, 0)
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[node name="Grass Fringe Face Y" type="Path3D"]
+script = ExtResource("1_i63tt")
+multiMeshResources = Array[ExtResource("2_ggonm")]([SubResource("Resource_0ntye")])
+metadata/_custom_type_script = "uid://pvc1wchcttc2"

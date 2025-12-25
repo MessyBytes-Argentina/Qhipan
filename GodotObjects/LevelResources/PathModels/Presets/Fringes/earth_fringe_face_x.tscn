@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdb24nrpobwah"]
+
+[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_rr7qw"]
+[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_uvaao"]
+[ext_resource type="Material" uid="uid://crgf5xu4phs2" path="res://Assets/Materials/Fringes/Earth Fringe.tres" id="3_b1h6s"]
+
+[sub_resource type="Curve3D" id="Curve3D_88a7k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.005, 0, 0, 0, 0, 0, 0, 0, 0, -0.019010067, 0, -1.9439491),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_4gqna"]
+material = ExtResource("3_b1h6s")
+flip_faces = true
+orientation = 0
+
+[sub_resource type="Resource" id="Resource_e3ug4"]
+script = ExtResource("2_uvaao")
+mesh = SubResource("QuadMesh_4gqna")
+distanceBetweenPieces = 0.25
+randomOffset = Vector3(0.001, 0.15, 0)
+randomRotation = Vector3(6.2831855, 0, 0)
+randomSeed = 2
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[node name="Earth Fringe Face X" type="Path3D"]
+curve = SubResource("Curve3D_88a7k")
+script = ExtResource("1_rr7qw")
+multiMeshResources = Array[ExtResource("2_uvaao")]([SubResource("Resource_e3ug4")])
+metadata/_custom_type_script = "uid://pvc1wchcttc2"
