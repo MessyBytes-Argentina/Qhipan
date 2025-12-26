@@ -6,8 +6,6 @@ class_name DarknessArea
 ## The amount of vertices per meter that the fog collision is broken up into.
 ## Higher means higher collision quality but poorer performance.
 const DARKNESSCOLLISIONRESOLUTION: int = 4
-## How far into the darkness should the outline blocker be pushed.
-const OUTLINEBLOCKEROFFSET: float = 0.5
 ## Times to update the darkness during light expansion.
 const ONLIGHTUPDATETIMES: int = 5
 ## Darkness margin for releasing stickers.
@@ -15,23 +13,25 @@ const MARGIN: float = 0.5
 ## Darkness margin for detecting light.
 const DARKMARGIN: float = 0.25
 
-## Reference to the collision shape of the fog
+## Reference to the collision shape of the fog.
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
-## Reference to the collision shape of the area of effect for the fog
+## Reference to the collision shape of the area of effect for the fog.
 @onready var darknessAreaShape: CollisionShape3D = %DarknessAreaShape
-## Reference to the outline blocker
+## Reference to the outline blocker.
 @onready var outlineBlocker: MeshInstance3D = %OutlineBlocker
-## Reference to the collision heightmap used on the fog
+## Reference to the collision heightmap used on the fog.
 var collisionMap: HeightMapShape3D
-## Reference to the fog shader
+## Reference to the fog shader.
 var fogShader: ShaderMaterial
 
-## Lights currently affecting the fog
+## Lights currently affecting the fog.
 var lights: Array[Area3D] = []
-## Light stickers currently tweening that are affecting the fog
+## Light stickers currently tweening that are affecting the fog.
 var lightsTweening: Array[LampSticker] = []
-## Is ready to check for lights
+## Is ready to check for lights.
 var isReadyToCheck: bool = false
+## Outline blocker material.
+var outlineMaterial: ShaderMaterial
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +39,7 @@ func _ready() -> void:
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
 	_collision_shape_set()
 
-## Sets up the collision shape for the fog
+## Sets up the collision shape for the fog.
 func _collision_shape_set() -> void:
 	if not is_node_ready():
 		await ready
@@ -49,6 +49,12 @@ func _collision_shape_set() -> void:
 	darknessCollisionShape.shape = collisionMap
 	fogShader = material.duplicate()
 	material = fogShader
+	outlineBlocker.mesh.size = Vector2(size.x, size.z)
+	outlineBlocker.mesh.subdivide_width = int(size.x * float(DARKNESSCOLLISIONRESOLUTION))
+	outlineBlocker.mesh.subdivide_depth = int(size.z * float(DARKNESSCOLLISIONRESOLUTION))
+	outlineBlocker.position.y = -size.y / 2.0
+	outlineMaterial = outlineBlocker.get_surface_override_material(0)
+	outlineMaterial.set_shader_parameter("size", size)
 	await get_tree().create_timer(0.5).timeout
 	isReadyToCheck = true
 	update_collision_shape()
@@ -99,7 +105,9 @@ func update_collision_shape() -> void:
 				collisionMap.map_data[i] = 0.0
 				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
 				break
-	fogShader.set_shader_parameter("light_mask", ImageTexture.create_from_image(shaderMask))
+	var mask: ImageTexture = ImageTexture.create_from_image(shaderMask)
+	fogShader.set_shader_parameter("light_mask", mask)
+	outlineMaterial.set_shader_parameter("light_mask", mask)
 	isReadyToCheck = true
 
 ## Notifies when a light is shone up on the darkness area
