@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://57twmtocploa"]
+
+[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_jtn5c"]
+[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_sp0mw"]
+[ext_resource type="Material" uid="uid://bijrytrmfx0xi" path="res://Assets/Materials/Fringes/Sand Fringe.tres" id="3_grnhj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4qh0s"]
+material = ExtResource("3_grnhj")
+center_offset = Vector3(0.15, 0, -0.01)
+orientation = 1
+
+[sub_resource type="Resource" id="Resource_x22vt"]
+script = ExtResource("2_sp0mw")
+mesh = SubResource("QuadMesh_4qh0s")
+offsetStart = 0.5
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[node name="Sand Fringe Face Y" type="Path3D"]
+script = ExtResource("1_jtn5c")
+multiMeshResources = Array[ExtResource("2_sp0mw")]([SubResource("Resource_x22vt")])
+metadata/_custom_type_script = "uid://pvc1wchcttc2"

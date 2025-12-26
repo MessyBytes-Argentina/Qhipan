@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=78 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
@@ -42,15 +42,9 @@
 [ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="25_d47uu"]
 [ext_resource type="Texture2D" uid="uid://c683si2xxi08y" path="res://Assets/Textures/Skybox/Skybox-Exterior Woods.png" id="26_ks1a4"]
 [ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="27_i6t01"]
-[ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe_face_y.tscn" id="34_4gqna"]
-[ext_resource type="PackedScene" uid="uid://cdb24nrpobwah" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe_face_x.tscn" id="35_e3ug4"]
-[ext_resource type="PackedScene" uid="uid://bnu25kbsqkfdo" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe_face_x.tscn" id="36_bl5bk"]
-[ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe_face_y.tscn" id="37_cc28h"]
-[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="47_x2mod"]
-[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="48_8kh8k"]
-[ext_resource type="Texture2D" uid="uid://dk427p3nqt2pp" path="res://Assets/Materials/Fringes/Sand Fringe_albedo.png" id="49_uhkat"]
-[ext_resource type="Texture2D" uid="uid://b41hyahiq3302" path="res://Assets/Materials/Fringes/Sand Fringe_normal.png" id="50_dew16"]
-[ext_resource type="Texture2D" uid="uid://cnd2kkl22pr1j" path="res://Assets/Materials/Fringes/Sand Fringe_orm.png" id="51_ysvin"]
+[ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe.tscn" id="34_4gqna"]
+[ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="37_cc28h"]
+[ext_resource type="PackedScene" uid="uid://57twmtocploa" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/sand_fringe.tscn" id="47_f2hbe"]
 
 [sub_resource type="Curve3D" id="Curve3D_3x3m0"]
 _data = {
@@ -520,67 +514,12 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="Curve3D" id="Curve3D_4k2l6"]
+[sub_resource type="Curve3D" id="Curve3D_7u3pm"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, -2, -7),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hm4er"]
-render_priority = 0
-shader = ExtResource("11_8xqb0")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/light_gradient = ExtResource("13_4gqna")
-shader_parameter/fresnel_gradient = ExtResource("12_88a7k")
-shader_parameter/texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("49_uhkat")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("50_dew16")
-shader_parameter/normal_scale = 1.0
-shader_parameter/texture_orm = ExtResource("51_ysvin")
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 1.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 1.0
-shader_parameter/clearcoat_roughness = 0.5
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_4qh0s"]
-material = SubResource("ShaderMaterial_hm4er")
-center_offset = Vector3(0.15, 0, -0.01)
-orientation = 1
-
-[sub_resource type="Resource" id="Resource_x22vt"]
-script = ExtResource("48_8kh8k")
-mesh = SubResource("QuadMesh_4qh0s")
-offsetStart = 0.5
-baseOffset = Vector2(0, 0)
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [node name="Art Level Scene 1" type="Node3D"]
 
@@ -775,12 +714,6 @@ mesh = SubResource("ArrayMesh_yptji")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.49, 1)
 curve = SubResource("Curve3D_8t86a")
 
-[node name="Earth Fringe Face X" parent="Fringes" instance=ExtResource("35_e3ug4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.49, 3.0871878)
-
-[node name="Grass Fringe Face X" parent="Fringes" instance=ExtResource("36_bl5bk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9824853, -0.5, 3.2)
-
 [node name="Grass Fringe Face Y" parent="Fringes" instance=ExtResource("37_cc28h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.489, 1)
 curve = SubResource("Curve3D_fmo6p")
@@ -789,9 +722,6 @@ curve = SubResource("Curve3D_fmo6p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.489, -1)
 curve = SubResource("Curve3D_8vtx8")
 
-[node name="Sand Fringe Face Y" type="Path3D" parent="Fringes"]
+[node name="Sand Fringe Face Y" parent="Fringes" instance=ExtResource("47_f2hbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.501, 7)
-curve = SubResource("Curve3D_4k2l6")
-script = ExtResource("47_x2mod")
-multiMeshResources = Array[ExtResource("48_8kh8k")]([SubResource("Resource_x22vt")])
-metadata/_custom_type_script = "uid://pvc1wchcttc2"
+curve = SubResource("Curve3D_7u3pm")
