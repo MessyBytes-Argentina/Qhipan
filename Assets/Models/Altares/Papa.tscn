@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://c1hxffl4y7pty"]
 
-[ext_resource type="Material" uid="uid://dbbswtruuigdx" path="res://Assets/Materials/Murales/Mural Papa/Toon-Mural Papa Test.tres" id="1_8it2c"]
+[ext_resource type="Material" uid="uid://cyjs66jbjbhy8" path="res://Assets/Materials/Murales/Mural Papa/Relieve 2/Mural Papa Test relieve 2.tres" id="1_8it2c"]
 
 [sub_resource type="Gradient" id="Gradient_8it2c"]
 offsets = PackedFloat32Array(0.4328018, 1)
