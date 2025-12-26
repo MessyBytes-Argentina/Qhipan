@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://bsumxng6dj06p"]
 
-[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/Fences/Wood Fence/Toon-Wood Fence.tres" id="1_o2mj3"]
+[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="1_o2mj3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iab3c"]
 _surfaces = [{

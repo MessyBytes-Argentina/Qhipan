@@ -1,0 +1,177 @@
+[gd_scene load_steps=19 format=4 uid="uid://bsiqj32o2lu41"]
+
+[ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_q6o5j"]
+[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_bmhmb"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_i45x0"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_iteg2"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_iw13w"]
+[ext_resource type="Texture2D" uid="uid://djmdsod61joj4" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_albedo.png" id="6_mpfrq"]
+[ext_resource type="Texture2D" uid="uid://pj57wqks4a4o" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_normal.png" id="7_edxo8"]
+[ext_resource type="Texture2D" uid="uid://uiehwah5cyw2" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_orm.png" id="8_7tuul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_en7ay"]
+render_priority = 0
+shader = ExtResource("3_i45x0")
+shader_parameter/albedo = Color(0.7188768, 0.8210656, 0.9387597, 1)
+shader_parameter/light_gradient = ExtResource("5_iw13w")
+shader_parameter/fresnel_gradient = ExtResource("4_iteg2")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("6_mpfrq")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("7_edxo8")
+shader_parameter/normal_scale = 5.237001008757499
+shader_parameter/texture_orm = ExtResource("8_7tuul")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.6999999843536
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a225q"]
+_surfaces = [{
+"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Tirante",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAAAAAAAAAP////8AAAAA//8AAAAAAAAAAAAA//8AAP///////wAAAAD/////AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jpevs"]
+_surfaces = [{
+"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
+"attribute_data": PackedByteArray("AAD/nwAA/1//P/+f/z//X/8//5//P/9f/3//n/9//1//f/+f/3//X/+//5//v/9f/7//n/+//1////+f////X/9//1//f/8f/7//X/+//x//f//f/3//n/+//9//v/+f"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_en7ay"),
+"name": "Tirante",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA//8AAAAAAAD///////8AAP////8AAAAA////////AAD/////AAAAAP///////////////wAA//////////////////8AAP////8AAP///////wAAAAD/////AAD///////8AAAAA/////wAA//8AAP//AAAAAAAA/////wAA////////AAAAAP//AAAAAP////8AAAAAAAD///////8AAP////////////8AAP//AAD//wAA////////////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a225q")
+
+[sub_resource type="Resource" id="Resource_iw13w"]
+script = ExtResource("2_bmhmb")
+mesh = SubResource("ArrayMesh_jpevs")
+distanceBetweenPieces = 0.4
+offsetStart = 0.2
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_661la"]
+_surfaces = [{
+"aabb": AABB(-0.500972, -0.060902, -0.1545, 1.001944, 0.121804, 0.309),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Tabla1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAe0gAAAACOAAAAAAAAAHD///8AAAAA///gLQAAAACOAAAA//8AAHD//////wAAAAAe0v//AAD//+At//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ufnnk"]
+_surfaces = [{
+"aabb": AABB(-0.500972, -0.060902, -0.1545, 1.001944, 0.121804, 0.309),
+"attribute_data": PackedByteArray("qt8CYHKqAmCq3xtIcqobSBB+IooQfi9gqpciiqqXL2D73/NfcqrzX/vfC0hyqgtIEH4iihB+L2CqlyKKqpcvYGPHZIpLmGSKY8dxYEuYcWABXeFtlmWZPnbE73m5yhFN"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_en7ay"),
+"name": "Tabla1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAe0gAA//+OAAAAAAD//3D///8AAP/////gLQAA//9w////AABe////4C0AAF7/cP//////Xv///+At//9e/3D//////+LA///gLf//4sAAAB7S///iwI4AAAD//+LAAAAe0v//Xv+OAAAA//9e/wAAHtIAAF7/jgAAAAAAXv///+At///Y1f//4C0AANjVjgAAAP//2NWOAAAAAADY1XD///8AABr9cP///////fwAAB7SAACe/AAAHtL//4H8TL+ywEy/ssBMv7LATL+ywKa/sYCmv7GApr+xgKa/sYD/////////////////////WEBNf1hATX9YQE1/WEBNfwwqBdUMKgXVDCoF1QwqBdXKgSC/6oERv0+C375vgtC+")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_661la")
+
+[sub_resource type="Resource" id="Resource_mpfrq"]
+script = ExtResource("2_bmhmb")
+mesh = SubResource("ArrayMesh_ufnnk")
+distanceBetweenPieces = 0.7
+offsetStart = 0.15
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3lkm5"]
+_surfaces = [{
+"aabb": AABB(-0.501518, -0.068638, -0.1545, 1.003036, 0.137276, 0.309),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Tabla2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("8wD//wAAAAAAAKRFAAAAAP//WroAAAAAC/8AAAAAAAAAAKRF//8AAP//Wrr//wAA8wD/////AAAL/wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ubhp0"]
+_surfaces = [{
+"aabb": AABB(-0.501518, -0.068638, -0.1545, 1.003036, 0.137276, 0.309),
+"attribute_data": PackedByteArray("e6j4j2+o55/KYR6QymEXoP/f9k//3/aPSKj2T0ioHpB7qLmPe6gYoMphHpDKYReg/9/2T//f9o9IqPZPSKgekEio9k9IqB6Q42H2T+Nh9o80rUsxKrSOYxJdVSHfTHxI"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("ShaderMaterial_en7ay"),
+"name": "Tabla2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("8wD//wAA//8AAKRFAAD/////WroAAP//C/8AAAAA/////1q6AAACwAv/AAAAAALA//9auv//A8AL/wAA//8DwP//Wrr//56BC/8AAP//nIHzAP////+GgQAApEX//4SB8wD/////AsAAAKRF//8CwPMA//8AAAPAAACkRQAAA8AL/wAA//8CwAv/AAAAAALAAACkRf//AsAAAKRFAAACwP//WroAAAjA//9auv//EMDzAP//AAA7wPMA/////03ASYK0/UmCtf1Ggrj9RYK4/bJ9mgS0fZoEvH2aBL59mgT/f/9//3//f/9//3//f/9/TIJk+0qCZPtCgmT7QIJk+5oETIKaBE+CmgRWgpoEWIIb+JN0BvdUcsXzkmvX8qNp")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3lkm5")
+
+[sub_resource type="Resource" id="Resource_edxo8"]
+script = ExtResource("2_bmhmb")
+mesh = SubResource("ArrayMesh_ubhp0")
+distanceBetweenPieces = 0.7
+offsetStart = 0.5
+baseOffset = Vector2(0, 0)
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[node name="Bridge" type="Path3D"]
+script = ExtResource("1_q6o5j")
+multiMeshResources = Array[ExtResource("2_bmhmb")]([SubResource("Resource_iw13w"), SubResource("Resource_mpfrq"), SubResource("Resource_edxo8")])
+collisionLayer = 1
+colliderSize = Vector2(1, 0.14)
+metadata/_custom_type_script = "uid://pvc1wchcttc2"
