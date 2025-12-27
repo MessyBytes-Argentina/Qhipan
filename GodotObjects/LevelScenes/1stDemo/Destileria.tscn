@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnyaxl7dggkt4" path="res://GodotObjects/LevelResources/InvisiblePlatform/InvisiblePlatform.tscn" id="13_en2b8"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="13_gxiiq"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="14_en2b8"]
-[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Wall.tres" id="17_ix3bf"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="17_ix3bf"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="17_vqboj"]
 [ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallPedestal.tscn" id="18_ylax1"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="27_ewfo1"]

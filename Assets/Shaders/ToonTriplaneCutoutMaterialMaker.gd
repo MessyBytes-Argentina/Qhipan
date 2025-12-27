@@ -50,6 +50,10 @@ var sideSurfaceMaterial: StandardMaterial3D
 var sideAlbedoSize: float = 1
 ## The side surface detail size.
 var sideDetailSize: float = 1
+## Wall fade color top.
+var fadeColorUp: Color = Color.BLACK
+## Wall fade color bottom.
+var fadeColorDown: Color = Color.BLACK
 ## Toon shader color gradient
 var verticalFade: GradientTexture1D = load("uid://bpa10qimekhnu")
 ## Toon shader color gradient
@@ -101,6 +105,14 @@ func _get_property_list() -> Array[Dictionary]:
 				"type": TYPE_OBJECT,
 				"hint": PROPERTY_HINT_RESOURCE_TYPE,
 				"hint_string": "Texture2D",
+			})
+			props.append({
+				"name": "fadeColorUp",
+				"type": TYPE_COLOR
+			})
+			props.append({
+				"name": "fadeColorDown",
+				"type": TYPE_COLOR
 			})
 			for gradient in ["verticalFade", "screenVerticalFade", "maskGradient", "screenMaskGradient"]:
 				props.append({
@@ -192,7 +204,8 @@ func make_material() -> void:
 			finalizeShaderMaterial.set_shader_parameter("screen_vertical_fade", screenVerticalFade)
 			finalizeShaderMaterial.set_shader_parameter("mask_gradient", maskGradient)
 			finalizeShaderMaterial.set_shader_parameter("screen_mask_gradient", screenMaskGradient)
-			print(screenMaskGradient)
+			finalizeShaderMaterial.set_shader_parameter("fade_color_up", fadeColorUp)
+			finalizeShaderMaterial.set_shader_parameter("fade_color_down", fadeColorDown)
 		MaterialModes.OTHER:
 			finalizeShaderMaterial.shader = load(tcShader)
 			make_TC_material()

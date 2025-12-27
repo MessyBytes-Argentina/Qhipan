@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=10 format=3 uid="uid://ckpeqfh846tp8"]
+
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_n33p4"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_xct53"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_wgqlt"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_3u2jj"]
+[ext_resource type="Texture2D" uid="uid://dk427p3nqt2pp" path="res://Assets/Materials/Fringes/Sand Fringe_albedo.png" id="4_4ws6m"]
+[ext_resource type="Texture2D" uid="uid://b41hyahiq3302" path="res://Assets/Materials/Fringes/Sand Fringe_normal.png" id="5_14r3e"]
+[ext_resource type="Texture2D" uid="uid://cnd2kkl22pr1j" path="res://Assets/Materials/Fringes/Sand Fringe_orm.png" id="6_yeb8b"]
+[ext_resource type="Material" uid="uid://bijrytrmfx0xi" path="res://Assets/Materials/Fringes/Sand Fringe.tres" id="8_q3ypl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hm4er"]
+render_priority = 0
+shader = ExtResource("1_xct53")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("2_wgqlt")
+shader_parameter/fresnel_gradient = ExtResource("1_n33p4")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_4ws6m")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_14r3e")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("6_yeb8b")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[resource]
+script = ExtResource("3_3u2jj")
+materialMode = 4
+surfaceMaterial = ExtResource("8_q3ypl")
+UVSize = Vector2(1, 1)
+lightGradient = ExtResource("2_wgqlt")
+fresnelGradient = ExtResource("1_n33p4")
+finalizeShaderMaterial = SubResource("ShaderMaterial_hm4er")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"

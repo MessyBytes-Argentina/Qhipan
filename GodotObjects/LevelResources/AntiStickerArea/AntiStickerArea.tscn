@@ -1,17 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://v4l7in5irof5"]
+[gd_scene load_steps=6 format=4 uid="uid://v4l7in5irof5"]
 
 [ext_resource type="Script" uid="uid://ds7jwxemwltp7" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.gd" id="1_turgd"]
+[ext_resource type="Shader" uid="uid://cntgou3iy0wgy" path="res://Assets/Shaders/WobblyArea.gdshader" id="2_g7h2i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajmos"]
+size = Vector3(2, 2, 0)
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_turgd"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_color = Color(1, 1, 0, 0.0980392)
+[sub_resource type="QuadMesh" id="QuadMesh_dg2el"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_g7h2i"]
-material = SubResource("ORMMaterial3D_turgd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh7r4"]
+render_priority = 0
+shader = ExtResource("2_g7h2i")
+shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/wave_color = Color(1, 1, 0, 0.29411766)
+shader_parameter/frequency = 4.99999988824
+shader_parameter/amplitude = 1.0000000475
+shader_parameter/ripple_rate = 2.000000095
+shader_parameter/blending = 0.950000045125
+shader_parameter/wave_amplitude = 0.010000000475
+shader_parameter/wave_frequency = 1.999999955296
+shader_parameter/color = Color(1, 1, 0, 1)
+shader_parameter/fresnel_sharpness = 3.0
+shader_parameter/extend_distance = 0.0
+shader_parameter/impact_points = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/impact_size = 1.0
+shader_parameter/impact_falloff_sharpness = 1.0
 
 [node name="AntiStickerArea" type="Area3D"]
 collision_layer = 0
@@ -23,8 +36,10 @@ script = ExtResource("1_turgd")
 shape = SubResource("BoxShape3D_ajmos")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 layers = 2
-mesh = SubResource("BoxMesh_g7h2i")
+mesh = SubResource("QuadMesh_dg2el")
+surface_material_override/0 = SubResource("ShaderMaterial_hh7r4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 256
