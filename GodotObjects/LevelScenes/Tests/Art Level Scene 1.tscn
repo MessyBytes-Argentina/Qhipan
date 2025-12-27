@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=80 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
@@ -48,10 +48,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_3x3m0"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 5.9, 0, 3, 0, 0, 0, 0, 0, 0, 8, 0, 3, 0, 0, 0, 0, 0, 0, 8, 0, 4),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 8, 0, 3),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 6
+point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h8wva"]
 render_priority = 0
@@ -97,12 +97,20 @@ shader_parameter/squareSize = 0.0
 shader_parameter/auxMode = false
 shader_parameter/rotating = false
 
+[sub_resource type="Curve" id="Curve_c4td8"]
+_data = [Vector2(0.8361582, 0), 0.0, 0.0, 0, 0, Vector2(0.8870057, 0.5743618), 10.03291, 10.03291, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Curve3D" id="Curve3D_e0u7l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7, 0, -6, 0, 0, 0, 0, 0, 0, 6.998, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, -2.025, 0, 0, 0, 0, 0, 0, 0, 0, -8),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6.2, 0, -6, 0, 0, 0, 0, 0, 0, 6.198, 0, -2.3, 0, 0, 0, 0, 0, 0, 1, 0, -2.625, 0, 0, 0, 0, 0, 0, 1, 0, -8),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_wrucn"]
+_data = [Vector2(0.7344633, 0), 0.0, 4.9392757, 0, 0, Vector2(0.9124294, 0.4877913), 0.11103579, 0.11103579, 0, 0, Vector2(1, 1), -0.48261315, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_7plp1"]
 _data = {
@@ -120,7 +128,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_d47uu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, -7, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -545,22 +553,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.5, 3)
 curve = SubResource("Curve3D_3x3m0")
 script = ExtResource("18_g7jkd")
 material = SubResource("ShaderMaterial_h8wva")
+customProfileShape = SubResource("Curve_c4td8")
+customWallWidth = 2.0
+customDownWallWidth = 2.0
+resolution = 5.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator2" type="Path3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.5, -1)
 curve = SubResource("Curve3D_e0u7l")
 script = ExtResource("18_g7jkd")
-wallHeight = 10.0
-wallMode = 2
 material = ExtResource("20_7plp1")
+customProfileShape = SubResource("Curve_wrucn")
+customWallWidth = 4.0
+customDownWallWidth = 4.0
+resolution = 5.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator3" type="Path3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.039612, -0.5, 1)
 curve = SubResource("Curve3D_7plp1")
 script = ExtResource("18_g7jkd")
-wallHeight = 10.0
 wallMode = 1
 material = ExtResource("20_7plp1")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
@@ -644,13 +657,13 @@ sticker = SubResource("Resource_g7jkd")
 sceneParent = NodePath("..")
 
 [node name="Planta MP Block" parent="." instance=ExtResource("12_vuau8")]
-transform = Transform3D(0.5324984, 0, 0, 0, 1, 0, 0, 0, 0.29589587, 0.45307344, -0.5, 1.093775)
+transform = Transform3D(0.5324984, 0, 0, 0, 1.3, 0, 0, 0, 0.29589587, 0.45307344, -0.70000005, 1.093775)
 color = Color(3.3426837e-05, 1.0214914, 0.45470193, 1)
 texture = ExtResource("13_6xgfa")
 pedestalName = "Planta"
 
 [node name="InventoryPedestal Inti" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_3x3m0")]
-transform = Transform3D(0.56153464, 0, -0.82745326, 0, 1, 0, 0.82745326, 0, 0.56153464, 3.1401029, -0.5, -2.306238)
+transform = Transform3D(0.56153464, 0, -0.82745326, 0, 1, 0, 0.82745326, 0, 0.56153464, 3.1401029, -0.5, -2.106238)
 sceneParent = NodePath("..")
 
 [node name="Inventory Sticker Inti" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_7et3a")]
@@ -659,7 +672,7 @@ sticker = SubResource("Resource_xop5o")
 sceneParent = NodePath("..")
 
 [node name="Inti MP Block" parent="." instance=ExtResource("12_vuau8")]
-transform = Transform3D(-1.5431765e-07, 0, 0.17613877, 0, 1, 0, -3.5303764, 0, -7.6992706e-09, 3.957118, -0.5, -0.840039)
+transform = Transform3D(-2.160447e-08, 0, 0.17613876, 0, 1.4, 0, -0.49425268, 0, -7.69927e-09, 3.957118, -0.6, -0.840039)
 color = Color(0.7564044, 0.28891, 0, 1)
 texture = ExtResource("16_e0u7l")
 forceScale = Vector3(1.195, 1.11, 4.865)
@@ -675,7 +688,7 @@ sticker = SubResource("Resource_e65bf")
 sceneParent = NodePath("..")
 
 [node name="Pajara MP Block" parent="." instance=ExtResource("12_vuau8")]
-transform = Transform3D(-1.534607e-08, 0, 1.9016888, 0, 1, 0, -0.35107714, 0, -8.3125464e-08, 5.8792706, -0.5, -4.260798)
+transform = Transform3D(-1.534607e-08, 0, 0.7606755, 0, 1.3, 0, -0.35107714, 0, -3.3250185e-08, 5.9792705, -0.7, -4.260798)
 color = Color(0, 1.1178702, 1.1178702, 1)
 texture = ExtResource("19_k8e34")
 pedestalName = "Pajara"
