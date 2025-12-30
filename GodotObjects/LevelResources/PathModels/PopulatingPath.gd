@@ -30,7 +30,7 @@ enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEF
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.is_editor_hint(): curve_changed.connect(_update_multimesh)
-	else: _update_multimesh()
+	_update_multimesh()
 
 ## Repopulates the path with the multimeshes.
 func _update_multimesh():
@@ -139,6 +139,7 @@ func _make_polygon() -> CSGPolygon3D:
 	polygon.collision_mask = 0
 	polygon.path_node = "../"
 	polygon.layers = 0
+	polygon.path_joined = curve.closed
 	return polygon
 
 ## auxilliary function to create valid points for the meshes to be populated at.

@@ -130,10 +130,12 @@ func organize_cut_shapes() -> void:
 		if Engine.is_editor_hint():
 			var duplicated: CSGShape3D = child.duplicate()
 			polygon.add_child(duplicated)
+			duplicated.material = polygon.material
 			child.hide()
 			duplicated.show()
 		else:
 			child.reparent(polygon)
+			child.material = polygon.material
 			child.show()
 
 ## Creates the wall polygon

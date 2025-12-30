@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://bwdma5xc3s4o1"]
+[gd_scene load_steps=22 format=4 uid="uid://bwdma5xc3s4o1"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_m7xqe"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_43nvr"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/wood_fence.tscn" id="2_cr368"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="3_4hdch"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="3_trpm5"]
 [ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="4_43nvr"]
+[ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="4_vxu07"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="5_u8djx"]
+[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="7_u8djx"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="8_u8djx"]
 
 [sub_resource type="Curve3D" id="Curve3D_qacvl"]
 closed = true
@@ -200,20 +205,121 @@ baseOffset = Vector2(0, 0)
 offsetStart = 0.5
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
+[sub_resource type="Curve3D" id="Curve3D_cr368"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_43nvr"]
+material = ExtResource("4_43nvr")
+size = Vector3(0.1, 0.2, 1)
+
+[sub_resource type="Resource" id="Resource_u8djx"]
+script = ExtResource("5_u8djx")
+mesh = SubResource("BoxMesh_43nvr")
+baseOffset = Vector2(0, 0)
+offsetStart = 0.5
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
+[sub_resource type="Curve3D" id="Curve3D_4hdch"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 1, -2, 0, 0, 0, 0, 0, 0, 1, 1, -1, 0, 0, 0, 0, 0, 0, 0, 1, -1),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="BaseLevelScene" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_m7xqe")]
 data = {
-"cells": PackedInt32Array(0, 65535, 98, 0, 0, 98, 65535, 65535, 98, 65535, 0, 98, 65535, 65534, 98, 0, 65534, 98, 1, 65534, 98, 1, 65535, 98, 1, 0, 98, 2, 1, 98, 1, 1, 98, 0, 1, 98, 65535, 1, 98, 65534, 1, 98, 65534, 0, 98, 65534, 65535, 98, 65533, 65535, 98, 65534, 65534, 98, 65534, 65533, 98, 65535, 65533, 98, 0, 65533, 98, 1, 65533, 98, 2, 65533, 98, 2, 65534, 98, 2, 65535, 98, 2, 0, 98, 65533, 0, 98, 65533, 1, 98, 65533, 2, 98, 65534, 2, 98, 65535, 2, 98, 0, 2, 98, 1, 2, 98, 2, 2, 98, 3, 2, 98, 3, 1, 98, 3, 0, 98, 3, 65535, 98, 3, 65534, 98, 3, 65533, 98, 65533, 65534, 98, 65533, 65533, 98, 65533, 65532, 98, 65534, 65532, 98, 65535, 65532, 98, 0, 65532, 98, 1, 65532, 98, 2, 65532, 98, 3, 65532, 98, 131075, 0, 98, 131075, 65534, 98, 131075, 65535, 98, 131073, 65532, 98, 131072, 65532, 98, 196607, 65532, 98, 196605, 65534, 98, 196605, 65535, 98, 196605, 0, 98, 196606, 2, 98, 196607, 2, 98, 131072, 2, 98, 131073, 2, 98)
+"cells": PackedInt32Array(0, 65535, 98, 0, 0, 98, 65535, 65535, 98, 65535, 0, 98, 65535, 65534, 98, 0, 65534, 98, 1, 65534, 98, 1, 65535, 98, 1, 0, 98, 2, 1, 98, 1, 1, 98, 0, 1, 98, 65535, 1, 98, 65534, 1, 98, 65534, 0, 98, 65534, 65535, 98, 65533, 65535, 98, 65534, 65534, 98, 65534, 65533, 98, 65535, 65533, 98, 0, 65533, 98, 1, 65533, 98, 2, 65533, 98, 2, 65534, 98, 2, 65535, 98, 2, 0, 98, 65533, 0, 98, 65533, 1, 98, 65533, 2, 98, 65534, 2, 98, 65535, 2, 98, 0, 2, 98, 1, 2, 98, 2, 2, 98, 3, 2, 98, 3, 1, 98, 3, 0, 98, 3, 65535, 98, 3, 65534, 98, 3, 65533, 98, 65533, 65534, 98, 65533, 65533, 98, 65533, 65532, 98, 65534, 65532, 98, 65535, 65532, 98, 0, 65532, 98, 1, 65532, 98, 2, 65532, 98, 3, 65532, 98, 131075, 0, 98, 131075, 65534, 98, 131075, 65535, 98, 131073, 65532, 98, 131072, 65532, 98, 196607, 65532, 98, 196605, 65534, 98, 196605, 65535, 98, 196605, 0, 98, 196607, 2, 98, 131072, 2, 98, 131073, 2, 98)
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="Stickers" type="Node3D" parent="."]
 
+[node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_43nvr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -1.5)
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
+
+[node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4hdch")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 1, 0.5)
+placed = true
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
+
+[node name="FanSticker2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4hdch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, 2)
+placed = true
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
+
+[node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_vxu07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 2)
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
+
 [node name="StickerPlacements" type="Node3D" parent="."]
+
+[node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, -0.5, 1.5, -3)
+
+[node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 0.5, 1.5, -3)
+
+[node name="Placeholder Sticker Area3" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 1.5, 1.5, -3)
+
+[node name="Placeholder Sticker Area4" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-1, 8.7422784e-08, 0, 0, 0, -1.0000001, -8.742278e-08, -1.0000001, 0, 1.5, 1.5, 2)
+
+[node name="Placeholder Sticker Area5" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-1, 8.7422784e-08, 0, 0, 0, -1.0000001, -8.742278e-08, -1.0000001, 0, 0.5, 1.5, 2)
+
+[node name="Placeholder Sticker Area6" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-1, 8.7422784e-08, 0, 0, 0, -1.0000001, -8.742278e-08, -1.0000001, 0, -0.5, 1.5, 2)
+
+[node name="Placeholder Sticker Area7" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, 0.5000001)
+
+[node name="Placeholder Sticker Area13" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 1, 0.5000001)
+
+[node name="Placeholder Sticker Area8" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, -0.49999988)
+
+[node name="Placeholder Sticker Area9" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, -1.4999999)
+
+[node name="Placeholder Sticker Area10" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.3711395e-08, -1.0000001, 0, 0, 0, -1.0000001, 1, -4.37114e-08, 0, 3, 1.5, -1.5000001)
+
+[node name="Placeholder Sticker Area11" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.3711395e-08, -1.0000001, 0, 0, 0, -1.0000001, 1, -4.37114e-08, 0, 3, 1.5, -0.5000001)
+
+[node name="Placeholder Sticker Area12" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(-4.3711395e-08, -1.0000001, 0, 0, 0, -1.0000001, 1, -4.37114e-08, 0, 3, 1.5, 0.49999988)
 
 [node name="Fences" type="Node3D" parent="."]
 
 [node name="Wood Fence" parent="Fences" instance=ExtResource("2_cr368")]
 curve = SubResource("Curve3D_qacvl")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_211gt"), SubResource("Resource_hna0a")])
+collisionLayer = 4096
+
+[node name="Wood Fence2" parent="Fences" instance=ExtResource("2_cr368")]
+curve = SubResource("Curve3D_cr368")
+multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
+collisionLayer = 4096
+
+[node name="Wood Fence3" parent="Fences" instance=ExtResource("2_cr368")]
+curve = SubResource("Curve3D_4hdch")
+multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
+collisionLayer = 4096
+
+[node name="Darkness" parent="." instance=ExtResource("7_u8djx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.375, -0.5)
+size = Vector3(3, 0.5, 3)

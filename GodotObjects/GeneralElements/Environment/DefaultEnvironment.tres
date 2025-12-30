@@ -17,7 +17,7 @@ fill_from = Vector2(1, 1)
 shader = ExtResource("1_ricvt")
 shader_parameter/startPanorama = ExtResource("2_ricvt")
 shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
-shader_parameter/panoramaProgress = 0.0
+shader_parameter/panoramaProgress = 1.0
 shader_parameter/skyContribution = 0.75
 
 [sub_resource type="Sky" id="Sky_k8jv3"]
