@@ -55,7 +55,7 @@ func _update_multimesh():
 				count = curve.point_count
 				multimesh.multimesh.instance_count = count
 				for i in range(0, count):
-					if i == count - 1:
+					if i == count - 1 and not curve.closed:
 						currentDistance = pathLength - PRECISIONPOINT
 						var lastTransform: Transform3D = _create_transform_distance(currentDistance, currentMultimeshResource.normalAlwaysPointsUp)
 						lastTransform.origin = curve.sample_baked(pathLength, true)
@@ -65,6 +65,9 @@ func _update_multimesh():
 						currentDistance += curve.get_point_position(i - 1).distance_to(curve.get_point_position(i))
 					multimesh.multimesh.set_instance_transform(i, currentMultimeshResource._get_mesh_offset(i, _create_transform_distance(currentDistance, currentMultimeshResource.normalAlwaysPointsUp)))
 				continue
+			else:
+				count = floor(pathLength / currentMultimeshResource.distanceBetweenPieces) + 1.0
+				multimesh.multimesh.instance_count = count
 		var sequence: Array[MultiMeshResource] = []
 		var sequenceMultimesh: Array[MultiMeshInstance3D] = []
 		if multiMeshResource is RandomMultimeshResource:
@@ -94,8 +97,6 @@ func _update_multimesh():
 			for key in multimeshReference:
 				multimeshReference[key].multimesh.instance_count = sequence.count(key)
 			count = i
-		else:
-			count = floor(pathLength / currentMultimeshResource.distanceBetweenPieces) + 1.0
 		for i in range(0, count):
 			if len(sequence) > 0:
 				currentMultimeshResource = sequence[i]
