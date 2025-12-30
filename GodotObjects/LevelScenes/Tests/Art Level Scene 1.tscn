@@ -600,6 +600,12 @@ customDownWallWidth = 2.0
 resolution = 5.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6999998, 2, 0.6999998)
+visible = false
+operation = 2
+polygon = PackedVector2Array(0, 0, 0, 2, 1, 2, 1, 0)
+
 [node name="Fences" type="Node3D" parent="."]
 
 [node name="Props" type="Node3D" parent="."]
