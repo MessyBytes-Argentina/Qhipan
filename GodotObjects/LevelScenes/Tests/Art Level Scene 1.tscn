@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=81 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
@@ -136,21 +136,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_d47uu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.6, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_i6t01"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.9000001, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_ks1a4"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.2, 2, 0, 0, 0, 0, 0, 0, 0, -1, 2, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -606,23 +592,12 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -2.5, -7)
 curve = SubResource("Curve3D_d47uu")
 script = ExtResource("18_g7jkd")
-wallHeight = 9.0
+wallMode = 2
 material = ExtResource("19_3x3m0")
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator7" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 1.5, -7)
-curve = SubResource("Curve3D_i6t01")
-script = ExtResource("18_g7jkd")
-material = ExtResource("19_3x3m0")
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator6" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -2.5, -7)
-curve = SubResource("Curve3D_ks1a4")
-script = ExtResource("18_g7jkd")
-wallHeight = 9.0
-material = ExtResource("19_3x3m0")
+customProfileShape = SubResource("Curve_c4td8")
+customWallWidth = 2.0
+customDownWallWidth = 2.0
+resolution = 5.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Fences" type="Node3D" parent="."]
