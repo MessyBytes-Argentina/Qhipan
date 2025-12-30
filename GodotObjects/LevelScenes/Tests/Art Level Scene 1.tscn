@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=83 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
@@ -57,7 +57,7 @@ point_count = 2
 render_priority = 0
 shader = ExtResource("4_0ntye")
 shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 511.8999885580112
+shader_parameter/distance_fade_max = 0.249999994412
 shader_parameter/goesDown = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/fade_color_up = Color(1.022, 0.8798364, 0.5710594, 1)
@@ -119,12 +119,20 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="Curve" id="Curve_7u3pm"]
+
+[sub_resource type="Curve" id="Curve_f2hbe"]
+_data = [Vector2(0.79943496, 0), 0.0, 10.106184, 0, 0, Vector2(0.89548016, 0.6323373), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Curve3D" id="Curve3D_k8e34"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_df2nb"]
 
 [sub_resource type="Curve3D" id="Curve3D_d47uu"]
 _data = {
@@ -576,15 +584,22 @@ curve = SubResource("Curve3D_7plp1")
 script = ExtResource("18_g7jkd")
 wallMode = 1
 material = ExtResource("20_7plp1")
+customProfileShape = SubResource("Curve_7u3pm")
+customProfileShapeDown = SubResource("Curve_f2hbe")
+customDownWallWidth = 10.0
+resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator4" type="Path3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.039612, -0.5, -9)
 curve = SubResource("Curve3D_k8e34")
 script = ExtResource("18_g7jkd")
-wallHeight = 10.0
 wallMode = 1
 material = ExtResource("20_7plp1")
+customProfileShape = SubResource("Curve_df2nb")
+customProfileShapeDown = SubResource("Curve_f2hbe")
+customDownWallWidth = 10.0
+resolution = 4.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator5" type="Path3D" parent="Walls"]
