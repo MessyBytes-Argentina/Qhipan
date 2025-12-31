@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="5_u8djx"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="7_u8djx"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="8_u8djx"]
-[ext_resource type="Material" uid="uid://ypcwm4f3mf6b" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/PlaceholderInvisibleWood.tres" id="10_vxu07"]
+[ext_resource type="Material" uid="uid://ypcwm4f3mf6b" path="res://Assets/Materials/WithCutout/PlaceholderInvisibleWood.tres" id="10_vxu07"]
 [ext_resource type="Script" uid="uid://dlqok0gkct6qx" path="res://GodotObjects/LevelResources/GlowInLight/GlowDetectionArea.gd" id="11_211gt"]
 
 [sub_resource type="Curve3D" id="Curve3D_qacvl"]
@@ -319,13 +319,13 @@ collisionLayer = 4096
 curve = SubResource("Curve3D_cr368")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.3, 0.4)
 
 [node name="Wood Fence3" parent="Fences" instance=ExtResource("2_cr368")]
 curve = SubResource("Curve3D_4hdch")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.3, 0.4)
 
 [node name="Area3D" type="Area3D" parent="Fences"]
 collision_layer = 0

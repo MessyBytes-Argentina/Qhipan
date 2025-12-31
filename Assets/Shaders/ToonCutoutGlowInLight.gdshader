@@ -72,10 +72,11 @@ uniform float side_anisotropy : hint_range(0.0, 1.0, 0.01);
 
 // Light Source
 uniform float lightFuzzyness: hint_range(1.0, 100.0, 0.1) = 1.0;
-const float playerLightRange = 1.0;
+const float playerLightRange = 1.5;
 const int trackedLights = 6;
 uniform vec4 lights[trackedLights];
 uniform bool playerHoldsLight = false;
+uniform vec3 actualPlayerPosition;
 
 // Cutout Variables
 uniform bool cylinderCutout = false;
@@ -188,7 +189,8 @@ void fragment() {
 	for (int i = 0; i < trackedLights; i++) {
 		lightAlpha = max(lightAlpha, lights[i].w > 0.0 ? -sdSphere(worldVector - vec3(lights[i].x, worldVector.y, lights[i].z), lights[i].w) : 0.0);
 	}
-	lightAlpha = max(lightAlpha, playerHoldsLight? -sdSphere(worldVector - vec3(playerPosition.x, worldVector.y, playerPosition.z), playerLightRange) : 0.0);
+	lightAlpha = clamp(smoothstep(0.1, 0.2, max(lightAlpha, playerHoldsLight ? -sdSphere(worldVector - vec3(actualPlayerPosition.x, worldVector.y, actualPlayerPosition.z), playerLightRange) : 0.0)), 0.0, 1.0);
+	lightAlpha = clamp(lightAlpha * 50.0 / lightFuzzyness, 0.0, 1.0);
 	ALPHA = base_albedo.a * albedo.a * lightAlpha;
 
 	// ORM Sampler

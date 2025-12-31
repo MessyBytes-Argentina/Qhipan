@@ -9,6 +9,8 @@ const LIGHTAMOUNT: int = 6
 var shaders: Array[ShaderMaterial] = []
 ## Reference to lights.
 var lights: Array[LampSticker] = []
+## Reference to player
+var player: Player
 ## Reference to pickup handler
 var pickupHandler: PickupHandler
 
@@ -16,7 +18,8 @@ var pickupHandler: PickupHandler
 func _ready() -> void:
 	await get_parent().ready
 	_get_shaders(get_parent())
-	pickupHandler = get_tree().get_first_node_in_group("Player").grabArea
+	player = get_tree().get_first_node_in_group("Player")
+	pickupHandler = player.grabArea
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -29,6 +32,7 @@ func _process(_delta: float) -> void:
 	for shader in shaders:
 		shader.set_shader_parameter("lights", lightsParameters)
 		shader.set_shader_parameter("playerHoldsLight", pickupHandler.currentPickup is LampSticker)
+		shader.set_shader_parameter("actualPlayerPosition", player.global_position)
 
 func _get_shaders(node: Node) -> void:
 	if node is MultiMeshInstance3D: _store_shaders(node.multimesh.mesh)
