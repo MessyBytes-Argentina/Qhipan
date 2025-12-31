@@ -50,7 +50,7 @@ detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_mjg6o")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s3lcm"]
-radius = 1.0
+radius = 2.0
 
 [sub_resource type="Gradient" id="Gradient_vdwj0"]
 interpolation_mode = 1

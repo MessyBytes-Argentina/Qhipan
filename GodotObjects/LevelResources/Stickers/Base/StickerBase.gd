@@ -92,6 +92,8 @@ var UUID: int
 var hasBeenMoved: bool = false
 ## Area to get scene parent.
 var parentChecker: Area3D
+## Has been moved
+var moved: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -153,6 +155,13 @@ func _physics_process(delta: float) -> void:
 	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
 	velocity = currentPush * delta
 	move_and_slide()
+	if currentPush.length() > 0:
+		moved = true
+	elif moved:
+		if len(parentChecker.get_overlapping_bodies()) == 0: return
+		await do_reparent()
+		_push_save()
+		moved = false
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
@@ -264,6 +273,7 @@ func do_reparent(newPos: Vector3 = global_position) -> void:
 	sceneParent = null
 	while sceneParent == null:
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
+		bodies.sort_custom(func(a: Node3D, b: Node3D): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 		if len(bodies) == 0: await get_tree().process_frame
 		else: sceneParent = get_root_parent(bodies[0])
 	reparent(sceneParent)

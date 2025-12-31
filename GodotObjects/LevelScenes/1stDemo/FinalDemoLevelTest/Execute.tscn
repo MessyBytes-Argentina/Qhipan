@@ -63,7 +63,7 @@ metadata/Sun = NodePath("DirectionalLight3D")
 environment = SubResource("Environment_pgoel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.86602557, -0.4999999, -2.1855687e-08, 0, -4.3711374e-08, 0.9999996, -0.5000002, 0.86602515, 3.785516e-08, 0, 0, 0)
 light_energy = 0.025
 shadow_enabled = true
 shadow_caster_mask = 4294967293
@@ -71,4 +71,4 @@ shadow_caster_mask = 4294967293
 [node name="Player" parent="." instance=ExtResource("2_hcdsl")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 2, 1.5)
 
-[node name="BaseLevelScene" parent="." instance=ExtResource("4_bimqd")]
+[node name="1" parent="." instance=ExtResource("4_bimqd")]

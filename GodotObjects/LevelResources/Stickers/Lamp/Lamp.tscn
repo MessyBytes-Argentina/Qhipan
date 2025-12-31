@@ -76,7 +76,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gdvqv"]
-radius = 1.0
+radius = 2.0
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1

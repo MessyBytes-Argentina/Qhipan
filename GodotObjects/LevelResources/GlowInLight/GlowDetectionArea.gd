@@ -1,9 +1,13 @@
+@tool
 extends Area3D
 
 class_name GlowDetectionArea
 
 ## AmmountOfLightsToProcess.
 const LIGHTAMOUNT: int = 6
+
+## Minimum alpha
+@export_range(0.0, 1.0, 0.01) var minimumAlpha: float = 0.0
 
 ## Reference to shaders.
 var shaders: Array[ShaderMaterial] = []
@@ -18,11 +22,18 @@ var pickupHandler: PickupHandler
 func _ready() -> void:
 	await get_parent().ready
 	_get_shaders(get_parent())
+	if Engine.is_editor_hint():
+		for shader in shaders:
+			shader.set_shader_parameter("minAlpha", 1.0)
+		return
+	for shader in shaders:
+		shader.set_shader_parameter("minAlpha", minimumAlpha)
 	player = get_tree().get_first_node_in_group("Player")
 	pickupHandler = player.grabArea
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	var lightsParameters: PackedVector4Array = []
 	lightsParameters.resize(LIGHTAMOUNT)
 	var j: int = 0
@@ -41,7 +52,6 @@ func _get_shaders(node: Node) -> void:
 		_get_shaders(child)
 
 func _store_shaders(mesh: Mesh) -> void:
-	print(mesh)
 	if mesh is PrimitiveMesh:
 		shaders.append(mesh.material)
 		return

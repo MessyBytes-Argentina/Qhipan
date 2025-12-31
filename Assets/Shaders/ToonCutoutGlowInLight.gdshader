@@ -71,6 +71,7 @@ uniform float top_anisotropy : hint_range(0.0, 1.0, 0.01);
 uniform float side_anisotropy : hint_range(0.0, 1.0, 0.01);
 
 // Light Source
+uniform float minAlpha: hint_range(0.0, 1.0, 0.1) = 0.0;
 uniform float lightFuzzyness: hint_range(1.0, 100.0, 0.1) = 1.0;
 const float playerLightRange = 1.5;
 const int trackedLights = 6;
@@ -185,7 +186,7 @@ void fragment() {
 	ALBEDO = base_albedo.rgb * albedo.rgb;
 
 	// Alpha
-	float lightAlpha = 0.0;
+	float lightAlpha = minAlpha;
 	for (int i = 0; i < trackedLights; i++) {
 		lightAlpha = max(lightAlpha, lights[i].w > 0.0 ? -sdSphere(worldVector - vec3(lights[i].x, worldVector.y, lights[i].z), lights[i].w) : 0.0);
 	}
