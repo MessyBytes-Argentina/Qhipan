@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bwdma5xc3s4o1"]
+[gd_scene load_steps=30 format=4 uid="uid://bwdma5xc3s4o1"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_m7xqe"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_43nvr"]
@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="8_u8djx"]
 [ext_resource type="Material" uid="uid://ypcwm4f3mf6b" path="res://Assets/Materials/WithCutout/PlaceholderInvisibleWood.tres" id="10_vxu07"]
 [ext_resource type="Script" uid="uid://dlqok0gkct6qx" path="res://GodotObjects/LevelResources/GlowInLight/GlowDetectionArea.gd" id="11_211gt"]
+[ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="13_s1xu2"]
+[ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="14_hna0a"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="15_m8rua"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="16_x77sq"]
 
 [sub_resource type="Curve3D" id="Curve3D_qacvl"]
 closed = true
@@ -236,11 +240,19 @@ point_count = 3
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhv2t"]
 size = Vector3(3, 1.25, 2.8500001)
 
+[sub_resource type="Curve3D" id="Curve3D_f57d1"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4, 1, 3, 0, 0, 0, 0, 0, 0, 4, 1, -4, 0, 0, 0, 0, 0, 0, -3, 1, -4, 0, 0, 0, 0, 0, 0, -3, 1, 3),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="BaseLevelScene" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_m7xqe")]
 data = {
-"cells": PackedInt32Array(0, 65535, 98, 0, 0, 98, 65535, 65535, 98, 65535, 0, 98, 65535, 65534, 98, 0, 65534, 98, 1, 65534, 98, 1, 65535, 98, 1, 0, 98, 2, 1, 98, 1, 1, 98, 0, 1, 98, 65535, 1, 98, 65534, 1, 98, 65534, 0, 98, 65534, 65535, 98, 65533, 65535, 98, 65534, 65534, 98, 65534, 65533, 98, 65535, 65533, 98, 0, 65533, 98, 1, 65533, 98, 2, 65533, 98, 2, 65534, 98, 2, 65535, 98, 2, 0, 98, 65533, 0, 98, 65533, 1, 98, 65533, 2, 98, 65534, 2, 98, 65535, 2, 98, 0, 2, 98, 1, 2, 98, 2, 2, 98, 3, 2, 98, 3, 1, 98, 3, 0, 98, 3, 65535, 98, 3, 65534, 98, 3, 65533, 98, 65533, 65534, 98, 65533, 65533, 98, 65533, 65532, 98, 65534, 65532, 98, 65535, 65532, 98, 0, 65532, 98, 1, 65532, 98, 2, 65532, 98, 3, 65532, 98, 131075, 0, 98, 131075, 65534, 98, 131075, 65535, 98, 131073, 65532, 98, 131072, 65532, 98, 196607, 65532, 98, 196605, 65534, 98, 196605, 65535, 98, 196605, 0, 98, 196607, 2, 98, 131072, 2, 98, 131073, 2, 98)
+"cells": PackedInt32Array(0, 65535, 98, 0, 0, 98, 65535, 65535, 98, 65535, 0, 98, 65535, 65534, 98, 0, 65534, 98, 1, 65534, 98, 1, 65535, 98, 1, 0, 98, 2, 1, 98, 1, 1, 98, 0, 1, 98, 65535, 1, 98, 65534, 1, 98, 65534, 0, 98, 65534, 65535, 98, 65533, 65535, 98, 65534, 65534, 98, 65534, 65533, 98, 65535, 65533, 98, 0, 65533, 98, 1, 65533, 98, 2, 65533, 98, 2, 65534, 98, 2, 65535, 98, 2, 0, 98, 65533, 0, 98, 65533, 1, 98, 65533, 2, 98, 65534, 2, 98, 65535, 2, 98, 0, 2, 98, 1, 2, 98, 2, 2, 98, 3, 2, 98, 3, 1, 98, 3, 0, 98, 3, 65535, 98, 3, 65534, 98, 3, 65533, 98, 65533, 65534, 98, 65533, 65533, 98, 65533, 65532, 98, 65534, 65532, 98, 65535, 65532, 98, 0, 65532, 98, 1, 65532, 98, 2, 65532, 98, 131075, 0, 34, 131075, 65534, 34, 131075, 65535, 34, 131073, 65532, 18, 131072, 65532, 18, 196607, 65532, 18, 196605, 65534, 34, 196605, 65535, 34, 196605, 0, 34, 196607, 2, 98, 131072, 2, 98, 131073, 2, 98, -65539, 65532, 98, -65539, 65533, 98, -65539, 65534, 98, -65539, 65535, 98, -65539, 0, 98, -65539, 1, 98, -65539, 2, 98, -65538, 65532, 98, -65538, 65533, 98, -65538, 65534, 98, -65538, 65535, 98, -65538, 0, 98, -65538, 1, 98, -65538, 2, 98, -65537, 65532, 98, -65537, 65533, 98, -65537, 65534, 98, -65537, 65535, 98, -65537, 0, 98, -65537, 1, 98, -65537, 2, 98, -131072, 65532, 98, -131072, 65533, 98, -131072, 65534, 98, -131072, 65535, 98, -131072, 0, 98, -131072, 1, 98, -131072, 2, 98, -131071, 65532, 98, -131071, 65533, 98, -131071, 65534, 98, -131071, 65535, 98, -131071, 0, 98, -131071, 1, 98, -131071, 2, 98, -131070, 65532, 98, -131070, 65533, 98, -131070, 65534, 98, -131070, 65535, 98, -131070, 0, 98, -131070, 1, 98, -131070, 2, 98, -131069, 65532, 98, -131069, 65533, 98, -131069, 65534, 98, -131069, 65535, 98, -131069, 0, 98, -131069, 1, 98, -131069, 2, 98, 3, 65532, 100)
 }
 
 [node name="Stickers" type="Node3D" parent="."]
@@ -251,7 +263,14 @@ sceneParent = NodePath("../..")
 originalParent = "BaseLevelScene"
 
 [node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4hdch")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 0.55, 0.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 1.05, 0.5)
+placed = true
+sceneParent = NodePath("../..")
+originalParent = "BaseLevelScene"
+
+[node name="FanSticker3" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4hdch")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.5, 0.54999995, -3.5)
+fanRange = 8.0
 placed = true
 sceneParent = NodePath("../..")
 originalParent = "BaseLevelScene"
@@ -291,7 +310,10 @@ transform = Transform3D(-1, 8.7422784e-08, 0, 0, 0, -1.0000001, -8.742278e-08, -
 transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, 0.5000001)
 
 [node name="Placeholder Sticker Area13" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
-transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 0.5, 0.5000001)
+transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 1, 0.5000001)
+
+[node name="Placeholder Sticker Area14" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
+transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, 3.5, 0.5, -3.5)
 
 [node name="Placeholder Sticker Area8" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
 transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, -0.49999988)
@@ -339,6 +361,21 @@ shape = SubResource("BoxShape3D_nhv2t")
 [node name="Darkness" parent="." instance=ExtResource("7_u8djx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, -0.5)
 size = Vector3(3, 0.5, 3)
+
+[node name="Grate" parent="." instance=ExtResource("13_s1xu2")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.5, 0.87, -3.5)
+
+[node name="AntiStickerArea" parent="." instance=ExtResource("14_hna0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, -3)
+
+[node name="AntiStickerArea2" parent="." instance=ExtResource("14_hna0a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 1.5, -2.5)
+
+[node name="Wall" type="Path3D" parent="."]
+curve = SubResource("Curve3D_f57d1")
+script = ExtResource("15_m8rua")
+wallMode = 2
+material = ExtResource("16_x77sq")
 
 [connection signal="area_entered" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_exited"]

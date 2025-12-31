@@ -3,6 +3,12 @@ extends StickerBase
 ## Fan sticker class.
 class_name FanSticker
 
+## Default fan range.
+const DEFAULTFANRANGE: float = 3.0
+
+## Fan range. Use only on fixed fans.
+@export_range(1.0, 20.0, 1.0) var fanRange = 3.0
+
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## Spinup sound player.
@@ -15,9 +21,14 @@ var onPlayerEffectRef: LedgeDetection
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Engine.is_editor_hint(): fan.switch_fan(true)
+	if not Engine.is_editor_hint(): 
+		fan.areaHeight = fanRange
+		fan.set_area_size()
+		fan.switch_fan(true)
 	super()
-	if Engine.is_editor_hint(): return
+	if Engine.is_editor_hint(): 
+		if not fanRange: fanRange = DEFAULTFANRANGE
+		return
 	if not placed:
 		await get_tree().create_timer(0.5).timeout
 		fan.switch_fan(false)
