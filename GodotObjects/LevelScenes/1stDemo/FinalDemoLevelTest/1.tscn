@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bwdma5xc3s4o1"]
+[gd_scene load_steps=25 format=4 uid="uid://bwdma5xc3s4o1"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_m7xqe"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_43nvr"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="5_u8djx"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="7_u8djx"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="8_u8djx"]
+[ext_resource type="Material" uid="uid://ypcwm4f3mf6b" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/PlaceholderInvisibleWood.tres" id="10_vxu07"]
+[ext_resource type="Script" uid="uid://dlqok0gkct6qx" path="res://GodotObjects/LevelResources/GlowInLight/GlowDetectionArea.gd" id="11_211gt"]
 
 [sub_resource type="Curve3D" id="Curve3D_qacvl"]
 closed = true
@@ -213,13 +215,14 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_43nvr"]
-material = ExtResource("4_43nvr")
-size = Vector3(0.1, 0.2, 1)
+material = ExtResource("10_vxu07")
+size = Vector3(0.1, 0.5, 1)
 
 [sub_resource type="Resource" id="Resource_u8djx"]
 script = ExtResource("5_u8djx")
 mesh = SubResource("BoxMesh_43nvr")
-baseOffset = Vector2(0, 0)
+snapPointToPath = 1
+baseOffset = Vector2(0, 0.35)
 offsetStart = 0.5
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
@@ -230,13 +233,15 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhv2t"]
+size = Vector3(3, 1.25, 2.8500001)
+
 [node name="BaseLevelScene" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_m7xqe")]
 data = {
 "cells": PackedInt32Array(0, 65535, 98, 0, 0, 98, 65535, 65535, 98, 65535, 0, 98, 65535, 65534, 98, 0, 65534, 98, 1, 65534, 98, 1, 65535, 98, 1, 0, 98, 2, 1, 98, 1, 1, 98, 0, 1, 98, 65535, 1, 98, 65534, 1, 98, 65534, 0, 98, 65534, 65535, 98, 65533, 65535, 98, 65534, 65534, 98, 65534, 65533, 98, 65535, 65533, 98, 0, 65533, 98, 1, 65533, 98, 2, 65533, 98, 2, 65534, 98, 2, 65535, 98, 2, 0, 98, 65533, 0, 98, 65533, 1, 98, 65533, 2, 98, 65534, 2, 98, 65535, 2, 98, 0, 2, 98, 1, 2, 98, 2, 2, 98, 3, 2, 98, 3, 1, 98, 3, 0, 98, 3, 65535, 98, 3, 65534, 98, 3, 65533, 98, 65533, 65534, 98, 65533, 65533, 98, 65533, 65532, 98, 65534, 65532, 98, 65535, 65532, 98, 0, 65532, 98, 1, 65532, 98, 2, 65532, 98, 3, 65532, 98, 131075, 0, 98, 131075, 65534, 98, 131075, 65535, 98, 131073, 65532, 98, 131072, 65532, 98, 196607, 65532, 98, 196605, 65534, 98, 196605, 65535, 98, 196605, 0, 98, 196607, 2, 98, 131072, 2, 98, 131073, 2, 98)
 }
-metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="Stickers" type="Node3D" parent="."]
 
@@ -246,7 +251,7 @@ sceneParent = NodePath("../..")
 originalParent = "BaseLevelScene"
 
 [node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4hdch")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 1, 0.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5, 0.55, 0.5)
 placed = true
 sceneParent = NodePath("../..")
 originalParent = "BaseLevelScene"
@@ -286,7 +291,7 @@ transform = Transform3D(-1, 8.7422784e-08, 0, 0, 0, -1.0000001, -8.742278e-08, -
 transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, 0.5000001)
 
 [node name="Placeholder Sticker Area13" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
-transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 1, 0.5000001)
+transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 0.5, 0.5000001)
 
 [node name="Placeholder Sticker Area8" parent="StickerPlacements" instance=ExtResource("8_u8djx")]
 transform = Transform3D(-4.371139e-08, 1.0000001, 0, 0, 0, -1.0000001, -1, -4.3711392e-08, 0, -2, 1.5, -0.49999988)
@@ -314,12 +319,26 @@ collisionLayer = 4096
 curve = SubResource("Curve3D_cr368")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
+colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="Fences" instance=ExtResource("2_cr368")]
 curve = SubResource("Curve3D_4hdch")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
+colliderSize = Vector2(0.3, 1)
+
+[node name="Area3D" type="Area3D" parent="Fences"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("11_211gt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fences/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.625, -0.47500002)
+shape = SubResource("BoxShape3D_nhv2t")
 
 [node name="Darkness" parent="." instance=ExtResource("7_u8djx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.375, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, -0.5)
 size = Vector3(3, 0.5, 3)
+
+[connection signal="area_entered" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_entered"]
+[connection signal="area_exited" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_exited"]

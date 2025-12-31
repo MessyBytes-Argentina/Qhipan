@@ -5,7 +5,7 @@ class_name PathPopulator
 
 ## How precisely to follow the path.
 const PRECISIONPOINT: float = 0.001
-## How long to show collider for
+## How long to show collider for.
 const COLLIDERTIMER: float = 10
 
 ## List of meshes to use for populating the path.
@@ -34,10 +34,9 @@ func _ready():
 
 ## Repopulates the path with the multimeshes.
 func _update_multimesh():
-	for child in get_children(): child.queue_free()
+	for child in get_children(): 
+		if child is CSGPolygon3D or child is MultiMeshInstance3D: child.queue_free()
 	var pathLength: float = curve.get_baked_length()
-	if collisionLayer > 0:
-		_make_polygon()
 	for multiMeshResource in multiMeshResources:
 		var count: int
 		var currentDistance: float = 0.0
@@ -74,7 +73,6 @@ func _update_multimesh():
 			var weights: Array[MultiMeshResource] = []
 			var multimeshReference: Dictionary[MultiMeshResource, MultiMeshInstance3D] = {}
 			for key in multiMeshResource.multimeshes:
-				print(key.distanceBetweenPieces)
 				var currentMultimeshInstance: MultiMeshInstance3D = multimesh.duplicate()
 				currentMultimeshInstance.multimesh = currentMultimeshInstance.multimesh.duplicate()
 				currentMultimeshInstance.multimesh.mesh = key.mesh.duplicate()
@@ -104,6 +102,8 @@ func _update_multimesh():
 			var curveDistance = multiMeshResource.offsetStart + (multiMeshResource.offsetEnd if i == count - 1 and multiMeshResource.useOffsetEnd else 0.0) + currentDistance
 			currentDistance += currentMultimeshResource.distanceBetweenPieces
 			multimesh.multimesh.set_instance_transform(i, currentMultimeshResource._get_mesh_offset(i, _create_transform_distance(curveDistance, currentMultimeshResource.normalAlwaysPointsUp)))
+	if collisionLayer > 0:
+		_make_polygon()
 
 ## Makes collision polygon
 func _make_polygon() -> CSGPolygon3D:
