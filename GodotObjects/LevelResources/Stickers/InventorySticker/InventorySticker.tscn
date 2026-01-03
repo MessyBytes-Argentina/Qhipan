@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1itoeoceqq0o"]
+[gd_scene load_steps=18 format=3 uid="uid://c1itoeoceqq0o"]
 
 [ext_resource type="Script" uid="uid://djq1n6uqo7io4" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.gd" id="1_pdvbf"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_1efht"]
@@ -58,6 +58,9 @@ height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_pdvbf"]
+radius = 2.0
+
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5)
@@ -76,6 +79,7 @@ collision_mask = 4353
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
+sticker = false
 sceneParent = NodePath(".")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]
@@ -130,6 +134,13 @@ collision_mask = 1048
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaChecker"]
 shape = SubResource("SphereShape3D_8ww4f")
+
+[node name="ParentChecker" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ParentChecker"]
+shape = SubResource("SphereShape3D_pdvbf")
 
 [node name="ShadowDecal" type="Decal" parent="."]
 unique_name_in_owner = true

@@ -76,7 +76,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gdvqv"]
-radius = 1.0
+radius = 2.0
 
 [sub_resource type="Gradient" id="Gradient_3jjt7"]
 interpolation_mode = 1
@@ -203,7 +203,7 @@ metadata/Parent = NodePath("../..")
 [node name="LightShape" type="CollisionShape3D" parent="Shapes/LightArea"]
 unique_name_in_owner = true
 shape = SubResource("CapsuleShape3D_gdvqv")
-debug_color = Color(0.986798, 0, 0.31983, 0.42)
+debug_color = Color(0.65949064, 0.51636934, 0, 0.41960785)
 
 [node name="StickerLightArea" type="Area3D" parent="Shapes"]
 unique_name_in_owner = true

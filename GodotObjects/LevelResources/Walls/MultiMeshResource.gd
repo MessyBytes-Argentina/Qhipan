@@ -1,5 +1,5 @@
 @tool
-extends Resource
+extends PathPopulatorResource
 class_name MultiMeshResource
 
 ## Mesh to instantiate along path.
@@ -10,12 +10,6 @@ class_name MultiMeshResource
 @export var applyOnlyToNodes: bool = false
 ## Distance between instances of this mesh.
 @export_range(0.01, 200.0, 0.01) var distanceBetweenPieces = 1.0
-## Offset from the begining of the path.
-@export_range(0.00, 200.0, 0.01) var offsetStart: float = 0.0
-## Offset from the end of the path.
-@export_range(0.00, 200.0, 0.01) var offsetEnd: float = 0.0
-## Toggles the offset from the end of the path.
-@export var useOffsetEnd: bool = false
 ## Toggle to make sure the model attaches to and follows the ground floor.
 @export var normalAlwaysPointsUp: bool = false
 ## Snapping points in reference to the path.
@@ -33,8 +27,6 @@ enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEF
 @export_custom(PROPERTY_HINT_RANGE, "-360.0, 360.0, 1.0, radians_as_degrees") var baseRotation: Vector3 = Vector3.ZERO
 ## Random rotation deviation from the path per piece in local coordinates (rotates with the path).
 @export_custom(PROPERTY_HINT_RANGE, "0.0, 360.0, 1.0, radians_as_degrees") var randomRotation: Vector3 = Vector3.ZERO
-## Seed to use for randomness. This is so it will look the same in runtime too.
-@export_range(1.0, 1000.0, 1.0) var randomSeed: int = 1
 ## Storage of calculated offset from path.
 @export_storage var baseOffset: Vector2 = Vector2(-69, 420)
 

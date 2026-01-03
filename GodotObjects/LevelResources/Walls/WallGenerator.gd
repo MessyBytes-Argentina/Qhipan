@@ -95,6 +95,8 @@ func regenerate_wall_shape() -> void:
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	shadowPolygon.polygon = _create_wall_shape(true, false)
+	polygon.show()
+	shadowPolygon.show()
 	match wallMode:
 		WallModes.BOTH_WAYS:
 			downPolygon = polygon.duplicate()
@@ -106,9 +108,17 @@ func regenerate_wall_shape() -> void:
 			if not blocksLight:
 				downPolygon.layers = 2
 		WallModes.ONLY_DOWN:
-			polygon.polygon = _create_wall_shape(false, true)
-			polygon.material = material.duplicate()
-			polygon.material.set_shader_parameter("goesDown", true)
+			downPolygon = polygon.duplicate()
+			add_child(downPolygon)
+			downPolygon.polygon = _create_wall_shape(false, true)
+			downPolygon.use_collision = false
+			downPolygon.material = downPolygon.material.duplicate()
+			downPolygon.material.set_shader_parameter("goesDown", true)
+			if not blocksLight:
+				downPolygon.layers = 2
+			polygon.collision_layer = 0
+			polygon.hide()
+			shadowPolygon.hide()
 	organize_cut_shapes()
 
 ## Moves cut shapes to polygon wall.
@@ -120,10 +130,12 @@ func organize_cut_shapes() -> void:
 		if Engine.is_editor_hint():
 			var duplicated: CSGShape3D = child.duplicate()
 			polygon.add_child(duplicated)
+			duplicated.material = polygon.material
 			child.hide()
 			duplicated.show()
 		else:
 			child.reparent(polygon)
+			child.material = polygon.material
 			child.show()
 
 ## Creates the wall polygon

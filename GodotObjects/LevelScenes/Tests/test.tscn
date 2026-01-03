@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=66 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_sgigg"]
@@ -36,7 +36,7 @@
 [ext_resource type="Material" uid="uid://c577hil3xnlae" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylinePlaceholderMaterialGlow.tres" id="35_3q00n"]
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="36_s3g0t"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="36_tof7f"]
-[ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="37_gv342"]
+[ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="37_sjsp2"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="38_gv342"]
 [ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="39_0qu2a"]
 [ext_resource type="Shader" uid="uid://lradknr5rryg" path="res://Assets/Shaders/ToonGrassShader.gdshader" id="40_0qu2a"]
@@ -124,16 +124,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="BoxMesh" id="BoxMesh_0qu2a"]
-size = Vector3(0.25, 0.25, 0.5)
-
-[sub_resource type="Resource" id="Resource_sjsp2"]
-script = ExtResource("37_gv342")
-mesh = SubResource("BoxMesh_0qu2a")
-randomRotation = Vector3(0, 1.9433019, 1.6151975)
-baseOffset = Vector2(0, 0)
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
-
 [sub_resource type="Curve3D" id="Curve3D_0qu2a"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
@@ -167,8 +157,8 @@ fill_to = Vector2(0.5, 0)
 render_priority = 0
 shader = ExtResource("40_0qu2a")
 shader_parameter/isBillboard = true
-shader_parameter/swaySpeed = Vector2(0.8, 0.7)
-shader_parameter/swayAmount = Vector2(0.2, 0.1)
+shader_parameter/swaySpeed = Vector3(0.8, 0.7, 0.6)
+shader_parameter/swayAmount = Vector3(0.2, 0.1, 0.05)
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("42_47lso")
 shader_parameter/fresnel_gradient = ExtResource("41_sjsp2")
@@ -442,7 +432,7 @@ sceneParent = NodePath("..")
 [node name="PathPopulator" type="Path3D" parent="."]
 curve = SubResource("Curve3D_nj6ah")
 script = ExtResource("36_s3g0t")
-multiMeshResources = Array[ExtResource("37_gv342")]([SubResource("Resource_sjsp2")])
+multiMeshResources = Array[ExtResource("37_sjsp2")]([null])
 collisionLayer = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"
 
@@ -458,6 +448,13 @@ customWallWidth = 2.0
 customDownWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WallGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 3.25)
+visible = false
+operation = 2
+size = Vector3(5, 1, 5.5)
+material = ExtResource("39_0qu2a")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5.5)

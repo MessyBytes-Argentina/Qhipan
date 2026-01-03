@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 ## Called when a body enters the area.
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Player: return
-	if pickupHandler.pickupOnHand: pickupHandler.drop()
+	if pickupHandler.pickupOnHand: pickupHandler.drop(false, true)
 	pickupHandler.inNoStickerArea = true
 	var pos: Vector3 = body.global_position
 	for i in AMOUNT:

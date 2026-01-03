@@ -120,10 +120,13 @@ func check_available_area() -> bool:
 	return false
 
 ## Tries to place sticker, if it can't it drops it on the ground
-func drop(onReset: bool = false) -> void:
+func drop(onReset: bool = false, forceDrop: bool = false) -> void:
 	if pickupOnHand and currentPickup:
 		if onReset:
 			currentPickup.reset_sticker()
+		elif forceDrop:
+			currentPickup.drop()
+			dropSound.play_sound()
 		elif not check_available_area():
 			if not canDrop or (inDarkness and not inLight): return
 			currentPickup.drop()
