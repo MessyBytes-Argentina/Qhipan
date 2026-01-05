@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://cox3tjjx4wgok"]
+[gd_scene load_steps=85 format=4 uid="uid://cox3tjjx4wgok"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_i253s"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_0ntye"]
@@ -44,6 +44,9 @@
 [ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="27_i6t01"]
 [ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe.tscn" id="34_4gqna"]
 [ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="37_cc28h"]
+[ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="46_0ntye"]
+[ext_resource type="Curve3D" uid="uid://mqnk346o3aus" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 2m.tres" id="46_7u3pm"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="47_3cv2g"]
 [ext_resource type="PackedScene" uid="uid://57twmtocploa" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/sand_fringe.tscn" id="47_f2hbe"]
 
 [sub_resource type="Curve3D" id="Curve3D_3x3m0"]
@@ -523,6 +526,14 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve3D" id="Curve3D_df2nb"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.525, 0, -0.115, 0, 0, -0.4000001, 0, 0, 0, 1.08, 0, 0.295, 1, 0, -0.20000005, 0, 0, 0, 0.985, 0, 0, 2, 0, -0.5, 0, 0, 0, -0.295, 0, -0.585, 3, 0, -1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
 [node name="Art Level Scene 1" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_i253s")]
@@ -734,3 +745,40 @@ curve = SubResource("Curve3D_8vtx8")
 [node name="Sand Fringe Face Y" parent="Fringes" instance=ExtResource("47_f2hbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.501, 7)
 curve = SubResource("Curve3D_7u3pm")
+
+[node name="PathExtruder" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+curve = ExtResource("46_7u3pm")
+script = ExtResource("46_0ntye")
+extrudeDirection = 0
+shapeThickness = 3.0
+material = ExtResource("47_3cv2g")
+collisionLayer = 1
+resolution = 2.0
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="@CSGPolygon3D@34675" type="CSGPolygon3D" parent="PathExtruder"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+use_collision = true
+collision_mask = 0
+polygon = PackedVector2Array(0, 0, 0.9905592, -0.16786583, 2, 0, 2.3529027, 0.9966566, 2, 2, 1.0033435, 2.3529027, 0, 2, -0.35290268, 1.0033432)
+depth = 3.0
+material = ExtResource("47_3cv2g")
+
+[node name="PathExtruder2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
+curve = SubResource("Curve3D_df2nb")
+script = ExtResource("46_0ntye")
+extrudeDirection = 0
+shapeThickness = 3.0
+material = ExtResource("47_3cv2g")
+collisionLayer = 1
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="@CSGPolygon3D@37812" type="CSGPolygon3D" parent="PathExtruder2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+use_collision = true
+collision_mask = 0
+polygon = PackedVector2Array(0, -0.4000001, 1, -0.20000005, 2, -0.5, 3, -1, 4, 0, -1, 0)
+depth = 3.0
+material = ExtResource("47_3cv2g")
