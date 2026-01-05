@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
-[ext_resource type="Texture2D" uid="uid://k8c3uc7gxr4w" path="res://Assets/Textures/Stickers/Lamp/Lamp OFF v1.png" id="3_w5ix8"]
+[ext_resource type="Texture2D" uid="uid://k8c3uc7gxr4w" path="res://Assets/Textures/Stickers/Lamp/Lamp OFF.png" id="3_w5ix8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25

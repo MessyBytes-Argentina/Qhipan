@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da3qteoalmnj6"
-path="res://.godot/imported/Lamp ON v2.png-35ddc7a27a43c1e9df85a7b1a19a0f34.ctex"
+path="res://.godot/imported/Lamp ON.png-e0e0b11b359a38a7f40b5e068feef2af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Stickers/Lamp/Lamp ON v2.png"
-dest_files=["res://.godot/imported/Lamp ON v2.png-35ddc7a27a43c1e9df85a7b1a19a0f34.ctex"]
+source_file="res://Assets/Textures/Stickers/Lamp/Lamp ON.png"
+dest_files=["res://.godot/imported/Lamp ON.png-e0e0b11b359a38a7f40b5e068feef2af.ctex"]
 
 [params]
 
