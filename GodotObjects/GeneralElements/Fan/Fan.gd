@@ -40,6 +40,8 @@ const noGravityAreaMargin: float = 0.15
 
 ## Last raycast collision length.
 var lastRayCollision: float = 0.0
+## Flag to indicate setup is ready
+var setupReady: bool = false
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
@@ -49,10 +51,13 @@ func set_area_size(overridenSize: float = areaHeight) -> void:
 	noGravityCollision.shape.size = Vector3(areaDiameter, overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0), areaDiameter)
 	noGravity.position.y = (overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0)) / 2.0
 	target.position.y = overridenSize + ((noGravityAreaMargin if overridenSize == areaHeight else 0.0) if hasAntigravity else 0.0)
-	if fanParticles: 
-		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
 	if blockingRaycast.target_position.y == 0.0:
 		blockingRaycast.target_position.y = overridenSize + noGravityAreaMargin
+	if fanParticles:
+		if not setupReady:
+			fanParticles.amount = roundi(areaHeight / 3.0 * float(fanParticles.amount))
+			fanParticles.lifetime = areaHeight / 3.0 * fanParticles.lifetime
+		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
