@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://binvrpy31ahx6"]
 
 [ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
-[ext_resource type="Material" uid="uid://4h2jtjsdgvsd" path="res://Assets/Materials/Plataforma Movil/Toon-Ucu Test Post MM.tres" id="2_xivvd"]
+[ext_resource type="Material" uid="uid://4h2jtjsdgvsd" path="res://Assets/Materials/Plataforma Movil/Ucu Test.tres" id="2_xivvd"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4usj4"]

@@ -22,7 +22,9 @@ gradient = SubResource("Gradient_c5eqd")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws05p"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_mjg6o")
 rim = 0.0
 rim_tint = 0.0
@@ -44,7 +46,9 @@ gradient = SubResource("Gradient_8cfjh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5eqd"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_mjg6o")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_mjg6o")

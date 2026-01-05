@@ -4,7 +4,10 @@ shader_type spatial;
 render_mode cull_disabled, depth_draw_never, unshaded;
 
 uniform vec4 albedo : source_color;
+uniform float see_through : hint_range(0.0, 1.0, 0.01) = 1.0;
 uniform vec4 wave_color : source_color;
+uniform float emission : hint_range(0.0, 1.0, 0.01) = 0.0;
+uniform float wave_emission : hint_range(0.0, 1.0, 0.01) = 0.0;
 
 // Handles the concentric ripples
 uniform float frequency: hint_range(0, 15, 0.01) = 4.0;
@@ -115,7 +118,8 @@ void fragment() {
 
 	vec2 background_wave = wave(uv, TIME * clamp(wave_intensity + fresnel, 0.0, 1.0) * 2.0);
 	vec4 background_texture = texture(screen_texture, background_wave) * sqrt(amplitude);
-	ALBEDO = background_texture.rgb * albedo.rgb + clamp(wave_intensity + fresnel, 0.0, 1.0) * (wave_color.rgb * wave_color.a);
+	ALBEDO = mix(albedo.rgb, background_texture.rgb, see_through) + clamp(wave_intensity + fresnel, 0.0, 1.0) * (wave_color.rgb * wave_color.a);
 	// clamp the wave intensity so overlapping waves and fresnel edge dont have an intensity > 1
 	ALPHA = clamp(wave_intensity + fresnel, blending, 1.0) * color.a;
+	EMISSION = mix(albedo.rgb, wave_color.rgb, clamp(wave_intensity + fresnel, blending, 1.0)) * mix(emission, wave_emission, clamp(wave_intensity + fresnel, blending, 1.0));
 }

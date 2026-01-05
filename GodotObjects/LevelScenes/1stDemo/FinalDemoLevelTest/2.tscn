@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_bc7ck"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="3_6ys0v"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="5_56ms3"]
-[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/wood_fence.tscn" id="6_5l1eq"]
+[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="6_5l1eq"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="7_sh8tp"]
 [ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="8_uj2jt"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="9_i72lf"]
@@ -364,19 +364,19 @@ collisionLayer = 4096
 curve = SubResource("Curve3D_cr368")
 multiMeshResources = Array[ExtResource("7_sh8tp")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="Fences" instance=ExtResource("6_5l1eq")]
 curve = SubResource("Curve3D_4hdch")
 multiMeshResources = Array[ExtResource("7_sh8tp")]([SubResource("Resource_u8djx")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence4" parent="Fences" instance=ExtResource("6_5l1eq")]
 curve = SubResource("Curve3D_prdqs")
 multiMeshResources = Array[ExtResource("7_sh8tp")]([SubResource("Resource_hxauq")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Area3D" type="Area3D" parent="Fences"]
 collision_layer = 0
@@ -427,13 +427,13 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -1)
 shape = SubResource("BoxShape3D_hxauq")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="UnloadShape2" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2.5)
 shape = SubResource("BoxShape3D_prdqs")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true

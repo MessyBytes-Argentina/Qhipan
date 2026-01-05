@@ -9,10 +9,13 @@ size = Vector3(2, 2, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_dg2el"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hh7r4"]
-render_priority = 0
+render_priority = 2
 shader = ExtResource("2_g7h2i")
-shader_parameter/albedo = Color(1, 1, 0, 1)
+shader_parameter/albedo = Color(0.8509804, 0.8509804, 0, 1)
+shader_parameter/see_through = 0.98999997787152
 shader_parameter/wave_color = Color(1, 1, 0, 0.29411766)
+shader_parameter/emission = 0.75
+shader_parameter/wave_emission = 1.0
 shader_parameter/frequency = 4.99999988824
 shader_parameter/amplitude = 1.0000000475
 shader_parameter/ripple_rate = 2.000000095

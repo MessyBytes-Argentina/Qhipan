@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bfbre5vkar3l4"]
 
 [ext_resource type="Script" uid="uid://b55t504l4o7vc" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.gd" id="1_mc7gx"]
-[ext_resource type="Shader" uid="uid://cglvvr811m7sj" path="res://Assets/Shaders/DELETE - DemoMetaprogressionBlockDuplicate For Experiment.gdshader" id="2_mc7gx"]
+[ext_resource type="Shader" uid="uid://co5hxehut88vg" path="res://Assets/Shaders/DemoMetaprogressionBlock.gdshader" id="2_mc7gx"]
 
 [sub_resource type="Gradient" id="Gradient_uwrcv"]
 offsets = PackedFloat32Array(0.4222798, 0.52590674)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://nwnxhvcnai"]
 
-[ext_resource type="Material" uid="uid://btj2gwkiwcxqd" path="res://Assets/Materials/Pedestales/Toon-Pedestal Key.tres" id="1_2aebv"]
+[ext_resource type="Material" uid="uid://btj2gwkiwcxqd" path="res://Assets/Materials/Pedestales/Pedestal Key.tres" id="1_2aebv"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mcrfq"]
 _surfaces = [{

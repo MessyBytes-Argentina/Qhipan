@@ -23,7 +23,9 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7iv"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = SubResource("GradientTexture2D_b4s83")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
@@ -39,7 +41,9 @@ gradient = SubResource("Gradient_c1wxo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhy6c"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_weoec")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
@@ -79,7 +83,6 @@ collision_mask = 4353
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
-sticker = false
 sceneParent = NodePath(".")
 
 [node name="InvoluntaryPushModule" type="Node" parent="."]

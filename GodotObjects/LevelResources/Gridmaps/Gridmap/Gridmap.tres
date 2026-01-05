@@ -1,12 +1,12 @@
 [gd_resource type="MeshLibrary" load_steps=408 format=4 uid="uid://dxt4jj2rx1xyb"]
 
-[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Toon-Arena.tres" id="1_l5sio"]
-[ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Toon-Baldosa Interior.tres" id="4_rdqdg"]
+[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Arena.tres" id="1_l5sio"]
+[ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Baldosa Interior.tres" id="4_rdqdg"]
 [ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Tierra con Pasto.tres" id="5_lojqe"]
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Toon-Ladrillo Interior.tres" id="6_j2ka3"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="6_j2ka3"]
 [ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/New Earth.tres" id="6_lojqe"]
 [ext_resource type="Material" uid="uid://dpk4pehv1fg44" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosado Exterior/Baldosa Exterior.tres" id="9_qicmv"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="11_boqcl"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="11_boqcl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b3cyf"]
 _surfaces = [{

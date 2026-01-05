@@ -24,12 +24,16 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enf8r"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = SubResource("GradientTexture2D_w5ix8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45nsf"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_w5ix8")
 
@@ -54,7 +58,9 @@ gradient = SubResource("Gradient_c1wxo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kl8t"]
 render_priority = 2
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = SubResource("GradientTexture2D_q57fi")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
@@ -139,7 +145,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1kl8t")
 
 [node name="Billboard" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
-visible = false
 layers = 2
 pixel_size = 0.002
 billboard = 1

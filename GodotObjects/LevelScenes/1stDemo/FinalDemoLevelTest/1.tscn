@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_m7xqe"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_43nvr"]
-[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/wood_fence.tscn" id="2_cr368"]
+[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="2_cr368"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="3_4hdch"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="3_trpm5"]
 [ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="4_43nvr"]
@@ -356,19 +356,19 @@ collisionLayer = 4096
 curve = SubResource("Curve3D_cr368")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_hxauq")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="Fences" instance=ExtResource("2_cr368")]
 curve = SubResource("Curve3D_4hdch")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_hxauq")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence4" parent="Fences" instance=ExtResource("2_cr368")]
 curve = SubResource("Curve3D_x77sq")
 multiMeshResources = Array[ExtResource("3_trpm5")]([SubResource("Resource_hxauq")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 0.4)
+colliderSize = Vector2(0.3, 1)
 
 [node name="Area3D" type="Area3D" parent="Fences"]
 collision_layer = 0
