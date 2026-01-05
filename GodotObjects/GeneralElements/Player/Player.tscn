@@ -77,8 +77,8 @@ size = Vector2(0.9, 0.9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghylh"]
 render_priority = 2
-transparency = 2
-alpha_scissor_threshold = 0.5
+transparency = 3
+alpha_hash_scale = 0.0
 alpha_antialiasing_mode = 0
 cull_mode = 2
 specular_mode = 1

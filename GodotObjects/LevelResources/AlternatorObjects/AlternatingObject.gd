@@ -3,8 +3,8 @@ extends CharacterBody3D
 class_name AlternatingObject
 
 const MATERIALS: Dictionary = {
-	"ON": preload("uid://cp14w7jqyffv3"),
-	"OFF": preload("uid://mijic4patrrf")
+	"ON": preload("uid://dlsrpuw0cb45d"),
+	"OFF": preload("uid://wc5r2fxnxpug")
 }
 
 @export var isOff: bool = false:

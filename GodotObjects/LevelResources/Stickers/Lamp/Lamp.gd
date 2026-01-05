@@ -15,6 +15,11 @@ const LIGHTENERGY: float = 1.0
 const LIGHTFADETIME: float = 0.3
 ## Light area fade animation time
 const LIGHTAREAFADETIME: float = 2.0
+## Sticker textures
+const stickerTextures: Dictionary[String, Texture2D] = {
+	"on": preload("uid://da3qteoalmnj6"),
+	"off": preload("uid://k8c3uc7gxr4w")
+}
 
 ## The floating mesh with no lighting on.
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
@@ -71,11 +76,13 @@ func set_size(mode: ScaleModes) -> void:
 			light.position.y = -GRABHEIGHT / 2.0
 			light.light_size = 1.0
 			light.shadow_bias = 10.0
+			set_assets("on")
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
 			animate_light_fade(0.0)
 			light.position.y = 0.0
+			set_assets("off")
 		ScaleModes.PLACED:
 			floatingMesh.hide()
 			mesh.show()
@@ -86,10 +93,19 @@ func set_size(mode: ScaleModes) -> void:
 			light.position.y = 0.0
 			light.light_size = 0.0
 			light.shadow_bias = 0.1
+			set_assets("on")
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 	await get_tree().physics_frame
 	shapes.global_position = global_position
+
+## Sets assets to on or off state
+func set_assets(state: String) -> void:
+	floatingMesh.get_surface_override_material(0).albedo_texture = stickerTextures[state]
+	mesh.get_surface_override_material(0).albedo_texture = stickerTextures[state]
+	back.get_surface_override_material(0).albedo_texture = stickerTextures[state]
+	billboard.texture = stickerTextures[state]
+	billboard.texture = stickerTextures[state]
 
 ## Animates the light area
 func animate_light_fade(newValue: float) -> void:
@@ -140,11 +156,13 @@ func prerender() -> void:
 	billboardZoomedOut.pixel_size = 0.0001
 	var billboardsize = billboard.pixel_size
 	billboard.pixel_size = 0.0001
+	set_assets("on")
 	mesh.show()
 	floatingMesh.show()
 	back.show()
 	billboard.show()
 	billboardZoomedOut.show()
+	set_assets("off")
 	await get_tree().physics_frame
 	mesh.hide()
 	floatingMesh.hide()

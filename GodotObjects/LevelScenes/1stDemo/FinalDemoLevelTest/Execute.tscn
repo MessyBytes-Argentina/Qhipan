@@ -1,39 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsd3y1fqexib7"]
+[gd_scene load_steps=6 format=3 uid="uid://dsd3y1fqexib7"]
 
-[ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_xmj7v"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_hcdsl"]
-[ext_resource type="Texture2D" uid="uid://c683si2xxi08y" path="res://Assets/Textures/Skybox/Skybox-Exterior Woods.png" id="2_vfstq"]
 [ext_resource type="PackedScene" uid="uid://bwdma5xc3s4o1" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/1.tscn" id="4_bimqd"]
 
-[sub_resource type="Gradient" id="Gradient_ricvt"]
-offsets = PackedFloat32Array(0.5, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.38431373, 0.45490196, 0.54901963, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15g61"]
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqc3i"]
-gradient = SubResource("Gradient_ricvt")
-width = 1920
-height = 1082
-fill_from = Vector2(1, 1)
+[sub_resource type="Sky" id="Sky_ix3bf"]
+sky_material = SubResource("ProceduralSkyMaterial_15g61")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
-shader = ExtResource("1_xmj7v")
-shader_parameter/startPanorama = ExtResource("2_vfstq")
-shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
-shader_parameter/panoramaProgress = 1.0
-shader_parameter/skyContribution = 0.75
-
-[sub_resource type="Sky" id="Sky_k8jv3"]
-sky_material = SubResource("ShaderMaterial_jqc3i")
-
-[sub_resource type="Environment" id="Environment_pgoel"]
+[sub_resource type="Environment" id="Environment_5poq5"]
 background_mode = 2
 background_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky = SubResource("Sky_k8jv3")
+sky = SubResource("Sky_ix3bf")
 ambient_light_source = 2
 ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
 ambient_light_energy = 0.25
 tonemap_mode = 2
-tonemap_exposure = 1.5
 ssao_enabled = true
 ssao_radius = 2.0
 ssao_intensity = 4.0
@@ -51,16 +36,15 @@ fog_sky_affect = 0.0
 fog_depth_begin = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
-volumetric_fog_temporal_reprojection_amount = 0.95
 
 [node name="MainTest" type="Node3D"]
 
 [node name="EnvironmentObjects" type="Node3D" parent="." groups=["EnvironmentObjects"]]
-metadata/Environment = NodePath("WorldEnvironment")
+metadata/Environment = NodePath("")
 metadata/Sun = NodePath("DirectionalLight3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentObjects"]
-environment = SubResource("Environment_pgoel")
+environment = SubResource("Environment_5poq5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
 transform = Transform3D(-0.86602557, -0.4999999, -2.1855687e-08, 0, -4.3711374e-08, 0.9999996, -0.5000002, 0.86602515, 3.785516e-08, 0, 0, 0)

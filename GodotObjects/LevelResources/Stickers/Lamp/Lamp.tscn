@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://obi7mybs0j53"]
+[gd_scene load_steps=17 format=3 uid="uid://obi7mybs0j53"]
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
+[ext_resource type="Texture2D" uid="uid://k8c3uc7gxr4w" path="res://Assets/Textures/Stickers/Lamp/Lamp OFF v1.png" id="3_w5ix8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -9,25 +10,12 @@ radius = 0.25
 [sub_resource type="QuadMesh" id="QuadMesh_h7mp7"]
 size = Vector2(0.8, 0.8)
 
-[sub_resource type="Gradient" id="Gradient_gdvqv"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.95)
-colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w5ix8"]
-gradient = SubResource("Gradient_gdvqv")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enf8r"]
 render_priority = 2
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = SubResource("GradientTexture2D_w5ix8")
+albedo_texture = ExtResource("3_w5ix8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45nsf"]
 render_priority = 2
@@ -35,19 +23,11 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_texture = SubResource("GradientTexture2D_w5ix8")
+albedo_texture = ExtResource("3_w5ix8")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
 flip_faces = true
 size = Vector2(0.8, 0.8)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q57fi"]
-gradient = SubResource("Gradient_gdvqv")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_c1wxo"]
 offsets = PackedFloat32Array(1)
@@ -61,25 +41,9 @@ render_priority = 2
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = SubResource("GradientTexture2D_q57fi")
+albedo_texture = ExtResource("3_w5ix8")
 detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_k62l1")
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_88s4x"]
-gradient = SubResource("Gradient_gdvqv")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bbr6q"]
-gradient = SubResource("Gradient_gdvqv")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gdvqv"]
 radius = 2.0
@@ -145,11 +109,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1kl8t")
 
 [node name="Billboard" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
-layers = 2
+visible = false
+layers = 4
 pixel_size = 0.002
 billboard = 1
 render_priority = 2
-texture = SubResource("GradientTexture2D_88s4x")
+texture = ExtResource("3_w5ix8")
 
 [node name="BillboardZoomedOut" type="Sprite3D" parent="Meshes"]
 unique_name_in_owner = true
@@ -160,7 +125,7 @@ billboard = 1
 no_depth_test = true
 fixed_size = true
 render_priority = 2
-texture = SubResource("GradientTexture2D_bbr6q")
+texture = ExtResource("3_w5ix8")
 
 [node name="AreaChecker" type="Area3D" parent="."]
 unique_name_in_owner = true
@@ -192,6 +157,7 @@ cull_mask = 1048573
 unique_name_in_owner = true
 visible = false
 light_color = Color(0.784314, 0.509804, 0, 1)
+light_cull_mask = 4294967291
 shadow_enabled = true
 omni_range = 0.0
 omni_attenuation = 0.0

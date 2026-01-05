@@ -5,6 +5,7 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_e4t6e"]
 material = ExtResource("1_s51y8")
+size = Vector2(0.75, 0.75)
 orientation = 1
 
 [node name="Placeholder Sticker Area" type="Node3D"]
