@@ -69,6 +69,7 @@ func _ready() -> void:
 	set_area_size()
 	target.hide()
 	switch_fan(isOn)
+	setupReady = true
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
