@@ -57,6 +57,8 @@ func set_area_size(overridenSize: float = areaHeight) -> void:
 		if not setupReady:
 			fanParticles.amount = roundi(areaHeight / 3.0 * float(fanParticles.amount))
 			fanParticles.lifetime = areaHeight / 3.0 * fanParticles.lifetime
+			await get_tree().process_frame
+			setupReady = true
 		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
 
 ## Called when the node enters the scene tree for the first time.
@@ -69,7 +71,6 @@ func _ready() -> void:
 	set_area_size()
 	target.hide()
 	switch_fan(isOn)
-	setupReady = true
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
