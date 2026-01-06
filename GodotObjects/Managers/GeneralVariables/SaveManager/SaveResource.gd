@@ -63,6 +63,7 @@ func delete_inventory_sticker(sticker: InventorySticker) -> void:
 		currentScene = SceneSave.new()
 		sceneChanges[sticker.sceneParent.name] = currentScene
 	sceneChanges[sticker.sceneParent.name].removedStickers.append(NodePath(sticker.originalParentPath))
+	print(sceneChanges)
 
 func delete_sticker(sticker: StickerBase) -> void:
 	var currentScene: SceneSave
@@ -84,6 +85,7 @@ func load_changes(scene: Node) -> void:
 	if not sceneChanges.has(scene.name): return
 	var currentSave: SceneSave = sceneChanges[scene.name]
 	for sticker in currentSave.removedStickers:
+		print(sticker)
 		GeneralVariables.get_tree().root.get_node(sticker).queue_free()
 	for sticker in currentSave.stickerModifications:
 		new_sticker(sticker, currentSave.stickerModifications[sticker], scene)

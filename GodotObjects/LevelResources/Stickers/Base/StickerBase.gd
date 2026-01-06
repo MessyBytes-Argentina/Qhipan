@@ -98,7 +98,9 @@ var moved: bool = false
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		sceneParent = get_tree().edited_scene_root
+		var testSceneParent = get_tree().edited_scene_root
+		if testSceneParent.has_node("Player"): return
+		sceneParent = testSceneParent
 		originalParent = sceneParent.name
 		return
 	if self is not InventorySticker:
@@ -256,6 +258,7 @@ func grab(node: Node3D) -> void:
 	grabed = true
 	placed = false
 	just_placed.emit(placed)
+	print(sceneParent)
 	GeneralVariables.saveManager.delete_sticker(self)
 	hasBeenMoved = true
 

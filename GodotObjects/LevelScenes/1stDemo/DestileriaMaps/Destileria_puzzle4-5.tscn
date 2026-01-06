@@ -37,7 +37,7 @@ metadata/UnloadShape = true
 [node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_glker")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3.5, 5)
 sceneParent = NodePath("../..")
-originalParent = "Destileria_puzzle4"
+originalParent = "Destileria_puzzle4-5"
 
 [node name="StickerPlacements" type="Node3D" parent="."]
 
