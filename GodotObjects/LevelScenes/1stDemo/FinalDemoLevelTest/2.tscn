@@ -274,6 +274,7 @@ size = Vector3(1, 1.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_prdqs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ys0v"]
+size = Vector3(2.5, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r560r"]
 size = Vector3(2, 1.5, 2)
@@ -427,19 +428,19 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, 0.5)
 shape = SubResource("BoxShape3D_hxauq")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="UnloadShape2" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -2.5)
 shape = SubResource("BoxShape3D_prdqs")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="LoadShape2" type="CollisionShape3D" parent="ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.5, -1.75)
 shape = SubResource("BoxShape3D_6ys0v")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
