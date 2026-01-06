@@ -100,6 +100,8 @@ func update_collision_shape() -> void:
 			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, yPos, vertexFlatGlobalPosition.y)
 			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
+				raycast.hit_from_inside = false
+				raycast.hit_back_faces = false
 				raycast.collision_mask = 1
 				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
