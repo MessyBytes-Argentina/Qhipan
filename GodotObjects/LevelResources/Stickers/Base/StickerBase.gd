@@ -264,7 +264,6 @@ func grab(node: Node3D) -> void:
 	grabed = true
 	placed = false
 	just_placed.emit(placed)
-	print(sceneParent)
 	GeneralVariables.saveManager.delete_sticker(self)
 	hasBeenMoved = true
 
