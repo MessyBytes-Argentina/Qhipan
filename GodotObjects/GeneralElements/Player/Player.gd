@@ -105,6 +105,10 @@ enum States {Idle, Walk, Float}
 @onready var darknessBlockerModule: DarknessBlockerModule = %DarknessBlockerModule
 ## Reference to the camera.
 @onready var cameraCubeWallCutout: Marker3D = %CameraCubeWallCutout
+## Reference to cool sticker sprite.
+@onready var coolSticker: Sprite3D = %CoolSticker
+## Reference to cool sticker shine.
+@onready var shine: MeshInstance3D = %Shine
 #endregion
 
 #region Variables
@@ -168,6 +172,10 @@ var fellDistance: float = 0.0
 var forcedNoGravity: bool = false
 ## Flag that is true when the player is jumping
 var jumping: bool = false
+## Flag that is true while the cool sticker animation is playing
+var coolStickerGrabbing: bool = false
+## Flag that is true when the cool sticker animation is finished
+var coolStickerGrabbingFinished: bool = false
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -191,6 +199,15 @@ func _ready() -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if onSettings: return
+	if coolStickerGrabbing and coolStickerGrabbingFinished:
+		if not animationPlayer.current_animation == "CoolSticker_Idle": return
+		animationPlayer.play("CoolSticker_End")
+		await animationPlayer.animation_finished
+		coolStickerGrabbing = false
+		coolStickerGrabbingFinished = false
+		enable_inputs()
+		animation_check()
+		return
 	if noMovement or zooming: 
 		inputDirection = Vector3.ZERO
 		return
@@ -388,10 +405,25 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 
 ## Switches player animation state.
 func animation_check() -> void:
+	if coolStickerGrabbing: return
 	var newAnimationName = ("Grab_" if grabArea.pickupOnHand else "") + States.keys()[currentState] as String + ("_Back" if facingBack else "")
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
+
+## Do cool sticker animation.
+func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
+	coolSticker.texture = sticker.image
+	var shineMaterial: ShaderMaterial = shine.get_surface_override_material(0)
+	shineMaterial.set_shader_parameter("gradientColor", sticker.glowBackgroundColor)
+	shineMaterial.set_shader_parameter("rayColor", sticker.glowRay1Color)
+	shineMaterial.set_shader_parameter("secondRayColor", sticker.glowRay2Color)
+	animationPlayer.play("CoolSticker")
+	coolStickerGrabbing = true
+	block_inputs()
+	# Reemplazar por un wait para la musiquita
+	await get_tree().create_timer(2).timeout
+	coolStickerGrabbingFinished = true
 
 ## External forces functions
 #region External Forces
