@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ds40hobe7ugw5"]
+[gd_scene load_steps=26 format=3 uid="uid://ds40hobe7ugw5"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_cdgvd"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_fjvai"]
@@ -6,6 +6,9 @@
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_mc10n"]
 [ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="5_f2veh"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="6_mc10n"]
+[ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="7_ihe6t"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="8_01brn"]
+[ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="9_cja0d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fjvai"]
 size = Vector3(5, 1, 0.5)
@@ -24,6 +27,12 @@ size = Vector3(0.5, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0421"]
 size = Vector3(0.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7j68"]
+size = Vector3(4, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihe6t"]
+size = Vector3(4, 1, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_f2veh"]
 closed = true
@@ -130,7 +139,7 @@ shader_parameter/rotating = false
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_cdgvd")]
 data = {
-"cells": PackedInt32Array(-131075, 65530, 82, -131075, 65531, 82, -131075, 65532, 82, -131075, 65533, 82, -131075, 65534, 82, -131075, 65535, 82, -131075, 0, 82, -131074, 65530, 82, -131074, 65531, 82, -131074, 65532, 82, -131074, 65533, 82, -131074, 65534, 82, -131074, 65535, 82, -131074, 0, 82, -131073, 65530, 82, -131073, 65531, 82, -131073, 65532, 82, -131073, 65533, 82, -131073, 65534, 82, -131073, 65535, 82, -131073, 0, 82, -196608, 65530, 82, -196608, 65531, 82, -196608, 65532, 82, -196608, 65533, 82, -196608, 65534, 82, -196608, 65535, 82, -196608, 0, 82, -196607, 65530, 82, -196607, 65531, 82, -196607, 65532, 82, -196607, 65533, 82, -196607, 65534, 82, -196607, 65535, 82, -196607, 0, 82, -131079, 65525, 82, -131079, 65526, 82, -131079, 65527, 82, -131079, 65528, 82, -131079, 65529, 82, -131078, 65525, 82, -131078, 65526, 82, -131078, 65527, 82, -131078, 65528, 82, -131078, 65529, 82, -131077, 65525, 82, -131077, 65526, 82, -131077, 65527, 82, -131077, 65528, 82, -131077, 65529, 82, -131076, 65527, 82, -131075, 65527, 82, -131074, 65525, 82, -131074, 65526, 82, -131074, 65527, 82, -131074, 65528, 82, -131074, 65529, 82, -131073, 65525, 82, -131073, 65526, 82, -131073, 65527, 82, -131073, 65528, 82, -131073, 65529, 82, -196608, 65525, 82, -196608, 65526, 82, -196608, 65527, 82, -196608, 65528, 82, -196608, 65529, 82, -196607, 65525, 82, -196607, 65526, 82, -196607, 65527, 82, -196607, 65528, 82, -196607, 65529, 82, -196606, 65525, 82, -196606, 65526, 82, -196606, 65527, 82, -196606, 65528, 82, -196606, 65529, 82, -196605, 65525, 82, -196605, 65526, 82, -196605, 65527, 82, -196605, 65528, 82, -196605, 65529, 82, -196604, 65525, 82, -196604, 65526, 82, -196604, 65527, 82, -196604, 65528, 82, -196604, 65529, 82, -196603, 65525, 82, -196603, 65526, 82, -196603, 65527, 82, -196603, 65528, 82, -196603, 65529, 82, -131075, 65524, 82, -131074, 65524, 82, -131073, 65524, 82, -196608, 65524, 82, -196607, 65524, 82, -131076, 65529, 82, -131076, 65528, 82, -131076, 65525, 82, -131076, 65526, 82, -131075, 65525, 82, -131075, 65526, 82, -131075, 65529, 82, -131075, 65528, 82, -3, 65526, 98, -3, 65528, 98, -65535, 65528, 98, -65535, 65526, 98, -131080, 65529, 82, -131080, 65528, 82, -131080, 65527, 82, -131080, 65526, 82, -131080, 65525, 82, -131081, 65525, 82, -131081, 65526, 82, -131081, 65527, 82, -131081, 65528, 82, -131081, 65529, 82, -131082, 65529, 82, -131082, 65528, 82, -131082, 65527, 82, -131082, 65526, 82, -131082, 65525, 82, -131083, 65529, 82, -131083, 65528, 82, -131083, 65527, 82, -131083, 65526, 82, -131083, 65525, 82, -131084, 65529, 82, -131084, 65528, 82, -131084, 65527, 82, -131084, 65526, 82, -131084, 65525, 82)
+"cells": PackedInt32Array(-131075, 65530, 82, -131075, 65531, 82, -131075, 65532, 82, -131075, 65533, 82, -131075, 65534, 82, -131075, 65535, 82, -131075, 0, 82, -131074, 65530, 82, -131074, 65531, 82, -131074, 65532, 82, -131074, 65533, 82, -131074, 65534, 82, -131074, 65535, 82, -131074, 0, 82, -131073, 65530, 82, -131073, 65531, 82, -131073, 65532, 82, -131073, 65533, 82, -131073, 65534, 82, -131073, 65535, 82, -131073, 0, 82, -196608, 65530, 82, -196608, 65531, 82, -196608, 65532, 82, -196608, 65533, 82, -196608, 65534, 82, -196608, 65535, 82, -196608, 0, 82, -196607, 65530, 82, -196607, 65531, 82, -196607, 65532, 82, -196607, 65533, 82, -196607, 65534, 82, -196607, 65535, 82, -196607, 0, 82, -131079, 65525, 82, -131079, 65526, 82, -131079, 65527, 82, -131079, 65528, 82, -131079, 65529, 82, -131078, 65525, 82, -131078, 65526, 82, -131078, 65527, 82, -131078, 65528, 82, -131078, 65529, 82, -131077, 65525, 82, -131077, 65526, 82, -131077, 65527, 82, -131077, 65528, 82, -131077, 65529, 82, -131076, 65527, 82, -131075, 65527, 82, -131074, 65525, 82, -131074, 65526, 82, -131074, 65527, 82, -131074, 65528, 82, -131074, 65529, 82, -131073, 65525, 82, -131073, 65526, 82, -131073, 65527, 82, -131073, 65528, 82, -131073, 65529, 82, -196608, 65525, 82, -196608, 65526, 82, -196608, 65527, 82, -196608, 65528, 82, -196608, 65529, 82, -196607, 65525, 82, -196607, 65526, 82, -196607, 65527, 82, -196607, 65528, 82, -196607, 65529, 82, -196606, 65525, 82, -196606, 65526, 82, -196606, 65527, 82, -196606, 65528, 82, -196606, 65529, 82, -196605, 65525, 82, -196605, 65526, 82, -196605, 65527, 82, -196605, 65528, 82, -196605, 65529, 82, -196604, 65525, 82, -196604, 65526, 82, -196604, 65527, 82, -196604, 65528, 82, -196604, 65529, 82, -196603, 65525, 82, -196603, 65526, 82, -196603, 65527, 82, -196603, 65528, 82, -196603, 65529, 82, -131075, 65524, 82, -131074, 65524, 82, -131073, 65524, 82, -196608, 65524, 82, -196607, 65524, 82, -131076, 65529, 82, -131076, 65528, 82, -131076, 65525, 82, -131076, 65526, 82, -131075, 65525, 82, -131075, 65526, 82, -131075, 65529, 82, -131075, 65528, 82, -3, 65526, 98, -3, 65528, 98, -65535, 65528, 98, -65535, 65526, 98, -131080, 65529, 82, -131080, 65528, 82, -131080, 65527, 82, -131080, 65526, 82, -131080, 65525, 82, -131081, 65525, 82, -131081, 65526, 82, -131081, 65527, 82, -131081, 65528, 82, -131081, 65529, 82, -131082, 65529, 82, -131082, 65528, 82, -131082, 65527, 82, -131082, 65526, 82, -131082, 65525, 82, -131083, 65529, 82, -131083, 65528, 82, -131083, 65527, 82, -131083, 65526, 82, -131083, 65525, 82, -131084, 65529, 82, -131084, 65528, 82, -131084, 65527, 82, -131084, 65526, 82, -131084, 65525, 82, -131074, 65523, 82, -131073, 65523, 82, -196608, 65523, 82, -196608, 65522, 82, -131073, 65522, 82, -131074, 65522, 82, -131074, 65521, 82, -131073, 65521, 82, -196608, 65521, 82, -196608, 65520, 82, -196608, 65519, 82, -131073, 65519, 82, -131073, 65520, 82, -131074, 65520, 82, -131074, 65519, 82, -196602, 65529, 82, -196602, 65528, 82, -196602, 65527, 82, -196602, 65526, 82, -196602, 65525, 82, -196601, 65525, 82, -196600, 65525, 82, -196600, 65526, 82, -196601, 65526, 82, -196601, 65527, 82, -196601, 65528, 82, -196601, 65529, 82, -196600, 65529, 82, -196600, 65528, 82, -196600, 65527, 82, -196599, 65526, 82, -196599, 65525, 82, -196599, 65527, 82, -196599, 65528, 82, -196599, 65529, 82, -131079, 65524, 82, -131080, 65524, 82, -131080, 65523, 82, -131081, 65523, 82, -131081, 65524, 82, -131079, 65523, 82, -131080, 65522, 82, -131081, 65522, 82, -131080, 65521, 82, -131079, 65522, 82, -131079, 65521, 82, -131081, 65521, 82, -131082, 65524, 82, -131082, 65523, 82, -131082, 65522, 82, -131082, 65521, 82, -131082, 65520, 82, -131081, 65520, 82, -131080, 65520, 82, -131079, 65520, 82, -131079, 65519, 82, -131080, 65519, 82, -131081, 65519, 82, -131082, 65519, 82, -131083, 65521, 82, -131083, 65520, 82, -131083, 65519, 82, -131078, 65520, 82, -6, 65520, 82)
 }
 metadata/_editor_floor_ = Vector3(0, -3, 0)
 
@@ -175,7 +184,7 @@ debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-MolinoPuzzle1" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8.5)
 script = ExtResource("2_fjvai")
 hotspotName = "Molino1_entrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_puzzle1.tscn"
@@ -183,16 +192,44 @@ rootNode = NodePath("..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-MolinoPuzzle1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 0, 0)
 shape = SubResource("BoxShape3D_mc10n")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-MolinoPuzzle1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 0, 0)
 shape = SubResource("BoxShape3D_w0421")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
+
+[node name="ChunkLoadingHotspot-DestileriaFinale" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11, 0, -15.5)
+script = ExtResource("2_fjvai")
+hotspotName = "DestileriaFinaleDemohub"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_finale.tscn"
+rootNode = NodePath("..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-DestileriaFinale"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.5000086, 0, 2.9999995)
+shape = SubResource("BoxShape3D_k7j68")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-DestileriaFinale"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.5000086, 0, 2.9999995)
+shape = SubResource("BoxShape3D_ihe6t")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
+
+[node name="Antistickerareas" type="Node3D" parent="."]
+
+[node name="AntiStickerArea" parent="Antistickerareas" instance=ExtResource("6_mc10n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, -8.5)
+
+[node name="AntiStickerArea2" parent="Antistickerareas" instance=ExtResource("6_mc10n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, -8.5)
 
 [node name="Stickers" type="Node3D" parent="."]
 
@@ -239,6 +276,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 3)
 visible = false
 operation = 2
 
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Walls/WallGenerator2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0.5)
+visible = false
+operation = 2
+
 [node name="Doorways" type="Node3D" parent="."]
 
 [node name="PushDoor" parent="Doorways" node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_f2veh")]
@@ -246,8 +288,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.5, 
 isOneWay = true
 sceneParent = NodePath("../..")
 
-[node name="AntiStickerArea" parent="." instance=ExtResource("6_mc10n")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, -8.5)
+[node name="SwitchGroup" type="Node3D" parent="."]
+script = ExtResource("7_ihe6t")
 
-[node name="AntiStickerArea2" parent="." instance=ExtResource("6_mc10n")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, -8.5)
+[node name="AlternatingBlock" parent="SwitchGroup" instance=ExtResource("8_01brn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.5, -11)
+
+[node name="AlternatingBlock2" parent="SwitchGroup" instance=ExtResource("8_01brn")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -16.5)
+
+[node name="LeyLine" parent="SwitchGroup" instance=ExtResource("9_cja0d")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -6, 0, -15.5)
