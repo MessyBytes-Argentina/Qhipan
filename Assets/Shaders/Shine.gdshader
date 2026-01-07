@@ -3,9 +3,6 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
 
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-
 uniform float speed = 1.0;
 uniform vec4 gradientColor : source_color = vec4(1.0);
 uniform float glowEdge: hint_range(0.0, 1.0, 0.01) = 1.0;
@@ -18,8 +15,6 @@ uniform vec3 secondRays = vec3(12.0, 17.0, 22.0);
 uniform float secondRayEdge = 0.5;
 
 void vertex() {
-	UV = UV * uv1_scale.xy + uv1_offset.xy;
-
 	// Billboard Mode: Enabled
 	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(
 			MAIN_CAM_INV_VIEW_MATRIX[0],
