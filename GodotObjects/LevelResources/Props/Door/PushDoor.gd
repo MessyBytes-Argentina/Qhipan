@@ -20,6 +20,8 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## SoundPlayer for the open sound
 @onready var openSound: RandomPitchPlayer = %OpenSound
+## Reference to the push checker.
+@onready var playerPushChecker: Area3D = %PlayerPushChecker
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,10 +32,16 @@ func _ready() -> void:
 
 ## Opens the door.
 func open_door(update: bool = true) -> void:
-	animationPlayer.play(Animations.keys()[openAnimation])
 	if update: 
+		animationPlayer.play(Animations.keys()[openAnimation])
 		openSound.play_sound()
-		if not isOneWay: GeneralVariables.saveManager.store_change(self, sceneParent)
+		if not isOneWay: 
+			GeneralVariables.saveManager.store_change(self, sceneParent)
+			playerPushChecker.queue_free()
+	else:
+		animationPlayer.play_backwards(Animations.keys()[openAnimation])
+		animationPlayer.stop()
+		playerPushChecker.queue_free()
 
 ## Closes the door.
 func close_door() -> void:
