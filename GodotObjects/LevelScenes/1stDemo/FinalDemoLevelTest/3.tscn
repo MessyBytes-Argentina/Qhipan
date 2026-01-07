@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://mhhjxxhofdd1"]
+[gd_scene load_steps=36 format=4 uid="uid://mhhjxxhofdd1"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ei3d0"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="2_jdcq3"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="13_artqo"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="14_fhmcd"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="15_ry7wm"]
-[ext_resource type="PackedScene" uid="uid://rx0u8rmdu5s0" path="res://Assets/Models/Tally/tally_3.tscn" id="16_jdcq3"]
 
 [sub_resource type="Curve3D" id="Curve3D_qacvl"]
 closed = true
@@ -443,16 +442,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.5, 0.75)
 shape = SubResource("BoxShape3D_6ys0v")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
-
-[node name="Tally 2" parent="." instance=ExtResource("16_jdcq3")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 2.8421373, 3.3829618, -3.8171337)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Tally 2"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.15812421, 0, 0)
-distance_fade_enabled = true
-distance_fade_begin = 2.0
-distance_fade_shadow = 3.0
-distance_fade_length = 5.0
 
 [connection signal="area_entered" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="Fences/Area3D" to="Fences/Area3D" method="_on_light_exited"]
