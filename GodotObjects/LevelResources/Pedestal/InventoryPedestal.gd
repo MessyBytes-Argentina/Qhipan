@@ -41,7 +41,10 @@ var sticker: PocketSticker
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
-	if Engine.is_editor_hint(): sceneParent = get_tree().edited_scene_root
+	if Engine.is_editor_hint(): 
+		var testSceneParent = get_tree().edited_scene_root
+		if testSceneParent.has_node("Player"): return
+		sceneParent = testSceneParent
 	update_texture()
 	bob_sticker_hightlight()
 
@@ -60,8 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	playerInArea = null
 
 ## Activates pedestal.
-func activate_pedestal() -> void:
-	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName)
+func activate_pedestal(skip: bool = false) -> void:
+	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName, skip)
 	highlight.hide()
 	stickerHighlightTween.kill()
 	highlight.queue_free()

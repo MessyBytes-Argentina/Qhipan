@@ -168,12 +168,14 @@ color = Color(0, 0.4184854, 0.86663884, 1)
 texture = SubResource("GradientTexture2D_4t2lx")
 pedestalName = "destileriaMinifork2"
 
-[node name="SmallPedestal" parent="MetaprogressionBlocks" instance=ExtResource("4_l5b67")]
+[node name="SmallPedestal" parent="MetaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_l5b67")]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -11.5, -0.5, 2.5)
 texture = SubResource("GradientTexture2D_fnlsy")
 pedestalName = "destileriaMinifork1"
+sceneParent = NodePath("../..")
 
-[node name="SmallPedestal2" parent="MetaprogressionBlocks" instance=ExtResource("4_l5b67")]
+[node name="SmallPedestal2" parent="MetaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_l5b67")]
 transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, -11.5, -0.5, -1.5)
 texture = SubResource("GradientTexture2D_on487")
 pedestalName = "destileriaMinifork2"
+sceneParent = NodePath("../..")

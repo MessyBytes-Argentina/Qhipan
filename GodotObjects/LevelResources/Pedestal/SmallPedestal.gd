@@ -10,17 +10,23 @@ class_name SmallPedestal
 		if Engine.is_editor_hint() and is_node_ready(): update_texture()
 ## Used to identify which objects to trigger
 @export var pedestalName: String
+## Parent node reference for placement.
+@export var sceneParent: Node
 
 ## Reference to the pedestal wall.
 @onready var mesh: MeshInstance3D = %Wall
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
+	if Engine.is_editor_hint(): 
+		var testSceneParent = get_tree().edited_scene_root
+		if testSceneParent.has_node("Player"): return
+		sceneParent = testSceneParent
 	update_texture()
 
 ## Activates pedestal.
-func activate_pedestal() -> void:
-	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName)
+func activate_pedestal(skip: bool = false) -> void:
+	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName, skip)
 
 ## Updates debug texture.
 func update_texture() -> void:
@@ -36,3 +42,4 @@ func _on_sticker(placed: StickerBase) -> void:
 	if placed is KeySticker: 
 		activate_pedestal()
 		placed.on_pedestal()
+		GeneralVariables.saveManager.store_change(self, sceneParent)

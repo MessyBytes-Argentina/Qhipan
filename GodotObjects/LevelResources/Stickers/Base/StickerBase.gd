@@ -98,7 +98,9 @@ var moved: bool = false
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		sceneParent = get_tree().edited_scene_root
+		var testSceneParent = get_tree().edited_scene_root
+		if testSceneParent.has_node("Player"): return
+		sceneParent = testSceneParent
 		originalParent = sceneParent.name
 		return
 	if self is not InventorySticker:
@@ -150,7 +152,13 @@ func check_placement() -> void:
 
 ## Executed on every physics frame.
 func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint(): return
+	if Engine.is_editor_hint(): 
+		var testSceneParent = get_tree().edited_scene_root
+		if testSceneParent == sceneParent: return
+		if testSceneParent.has_node("Player"): return
+		sceneParent = testSceneParent
+		originalParent = sceneParent.name
+		return
 	if placed or grabed: return
 	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
 	velocity = currentPush * delta
