@@ -79,6 +79,7 @@ func update_collision_shape() -> void:
 	shaderMask.fill(Color.WHITE)
 	var flatStartGlobalPosition: Vector2 = Vector2(global_position.x, global_position.z) - (Vector2(size.x, size.z) / 2.0).rotated(-rotation.y)
 	var lightDistances: Dictionary[Vector3, float]
+	var lightAbsoluteDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var yPos: float = global_position.y - size.y / 2 + DARKMARGIN
 	for lightArea in lights: 
@@ -86,6 +87,10 @@ func update_collision_shape() -> void:
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
 			var parent: Node = lightArea.get_node(lightArea.get_meta("Parent"))
 			lightDistances[lightArea.global_position] = lightShape.shape.radius
+			if parent is LampSticker:
+				lightAbsoluteDistances[lightArea.global_position] = LampSticker.LIGHTRANGEPLACED if parent.placed else LampSticker.LIGHTRANGEGRABED
+			else:
+				lightAbsoluteDistances[lightArea.global_position] = lightShape.shape.radius
 			if parent.lightTween: 
 				if parent.lightTween.is_running(): 
 					if parent not in lightsTweening: lightsTweening.append(parent)
@@ -98,13 +103,16 @@ func update_collision_shape() -> void:
 		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)
 		for lightStart in lightDistances:
 			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, yPos, vertexFlatGlobalPosition.y)
-			if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
+			if lightStart.distance_to(relativeGlobalPosition) <= lightAbsoluteDistances[lightStart]:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
+				raycast.hit_from_inside = false
+				raycast.hit_back_faces = false
 				raycast.collision_mask = 1
 				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
-				shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
-				break
+				if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
+					shaderMask.set_pixel(i % collisionMap.map_width, floori(i / float(collisionMap.map_width)), Color.BLACK)
+					break
 	var mask: ImageTexture = ImageTexture.create_from_image(shaderMask)
 	fogShader.set_shader_parameter("light_mask", mask)
 	outlineMaterial.set_shader_parameter("light_mask", mask)

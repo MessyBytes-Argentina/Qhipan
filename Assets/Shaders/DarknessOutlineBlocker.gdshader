@@ -11,19 +11,13 @@ varying float proximity;
 
 void vertex() {
 	proximity = texture(light_mask, UV).r;
-	//for (int x = -1; x < 2; x++) {
-		//for (int y = -1; y < 2; y++) {
-			//if (texture(light_mask, vec2((UV.x * size.x + float(x)) / size.x, (UV.y * size.z + float(y)) / size.z)).r > 0.0) {
-				//proximity = 1.0;
-			//}
-		//}
-	//}
 	if (proximity == 1.0 && UV.x > 0.0 && UV.y > 0.0 && UV.x < 1.0 && UV.y < 1.0) {
 		VERTEX.y = size.y;
 	}
 }
 
 void fragment() {
+	ALBEDO = vec3(0.0);
 	ALPHA = 0.0;
 	if (proximity == 0.0) {discard;}
 }
