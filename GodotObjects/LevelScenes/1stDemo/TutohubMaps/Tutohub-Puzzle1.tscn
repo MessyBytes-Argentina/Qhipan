@@ -288,6 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, -4.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4.5, -0.5, -7.5)
 texture = SubResource("GradientTexture2D_yvhtq")
 
-[node name="SmallPedestal" parent="Metaprogress" instance=ExtResource("11_yvhtq")]
+[node name="SmallPedestal" parent="Metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_yvhtq")]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, -5.5, -0.5, -8.5)
 texture = SubResource("GradientTexture2D_yvhtq")
+sceneParent = NodePath("../..")
