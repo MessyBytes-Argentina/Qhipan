@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=114 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -34,6 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Textures/Character/WALK/WALK 4.png" id="13_bity2"]
 [ext_resource type="Texture2D" uid="uid://wd4evw80tj5p" path="res://Assets/Textures/Character/IDLE BACK/BACK 1.png" id="14_dkmaj"]
 [ext_resource type="Texture2D" uid="uid://b4anntfovs3gb" path="res://Assets/Textures/Character/IDLE BACK/BACK 2.png" id="15_kp4bv"]
+[ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="15_n0ub2"]
+[ext_resource type="Shader" uid="uid://celtex7phkf37" path="res://Assets/Shaders/Shine.gdshader" id="16_ucbnu"]
 [ext_resource type="Texture2D" uid="uid://duqlyfcy6ckyy" path="res://Assets/Textures/Character/IDLE BACK/BACK 3.png" id="16_vmy0v"]
 [ext_resource type="Texture2D" uid="uid://brl7tlmrv10ry" path="res://Assets/Textures/Character/IDLE BACK/BACK 4.png" id="17_84qwu"]
 [ext_resource type="Texture2D" uid="uid://b72ik3kxud5rh" path="res://Assets/Textures/Character/WALK BACK/BW 1.png" id="18_yiccp"]
@@ -69,8 +71,16 @@
 [ext_resource type="Texture2D" uid="uid://dfc82wqu3h2t5" path="res://Assets/Textures/Character/FLOAT/FLOAT 3.png" id="52_6fycs"]
 [ext_resource type="Texture2D" uid="uid://75ca8e502tmi" path="res://Assets/Textures/Character/FLOAT/FLOAT 4.png" id="53_ujwi3"]
 [ext_resource type="AudioStream" uid="uid://b1quv5bd0s5ay" path="res://Assets/Sounds/Player_Impact.wav" id="62_8njlr"]
+[ext_resource type="Texture2D" uid="uid://b0ev1esekwwk4" path="res://Assets/Textures/Character/COOL STICKER/ITEM 1.png" id="70_k6myi"]
+[ext_resource type="Texture2D" uid="uid://4hffrixd0rp" path="res://Assets/Textures/Character/COOL STICKER/ITEM 2.png" id="71_xewgh"]
 [ext_resource type="Script" uid="uid://bj6pdy5y6dt3q" path="res://GodotObjects/GeneralElements/Player/LedgeDetection.gd" id="72_4biwg"]
+[ext_resource type="Texture2D" uid="uid://b2fbf604yuw68" path="res://Assets/Textures/Character/COOL STICKER/ITEM 3.png" id="72_n0ub2"]
+[ext_resource type="Texture2D" uid="uid://c5klgy5vvlbno" path="res://Assets/Textures/Character/COOL STICKER/ITEM 4.png" id="73_ucbnu"]
 [ext_resource type="PackedScene" uid="uid://dkkr2vvil6tit" path="res://GodotObjects/GeneralElements/Player/DetectionRaycast.tscn" id="73_uxb7q"]
+[ext_resource type="Texture2D" uid="uid://k3hf6mbdj28f" path="res://Assets/Textures/Character/COOL STICKER/ITEM 5.png" id="74_c42h5"]
+[ext_resource type="Texture2D" uid="uid://bsv5qcx5r8al7" path="res://Assets/Textures/Character/COOL STICKER/ITEM 6.png" id="75_064yy"]
+[ext_resource type="Texture2D" uid="uid://bmixno8sss3ck" path="res://Assets/Textures/Character/COOL STICKER/ITEM 7.png" id="76_qu42n"]
+[ext_resource type="Texture2D" uid="uid://c1toeyerhymky" path="res://Assets/Textures/Character/COOL STICKER/ITEM 8.png" id="77_e7wym"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
@@ -98,6 +108,23 @@ width = 1024
 height = 1024
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_c42h5"]
+size = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_064yy"]
+render_priority = 2
+shader = ExtResource("16_ucbnu")
+shader_parameter/speed = 1.0
+shader_parameter/gradientColor = Color(1, 1, 1, 0.39215687)
+shader_parameter/glowEdge = 1.0
+shader_parameter/glowCenter = 0.25
+shader_parameter/rayColor = Color(1, 1, 1, 1)
+shader_parameter/rayEdge = 0.5
+shader_parameter/rays = Vector3(9, 14, 19)
+shader_parameter/secondRayColor = Color(1, 1, 1, 0.78431374)
+shader_parameter/secondRays = Vector3(12, 17, 22)
+shader_parameter/secondRayEdge = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.25
@@ -460,6 +487,78 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("2_cphfr")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3, 5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6681y"]
 resource_name = "Walk"
@@ -563,8 +662,220 @@ tracks/2/keys = {
 "values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
 }
 
+[sub_resource type="Animation" id="Animation_rb8lh"]
+resource_name = "CoolSticker"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.19999999, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("70_k6myi"), ExtResource("71_xewgh"), ExtResource("72_n0ub2"), ExtResource("73_ucbnu")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"CoolSticker_Idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.19999999, 0.5, 0.8000001),
+"transitions": PackedFloat32Array(1, -10, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.19999999, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, -5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.8, 0.8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 3, 5), Vector3(0, 1.5, 2.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(-0.43633232, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qu42n"]
+resource_name = "CoolSticker_Idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.40000004, 0.59999996),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("74_c42h5"), ExtResource("75_064yy"), ExtResource("76_qu42n"), ExtResource("77_e7wym")]
+}
+
+[sub_resource type="Animation" id="Animation_n0ub2"]
+resource_name = "CoolSticker_End"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("73_ucbnu"), ExtResource("70_k6myi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(-10, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 2.5), Vector3(0, 3, 5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-0.43633232, 0, 0), Vector3(-0.523599, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]
 _data = {
+&"CoolSticker": SubResource("Animation_rb8lh"),
+&"CoolSticker_End": SubResource("Animation_n0ub2"),
+&"CoolSticker_Idle": SubResource("Animation_qu42n"),
 &"Float": SubResource("Animation_h423j"),
 &"Float_Back": SubResource("Animation_xf0c4"),
 &"Grab_Float": SubResource("Animation_yiccp"),
@@ -668,6 +979,21 @@ distance_fade_enabled = true
 distance_fade_begin = 10.0
 cull_mask = 1048573
 
+[node name="CoolSticker" type="Sprite3D" parent="SpritePivot"]
+unique_name_in_owner = true
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.041619986, 0.55752134, 0.28265622)
+visible = false
+pixel_size = 0.0008
+double_sided = false
+render_priority = 3
+texture = ExtResource("15_n0ub2")
+
+[node name="Shine" type="MeshInstance3D" parent="SpritePivot/CoolSticker"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("QuadMesh_c42h5")
+surface_material_override/0 = SubResource("ShaderMaterial_064yy")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_cphfr")
 
@@ -710,7 +1036,7 @@ unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraZoomPivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5)
+transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 3, 5)
 cull_mask = 786431
 current = true
 fov = 55.0
