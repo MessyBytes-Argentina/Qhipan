@@ -17,7 +17,7 @@ fill_from = Vector2(1, 1)
 shader = ExtResource("1_ricvt")
 shader_parameter/startPanorama = ExtResource("2_ricvt")
 shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
-shader_parameter/panoramaProgress = 1.0
+shader_parameter/panoramaProgress = 0.0
 shader_parameter/skyContribution = 0.75
 
 [sub_resource type="Sky" id="Sky_k8jv3"]
@@ -26,6 +26,7 @@ sky_material = SubResource("ShaderMaterial_jqc3i")
 [resource]
 background_mode = 2
 background_color = Color(0.384314, 0.454902, 0.54902, 1)
+background_energy_multiplier = 0.6
 sky = SubResource("Sky_k8jv3")
 ambient_light_source = 2
 ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)

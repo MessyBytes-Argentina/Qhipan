@@ -1,16 +1,38 @@
 extends Resource
+
+## NOTE
+## Missing for full save:
+##    - Player position storage
+##    - Loaded scenes storage
+##    - Instance save
+##    - Instance load
+##    - Packaging and encrypting save
+
+## Handles storing and loading changes.
 class_name SaveResource
 
+## Enum for sticker types.
 enum StickerTypes {ALTERNATOR, FAN, KEY, LAMP}
 
+## Current scene changes.
 var sceneChanges: Dictionary[String, SceneSave] = {}
+## Current environment changes.
+var environmentChange: EnvironmentParameters = EnvironmentParameters.new()
+## Current sun changes.
+var lightChange: LightParameters = LightParameters.new()
 
+## Local class for sticker saves.
 class StickerSave:
+	## [NodePath] to sticker.
 	var nodePath: NodePath
+	## Sticker type.
 	var stickerType: StickerTypes
+	## Local sticker position.
 	var position: Vector3
+	## Is the sticker placed.
 	var placed: bool = false
 	
+	## Main setup of class.
 	func _init(changedSticker: StickerBase) -> void:
 		nodePath = changedSticker.originalParentPath
 		placed = changedSticker.placed
@@ -20,22 +42,33 @@ class StickerSave:
 		if changedSticker is KeySticker: stickerType = StickerTypes.KEY
 		if changedSticker is LampSticker: stickerType = StickerTypes.LAMP
 
+## Local class for pedestal saves.
 class PedestalSave:
+	## [NodePath] to pedestal.
 	var nodePath: NodePath
+	## Sticker stuck to pedestal if any.
 	var sticker: PocketSticker
 	
+	## Main setup of class.
 	func _init(changedPedestal: Node) -> void:
 		nodePath = changedPedestal.get_path().slice(1)
 		if changedPedestal is InventoryPedestal:
 			sticker = changedPedestal.sticker
 
+## Local class for scene saves.
 class SceneSave:
+	## Sticker modifications.
 	var stickerModifications: Dictionary[int, StickerSave] = {}
+	## Deleted stickers.
 	var removedStickers: Array[NodePath] = []
+	## Activated pedestals.
 	var activePedestals: Array[PedestalSave] = []
+	## Permanently open doors.
 	var openDoors: Array[NodePath] = []
+	## Object hiders status.
 	var objectHiders: Dictionary[NodePath, bool] = {}
 
+## Stores change in current save.
 func store_change(changedObject: Node, sceneParent: Node) -> void:
 	var currentScene: SceneSave
 	if sceneChanges.has(sceneParent.name): currentScene = sceneChanges[sceneParent.name]
@@ -47,6 +80,12 @@ func store_change(changedObject: Node, sceneParent: Node) -> void:
 	if changedObject is PushDoor: currentScene.openDoors.append(changedObject.get_path().slice(1)); return
 	if changedObject is ObjectHider: currentScene.objectHiders[changedObject.get_path().slice(1)] = changedObject.isActive; return
 
+## Stores environment changes.
+func store_environment(environment: EnvironmentParameters, light: LightParameters) -> void:
+	environmentChange = environment
+	lightChange = light
+
+## Stores sticker changes.
 func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 	var save: StickerSave = StickerSave.new(sticker)
 	if sticker.isSaveCreated:
@@ -59,6 +98,7 @@ func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 	currentScene.stickerModifications[sticker.UUID] = save
 	sticker.isSaveCreated = true
 
+## Stores inventry sticker removal.
 func delete_inventory_sticker(sticker: InventorySticker) -> void:
 	var currentScene: SceneSave
 	if sceneChanges.has(sticker.sceneParent.name): currentScene = sceneChanges[sticker.sceneParent.name]
@@ -67,6 +107,7 @@ func delete_inventory_sticker(sticker: InventorySticker) -> void:
 		sceneChanges[sticker.sceneParent.name] = currentScene
 	sceneChanges[sticker.sceneParent.name].removedStickers.append(NodePath(sticker.originalParentPath))
 
+## Stores sticker removal.
 func delete_sticker(sticker: StickerBase) -> void:
 	var currentScene: SceneSave
 	var sceneParent: Node = sticker.sceneParent if sticker.sceneParent else sticker.get_parent()
@@ -83,7 +124,8 @@ func delete_sticker(sticker: StickerBase) -> void:
 		if NodePath(sticker.originalParentPath) in sceneChanges[sticker.originalParent].removedStickers: return
 		sceneChanges[sticker.originalParent].removedStickers.append(NodePath(sticker.originalParentPath))
 
-func load_changes(scene: Node) -> void:
+## Loads changes to a scene.
+func load_changes(scene: Node, loadEnvironment: bool = false) -> void:
 	if not sceneChanges.has(scene.name): return
 	var currentSave: SceneSave = sceneChanges[scene.name]
 	for hider in currentSave.objectHiders:
@@ -100,7 +142,12 @@ func load_changes(scene: Node) -> void:
 		doorNode.open_door(false)
 	for sticker in currentSave.stickerModifications:
 		new_sticker(sticker, currentSave.stickerModifications[sticker], scene)
+	if loadEnvironment:
+		var environmentObjects: Node3D = GeneralVariables.get_tree().get_first_node_in_group("EnvironmentObjects")
+		environmentChange.set_environment(environmentObjects.get_node(environmentObjects.get_meta("Environment")).environment)
+		lightChange.set_sun(environmentObjects.get_node(environmentObjects.get_meta("Sun")))
 
+## Creates sticker changes storage.
 func new_sticker(UUID: int, sticker: StickerSave, scene: Node) -> void:
 	var newSticker: StickerBase = GeneralVariables.saveManager.stickerBases[StickerTypes.keys()[sticker.stickerType]].instantiate()
 	newSticker.placed = sticker.placed
