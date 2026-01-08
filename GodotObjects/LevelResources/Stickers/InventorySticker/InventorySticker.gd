@@ -1,5 +1,6 @@
 @tool
 extends StickerBase
+
 ## Stickers that go into the inventory.
 class_name InventorySticker
 
