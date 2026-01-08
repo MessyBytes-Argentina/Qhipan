@@ -31,9 +31,10 @@ class PedestalSave:
 
 class SceneSave:
 	var stickerModifications: Dictionary[int, StickerSave] = {}
-	var removedStickers: Array[NodePath]
-	var activePedestals: Array[PedestalSave]
-	var openDoors: Array[NodePath]
+	var removedStickers: Array[NodePath] = []
+	var activePedestals: Array[PedestalSave] = []
+	var openDoors: Array[NodePath] = []
+	var objectHiders: Dictionary[NodePath, bool] = {}
 
 func store_change(changedObject: Node, sceneParent: Node) -> void:
 	var currentScene: SceneSave
@@ -44,6 +45,7 @@ func store_change(changedObject: Node, sceneParent: Node) -> void:
 	if changedObject is StickerBase: save_sticker(currentScene, changedObject); return
 	if changedObject is InventoryPedestal or changedObject is SmallPedestal: currentScene.activePedestals.append(PedestalSave.new(changedObject)); return
 	if changedObject is PushDoor: currentScene.openDoors.append(changedObject.get_path().slice(1)); return
+	if changedObject is ObjectHider: currentScene.objectHiders[changedObject.get_path().slice(1)] = changedObject.isActive; return
 
 func save_sticker(currentScene: SceneSave, sticker: StickerBase) -> void:
 	var save: StickerSave = StickerSave.new(sticker)
@@ -84,6 +86,8 @@ func delete_sticker(sticker: StickerBase) -> void:
 func load_changes(scene: Node) -> void:
 	if not sceneChanges.has(scene.name): return
 	var currentSave: SceneSave = sceneChanges[scene.name]
+	for hider in currentSave.objectHiders:
+		GeneralVariables.get_tree().root.get_node(hider).restore_save(currentSave.objectHiders[hider])
 	for sticker in currentSave.removedStickers:
 		GeneralVariables.get_tree().root.get_node(sticker).queue_free()
 	for pedestal in currentSave.activePedestals:
