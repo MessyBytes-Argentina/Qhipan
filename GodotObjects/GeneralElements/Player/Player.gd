@@ -374,12 +374,18 @@ func move_character(delta: float) -> void:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
 	lastInvoluntarySpeed = lastInvoluntarySpeed + lastPushForce
-	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
+	var floorCheck: bool = false
+	var lastY: float = global_position.y
+	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: 
+		currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
 		animation_check()
+	if currentState == States.Float and (pushForce * Vector3(1.0, 0.0, 1.0)).length() > 0: floorCheck = true
 	velocity = lastInvoluntarySpeed + lastVoluntarySpeed
 	move_and_slide()
+	if floorCheck and global_position.y < lastY:
+		global_position.y = lastY
 	if not is_on_floor():
 		fellDistance += (get_last_motion() * Vector3.UP).length()
 	else: 
