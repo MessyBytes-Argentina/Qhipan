@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnpng5fe5gs5v"]
+[gd_scene load_steps=17 format=3 uid="uid://cnpng5fe5gs5v"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_57xuv"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_1rtt0"]
-[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="3_4t2lx"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="3_hxhlr"]
 [ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallPedestal.tscn" id="4_l5b67"]
 
@@ -141,16 +140,6 @@ debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="Stickers" type="Node3D" parent="."]
-
-[node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4t2lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 1.5)
-sceneParent = NodePath("../..")
-originalParent = "Destileria_minifork"
-
-[node name="KeySticker2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_4t2lx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, -0.5)
-sceneParent = NodePath("../..")
-originalParent = "Destileria_minifork"
 
 [node name="StickerPlacements" type="Node3D" parent="."]
 
