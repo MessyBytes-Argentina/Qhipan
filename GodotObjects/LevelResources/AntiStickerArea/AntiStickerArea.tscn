@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://cntgou3iy0wgy" path="res://Assets/Shaders/WobblyArea.gdshader" id="2_g7h2i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajmos"]
-size = Vector3(2, 2, 0)
+size = Vector3(1, 1, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_dg2el"]
 
