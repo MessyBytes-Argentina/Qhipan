@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_hihkw"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_waxg3"]
-[ext_resource type="PackedScene" uid="uid://ds40hobe7ugw5" path="res://GodotObjects/LevelScenes/1stDemo/DemoHub-Connective.tscn" id="3_cyu1j"]
+[ext_resource type="PackedScene" uid="uid://2vwefawy2u4p" path="res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_minifork.tscn" id="3_cyu1j"]
 
 [node name="MainDemo" type="Node3D"]
 
@@ -11,4 +11,5 @@
 [node name="Player" parent="." instance=ExtResource("2_waxg3")]
 transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.5, 0, -1)
 
-[node name="DemoHub-Connective" parent="." instance=ExtResource("3_cyu1j")]
+[node name="Molino_minifork" parent="." instance=ExtResource("3_cyu1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.5)
