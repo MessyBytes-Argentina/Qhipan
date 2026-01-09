@@ -270,6 +270,7 @@ unique_name_in_owner = true
 [node name="FanParticles" parent="Fan" instance=ExtResource("5_tax0g")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.18557e-08)
+emitting = false
 lifetime = 0.4
 
 [node name="BlockingRaycast" type="RayCast3D" parent="Fan"]
