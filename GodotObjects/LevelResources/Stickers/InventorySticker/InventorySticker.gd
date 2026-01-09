@@ -1,5 +1,6 @@
 @tool
 extends StickerBase
+
 ## Stickers that go into the inventory.
 class_name InventorySticker
 
@@ -38,6 +39,7 @@ func grab(_node: Node3D) -> void:
 	GeneralVariables.inventory.add_sticker(sticker)
 	await get_tree().process_frame
 	get_tree().get_first_node_in_group("Player").grabArea.pickupOnHand = false
+	get_tree().call_group("Player", "grabbed_inventory_sticker", sticker)
 	queue_free()
 
 ## Executed on every physics frame.

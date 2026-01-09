@@ -17,7 +17,7 @@ func delete_data(data: StickerableSurfaceData) -> void:
 ## Returns the closest viable surface for a given sticker.
 func get_closest_valid_surface(position: Vector3, sticker: StickerBase) -> StickerableSurfaceData:
 	var stickerType: int = check_type(sticker)
-	var validSurfaces: Array[StickerableSurfaceData] = loadedStickerableSurfaces.filter(func(a: StickerableSurfaceData): return a.validStickers & stickerType and a.used == null)
+	var validSurfaces: Array[StickerableSurfaceData] = loadedStickerableSurfaces.filter(func(a: StickerableSurfaceData): return a.validStickers & stickerType > 0 and a.used == null)
 	if len(validSurfaces) > 0:
 		if len(validSurfaces) > 1:
 			validSurfaces.sort_custom(func(a: StickerableSurfaceData, b: StickerableSurfaceData): return a.globalPosition.distance_to(position) < b.globalPosition.distance_to(position))

@@ -1,21 +1,37 @@
 extends Resource
+
+## Resource class that holds, lerps, and sets environment parameters.
 class_name EnvironmentParameters
 
+## The sky to use.
 @export var sky_panorama: Texture2D
+## Sky energy.
 @export_range(0.0, 128.0, 0.001) var sky_energy_multiplier: float = 0.75
+## Background color for extra ambient light.
 @export var background_color: Color = Color.LIGHT_SLATE_GRAY
+## Background energy.
 @export_range(0.0, 16.0, 0.001) var background_energy_multiplier: float = 0.6
+## Ambient light color.
 @export var ambient_light_color: Color = Color.LIGHT_SLATE_GRAY
+## Ambient energy.
 @export_range(0.0, 16.0, 0.001) var ambient_light_energy: float = 1.5
+## Postprocessing exposure.
 @export_range(0.0, 16.0, 0.001) var tonemap_exposure: float = 1.5
+## Postprocessing white levels.
 @export_range(0.0, 16.0, 0.001) var tonemap_white: float = 1.0
+## Glow intensity (keep low for better results).
 @export_range(0.0, 8.0, 0.001) var glow_intensity: float = 0.8
+## Glow strength (keep low for better results).
 @export_range(0.0, 2.0, 0.001) var glow_strength: float = 0.4
+## Glow bloom (keep low to not look like a ps2 game).
 @export_range(0.0, 1.0, 0.001) var glow_bloom: float = 0.5
 
+## Storage for lerping to another sky.
 var secondPanorama: Texture2D
+## Panorama progress for lerping
 var panoramaProgress: float
 
+## Sets environment to have the parameters of this resource.
 func set_environment(environment: Environment) -> void:
 	environment.background_color = background_color
 	environment.background_energy_multiplier = background_energy_multiplier
@@ -32,6 +48,7 @@ func set_environment(environment: Environment) -> void:
 	skyMaterial.set_shader_parameter("panoramaProgress", panoramaProgress)
 	skyMaterial.set_shader_parameter("skyContribution", sky_energy_multiplier)
 
+## Lerps to a different [EnvironmentParameters] by shyProgress and returns the new [EnvironmentParameters] object.
 func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -> EnvironmentParameters:
 	var res: EnvironmentParameters = EnvironmentParameters.new()
 	res.sky_panorama = sky_panorama

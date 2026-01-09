@@ -70,7 +70,6 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	highlightHeight = highlight.position.y
-	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	bob_sticker_hightlight()
 	layerMask = RAYCOLLISIONLAYERS.reduce(func(accum: int, a: int = 0): return accum + pow(2, a - 1))
@@ -160,10 +159,6 @@ func sort_close_stickers() -> void:
 	elif highlight:
 		highlightPivot.global_position = currentlyAvailableStickers[0].global_position
 		highlight.show()
-
-## When a placement area is detected it's added to the closeAreas list
-func _on_area_entered(_area: Area3D) -> void:
-	areaHighlight.show()
 
 ## When a placement area exits the placement area it's removed from the closeAreas list
 func _on_area_exited(_area: Area3D) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://vam88ax0grfk"]
+[gd_scene load_steps=68 format=3 uid="uid://vam88ax0grfk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="2_l0rm8"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_sgigg"]
@@ -42,6 +42,7 @@
 [ext_resource type="Shader" uid="uid://lradknr5rryg" path="res://Assets/Shaders/ToonGrassShader.gdshader" id="40_0qu2a"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="41_sjsp2"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="42_47lso"]
+[ext_resource type="Script" uid="uid://btyn627sngesl" path="res://GodotObjects/LevelResources/ObjectHider/ObjectHider.gd" id="43_47lso"]
 
 [sub_resource type="Gradient" id="Gradient_4216n"]
 offsets = PackedFloat32Array(0.338259, 0.356322, 0.369458, 0.377668, 0.380952, 0.389163, 0.395731, 0.438424)
@@ -75,6 +76,9 @@ script = ExtResource("32_ut7ax")
 name = "Papa"
 image = ExtResource("23_k0mlu")
 backImage = ExtResource("23_k0mlu")
+glowBackgroundColor = Color(1, 0.50980395, 1, 0.65882355)
+glowRay1Color = Color(0.5529412, 0.3529412, 1, 0.7490196)
+glowRay2Color = Color(1, 1, 0.5019608, 1)
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q12un"]
@@ -180,6 +184,8 @@ shader_parameter/clearcoat = 0.0
 shader_parameter/clearcoat_roughness = 0.0
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_450tj"]
 
 [node name="test" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, -0.5)
@@ -460,3 +466,14 @@ material = ExtResource("39_0qu2a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5.5)
 mesh = SubResource("QuadMesh_04thu")
 surface_material_override/0 = SubResource("ShaderMaterial_sjsp2")
+
+[node name="ObjectHider" type="Area3D" parent="." node_paths=PackedStringArray("objects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.5)
+script = ExtResource("43_47lso")
+objects = {
+NodePath("../Door2"): false
+}
+sceneParent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHider"]
+shape = SubResource("BoxShape3D_450tj")

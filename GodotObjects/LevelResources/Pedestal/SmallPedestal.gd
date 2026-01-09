@@ -15,6 +15,8 @@ class_name SmallPedestal
 
 ## Reference to the pedestal wall.
 @onready var mesh: MeshInstance3D = %Wall
+## Reference to the sticker marker.
+@onready var stickerMarker: StickerMarker = %StickerMarker
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
@@ -43,3 +45,4 @@ func _on_sticker(placed: StickerBase) -> void:
 		activate_pedestal()
 		placed.on_pedestal()
 		GeneralVariables.saveManager.store_change(self, sceneParent)
+		stickerMarker.queue_free()
