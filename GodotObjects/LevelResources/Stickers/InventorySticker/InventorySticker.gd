@@ -36,7 +36,6 @@ func set_image() -> void:
 ## Moves the sticker position to the given node position.
 func grab(_node: Node3D) -> void:
 	GeneralVariables.saveManager.delete_sticker(self)
-	GeneralVariables.inventory.add_sticker(sticker)
 	await get_tree().process_frame
 	get_tree().get_first_node_in_group("Player").grabArea.pickupOnHand = false
 	get_tree().call_group("Player", "grabbed_inventory_sticker", sticker)

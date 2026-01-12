@@ -176,6 +176,8 @@ var jumping: bool = false
 var coolStickerGrabbing: bool = false
 ## Flag that is true when the cool sticker animation is finished
 var coolStickerGrabbingFinished: bool = false
+## Current cool sticker.
+var currentCoolSticker: PocketSticker
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -419,6 +421,7 @@ func animation_check() -> void:
 
 ## Do cool sticker animation.
 func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
+	currentCoolSticker = sticker
 	coolSticker.texture = sticker.image
 	var shineMaterial: ShaderMaterial = shine.get_surface_override_material(0)
 	shineMaterial.set_shader_parameter("gradientColor", sticker.glowBackgroundColor)
@@ -430,6 +433,12 @@ func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
 	# Reemplazar por un wait para la musiquita
 	await get_tree().create_timer(2).timeout
 	coolStickerGrabbingFinished = true
+
+## Store cool sticker.
+func store_cool_sticker() -> void:
+	if not currentCoolSticker: return
+	GeneralVariables.inventory.add_sticker(currentCoolSticker)
+	currentCoolSticker = null
 
 ## External forces functions
 #region External Forces
