@@ -215,8 +215,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	if Input.is_action_just_pressed("pause"):
-		onSettings = true
-		PopupManager.show_popup("Settings")
+		if not PopupManager.is_popup("Settings"):
+			onSettings = true
+			PopupManager.show_popup("Settings")
+			GeneralVariables.inventory.book.show_book()
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()

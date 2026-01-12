@@ -18,6 +18,7 @@ var afterloadedPopups: Dictionary = {}
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not Engine.is_editor_hint():
+		layer = -1
 		process_mode = PROCESS_MODE_ALWAYS
 		# Make sure this scene is the top layer.
 		await get_tree().process_frame

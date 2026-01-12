@@ -8,11 +8,15 @@ const SHOWSTICKERTIME: float = 0.5
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 @onready var stickers: Array[Sprite3D] = [%Sticker1, %Sticker2, %Sticker3, %Sticker4]
 
+var animationQueue: Array[String] = []
+
+func _ready() -> void:
+	animationPlayer.animation_finished.connect(_animation_finished)
+
 func sticker_added() -> void:
 	update_stickers()
-	await show_book()
-	await animate_sticker()
-	await  get_tree().create_timer(SHOWSTICKERTIME).timeout
+	show_book()
+	animate_sticker()
 	hide_book()
 
 #func sticker_removed() -> void:
@@ -29,13 +33,26 @@ func update_stickers() -> void:
 			stickers[i].position = DEFAULTSTICKERPOS
 
 func show_book() -> void:
-	animationPlayer.play("Open")
-	await animationPlayer.animation_finished
+	play_animation("Open")
 
 func hide_book() -> void:
-	animationPlayer.play("Close")
-	await animationPlayer.animation_finished
+	play_animation("Close")
 
 func animate_sticker() -> void:
-	animationPlayer.play("Sticker" + str(len(GeneralVariables.inventory.currentInventory)))
-	await animationPlayer.animation_finished
+	play_animation("Sticker" + str(len(GeneralVariables.inventory.currentInventory)))
+
+func play_animation(animation: String) -> void:
+	if animationPlayer.is_playing():
+		if len(animationQueue) > 0:
+			if animationQueue[len(animationQueue) - 1] == animation: return
+			if animation == "Close":
+				if animationQueue[len(animationQueue) - 1] == "Open": animationQueue.pop_back(); return
+			elif animation == "Open":
+				if animationQueue[len(animationQueue) - 1] == "Close": animationQueue.pop_back(); return
+		animationQueue.append(animation)
+	else:
+		animationPlayer.play(animation)
+
+func _animation_finished(_animation: StringName) -> void:
+	if len(animationQueue) > 0:
+		animationPlayer.play(animationQueue.pop_front())
