@@ -66,7 +66,7 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_2w8wh"]
 resource_name = "Sticker1"
-length = 0.3
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -83,7 +83,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cmxnc"]
 resource_name = "Sticker2"
-length = 0.3
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -100,7 +100,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_23hlu"]
 resource_name = "Sticker3"
-length = 0.3
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -117,7 +117,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dvwqv"]
 resource_name = "Sticker4"
-length = 0.3
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
