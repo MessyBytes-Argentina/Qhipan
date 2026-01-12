@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cry1k1hjfuqan"]
+[gd_scene load_steps=28 format=3 uid="uid://cry1k1hjfuqan"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_1iuec"]
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="2_7ghvw"]
@@ -6,14 +6,17 @@
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="3_q6li1"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="3_rg6tx"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="3_rpi8k"]
-[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="4_xmmk3"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="4_xmmk3"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="6_yvhtq"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="7_45jcr"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="7_flqb5"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="7_q6li1"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="8_rpi8k"]
+[ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="9_0p2m8"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="10_ra0fd"]
 [ext_resource type="PackedScene" uid="uid://cvr78l4xvakoj" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallPedestal.tscn" id="11_yvhtq"]
+[ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="15_0p2m8"]
+[ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="17_fuaq1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xmmk3"]
 size = Vector3(0.5, 1, 3)
@@ -34,56 +37,6 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Gradient" id="Gradient_pvjif"]
-offsets = PackedFloat32Array(0.75, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2remw"]
-gradient = SubResource("Gradient_pvjif")
-
-[sub_resource type="Gradient" id="Gradient_jr4yc"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4smwb"]
-gradient = SubResource("Gradient_jr4yc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0p2m8"]
-render_priority = 0
-shader = ExtResource("4_xmmk3")
-shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 0.249999994412
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/fade_color_up = Color(0, 0, 0, 1)
-shader_parameter/fade_color_down = Color(0, 0, 0, 1)
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = SubResource("GradientTexture1D_4smwb")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_2remw")
-shader_parameter/texture_scale = 2.0000000298024
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/enable_normal = true
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/height = 0.0
-shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
-shader_parameter/cameraMiddleRotation = 0.0
-shader_parameter/squareSize = 0.0
-shader_parameter/auxMode = false
-shader_parameter/rotating = false
-
 [sub_resource type="Curve3D" id="Curve3D_fuaq1"]
 closed = true
 _data = {
@@ -92,67 +45,11 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmmk3"]
-render_priority = 0
-shader = ExtResource("4_xmmk3")
-shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 0.249999994412
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/fade_color_up = Color(0, 0, 0, 1)
-shader_parameter/fade_color_down = Color(0, 0, 0, 1)
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = SubResource("GradientTexture1D_4smwb")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_2remw")
-shader_parameter/texture_scale = 2.0000000298024
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/enable_normal = true
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/height = 0.0
-shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
-shader_parameter/cameraMiddleRotation = 0.0
-shader_parameter/squareSize = 0.0
-shader_parameter/auxMode = false
-shader_parameter/rotating = false
-
-[sub_resource type="Gradient" id="Gradient_flqb5"]
-offsets = PackedFloat32Array(0.17446809, 0.31914893, 0.34468085, 0.4638298, 0.5489362, 0.87659574, 0.8893617)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.53258204, 0.79136074, 0.16176546, 1, 0.44237852, 0.75109696, 7.70092e-07, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rpi8k"]
-gradient = SubResource("Gradient_flqb5")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xmmk3"]
-gradient = SubResource("Gradient_flqb5")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="Resource" id="Resource_fuaq1"]
 script = ExtResource("8_rpi8k")
 name = "Puzzle2"
-image = SubResource("GradientTexture2D_xmmk3")
-backImage = SubResource("GradientTexture2D_rpi8k")
+image = ExtResource("9_0p2m8")
+backImage = ExtResource("9_0p2m8")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="Gradient" id="Gradient_ra0fd"]
@@ -167,13 +64,20 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="Curve3D" id="Curve3D_3dbpw"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -1.145, 0.21, -0.005, 0, 0, 0, -0.7, 0, 0, -0.06, 0, 0, 0, -0.865, 0, -2.2, -1.4, 0, 0, 0, 0, 0, 0, 0, -6.9, -1.905, 0, 0, 0, 0, 0, 0, 0, -7, -2, -5.6, 0, 0, 0, 0, 0, 0, -2.8300002, -2, -5.6, -0.25, -0.045, 0.04, 0, 0, 0, -0.7, 0, -5.6, 0, 0, 0, 0, 0, 0, 0.17, 0.095, -5.615),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Tutohub-Puzzle1" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_1iuec")]
 data = {
-"cells": PackedInt32Array(-131073, 0, 82, -131074, 0, 655442, -131075, 0, 655442, -131076, 0, 655442, -131077, 0, 82, -131078, 0, 655442, -131079, 0, 655442, -1, 0, 655442, 131071, 0, 655442, -2, 0, 655442, -3, 0, 83, 131070, 0, 83, -131080, 0, 82, -131081, 0, 82, -131082, 0, 82, -131082, 65535, 82, -131080, 65535, 82, -131080, 65534, 82, -131082, 65534, 82, -131082, 65533, 82, -131082, 65531, 82, -131080, 65531, 82, -131080, 65532, 82, -131080, 65533, 82, -262153, 65533, 1441794, -262153, 65532, 1441794, -262153, 65531, 1441794, -262154, 65533, 82, -262154, 65532, 1441794, -262154, 65531, 82, -262154, 65530, 82, -131082, 65530, 82, -131082, 65529, 82, -131081, 65529, 82, -131080, 65529, 82, -131079, 65529, 82, -131081, 65530, 82, -131080, 65530, 82, -9, 65530, 84, -8, 65530, 84, -131078, 65529, 82, -131077, 65529, 82, -131076, 65529, 82, -131075, 65529, 82, -131074, 65529, 82, -131073, 65529, 82, -1, 65529, 82, 131071, 65529, 82, -2, 65529, 82, -3, 65529, 83, 131070, 65529, 83, -262153, 65534, 1441794, -262153, 65535, 82, -131081, 65535, 1441795, 131071, 1, 1441874, 131071, 65535, 1441874, 131070, 1, 83, 131070, 65535, 83, -3, 65535, 83, -3, 1, 83, -131076, 1, 82, -131078, 1, 82, -131077, 1, 82, -131079, 1, 82, -131080, 1, 82, -131081, 1, 82, -131082, 1, 82, -131076, 65535, 82, -131077, 65535, 82, -131078, 65535, 82, -131079, 65535, 82, -131075, 1, 82, -131074, 1, 82, -131073, 1, 82, -2, 1, 82, -1, 1, 82, -2, 65535, 82, -1, 65535, 82, -131075, 65535, 82, -131074, 65535, 82, -131073, 65535, 82, -131082, 65528, 82, -131082, 65527, 82, -131081, 65527, 82, -131080, 65527, 82, -131080, 65528, 82, -131081, 65528, 82, -131079, 65528, 82, -131078, 65528, 82, -131077, 65528, 82, -131076, 65528, 82, -131075, 65528, 82, -131075, 65527, 82, -131076, 65527, 82, -131077, 65527, 82, -131078, 65527, 82, -131079, 65527, 82, -131074, 65528, 82, -131074, 65527, 82, -131073, 65527, 82, -131073, 65528, 82, -1, 65528, 82, -1, 65527, 82, -2, 65528, 82, -2, 65527, 82, 131071, 65528, 82, 131071, 65527, 82, 131070, 65527, 83, -3, 65527, 83, -3, 65528, 83, 131070, 65528, 83)
+"cells": PackedInt32Array(-131073, 0, 82, -131074, 0, 655442, -131075, 0, 655442, -131076, 0, 655442, -131077, 0, 82, -131078, 0, 655442, -131079, 0, 655442, -1, 0, 655442, 131071, 0, 655442, -2, 0, 655442, -3, 0, 83, 131070, 0, 83, -131080, 0, 82, -131081, 0, 82, -131082, 0, 82, -131082, 65535, 82, -131080, 65535, 82, -131080, 65534, 82, -131082, 65534, 82, -131082, 65533, 82, -131082, 65531, 82, -131080, 65531, 82, -131080, 65532, 82, -131080, 65533, 82, -262153, 65533, 1441858, -262153, 65532, 1441858, -262153, 65531, 1441858, -262154, 65533, 82, -262154, 65532, 1441794, -262154, 65531, 82, -262154, 65530, 82, -131082, 65530, 82, -131082, 65529, 82, -131081, 65529, 82, -131080, 65529, 82, -131079, 65529, 82, -131081, 65530, 82, -131080, 65530, 82, -131078, 65529, 82, -131077, 65529, 82, -131076, 65529, 82, -131075, 65529, 82, -131074, 65529, 82, -131073, 65529, 82, -1, 65529, 82, 131071, 65529, 82, -2, 65529, 82, -3, 65529, 83, 131070, 65529, 83, -262153, 65534, 1441858, -262153, 65535, 1441858, 131071, 1, 1441874, 131071, 65535, 1441874, 131070, 1, 83, 131070, 65535, 83, -3, 65535, 83, -3, 1, 83, -131076, 1, 82, -131078, 1, 82, -131077, 1, 82, -131079, 1, 82, -131080, 1, 82, -131081, 1, 82, -131082, 1, 82, -131076, 65535, 82, -131077, 65535, 82, -131078, 65535, 82, -131079, 65535, 82, -131075, 1, 82, -131074, 1, 82, -131073, 1, 82, -2, 1, 82, -1, 1, 82, -2, 65535, 82, -1, 65535, 82, -131075, 65535, 82, -131074, 65535, 82, -131073, 65535, 82, -131082, 65528, 82, -131082, 65527, 82, -131081, 65527, 82, -131080, 65527, 82, -131080, 65528, 82, -131081, 65528, 82, -131079, 65528, 82, -131078, 65528, 82, -131077, 65528, 82, -131076, 65528, 82, -131075, 65528, 82, -131075, 65527, 82, -131076, 65527, 82, -131077, 65527, 82, -131078, 65527, 82, -131079, 65527, 82, -131074, 65528, 82, -131074, 65527, 82, -131073, 65527, 82, -131073, 65528, 82, -1, 65528, 82, -1, 65527, 82, -2, 65528, 82, -2, 65527, 82, 131071, 65528, 82, 131071, 65527, 82, 131070, 65527, 83, -3, 65527, 83, -3, 65528, 83, 131070, 65528, 83)
 }
-metadata/_editor_floor_ = Vector3(0, -3, 0)
+metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="ChunkLoadingHotspot" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
@@ -210,30 +114,30 @@ metadata/UnloadShape = true
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="WallGenerator" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -1.5, 2.001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -0.5, 2.001)
 curve = SubResource("Curve3D_xmmk3")
 script = ExtResource("3_rpi8k")
 wallHeight = 10.0
 wallMode = 2
-material = SubResource("ShaderMaterial_0p2m8")
+material = ExtResource("4_xmmk3")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator"]
-transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, -0.5, 3, -2)
+transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, -0.5, 2, -2)
 visible = false
 operation = 2
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Walls/WallGenerator"]
-transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, -1.2922101e-08, 3, -10)
+transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, -1.2922101e-08, 2, -10)
 visible = false
 operation = 2
 
 [node name="WallGenerator3" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -1.5, -0.9990001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -0.5, -0.9990001)
 curve = SubResource("Curve3D_fuaq1")
 script = ExtResource("3_rpi8k")
 wallMode = 1
-material = SubResource("ShaderMaterial_xmmk3")
+material = ExtResource("4_xmmk3")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Pushdoors" type="Node3D" parent="."]
@@ -271,13 +175,13 @@ script = ExtResource("2_7ghvw")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5, -0.5, 0.5)
 
 [node name="AlternatingBlock" parent="AlternatingGroup" instance=ExtResource("3_rg6tx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -6.5, -0.5, 0.5)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -6.5, -0.5, 0.8)
 
 [node name="AlternatingGroup2" type="Node3D" parent="."]
 script = ExtResource("2_7ghvw")
 
 [node name="AlternatingBlock" parent="AlternatingGroup2" instance=ExtResource("3_rg6tx")]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 3, -7.5, -0.5, -7.5)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -7.5, -0.5, -7.5)
 
 [node name="LeyLine" parent="AlternatingGroup2" instance=ExtResource("7_q6li1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, -4.5)
@@ -285,10 +189,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, -4.5)
 [node name="Metaprogress" type="Node3D" parent="."]
 
 [node name="PlaceholderMetaprogressionBlock" parent="Metaprogress" instance=ExtResource("10_ra0fd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -4.5, -0.5, -7.5)
+transform = Transform3D(1, 0, 0, 0, 4.8, 0, 0, 0, 1, -4.5, -0.70000005, -7.7)
 texture = SubResource("GradientTexture2D_yvhtq")
 
 [node name="SmallPedestal" parent="Metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_yvhtq")]
-transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, -5.5, -0.5, -8.5)
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, -6.3, -0.5, -8.5)
 texture = SubResource("GradientTexture2D_yvhtq")
 sceneParent = NodePath("../..")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Fences" type="Node3D" parent="Props"]
+
+[node name="Stone Fence" parent="Props/Fences" instance=ExtResource("15_0p2m8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.3, -0.7)
+curve = SubResource("Curve3D_3dbpw")
+
+[node name="Deco Walls" type="Node3D" parent="Props"]
+
+[node name="WallGenerator" type="Path3D" parent="Props/Deco Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -8.7)
+curve = ExtResource("17_fuaq1")
+script = ExtResource("3_rpi8k")
+wallHeight = 7.0
+material = ExtResource("4_xmmk3")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator2" type="Path3D" parent="Props/Deco Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -7.2)
+curve = ExtResource("17_fuaq1")
+script = ExtResource("3_rpi8k")
+wallHeight = 7.0
+material = ExtResource("4_xmmk3")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator3" type="Path3D" parent="Props/Deco Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, -0.5, -0.19999924)
+curve = ExtResource("17_fuaq1")
+script = ExtResource("3_rpi8k")
+wallHeight = 7.0
+material = ExtResource("4_xmmk3")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator4" type="Path3D" parent="Props/Deco Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7, -0.5, 1.3000008)
+curve = ExtResource("17_fuaq1")
+script = ExtResource("3_rpi8k")
+wallHeight = 7.0
+material = ExtResource("4_xmmk3")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
