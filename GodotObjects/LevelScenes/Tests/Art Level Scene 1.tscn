@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="11_xnpb1"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="12_88a7k"]
 [ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_normal.png" id="12_erkkb"]
-[ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://Assets/Models/Doors/Chackana Door/Chackana Door.tscn" id="12_i6t01"]
+[ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="12_i6t01"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="12_vuau8"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="13_4gqna"]
 [ext_resource type="Texture2D" uid="uid://bwe6vkm3gep6u" path="res://Assets/Materials/Meta Progression Blocks/Planta/Planta Tile.png" id="13_6xgfa"]
@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="37_cc28h"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="46_0ntye"]
 [ext_resource type="Curve3D" uid="uid://mqnk346o3aus" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 2m.tres" id="46_7u3pm"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Toon-Ladrillo Exterior.tres" id="47_3cv2g"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="47_3cv2g"]
 [ext_resource type="PackedScene" uid="uid://57twmtocploa" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/sand_fringe.tscn" id="47_f2hbe"]
 
 [sub_resource type="Curve3D" id="Curve3D_3x3m0"]

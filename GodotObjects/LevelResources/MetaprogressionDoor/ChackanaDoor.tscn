@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://b6whyy35seo3"]
+[gd_scene load_steps=18 format=4 uid="uid://b6whyy35seo3"]
 
 [ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_76s3h"]
+[ext_resource type="Script" uid="uid://cr6lpcw1i81uy" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.gd" id="1_elvij"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_llc0q"]
 _surfaces = [{
@@ -161,112 +162,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vch5j")
 
-[sub_resource type="Animation" id="Animation_kh52g"]
-resource_name = "Door Opens"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Chackana Door/Door Pane 1:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
-"update": 0,
-"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 0, 0), Vector3(3.1415927, 1.3962634, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Chackana Door/Door Pane 2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Chackana Door/Door Pane 2/Lock 1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Chackana Door/Door Pane 2/Lock 1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(1, 2, 1),
-"update": 0,
-"values": [Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Chackana Door/Door Pane 1/Lock 2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(1, 2, 1),
-"update": 0,
-"values": [Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Chackana Door/Door Pane 1/Lock 2:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(2, 0.5, 1),
-"update": 0,
-"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Chackana Door/Collision Pivot 1:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.3962634, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Chackana Door/Collision Pivot 2:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_s4h8s"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Chackana Door/Door Pane 1:rotation")
+tracks/0/path = NodePath("ChackanaDoor/Door Pane 1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -278,7 +179,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Chackana Door/Door Pane 2:rotation")
+tracks/1/path = NodePath("ChackanaDoor/Door Pane 2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -290,7 +191,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Chackana Door/Door Pane 2/Lock 1:rotation")
+tracks/2/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -302,7 +203,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Chackana Door/Door Pane 2/Lock 1:position")
+tracks/3/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -314,7 +215,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Chackana Door/Door Pane 1/Lock 2:position")
+tracks/4/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -326,7 +227,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Chackana Door/Door Pane 1/Lock 2:rotation")
+tracks/5/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -338,7 +239,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Chackana Door/Collision Pivot 1:rotation")
+tracks/6/path = NodePath("ChackanaDoor/Collision Pivot 1:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -350,7 +251,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Chackana Door/Collision Pivot 2:rotation")
+tracks/7/path = NodePath("ChackanaDoor/Collision Pivot 2:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -360,61 +261,264 @@ tracks/7/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_aqkc2"]
+resource_name = "OpenedDoor"
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChackanaDoor/Door Pane 1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.1415927, 1.3962634, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChackanaDoor/Door Pane 2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.3962634, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, -1.5707964, 1.5707964)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, -0.026, 0.73)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, -0.026, 0.73)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 1.5707964, -1.5707964)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChackanaDoor/Collision Pivot 1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.3962634, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ChackanaDoor/Collision Pivot 2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.3962634, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kh52g"]
+resource_name = "DoorOpens"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChackanaDoor/Door Pane 1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 0, 0), Vector3(3.1415927, 1.3962634, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChackanaDoor/Door Pane 2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ChackanaDoor/Collision Pivot 1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.3962634, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ChackanaDoor/Collision Pivot 2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xw1pg"]
 _data = {
-&"Door Opens": SubResource("Animation_kh52g"),
+&"DoorOpens": SubResource("Animation_kh52g"),
+&"OpenedDoor": SubResource("Animation_aqkc2"),
 &"RESET": SubResource("Animation_s4h8s")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="ChackanaDoor" type="Node3D" groups=["Metaprogression"]]
+script = ExtResource("1_elvij")
 
-[node name="Chackana Door" type="Node3D" parent="."]
-
-[node name="Frame" type="MeshInstance3D" parent="Chackana Door"]
+[node name="Frame" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.19999999, 0, 0.5, 0)
 mesh = SubResource("ArrayMesh_elvij")
 skeleton = NodePath("")
 
-[node name="Door Pane 1" type="MeshInstance3D" parent="Chackana Door"]
+[node name="Door Pane 1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.72, 0, 0, 0, 1, -6.013096e-09, 0, 8.742278e-08, 0.0687818, -0.41999987, 0.4761927, 0)
 mesh = SubResource("ArrayMesh_aqkc2")
 skeleton = NodePath("")
 
-[node name="Lock 2" type="MeshInstance3D" parent="Chackana Door/Door Pane 1"]
+[node name="Lock 2" type="MeshInstance3D" parent="Door Pane 1"]
 transform = Transform3D(2.6490959e-08, -1.0168128e-07, 0.22222227, -0.16000004, -1.01681294e-07, 3.6792997e-08, 6.993823e-09, -2.326197, -9.713644e-09, -0.58333343, -0.026192725, 0.43616182)
 mesh = SubResource("ArrayMesh_wspi6")
 skeleton = NodePath("")
 
-[node name="Collision Pivot 1" type="Node3D" parent="Chackana Door"]
+[node name="Collision Pivot 1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4488995, 0.5, 0)
 
-[node name="Area3D" type="Area3D" parent="Chackana Door/Collision Pivot 1"]
+[node name="Area3D" type="Area3D" parent="Collision Pivot 1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4488995, -0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chackana Door/Collision Pivot 1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 1/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.4996643, 0.008758575)
 shape = SubResource("BoxShape3D_y7lqa")
 
-[node name="Door Pane 2" type="MeshInstance3D" parent="Chackana Door"]
+[node name="Door Pane 2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.72, 0, 0, 0, 1, 0, 0, 0, 0.0687818, 0.4200001, 0.4761927, 0)
 mesh = SubResource("ArrayMesh_dn6du")
 skeleton = NodePath("")
 
-[node name="Lock 1" type="MeshInstance3D" parent="Chackana Door/Door Pane 2"]
+[node name="Lock 1" type="MeshInstance3D" parent="Door Pane 2"]
 transform = Transform3D(2.6490959e-08, 1.0168128e-07, -0.22222227, 0.16000004, -1.01681294e-07, 3.6792997e-08, -6.993823e-09, -2.326197, -9.713644e-09, -0.58333313, -0.026192725, 0.43616182)
 mesh = SubResource("ArrayMesh_hlebk")
 skeleton = NodePath("")
 
-[node name="Collision Pivot 2" type="Node3D" parent="Chackana Door"]
+[node name="Collision Pivot 2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4461934, 0.5, 0)
 
-[node name="Area3D" type="Area3D" parent="Chackana Door/Collision Pivot 2"]
+[node name="Area3D" type="Area3D" parent="Collision Pivot 2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Chackana Door/Collision Pivot 2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19650567, -0.00033569336, 0.008758575)
 shape = SubResource("BoxShape3D_y7lqa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_xw1pg")
 }
