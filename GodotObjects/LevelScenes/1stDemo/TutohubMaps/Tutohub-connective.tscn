@@ -661,7 +661,7 @@ debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-puzzle2" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -6)
 script = ExtResource("3_rrtal")
 hotspotName = "puzzle2_connection"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-Puzzle2.tscn"
