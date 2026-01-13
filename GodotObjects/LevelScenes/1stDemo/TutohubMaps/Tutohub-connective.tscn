@@ -67,8 +67,10 @@ backImage = ExtResource("7_5n13k")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihy67"]
+size = Vector3(1.6, 1, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4f14"]
+size = Vector3(0.6, 1, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3flle"]
 size = Vector3(4, 1, 2)
@@ -158,7 +160,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_4smwb"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, -15, 0, 0, 0, 0, 0, 0, 6, 0, -3.8, 0, 0, 0, 0, 0, 0, -0.0949831, 0, -3.8),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, -16, 0, 0, 0, 0, 0, 0, 6, 0, -3.8, 0, 0, 0, 0, 0, 0, -0.0949831, 0, -3.8),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -351,10 +353,10 @@ point_count = 4
 [sub_resource type="Curve3D" id="Curve3D_wv83u"]
 closed = true
 _data = {
-"points": PackedVector3Array(-1.41, 0, -1.835, 0.485, 0, -0.775, 0.39939117, -2.3841858e-07, -2.2650576, -0.45, 0, 0, 1, 0, 0, 2.084476, -0.23576355, 1.0325832, -0.19, 0, 0, -1.87, 0, 0, -0.21667862, 0.025881767, 3.672593),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.48084736, -0.012940884, -2.0031624, 0, 0, 0, 0, 0, 0, 2.02, 0, 1.177, -0.19, 0, 0, -1.87, 0, 0, -0.217, 0, 3.673, 0, 0, 0, 0, 0, 0, -2.5647297, -0.012940884, -2.136776),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_5n13k"]
 _data = {
@@ -480,7 +482,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_saeos"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.475, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.275, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -501,14 +503,14 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_buqda"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.049999952, 0, -12.52, 0, 0, 0, 0, 0, 0, -1.33, 0, -12.52),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.049999952, 0, -12.52, 0, 0, 0, 0, 0, 0, -0.9299998, 0, -12.52),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_3mqqw"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -1.945),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.20000005, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, -1.945),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -641,7 +643,7 @@ rootNode = NodePath("..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-puzzle1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099999905, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.10000014)
 shape = SubResource("BoxShape3D_ihy67")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
@@ -653,13 +655,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-puzzle1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1999999, 0, -8)
-shape = SubResource("BoxShape3D_k4f14")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
-
-[node name="UnloadShape2" type="CollisionShape3D" parent="ChunkLoadingHotspot-puzzle1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4000001, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -7.95)
 shape = SubResource("BoxShape3D_k4f14")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
@@ -730,7 +726,7 @@ texture = ExtResource("6_p7x5o")
 pedestalName = "Puzzle2"
 
 [node name="PlaceholderMetaprogressionBlockPuzzle3" parent="metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(5, 0, 3.5527137e-15, 0, 5.7500005, 0, -1.7763568e-14, 0, 1, -0.5, -0.7, -13.5)
+transform = Transform3D(4.75, 0, 3.5527137e-15, 0, 5.7500005, 0, -1.687539e-14, 0, 1, -0.5, -0.7, -13.4)
 color = Color(0.15948172, 0.873581, 1.1413766, 1)
 texture = SubResource("GradientTexture2D_3fjpl")
 pedestalName = "Puzzle3"
@@ -828,7 +824,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@39057" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder"]
+[node name="@CSGPolygon3D@65694" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0
@@ -847,7 +843,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@39058" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder2"]
+[node name="@CSGPolygon3D@65695" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0
@@ -956,7 +952,7 @@ resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator8" type="Path3D" parent="Props/Deco Walls"]
-transform = Transform3D(-0.75311303, 0.052202143, -0.6558168, -0.071939014, 0.98433506, 0.16096334, 0.6539462, 0.16840236, -0.73756015, -4.8000007, -1.8000001, -16.5)
+transform = Transform3D(-0.93969274, 0, 0.34202018, 0, 1.0000001, 0, -0.34202024, 0, -0.93969256, -4.8000007, -1.8000001, -16.5)
 curve = SubResource("Curve3D_wv83u")
 script = ExtResource("8_143k4")
 wallHeight = 10.0
@@ -1005,11 +1001,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, -0.5, 0.6)
 curve = SubResource("Curve3D_8fdqa")
 
 [node name="Stone Fence" parent="Props/Fences" instance=ExtResource("41_y25gd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.5, -10.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -0.5, -10.2)
 curve = SubResource("Curve3D_saeos")
 
 [node name="Stone Fence2" parent="Props/Fences" instance=ExtResource("41_y25gd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.5, -12.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -0.5, -12.7)
 curve = SubResource("Curve3D_saeos")
 
 [node name="Fringes" type="Node3D" parent="Props"]

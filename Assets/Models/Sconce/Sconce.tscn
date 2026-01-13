@@ -220,8 +220,10 @@ mesh = SubResource("ArrayMesh_07nm2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Crystal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00094908476, 0.24745272, 0)
-omni_range = 0.343
-omni_attenuation = -0.07
+light_color = Color(0.98050076, 0.95040196, 0.76198995, 1)
+light_size = 0.2
+omni_range = 0.7
+omni_attenuation = 0.1
 
 [node name="Base" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_etxkd")
