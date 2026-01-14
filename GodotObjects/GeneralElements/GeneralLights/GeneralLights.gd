@@ -46,7 +46,7 @@ func _ready() -> void:
 	set_color_changes()
 	if Engine.is_editor_hint(): return
 	randomize()
-	randomTime = randf_range(0.0, 0.2)
+	randomTime = randf_range(0.0, 0.1)
 	camera = get_tree().get_first_node_in_group("Camera")
 
 ## Sets all color changes
