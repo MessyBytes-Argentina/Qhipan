@@ -10,18 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="8_r2p2y"]
 [ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="9_0o31w"]
 
-[sub_resource type="Gradient" id="Gradient_bn7wp"]
+[sub_resource type="Gradient" id="Gradient_hg7xg"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hg7xg"]
-gradient = SubResource("Gradient_bn7wp")
+gradient = SubResource("Gradient_hg7xg")
 
-[sub_resource type="Gradient" id="Gradient_5sda3"]
+[sub_resource type="Gradient" id="Gradient_8awk4"]
 offsets = PackedFloat32Array(0, 0.47115386)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8awk4"]
-gradient = SubResource("Gradient_5sda3")
+gradient = SubResource("Gradient_8awk4")
 
 [resource]
 render_priority = 0
