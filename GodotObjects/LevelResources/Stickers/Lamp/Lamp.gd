@@ -20,6 +20,8 @@ const stickerTextures: Dictionary[String, Texture2D] = {
 	"on": preload("uid://da3qteoalmnj6"),
 	"off": preload("uid://k8c3uc7gxr4w")
 }
+## Light shine parameters
+const SHINEPARAMETERS: Dictionary[String, Variant] = {"interval": 0.5, "animationTime": 0.5, "transIn": Tween.TRANS_CUBIC, "easeIn": Tween.EASE_IN_OUT, "transOut": Tween.TRANS_QUART, "easeOut": Tween.EASE_OUT, "heldSize": Vector2.ONE * 1.5, "defaultSize": Vector2.ONE * 2.0}
 
 ## The floating mesh with no lighting on.
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
@@ -33,9 +35,13 @@ const stickerTextures: Dictionary[String, Texture2D] = {
 @onready var shapes: Node3D = %Shapes
 ## Light area for dropping stickers
 @onready var stickerLightArea: Area3D = %StickerLightArea
+## Light shine
+@onready var shine: MeshInstance3D = %Shine
 
 ## Reference to the player character
 var player: Player
+## Reference to camera
+var camera: Camera3D
 ## Reference to the player character darkness manager
 var playerDarknessManager: DarknessBlockerModule
 ## Light animation tween.
@@ -48,6 +54,16 @@ var nextLightValue: float = 0.0
 var lightUpdated: int = 0
 ## Check to make sure we dont tween the light on startup.
 var isReadyToTween: bool = false
+## Accumulator for time to check light visibility.
+var timePassed: float = 0
+## Shine tween.
+var shineTween: Tween
+## Shine material
+var shineMaterial: ShaderMaterial
+## Current shine alpha.
+var shineAlpha: float = 0.0
+## Current shine animation mode.
+var shineAnimationMode: String = "Off"
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,6 +77,49 @@ func _ready() -> void:
 	lightShape.shape = lightShape.shape.duplicate()
 	await get_tree().create_timer(0.5).timeout
 	isReadyToTween = true
+	camera = get_tree().get_first_node_in_group("Camera")
+	shineMaterial = shine.get_surface_override_material(0).duplicate()
+	shine.set_surface_override_material(0, shineMaterial)
+	shine.mesh = shine.mesh.duplicate()
+
+## Executed every process frame
+func _process(delta: float) -> void:
+	if nextLightValue > 0:
+		timePassed += delta
+		if timePassed < SHINEPARAMETERS.interval: return
+		timePassed = 0
+		var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+		var raycast = PhysicsRayQueryParameters3D.create(camera.global_position, global_position)
+		raycast.hit_from_inside = false
+		raycast.hit_back_faces = false
+		raycast.collision_mask = 1
+		if spaceState.intersect_ray(raycast):
+			if shineAnimationMode not in ["AnimatingOut", "Off"]: animate_shine(false)
+		else:
+			if shineAnimationMode not in ["AnimatingIn", "On"]: animate_shine(true)
+	else:
+		if shineAnimationMode not in ["AnimatingOut", "Off"]: animate_shine(false)
+
+## Animates shine parameters.
+func animate_shine(on: bool) -> void:
+	if shineTween: if shineTween.is_running(): shineTween.kill()
+	shineTween = create_tween()
+	if on:
+		shineAnimationMode = "AnimatingIn"
+		var newTime: float = SHINEPARAMETERS.animationTime * inverse_lerp(1.0, 0.0, shineAlpha)
+		shineTween.tween_method(set_shine, shineAlpha, 1.0, newTime).set_trans(SHINEPARAMETERS.transIn as Tween.TransitionType).set_ease(SHINEPARAMETERS.easeIn as Tween.EaseType)
+		shineTween.finished.connect(set.bind("shineAnimationMode", "On"))
+	else:
+		shineAnimationMode = "AnimatingOut"
+		var newTime: float = SHINEPARAMETERS.animationTime * shineAlpha
+		shineTween.tween_method(set_shine, shineAlpha, 0.0, newTime).set_trans(SHINEPARAMETERS.transOut as Tween.TransitionType).set_ease(SHINEPARAMETERS.easeOut as Tween.EaseType)
+		shineTween.finished.connect(set.bind("shineAnimationMode", "Off"))
+	shineTween.play()
+
+## Sets shine value.
+func set_shine(value: float) -> void:
+	shineMaterial.set_shader_parameter("alpha_override", value)
+	shineAlpha = value
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -76,12 +135,14 @@ func set_size(mode: ScaleModes) -> void:
 			light.position.y = -GRABHEIGHT / 2.0
 			light.light_size = 1.0
 			light.shadow_bias = 10.0
+			shine.mesh.size = SHINEPARAMETERS.heldSize
 			set_assets("on")
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
 			animate_light_fade(0.0)
 			light.position.y = 0.0
+			shine.mesh.size = SHINEPARAMETERS.defaultSize
 			set_assets("off")
 		ScaleModes.PLACED:
 			floatingMesh.hide()
@@ -93,6 +154,7 @@ func set_size(mode: ScaleModes) -> void:
 			light.position.y = 0.0
 			light.light_size = 0.0
 			light.shadow_bias = 0.1
+			shine.mesh.size = SHINEPARAMETERS.defaultSize
 			set_assets("on")
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()

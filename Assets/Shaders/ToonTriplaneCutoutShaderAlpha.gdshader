@@ -11,6 +11,7 @@ uniform sampler2D light_gradient;
 uniform sampler2D fresnel_gradient;
 
 //Worldspace triplanar parameters
+uniform vec3 offset = vec3(0.5);
 uniform float top_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float side_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float blend_sharpness : hint_range(0.0, 150.0, 0.001) = 10.0;
@@ -129,6 +130,7 @@ void vertex() {
 	triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	power_normal /= dot(power_normal, vec3(1.0));
 	triplanar_pos *= vec3(1.0, -1.0, 1.0);
+	triplanar_pos += offset;
 }
 
 vec4 triplanar_texture(sampler2D top_sampler, sampler2D side_sampler, vec3 p_weights, vec3 p_triplanar_pos) {

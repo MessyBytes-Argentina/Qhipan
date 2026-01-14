@@ -59,6 +59,7 @@ Fog=""
 Metaprogression=""
 ChunkLoadingHotspots=""
 EnvironmentObjects=""
+Camera=""
 
 [godot_resource_groups]
 

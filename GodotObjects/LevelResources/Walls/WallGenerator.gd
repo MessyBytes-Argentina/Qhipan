@@ -54,6 +54,9 @@ var shadowPolygon: CSGPolygon3D
 ## Executed when node first enters the scene.
 func _ready() -> void:
 	regenerate_wall_shape()
+	if not GeneralVariables.is_node_ready():
+		await GeneralVariables.ready
+	if material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(material)
 
 ## Reverts the path points.
 func flip_path() -> void:
@@ -92,6 +95,9 @@ func regenerate_wall_shape() -> void:
 	if customProfileShape and material is ShaderMaterial: 
 		polygon.material = material.duplicate()
 		polygon.material.set_shader_parameter("height", wallHeight)
+		if not GeneralVariables.is_node_ready():
+			await GeneralVariables.ready
+		if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	shadowPolygon.polygon = _create_wall_shape(true, false)

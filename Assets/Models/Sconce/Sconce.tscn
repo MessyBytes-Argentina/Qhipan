@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://bba7fgwsefvpt"]
+[gd_scene load_steps=29 format=4 uid="uid://bba7fgwsefvpt"]
 
+[ext_resource type="Script" uid="uid://d3w0wk3wy7c4n" path="res://GodotObjects/GeneralElements/GeneralLights/GeneralLights.gd" id="1_a4uyk"]
 [ext_resource type="Animation" uid="uid://b7y1r0i10pcbd" path="res://Assets/Models/Sconce/Sconce Loop Animation.res" id="1_ds5qq"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_vounl"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_vny51"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="6_ds5qq"]
 [ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_orm.png" id="6_jwm2p"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="7_e68cp"]
+[ext_resource type="Shader" uid="uid://b3tfln6gs0vrs" path="res://Assets/Shaders/LightShine.gdshader" id="8_xpaws"]
 
 [sub_resource type="Animation" id="Animation_ap4od"]
 length = 0.001
@@ -117,12 +119,91 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u02aw")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psxnf"]
+render_priority = 0
+shader = ExtResource("1_vounl")
+shader_parameter/albedo = Color(3.32, 4.878, 4.838, 1)
+shader_parameter/light_gradient = ExtResource("3_sq1fn")
+shader_parameter/fresnel_gradient = ExtResource("2_vny51")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_jwm2p")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_e68cp")
+shader_parameter/normal_scale = 9.4730012099675
+shader_parameter/texture_orm = ExtResource("6_ds5qq")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.27999999374144
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_psxnf"]
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="Gradient" id="Gradient_a4uyk"]
+offsets = PackedFloat32Array(0.121468924, 0.18361582)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mx8ad"]
+gradient = SubResource("Gradient_a4uyk")
+
+[sub_resource type="Gradient" id="Gradient_y5ndi"]
+offsets = PackedFloat32Array(0, 0.39265537, 0.61864406, 0.8305085)
+colors = PackedColorArray(0.6392157, 0, 1, 1, 0.8862745, 0.7411765, 0.26666668, 1, 1, 0.8863956, 0.6506775, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0npob"]
+gradient = SubResource("Gradient_y5ndi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n6p5"]
+render_priority = 0
+shader = ExtResource("8_xpaws")
+shader_parameter/pixelation = Vector2(512, 512)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture1D_0npob")
+shader_parameter/center_gradient = SubResource("GradientTexture1D_mx8ad")
+shader_parameter/spread = 0.33
+shader_parameter/size = 0.365
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.5
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = -0.4999999287499999
+shader_parameter/core_intensity = 4.750000002218258e-07
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+shader_parameter/alpha_override = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e68cp"]
 render_priority = 0
 shader = ExtResource("7_e68cp")
 shader_parameter/albedo = Color(0.56944287, 0.23756917, 0, 1)
 shader_parameter/light_gradient = ExtResource("3_sq1fn")
 shader_parameter/fresnel_gradient = ExtResource("2_vny51")
+shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
 shader_parameter/top_texture_scale = 5.0
 shader_parameter/side_texture_scale = 0.10000000149012
 shader_parameter/blend_sharpness = 10.0
@@ -207,7 +288,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1hwok")
 
-[node name="Sconce" type="Node3D"]
+[node name="Sconce" type="Node3D" node_paths=PackedStringArray("meshes", "omniLights", "shine")]
+script = ExtResource("1_a4uyk")
+albedo = Color(3.32, 4.878, 4.838, 1)
+emission = Color(0, 0, 0, 1)
+meshes = [NodePath("Crystal")]
+omniLights = [NodePath("Crystal/OmniLight3D")]
+shine = NodePath("Crystal/Shine")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -217,13 +304,19 @@ autoplay = "Sconce Loop"
 
 [node name="Crystal" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_07nm2")
+surface_material_override/0 = SubResource("ShaderMaterial_psxnf")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Crystal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00094908476, 0.24745272, 0)
-light_color = Color(0.98050076, 0.95040196, 0.76198995, 1)
 light_size = 0.2
 omni_range = 0.7
 omni_attenuation = 0.1
+
+[node name="Shine" type="MeshInstance3D" parent="Crystal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
+layers = 2
+mesh = SubResource("QuadMesh_psxnf")
+surface_material_override/0 = SubResource("ShaderMaterial_0n6p5")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_etxkd")

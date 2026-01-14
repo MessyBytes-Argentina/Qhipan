@@ -176,6 +176,8 @@ var jumping: bool = false
 var coolStickerGrabbing: bool = false
 ## Flag that is true when the cool sticker animation is finished
 var coolStickerGrabbingFinished: bool = false
+## Current cool sticker.
+var currentCoolSticker: PocketSticker
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -213,8 +215,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	if Input.is_action_just_pressed("pause"):
-		onSettings = true
-		PopupManager.show_popup("Settings")
+		if not PopupManager.is_popup("Settings"):
+			onSettings = true
+			PopupManager.show_popup("Settings")
+			GeneralVariables.inventory.book.show_book()
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()
@@ -374,12 +378,18 @@ func move_character(delta: float) -> void:
 		lastInvoluntarySpeed.y = 0
 	lastPushForce = pushForce * delta
 	lastInvoluntarySpeed = lastInvoluntarySpeed + lastPushForce
-	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: currentState = States.Float
+	var floorCheck: bool = false
+	var lastY: float = global_position.y
+	if (pushForce.length() > 0 or len(noGravityZones) > 0) and currentState != States.Float: 
+		currentState = States.Float
 	if pushForce.length() == 0 and currentState == States.Float and len(noGravityZones) == 0:
 		currentState = States.Idle
 		animation_check()
+	if currentState == States.Float and (pushForce * Vector3(1.0, 0.0, 1.0)).length() > 0: floorCheck = true
 	velocity = lastInvoluntarySpeed + lastVoluntarySpeed
 	move_and_slide()
+	if floorCheck and global_position.y < lastY:
+		global_position.y = lastY
 	if not is_on_floor():
 		fellDistance += (get_last_motion() * Vector3.UP).length()
 	else: 
@@ -413,6 +423,7 @@ func animation_check() -> void:
 
 ## Do cool sticker animation.
 func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
+	currentCoolSticker = sticker
 	coolSticker.texture = sticker.image
 	var shineMaterial: ShaderMaterial = shine.get_surface_override_material(0)
 	shineMaterial.set_shader_parameter("gradientColor", sticker.glowBackgroundColor)
@@ -424,6 +435,12 @@ func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
 	# Reemplazar por un wait para la musiquita
 	await get_tree().create_timer(2).timeout
 	coolStickerGrabbingFinished = true
+
+## Store cool sticker.
+func store_cool_sticker() -> void:
+	if not currentCoolSticker: return
+	GeneralVariables.inventory.add_sticker(currentCoolSticker)
+	currentCoolSticker = null
 
 ## External forces functions
 #region External Forces

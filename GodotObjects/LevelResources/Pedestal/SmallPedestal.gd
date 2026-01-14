@@ -13,10 +13,10 @@ class_name SmallPedestal
 ## Parent node reference for placement.
 @export var sceneParent: Node
 
-## Reference to the pedestal wall.
-@onready var mesh: MeshInstance3D = %Wall
 ## Reference to the sticker marker.
 @onready var stickerMarker: StickerMarker = %StickerMarker
+## Reference to the pedestal wall.
+var mesh: MeshInstance3D
 
 ## Executed when node first enters scene tree.
 func _ready() -> void:
@@ -24,7 +24,9 @@ func _ready() -> void:
 		var testSceneParent = get_tree().edited_scene_root
 		if testSceneParent.has_node("Player"): return
 		sceneParent = testSceneParent
-	update_texture()
+	if has_node("%Wall"):
+		mesh = %Wall
+		update_texture()
 
 ## Activates pedestal.
 func activate_pedestal(skip: bool = false) -> void:
@@ -32,6 +34,7 @@ func activate_pedestal(skip: bool = false) -> void:
 
 ## Updates debug texture.
 func update_texture() -> void:
+	if not mesh: return
 	var material: ShaderMaterial = mesh.get_surface_override_material(0).duplicate()
 	material.set_shader_parameter("top_texture_albedo", texture)
 	material.set_shader_parameter("bottom_texture_albedo", texture)

@@ -52,13 +52,13 @@ metadata/UnloadShape = true
 [node name="Stickers" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0, 0)
 
-[node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_6wkni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
+[node name="StickerLamp2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_6wkni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0.5)
 sceneParent = NodePath("../..")
 originalParent = "Destileria_puzzle3"
 
-[node name="StickerLamp2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_6wkni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0.5)
+[node name="StickerLamp4" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_6wkni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9999999, 0, 0.49999988)
 sceneParent = NodePath("../..")
 originalParent = "Destileria_puzzle3"
 
@@ -119,4 +119,4 @@ size = Vector3(3, 3, 4)
 [node name="Areas AntiSticker" type="Node3D" parent="."]
 
 [node name="AntiStickerArea" parent="Areas AntiSticker" instance=ExtResource("9_ynvwq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5, 0, -2)

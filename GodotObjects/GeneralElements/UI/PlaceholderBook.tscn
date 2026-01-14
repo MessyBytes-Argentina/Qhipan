@@ -1,0 +1,225 @@
+[gd_scene load_steps=13 format=3 uid="uid://knl3pi3ldyma"]
+
+[ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="1_cmxnc"]
+[ext_resource type="Script" uid="uid://dflbf04kv53yv" path="res://GodotObjects/GeneralElements/UI/PlaceholderBook.gd" id="1_kslwr"]
+
+[sub_resource type="Animation" id="Animation_3lahp"]
+resource_name = "Close"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0.35, 0, 0), Vector3(0.35, 0, 0), Vector3(-1.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoverPivot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415927, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kslwr"]
+resource_name = "Open"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoverPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -3.1415927, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-1.5, 0, 0), Vector3(0.35, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lnpl3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2w8wh"]
+resource_name = "Sticker1"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 4.5), Vector3(-0.15, 0.25, 0.11)]
+}
+
+[sub_resource type="Animation" id="Animation_cmxnc"]
+resource_name = "Sticker2"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 4.5), Vector3(0.15, 0.15, 0.11)]
+}
+
+[sub_resource type="Animation" id="Animation_23hlu"]
+resource_name = "Sticker3"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 4.5), Vector3(-0.175, -0.1, 0.11)]
+}
+
+[sub_resource type="Animation" id="Animation_dvwqv"]
+resource_name = "Sticker4"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector3(-1, 0, 4.5), Vector3(0.125, -0.2, 0.11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23hlu"]
+_data = {
+&"Close": SubResource("Animation_3lahp"),
+&"Open": SubResource("Animation_kslwr"),
+&"RESET": SubResource("Animation_lnpl3"),
+&"Sticker1": SubResource("Animation_2w8wh"),
+&"Sticker2": SubResource("Animation_cmxnc"),
+&"Sticker3": SubResource("Animation_23hlu"),
+&"Sticker4": SubResource("Animation_dvwqv")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_dvwqv"]
+size = Vector3(0.7, 1, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7wcjx"]
+size = Vector3(0.7, 1, 0.05)
+
+[node name="PlaceholderBook" type="SubViewportContainer"]
+top_level = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -256.0
+offset_right = 256.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_kslwr")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+cull_mask = 131072
+current = true
+fov = 25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport"]
+unique_name_in_owner = true
+root_node = NodePath("../Book")
+libraries = {
+&"": SubResource("AnimationLibrary_23hlu")
+}
+
+[node name="Book" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="Back" type="MeshInstance3D" parent="SubViewport/Book"]
+layers = 131072
+mesh = SubResource("BoxMesh_dvwqv")
+
+[node name="CoverPivot" type="Node3D" parent="SubViewport/Book"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0.1)
+
+[node name="Cover" type="MeshInstance3D" parent="SubViewport/Book/CoverPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0.025)
+layers = 131072
+mesh = SubResource("BoxMesh_7wcjx")
+skeleton = NodePath("../..")
+
+[node name="Sticker1" type="Sprite3D" parent="SubViewport/Book"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
+layers = 131072
+pixel_size = 0.0005
+texture = ExtResource("1_cmxnc")
+
+[node name="Sticker2" type="Sprite3D" parent="SubViewport/Book"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
+layers = 131072
+pixel_size = 0.0005
+texture = ExtResource("1_cmxnc")
+
+[node name="Sticker3" type="Sprite3D" parent="SubViewport/Book"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
+layers = 131072
+pixel_size = 0.0005
+texture = ExtResource("1_cmxnc")
+
+[node name="Sticker4" type="Sprite3D" parent="SubViewport/Book"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
+layers = 131072
+pixel_size = 0.0005
+texture = ExtResource("1_cmxnc")
