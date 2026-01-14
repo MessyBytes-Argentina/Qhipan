@@ -80,6 +80,7 @@ func _ready() -> void:
 	camera = get_tree().get_first_node_in_group("Camera")
 	shineMaterial = shine.get_surface_override_material(0).duplicate()
 	shine.set_surface_override_material(0, shineMaterial)
+	shine.mesh = shine.mesh.duplicate()
 
 ## Executed every process frame
 func _process(delta: float) -> void:
@@ -99,6 +100,7 @@ func _process(delta: float) -> void:
 	else:
 		if shineAnimationMode not in ["AnimatingOut", "Off"]: animate_shine(false)
 
+## Animates shine parameters.
 func animate_shine(on: bool) -> void:
 	if shineTween: if shineTween.is_running(): shineTween.kill()
 	shineTween = create_tween()
@@ -114,6 +116,7 @@ func animate_shine(on: bool) -> void:
 		shineTween.finished.connect(set.bind("shineAnimationMode", "Off"))
 	shineTween.play()
 
+## Sets shine value.
 func set_shine(value: float) -> void:
 	shineMaterial.set_shader_parameter("alpha_override", value)
 	shineAlpha = value
