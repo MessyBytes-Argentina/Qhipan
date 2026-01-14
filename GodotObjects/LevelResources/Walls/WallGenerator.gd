@@ -196,4 +196,5 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 				res[i].y -= wallHeight
 			downPolygon.flip_faces = true
 			res[0] = Vector2(res[1].x, 0.0)
+		print(res)
 		return res

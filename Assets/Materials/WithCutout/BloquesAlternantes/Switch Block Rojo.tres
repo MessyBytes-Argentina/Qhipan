@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_orm.png" id="6_bgj1s"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_ffuks")
 shader_parameter/albedo = Color(1, 1, 1, 0.78431374)
 shader_parameter/light_gradient = ExtResource("3_jx4w4")
 shader_parameter/fresnel_gradient = ExtResource("2_hyl80")
+shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0

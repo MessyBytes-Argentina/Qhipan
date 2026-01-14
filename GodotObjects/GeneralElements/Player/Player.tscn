@@ -1052,7 +1052,7 @@ unique_name_in_owner = true
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraZoomPivot" groups=["Camera"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 3, 5)
-cull_mask = 786431
+cull_mask = 655359
 current = true
 fov = 55.0
 

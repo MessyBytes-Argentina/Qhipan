@@ -824,7 +824,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@65694" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder"]
+[node name="@CSGPolygon3D@38063" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0
@@ -843,7 +843,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@65695" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder2"]
+[node name="@CSGPolygon3D@38064" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0

@@ -51,6 +51,8 @@ func _ready() -> void:
 
 ## Sets all color changes
 func set_color_changes() -> void:
+	if not is_node_ready():
+		await ready
 	shineMaterial = shine.get_surface_override_material(0).duplicate()
 	shine.set_surface_override_material(0, shineMaterial)
 	for mesh in meshes:
