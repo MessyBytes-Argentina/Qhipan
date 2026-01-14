@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cry1k1hjfuqan"]
+[gd_scene load_steps=37 format=4 uid="uid://cry1k1hjfuqan"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_1iuec"]
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="2_7ghvw"]
@@ -13,10 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="7_q6li1"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="8_rpi8k"]
 [ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="9_0p2m8"]
-[ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="10_ra0fd"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="15_0p2m8"]
+[ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="15_4mad4"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="15_v4tlg"]
-[ext_resource type="Texture2D" uid="uid://bl5tesrbned68" path="res://Assets/Textures/Stickers/Key/Key-3.png" id="16_v3gnl"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="17_3dbpw"]
 [ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="17_fuaq1"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="19_25jhb"]
@@ -70,6 +69,22 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_v4tlg"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, -0.19999981, 0, 0, 0, 0, 0, 0.2, 0, 0.25, 0.70000005, 0, 0, 0, 0, 0, -0.25, 0, 0.2, 0.70000005, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, -0.19999981, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_v3gnl"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, -0.19999981, 0, 0, 0, 0, 0, 0.2, 0, 0.25, 0.70000005, 0, 0, 0, 0, 0, -0.25, 0, 0.2, 0.70000005, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, -0.19999981, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_25jhb"]
 closed = true
@@ -230,14 +245,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, -4.5)
 
 [node name="Metaprogress" type="Node3D" parent="."]
 
-[node name="PlaceholderMetaprogressionBlock" parent="Metaprogress" instance=ExtResource("10_ra0fd")]
-transform = Transform3D(0.39999998, 0, 0, 0, 4.8, 0, 0, 0, 1, -4.5, -0.70000005, -7.7)
-color = Color(1.5790963, 1.5790963, 0.8927182, 1)
-texture = ExtResource("16_v3gnl")
+[node name="ChackanaDoor" parent="Metaprogress" instance=ExtResource("15_4mad4")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -4.6, -0.5, -7.7)
 pedestalName = "puzzle1Key"
 
-[node name="SmallPedestal2" parent="Metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_v4tlg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.5, -8.7)
+[node name="SmallPedestalKey" parent="Metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_v4tlg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, -0.5, -8.7)
 pedestalName = "puzzle1Key"
 sceneParent = NodePath("../..")
 
@@ -256,16 +269,16 @@ curve = SubResource("Curve3D_tjk1d")
 [node name="Deco Walls" type="Node3D" parent="Props"]
 
 [node name="WallGenerator" type="Path3D" parent="Props/Deco Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -8.7)
-curve = ExtResource("17_fuaq1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -9.2)
+curve = SubResource("Curve3D_v4tlg")
 script = ExtResource("3_rpi8k")
 wallHeight = 7.0
 material = ExtResource("4_xmmk3")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator2" type="Path3D" parent="Props/Deco Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -7.2)
-curve = ExtResource("17_fuaq1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, -0.5, -6.6)
+curve = SubResource("Curve3D_v3gnl")
 script = ExtResource("3_rpi8k")
 wallHeight = 7.0
 material = ExtResource("4_xmmk3")
