@@ -73,7 +73,6 @@ func _do_extrude() -> void:
 		shape.layers = collisionLayer
 	shape.material = material.duplicate() if uniqueMaterial else material
 	add_child(shape)
-	shape.owner = get_tree().edited_scene_root
 	match extrudeDirection:
 		Directions.UP:
 			shape.rotation.x = PI / 2.0

@@ -54,6 +54,7 @@ var shadowPolygon: CSGPolygon3D
 ## Executed when node first enters the scene.
 func _ready() -> void:
 	regenerate_wall_shape()
+	if Engine.is_editor_hint(): return
 	if not GeneralVariables.is_node_ready():
 		await GeneralVariables.ready
 	if material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(material)
@@ -95,9 +96,10 @@ func regenerate_wall_shape() -> void:
 	if customProfileShape and material is ShaderMaterial: 
 		polygon.material = material.duplicate()
 		polygon.material.set_shader_parameter("height", wallHeight)
-		if not GeneralVariables.is_node_ready():
-			await GeneralVariables.ready
-		if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
+		if not Engine.is_editor_hint():
+			if not GeneralVariables.is_node_ready():
+				await GeneralVariables.ready
+			if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	shadowPolygon.polygon = _create_wall_shape(true, false)
@@ -196,5 +198,4 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 				res[i].y -= wallHeight
 			downPolygon.flip_faces = true
 			res[0] = Vector2(res[1].x, 0.0)
-		print(res)
 		return res

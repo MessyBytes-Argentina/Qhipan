@@ -824,14 +824,6 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@38063" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 1.75
-material = ExtResource("14_lku13")
-
 [node name="PathExtruder2" type="Path3D" parent="Props/Collumn Pathway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, -0.5, 1.2)
 curve = ExtResource("12_en8j3")
@@ -842,14 +834,6 @@ material = ExtResource("14_lku13")
 collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="@CSGPolygon3D@38064" type="CSGPolygon3D" parent="Props/Collumn Pathway/PathExtruder2"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 1.75
-material = ExtResource("14_lku13")
 
 [node name="Bridge" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
 transform = Transform3D(0.998217, 0, 0.059689663, 0, 1, 0, -0.059689663, 0, 0.998217, -1.6461127, 1.3451632, 1.6953313)
