@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://obi7mybs0j53"]
+[gd_scene load_steps=24 format=3 uid="uid://obi7mybs0j53"]
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
 [ext_resource type="Texture2D" uid="uid://k8c3uc7gxr4w" path="res://Assets/Textures/Stickers/Lamp/Lamp OFF.png" id="3_w5ix8"]
+[ext_resource type="Shader" uid="uid://b3tfln6gs0vrs" path="res://Assets/Shaders/LightShine.gdshader" id="4_enf8r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -67,6 +68,41 @@ height = 10.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5ix8"]
 radius = 4.5
 height = 9.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_45nsf"]
+size = Vector2(2, 2)
+
+[sub_resource type="Gradient" id="Gradient_q57fi"]
+offsets = PackedFloat32Array(0.121468924, 0.18361582)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kl8t"]
+gradient = SubResource("Gradient_q57fi")
+
+[sub_resource type="Gradient" id="Gradient_88s4x"]
+offsets = PackedFloat32Array(0, 0.39265537, 0.61864406, 0.8305085)
+colors = PackedColorArray(0.6392157, 0, 1, 1, 0.8862745, 0.7411765, 0.26666668, 1, 1, 0.8863956, 0.6506775, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bbr6q"]
+gradient = SubResource("Gradient_88s4x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_451n8"]
+render_priority = 0
+shader = ExtResource("4_enf8r")
+shader_parameter/pixelation = Vector2(512, 512)
+shader_parameter/gradient_steps = 64.0
+shader_parameter/gradient = SubResource("GradientTexture1D_bbr6q")
+shader_parameter/center_gradient = SubResource("GradientTexture1D_1kl8t")
+shader_parameter/spread = 0.33
+shader_parameter/size = 0.365
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.5
+shader_parameter/ray2_density = 8.5
+shader_parameter/ray2_intensity = -0.4999999287499999
+shader_parameter/core_intensity = 4.7500000022182576e-07
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+shader_parameter/alpha_override = 0.0
 
 [node name="StickerLamp" type="CharacterBody3D" node_paths=PackedStringArray("sceneParent")]
 collision_layer = 512
@@ -184,6 +220,13 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shapes/StickerLightArea"]
 shape = SubResource("CapsuleShape3D_w5ix8")
 debug_color = Color(0.986798, 0, 0.31983, 0.42)
+
+[node name="Shine" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+layers = 2
+mesh = SubResource("QuadMesh_45nsf")
+surface_material_override/0 = SubResource("ShaderMaterial_451n8")
 
 [connection signal="body_entered" from="Shapes/LightArea" to="." method="_light_body_entered"]
 [connection signal="body_exited" from="Shapes/LightArea" to="." method="_light_body_exited"]
