@@ -422,7 +422,7 @@ albedo_texture = ExtResource("14_e3ug4")
 albedo_color = Color(0.39943835, 0.4514894, 0.5891599, 1)
 albedo_texture = ExtResource("14_e3ug4")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_35vhv"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_7u3pm"]
 _surfaces = [{
 "aabb": AABB(-0.365965, 1.342993, -0.018588, 0.700699, 0.601985, 0.17220901),
 "format": 34359742465,
@@ -496,7 +496,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("Gvf/vwAAAIAAAP+/AAAAgHzi//8AAACAThb//wAAAID//wAAAAALgJIFAACd7JqEPfH/f///RYHCBmdWAACIhj3x/3///5SGwgZnVgAASYEa9/+/AADohAAA/78AANeA/3////9/////f////3///8wgu5+FAK7+ogFX+2QAE//E+2TyH+1Czzb6qO512+Kk")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_35vhv")
+shadow_mesh = SubResource("ArrayMesh_7u3pm")
 
 [sub_resource type="Curve3D" id="Curve3D_8t86a"]
 _data = {
@@ -725,7 +725,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
 
 [node name="PorticoA" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, -0.5, 4)
-visible = false
 mesh = SubResource("ArrayMesh_yptji")
 
 [node name="Fringes" type="Node3D" parent="."]
@@ -757,7 +756,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@34675" type="CSGPolygon3D" parent="PathExtruder"]
+[node name="@CSGPolygon3D@51432" type="CSGPolygon3D" parent="PathExtruder"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0
@@ -775,7 +774,7 @@ material = ExtResource("47_3cv2g")
 collisionLayer = 1
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@37812" type="CSGPolygon3D" parent="PathExtruder2"]
+[node name="@CSGPolygon3D@51433" type="CSGPolygon3D" parent="PathExtruder2"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 use_collision = true
 collision_mask = 0

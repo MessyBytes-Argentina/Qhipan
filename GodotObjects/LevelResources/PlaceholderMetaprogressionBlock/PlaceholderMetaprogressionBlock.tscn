@@ -22,8 +22,8 @@ fractal_octaves = 4
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4vi63"]
 noise = SubResource("FastNoiseLite_7eynr")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwrcv"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc7gx"]
+render_priority = 1
 shader = ExtResource("2_mc7gx")
 shader_parameter/speed = 0.3
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -38,7 +38,7 @@ shader_parameter/BASE_DENSITY = 0.435
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvs20"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wiv4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwrcv"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -64,7 +64,7 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_8eo4r"]
 curve = SubResource("Curve_l3cxi")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w56md"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2wiv4"]
 emission_shape_scale = Vector3(1, 0, 1)
 emission_shape = 3
 emission_box_extents = Vector3(0.5, 0, 0.5)
@@ -92,7 +92,7 @@ texture = SubResource("GradientTexture2D_2wiv4")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_w56md")
-surface_material_override/0 = SubResource("ShaderMaterial_uwrcv")
+surface_material_override/0 = SubResource("ShaderMaterial_mc7gx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -100,9 +100,9 @@ shape = SubResource("BoxShape3D_yvs20")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
-material_override = SubResource("StandardMaterial3D_2wiv4")
+material_override = SubResource("StandardMaterial3D_uwrcv")
 amount = 6
 lifetime = 2.0
 randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_w56md")
+process_material = SubResource("ParticleProcessMaterial_2wiv4")
 draw_pass_1 = SubResource("QuadMesh_epy5a")
