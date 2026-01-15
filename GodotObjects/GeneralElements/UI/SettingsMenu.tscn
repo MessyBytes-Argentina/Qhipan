@@ -1,7 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bepcupksdg3h5"]
+[gd_scene load_steps=24 format=3 uid="uid://bepcupksdg3h5"]
 
+[ext_resource type="Texture2D" uid="uid://c65ev3edfbnpf" path="res://Assets/Textures/9sliceTest.png" id="1_ycww2"]
+[ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="2_qj3d8"]
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="2_yfyft"]
 [ext_resource type="Script" uid="uid://dl548l3g84gvl" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/VolumeHSlider.gd" id="3_cqhlc"]
+[ext_resource type="Texture2D" uid="uid://c0mke3lpflugo" path="res://Assets/Textures/ScrollingBGTemplate.png" id="3_h58lc"]
 [ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_2bmqm"]
 [ext_resource type="PackedScene" uid="uid://gt346rayh13u" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/MusicVolumeButton.tscn" id="4_qf23i"]
 [ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1ytef"]
@@ -16,11 +19,24 @@
 [ext_resource type="Script" uid="uid://dsbdtcedvujab" path="res://GodotObjects/GeneralElements/UI/RestartLevel.gd" id="11_qf23i"]
 [ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXDisabled.png" id="11_qj3d8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j68xm"]
-bg_color = Color(0.0862745, 0.156863, 0.247059, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3k8a"]
+texture = ExtResource("1_ycww2")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+draw_center = false
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqt6w"]
-texture = ExtResource("8_3ggm8")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyjs1"]
+shader = ExtResource("2_qj3d8")
+shader_parameter/direction = Vector2(1, 0.05)
+shader_parameter/speed = 0.5
+shader_parameter/scale = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
+texture = ExtResource("10_v8tat")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
@@ -33,8 +49,8 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 12.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
-texture = ExtResource("10_v8tat")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqt6w"]
+texture = ExtResource("8_3ggm8")
 texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
@@ -61,7 +77,21 @@ theme_override_constants/margin_bottom = 50
 
 [node name="Body PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j68xm")
+theme_override_styles/panel = SubResource("StyleBoxTexture_o3k8a")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body PanelContainer"]
+show_behind_parent = true
+layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -5
+
+[node name="TextureRect" type="TextureRect" parent="Body PanelContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_vyjs1")
+layout_mode = 2
+texture = ExtResource("3_h58lc")
+stretch_mode = 1
 
 [node name="BodyMarginContainer" type="MarginContainer" parent="Body PanelContainer"]
 layout_mode = 2
@@ -150,10 +180,10 @@ focus_neighbor_right = NodePath("../../../../CloseButtonMarginContainer/CloseBut
 focus_neighbor_bottom = NodePath(".")
 theme_override_fonts/font = ExtResource("2_yfyft")
 theme_override_font_sizes/font_size = 26
-theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
 script = ExtResource("11_qf23i")
 music = NodePath("../MusicVolumeHSlider")
 sound = NodePath("../SFXVolumeHSlider")
@@ -192,10 +222,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_neighbor_left = NodePath("../../Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider")
-theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
 script = ExtResource("11_cqhlc")
 
 [node name="MarginContainer" type="MarginContainer" parent="CloseButtonMarginContainer/CloseButton"]
