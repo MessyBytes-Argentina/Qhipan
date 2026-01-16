@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://gorrs8h0mrck"]
+[gd_scene load_steps=25 format=3 uid="uid://gorrs8h0mrck"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ht3aj"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_1b1sg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="10_77ywx"]
 [ext_resource type="Material" uid="uid://dvmehcouey5tr" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylinePlaceholderMaterial.tres" id="10_vh01l"]
 [ext_resource type="Material" uid="uid://c577hil3xnlae" path="res://GodotObjects/LevelResources/AlternatorObjects/LeylinePlaceholderMaterialGlow.tres" id="11_14d7h"]
+[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="14_vh01l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
 size = Vector3(3, 1, 1)
@@ -40,6 +41,41 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_14d7h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_4vh7k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5cbxj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3akwu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_afgrg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.05000019, 0, 0, 0, 0, 0, 0, 0, 0, -2.9, 0, 0, 0, 0, 0, 0, 2, 0, -2.9),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Molino_puzzle4" type="Node3D"]
 
@@ -92,12 +128,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
 [node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("3_6o2c1")]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 4.5, 0, -8.5)
-
-[node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("3_6o2c1")]
-transform = Transform3D(1.0000001, -2.9802322e-08, 0, 2.9802322e-08, 1.0000001, 0, 0, 0, 1, -2, 0.5, -7.5)
-
-[node name="Placeholder Sticker Area3" parent="StickerPlacements" instance=ExtResource("3_6o2c1")]
-transform = Transform3D(1.0000001, -2.9802322e-08, 0, 2.9802322e-08, 1.0000001, 0, 0, 0, 1, 0, -0.5, -6.5)
 
 [node name="ExitBlocks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.5)
@@ -165,7 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -5)
 [node name="AntiStickerArea" parent="AntiStickerAreas" instance=ExtResource("7_5xhuk")]
 
 [node name="PushDoor" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_77ywx")]
-transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, -1.0999999, 1, -5.5)
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, -1.0999999, 0.95, -5.5)
 sceneParent = NodePath("..")
 
 [node name="AlternatingBlock4" parent="." instance=ExtResource("2_stpxe")]
@@ -175,3 +205,26 @@ isOff = true
 [node name="AlternatingBlock5" parent="." instance=ExtResource("2_stpxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -8.5)
 isOff = true
+
+[node name="Fences" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -5)
+
+[node name="Wood Fence" parent="Fences" instance=ExtResource("14_vh01l")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_14d7h")
+
+[node name="Wood Fence2" parent="Fences" instance=ExtResource("14_vh01l")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -2, 0, 0.05000019)
+curve = SubResource("Curve3D_4vh7k")
+
+[node name="Wood Fence3" parent="Fences" instance=ExtResource("14_vh01l")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, -2.9)
+curve = SubResource("Curve3D_5cbxj")
+
+[node name="Wood Fence4" parent="Fences" instance=ExtResource("14_vh01l")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -3, 0, -2.9)
+curve = SubResource("Curve3D_3akwu")
+
+[node name="Wood Fence5" parent="Fences" instance=ExtResource("14_vh01l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -0.05000019)
+curve = SubResource("Curve3D_afgrg")
