@@ -1,0 +1,35 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://4ig4u2r5g2k7"]
+
+[ext_resource type="Shader" uid="uid://dlpqih7m6ak0w" path="res://Assets/Shaders/Godrays.gdshader" id="1_8kdtq"]
+
+[sub_resource type="Gradient" id="Gradient_fdnxg"]
+offsets = PackedFloat32Array(0.13569938, 0.27974948, 0.43006262, 1)
+colors = PackedColorArray(0.051970966, 0.05197096, 0.05197095, 1, 0.19735238, 0.2290325, 0.2150802, 1, 0.90868294, 1.0953695, 1.0131506, 1, 0.7015808, 0.0012094295, 0.8231019, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sdppf"]
+gradient = SubResource("Gradient_fdnxg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjwt0"]
+frequency = 0.0111
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = 1.18
+cellular_return_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_buqda"]
+noise = SubResource("FastNoiseLite_hjwt0")
+seamless = true
+seamless_blend_skirt = 0.762
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_8kdtq")
+shader_parameter/alpha = 0.7090000336775
+shader_parameter/rim_power = 5.0
+shader_parameter/texture_emission = SubResource("NoiseTexture2D_buqda")
+shader_parameter/gradient = SubResource("GradientTexture1D_sdppf")
+shader_parameter/speed = Vector2(0.7, 2)
+shader_parameter/emission = Color(0.3754872, 0.18811926, 0.39647686, 1)
+shader_parameter/emission_energy = 0.5450000258875
+shader_parameter/scale = Vector2(4, 0.1)
+shader_parameter/offset = Vector2(0, 1)

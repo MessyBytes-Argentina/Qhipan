@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cu06bx0q173kk"]
+[gd_scene load_steps=56 format=3 uid="uid://cu06bx0q173kk"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_nav8g"]
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="2_p11fj"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="18_7bfx3"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="18_7vjtk"]
 [ext_resource type="PackedScene" uid="uid://57twmtocploa" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/sand_fringe.tscn" id="22_5tbw5"]
+[ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/WithCutout/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="23_7vjtk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nav8g"]
 size = Vector3(0.5, 1, 2)
@@ -314,7 +315,7 @@ script = ExtResource("8_vp6ds")
 transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 0.71999997, 3.4, -3.5, 1.5)
 
 [node name="AlternatingBlock2" parent="AlternatingGroup1" instance=ExtResource("9_vi7le")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.200001, -0.7, 0)
 isOff = true
 
 [node name="AlternatingBlock3" parent="AlternatingGroup1" instance=ExtResource("9_vi7le")]
@@ -447,14 +448,6 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@21349" type="CSGPolygon3D" parent="Props/Columnas/Column"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 2.5
-material = ExtResource("18_7vjtk")
-
 [node name="Column3" type="Path3D" parent="Props/Columnas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3999999, -3.5, -0.29999998)
 curve = ExtResource("16_ivhfd")
@@ -466,32 +459,16 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@21350" type="CSGPolygon3D" parent="Props/Columnas/Column3"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 3.0
-material = ExtResource("18_7vjtk")
-
 [node name="Column4" type="Path3D" parent="Props/Columnas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, -3.5, -0.29999998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -3.5, -0.29999998)
 curve = ExtResource("16_ivhfd")
 script = ExtResource("17_b1ush")
 extrudeDirection = 0
-shapeThickness = 3.5
+shapeThickness = 2.8
 material = ExtResource("18_7vjtk")
 collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="@CSGPolygon3D@31090" type="CSGPolygon3D" parent="Props/Columnas/Column4"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 3.5
-material = ExtResource("18_7vjtk")
 
 [node name="Column5" type="Path3D" parent="Props/Columnas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.747885, -3.5, -0.29999998)
@@ -504,14 +481,6 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@42956" type="CSGPolygon3D" parent="Props/Columnas/Column5"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 3.0
-material = ExtResource("18_7vjtk")
-
 [node name="Column2" type="Path3D" parent="Props/Columnas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, -3.5, -0.7)
 curve = ExtResource("16_ivhfd")
@@ -523,15 +492,8 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="@CSGPolygon3D@21351" type="CSGPolygon3D" parent="Props/Columnas/Column2"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(0, 0, 0.2484622, -0.08057782, 0.5, 0, 0.58057785, 0.2484622, 0.5, 0.5, 0.2515378, 0.58057785, 0, 0.5, -0.08057782, 0.2515378)
-depth = 2.5
-material = ExtResource("18_7vjtk")
-
 [node name="Deco Walls" type="Node3D" parent="Props"]
+visible = false
 
 [node name="WallGenerator5" type="Path3D" parent="Props/Deco Walls"]
 transform = Transform3D(0.7071068, 0, -0.70710677, 0.35355338, 0.8660254, 0.3535534, 0.6123724, -0.5, 0.61237246, 10.700001, -3.7000003, 4.7)
@@ -569,3 +531,11 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 [node name="Sand Fringe Face Y" parent="Props/Fringes" instance=ExtResource("22_5tbw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -3.49, 2)
 curve = SubResource("Curve3D_pke07")
+
+[node name="God Rays" type="Node3D" parent="Props"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Props/God Rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.8, 0)
+radius = 0.614
+height = 6.0
+material = ExtResource("23_7vjtk")
