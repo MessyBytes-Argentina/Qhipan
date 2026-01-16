@@ -31,7 +31,7 @@ draw_center = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyjs1"]
 shader = ExtResource("2_qj3d8")
-shader_parameter/direction = Vector2(1, 0.05)
+shader_parameter/direction = Vector2(1, 0.075)
 shader_parameter/speed = 0.5
 shader_parameter/scale = 2.0
 
