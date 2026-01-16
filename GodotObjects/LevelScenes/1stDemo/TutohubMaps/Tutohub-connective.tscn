@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=105 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -45,6 +45,8 @@
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
 [ext_resource type="Shader" uid="uid://dlpqih7m6ak0w" path="res://Assets/Shaders/Godrays.gdshader" id="45_fdnxg"]
+[ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="46_hjwt0"]
+[ext_resource type="PackedScene" uid="uid://tlq0fen0uti3" path="res://GodotObjects/GeneralElements/Particles/DustTest.tscn" id="47_buqda"]
 
 [sub_resource type="Resource" id="Resource_3flle"]
 script = ExtResource("3_ihy67")
@@ -1052,3 +1054,11 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 radius = 0.994
 height = 5.136
 material = SubResource("ShaderMaterial_buqda")
+
+[node name="AmbientParticles" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 3.5)
+layers = 0
+size = Vector3(4, 2, 8)
+script = ExtResource("46_hjwt0")
+particleScene = ExtResource("47_buqda")
+metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
