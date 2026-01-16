@@ -773,6 +773,7 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.5, 2)
 curve = SubResource("Curve3D_4smwb")
 script = ExtResource("8_143k4")
+wallMode = 2
 material = SubResource("ShaderMaterial_hjwt0")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
