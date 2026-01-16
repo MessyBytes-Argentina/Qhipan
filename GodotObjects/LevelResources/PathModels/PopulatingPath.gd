@@ -41,6 +41,7 @@ func _update_multimesh():
 		var count: int
 		var currentDistance: float = 0.0
 		var multimesh = MultiMeshInstance3D.new()
+		var multimeshInstanceNumber: Dictionary[MultiMeshResource, int] = {}
 		multimesh.multimesh = MultiMesh.new()
 		multimesh.multimesh.transform_format = MultiMesh.TRANSFORM_3D
 		var currentMultimeshResource: MultiMeshResource
@@ -53,6 +54,7 @@ func _update_multimesh():
 			if currentMultimeshResource.applyOnlyToNodes:
 				count = curve.point_count
 				multimesh.multimesh.instance_count = count
+				multimeshInstanceNumber[currentMultimeshResource] = 0
 				for i in range(0, count):
 					if i == count - 1 and not curve.closed:
 						currentDistance = pathLength - PRECISIONPOINT
@@ -67,6 +69,7 @@ func _update_multimesh():
 			else:
 				count = floor(pathLength / currentMultimeshResource.distanceBetweenPieces) + 1.0
 				multimesh.multimesh.instance_count = count
+				multimeshInstanceNumber[currentMultimeshResource] = 0
 		var sequence: Array[MultiMeshResource] = []
 		var sequenceMultimesh: Array[MultiMeshInstance3D] = []
 		if multiMeshResource is RandomMultimeshResource:
@@ -77,10 +80,10 @@ func _update_multimesh():
 				currentMultimeshInstance.multimesh = currentMultimeshInstance.multimesh.duplicate()
 				currentMultimeshInstance.multimesh.mesh = key.mesh.duplicate()
 				multimeshReference[key] = currentMultimeshInstance
+				multimeshInstanceNumber[key] = 0
 				if not key.blocksLight:
 					currentMultimeshInstance.layers = 2
 				add_child(currentMultimeshInstance)
-				currentMultimeshInstance.owner = get_tree().edited_scene_root
 				for i in multiMeshResource.multimeshes[key]:
 					weights.append(key)
 			var i: int = 0
@@ -101,7 +104,8 @@ func _update_multimesh():
 				multimesh = sequenceMultimesh[i]
 			var curveDistance = multiMeshResource.offsetStart + (multiMeshResource.offsetEnd if i == count - 1 and multiMeshResource.useOffsetEnd else 0.0) + currentDistance
 			currentDistance += currentMultimeshResource.distanceBetweenPieces
-			multimesh.multimesh.set_instance_transform(i, currentMultimeshResource._get_mesh_offset(i, _create_transform_distance(curveDistance, currentMultimeshResource.normalAlwaysPointsUp)))
+			multimesh.multimesh.set_instance_transform(multimeshInstanceNumber[currentMultimeshResource], currentMultimeshResource._get_mesh_offset(i, _create_transform_distance(curveDistance, currentMultimeshResource.normalAlwaysPointsUp)))
+			multimeshInstanceNumber[currentMultimeshResource] += 1
 	if collisionLayer > 0:
 		_make_polygon()
 
