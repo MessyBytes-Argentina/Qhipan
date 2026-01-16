@@ -1,13 +1,54 @@
-[gd_scene load_steps=19 format=4 uid="uid://bsiqj32o2lu41"]
+[gd_scene load_steps=21 format=4 uid="uid://bsiqj32o2lu41"]
 
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_q6o5j"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_bmhmb"]
+[ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_sgpvw"]
+[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="3_hjj0d"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_i45x0"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_iteg2"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_iw13w"]
 [ext_resource type="Texture2D" uid="uid://djmdsod61joj4" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_albedo.png" id="6_mpfrq"]
 [ext_resource type="Texture2D" uid="uid://pj57wqks4a4o" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_normal.png" id="7_edxo8"]
 [ext_resource type="Texture2D" uid="uid://uiehwah5cyw2" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_orm.png" id="8_7tuul"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a225q"]
+_surfaces = [{
+"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Tirante",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAAAAAAAAAP////8AAAAA//8AAAAAAAAAAAAA//8AAP///////wAAAAD/////AAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jpevs"]
+_surfaces = [{
+"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
+"attribute_data": PackedByteArray("AAD/nwAA/1//P/+f/z//X/8//5//P/9f/3//n/9//1//f/+f/3//X/+//5//v/9f/7//n/+//1////+f////X/9//1//f/8f/7//X/+//x//f//f/3//n/+//9//v/+f"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("3_hjj0d"),
+"name": "Tirante",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAA//8AAAAAAAD///////8AAP////8AAAAA////////AAD/////AAAAAP///////////////wAA//////////////////8AAP////8AAP///////wAAAAD/////AAD///////8AAAAA/////wAA//8AAP//AAAAAAAA/////wAA////////AAAAAP//AAAAAP////8AAAAAAAD///////8AAP////////////8AAP//AAD//wAA////////////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a225q")
+
+[sub_resource type="Resource" id="Resource_iw13w"]
+script = ExtResource("2_bmhmb")
+mesh = SubResource("ArrayMesh_jpevs")
+distanceBetweenPieces = 0.4
+baseOffset = Vector2(0, 0)
+offsetStart = 0.2
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_en7ay"]
 render_priority = 0
@@ -52,45 +93,6 @@ shader_parameter/auxMode = false
 shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
 shader_parameter/auxBoxRotation = 0.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_a225q"]
-_surfaces = [{
-"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
-"name": "Tirante",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAD//wAAAAAAAAAAAAAAAP////8AAAAA//8AAAAAAAAAAAAA//8AAP///////wAAAAD/////AAD//wAA//8AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_jpevs"]
-_surfaces = [{
-"aabb": AABB(-0.05, -0.090261, -0.204107, 0.1, 0.099999994, 0.408214),
-"attribute_data": PackedByteArray("AAD/nwAA/1//P/+f/z//X/8//5//P/9f/3//n/9//1//f/+f/3//X/+//5//v/9f/7//n/+//1////+f////X/9//1//f/8f/7//X/+//x//f//f/3//n/+//9//v/+f"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": SubResource("ShaderMaterial_en7ay"),
-"name": "Tirante",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("AAD//wAA//8AAAAAAAD///////8AAP////8AAAAA////////AAD/////AAAAAP///////////////wAA//////////////////8AAP////8AAP///////wAAAAD/////AAD///////8AAAAA/////wAA//8AAP//AAAAAAAA/////wAA////////AAAAAP//AAAAAP////8AAAAAAAD///////8AAP////////////8AAP//AAD//wAA////////////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z//f/9//z//f/8//3//P/9//z//f/+//3//v/9//7//f/+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_a225q")
-
-[sub_resource type="Resource" id="Resource_iw13w"]
-script = ExtResource("2_bmhmb")
-mesh = SubResource("ArrayMesh_jpevs")
-distanceBetweenPieces = 0.4
-offsetStart = 0.2
-baseOffset = Vector2(0, 0)
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_661la"]
 _surfaces = [{
 "aabb": AABB(-0.500972, -0.060902, -0.1545, 1.001944, 0.121804, 0.309),
@@ -126,8 +128,8 @@ shadow_mesh = SubResource("ArrayMesh_661la")
 script = ExtResource("2_bmhmb")
 mesh = SubResource("ArrayMesh_ufnnk")
 distanceBetweenPieces = 0.7
-offsetStart = 0.15
 baseOffset = Vector2(0, 0)
+offsetStart = 0.15
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3lkm5"]
@@ -165,13 +167,13 @@ shadow_mesh = SubResource("ArrayMesh_3lkm5")
 script = ExtResource("2_bmhmb")
 mesh = SubResource("ArrayMesh_ubhp0")
 distanceBetweenPieces = 0.7
-offsetStart = 0.5
 baseOffset = Vector2(0, 0)
+offsetStart = 0.5
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [node name="Bridge" type="Path3D"]
 script = ExtResource("1_q6o5j")
-multiMeshResources = Array[ExtResource("2_bmhmb")]([SubResource("Resource_iw13w"), SubResource("Resource_mpfrq"), SubResource("Resource_edxo8")])
+multiMeshResources = Array[ExtResource("2_sgpvw")]([SubResource("Resource_iw13w"), SubResource("Resource_mpfrq"), SubResource("Resource_edxo8")])
 collisionLayer = 1
 colliderSize = Vector2(1, 0.14)
 metadata/_custom_type_script = "uid://pvc1wchcttc2"

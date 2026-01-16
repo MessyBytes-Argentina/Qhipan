@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=97 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -28,20 +28,17 @@
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="16_inrfn"]
 [ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_albedo.png" id="16_p7x5o"]
 [ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_normal.png" id="17_5n13k"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="17_xt1wf"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="18_8fdqa"]
 [ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_orm.png" id="18_y25gd"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="19_7f1cn"]
 [ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/ToonGradients/VerticalFade.tres" id="19_fdnxg"]
-[ext_resource type="Texture2D" uid="uid://djmdsod61joj4" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_albedo.png" id="20_1xxgg"]
-[ext_resource type="Texture2D" uid="uid://pj57wqks4a4o" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_normal.png" id="21_tlqgd"]
-[ext_resource type="Texture2D" uid="uid://uiehwah5cyw2" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence_orm.png" id="22_oui8m"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="23_1x2dl"]
 [ext_resource type="PackedScene" uid="uid://ckaxdwpab2b6f" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bushes.tscn" id="24_ec45u"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="25_5onks"]
 [ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="26_wv83u"]
 [ext_resource type="Material" uid="uid://cjtpgkwconv8w" path="res://Assets/Materials/WithCutout/Bushes/Arbustos.tres" id="28_lku13"]
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
+[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
 [ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="45_fdnxg"]
@@ -225,55 +222,19 @@ point_count = 5
 _data = [Vector2(0.220339, 0), 0.0, 2.7011652, 0, 0, Vector2(1, 1), 0.5107663, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_6mbnq"]
+[sub_resource type="Curve3D" id="Curve3D_p7x5o"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.18787682, 0, 0, 0, 0, 0, 0, 0, 0, 2.4266932, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.035, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_en7ay"]
-render_priority = 0
-shader = ExtResource("17_xt1wf")
-shader_parameter/albedo = Color(0.7188768, 0.8210656, 0.9387597, 1)
-shader_parameter/light_gradient = ExtResource("19_7f1cn")
-shader_parameter/fresnel_gradient = ExtResource("18_8fdqa")
-shader_parameter/texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("20_1xxgg")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("21_tlqgd")
-shader_parameter/normal_scale = 5.237001008757499
-shader_parameter/texture_orm = ExtResource("22_oui8m")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.6999999843536
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
+[sub_resource type="Curve3D" id="Curve3D_qi025"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.04, 0, 0, 0, 0, 0, 0, -3.065, 0, 0.07),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a225q"]
 _surfaces = [{
@@ -296,7 +257,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": SubResource("ShaderMaterial_en7ay"),
+"material": ExtResource("34_y25gd"),
 "name": "Tirante",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -314,9 +275,9 @@ baseOffset = Vector2(0, 0)
 offsetStart = 0.2
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
-[sub_resource type="Curve3D" id="Curve3D_p7x5o"]
+[sub_resource type="Curve3D" id="Curve3D_3pwh7"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.035, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3.065, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -356,7 +317,7 @@ point_count = 4
 [sub_resource type="Curve3D" id="Curve3D_wv83u"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.48084736, -0.012940884, -2.0031624, 0, 0, 0, 0, 0, 0, 2.02, 0, 1.177, -0.19, 0, 0, -1.87, 0, 0, -0.217, 0, 3.673, 0, 0, 0, 0, 0, 0, -2.5647297, -0.012940884, -2.136776),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.48084736, -0.012940884, -2.0031624, 0, 0, 0, 0, 0, 0, 1.3257074, 0, -0.7305546, -0.19, 0, 0, -1.87, 0, 0, -0.9112921, 0, 1.7654467, 0, 0, 0, 0, 0, 0, -2.5647297, -0.012940884, -2.136776),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -530,7 +491,7 @@ albedo_texture = ExtResource("29_knjsu")
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_35vhv"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_y25gd"]
 _surfaces = [{
 "aabb": AABB(-0.365965, 1.342993, -0.018588, 0.700699, 0.601985, 0.17220901),
 "format": 34359742465,
@@ -605,7 +566,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("Gvf/vwAAAIAAAP+/AAAAgHzi//8AAACAThb//wAAAID//wAAAAALgJIFAACd7JqEPfH/f///RYHCBmdWAACIhj3x/3///5SGwgZnVgAASYEa9/+/AADohAAA/78AANeA/3////9/////f////3///8wgu5+FAK7+ogFX+2QAE//E+2TyH+1Czzb6qO512+Kk")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_35vhv")
+shadow_mesh = SubResource("ArrayMesh_y25gd")
 
 [node name="Tutohub-connective" type="Node3D"]
 
@@ -696,10 +657,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.900002)
 shape = SubResource("BoxShape3D_3fjpl")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
-
-[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-puzzle3"]
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
 
 [node name="metaprogress" type="Node3D" parent="."]
 
@@ -839,19 +796,19 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="Bridge" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
-transform = Transform3D(0.998217, 0, 0.059689663, 0, 1, 0, -0.059689663, 0, 0.998217, -1.6461127, 1.3451632, 1.6953313)
-curve = SubResource("Curve3D_6mbnq")
-multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
-
-[node name="Bridge2" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
-transform = Transform3D(0.9991951, 0, 0.040114354, 0, 1, 0, -0.040114354, 0, 0.9991951, -1.6146845, 1.3451632, 1.2646332)
-curve = SubResource("Curve3D_6mbnq")
-multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
-
 [node name="Bushes" parent="Props/Collumn Pathway" instance=ExtResource("24_ec45u")]
 transform = Transform3D(0.6042722, 0, 0, 0, 0.56, 0, 0, 0, 0.7, -1.9761324, 1.3318911, 1.4)
 curve = SubResource("Curve3D_p7x5o")
+
+[node name="Bridge" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.2)
+curve = SubResource("Curve3D_qi025")
+multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
+
+[node name="Bridge2" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.5)
+curve = SubResource("Curve3D_3pwh7")
+multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
 
 [node name="Deco Walls" type="Node3D" parent="Props"]
 
