@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=103 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
+[ext_resource type="Shader" uid="uid://dlpqih7m6ak0w" path="res://Assets/Shaders/Godrays.gdshader" id="45_fdnxg"]
 
 [sub_resource type="Resource" id="Resource_3flle"]
 script = ExtResource("3_ihy67")
@@ -604,6 +605,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_35vhv")
 
+[sub_resource type="Gradient" id="Gradient_fdnxg"]
+offsets = PackedFloat32Array(0, 0.21311475, 0.8169399, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.48128545, 0.44771606, 0.42496237, 1, 0.6696667, 0.6476321, 0.77603394, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sdppf"]
+gradient = SubResource("Gradient_fdnxg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjwt0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_buqda"]
+noise = SubResource("FastNoiseLite_hjwt0")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buqda"]
+render_priority = 2
+shader = ExtResource("45_fdnxg")
+shader_parameter/alpha = 1.0
+shader_parameter/rim_power = 1.0
+shader_parameter/texture_emission = SubResource("NoiseTexture2D_buqda")
+shader_parameter/gradient = SubResource("GradientTexture1D_sdppf")
+shader_parameter/speed = Vector2(0.3, 1)
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/scale = Vector2(4, 0.1)
+shader_parameter/offset = Vector2(0, 1)
+
 [node name="Tutohub-connective" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_emjup")]
@@ -1019,3 +1046,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8
 
 [node name="Sconce2" parent="." instance=ExtResource("44_y25gd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8534386, 0.3, -4.1305504)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -1, 2, 5.5)
+radius = 0.994
+height = 5.136
+material = SubResource("ShaderMaterial_buqda")

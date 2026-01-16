@@ -41,6 +41,7 @@ func _update_multimesh():
 		var count: int
 		var currentDistance: float = 0.0
 		var multimesh = MultiMeshInstance3D.new()
+		var multimeshInstanceNumber: Dictionary[MultiMeshResource, int] = {}
 		multimesh.multimesh = MultiMesh.new()
 		multimesh.multimesh.transform_format = MultiMesh.TRANSFORM_3D
 		var currentMultimeshResource: MultiMeshResource
@@ -53,6 +54,7 @@ func _update_multimesh():
 			if currentMultimeshResource.applyOnlyToNodes:
 				count = curve.point_count
 				multimesh.multimesh.instance_count = count
+				multimeshInstanceNumber[currentMultimeshResource] = 0
 				for i in range(0, count):
 					if i == count - 1 and not curve.closed:
 						currentDistance = pathLength - PRECISIONPOINT
@@ -67,9 +69,9 @@ func _update_multimesh():
 			else:
 				count = floor(pathLength / currentMultimeshResource.distanceBetweenPieces) + 1.0
 				multimesh.multimesh.instance_count = count
+				multimeshInstanceNumber[currentMultimeshResource] = 0
 		var sequence: Array[MultiMeshResource] = []
 		var sequenceMultimesh: Array[MultiMeshInstance3D] = []
-		var multimeshInstanceNumber: Dictionary[MultiMeshResource, int] = {}
 		if multiMeshResource is RandomMultimeshResource:
 			var weights: Array[MultiMeshResource] = []
 			var multimeshReference: Dictionary[MultiMeshResource, MultiMeshInstance3D] = {}
