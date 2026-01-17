@@ -12,8 +12,13 @@ uniform vec4 emission : source_color;
 uniform float emission_energy : hint_range(0.0, 1.0) = 0.5;
 uniform vec2 scale = vec2(4.0, 0.1);
 uniform vec2 offset = vec2(0.0, 1.0);
+uniform float distance_fade_close_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_close_max : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_far_min : hint_range(0.0, 4096.0, 0.01);
+uniform float distance_fade_far_max : hint_range(0.0, 4096.0, 0.01);
 
 varying vec2 base_uv;
+varying float fadeIndex;
 
 // rotate on 90 degrees
 vec2 rotateUV(vec2 uv) {
@@ -24,6 +29,9 @@ void vertex() {
 	base_uv = rotateUV(UV);
 	UV = UV * scale + offset;
 	UV += TIME * speed / 20.0;
+
+	vec3 modelviewVertex = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	fadeIndex = clamp(smoothstep(distance_fade_close_min, distance_fade_close_max, length(modelviewVertex)), 0.0, 1.0) * clamp(smoothstep(distance_fade_far_max, distance_fade_far_min, length(modelviewVertex)), 0.0, 1.0);
 }
 
 void fragment() {
@@ -39,5 +47,5 @@ void fragment() {
 	ALBEDO = (emission.rgb + emission_tex) * emission_energy * fallof;
 	EMISSION = (emission.rgb + emission_tex) * emission_energy * fallof;
 
-	ALPHA = EMISSION.r * alpha;
+	ALPHA = EMISSION.r * alpha * fadeIndex;
 }

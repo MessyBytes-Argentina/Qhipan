@@ -33,3 +33,7 @@ shader_parameter/emission = Color(0.3754872, 0.18811926, 0.39647686, 1)
 shader_parameter/emission_energy = 0.5450000258875
 shader_parameter/scale = Vector2(4, 0.1)
 shader_parameter/offset = Vector2(0, 1)
+shader_parameter/distance_fade_close_min = 1.999999955296
+shader_parameter/distance_fade_close_max = 2.999999932944
+shader_parameter/distance_fade_far_min = 9.99999977648
+shader_parameter/distance_fade_far_max = 14.99999966472
