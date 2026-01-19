@@ -25,6 +25,16 @@ class_name EnvironmentParameters
 @export_range(0.0, 2.0, 0.001) var glow_strength: float = 0.4
 ## Glow bloom (keep low to not look like a ps2 game).
 @export_range(0.0, 1.0, 0.001) var glow_bloom: float = 0.5
+## Group for color adjustments.
+@export_group("Adjustments")
+## Postprocessing brightness.
+@export_range(0.1, 8.0, 0.001) var brightness: float = 1.0
+## Postprocessing contrast.
+@export_range(0.1, 8.0, 0.001) var contrast: float = 1.0
+## Postprocessing brightness.
+@export_range(0.1, 8.0, 0.001) var saturation: float = 1.0
+## Postprocessing brightness.
+@export var color_correction: Texture
 
 ## Storage for lerping to another sky.
 var secondPanorama: Texture2D
@@ -64,4 +74,7 @@ func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -
 	res.glow_intensity = lerp(glow_intensity, goal.glow_intensity, progress)
 	res.glow_strength = lerp(glow_strength, goal.glow_strength, progress)
 	res.glow_bloom = lerp(glow_bloom, goal.glow_bloom, progress)
+	res.brightness = lerp(brightness, goal.brightness, progress)
+	res.brightness = lerp(contrast, goal.contrast, progress)
+	res.brightness = lerp(saturation, goal.saturation, progress)
 	return res

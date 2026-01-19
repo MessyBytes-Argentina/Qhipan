@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=89 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -11,27 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="7_5n13k"]
 [ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="7_wv83u"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="8_143k4"]
-[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="9_1x2dl"]
 [ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="10_n1n0r"]
 [ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="10_pvjif"]
 [ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="10_y25gd"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="11_2remw"]
-[ext_resource type="Texture2D" uid="uid://cb370f3pxp2h4" path="res://Assets/Materials/ToonGradients/MaskGradient.tres" id="12_ec45u"]
 [ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="12_en8j3"]
 [ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="12_fdnxg"]
-[ext_resource type="Texture2D" uid="uid://bbppic663wllh" path="res://Assets/Materials/ToonGradients/ScreenMaskGradient.tres" id="13_5onks"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="13_n1n0r"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="14_lku13"]
-[ext_resource type="Texture2D" uid="uid://cqaq7yf82chjf" path="res://Assets/Materials/ToonGradients/ScreenVerticalFade.tres" id="14_wv83u"]
-[ext_resource type="Texture2D" uid="uid://cstu5f5vb1713" path="res://Assets/Materials/Paredes/Ladrillos/Brick Wall Grid Fill.png" id="15_6mbnq"]
+[ext_resource type="Material" uid="uid://oks2ccgi7glu" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul Exterior.tres" id="14_tlqgd"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="15_knjsu"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="16_inrfn"]
-[ext_resource type="Texture2D" uid="uid://bu41bcfosaolr" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_albedo.png" id="16_p7x5o"]
-[ext_resource type="Texture2D" uid="uid://d3txpocon0f7q" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_normal.png" id="17_5n13k"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="18_8fdqa"]
-[ext_resource type="Texture2D" uid="uid://cj5l1kqe8kmyi" path="res://Assets/Materials/Paredes/Ladrillos/Ladrillado Interior Tiers/Brick Wall Azul Tier 1_orm.png" id="18_y25gd"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="19_7f1cn"]
-[ext_resource type="Texture2D" uid="uid://bpa10qimekhnu" path="res://Assets/Materials/ToonGradients/VerticalFade.tres" id="19_fdnxg"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="23_1x2dl"]
 [ext_resource type="PackedScene" uid="uid://ckaxdwpab2b6f" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bushes.tscn" id="24_ec45u"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="25_5onks"]
@@ -39,9 +29,12 @@
 [ext_resource type="Material" uid="uid://cjtpgkwconv8w" path="res://Assets/Materials/WithCutout/Bushes/Arbustos.tres" id="28_lku13"]
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
 [ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
+[ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="36_1x2dl"]
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="37_ec45u"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
 [ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="45_fdnxg"]
+[ext_resource type="Script" uid="uid://btyn627sngesl" path="res://GodotObjects/LevelResources/ObjectHider/ObjectHider.gd" id="45_sdppf"]
 [ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="46_hjwt0"]
 [ext_resource type="PackedScene" uid="uid://tlq0fen0uti3" path="res://GodotObjects/GeneralElements/Particles/DustTest.tscn" id="47_buqda"]
 
@@ -100,114 +93,12 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdppf"]
-render_priority = 0
-shader = ExtResource("9_1x2dl")
-shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 0.249999994412
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/fade_color_up = Color(0.5372229, 0.5813194, 0.68154836, 1)
-shader_parameter/fade_color_down = Color(0.5372229, 0.5813194, 0.68154836, 1)
-shader_parameter/vertical_fade = ExtResource("19_fdnxg")
-shader_parameter/screen_vertical_fade = ExtResource("14_wv83u")
-shader_parameter/mask_gradient = ExtResource("12_ec45u")
-shader_parameter/screen_mask_gradient_fade = ExtResource("13_5onks")
-shader_parameter/selective_obfuscate_mask = ExtResource("15_6mbnq")
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = ExtResource("19_7f1cn")
-shader_parameter/fresnel_gradient = ExtResource("18_8fdqa")
-shader_parameter/texture_scale = 2.0000000298024
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("16_p7x5o")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("17_5n13k")
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/texture_orm = ExtResource("18_y25gd")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/height = 0.0
-shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
-shader_parameter/cameraMiddleRotation = 0.0
-shader_parameter/squareSize = 0.0
-shader_parameter/auxMode = false
-shader_parameter/rotating = false
-
-[sub_resource type="Curve3D" id="Curve3D_hjwt0"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3, -5, -6, 0, 0, 0, 0, 0, 0, 5, -5, -6),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_fdnxg"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, -5, -6, 0, 0, 0, 0, 0, 0, 3, -5, -6),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
 [sub_resource type="Curve3D" id="Curve3D_4smwb"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, -16, 0, 0, 0, 0, 0, 0, 6, 0, -3.8, 0, 0, 0, 0, 0, 0, -0.0949831, 0, -3.8),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjwt0"]
-render_priority = 0
-shader = ExtResource("9_1x2dl")
-shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 0.249999994412
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/fade_color_up = Color(0.40374514, 0.44613862, 0.54730326, 1)
-shader_parameter/fade_color_down = Color(0.5372229, 0.5813194, 0.68154836, 1)
-shader_parameter/vertical_fade = ExtResource("19_fdnxg")
-shader_parameter/screen_vertical_fade = ExtResource("14_wv83u")
-shader_parameter/mask_gradient = ExtResource("12_ec45u")
-shader_parameter/screen_mask_gradient_fade = ExtResource("13_5onks")
-shader_parameter/selective_obfuscate_mask = ExtResource("15_6mbnq")
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = ExtResource("19_7f1cn")
-shader_parameter/fresnel_gradient = ExtResource("18_8fdqa")
-shader_parameter/texture_scale = 2.0000000298024
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("16_p7x5o")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("17_5n13k")
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/texture_orm = ExtResource("18_y25gd")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/height = 0.0
-shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
-shader_parameter/cameraMiddleRotation = 0.0
-shader_parameter/squareSize = 0.0
-shader_parameter/auxMode = false
-shader_parameter/rotating = false
 
 [sub_resource type="Curve3D" id="Curve3D_lku13"]
 _data = {
@@ -568,6 +459,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y25gd")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hjwt0"]
+size = Vector3(1, 1, 3.5)
+
+[sub_resource type="Resource" id="Resource_5onks"]
+script = ExtResource("37_ec45u")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv83u"]
+size = Vector3(1, 1, 3)
+
 [node name="Tutohub-connective" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_emjup")]
@@ -708,7 +609,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 2)
 curve = SubResource("Curve3D_3fjpl")
 script = ExtResource("8_143k4")
 wallHeight = 10.0
-material = SubResource("ShaderMaterial_sdppf")
+material = ExtResource("14_tlqgd")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator"]
@@ -717,28 +618,12 @@ visible = false
 operation = 2
 polygon = PackedVector2Array(-1, 0, -1, 2, 1, 2, 1, 0)
 
-[node name="WallGenerator3" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 1)
-curve = SubResource("Curve3D_hjwt0")
-script = ExtResource("8_143k4")
-wallHeight = 10.0
-material = SubResource("ShaderMaterial_sdppf")
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator4" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -1)
-curve = SubResource("Curve3D_fdnxg")
-script = ExtResource("8_143k4")
-wallHeight = 10.0
-material = SubResource("ShaderMaterial_sdppf")
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
 [node name="WallGenerator2" type="Path3D" parent="Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.5, 2)
 curve = SubResource("Curve3D_4smwb")
 script = ExtResource("8_143k4")
 wallMode = 2
-material = SubResource("ShaderMaterial_hjwt0")
+material = ExtResource("14_tlqgd")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator2"]
@@ -1001,3 +886,48 @@ size = Vector3(3.6000001, 3.1000001, 3.5)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
+
+[node name="ObjectHider" type="Area3D" parent="." node_paths=PackedStringArray("objects", "pairedHider", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 0, -6)
+script = ExtResource("45_sdppf")
+objects = {
+NodePath("../Walls"): false
+}
+pairedHider = NodePath("../ObjectHider2")
+sceneParent = NodePath("..")
+metadata/_custom_type_script = "uid://btyn627sngesl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHider"]
+shape = SubResource("BoxShape3D_hjwt0")
+
+[node name="ObjectHider2" type="Area3D" parent="." node_paths=PackedStringArray("objects", "pairedHider", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -6)
+script = ExtResource("45_sdppf")
+objects = {
+NodePath("../Walls"): true
+}
+pairedHider = NodePath("../ObjectHider")
+sceneParent = NodePath("..")
+metadata/_custom_type_script = "uid://btyn627sngesl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHider2"]
+shape = SubResource("BoxShape3D_hjwt0")
+
+[node name="EnvironmentLerper" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("36_1x2dl")
+startEnvironment = SubResource("Resource_5onks")
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_wv83u")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="EndMarker" type="Node3D" parent="EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5)
