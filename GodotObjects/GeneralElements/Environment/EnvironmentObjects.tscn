@@ -1,16 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7st877p5uct1"]
+[gd_scene load_steps=14 format=3 uid="uid://b7st877p5uct1"]
 
-[ext_resource type="Environment" uid="uid://bjvxddp7ihpwv" path="res://GodotObjects/GeneralElements/Environment/DefaultEnvironment.tres" id="1_pq035"]
+[ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x103a"]
+[ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="2_dh8ep"]
+[ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="2_wfn3p"]
+[ext_resource type="Texture2D" uid="uid://c683si2xxi08y" path="res://Assets/Textures/Skybox/Skybox-Exterior Woods.png" id="3_achkf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7kbhl"]
+viewport_path = NodePath("ColorCorrectionSubViewport")
+
+[sub_resource type="Gradient" id="Gradient_ricvt"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.38431373, 0.45490196, 0.54901963, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqc3i"]
+gradient = SubResource("Gradient_ricvt")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
+shader = ExtResource("2_dh8ep")
+shader_parameter/startPanorama = ExtResource("3_achkf")
+shader_parameter/goalPanorama = SubResource("GradientTexture2D_jqc3i")
+shader_parameter/panoramaProgress = 0.0
+shader_parameter/skyContribution = 0.75
+
+[sub_resource type="Sky" id="Sky_k8jv3"]
+sky_material = SubResource("ShaderMaterial_jqc3i")
+
+[sub_resource type="Environment" id="Environment_boqcf"]
+resource_local_to_scene = true
+background_mode = 2
+background_color = Color(0.384314, 0.454902, 0.54902, 1)
+background_energy_multiplier = 0.6
+sky = SubResource("Sky_k8jv3")
+ambient_light_source = 2
+ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 2
+tonemap_exposure = 1.5
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 4.0
+ssil_enabled = true
+sdfgi_energy = 7.275
+glow_enabled = true
+glow_levels/4 = 1.0
+glow_levels/5 = 3.0
+glow_strength = 0.4
+glow_bloom = 0.5
+glow_blend_mode = 1
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_temporal_reprojection_amount = 0.95
+adjustment_enabled = true
+adjustment_color_correction = SubResource("ViewportTexture_7kbhl")
+
+[sub_resource type="Gradient" id="Gradient_dh8ep"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_achkf"]
+gradient = SubResource("Gradient_dh8ep")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x103a"]
+shader = ExtResource("2_wfn3p")
+shader_parameter/startTexture = SubResource("GradientTexture2D_achkf")
+shader_parameter/goalTexture = SubResource("GradientTexture2D_achkf")
+shader_parameter/textureProgress = 0.0
 
 [node name="EnvironmentObjects" type="Node3D" groups=["EnvironmentObjects"]]
-metadata/Environment = NodePath("WorldEnvironment")
-metadata/Sun = NodePath("DirectionalLight3D")
+script = ExtResource("1_x103a")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_pq035")
+unique_name_in_owner = true
+environment = SubResource("Environment_boqcf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 light_energy = 0.05
 shadow_enabled = true
 shadow_caster_mask = 4294967293
+
+[node name="ColorCorrectionSubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+disable_3d = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ColorCorrectionTextureRect" type="TextureRect" parent="ColorCorrectionSubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_x103a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_achkf")
+expand_mode = 1

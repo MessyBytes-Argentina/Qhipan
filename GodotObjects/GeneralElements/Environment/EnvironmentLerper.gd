@@ -34,6 +34,8 @@ var player: Player
 var environment: WorldEnvironment
 ## Reference to the sun object.
 var sun: DirectionalLight3D
+## Reference to the color correction shader material.
+var colorCorrection: ShaderMaterial
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
@@ -79,9 +81,10 @@ func _ready() -> void:
 		body_exited.connect(_body_exited)
 		await get_tree().process_frame
 		player = get_tree().get_first_node_in_group("Player")
-		var environmentObjects: Node3D = get_tree().get_first_node_in_group("EnvironmentObjects")
-		environment = environmentObjects.get_node(environmentObjects.get_meta("Environment"))
-		sun = environmentObjects.get_node(environmentObjects.get_meta("Sun"))
+		var environmentObjects: EnvironmentObjects = get_tree().get_first_node_in_group("EnvironmentObjects")
+		environment = environmentObjects.environment
+		sun = environmentObjects.sun
+		colorCorrection = environmentObjects.colorCorrectionMaterial
 
 ## Executed when player enters the area.
 func _body_entered(body: Node3D) -> void:
@@ -93,11 +96,11 @@ func _body_exited(body: Node3D) -> void:
 	if body is not Player: return
 	playerInside = false
 	if startMarker.global_position.distance_to(player.global_position) < endMarker.global_position.distance_to(player.global_position):
-		startEnvironment.set_environment(environment.environment)
+		startEnvironment.set_environment(environment.environment, colorCorrection)
 		startLight.set_sun(sun)
 		GeneralVariables.saveManager.save_environment(startEnvironment, startLight)
 	else:
-		endEnvironment.set_environment(environment.environment)
+		endEnvironment.set_environment(environment.environment, colorCorrection)
 		endLight.set_sun(sun)
 		GeneralVariables.saveManager.save_environment(endEnvironment, endLight)
 
@@ -120,4 +123,4 @@ func project_point_on_line(P : Vector3, A : Vector3, B : Vector3) -> Vector3:
 ## Lerps the environment and light parameters.
 func lerp_environment(progress: float) -> void:
 	startLight.lerp_to(endLight, progress).set_sun(sun)
-	startEnvironment.lerp_to(endEnvironment, progress, clampf(inverse_lerp(startSkyLerp, endSkyLerp, progress), 0.0, 1.0)).set_environment(environment.environment)
+	startEnvironment.lerp_to(endEnvironment, progress, clampf(inverse_lerp(startSkyLerp, endSkyLerp, progress), 0.0, 1.0)).set_environment(environment.environment, colorCorrection)

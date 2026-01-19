@@ -143,9 +143,9 @@ func load_changes(scene: Node, loadEnvironment: bool = false) -> void:
 	for sticker in currentSave.stickerModifications:
 		new_sticker(sticker, currentSave.stickerModifications[sticker], scene)
 	if loadEnvironment:
-		var environmentObjects: Node3D = GeneralVariables.get_tree().get_first_node_in_group("EnvironmentObjects")
-		environmentChange.set_environment(environmentObjects.get_node(environmentObjects.get_meta("Environment")).environment)
-		lightChange.set_sun(environmentObjects.get_node(environmentObjects.get_meta("Sun")))
+		var environmentObjects: EnvironmentObjects = GeneralVariables.get_tree().get_first_node_in_group("EnvironmentObjects")
+		environmentChange.set_environment(environmentObjects.environment.environment, environmentObjects.colorCorrectionMaterial)
+		lightChange.set_sun(environmentObjects.sun)
 
 ## Creates sticker changes storage.
 func new_sticker(UUID: int, sticker: StickerSave, scene: Node) -> void:

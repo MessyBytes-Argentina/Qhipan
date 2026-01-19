@@ -34,15 +34,19 @@ class_name EnvironmentParameters
 ## Postprocessing brightness.
 @export_range(0.1, 8.0, 0.001) var saturation: float = 1.0
 ## Postprocessing brightness.
-@export var color_correction: Texture
+@export var color_correction: Texture = GradientTexture2D.new()
 
 ## Storage for lerping to another sky.
 var secondPanorama: Texture2D
-## Panorama progress for lerping
+## Panorama progress for lerping.
 var panoramaProgress: float
+## Storage for lerping to another color correction texture.
+var secondColorCorrection: Texture
+## Progress for lerping
+var lerpProgress: float
 
 ## Sets environment to have the parameters of this resource.
-func set_environment(environment: Environment) -> void:
+func set_environment(environment: Environment, colorCorrection: ShaderMaterial) -> void:
 	environment.background_color = background_color
 	environment.background_energy_multiplier = background_energy_multiplier
 	environment.ambient_light_color = ambient_light_color
@@ -52,11 +56,17 @@ func set_environment(environment: Environment) -> void:
 	environment.glow_intensity = glow_intensity
 	environment.glow_strength = glow_strength
 	environment.glow_bloom = glow_bloom
+	environment.adjustment_brightness = brightness
+	environment.adjustment_contrast = contrast
+	environment.adjustment_saturation = saturation
 	var skyMaterial: ShaderMaterial = environment.sky.sky_material
 	skyMaterial.set_shader_parameter("startPanorama", sky_panorama)
 	skyMaterial.set_shader_parameter("goalPanorama", secondPanorama)
 	skyMaterial.set_shader_parameter("panoramaProgress", panoramaProgress)
 	skyMaterial.set_shader_parameter("skyContribution", sky_energy_multiplier)
+	colorCorrection.set_shader_parameter("startTexture", color_correction)
+	colorCorrection.set_shader_parameter("goalTexture", secondColorCorrection)
+	colorCorrection.set_shader_parameter("textureProgress", lerpProgress)
 
 ## Lerps to a different [EnvironmentParameters] by shyProgress and returns the new [EnvironmentParameters] object.
 func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -> EnvironmentParameters:
@@ -64,6 +74,9 @@ func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -
 	res.sky_panorama = sky_panorama
 	res.secondPanorama = goal.sky_panorama
 	res.panoramaProgress = skyProgress
+	res.color_correction = color_correction
+	res.secondColorCorrection = goal.color_correction
+	res.lerpProgress = progress
 	res.sky_energy_multiplier = lerp(sky_energy_multiplier, goal.sky_energy_multiplier, progress)
 	res.background_color = lerp(background_color, goal.background_color, progress)
 	res.background_energy_multiplier = lerp(background_energy_multiplier, goal.background_energy_multiplier, progress)
