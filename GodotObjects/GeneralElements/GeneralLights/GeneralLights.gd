@@ -41,7 +41,7 @@ var shineAnimationMode: String = "Off"
 ## Random extra time to make  sure light shines arent recalculated all at the same time.
 var randomTime: float = 0.0
 
-# Called when the node enters the scene tree for the first time.
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_color_changes()
 	if Engine.is_editor_hint(): return
@@ -63,7 +63,7 @@ func set_color_changes() -> void:
 	for light in omniLights:
 		light.light_color = lightColor
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	timePassed += delta

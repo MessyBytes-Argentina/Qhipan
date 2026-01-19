@@ -22,9 +22,11 @@ enum Directions {UP, DOWN, FORWARD, BACK, LEFT, RIGHT}
 ## Collapses path into one layer and extrudes it.
 @export_tool_button("Flatten and extrude path", "PhysicsMaterial") var doExtrude: Callable = _do_extrude
 
+## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_do_extrude()
 
+## Creates the final shape.
 func _do_extrude() -> void:
 	for child in get_children(): child.queue_free()
 	var offset: float = 0
@@ -93,6 +95,7 @@ func _do_extrude() -> void:
 			shape.rotation.z = PI / 2.0
 			shape.position = Vector3(offset / float(curve.point_count) + shapeThickness, 0.0, 0.0)
 
+## Returns the direction as a pointer vector.
 func get_vec2(point: Vector3) -> Vector2:
 	match extrudeDirection:
 		Directions.UP, Directions.DOWN:
@@ -104,6 +107,7 @@ func get_vec2(point: Vector3) -> Vector2:
 		_:
 			return Vector2.ZERO
 
+## Returns the offset for the current extrude direction.
 func get_offset(point: Vector3) -> float:
 	match extrudeDirection:
 		Directions.UP, Directions.DOWN:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://knl3pi3ldyma"]
+[gd_scene load_steps=17 format=3 uid="uid://knl3pi3ldyma"]
 
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="1_cmxnc"]
 [ext_resource type="Script" uid="uid://dflbf04kv53yv" path="res://GodotObjects/GeneralElements/UI/PlaceholderBook.gd" id="1_kslwr"]
@@ -132,15 +132,87 @@ tracks/0/keys = {
 "values": [Vector3(-1, 0, 4.5), Vector3(0.125, -0.2, 0.11)]
 }
 
+[sub_resource type="Animation" id="Animation_7wcjx"]
+resource_name = "Sticker1_remove"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.33, 3),
+"update": 0,
+"values": [Vector3(-0.15, 0.25, 0.11), Vector3(-1, 0, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_g0ij1"]
+resource_name = "Sticker2_remove"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.33, 3),
+"update": 0,
+"values": [Vector3(0.15, 0.15, 0.11), Vector3(-1, 0, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_54wkh"]
+resource_name = "Sticker3_remove"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.33, 3),
+"update": 0,
+"values": [Vector3(-0.175, -0.1, 0.11), Vector3(-1, 0, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rg2ff"]
+resource_name = "Sticker4_remove"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sticker4:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.33, 3),
+"update": 0,
+"values": [Vector3(0.125, -0.2, 0.11), Vector3(-1, 0, 4.5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23hlu"]
 _data = {
 &"Close": SubResource("Animation_3lahp"),
 &"Open": SubResource("Animation_kslwr"),
 &"RESET": SubResource("Animation_lnpl3"),
 &"Sticker1": SubResource("Animation_2w8wh"),
+&"Sticker1_remove": SubResource("Animation_7wcjx"),
 &"Sticker2": SubResource("Animation_cmxnc"),
+&"Sticker2_remove": SubResource("Animation_g0ij1"),
 &"Sticker3": SubResource("Animation_23hlu"),
-&"Sticker4": SubResource("Animation_dvwqv")
+&"Sticker3_remove": SubResource("Animation_54wkh"),
+&"Sticker4": SubResource("Animation_dvwqv"),
+&"Sticker4_remove": SubResource("Animation_rg2ff")
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvwqv"]
