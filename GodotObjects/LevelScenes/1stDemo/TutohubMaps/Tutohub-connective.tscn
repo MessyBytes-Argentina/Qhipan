@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=83 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -29,12 +29,9 @@
 [ext_resource type="Material" uid="uid://cjtpgkwconv8w" path="res://Assets/Materials/WithCutout/Bushes/Arbustos.tres" id="28_lku13"]
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
 [ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
-[ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="36_1x2dl"]
-[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="37_ec45u"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
 [ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="45_fdnxg"]
-[ext_resource type="Script" uid="uid://btyn627sngesl" path="res://GodotObjects/LevelResources/ObjectHider/ObjectHider.gd" id="45_sdppf"]
 [ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="46_hjwt0"]
 [ext_resource type="PackedScene" uid="uid://tlq0fen0uti3" path="res://GodotObjects/GeneralElements/Particles/DustTest.tscn" id="47_buqda"]
 
@@ -459,16 +456,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y25gd")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjwt0"]
-size = Vector3(1, 1, 3.5)
-
-[sub_resource type="Resource" id="Resource_5onks"]
-script = ExtResource("37_ec45u")
-metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wv83u"]
-size = Vector3(1, 1, 3)
-
 [node name="Tutohub-connective" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_emjup")]
@@ -886,48 +873,3 @@ size = Vector3(3.6000001, 3.1000001, 3.5)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
-
-[node name="ObjectHider" type="Area3D" parent="." node_paths=PackedStringArray("objects", "pairedHider", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 0, -6)
-script = ExtResource("45_sdppf")
-objects = {
-NodePath("../Walls"): false
-}
-pairedHider = NodePath("../ObjectHider2")
-sceneParent = NodePath("..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHider"]
-shape = SubResource("BoxShape3D_hjwt0")
-
-[node name="ObjectHider2" type="Area3D" parent="." node_paths=PackedStringArray("objects", "pairedHider", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -6)
-script = ExtResource("45_sdppf")
-objects = {
-NodePath("../Walls"): true
-}
-pairedHider = NodePath("../ObjectHider")
-sceneParent = NodePath("..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHider2"]
-shape = SubResource("BoxShape3D_hjwt0")
-
-[node name="EnvironmentLerper" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("36_1x2dl")
-startEnvironment = SubResource("Resource_5onks")
-metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
-
-[node name="AreaShape" type="CollisionShape3D" parent="EnvironmentLerper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-shape = SubResource("BoxShape3D_wv83u")
-debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
-
-[node name="StartMarker" type="Node3D" parent="EnvironmentLerper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-
-[node name="EndMarker" type="Node3D" parent="EnvironmentLerper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5)
