@@ -226,10 +226,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	if onSettings: return
 	# Camera Follow
 	cameraPivot.global_position = lerp(cameraPivot.global_position, global_position, cameraFollowSpeed)
-	if Engine.is_editor_hint(): return
 	move_character(delta)
 	animation_check()
 	current_grid_check()
