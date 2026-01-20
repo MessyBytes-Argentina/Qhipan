@@ -113,6 +113,7 @@ fill_from = Vector2(0.5, 0.5)
 size = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_064yy"]
+resource_local_to_scene = true
 render_priority = 2
 shader = ExtResource("16_ucbnu")
 shader_parameter/speed = 1.0
@@ -997,9 +998,13 @@ cull_mask = 1048573
 unique_name_in_owner = true
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.041619986, 0.55752134, 0.28265622)
 visible = false
+layers = 4
 pixel_size = 0.0008
+billboard = 1
 double_sided = false
-render_priority = 3
+no_depth_test = true
+texture_filter = 1
+render_priority = 4
 texture = ExtResource("15_n0ub2")
 
 [node name="Shine" type="MeshInstance3D" parent="SpritePivot/CoolSticker"]
