@@ -22,11 +22,11 @@ enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEF
 ## Deviation from the path in local coordinates (rotates with the path).
 @export_custom(PROPERTY_HINT_RANGE, "-1000.0, 1000.0, 0.01") var offsetFromPath: Vector2 = Vector2.ZERO
 ## Random deviation from the path per piece in local coordinates (rotates with the path).
-@export_custom(PROPERTY_HINT_RANGE, "0.0, 1000.0, 0.01") var randomOffset: Vector3 = Vector3.ZERO
+@export_custom(PROPERTY_HINT_RANGE, "0.0, 1000.0, 0.01, or_lower") var randomOffset: Vector3 = Vector3.ZERO
 ## Rotation deviation from the path in local coordinates (rotates with the path).
 @export_custom(PROPERTY_HINT_RANGE, "-360.0, 360.0, 1.0, radians_as_degrees") var baseRotation: Vector3 = Vector3.ZERO
 ## Random rotation deviation from the path per piece in local coordinates (rotates with the path).
-@export_custom(PROPERTY_HINT_RANGE, "0.0, 360.0, 1.0, radians_as_degrees") var randomRotation: Vector3 = Vector3.ZERO
+@export_custom(PROPERTY_HINT_RANGE, "0.0, 360.0, 1.0, radians_as_degrees, or_lower", ) var randomRotation: Vector3 = Vector3.ZERO
 ## Storage of calculated offset from path.
 @export_storage var baseOffset: Vector2 = Vector2(-69, 420)
 
@@ -59,11 +59,17 @@ func _get_mesh_offset(instance: int, transform: Transform3D) -> Transform3D:
 		for i in range(3):
 			if randomOffset[["x", "y", "z"][i]] == 0: continue
 			seed(currentSeed + i)
-			currentOffset[["x", "y", "z"][i]] += randf_range(-randomOffset[["x", "y", "z"][i]], randomOffset[["x", "y", "z"][i]])
+			if randomOffset[["x", "y", "z"][i]] > 0:
+				currentOffset[["x", "y", "z"][i]] += randf_range(-randomOffset[["x", "y", "z"][i]], randomOffset[["x", "y", "z"][i]])
+			elif randomOffset[["x", "y", "z"][i]] < 0:
+				currentOffset[["x", "y", "z"][i]] += randf_range(0, -randomOffset[["x", "y", "z"][i]])
 	var currentRotation: Vector3 = baseRotation
 	if randomRotation != Vector3.ZERO:
 		for i in range(3):
 			if randomRotation[["x", "y", "z"][i]] == 0: continue
 			seed(currentSeed + i * 2)
-			currentRotation[["x", "y", "z"][i]] += randf_range(-randomRotation[["x", "y", "z"][i]], randomRotation[["x", "y", "z"][i]])
+			if randomRotation[["x", "y", "z"][i]] > 0:
+				currentRotation[["x", "y", "z"][i]] += randf_range(-randomRotation[["x", "y", "z"][i]], randomRotation[["x", "y", "z"][i]])
+			elif randomRotation[["x", "y", "z"][i]] < 0:
+				currentRotation[["x", "y", "z"][i]] += randf_range(0, -randomRotation[["x", "y", "z"][i]])
 	return transform.translated_local(currentOffset).rotated_local(Vector3.RIGHT, currentRotation.x).rotated_local(Vector3.UP, currentRotation.y).rotated_local(Vector3.BACK, currentRotation.z)

@@ -49,7 +49,7 @@ func _update_multimesh():
 			currentMultimeshResource = multiMeshResource
 			multimesh.multimesh.mesh = multiMeshResource.mesh.duplicate()
 			if not multiMeshResource.blocksLight:
-				multimesh.layers = 2
+				multimesh.layers = 4
 			add_child(multimesh)
 			if currentMultimeshResource.applyOnlyToNodes:
 				count = curve.point_count
