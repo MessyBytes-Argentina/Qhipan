@@ -1,4 +1,4 @@
-[gd_scene load_steps=174 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=179 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -470,40 +470,74 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y25gd")
 
-[sub_resource type="Gradient" id="Gradient_wv83u"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6mbnq"]
-gradient = SubResource("Gradient_wv83u")
-
-[sub_resource type="Resource" id="Resource_p7x5o"]
-script = ExtResource("36_ec45u")
-color_correction = SubResource("GradientTexture2D_6mbnq")
-metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
-
-[sub_resource type="Resource" id="Resource_5n13k"]
-script = ExtResource("37_5onks")
-metadata/_custom_type_script = "uid://44mc8q7u8dbc"
-
-[sub_resource type="Gradient" id="Gradient_y25gd"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fdnxg"]
-gradient = SubResource("Gradient_y25gd")
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="Resource" id="Resource_sdppf"]
-script = ExtResource("36_ec45u")
-color_correction = SubResource("GradientTexture2D_fdnxg")
-metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
-
-[sub_resource type="Resource" id="Resource_hjwt0"]
-script = ExtResource("37_5onks")
-metadata/_custom_type_script = "uid://44mc8q7u8dbc"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_buqda"]
-size = Vector3(1, 1, 3.5136719)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_a74g7"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vlngr"]
+gradient = SubResource("Gradient_a74g7")
+
+[sub_resource type="Gradient" id="Gradient_5xncd"]
+offsets = PackedFloat32Array(0, 0.6119734, 0.68292683, 0.80487806, 0.8691796)
+colors = PackedColorArray(0.16, 0.1456, 0.1168, 1, 0.12, 0.012000003, 0, 1, 0.115420915, 0.9063941, 0.87521225, 1, 0.97, 0.53349996, 0.38799998, 1, 0.82003134, 0.63193476, 0.5667622, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a74g7"]
+gradient = SubResource("Gradient_5xncd")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 0.9017094)
+fill_to = Vector2(1, 0.4059829)
+
+[sub_resource type="Resource" id="Resource_7isej"]
+script = ExtResource("36_ec45u")
+sky_panorama = SubResource("GradientTexture2D_a74g7")
+ambient_light_color = Color(0.6, 0.38431373, 0.34901962, 1)
+color_correction = SubResource("GradientTexture2D_vlngr")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_notbd"]
+script = ExtResource("37_5onks")
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="Gradient" id="Gradient_6vik2"]
+colors = PackedColorArray(0, 0.012552844, 0.028704396, 1, 0.95397335, 0.82697093, 0.9481692, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxenn"]
+gradient = SubResource("Gradient_6vik2")
+fill_from = Vector2(0.32905984, 0.8247863)
+fill_to = Vector2(0.9358974, 0.6196581)
+
+[sub_resource type="Gradient" id="Gradient_x7val"]
+offsets = PackedFloat32Array(0.49694502, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.45452422, 0.45452428, 0.45452422, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
+gradient = SubResource("Gradient_x7val")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_vlngr"]
+script = ExtResource("36_ec45u")
+sky_panorama = SubResource("GradientTexture2D_n5fu6")
+brightness = 0.9
+contrast = 1.01
+saturation = 0.7999999999999999
+color_correction = SubResource("GradientTexture2D_dxenn")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_p4wax"]
+script = ExtResource("37_5onks")
+color = Color(0.772037, 0.99810976, 0.99999994, 1)
+indirect_energy = 0.8
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7isej"]
+size = Vector3(1.6, 1, 1)
+
+[sub_resource type="Resource" id="Resource_8f3oy"]
+script = ExtResource("37_5onks")
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
 
 [sub_resource type="Curve3D" id="Curve3D_xmmk3"]
 _data = {
@@ -1365,28 +1399,6 @@ script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
 
-[node name="EnvironmentLerper" type="Area3D" parent="Widgets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 0)
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_p7x5o")
-startLight = SubResource("Resource_5n13k")
-endEnvironment = SubResource("Resource_sdppf")
-endLight = SubResource("Resource_hjwt0")
-metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
-
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2568359)
-shape = SubResource("BoxShape3D_buqda")
-debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
-
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper"]
-
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7980251)
-
 [node name="ObjectHiderStart" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 5.5)
 script = ExtResource("46_atf36")
@@ -1404,7 +1416,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -3.5)
 script = ExtResource("46_atf36")
 objects = {
 NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): true,
-NodePath("../../Rooms/Tutohub-Puzzle3"): false
+NodePath("../../Rooms/Tutohub-Puzzle3"): false,
+NodePath("../../Props/Deco Walls"): false,
+NodePath("../../Props/Fringes"): false,
+NodePath("../../Props/Fences"): false,
+NodePath("../../GridmapObject"): false,
+NodePath("../../Walls"): false,
+NodePath("../../Rooms/Tutohub-Puzzle2"): false
 }
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://btyn627sngesl"
@@ -1413,11 +1431,17 @@ metadata/_custom_type_script = "uid://btyn627sngesl"
 shape = SubResource("BoxShape3D_a74g7")
 
 [node name="ObjectHider Puzzle 1 IN2" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -11.500001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, -11.5)
 script = ExtResource("46_atf36")
 objects = {
 NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): true,
-NodePath("../../Rooms/Tutohub-Puzzle3"): false
+NodePath("../../Rooms/Tutohub-Puzzle3"): false,
+NodePath("../../Props/Deco Walls"): false,
+NodePath("../../Props/Fringes"): false,
+NodePath("../../Props/Fences"): false,
+NodePath("../../GridmapObject"): false,
+NodePath("../../Walls"): false,
+NodePath("../../Rooms/Tutohub-Puzzle2"): false
 }
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://btyn627sngesl"
@@ -1425,18 +1449,68 @@ metadata/_custom_type_script = "uid://btyn627sngesl"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 IN2"]
 shape = SubResource("BoxShape3D_a74g7")
 
-[node name="ObjectHider Puzzle 1 OUT" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9000003, 0.3, -11.500001)
+[node name="ObjectHider Puzzle 1 Out" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7000003, 0, -11.5)
 script = ExtResource("46_atf36")
 objects = {
 NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): false,
-NodePath("../../Rooms/Tutohub-Puzzle3"): true
+NodePath("../../Rooms/Tutohub-Puzzle3"): true,
+NodePath("../../Props/Deco Walls"): true,
+NodePath("../../Props/Fringes"): true,
+NodePath("../../Props/Fences"): true,
+NodePath("../../GridmapObject"): true,
+NodePath("../../Walls"): true,
+NodePath("../../Rooms/Tutohub-Puzzle2"): true
 }
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://btyn627sngesl"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 OUT"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 Out"]
 shape = SubResource("BoxShape3D_a74g7")
+
+[node name="EnvironmentLerper1" type="Area3D" parent="Widgets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000001, 0, -3.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("35_1x2dl")
+startEnvironment = SubResource("Resource_7isej")
+startLight = SubResource("Resource_notbd")
+endEnvironment = SubResource("Resource_vlngr")
+endLight = SubResource("Resource_p4wax")
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000014, 0, 0)
+shape = SubResource("BoxShape3D_7isej")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper1"]
+
+[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
+
+[node name="EnvironmentLerper2" type="Area3D" parent="Widgets"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6000001, 0, -11.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("35_1x2dl")
+startEnvironment = SubResource("Resource_7isej")
+startLight = SubResource("Resource_8f3oy")
+endEnvironment = SubResource("Resource_vlngr")
+endLight = SubResource("Resource_p4wax")
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000014, 0, 0)
+shape = SubResource("BoxShape3D_7isej")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper2"]
+
+[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
 
 [node name="Rooms" type="Node3D" parent="."]
 
