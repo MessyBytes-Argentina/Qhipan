@@ -21,7 +21,7 @@ const LIGHTENERGY: float = 0.25
 ## Eye particle emmiter
 @onready var particles2: GPUParticles3D = %Particles2
 ## Activation sound player
-@onready var activationSound: RandomPitchPlayer = %ActivationSound
+@onready var activationSound: RandomSoundPlayer = %ActivationSound
 
 ## Tween for light animation
 var lightTween: Tween

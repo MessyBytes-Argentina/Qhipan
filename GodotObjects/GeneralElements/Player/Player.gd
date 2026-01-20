@@ -73,7 +73,7 @@ enum States {Idle, Walk, Float}
 ## Reference to the poof particle emitter.
 @onready var poof: MultipleParticle3DEmitter = %Poof
 ## Reference to the poof sound player.
-@onready var poofSound: RandomPitchPlayer = %PoofSound
+@onready var poofSound: RandomSoundPlayer = %PoofSound
 ## Reference to the player shadow decal.
 @onready var shadowDecal: Decal = %ShadowDecal
 ## Reference to the fall sound player.

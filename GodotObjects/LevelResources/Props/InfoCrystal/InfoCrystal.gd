@@ -25,7 +25,7 @@ const HIDESHOWZOOMTIME: float = 0.2
 ## Pop up board sprite reference.
 @onready var popupBoard: Sprite3D = %PopupBoard
 ## Pop up sound player reference .
-@onready var popUpSound: RandomPitchPlayer = %PopUpSound
+@onready var popUpSound: RandomSoundPlayer = %PopUpSound
 
 ## Tween for th rotation animation.
 var rotationTween: Tween

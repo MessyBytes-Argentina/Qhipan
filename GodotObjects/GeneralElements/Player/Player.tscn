@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=126 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -21,9 +21,11 @@
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Textures/Character/WALK/WALK 1.png" id="10_2fn2m"]
 [ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/GeneralElements/Particles/post_processing.tscn" id="10_3jjt7"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="10_8hsli"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="10_8hsli"]
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="10_c42h5"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Textures/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="11_064yy"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/Sticker_Drop.mp3" id="11_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://e2ko61trw7ts" path="res://Assets/Textures/Character/WALK/WALK 2.png" id="11_lpbw1"]
 [ext_resource type="Texture2D" uid="uid://5yqj8isqe5kv" path="res://Assets/Textures/Eagle eye icon.png" id="11_xvk8m"]
@@ -81,6 +83,20 @@
 [ext_resource type="Texture2D" uid="uid://bsv5qcx5r8al7" path="res://Assets/Textures/Character/COOL STICKER/ITEM 6.png" id="75_064yy"]
 [ext_resource type="Texture2D" uid="uid://bmixno8sss3ck" path="res://Assets/Textures/Character/COOL STICKER/ITEM 7.png" id="76_qu42n"]
 [ext_resource type="Texture2D" uid="uid://c1toeyerhymky" path="res://Assets/Textures/Character/COOL STICKER/ITEM 8.png" id="77_e7wym"]
+
+[sub_resource type="Resource" id="Resource_qu42n"]
+script = ExtResource("11_064yy")
+sound = ExtResource("6_3jjt7")
+baseVolumeDB = -20.0
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_e7wym"]
+script = ExtResource("10_c42h5")
+soundCollection = Dictionary[ExtResource("11_064yy"), int]({
+SubResource("Resource_qu42n"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
@@ -147,6 +163,59 @@ height = 7.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.6
 height = 1.2
+
+[sub_resource type="Resource" id="Resource_c42h5"]
+script = ExtResource("11_064yy")
+sound = ExtResource("13_8hsli")
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_064yy"]
+script = ExtResource("10_c42h5")
+soundCollection = Dictionary[ExtResource("11_064yy"), int]({
+SubResource("Resource_c42h5"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
+
+[sub_resource type="Resource" id="Resource_rb8lh"]
+script = ExtResource("11_064yy")
+sound = ExtResource("9_sjywp")
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_5urxe"]
+script = ExtResource("10_c42h5")
+soundCollection = Dictionary[ExtResource("11_064yy"), int]({
+SubResource("Resource_rb8lh"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
+
+[sub_resource type="Resource" id="Resource_rr526"]
+script = ExtResource("11_064yy")
+sound = ExtResource("11_f7h1j")
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_kc7ad"]
+script = ExtResource("10_c42h5")
+soundCollection = Dictionary[ExtResource("11_064yy"), int]({
+SubResource("Resource_rr526"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
+
+[sub_resource type="Resource" id="Resource_vura5"]
+script = ExtResource("11_064yy")
+sound = ExtResource("12_f7h1j")
+baseVolumeDB = -12.0
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_lwokh"]
+script = ExtResource("10_c42h5")
+soundCollection = Dictionary[ExtResource("11_064yy"), int]({
+SubResource("Resource_vura5"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
 
 [sub_resource type="Gradient" id="Gradient_xq41j"]
 offsets = PackedFloat32Array(0, 0.488889, 0.563235, 0.569118, 0.67619, 0.692064)
@@ -947,6 +1016,7 @@ unique_name_in_owner = true
 stream = ExtResource("6_3jjt7")
 volume_db = -20.0
 script = ExtResource("10_8hsli")
+soundResource = SubResource("Resource_e7wym")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="CamZoomIn" type="AudioStreamPlayer" parent="PlayerSounds"]
@@ -1123,22 +1193,26 @@ shape = SubResource("CapsuleShape3D_l6njb")
 stream = ExtResource("13_8hsli")
 max_polyphony = 1569325056
 script = ExtResource("10_8hsli")
+soundResource = SubResource("Resource_064yy")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("9_sjywp")
 script = ExtResource("10_8hsli")
+soundResource = SubResource("Resource_5urxe")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Drop" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("11_f7h1j")
 script = ExtResource("10_8hsli")
+soundResource = SubResource("Resource_kc7ad")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="Stick" type="AudioStreamPlayer" parent="GrabArea"]
 stream = ExtResource("12_f7h1j")
 volume_db = -12.0
 script = ExtResource("10_8hsli")
+soundResource = SubResource("Resource_lwokh")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="HighlightPivot" type="Node3D" parent="GrabArea"]
@@ -1161,7 +1235,6 @@ unique_name_in_owner = true
 top_level = true
 visible = false
 pixel_size = 0.0026
-no_depth_test = true
 render_priority = 1
 texture = SubResource("GradientTexture2D_6fycs")
 

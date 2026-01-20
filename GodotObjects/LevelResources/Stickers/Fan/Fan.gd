@@ -12,7 +12,7 @@ const DEFAULTFANRANGE: float = 3.0
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## Spinup sound player.
-@onready var spinupSound: RandomPitchPlayer = %SpinupSound
+@onready var spinupSound: RandomSoundPlayer = %SpinupSound
 ## Pushing area reference.
 @onready var fan: Fan = %Fan
 

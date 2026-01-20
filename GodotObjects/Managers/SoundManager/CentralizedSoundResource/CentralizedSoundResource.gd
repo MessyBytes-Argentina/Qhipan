@@ -13,7 +13,7 @@ var weightedSoundList: Array[SoundResource] = []
 ## Gets a random sound based on weights.
 func get_sound() -> SoundResource:
 	if len(soundCollection.keys()) == 1: return soundCollection.keys()[0]
-	_create_weighted_sound_list()
+	if len(weightedSoundList) == 0: _create_weighted_sound_list()
 	randomize()
 	return weightedSoundList.pick_random()
 

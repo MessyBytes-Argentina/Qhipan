@@ -19,7 +19,7 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## SoundPlayer for the open sound
-@onready var openSound: RandomPitchPlayer = %OpenSound
+@onready var openSound: RandomSoundPlayer = %OpenSound
 ## Reference to the push checker.
 @onready var playerPushChecker: Area3D = %PlayerPushChecker
 

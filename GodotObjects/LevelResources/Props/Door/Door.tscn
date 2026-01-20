@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_n2c0y"]
 [ext_resource type="Material" uid="uid://cch5x4exg8o71" path="res://Assets/Materials/WithCutout/Door.tres" id="3_x7cyp"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_gmc35"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_gmc35"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_gmc35"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
 _surfaces = [{

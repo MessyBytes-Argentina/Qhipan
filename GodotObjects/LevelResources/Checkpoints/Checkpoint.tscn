@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://d2oqm8r8jgsxc"]
+[gd_scene load_steps=16 format=4 uid="uid://d2oqm8r8jgsxc"]
 
 [ext_resource type="Script" uid="uid://3t8xjw3gutun" path="res://GodotObjects/LevelResources/Checkpoints/Checkpoint.gd" id="1_bhnv4"]
 [ext_resource type="Texture2D" uid="uid://d0nk04f8gsnwg" path="res://Assets/Models/CheckPoint Totem/Checkpoint-Off.png" id="2_ynn0r"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://GodotObjects/GeneralElements/Particles/CheckpointParticles.tscn" id="3_3d0u6"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="4_bsfi2"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="4_bsfi2"]
 [ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="4_w4bbu"]
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="6_phj2c"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="7_0rio2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_isids"]
 height = 1.0
@@ -58,6 +60,20 @@ roughness = 0.5
 height = 4.5
 radius = 1.0
 
+[sub_resource type="Resource" id="Resource_wajgl"]
+script = ExtResource("7_0rio2")
+sound = ExtResource("4_w4bbu")
+baseVolumeDB = -20.0
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_5rx38"]
+script = ExtResource("6_phj2c")
+soundCollection = Dictionary[ExtResource("7_0rio2"), int]({
+SubResource("Resource_wajgl"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
+
 [node name="Checkpoint" type="Area3D" groups=["Checkpoints"]]
 collision_layer = 0
 collision_mask = 2
@@ -103,4 +119,5 @@ stream = ExtResource("4_w4bbu")
 volume_db = -20.0
 bus = &"SFX"
 script = ExtResource("4_bsfi2")
+soundResource = SubResource("Resource_5rx38")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
