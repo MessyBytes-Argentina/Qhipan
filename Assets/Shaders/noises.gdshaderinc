@@ -62,6 +62,21 @@ float sdEquilateralRotated( in vec2 p, in float r , in float rr)
     return sdEquilateralTriangle(rot(rr) * p, r);
 }
 
+float sdRhombus( in vec2 p, in vec2 b ) 
+{
+    b.y = -b.y;
+    p = abs(p);
+    float h = clamp( (dot(b,p)+b.y*b.y)/dot(b,b), 0.0, 1.0 );
+    p -= b*vec2(h,h-1.0);
+    return length(p)*sign(p.x);
+}
+
+float sdRhombusRotated( in vec2 p, in vec2 b , in float r) 
+{
+	p *= rot(r);
+    return sdRhombus(p, b);
+}
+
 float sdCylinder( vec3 p, vec2 h )
 {
     vec2 d = abs(vec2(length(p.xz),p.y)) - h;

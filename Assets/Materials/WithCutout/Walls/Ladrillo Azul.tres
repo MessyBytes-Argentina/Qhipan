@@ -15,8 +15,8 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_y3ats")
-shader_parameter/distance_fade_min = 0.0
-shader_parameter/distance_fade_max = 0.249999994412
+shader_parameter/distance_fade_min = -0.5
+shader_parameter/distance_fade_max = 0.5
 shader_parameter/goesDown = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/fade_color_up = Color(0, 0, 0, 1)
@@ -55,3 +55,4 @@ shader_parameter/cameraMiddleRotation = 0.0
 shader_parameter/squareSize = 0.0
 shader_parameter/auxMode = false
 shader_parameter/rotating = false
+shader_parameter/globalPlayerPosition = Vector3(0, 0, 0)

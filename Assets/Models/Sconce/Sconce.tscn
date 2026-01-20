@@ -179,8 +179,8 @@ colors = PackedColorArray(0.6392157, 0, 1, 1, 0.8862745, 0.7411765, 0.26666668, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0npob"]
 gradient = SubResource("Gradient_y5ndi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n6p5"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4uyk"]
+render_priority = 2
 shader = ExtResource("8_xpaws")
 shader_parameter/pixelation = Vector2(512, 512)
 shader_parameter/gradient_steps = 64.0
@@ -316,7 +316,7 @@ omni_attenuation = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
 layers = 2
 mesh = SubResource("QuadMesh_psxnf")
-surface_material_override/0 = SubResource("ShaderMaterial_0n6p5")
+surface_material_override/0 = SubResource("ShaderMaterial_a4uyk")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_etxkd")

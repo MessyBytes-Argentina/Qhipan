@@ -3,8 +3,8 @@ render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
-uniform float distance_fade_min : hint_range(0.0, 4096.0, 0.01) = 0.0;
-uniform float distance_fade_max : hint_range(0.0, 4096.0, 0.01) = 0.25;
+uniform float distance_fade_min : hint_range(-4096.0, 4096.0, 0.01) = -0.5;
+uniform float distance_fade_max : hint_range(-4096.0, 4096.0, 0.01) = 0.5;
 
 // Base
 uniform bool goesDown = false;
@@ -74,6 +74,7 @@ uniform float cameraMiddleRotation;
 uniform float squareSize;
 uniform bool auxMode;
 uniform bool rotating;
+uniform vec3 globalPlayerPosition;
 
 // Globals
 varying vec3 world_normal;
@@ -159,9 +160,12 @@ void fragment() {
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
 	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
 	ALPHA = step(0.01, ALPHA);
+	vec4 normalPositions = vec4(worldVector.xz + world_normal.xz, worldVector.xz - world_normal.xz);
+	vec2 distances = vec2(distance(normalPositions.xy, globalPlayerPosition.xz), distance(normalPositions.zw, globalPlayerPosition.xz));
+	bool normalCheckToPlayer = distances.x > distances.y;
 	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
 	// Distance Fade: Pixel Alpha
-	bool doCutout = !rotating && auxMode;
+	bool doCutout = !rotating && auxMode && normalCheckToPlayer;
 	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
 	ALBEDO = mix(ALBEDO, goesDown ? fade_color_down : fade_color_up, 1.0 - smoothstep(0.0, 1.0, top_obfuscation.r * screen_obfuscation.r * selective_screen_obfuscation * smoothstep(0.0, 0.5, current_selective_mask)));

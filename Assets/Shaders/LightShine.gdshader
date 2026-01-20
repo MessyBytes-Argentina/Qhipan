@@ -1,6 +1,6 @@
 // CC0, shadecore_dev
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded, depth_test_disabled, ambient_light_disabled, specular_occlusion_disabled, depth_prepass_alpha;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded, ambient_light_disabled, specular_occlusion_disabled, depth_prepass_alpha;
 
 uniform vec2 pixelation = vec2(512.0, 512.0);
 uniform float gradient_steps = 64.0;

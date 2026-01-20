@@ -66,6 +66,7 @@ func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinder.global_position)
 	updateMaterial.set_shader_parameter("cylinderRotation", cylinder.global_position - up.global_position)
 	updateMaterial.set_shader_parameter("playerPosition", playerFloor.global_position)
+	updateMaterial.set_shader_parameter("globalPlayerPosition", player.global_position)
 	updateMaterial.set_shader_parameter("cameraMiddlePoint", player.cameraCubeWallCutout.global_position)
 	updateMaterial.set_shader_parameter("cameraMiddleRotation", global_rotation.y)
 	updateMaterial.set_shader_parameter("auxMode", auxMode)
