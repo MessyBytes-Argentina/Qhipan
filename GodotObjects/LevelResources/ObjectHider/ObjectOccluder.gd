@@ -113,5 +113,5 @@ func restore_save(mode: bool) -> void:
 	do_show_hide(mode)
 
 func do_show_hide(mode: bool) -> void:
-	for object in hideObjects: object.visible = mode
-	for object in showObjects: object.visible = not mode
+	for object in hideObjects: object.visible = not mode
+	for object in showObjects: object.visible = mode

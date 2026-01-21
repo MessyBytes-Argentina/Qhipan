@@ -1376,9 +1376,9 @@ script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
 
-[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
 script = ExtResource("34_n5fu6")
-hideObjects = [NodePath("../../../Tutohub-Puzzle1")]
+showObjects = [NodePath("../../../Tutohub-Puzzle1")]
 sceneParent = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
