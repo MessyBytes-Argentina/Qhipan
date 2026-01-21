@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=178 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="26_wv83u"]
 [ext_resource type="Material" uid="uid://cjtpgkwconv8w" path="res://Assets/Materials/WithCutout/Bushes/Arbustos.tres" id="28_lku13"]
 [ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
+[ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="34_n5fu6"]
 [ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
 [ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="35_1x2dl"]
 [ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="36_ec45u"]
@@ -41,9 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="43_8f3oy"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="44_notbd"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
-[ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Demo Puente Empujable.tres" id="45_dxenn"]
 [ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="45_fdnxg"]
-[ext_resource type="Script" uid="uid://btyn627sngesl" path="res://GodotObjects/LevelResources/ObjectHider/ObjectHider.gd" id="46_atf36"]
 [ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="46_hjwt0"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="47_6q771"]
 [ext_resource type="PackedScene" uid="uid://tlq0fen0uti3" path="res://GodotObjects/GeneralElements/Particles/DustTest.tscn" id="47_buqda"]
@@ -470,7 +469,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y25gd")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrbw1"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_a74g7"]
+size = Vector3(1, 1, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlngr"]
+size = Vector3(2, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4wax"]
+size = Vector3(1, 1, 2)
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
 
@@ -597,40 +605,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
-_surfaces = [{
-"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_iyqt8"]
-resource_name = "BasePieces_Slab"
-_surfaces = [{
-"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 0.5, 1),
-"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/5//n/9//5//n/9f/3//X/9//5//P/+f/3//X/8//1//P/+f/x//n/8//1//H/8//3//X/8//1//f/8//z//n/9//7//P/+//3//n/8/"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_72boo")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v3gnl"]
-size = Vector3(1.1, 1, 0.8)
 
 [sub_resource type="Gradient" id="Gradient_c0uas"]
 offsets = PackedFloat32Array(0.17446809, 0.31914893, 0.34979424, 0.5020576, 0.79012346, 0.87659574, 0.8893617)
@@ -1044,76 +1018,80 @@ shadow_mesh = SubResource("ArrayMesh_35vhv")
 
 [node name="Tutohub-connective" type="Node3D"]
 
-[node name="GridmapObject" parent="." instance=ExtResource("1_emjup")]
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="Tutohub-connectivehub" type="Node3D" parent="Rooms"]
+
+[node name="GridmapObject" parent="Rooms/Tutohub-connectivehub" instance=ExtResource("1_emjup")]
 data = {
 "cells": PackedInt32Array(-131073, 1, 18, -196608, 1, 18, -131073, 2, 18, -196608, 2, 18, -196607, 2, 50, -196607, 3, 50, -196608, 3, 50, -131073, 3, 18, -131074, 3, 50, -131074, 2, 1048594, -131074, 4, 50, -131073, 4, 18, -196608, 4, 50, -196607, 4, 50, -196607, 1, 50, -131074, 1, 1048594, -131073, 0, 18, -196608, 0, 18, -196608, 65535, 18, -131073, 65535, 18, -131075, 4, 50, -131075, 5, 50, -131074, 5, 50, -131073, 5, 18, -196608, 5, 50, -196607, 5, 50, -196607, 6, 50, -196608, 6, 50, -131073, 6, 50, -131074, 6, 50, -131073, 7, 50, -196608, 7, 50, -131075, 6, 50, -131074, 7, 50, -196607, 65534, 50, -196607, 65533, 50, -196607, 65532, 50, -196607, 65531, 50, -196607, 65530, 50, -131074, 65534, 1048594, -131074, 65533, 1048594, -131074, 65532, 1048594, -131074, 65531, 1048594, -131074, 65530, 1048594, -131074, 65529, 1048594, -131073, 65529, 18, -196608, 65529, 18, -131073, 65534, 18, -196608, 65534, 18, -196608, 65533, 18, -196608, 65532, 18, -131073, 65532, 18, -131073, 65531, 18, -131073, 65530, 18, -196608, 65530, 18, -131073, 65533, 1048594, -196608, 65531, 18, -196607, 0, 50, -196607, 65535, 50, -131074, 0, 1048594, -131074, 65535, 1048594, -131075, 65533, 50, -131075, 65532, 50, -131075, 65531, 50, -131075, 65530, 50, -131075, 65529, 50, -131075, 65526, 50, -131075, 65528, 50, -131074, 65527, 1048594, -131074, 65528, 1048594, -131073, 65528, 18, -196608, 65528, 18, -196607, 65528, 50, -196607, 65527, 50, -196608, 65527, 18, -196608, 65526, 18, -131073, 65526, 18, -131073, 65527, 18, -131074, 65526, 1048594, -131074, 65525, 1048594, -131074, 65524, 18, -131073, 65524, 18, -131073, 65523, 18, -196608, 65524, 18, -196608, 65523, 18, -131074, 65523, 1048594, -196607, 65526, 50, -196608, 65525, 18, -131073, 65525, 18, -131075, 65525, 18, -131075, 65524, 18, -131075, 65527, 50, -131075, 65523, 18, -131075, 65534, 50, -131075, 2, 1048626, -131075, 7, 1048626, -131073, 65522, 1048594, -196608, 65522, 1048594, -196608, 65521, 1048594, -131073, 65521, 1048594, -131074, 65522, 1048594, -131074, 65521, 1048594, -196607, 65521, 1048626, -131075, 65535, 50, -131075, 0, 50, -131075, 1, 50, -131075, 65522, 50, -131075, 65521, 50, -196607, 65525, 50, -196607, 65524, 50, -196607, 65523, 50, -196607, 65529, 50, -131075, 3, 50, -196607, 7, 50, -196607, 65522, 50, -65537, 5, 18, -65538, 6, 655376, -131072, 6, 1441808, -65538, 4, 1048592, -131072, 4, 16, -65537, 6, 1048595, -131072, 5, 655379, -65538, 5, 19, -65537, 4, 1441811)
 }
 metadata/_editor_floor_ = Vector3(0, -3, 0)
 
-[node name="Stickers" type="Node3D" parent="."]
+[node name="Stickers" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="EntranceSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
+[node name="EntranceSticker" parent="Rooms/Tutohub-connectivehub/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59339285, 0, 3.5005517)
 sticker = SubResource("Resource_3flle")
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="Alternator" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3flle")]
+[node name="Alternator" parent="Rooms/Tutohub-connectivehub/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3flle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -5.5)
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 originalParent = "Tutohub-connective"
 
-[node name="Puzzle2Sticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
+[node name="Puzzle2Sticker" parent="Rooms/Tutohub-connectivehub/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
 transform = Transform3D(0.9659258, 0, 0.25881898, 0, 1, 0, -0.25881898, 0, 0.9659258, 0.5, 0, -6.5)
 sticker = SubResource("Resource_143k4")
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="Puzzle3Sticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
+[node name="Puzzle3Sticker" parent="Rooms/Tutohub-connectivehub/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -11)
 sticker = SubResource("Resource_pvjif")
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="metaprogress" type="Node3D" parent="."]
+[node name="metaprogress" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="InventoryPedestalEntrance" parent="metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("7_wv83u")]
+[node name="InventoryPedestalEntrance" parent="Rooms/Tutohub-connectivehub/metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("7_wv83u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -0.5, 2.021017)
 texture = ExtResource("3_5onks")
 pedestalName = "Entrance"
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="InventoryPedestalPuzzle2" parent="metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_y25gd")]
+[node name="InventoryPedestalPuzzle2" parent="Rooms/Tutohub-connectivehub/metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_y25gd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6, -0.3, -7.7000003)
 texture = ExtResource("6_p7x5o")
 pedestalName = "Puzzle2"
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="PlaceholderMetaprogressionBlockEntrance" parent="metaprogress" instance=ExtResource("6_3flle")]
+[node name="PlaceholderMetaprogressionBlockEntrance" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
 transform = Transform3D(1.2431976, 0, 0, 0, 1.5, 0, 0, 0, 0.34674352, -0.5, -0.5, 1.5)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("3_5onks")
 forceScale = Vector3(0.945, 1.3, 1)
 pedestalName = "Entrance"
 
-[node name="PlaceholderMetaprogressionBlockPuzzle2" parent="metaprogress" instance=ExtResource("6_3flle")]
+[node name="PlaceholderMetaprogressionBlockPuzzle2" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
 transform = Transform3D(-8.742278e-08, 0, -1, 0, 2, 0, 2, 0, -4.371139e-08, 2.5, -0.5, -6)
 color = Color(0.708783, 1.0260962, 0.5402103, 1)
 texture = ExtResource("6_p7x5o")
 pedestalName = "Puzzle2"
 
-[node name="PlaceholderMetaprogressionBlockPuzzle3" parent="metaprogress" instance=ExtResource("6_3flle")]
+[node name="PlaceholderMetaprogressionBlockPuzzle3" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
 transform = Transform3D(4.75, 0, 3.5527137e-15, 0, 5.7500005, 0, -1.687539e-14, 0, 1, -0.5, -0.7, -13.4)
 color = Color(0.15948172, 0.873581, 1.1413766, 1)
 texture = SubResource("GradientTexture2D_3fjpl")
 pedestalName = "Puzzle3"
 
-[node name="InventoryPedestal" parent="metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("12_fdnxg")]
+[node name="InventoryPedestal" parent="Rooms/Tutohub-connectivehub/metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("12_fdnxg")]
 transform = Transform3D(-7.4505806e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -7.4505806e-08, 1.3000001, -0.5, -12.3)
 texture = ExtResource("7_5n13k")
 pedestalName = "Puzzle3"
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="Walls" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="WallGenerator" type="Path3D" parent="Walls"]
+[node name="WallGenerator" type="Path3D" parent="Rooms/Tutohub-connectivehub/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 2)
 curve = SubResource("Curve3D_3fjpl")
 script = ExtResource("8_143k4")
@@ -1121,13 +1099,13 @@ wallHeight = 10.0
 material = ExtResource("14_tlqgd")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-connectivehub/Walls/WallGenerator"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, -8)
 visible = false
 operation = 2
 polygon = PackedVector2Array(-1, 0, -1, 2, 1, 2, 1, 0)
 
-[node name="WallGenerator2" type="Path3D" parent="Walls"]
+[node name="WallGenerator2" type="Path3D" parent="Rooms/Tutohub-connectivehub/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.5, 2)
 curve = SubResource("Curve3D_4smwb")
 script = ExtResource("8_143k4")
@@ -1135,17 +1113,17 @@ wallMode = 2
 material = ExtResource("14_tlqgd")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Walls/WallGenerator2"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-connectivehub/Walls/WallGenerator2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.5, 0, -5)
 visible = false
 operation = 2
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Walls/WallGenerator2"]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Rooms/Tutohub-connectivehub/Walls/WallGenerator2"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.5, 0, -13)
 visible = false
 operation = 2
 
-[node name="Monte Down" type="Path3D" parent="Walls"]
+[node name="Monte Down" type="Path3D" parent="Rooms/Tutohub-connectivehub/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, -4.0000005)
 curve = SubResource("Curve3D_lku13")
 script = ExtResource("8_143k4")
@@ -1157,22 +1135,22 @@ customDownWallWidth = 3.0
 resolution = 5.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="Doors" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="PushDoor" parent="Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_pvjif")]
+[node name="PushDoor" parent="Rooms/Tutohub-connectivehub/Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_pvjif")]
 transform = Transform3D(-4.371139e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371139e-08, 1.9106859e-15, -3, 0, -3.5)
 isOneWay = true
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="PushDoor2" parent="Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_2remw")]
+[node name="PushDoor2" parent="Rooms/Tutohub-connectivehub/Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_2remw")]
 transform = Transform3D(5.9604645e-08, 1, 4.3711406e-08, 0, -4.37114e-08, 1, 1, -5.9604645e-08, -2.6645353e-15, -3, 0, -11.5)
-sceneParent = NodePath("../..")
+sceneParent = NodePath("../../../..")
 
-[node name="Props" type="Node3D" parent="."]
+[node name="Props" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="Collumn Pathway" type="Node3D" parent="Props"]
+[node name="Collumn Pathway" type="Node3D" parent="Rooms/Tutohub-connectivehub/Props"]
 
-[node name="PathExtruder" type="Path3D" parent="Props/Collumn Pathway"]
+[node name="PathExtruder" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.2)
 curve = ExtResource("12_en8j3")
 script = ExtResource("13_n1n0r")
@@ -1183,7 +1161,7 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="PathExtruder2" type="Path3D" parent="Props/Collumn Pathway"]
+[node name="PathExtruder2" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, -0.5, 1.2)
 curve = ExtResource("12_en8j3")
 script = ExtResource("13_n1n0r")
@@ -1194,23 +1172,23 @@ collisionLayer = 1
 resolution = 2.0
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
-[node name="Bushes" parent="Props/Collumn Pathway" instance=ExtResource("24_ec45u")]
+[node name="Bushes" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway" instance=ExtResource("24_ec45u")]
 transform = Transform3D(0.6042722, 0, 0, 0, 0.56, 0, 0, 0, 0.7, -1.9761324, 1.3318911, 1.4)
 curve = SubResource("Curve3D_p7x5o")
 
-[node name="Bridge" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
+[node name="Bridge" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.2)
 curve = SubResource("Curve3D_qi025")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
 
-[node name="Bridge2" parent="Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
+[node name="Bridge2" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway" instance=ExtResource("15_knjsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.5)
 curve = SubResource("Curve3D_3pwh7")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_iw13w")])
 
-[node name="Deco Walls" type="Node3D" parent="Props"]
+[node name="Deco Walls" type="Node3D" parent="Rooms/Tutohub-connectivehub/Props"]
 
-[node name="WallGenerator" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.100001, -5, -1.4)
 curve = SubResource("Curve3D_sdppf")
 script = ExtResource("8_143k4")
@@ -1222,7 +1200,7 @@ customWallWidth = 3.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator2" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator2" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 5.0000005, -4, 5.9)
 curve = SubResource("Curve3D_n1n0r")
 script = ExtResource("8_143k4")
@@ -1234,7 +1212,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator3" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator3" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071068, 4.1000004, -5.8, 10.1)
 curve = SubResource("Curve3D_n1n0r")
 script = ExtResource("8_143k4")
@@ -1246,7 +1224,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator4" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator4" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(1, 0, 0, 0, 0.9848078, 0.17364816, 0, -0.17364816, 0.9848078, -9.3, -4, 0.09999994)
 curve = SubResource("Curve3D_fdnxg")
 script = ExtResource("8_143k4")
@@ -1258,7 +1236,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator5" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator5" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(0.95125127, 0.258819, 0.16773129, -0.254887, 0.9659258, -0.044943467, -0.17364821, 0, 0.9848078, -10.400001, -2.4, 3.8000002)
 curve = SubResource("Curve3D_n1n0r")
 script = ExtResource("8_143k4")
@@ -1270,7 +1248,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator6" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator6" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(0.64278764, 0, 0.76604444, 0.13302222, 0.9848077, -0.1116189, -0.7544065, 0.17364818, 0.63302225, -9.700001, -3.8000002, 8.900001)
 curve = SubResource("Curve3D_n1n0r")
 script = ExtResource("8_143k4")
@@ -1282,7 +1260,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator7" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator7" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(0.95125127, -0.2588191, 0.16773127, 0.25488698, 0.9659258, 0.044943463, -0.17364821, 0, 0.9848078, 4.5999994, -2.4, -13.3)
 curve = SubResource("Curve3D_5onks")
 script = ExtResource("8_143k4")
@@ -1294,7 +1272,7 @@ customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator8" type="Path3D" parent="Props/Deco Walls"]
+[node name="WallGenerator8" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
 transform = Transform3D(-0.93969274, 0, 0.34202018, 0, 1.0000001, 0, -0.34202024, 0, -0.93969256, -4.8000007, -1.8000001, -16.5)
 curve = SubResource("Curve3D_4pvqj")
 script = ExtResource("8_143k4")
@@ -1305,71 +1283,71 @@ customProfileShapeDown = SubResource("Curve_xt1wf")
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="Fences" type="Node3D" parent="Props"]
+[node name="Fences" type="Node3D" parent="Rooms/Tutohub-connectivehub/Props"]
 
-[node name="Wood Fence" parent="Props/Fences" instance=ExtResource("25_5onks")]
+[node name="Wood Fence" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("25_5onks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7371227, -0.5, 1.4)
 curve = SubResource("Curve3D_5n13k")
 
-[node name="Bushes" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.9, -3.1149998, -0.5, 2)
 curve = SubResource("Curve3D_xt1wf")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_inrfn"), SubResource("Resource_xt1wf")])
 collisionLayer = 0
 
-[node name="Bushes4" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes4" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(0.704764, -0.67802083, 0, 0.839905, 0.56892705, 0, 0, 0, 0.9, -3.2849998, -1, 2)
 curve = SubResource("Curve3D_xt1wf")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_inrfn"), SubResource("Resource_xt1wf")])
 collisionLayer = 0
 
-[node name="Bushes2" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes2" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(-0.8325642, 0, 0.070703246, 0, 0.95, 0, -0.072839834, 0, -0.8081428, 1.8225005, -0.5125, 6.6000004)
 curve = SubResource("Curve3D_knjsu")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_inrfn"), SubResource("Resource_xt1wf")])
 collisionLayer = 0
 
-[node name="Bushes3" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes3" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(-0.7196126, 0.5142256, 0.06125813, 0.41546857, 0.8906648, -0.0353674, -0.07269749, 0, -0.80850345, 2.0775006, -0.98750013, 6.6000004)
 curve = SubResource("Curve3D_knjsu")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_inrfn"), SubResource("Resource_xt1wf")])
 collisionLayer = 0
 
-[node name="Bushes5" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes5" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.5, 0.6)
 curve = SubResource("Curve3D_inrfn")
 
-[node name="Bushes6" parent="Props/Fences" instance=ExtResource("24_ec45u")]
+[node name="Bushes6" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, -0.5, 0.6)
 curve = SubResource("Curve3D_8fdqa")
 
-[node name="Stone Fence" parent="Props/Fences" instance=ExtResource("41_y25gd")]
+[node name="Stone Fence" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("41_y25gd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -0.5, -10.2)
 curve = SubResource("Curve3D_saeos")
 
-[node name="Stone Fence2" parent="Props/Fences" instance=ExtResource("41_y25gd")]
+[node name="Stone Fence2" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("41_y25gd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, -0.5, -12.7)
 curve = SubResource("Curve3D_saeos")
 
-[node name="Fringes" type="Node3D" parent="Props"]
+[node name="Fringes" type="Node3D" parent="Rooms/Tutohub-connectivehub/Props"]
 
-[node name="Grass Fringe Face Y" parent="Props/Fringes" instance=ExtResource("26_wv83u")]
+[node name="Grass Fringe Face Y" parent="Rooms/Tutohub-connectivehub/Props/Fringes" instance=ExtResource("26_wv83u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.49, 6)
 curve = SubResource("Curve3D_y25gd")
 
-[node name="Grass Fringe Face Y2" parent="Props/Fringes" instance=ExtResource("26_wv83u")]
+[node name="Grass Fringe Face Y2" parent="Rooms/Tutohub-connectivehub/Props/Fringes" instance=ExtResource("26_wv83u")]
 transform = Transform3D(1, 0, 0, 0, 0.65, 0, 0, 0, 1, -3, -0.5, -4.2)
 curve = SubResource("Curve3D_tlqgd")
 
-[node name="Grass Fringe Face Y3" parent="Props/Fringes" instance=ExtResource("26_wv83u")]
+[node name="Grass Fringe Face Y3" parent="Rooms/Tutohub-connectivehub/Props/Fringes" instance=ExtResource("26_wv83u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.48, 2.6)
 curve = SubResource("Curve3D_buqda")
 
-[node name="Grass Fringe Face Y4" parent="Props/Fringes" instance=ExtResource("26_wv83u")]
+[node name="Grass Fringe Face Y4" parent="Rooms/Tutohub-connectivehub/Props/Fringes" instance=ExtResource("26_wv83u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.49, -13)
 curve = SubResource("Curve3D_3mqqw")
 
-[node name="Godray Start" type="CSGCylinder3D" parent="Props"]
+[node name="Godray Start" type="CSGCylinder3D" parent="Rooms/Tutohub-connectivehub/Props"]
 transform = Transform3D(0.9848077, -0.1736482, 0, 0.17364818, 0.98480785, 0, 0, 0, 1, -0.9042335, 1.803891, 5.472944)
 radius = 1.643
 height = 7.131
@@ -1377,20 +1355,20 @@ sides = 40
 cone = true
 material = ExtResource("45_fdnxg")
 
-[node name="PorticoA" type="MeshInstance3D" parent="Props"]
+[node name="PorticoA" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props"]
 transform = Transform3D(-5.4639237e-08, 0, -1, 0, 1.43, 0, 1.25, 0, -4.371139e-08, 1.9, -0.5, -6)
 mesh = SubResource("ArrayMesh_1xxgg")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../..")
 
-[node name="Sconce" parent="Props" instance=ExtResource("44_y25gd")]
+[node name="Sconce" parent="Rooms/Tutohub-connectivehub/Props" instance=ExtResource("44_y25gd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8534386, 0.3, -2.84457)
 
-[node name="Sconce2" parent="Props" instance=ExtResource("44_y25gd")]
+[node name="Sconce2" parent="Rooms/Tutohub-connectivehub/Props" instance=ExtResource("44_y25gd")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.8534386, 0.3, -4.1305504)
 
-[node name="Widgets" type="Node3D" parent="."]
+[node name="Widgets" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
 
-[node name="AmbientParticles" type="CSGBox3D" parent="Widgets"]
+[node name="AmbientParticles" type="CSGBox3D" parent="Rooms/Tutohub-connectivehub/Widgets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.0500001, 5.5499997)
 layers = 0
 size = Vector3(3.6000001, 3.1000001, 3.5)
@@ -1398,76 +1376,37 @@ script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
 
-[node name="ObjectHiderStart" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.3, 5.5)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): false
-}
-sceneParent = NodePath("../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
+[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+script = ExtResource("34_n5fu6")
+hideObjects = [NodePath("../../../Tutohub-Puzzle1")]
+sceneParent = NodePath("../../../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHiderStart"]
+[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.5)
+shape = SubResource("BoxShape3D_wrbw1")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3.25)
 shape = SubResource("BoxShape3D_a74g7")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
 
-[node name="ObjectHider Puzzle 1 IN" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -3.5)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): true,
-NodePath("../../Rooms/Tutohub-Puzzle3"): false,
-NodePath("../../Props/Deco Walls"): false,
-NodePath("../../Props/Fringes"): false,
-NodePath("../../Props/Fences"): false,
-NodePath("../../GridmapObject"): false,
-NodePath("../../Walls"): false,
-NodePath("../../Rooms/Tutohub-Puzzle2"): false
-}
-sceneParent = NodePath("../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
+[node name="OFFShape2" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7.5)
+shape = SubResource("BoxShape3D_vlngr")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 IN"]
-shape = SubResource("BoxShape3D_a74g7")
+[node name="OFFShape3" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11.5)
+shape = SubResource("BoxShape3D_p4wax")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
 
-[node name="ObjectHider Puzzle 1 IN2" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, -11.5)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): true,
-NodePath("../../Rooms/Tutohub-Puzzle3"): false,
-NodePath("../../Props/Deco Walls"): false,
-NodePath("../../Props/Fringes"): false,
-NodePath("../../Props/Fences"): false,
-NodePath("../../GridmapObject"): false,
-NodePath("../../Walls"): false,
-NodePath("../../Rooms/Tutohub-Puzzle2"): false
-}
-sceneParent = NodePath("../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 IN2"]
-shape = SubResource("BoxShape3D_a74g7")
-
-[node name="ObjectHider Puzzle 1 Out" type="Area3D" parent="Widgets" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7000003, 0, -11.5)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../../Rooms/Tutohub-Puzzle1/Walls/WallGenerator"): false,
-NodePath("../../Rooms/Tutohub-Puzzle3"): true,
-NodePath("../../Props/Deco Walls"): true,
-NodePath("../../Props/Fringes"): true,
-NodePath("../../Props/Fences"): true,
-NodePath("../../GridmapObject"): true,
-NodePath("../../Walls"): true,
-NodePath("../../Rooms/Tutohub-Puzzle2"): true
-}
-sceneParent = NodePath("../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Widgets/ObjectHider Puzzle 1 Out"]
-shape = SubResource("BoxShape3D_a74g7")
-
-[node name="EnvironmentLerper Ext to Int" type="Area3D" parent="Widgets"]
+[node name="EnvironmentLerper Ext to Int" type="Area3D" parent="Rooms/Tutohub-connectivehub/Widgets" groups=["EnvironmentLerpers"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000001, 0, -3.5)
 collision_layer = 0
 collision_mask = 2
@@ -1479,17 +1418,17 @@ endEnvironment = SubResource("Resource_vlngr")
 endLight = SubResource("Resource_p4wax")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper Ext to Int"]
+[node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000014, 0, 0)
 shape = SubResource("BoxShape3D_7isej")
 debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
 
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int"]
+[node name="StartMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int"]
 
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int"]
+[node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0)
 
-[node name="EnvironmentLerper Ext to Int3" type="Area3D" parent="Widgets"]
+[node name="EnvironmentLerper Ext to Int3" type="Area3D" parent="Rooms/Tutohub-connectivehub/Widgets" groups=["EnvironmentLerpers"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7, -2.1000001, -4.9)
 collision_layer = 0
 collision_mask = 2
@@ -1501,17 +1440,17 @@ endEnvironment = SubResource("Resource_vlngr")
 endLight = SubResource("Resource_p4wax")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper Ext to Int3"]
+[node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.25000024, 0.25)
 shape = SubResource("BoxShape3D_7isej")
 debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
 
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int3"]
+[node name="StartMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int3"]
 
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int3"]
+[node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9000006, -0.5, 0)
 
-[node name="EnvironmentLerper Int to Ext" type="Area3D" parent="Widgets"]
+[node name="EnvironmentLerper Int to Ext" type="Area3D" parent="Rooms/Tutohub-connectivehub/Widgets" groups=["EnvironmentLerpers"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, -11.4)
 collision_layer = 0
 collision_mask = 2
@@ -1523,18 +1462,18 @@ endEnvironment = SubResource("Resource_7isej")
 endLight = SubResource("Resource_notbd")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper Int to Ext"]
+[node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000014, 0, 0)
 shape = SubResource("BoxShape3D_n5fu6")
 debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
 
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper Int to Ext"]
+[node name="StartMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper Int to Ext"]
+[node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 0, 0)
 
-[node name="EnvironmentLerper Ext to Int2" type="Area3D" parent="Widgets"]
+[node name="EnvironmentLerper Ext to Int2" type="Area3D" parent="Rooms/Tutohub-connectivehub/Widgets" groups=["EnvironmentLerpers"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999999, 0, -6)
 collision_layer = 0
 collision_mask = 2
@@ -1546,18 +1485,18 @@ endEnvironment = SubResource("Resource_vlngr")
 endLight = SubResource("Resource_p4wax")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper Ext to Int2"]
+[node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7499999, 0, 0)
 shape = SubResource("BoxShape3D_7isej")
 debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
 
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int2"]
+[node name="StartMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100000024, 0, 0)
 
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper Ext to Int2"]
+[node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, 0)
 
-[node name="EnvironmentLerper Int to Ext2" type="Area3D" parent="Widgets"]
+[node name="EnvironmentLerper Int to Ext2" type="Area3D" parent="Rooms/Tutohub-connectivehub/Widgets" groups=["EnvironmentLerpers"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -5.9999995)
 collision_layer = 0
 collision_mask = 2
@@ -1569,21 +1508,20 @@ endEnvironment = SubResource("Resource_7isej")
 endLight = SubResource("Resource_notbd")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
-[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper Int to Ext2"]
+[node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.60000014, 0, 0)
 shape = SubResource("BoxShape3D_n5fu6")
 debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
 
-[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper Int to Ext2"]
+[node name="StartMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper Int to Ext2"]
+[node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 0, 0)
-
-[node name="Rooms" type="Node3D" parent="."]
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
+visible = false
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle1" instance=ExtResource("1_emjup")]
 data = {
@@ -1740,13 +1678,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.9
 [node name="Sconce3" parent="Rooms/Tutohub-Puzzle1/Props" instance=ExtResource("44_y25gd")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.1, 0.7, -8.874707)
 
-[node name="Door" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle1/Props"]
-transform = Transform3D(5.9604645e-08, 0.2, 4.3711406e-08, 0, -8.74228e-09, 1, 1, -1.1920929e-08, -2.6645353e-15, -0.09999998, 2, -7.5)
-visible = false
-mesh = SubResource("ArrayMesh_iyqt8")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("45_dxenn")
-
 [node name="AmbientParticles" type="CSGBox3D" parent="Rooms/Tutohub-Puzzle1/Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7000003, -0.15000033, -3.2999997)
 layers = 0
@@ -1754,32 +1685,6 @@ size = Vector3(10.400001, 9.1, 11.400001)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
-
-[node name="ObjectHider" type="Area3D" parent="Rooms/Tutohub-Puzzle1" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.7, 0)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../Props/Door"): true
-}
-sceneParent = NodePath("../../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Tutohub-Puzzle1/ObjectHider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050000012, 1.2, 0.65)
-shape = SubResource("BoxShape3D_v3gnl")
-
-[node name="ObjectHider2" type="Area3D" parent="Rooms/Tutohub-Puzzle1" node_paths=PackedStringArray("objects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, -0.8, -6.2)
-script = ExtResource("46_atf36")
-objects = {
-NodePath("../Props/Door"): false
-}
-sceneParent = NodePath("../../..")
-metadata/_custom_type_script = "uid://btyn627sngesl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Tutohub-Puzzle1/ObjectHider2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05000019, 1.2, 0.5999999)
-shape = SubResource("BoxShape3D_v3gnl")
 
 [node name="Tutohub-Puzzle2" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
