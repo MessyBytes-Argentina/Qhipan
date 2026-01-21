@@ -60,6 +60,7 @@ Metaprogression=""
 ChunkLoadingHotspots=""
 EnvironmentObjects=""
 Camera=""
+EnvironmentLerpers=""
 
 [godot_resource_groups]
 

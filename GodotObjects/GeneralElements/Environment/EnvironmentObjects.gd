@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 ## Environment objects collector.
@@ -17,9 +18,4 @@ var colorCorrectionMaterial: ShaderMaterial
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#environment.environment = environment.environment.duplicate(true)
-	#environment.environment.setup_local_to_scene()
-	#var viewportTexture = ViewportTexture.new()
-	#viewportTexture.viewport_path = colorCorrectionSubViewport.get_path()
-	#environment.environment.adjustment_color_correction = viewportTexture
 	colorCorrectionMaterial = colorCorrectionTextureRect.material

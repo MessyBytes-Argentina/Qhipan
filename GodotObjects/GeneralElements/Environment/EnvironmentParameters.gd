@@ -1,3 +1,4 @@
+@tool
 extends Resource
 
 ## Resource class that holds, lerps, and sets environment parameters.
