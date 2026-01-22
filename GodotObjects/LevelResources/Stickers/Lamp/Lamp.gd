@@ -67,6 +67,9 @@ var shineAnimationMode: String = "Off"
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
+	shineMaterial = shine.get_surface_override_material(0).duplicate()
+	shine.set_surface_override_material(0, shineMaterial)
+	shine.mesh = shine.mesh.duplicate()
 	while not player:
 		player = get_tree().get_first_node_in_group("Player")
 		await get_tree().process_frame
@@ -76,9 +79,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	isReadyToTween = true
 	camera = get_tree().get_first_node_in_group("Camera")
-	shineMaterial = shine.get_surface_override_material(0).duplicate()
-	shine.set_surface_override_material(0, shineMaterial)
-	shine.mesh = shine.mesh.duplicate()
 
 ## Animates shine parameters.
 func animate_shine(on: bool) -> void:
