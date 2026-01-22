@@ -162,8 +162,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vch5j")
 
-[sub_resource type="Animation" id="Animation_s4h8s"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_kh52g"]
+resource_name = "DoorOpens"
+length = 1.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -171,10 +172,10 @@ tracks/0/path = NodePath("ChackanaDoor/Door Pane 1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
-"values": [Vector3(3.1415927, 0, 0)]
+"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 0, 0), Vector3(3.1415927, 1.3962634, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -183,10 +184,10 @@ tracks/1/path = NodePath("ChackanaDoor/Door Pane 2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -195,10 +196,10 @@ tracks/2/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964)]
+"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -207,10 +208,10 @@ tracks/3/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [Vector3(-0.58333313, -0.026192725, 0.43616182)]
+"values": [Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -219,10 +220,10 @@ tracks/4/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [Vector3(-0.58333343, -0.026192725, 0.43616182)]
+"values": [Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -231,10 +232,10 @@ tracks/5/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
+"transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
-"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964)]
+"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -243,10 +244,10 @@ tracks/6/path = NodePath("ChackanaDoor/Collision Pivot 1:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.3962634, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -255,10 +256,10 @@ tracks/7/path = NodePath("ChackanaDoor/Collision Pivot 2:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6666667, 1.4),
+"transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_aqkc2"]
@@ -362,9 +363,8 @@ tracks/7/keys = {
 "values": [Vector3(0, -1.3962634, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_kh52g"]
-resource_name = "DoorOpens"
-length = 1.4
+[sub_resource type="Animation" id="Animation_s4h8s"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -372,10 +372,10 @@ tracks/0/path = NodePath("ChackanaDoor/Door Pane 1:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(3.1415927, 0, 0), Vector3(3.1415927, 0, 0), Vector3(3.1415927, 1.3962634, 0)]
+"values": [Vector3(3.1415927, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -384,10 +384,10 @@ tracks/1/path = NodePath("ChackanaDoor/Door Pane 2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -396,10 +396,10 @@ tracks/2/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(2, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964), Vector3(1.5707964, -1.5707964, 1.5707964)]
+"values": [Vector3(-1.6556845e-07, -1.5707964, 1.5707964)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -408,10 +408,10 @@ tracks/3/path = NodePath("ChackanaDoor/Door Pane 2/Lock 1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(1, 2, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.58333313, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
+"values": [Vector3(-0.58333313, -0.026192725, 0.43616182)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -420,10 +420,10 @@ tracks/4/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(1, 2, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.58333343, -0.026192725, 0.43616182), Vector3(-0.5, -0.026, 0.73)]
+"values": [Vector3(-0.58333343, -0.026192725, 0.43616182)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -432,10 +432,10 @@ tracks/5/path = NodePath("ChackanaDoor/Door Pane 1/Lock 2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.43333334, 0.8333333),
-"transitions": PackedFloat32Array(2, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964), Vector3(1.5707964, 1.5707964, -1.5707964)]
+"values": [Vector3(-1.6556845e-07, 1.5707964, -1.5707964)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -444,10 +444,10 @@ tracks/6/path = NodePath("ChackanaDoor/Collision Pivot 1:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.3962634, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -456,10 +456,10 @@ tracks/7/path = NodePath("ChackanaDoor/Collision Pivot 2:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.6666667, 1.4),
-"transitions": PackedFloat32Array(1, 0.5, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xw1pg"]
