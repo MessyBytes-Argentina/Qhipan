@@ -57,7 +57,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-DemohubConnective"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
 shape = SubResource("BoxShape3D_x13we")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
