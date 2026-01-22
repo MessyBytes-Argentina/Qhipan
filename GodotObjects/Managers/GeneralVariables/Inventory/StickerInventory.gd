@@ -7,6 +7,8 @@ signal updated_inventory()
 
 ## List of valid medium stickers and their path.
 var currentInventory: Array[PocketSticker] = []
+## List of already used pedestals.
+var activePedestals: PackedStringArray = []
 
 ## TEMPORARY BOOK CODE
 var book: StickerBook

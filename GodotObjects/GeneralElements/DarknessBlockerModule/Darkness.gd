@@ -19,6 +19,8 @@ const DARKMARGIN: float = 0.25
 @onready var darknessAreaShape: CollisionShape3D = %DarknessAreaShape
 ## Reference to the outline blocker.
 @onready var outlineBlocker: MeshInstance3D = %OutlineBlocker
+## Reference to the detection area.
+@onready var darknessArea: Area3D = %DarknessArea
 ## Reference to the collision heightmap used on the fog.
 var collisionMap: HeightMapShape3D
 ## Reference to the fog shader.
@@ -37,6 +39,8 @@ var outlineMaterial: ShaderMaterial
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
+	await get_tree().create_timer(0.5).timeout
+	lights = darknessArea.get_overlapping_areas()
 	_collision_shape_set()
 
 ## Sets up the collision shape for the fog.

@@ -54,7 +54,7 @@ _data = {
 }
 point_count = 2
 
-[node name="BaseLevelScene" type="Node3D"]
+[node name="Destileria_finame" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_kb6tg")]
 data = {
