@@ -47,7 +47,7 @@ func _ready() -> void:
 		sceneParent = testSceneParent
 	update_texture()
 	bob_sticker_hightlight()
-	if pedestalName in GeneralVariables.inventory.activePedestals: activate_pedestal(true)
+	if not Engine.is_editor_hint(): if pedestalName in GeneralVariables.inventory.activePedestals: activate_pedestal(true)
 
 ## Executed on input.
 func _unhandled_input(event: InputEvent) -> void:
