@@ -1384,14 +1384,15 @@ script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
 
-[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
 script = ExtResource("34_n5fu6")
 showObjects = [NodePath("../../../Tutohub-Puzzle1")]
+hideObjects = [NodePath("../../../Tutohub-Puzzle2"), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../Props"), null]
 sceneParent = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
 [node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -3.5)
 shape = SubResource("BoxShape3D_wrbw1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true

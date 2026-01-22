@@ -478,7 +478,7 @@ mesh = SubResource("ArrayMesh_elvij")
 skeleton = NodePath("")
 
 [node name="Door Pane 1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.72, 0, 0, 0, 1, -6.013096e-09, 0, 8.742278e-08, 0.0687818, -0.41999987, 0.4761927, 0)
+transform = Transform3D(-0.72, 0, 0, 0, 1, -1.0385763e-08, 0, 1.509958e-07, 0.0687818, -0.41999987, 0.4761927, 0)
 mesh = SubResource("ArrayMesh_aqkc2")
 skeleton = NodePath("")
 
@@ -490,10 +490,12 @@ skeleton = NodePath("")
 [node name="Collision Pivot 1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4488995, 0.5, 0)
 
-[node name="Area3D" type="Area3D" parent="Collision Pivot 1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Collision Pivot 1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4488995, -0.5, 0)
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 1/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.4996643, 0.008758575)
 shape = SubResource("BoxShape3D_y7lqa")
 
@@ -510,9 +512,11 @@ skeleton = NodePath("")
 [node name="Collision Pivot 2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4461934, 0.5, 0)
 
-[node name="Area3D" type="Area3D" parent="Collision Pivot 2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Collision Pivot 2"]
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision Pivot 2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19650567, -0.00033569336, 0.008758575)
 shape = SubResource("BoxShape3D_y7lqa")
 
