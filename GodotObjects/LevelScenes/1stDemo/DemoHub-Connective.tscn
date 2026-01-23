@@ -161,7 +161,7 @@ metadata/_editor_floor_ = Vector3(0, -3, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1)
 script = ExtResource("2_fjvai")
 hotspotName = "demohub_entrance"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-Puzzle3.tscn"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn"
 rootNode = NodePath("..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
