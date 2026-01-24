@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x7val"]
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="2_cops7"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
-[ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="3_feuco"]
 [ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="3_y1qgw"]
+[ext_resource type="PackedScene" uid="uid://ds40hobe7ugw5" path="res://GodotObjects/LevelScenes/1stDemo/DemoHub-Connective.tscn" id="6_cops7"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
 
@@ -121,6 +121,6 @@ texture = SubResource("GradientTexture2D_achkf")
 expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.6, 0.8, 5.5)
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.6, 0.19999999, -3.5)
 
-[node name="Tutohub-connective" parent="." instance=ExtResource("3_feuco")]
+[node name="DemoHub-Connective" parent="." instance=ExtResource("6_cops7")]
