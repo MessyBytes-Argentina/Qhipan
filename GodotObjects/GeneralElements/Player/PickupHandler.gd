@@ -100,7 +100,7 @@ func do_grab() -> void:
 		if surface: 
 			surface.node.sticker_activity()
 			surface.used = null
-	else: pickupSound.play_sound()
+	elif currentPickup is not InventorySticker: pickupSound.play_sound()
 	currentPickup.grab(self)
 	currentPickup.reparent(self)
 	pickupOnHand = true

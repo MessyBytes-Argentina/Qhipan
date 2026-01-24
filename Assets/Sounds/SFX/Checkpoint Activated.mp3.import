@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcmogqao6jv7e"
+path="res://.godot/imported/Checkpoint Activated.mp3-7834c762096ca08e340cc667a7489fbb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Checkpoint Activated.mp3"
+dest_files=["res://.godot/imported/Checkpoint Activated.mp3-7834c762096ca08e340cc667a7489fbb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

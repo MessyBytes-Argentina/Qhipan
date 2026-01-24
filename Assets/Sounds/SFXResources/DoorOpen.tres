@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CentralizedSoundResource" load_steps=5 format=3 uid="uid://fcwoju7q3gpe"]
+
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_726hy"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_qj1qd"]
+[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="3_ndbp1"]
+
+[sub_resource type="Resource" id="Resource_echi1"]
+script = ExtResource("2_qj1qd")
+sound = ExtResource("3_ndbp1")
+baseVolumeDB = -5.0
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[resource]
+script = ExtResource("1_726hy")
+soundCollection = Dictionary[ExtResource("2_qj1qd"), int]({
+SubResource("Resource_echi1"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
