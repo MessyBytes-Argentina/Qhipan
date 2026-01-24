@@ -17,6 +17,7 @@ shader = ExtResource("1_jly1r")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("3_f7ye8")
 shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
+shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0
