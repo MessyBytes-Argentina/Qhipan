@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://ds40hobe7ugw5"]
+[gd_scene load_steps=45 format=4 uid="uid://ds40hobe7ugw5"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_cdgvd"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_fjvai"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="9_x0jxa"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="10_iqlko"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="11_iqlko"]
+[ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="14_hptrn"]
 
 [sub_resource type="Curve3D" id="Curve3D_wwpq5"]
 closed = true
@@ -753,6 +754,10 @@ shape = SubResource("BoxShape3D_5fuce")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
+[node name="LoadShape" type="CollisionShape3D" parent="Widgets/Chunk Loaders/ChunkLoadingHotspot-TutohubPuzzle3"]
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
 [node name="ChunkLoadingHotspot-DestileriaPuzzle1" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -8.5)
 script = ExtResource("2_fjvai")
@@ -852,3 +857,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05, 0, 5.950001)
 shape = SubResource("BoxShape3D_iqlko")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
+
+[node name="StickerLamp" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_hptrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -2.9802322e-08, -3)
+sceneParent = NodePath("..")
+originalParent = "DemoHub-Connective"
