@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x7val"]
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="2_cops7"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
+[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="3_6vik2"]
 [ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="3_y1qgw"]
 [ext_resource type="PackedScene" uid="uid://ds40hobe7ugw5" path="res://GodotObjects/LevelScenes/1stDemo/DemoHub-Connective.tscn" id="6_cops7"]
+[ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="6_y1qgw"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
 
@@ -21,20 +23,9 @@ width = 1920
 height = 1082
 fill_from = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_5xncd"]
-offsets = PackedFloat32Array(0, 0.6119734, 0.68292683, 0.80487806, 0.8691796)
-colors = PackedColorArray(0.16, 0.1456, 0.1168, 1, 0.12, 0.012000003, 0, 1, 0.115420915, 0.9063941, 0.87521225, 1, 0.97, 0.53349996, 0.38799998, 1, 0.82003134, 0.63193476, 0.5667622, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_t70xf"]
-gradient = SubResource("Gradient_5xncd")
-width = 1920
-height = 1082
-fill_from = Vector2(1, 0.9017094)
-fill_to = Vector2(1, 0.4059829)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27sqf"]
 shader = ExtResource("2_cops7")
-shader_parameter/startPanorama = SubResource("GradientTexture2D_t70xf")
+shader_parameter/startPanorama = ExtResource("3_6vik2")
 shader_parameter/goalPanorama = SubResource("GradientTexture2D_cops7")
 shader_parameter/panoramaProgress = 0.0
 shader_parameter/skyContribution = 0.75
@@ -121,6 +112,9 @@ texture = SubResource("GradientTexture2D_achkf")
 expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.6, 0.19999999, -3.5)
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.6, 0.19999999, 5.5)
 
 [node name="DemoHub-Connective" parent="." instance=ExtResource("6_cops7")]
+visible = false
+
+[node name="Tutohub-connective" parent="." instance=ExtResource("6_y1qgw")]
