@@ -1255,7 +1255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.49, -13)
 curve = SubResource("Curve3D_3mqqw")
 
 [node name="Godray Start" type="CSGCylinder3D" parent="Rooms/Tutohub-connectivehub/Props"]
-transform = Transform3D(0.9848077, -0.1736482, 0, 0.17364818, 0.98480785, 0, 0, 0, 1, -0.9042335, 1.803891, 5.472944)
+transform = Transform3D(0.49240384, -0.08682408, 0.8660254, 0.576818, 0.7776767, -0.24999999, -0.65178174, 0.62264, 0.4330126, -0.9042335, 1.803891, 7.472944)
 radius = 1.643
 height = 7.131
 sides = 40
