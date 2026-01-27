@@ -60,7 +60,6 @@ func _setup_areas() -> void:
 
 ## Resets debug shapes.
 func _reset_shapes() -> void:
-	add_to_group("ChunkLoadingHotspots", true)
 	if len(onShapes) == 0: add_shape("ONShape")
 	if len(offShapes) == 0: add_shape("OFFShape")
 
