@@ -2258,7 +2258,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.5)
 curve = SubResource("Curve3D_70io1")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_ujq21")])
 
-[node name="ChunkLoadingHotspot-Demohub" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot-Demohub" type="Node3D" parent="." node_paths=PackedStringArray("rootNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -43)
 script = ExtResource("3_rrtal")
 hotspotName = "demohub_entrance"
