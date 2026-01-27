@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnvironmentParameters" load_steps=6 format=3 uid="uid://vy31upty1ilh"]
+
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="1_v4p8q"]
+
+[sub_resource type="Gradient" id="Gradient_6vik2"]
+offsets = PackedFloat32Array(0, 0.11691023, 0.5929019, 0.77661794, 1)
+colors = PackedColorArray(0.011505717, 9.222529e-05, 0.05371867, 1, 0, 0.020590365, 0.046684712, 1, 0.8446103, 0.6870434, 0.6585931, 1, 0.94494283, 0.7900857, 0.9384897, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxenn"]
+gradient = SubResource("Gradient_6vik2")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_v4p8q"]
+colors = PackedColorArray(0, 0, 0, 1, 0.07599326, 0.05926363, 0.103962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
+gradient = SubResource("Gradient_v4p8q")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.41880342)
+
+[resource]
+script = ExtResource("1_v4p8q")
+sky_panorama = SubResource("GradientTexture2D_n5fu6")
+ambient_light_color = Color(0.408, 0.47159997, 0.48, 1)
+glow_bloom = 1.0
+brightness = 0.9
+saturation = 0.7999999999999999
+color_correction = SubResource("GradientTexture2D_dxenn")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"

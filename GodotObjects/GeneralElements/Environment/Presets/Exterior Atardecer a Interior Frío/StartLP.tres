@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LightParameters" load_steps=2 format=3 uid="uid://bva01fhpet3b"]
+
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="1_3pyw2"]
+
+[resource]
+script = ExtResource("1_3pyw2")
+angle = Vector3(-1.0471997, 2.6179905, 0)
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"

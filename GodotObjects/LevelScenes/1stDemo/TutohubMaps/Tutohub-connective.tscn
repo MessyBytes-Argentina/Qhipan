@@ -1,4 +1,4 @@
-[gd_scene load_steps=173 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=164 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -31,11 +31,12 @@
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="34_n5fu6"]
 [ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
 [ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="35_1x2dl"]
-[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="36_ec45u"]
-[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="37_5onks"]
-[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="37_a74g7"]
+[ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartEP.tres" id="36_a74g7"]
+[ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartLP.tres" id="37_n5fu6"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="38_a74g7"]
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndEP.tres" id="38_vlngr"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="39_n5fu6"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndLP.tres" id="39_p4wax"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="40_vlngr"]
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="41_p4wax"]
 [ext_resource type="PackedScene" uid="uid://bkoj8wciyavc4" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence.tscn" id="41_y25gd"]
@@ -480,55 +481,6 @@ size = Vector3(2, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p4wax"]
 size = Vector3(1, 1, 2)
-
-[sub_resource type="Gradient" id="Gradient_a74g7"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vlngr"]
-gradient = SubResource("Gradient_a74g7")
-
-[sub_resource type="Resource" id="Resource_7isej"]
-script = ExtResource("36_ec45u")
-sky_panorama = ExtResource("37_a74g7")
-ambient_light_color = Color(0.6, 0.38431373, 0.34901962, 1)
-color_correction = SubResource("GradientTexture2D_vlngr")
-metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
-
-[sub_resource type="Resource" id="Resource_notbd"]
-script = ExtResource("37_5onks")
-metadata/_custom_type_script = "uid://44mc8q7u8dbc"
-
-[sub_resource type="Gradient" id="Gradient_6vik2"]
-colors = PackedColorArray(0, 0.012552844, 0.028704396, 1, 0.95397335, 0.82697093, 0.9481692, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxenn"]
-gradient = SubResource("Gradient_6vik2")
-fill_from = Vector2(0.32905984, 0.8247863)
-fill_to = Vector2(0.9358974, 0.6196581)
-
-[sub_resource type="Gradient" id="Gradient_x7val"]
-offsets = PackedFloat32Array(0.49694502, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.45452422, 0.45452428, 0.45452422, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
-gradient = SubResource("Gradient_x7val")
-width = 1920
-height = 1082
-fill_from = Vector2(1, 1)
-
-[sub_resource type="Resource" id="Resource_vlngr"]
-script = ExtResource("36_ec45u")
-sky_panorama = SubResource("GradientTexture2D_n5fu6")
-brightness = 0.9
-contrast = 1.01
-saturation = 0.7999999999999999
-color_correction = SubResource("GradientTexture2D_dxenn")
-metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
-
-[sub_resource type="Resource" id="Resource_p4wax"]
-script = ExtResource("37_5onks")
-color = Color(0.772037, 0.99810976, 0.99999994, 1)
-indirect_energy = 0.8
-metadata/_custom_type_script = "uid://44mc8q7u8dbc"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7isej"]
 size = Vector3(3.5, 1.9, 1.1)
@@ -1320,10 +1272,11 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_7isej")
-startLight = SubResource("Resource_notbd")
-endEnvironment = SubResource("Resource_vlngr")
-endLight = SubResource("Resource_p4wax")
+startEnvironment = ExtResource("36_a74g7")
+startLight = ExtResource("37_n5fu6")
+endEnvironment = ExtResource("38_vlngr")
+endLight = ExtResource("39_p4wax")
+testProgress = 1.0
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
 [node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int"]
@@ -1342,10 +1295,10 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_7isej")
-startLight = SubResource("Resource_notbd")
-endEnvironment = SubResource("Resource_vlngr")
-endLight = SubResource("Resource_p4wax")
+startEnvironment = ExtResource("36_a74g7")
+startLight = ExtResource("37_n5fu6")
+endEnvironment = ExtResource("38_vlngr")
+endLight = ExtResource("39_p4wax")
 testProgress = 0.01
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
@@ -1365,10 +1318,10 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_vlngr")
-startLight = SubResource("Resource_p4wax")
-endEnvironment = SubResource("Resource_7isej")
-endLight = SubResource("Resource_notbd")
+startEnvironment = ExtResource("38_vlngr")
+startLight = ExtResource("39_p4wax")
+endEnvironment = ExtResource("36_a74g7")
+endLight = ExtResource("37_n5fu6")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
 [node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext"]
@@ -1388,10 +1341,10 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_7isej")
-startLight = SubResource("Resource_notbd")
-endEnvironment = SubResource("Resource_vlngr")
-endLight = SubResource("Resource_p4wax")
+startEnvironment = ExtResource("36_a74g7")
+startLight = ExtResource("37_n5fu6")
+endEnvironment = ExtResource("38_vlngr")
+endLight = ExtResource("39_p4wax")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
 [node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Ext to Int2"]
@@ -1411,10 +1364,10 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("35_1x2dl")
-startEnvironment = SubResource("Resource_vlngr")
-startLight = SubResource("Resource_p4wax")
-endEnvironment = SubResource("Resource_7isej")
-endLight = SubResource("Resource_notbd")
+startEnvironment = ExtResource("38_vlngr")
+startLight = ExtResource("39_p4wax")
+endEnvironment = ExtResource("36_a74g7")
+endLight = ExtResource("37_n5fu6")
 metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
 
 [node name="AreaShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper Int to Ext2"]
@@ -1430,7 +1383,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000005, 0, 0)
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
-visible = false
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle1" instance=ExtResource("1_emjup")]
 data = {

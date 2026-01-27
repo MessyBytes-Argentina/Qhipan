@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnvironmentParameters" load_steps=5 format=3 uid="uid://c4s6sdt66h5f2"]
+
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="1_papsg"]
+[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="2_n2ksi"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+offsets = PackedFloat32Array(0, 0.05636743, 0.24634655, 0.88517743, 1)
+colors = PackedColorArray(0.035679147, 2.9550776e-05, 0.07926389, 1, 0.03839723, 0.038397145, 0.038397186, 1, 0.09380957, 0.38320085, 0.4606315, 1, 0.9872274, 0.7921966, 0.68620634, 1, 0.9896011, 0.9260117, 0.9271558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_papsg"]
+gradient = SubResource("Gradient_a74g7")
+fill_from = Vector2(0, 0.021367522)
+
+[resource]
+script = ExtResource("1_papsg")
+sky_panorama = ExtResource("2_n2ksi")
+ambient_light_color = Color(0.6, 0.38431373, 0.34901962, 1)
+glow_intensity = 0.5
+saturation = 0.7999999999999999
+color_correction = SubResource("GradientTexture2D_papsg")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
