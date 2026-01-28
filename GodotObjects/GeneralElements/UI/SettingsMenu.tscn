@@ -8,16 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://cghyvutm5ibfu" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/SoundVolumeButton.tscn" id="4_2bmqm"]
 [ext_resource type="PackedScene" uid="uid://gt346rayh13u" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/MusicVolumeButton.tscn" id="4_qf23i"]
 [ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1ytef"]
-[ext_resource type="Texture2D" uid="uid://cxkg2knw1a3o6" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/MusicHover.png" id="5_moqiu"]
 [ext_resource type="PackedScene" uid="uid://bn3a8oiupqm6a" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/HSlider.tscn" id="5_rp3o8"]
-[ext_resource type="Texture2D" uid="uid://b6a1k8f6uxuya" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/MusicDisabled.png" id="6_4dvbu"]
+[ext_resource type="Texture2D" uid="uid://cs4e3nctadyrt" path="res://Assets/Textures/Settings/Musica.png" id="7_ycww2"]
 [ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="8_3ggm8"]
+[ext_resource type="Texture2D" uid="uid://0ngd41ahergv" path="res://Assets/Textures/Settings/Musica OFF.png" id="8_qj3d8"]
 [ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="9_t1gfv"]
-[ext_resource type="Texture2D" uid="uid://ldssj00ay2qn" path="res://Assets/Textures/Buttons/IDLE.png" id="10_v8tat"]
-[ext_resource type="Texture2D" uid="uid://xs4jg4hwr8xe" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXHover.png" id="10_ycww2"]
 [ext_resource type="Script" uid="uid://bmy4rxan6ndx0" path="res://GodotObjects/GeneralElements/UI/SettingsCloseButton.gd" id="11_cqhlc"]
 [ext_resource type="Script" uid="uid://dsbdtcedvujab" path="res://GodotObjects/GeneralElements/UI/RestartLevel.gd" id="11_qf23i"]
-[ext_resource type="Texture2D" uid="uid://cg6hb3akrje5s" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/PopUps/FXDisabled.png" id="11_qj3d8"]
+[ext_resource type="Texture2D" uid="uid://ln5evk5d1bgq" path="res://Assets/Textures/Settings/Sound.png" id="12_h58lc"]
+[ext_resource type="Texture2D" uid="uid://dxdj4hn2ccpjm" path="res://Assets/Textures/Settings/Sound OFF.png" id="13_o3k8a"]
+[ext_resource type="Texture2D" uid="uid://dgjow6pqy0hky" path="res://Assets/Textures/Settings/boton generico rojo.png" id="14_ycww2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3k8a"]
 texture = ExtResource("1_ycww2")
@@ -36,11 +36,15 @@ shader_parameter/speed = 0.5
 shader_parameter/scale = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
-texture = ExtResource("10_v8tat")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+texture = ExtResource("14_ycww2")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kplp2"]
 texture = ExtResource("9_t1gfv")
@@ -124,15 +128,17 @@ _slider = NodePath("HSlider")
 bus = 2
 
 [node name="MusicVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("4_qf23i")]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(64, 4)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
 focus_neighbor_right = NodePath("../HSlider")
 focus_neighbor_bottom = NodePath("../../SFXVolumeHSlider/SoundsVolumeButton")
 focus_mode = 0
-texture_hover = ExtResource("5_moqiu")
-texture_disabled = ExtResource("6_4dvbu")
-texture_focused = ExtResource("5_moqiu")
+texture_normal = ExtResource("7_ycww2")
+texture_pressed = ExtResource("7_ycww2")
+texture_hover = ExtResource("7_ycww2")
+texture_disabled = ExtResource("8_qj3d8")
+texture_focused = ExtResource("7_ycww2")
 
 [node name="HSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("5_rp3o8")]
 layout_mode = 2
@@ -153,15 +159,17 @@ soundOnChange = ExtResource("5_1ytef")
 bus = 1
 
 [node name="SoundsVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/SFXVolumeHSlider" instance=ExtResource("4_2bmqm")]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MusicVolumeHSlider/MusicVolumeButton")
 focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
 focus_neighbor_bottom = NodePath("../../RestartLevel")
 focus_mode = 0
-texture_hover = ExtResource("10_ycww2")
-texture_disabled = ExtResource("11_qj3d8")
-texture_focused = ExtResource("10_ycww2")
+texture_normal = ExtResource("12_h58lc")
+texture_pressed = ExtResource("12_h58lc")
+texture_hover = ExtResource("12_h58lc")
+texture_disabled = ExtResource("13_o3k8a")
+texture_focused = ExtResource("12_h58lc")
 
 [node name="HSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/SFXVolumeHSlider" instance=ExtResource("5_rp3o8")]
 layout_mode = 2
@@ -223,9 +231,10 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 focus_neighbor_left = NodePath("../../Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider")
 theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_40ed2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_40ed2")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_40ed2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_40ed2")
 script = ExtResource("11_cqhlc")
 
 [node name="MarginContainer" type="MarginContainer" parent="CloseButtonMarginContainer/CloseButton"]
