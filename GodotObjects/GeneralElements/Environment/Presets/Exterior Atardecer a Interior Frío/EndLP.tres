@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_hxvt6")
 color = Color(0.975514, 0.9322049, 0.98619324, 1)
-energy = 0.08
+energy = 0.1
+angle = Vector3(0, 0, 0)
 metadata/_custom_type_script = "uid://44mc8q7u8dbc"

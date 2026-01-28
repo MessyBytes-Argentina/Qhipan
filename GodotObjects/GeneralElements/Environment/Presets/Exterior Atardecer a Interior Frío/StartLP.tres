@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_3pyw2")
+energy = 0.08
 angle = Vector3(-1.0471997, 2.6179905, 0)
 metadata/_custom_type_script = "uid://44mc8q7u8dbc"

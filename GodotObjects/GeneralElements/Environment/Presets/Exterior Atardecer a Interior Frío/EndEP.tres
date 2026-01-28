@@ -24,9 +24,10 @@ fill_to = Vector2(1, 0.41880342)
 [resource]
 script = ExtResource("1_v4p8q")
 sky_panorama = SubResource("GradientTexture2D_n5fu6")
-ambient_light_color = Color(0.408, 0.47159997, 0.48, 1)
-glow_bloom = 1.0
-brightness = 0.9
+ambient_light_color = Color(0.39073187, 0.4607336, 0.57093346, 1)
+glow_bloom = 0.6
+brightness = 0.95
+contrast = 0.95
 saturation = 0.7999999999999999
 color_correction = SubResource("GradientTexture2D_dxenn")
 metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
