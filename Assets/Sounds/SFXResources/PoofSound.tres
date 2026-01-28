@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CentralizedSoundResource" load_steps=5 format=3 uid="uid://dme8wa7pwh8ip"]
+
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_hf6jp"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_ur65n"]
+[ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/SFX/poof.ogg" id="3_obbol"]
+
+[sub_resource type="Resource" id="Resource_qu42n"]
+script = ExtResource("2_ur65n")
+sound = ExtResource("3_obbol")
+baseVolumeDB = -20.0
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[resource]
+script = ExtResource("1_hf6jp")
+soundCollection = Dictionary[ExtResource("2_ur65n"), int]({
+SubResource("Resource_qu42n"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"

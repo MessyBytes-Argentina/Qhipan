@@ -1,6 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://tlq0fen0uti3"]
+[gd_scene load_steps=8 format=3 uid="uid://tlq0fen0uti3"]
+
+[sub_resource type="Curve" id="Curve_d0jqk"]
+_data = [Vector2(0, 0.09703076), 0.0, 0.0, 0, 0]
+point_count = 1
 
 [sub_resource type="CurveTexture" id="CurveTexture_kk0va"]
+curve = SubResource("Curve_d0jqk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwrr1"]
 emission_shape = 3
@@ -10,8 +15,6 @@ initial_velocity_min = 0.03
 initial_velocity_max = 0.049999997
 velocity_limit_curve = SubResource("CurveTexture_kk0va")
 gravity = Vector3(0, 0, 0)
-damping_min = 0.001
-damping_max = 0.001
 scale_min = 0.5
 turbulence_enabled = true
 turbulence_noise_strength = 0.1

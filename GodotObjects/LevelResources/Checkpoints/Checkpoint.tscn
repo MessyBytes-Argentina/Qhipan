@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0nk04f8gsnwg" path="res://Assets/Models/CheckPoint Totem/Checkpoint-Off.png" id="2_ynn0r"]
 [ext_resource type="PackedScene" uid="uid://b5isgsobfbtmq" path="res://GodotObjects/GeneralElements/Particles/CheckpointParticles.tscn" id="3_3d0u6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="4_bsfi2"]
-[ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/Checkpoint Activated.mp3" id="4_w4bbu"]
+[ext_resource type="AudioStream" uid="uid://bcmogqao6jv7e" path="res://Assets/Sounds/SFX/Checkpoint Activated.mp3" id="4_w4bbu"]
 [ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="6_phj2c"]
 [ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="7_0rio2"]
 

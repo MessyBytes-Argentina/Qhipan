@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dfq863ccv21y0" path="res://GodotObjects/LevelResources/Props/Door/Door.gd" id="1_b1das"]
 [ext_resource type="Material" uid="uid://b3tp4pl6us037" path="res://Assets/Materials/WithCutout/GoalDoor.tres" id="3_713kq"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="3_naok6"]
-[ext_resource type="AudioStream" uid="uid://b6bul5ui0ktw4" path="res://Assets/Sounds/Fanfare.mp3" id="4_naok6"]
+[ext_resource type="AudioStream" uid="uid://b6bul5ui0ktw4" path="res://Assets/Sounds/SFX/Fanfare.mp3" id="4_naok6"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_cw5sc"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
