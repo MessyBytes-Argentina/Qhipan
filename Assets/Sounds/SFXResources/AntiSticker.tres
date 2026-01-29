@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CentralizedSoundResource" load_steps=5 format=3 uid="uid://bymjjmevmewpb"]
+
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_vnqv5"]
+[ext_resource type="AudioStream" uid="uid://vyktg12588mw" path="res://Assets/Sounds/SFX/Anti_Sticker.mp3" id="2_0c2f6"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_84b8b"]
+
+[sub_resource type="Resource" id="Resource_pihwm"]
+script = ExtResource("2_84b8b")
+sound = ExtResource("2_0c2f6")
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[resource]
+script = ExtResource("1_vnqv5")
+soundCollection = Dictionary[ExtResource("2_84b8b"), int]({
+SubResource("Resource_pihwm"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
