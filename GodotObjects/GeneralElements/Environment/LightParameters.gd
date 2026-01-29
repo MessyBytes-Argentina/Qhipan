@@ -13,7 +13,7 @@ class_name LightParameters
 ## Light specular.
 @export_range(0.0, 10.0, 0.001) var specular: float = 1.0
 ## Light angle (Straight down is (-90, 0, 0). You can spawn a DirectionalLight3D and test values to use here).
-@export_custom(PROPERTY_HINT_RANGE, "-360,360,0.1,degrees") var angle: Vector3 = Vector3(deg_to_rad(-60), deg_to_rad(150), 0)
+@export_custom(PROPERTY_HINT_RANGE, "-360,360,0.1,radians_as_degrees") var angle: Vector3 = Vector3(deg_to_rad(-60), deg_to_rad(150), 0)
 
 ## Sets sun parameters to match the ones of this object.
 func set_sun(sun: DirectionalLight3D) -> void:
