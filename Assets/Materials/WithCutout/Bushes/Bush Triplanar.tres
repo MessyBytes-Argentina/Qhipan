@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=11 format=3 uid="uid://cs3kcvpaeme27"]
+
+[ext_resource type="Material" uid="uid://d0auxqcm82ogf" path="res://Assets/Materials/WithCutout/Bushes/Arbusto Triplanar.tres" id="1_a1rro"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_vpxey"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_k6l2e"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_sn3u5"]
+[ext_resource type="Texture2D" uid="uid://d1tx1ykhpk5fp" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_albedo.png" id="5_uehnl"]
+[ext_resource type="Texture2D" uid="uid://b2nqlur6k41pr" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_heightmap.png" id="6_gl0pf"]
+[ext_resource type="Texture2D" uid="uid://b7oav4ywpqpg0" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_normal.png" id="7_ts00b"]
+[ext_resource type="Texture2D" uid="uid://f3wdnkscgfpa" path="res://Assets/Materials/WithCutout/Bushes/Bush Standard_orm.png" id="8_om8b8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_im827"]
+albedo_texture = ExtResource("5_uehnl")
+roughness_texture = ExtResource("8_om8b8")
+normal_enabled = true
+normal_texture = ExtResource("7_ts00b")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("6_gl0pf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4hmb"]
+albedo_texture = ExtResource("5_uehnl")
+roughness_texture = ExtResource("8_om8b8")
+normal_enabled = true
+normal_texture = ExtResource("7_ts00b")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("6_gl0pf")
+
+[resource]
+script = ExtResource("3_sn3u5")
+topSurfaceMaterial = SubResource("StandardMaterial3D_v4hmb")
+topSize = null
+sideSurfaceMaterial = SubResource("StandardMaterial3D_im827")
+sideSize = null
+lightGradient = ExtResource("2_k6l2e")
+fresnelGradient = ExtResource("1_vpxey")
+finalizeShaderMaterial = ExtResource("1_a1rro")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"

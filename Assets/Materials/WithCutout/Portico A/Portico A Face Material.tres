@@ -1,8 +1,12 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://rnsg2yaymfu7"]
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://rnsg2yaymfu7"]
 
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_8egcf"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_0dda2"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_ulang"]
+
+[sub_resource type="Gradient" id="Gradient_8egcf"]
+offsets = PackedFloat32Array(0.22997947, 1)
+colors = PackedColorArray(0.5981708, 0.5218161, 0.24177143, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dsofc"]
 noise_type = 2
@@ -10,9 +14,9 @@ frequency = 0.0155
 offset = Vector3(375.76, 0, 0)
 cellular_distance_function = 3
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k5wd2"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0dda2"]
 noise = SubResource("FastNoiseLite_dsofc")
-seamless = true
+color_ramp = SubResource("Gradient_8egcf")
 in_3d_space = true
 seamless_blend_skirt = 0.321
 
@@ -23,26 +27,36 @@ in_3d_space = true
 as_normal_map = true
 seamless_blend_skirt = 0.321
 
+[sub_resource type="Gradient" id="Gradient_ulang"]
+colors = PackedColorArray(0.20871013, 0.20871016, 0.20871013, 1, 1, 1, 1, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k5wd2"]
+noise = SubResource("FastNoiseLite_dsofc")
+color_ramp = SubResource("Gradient_ulang")
+in_3d_space = true
+seamless_blend_skirt = 0.321
+
 [resource]
 render_priority = 0
 shader = ExtResource("1_8egcf")
-shader_parameter/albedo = Color(0.57526517, 0.4867429, 0.32372475, 1)
+shader_parameter/albedo = Color(0.898166, 0.75464034, 0.50673246, 1)
 shader_parameter/light_gradient = ExtResource("3_ulang")
 shader_parameter/fresnel_gradient = ExtResource("2_0dda2")
 shader_parameter/texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = SubResource("NoiseTexture2D_k5wd2")
+shader_parameter/texture_albedo = SubResource("NoiseTexture2D_0dda2")
 shader_parameter/enable_normal = true
 shader_parameter/texture_normal = SubResource("NoiseTexture2D_q2ejm")
 shader_parameter/normal_scale = 1.0
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.51
-shader_parameter/metallic_specular = 1.0
-shader_parameter/metallic = 1.0
+shader_parameter/texture_orm = SubResource("NoiseTexture2D_k5wd2")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.999999977648
+shader_parameter/metallic = 0.4499999899416
 shader_parameter/enable_emission = false
 shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/emission_energy_multiplier = 0.0
 shader_parameter/enable_clearcoat = false
 shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5

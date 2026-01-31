@@ -1,117 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg8x05qu5iain"]
+[gd_scene load_steps=4 format=3 uid="uid://dg8x05qu5iain"]
 
-[ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x7val"]
-[ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="2_cops7"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
-[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="3_6vik2"]
-[ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="3_y1qgw"]
-[ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="6_y1qgw"]
-
-[sub_resource type="Gradient" id="Gradient_a74g7"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x7val"]
-gradient = SubResource("Gradient_a74g7")
-
-[sub_resource type="Gradient" id="Gradient_x7val"]
-offsets = PackedFloat32Array(0.49694502, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.45452422, 0.45452428, 0.45452422, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cops7"]
-gradient = SubResource("Gradient_x7val")
-width = 1920
-height = 1082
-fill_from = Vector2(1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_27sqf"]
-shader = ExtResource("2_cops7")
-shader_parameter/startPanorama = ExtResource("3_6vik2")
-shader_parameter/goalPanorama = SubResource("GradientTexture2D_cops7")
-shader_parameter/panoramaProgress = 0.0
-shader_parameter/skyContribution = 0.75
-
-[sub_resource type="Sky" id="Sky_np472"]
-sky_material = SubResource("ShaderMaterial_27sqf")
-
-[sub_resource type="Environment" id="Environment_auyxr"]
-resource_local_to_scene = true
-background_mode = 2
-background_color = Color(0.384314, 0.454902, 0.54902, 1)
-background_energy_multiplier = 0.6
-sky = SubResource("Sky_np472")
-ambient_light_source = 2
-ambient_light_color = Color(0.6016149, 0.382828, 0.34926346, 1)
-ambient_light_energy = 1.5
-tonemap_mode = 2
-tonemap_exposure = 1.5
-ssao_enabled = true
-ssao_radius = 2.0
-ssao_intensity = 4.0
-ssil_enabled = true
-sdfgi_energy = 7.275
-glow_enabled = true
-glow_levels/4 = 1.0
-glow_levels/5 = 3.0
-glow_strength = 0.4
-glow_bloom = 0.5
-glow_blend_mode = 1
-fog_mode = 1
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_begin = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_temporal_reprojection_amount = 0.95
-adjustment_enabled = true
-adjustment_brightness = 0.9
-adjustment_contrast = 1.01
-adjustment_color_correction = SubResource("GradientTexture2D_x7val")
-
-[sub_resource type="Gradient" id="Gradient_dh8ep"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_achkf"]
-gradient = SubResource("Gradient_dh8ep")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x103a"]
-shader = ExtResource("3_y1qgw")
-shader_parameter/startTexture = SubResource("GradientTexture2D_achkf")
-shader_parameter/goalTexture = SubResource("GradientTexture2D_achkf")
-shader_parameter/textureProgress = 0.0
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
+[ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="3_uc5ix"]
 
 [node name="Art Main Test" type="Node3D"]
 
-[node name="EnvironmentObjects" type="Node3D" parent="." groups=["EnvironmentObjects"]]
-script = ExtResource("1_x7val")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentObjects"]
-unique_name_in_owner = true
-environment = SubResource("Environment_auyxr")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
-unique_name_in_owner = true
-transform = Transform3D(1.0000002, 0, 0, 0, 0.98480743, 0.1736481, 0, -0.17364813, 0.9848073, 0, 0, 0)
-light_energy = 0.08
-shadow_enabled = true
-shadow_reverse_cull_face = true
-shadow_caster_mask = 4294967293
-
-[node name="ColorCorrectionSubViewport" type="SubViewport" parent="EnvironmentObjects"]
-unique_name_in_owner = true
-disable_3d = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="ColorCorrectionTextureRect" type="TextureRect" parent="EnvironmentObjects/ColorCorrectionSubViewport"]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_x103a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_achkf")
-expand_mode = 1
-
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.6, 0.19999999, 5.5)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.5, 0.69019115, 5.5)
 
-[node name="Tutohub-connective" parent="." instance=ExtResource("6_y1qgw")]
+[node name="EnvironmentObjects" parent="." instance=ExtResource("3_feuco")]
+
+[node name="Tutohub-connective" parent="." instance=ExtResource("3_uc5ix")]
