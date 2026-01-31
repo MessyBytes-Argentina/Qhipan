@@ -110,6 +110,7 @@ func _test_environment() -> void:
 	if not environmentScene.is_node_ready(): await environmentScene.ready
 	environment = environmentScene.environment
 	sun = environmentScene.sun
+	sun.rotation = -rotation
 	colorCorrection = environmentScene.colorCorrectionMaterial
 	lerp_environment(testProgress)
 

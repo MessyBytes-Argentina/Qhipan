@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
@@ -134,6 +134,7 @@ void fragment() {
 	// Albedo & Alpha
 	vec4 base_albedo = texture(texture_albedo, base_uv);
 	ALBEDO = base_albedo.rgb * albedo.rgb;
+	ALPHA = base_albedo.a * albedo.a;
 
 	// ORM Sampler
 	vec4 base_ORM = texture(texture_orm, base_uv);

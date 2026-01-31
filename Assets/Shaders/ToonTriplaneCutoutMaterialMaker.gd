@@ -12,6 +12,8 @@ const ttcaShader: String = "uid://wr3awr1nsjmu"
 const dttcShader: String = "uid://d70se0jvv0xj"
 ## The ToonCutout shader script.
 const tcShader: String = "uid://dsnxr718iap3n"
+## The ToonCutout shader with alpha script.
+const tcaShader: String = "uid://omq16r2m5a6"
 ## The ToonWall shader script.
 const twShader: String = "uid://c78mbher83fha"
 ## The list of texture types.
@@ -24,7 +26,7 @@ const specialValueParameters: Array[String] = ["metallic", "metallic_specular", 
 const excludeToggleParameters: Array[String] = ["roughness", "metallic"]
 
 ## The types of materials to make.
-enum MaterialModes {GRIDMAP, DECAL, TRIPLANE_WITH_ALPHA, WALL, OTHER}
+enum MaterialModes {GRIDMAP, DECAL, TRIPLANE_WITH_ALPHA, WALL, OTHER, OTHER_WITH_ALPHA}
 ## The currently chosen material type.
 @export var materialMode: MaterialModes = MaterialModes.GRIDMAP:
 	set(value):
@@ -121,7 +123,7 @@ func _get_property_list() -> Array[Dictionary]:
 					"hint": PROPERTY_HINT_RESOURCE_TYPE,
 					"hint_string": "Texture2D",
 				})
-		MaterialModes.OTHER:
+		MaterialModes.OTHER, MaterialModes.OTHER_WITH_ALPHA:
 			props.append({
 				"name": "surfaceMaterial",
 				"type": TYPE_OBJECT,
@@ -208,6 +210,10 @@ func make_material() -> void:
 			finalizeShaderMaterial.set_shader_parameter("fade_color_down", fadeColorDown)
 		MaterialModes.OTHER:
 			finalizeShaderMaterial.shader = load(tcShader)
+			make_TC_material()
+			finalizeShaderMaterial.set_shader_parameter("uv1_scale", UVSize)
+		MaterialModes.OTHER_WITH_ALPHA:
+			finalizeShaderMaterial.shader = load(tcaShader)
 			make_TC_material()
 			finalizeShaderMaterial.set_shader_parameter("uv1_scale", UVSize)
 

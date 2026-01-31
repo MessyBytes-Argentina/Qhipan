@@ -1,59 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7st877p5uct1"]
+[gd_scene load_steps=11 format=3 uid="uid://b7st877p5uct1"]
 
 [ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x103a"]
 [ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartEP.tres" id="2_7kbhl"]
-[ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="2_dh8ep"]
 [ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="2_wfn3p"]
 [ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartLP.tres" id="3_boqcf"]
-[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="3_dh8ep"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_7kbhl"]
-viewport_path = NodePath("ColorCorrectionSubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
-shader = ExtResource("2_dh8ep")
-shader_parameter/startPanorama = ExtResource("3_dh8ep")
-shader_parameter/panoramaProgress = 0.0
-shader_parameter/skyContribution = 0.75
-
-[sub_resource type="Sky" id="Sky_k8jv3"]
-sky_material = SubResource("ShaderMaterial_jqc3i")
-
-[sub_resource type="Environment" id="Environment_boqcf"]
-resource_local_to_scene = true
-background_mode = 2
-background_color = Color(0.46666667, 0.53333336, 0.6, 1)
-background_energy_multiplier = 0.6
-sky = SubResource("Sky_k8jv3")
-ambient_light_source = 2
-ambient_light_color = Color(0.46666667, 0.53333336, 0.6, 1)
-ambient_light_energy = 1.5
-tonemap_mode = 2
-tonemap_exposure = 1.5
-ssao_enabled = true
-ssao_radius = 2.0
-ssao_intensity = 4.0
-ssil_enabled = true
-sdfgi_energy = 7.275
-glow_enabled = true
-glow_levels/4 = 1.0
-glow_levels/5 = 3.0
-glow_intensity = 0.5
-glow_strength = 0.4
-glow_bloom = 0.5
-glow_blend_mode = 1
-fog_mode = 1
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_begin = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_temporal_reprojection_amount = 0.95
-adjustment_enabled = true
-adjustment_brightness = 0.8
-adjustment_contrast = 0.905
-adjustment_saturation = 0.9
-adjustment_color_correction = SubResource("ViewportTexture_7kbhl")
+[ext_resource type="Environment" uid="uid://bjvxddp7ihpwv" path="res://GodotObjects/GeneralElements/Environment/DefaultEnvironment.tres" id="4_achkf"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
 offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
@@ -80,7 +31,7 @@ startLight = ExtResource("3_boqcf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
-environment = SubResource("Environment_boqcf")
+environment = ExtResource("4_achkf")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 unique_name_in_owner = true
