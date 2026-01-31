@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=4 format=3 uid="uid://jyf2ifcvqb52"]
+
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_0brr2"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_ar384"]
+[ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_koauu"]
+
+[resource]
+script = ExtResource("3_koauu")
+topSize = null
+sideSize = null
+lightGradient = ExtResource("2_ar384")
+fresnelGradient = ExtResource("1_0brr2")
+metadata/_custom_type_script = "uid://duwq10b1isvmn"
