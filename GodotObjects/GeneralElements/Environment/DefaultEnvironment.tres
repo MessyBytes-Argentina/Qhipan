@@ -53,5 +53,5 @@ volumetric_fog_density = 0.0
 volumetric_fog_temporal_reprojection_amount = 0.95
 adjustment_enabled = true
 adjustment_brightness = 0.8
-adjustment_contrast = 0.905
+adjustment_contrast = 0.9
 adjustment_saturation = 0.9
