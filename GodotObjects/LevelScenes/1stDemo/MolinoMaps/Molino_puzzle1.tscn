@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dsdruex0h4hcf"]
+[gd_scene load_steps=53 format=4 uid="uid://dsdruex0h4hcf"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_pkd4n"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_80foe"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="6_kiax6"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="7_yc23e"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="8_1k3do"]
-[ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="8_w44tt"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="11_1k3do"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="11_yc23e"]
 [ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Arena.tres" id="13_lcx8y"]
@@ -361,19 +360,14 @@ transform = Transform3D(-6.928255e-08, 0, 1, 0, 1.59, 0, -1.585, 0, -4.371139e-0
 
 [node name="Pedestal" type="Node3D" parent="."]
 
-[node name="PlaceholderMetaprogressionBlock" parent="Pedestal" instance=ExtResource("8_w44tt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, -0.5, 1)
-forceScale = Vector3(0.5, 1, 1)
+[node name="ChackanaDoor" parent="Pedestal" instance=ExtResource("7_yc23e")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 11.699999, -0.5, 1.0000002)
 pedestalName = "MolinoPuzzle1"
 
-[node name="ChackanaDoor" parent="Pedestal/PlaceholderMetaprogressionBlock" instance=ExtResource("7_yc23e")]
-transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 3.2999992, 0, 2.3841858e-07)
+[node name="SmallPedestalKey" parent="Pedestal" node_paths=PackedStringArray("sceneParent") instance=ExtResource("8_1k3do")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.7, 0.5, -1.4999998)
 pedestalName = "MolinoPuzzle1"
-
-[node name="SmallPedestalKey" parent="Pedestal/PlaceholderMetaprogressionBlock" node_paths=PackedStringArray("sceneParent") instance=ExtResource("8_1k3do")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.6999998, 1, -2.4999998)
-pedestalName = "MolinoPuzzle1"
-sceneParent = NodePath("../../..")
+sceneParent = NodePath("../..")
 
 [node name="Props" type="Node3D" parent="."]
 
@@ -398,11 +392,12 @@ multimesh = SubResource("MultiMesh_yc23e")
 [node name="Wood Fence" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, -0.5, 0.1)
 curve = SubResource("Curve3D_yc23e")
-colliderSize = Vector2(0.3, 2)
+colliderSize = Vector2(0.1, 2)
 
 [node name="Wood Fence2" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, -0.5, 0.90000004)
 curve = SubResource("Curve3D_1k3do")
+colliderSize = Vector2(0.1, 0.6)
 
 [node name="Wood Fence3" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, -0.5, 1.9000001)
