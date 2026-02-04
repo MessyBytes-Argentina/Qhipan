@@ -1485,6 +1485,7 @@ mesh = SubResource("QuadMesh_c42h5")
 surface_material_override/0 = SubResource("ShaderMaterial_064yy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("CapsuleShape3D_cphfr")
 
 [node name="CameraPivot" type="Node3D" parent="."]

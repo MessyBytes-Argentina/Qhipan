@@ -184,7 +184,7 @@ var currentCoolSticker: PocketSticker
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	poof.emit_particles()
+	#poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="15_v4tlg"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="17_3dbpw"]
 [ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="17_fuaq1"]
-[ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="19_25jhb"]
+[ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce.tscn" id="19_25jhb"]
 [ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Demo Puente Empujable.tres" id="20_4mad4"]
 [ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="21_v3gnl"]
 [ext_resource type="Script" uid="uid://btyn627sngesl" path="res://GodotObjects/LevelResources/ObjectHider/ObjectHider.gd" id="21_v4tlg"]

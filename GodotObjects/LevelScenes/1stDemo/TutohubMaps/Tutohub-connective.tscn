@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=179 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -43,7 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="42_7isej"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="43_8f3oy"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="44_notbd"]
-[ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://Assets/Models/Sconce/Sconce.tscn" id="44_y25gd"]
+[ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce.tscn" id="44_y25gd"]
 [ext_resource type="Material" uid="uid://4ig4u2r5g2k7" path="res://Assets/Materials/God Ray Presets/40 Face Cone Purple-ColdCyan.tres" id="45_fdnxg"]
 [ext_resource type="Script" uid="uid://cdqgatbj6wnfu" path="res://GodotObjects/GeneralElements/Particles/AmbientParticles.gd" id="46_hjwt0"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="47_6q771"]
@@ -61,6 +61,7 @@
 [ext_resource type="ArrayMesh" uid="uid://qdr1g2v7ib61" path="res://Assets/Models/Fences/Bush/Bush Node.obj" id="59_atf36"]
 [ext_resource type="ArrayMesh" uid="uid://b5a10cdw2jj2y" path="res://Assets/Models/Fences/Bush/Bush Segment 1.obj" id="60_6q771"]
 [ext_resource type="ArrayMesh" uid="uid://dc31m1gtvlpb2" path="res://Assets/Models/Fences/Bush/Bush Segment 2.obj" id="61_v3cjv"]
+[ext_resource type="PackedScene" uid="uid://clex35ja8dihj" path="res://GodotObjects/GeneralElements/Particles/sand.tscn" id="62_dxenn"]
 
 [sub_resource type="Resource" id="Resource_3flle"]
 script = ExtResource("3_ihy67")
@@ -2431,3 +2432,6 @@ surface_material_override/0 = ExtResource("58_dxenn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, -2.4, 16.2)
 mesh = ExtResource("61_v3cjv")
 surface_material_override/0 = ExtResource("58_dxenn")
+
+[node name="Sand" parent="." instance=ExtResource("62_dxenn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -2.5)

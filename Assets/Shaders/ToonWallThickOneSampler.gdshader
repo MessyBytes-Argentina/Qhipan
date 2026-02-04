@@ -159,7 +159,7 @@ void fragment() {
 	// Albedo & Alpha
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
 	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
-	ALPHA = step(0.01, ALPHA);
+	ALPHA = step(0.5, ALPHA);
 	vec4 normalPositions = vec4(worldVector.xz + world_normal.xz, worldVector.xz - world_normal.xz);
 	vec2 distances = vec2(distance(normalPositions.xy, globalPlayerPosition.xz), distance(normalPositions.zw, globalPlayerPosition.xz));
 	bool normalCheckToPlayer = distances.x > distances.y;

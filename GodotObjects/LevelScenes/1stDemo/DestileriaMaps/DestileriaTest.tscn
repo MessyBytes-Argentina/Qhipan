@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://0n8sdlpp3438"]
+
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_kfq66"]
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="2_n5jbq"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_vdlrj"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="3_hi3ei"]
+[ext_resource type="PackedScene" uid="uid://cfha4i1lvvl3r" path="res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/MainDestileria.tscn" id="5_ttoxf"]
+
+[node name="MainDemo" type="Node3D"]
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_kfq66")]
+startEnvironment = ExtResource("2_n5jbq")
+startLight = ExtResource("3_hi3ei")
+
+[node name="Player" parent="." instance=ExtResource("2_vdlrj")]
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 12, 1.5, -0.5)
+
+[node name="MainDestileria" parent="." instance=ExtResource("5_ttoxf")]

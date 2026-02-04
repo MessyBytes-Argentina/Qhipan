@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://bba7fgwsefvpt"]
 
 [ext_resource type="Script" uid="uid://d3w0wk3wy7c4n" path="res://GodotObjects/GeneralElements/GeneralLights/GeneralLights.gd" id="1_a4uyk"]
-[ext_resource type="Animation" uid="uid://b7y1r0i10pcbd" path="res://Assets/Models/Sconce/Sconce Loop Animation.res" id="1_ds5qq"]
+[ext_resource type="Animation" uid="uid://b7y1r0i10pcbd" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce Loop Animation.res" id="1_ds5qq"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_vounl"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_vny51"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_sq1fn"]
