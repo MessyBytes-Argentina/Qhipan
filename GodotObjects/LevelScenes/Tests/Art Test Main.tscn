@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
-[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndEP.tres" id="3_x7val"]
-[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndLP.tres" id="4_cops7"]
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="3_x7val"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="4_cops7"]
 [ext_resource type="PackedScene" uid="uid://ds40hobe7ugw5" path="res://GodotObjects/LevelScenes/1stDemo/DemoHub-Connective.tscn" id="5_y1qgw"]
 
 [node name="Art Main Test" type="Node3D"]

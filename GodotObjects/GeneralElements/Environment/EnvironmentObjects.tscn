@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7st877p5uct1"]
 
 [ext_resource type="Script" uid="uid://dy11xpv0yfsh8" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.gd" id="1_x103a"]
-[ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartEP.tres" id="2_7kbhl"]
+[ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerEnvironment.tres" id="2_7kbhl"]
 [ext_resource type="Shader" uid="uid://b4wqg7l02cytq" path="res://Assets/Shaders/TextureMixer.gdshader" id="2_wfn3p"]
-[ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartLP.tres" id="3_boqcf"]
+[ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerLight.tres" id="3_boqcf"]
 [ext_resource type="Environment" uid="uid://bjvxddp7ihpwv" path="res://GodotObjects/GeneralElements/Environment/DefaultEnvironment.tres" id="4_achkf"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
