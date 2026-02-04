@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=29 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -7,18 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="3_viyk7"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="4_viyk7"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="5_osh58"]
+[ext_resource type="PackedScene" uid="uid://g4nvui5dhffk" path="res://Assets/Models/Fan Machines/fan_placement.tscn" id="7_6fuqp"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="8_32ax7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
-size = Vector3(1, 1, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qx7fy"]
-size = Vector3(1, 1, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j8nl5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nal7q"]
-size = Vector3(1, 1, 3)
+[ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="8_caj7f"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="9_6fuqp"]
+[ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="10_kapp8"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="13_5cjl0"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="14_6fuqp"]
+[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="14_caj7f"]
 
 [sub_resource type="Curve3D" id="Curve3D_osh58"]
 _data = {
@@ -33,84 +29,72 @@ size = Vector3(2, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1jej"]
 size = Vector3(2, 1, 2)
 
-[sub_resource type="Curve3D" id="Curve3D_32ax7"]
+[sub_resource type="Curve3D" id="Curve3D_bvpi6"]
+closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_osh58"]
-size = Vector3(1, 1, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r1tyr"]
-size = Vector3(2, 1, 3)
-
-[sub_resource type="Curve3D" id="Curve3D_r1tyr"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 4, 0, -2, 0, 0, 0, 0, 0, 0, 4, 0, -5),
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, -0.3000002, 0, -0.100000024, 0, 0, 0, 0.2, 0, 0.25, 0.6999998, 0, -0.100000024, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, 0, 0, 0.5),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_r1tyr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.10000038, 0, 0, 0, 0, 0, 0, 0, 0, 0.10000038, 0, -0.9, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -0.9, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_6fuqp"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -13, 0, 0, 0, 0, 0, 0, 5, 0, -13),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_kapp8"]
+_data = {
+"points": PackedVector3Array(-1, 0, 0, 0, 0, 0, -5.0000005, 0, -0.6100007, 0, 0, 0, 0, 0, 0, 2.9099998, 0, -0.61, 0, 0, 0, 0, 0, 0, 2.9100003, 0, 3.4099998, 0, 0, 0, 0, 0, 0, 1.9, 0, 3.4099998, 0, 0, 0, 0, 0, 0, -3.1, 0, 8.45, 0, 0, 0, 0, 0, 0, -8, 0, 8.49),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_5cjl0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.29661018, 0.31465036), 0.0, 0.0, 0, 0, Vector2(1, 0.76914537), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_kq3d6"]
+_data = [Vector2(0, 0), 0.0, 2.0328138, 0, 0, Vector2(1, 1), 0.51076627, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx7fy"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8nl5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nal7q"]
+size = Vector3(1, 1, 3)
 
 [node name="Molino_puzzle2" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_ovbv4")]
 data = {
-"cells": PackedInt32Array(-131073, 0, 114, -131073, 65535, 114, -196608, 65535, 114, -196608, 0, 114, -196607, 0, 114, -196607, 65535, 114, -196606, 65535, 114, -196606, 0, 114, -196605, 65535, 114, -196605, 0, 114, -196604, 0, 114, -196604, 65535, 114, -131073, 1, 114, -196608, 1, 114, -196607, 1, 114, -196606, 1, 114, -196605, 1, 114, -196604, 1, 114, -196603, 1, 114, -196603, 0, 114, -196603, 65535, 114, -196603, 65532, 114, -196603, 65531, 114, -196603, 65530, 114, -196603, 65534, 114, -196603, 65533, 114, -196603, 65529, 114, -196602, 1, 114, -196601, 1, 114, -196599, 1, 114, -196598, 1, 114, -196597, 1, 114, -196597, 65529, 114, -196602, 65529, 114, -196601, 65529, 114, -196600, 65529, 114, -196599, 65529, 114, -196598, 65529, 114, -196602, 0, 114, -196602, 65535, 114, -196602, 65534, 114, -196602, 65533, 114, -196602, 65532, 114, -196602, 65530, 114, -196602, 65531, 114, -196601, 65530, 114, -196600, 65530, 655379, -196599, 65534, 114, -196598, 65534, 114, -65531, 65534, 655394, -65531, 65533, 655394, -65531, 65532, 655394, -65531, 65529, 655394, -65530, 65529, 655394, -65529, 65529, 655394, -65528, 65529, 655394, -65527, 65529, 655394, -65526, 65529, 655394, -65525, 65529, 655394, 65541, 65529, 655394, 196613, 65529, 655394, 327685, 65529, 655394, 458757, 65529, 655394, 65542, 65529, 655394, 65543, 65529, 655394, 65544, 65529, 655394, 65545, 65529, 655394, 65546, 65529, 655394, 65547, 65529, 655394, 196618, 65529, 655394, 196619, 65529, 655394, 196616, 65529, 655394, 196615, 65529, 655394, 196614, 65529, 655394, 327688, 65529, 655394, 327687, 65529, 655394, 327686, 65529, 655394, 327690, 65529, 655394, 327691, 65529, 655394, 65545, 65531, 655394, 65545, 65528, 655394, 65545, 65527, 655394, 327689, 65535, 34, 458763, 65529, 34, 458762, 65529, 34, 458760, 65529, 34, 458759, 65529, 34, 458758, 65529, 34, -327675, 1, 2, -327675, 0, 2, -327675, 65535, 2, -327675, 65534, 2, -327675, 65533, 2, -327675, 65532, 2, -327675, 65531, 2, -327675, 65530, 2, -327675, 65529, 2, -327674, 1, 2, -327673, 1, 2, -327672, 1, 2, -327671, 1, 2, -327670, 1, 2, -327669, 1, 2, -327669, 0, 2, -327669, 65535, 2, -327670, 0, 2, -327671, 0, 2, -327672, 0, 2, -327673, 0, 2, -327674, 0, 2, -327674, 65535, 2, -327673, 65535, 2, -327672, 65535, 2, -327671, 65535, 2, -327670, 65535, 2, -327670, 65534, 2, -327669, 65534, 2, -327671, 65534, 2, -327672, 65534, 2, -327673, 65534, 2, -327674, 65534, 2, -327674, 65533, 2, -327673, 65533, 2, -327672, 65533, 2, -327671, 65533, 2, -327670, 65533, 2, -327669, 65533, 2, -327669, 65532, 2, -327670, 65532, 2, -327671, 65532, 2, -327672, 65532, 2, -327673, 65532, 2, -327674, 65532, 2, -327674, 65531, 2, -327673, 65531, 2, -327672, 65531, 2, -327671, 65531, 2, -327670, 65531, 2, -327669, 65531, 2, -327669, 65530, 2, -327670, 65530, 2, -327671, 65530, 2, -327672, 65530, 2, -327673, 65530, 2, -327674, 65530, 2, -327674, 65529, 2, -327673, 65529, 2, -327672, 65529, 2, -327671, 65529, 2, -327670, 65529, 2, -327669, 65529, 2, -196599, 65535, 34, -65527, 65535, 34, 65545, 65535, 34, 196617, 65535, 34, 458762, 1, 34, 458761, 1, 34, 458761, 65535, 34, 458761, 0, 34, 458762, 0, 34, -65523, 65532, 655394, -65523, 65533, 655394, -65523, 65534, 655394, -65523, 65535, 655394, -65523, 0, 655394, -65523, 1, 655394, 65549, 65532, 655394, 65549, 65533, 655394, 65549, 65534, 655394, 65549, 65535, 655394, 65549, 0, 655394, 65549, 1, 655394, 196621, 65532, 34, 196621, 65533, 655394, 196621, 65534, 655394, 196621, 65535, 655394, 196621, 0, 655394, 196621, 1, 655394, 327693, 65533, 655394, 327693, 65534, 655394, 327693, 65535, 655394, 327693, 0, 655394, 327693, 1, 655394, 458765, 65532, 34, 458765, 65533, 34, 458765, 65534, 34, 458765, 65535, 34, 458765, 0, 34, 458765, 1, 34, 458766, 65532, 34, 458766, 65533, 34, 458766, 65534, 34, 458766, 65535, 34, 458766, 0, 34, 458766, 1, 34, 458764, 1, 34, 458763, 1, 34, 458763, 0, 34, 458764, 0, 34, -65523, 65531, 34, -65523, 65530, 34, -65523, 65529, 34, -65524, 65529, 34, 65549, 65531, 34, 65549, 65530, 34, 65549, 65529, 34, 65548, 65529, 34, 196621, 65531, 34, 196621, 65530, 34, 196621, 65529, 34, 196620, 65529, 34, 327693, 65531, 34, 327693, 65530, 34, 327693, 65529, 34, 327692, 65529, 34, 458765, 65531, 34, 458765, 65530, 34, 458765, 65529, 34, 458764, 65529, 34, 589837, 65530, 34, 589837, 65529, 34, 589836, 65529, 34, 589835, 65529, 34, 589834, 65529, 34, -196597, 65534, 114, -196596, 65534, 114, -196596, 65532, 114, -196596, 65531, 114, -196596, 65529, 114, -196595, 65529, 114, -196595, 65530, 114, -196595, 65531, 114, -196595, 65532, 114, -196595, 65533, 114, -196595, 65534, 114, -196595, 65535, 114, -196595, 0, 114, -196595, 1, 114, -196596, 1, 114, -327668, 65535, 2, -327668, 0, 2, -327668, 1, 2, -327667, 0, 2, -327667, 65535, 2, -327667, 65534, 2, -327667, 65533, 2, -327667, 65532, 2, -327667, 65531, 2, -327667, 65530, 2, -327668, 65530, 2, -327668, 65531, 2, -327668, 65532, 2, -327668, 65533, 2, -327668, 65534, 2, -327667, 65529, 2, -327668, 65529, 2, -327667, 1, 2, 65545, 65526, 34, 720905, 65524, 18, 720906, 65524, 18, 720906, 65525, 18, 720906, 65526, 18, 720905, 65526, 18, 720904, 65526, 18, 720904, 65525, 18, 720904, 65524, 18, 458762, 65535, 34, 458763, 65535, 34, 458764, 65535, 34, -196596, 65530, 114, -196597, 65530, 114, -196597, 65531, 114, -196597, 65532, 114)
+"cells": PackedInt32Array(-131073, 0, 114, -131073, 65535, 114, -196608, 65535, 114, -196608, 0, 114, -196607, 0, 114, -196607, 65535, 114, -196606, 65535, 114, -196606, 0, 114, -196605, 65535, 114, -196605, 0, 114, -196604, 0, 114, -196604, 65535, 114, -131073, 1, 114, -196608, 1, 114, -196607, 1, 114, -196606, 1, 114, -196605, 1, 114, -196604, 1, 114, -196603, 1, 114, -196603, 0, 114, -196603, 65535, 114, -196603, 65532, 114, -196603, 65531, 114, -196603, 65530, 114, -196603, 65534, 114, -196603, 65533, 114, -196603, 65529, 114, -196602, 1, 114, -196601, 1, 114, -196599, 1, 114, -196598, 1, 114, -196597, 1, 114, -196597, 65529, 114, -196602, 65529, 114, -196601, 65529, 114, -196600, 65529, 114, -196599, 65529, 114, -196598, 65529, 114, -196602, 0, 114, -196602, 65535, 114, -196602, 65534, 114, -196602, 65533, 114, -196602, 65532, 114, -196602, 65530, 114, -196602, 65531, 114, 65545, 65527, 1048610, -327669, 0, 2, -327669, 65535, 2, -327670, 0, 2, -327671, 0, 2, -327672, 0, 2, -327673, 65535, 2, -327672, 65535, 2, -327671, 65535, 2, -327670, 65535, 2, -327670, 65534, 2, -327669, 65534, 2, -327671, 65534, 2, -327672, 65534, 2, -327673, 65534, 2, -327673, 65533, 2, -327672, 65533, 2, -327671, 65533, 2, -327670, 65533, 2, -327669, 65533, 2, -327669, 65532, 2, -327670, 65532, 2, -327671, 65532, 2, -327672, 65532, 2, -327673, 65532, 2, -327672, 65531, 2, -327671, 65531, 2, -327670, 65531, 2, -327669, 65531, 2, 458762, 1, 1441826, 458761, 1, 1441826, -196596, 65529, 114, -196595, 65529, 114, -196595, 65530, 114, -196595, 65531, 114, -196595, 65532, 114, -196595, 65533, 114, -196595, 65535, 114, -196595, 0, 114, -196595, 1, 114, -196596, 1, 114, 65545, 65526, 1048610, -196596, 65530, 114, -196597, 65530, 114, -131073, 65534, 114, -196608, 65534, 114, -196607, 65534, 114, -196606, 65534, 114, -196605, 65534, 114, -196604, 65534, 114, -327670, 65530, 2, -327671, 65530, 2, -327668, 0, 2, -327668, 65535, 2, -327668, 65533, 2, -327672, 1, 2, -327673, 0, 2, -327673, 65531, 2, -196608, 65533, 117, -196607, 65532, 117, -196606, 65531, 117, -196605, 65530, 117, -196604, 65529, 117, -196607, 65533, 114, -196606, 65533, 114, -196605, 65533, 114, -196604, 65533, 114, -196604, 65532, 114, -196605, 65532, 114, -196606, 65532, 114, -196604, 65531, 114, -196605, 65531, 114, -196604, 65530, 114, -327672, 65530, 2, -196601, 65532, 655475, -196601, 65533, 655475, -196601, 65534, 655475, -327673, 65530, 655362, -196596, 65531, 1048690, -196597, 65531, 1048690, -196596, 65535, 1048690, -196597, 65535, 1048690, -196598, 65535, 1048690, -327668, 65532, 1048578, -327668, 65534, 1048578, -196596, 65533, 1048690, -196597, 65533, 1048690, -196597, 65532, 1048690, -196596, 65532, 1048692, -196599, 65533, 6, -196600, 65533, 1048582, -196600, 65534, 655366, -196596, 65534, 1048582, -196598, 65533, 655366, -196598, 65532, 1048582, -196598, 65530, 655366, -196601, 0, 1441798, -196601, 65535, 6, -196601, 65531, 6, -196596, 0, 655366, -196598, 0, 6, -196599, 0, 1048582, -196601, 65530, 655366, -196599, 65530, 1441798, -196600, 65530, 1048583, 131081, 65531, 1048612, 10, 65532, 1441835, 8, 65532, 655403, 10, 65530, 43, 8, 65530, 1048619, 10, 65531, 655402, 8, 65531, 42, 9, 65532, 1048618, 9, 65530, 1441834, 131082, 65531, 1441828, 131081, 65532, 1441828, 131081, 65530, 1441828, 131080, 65531, 1441828, 131080, 65530, 40, 131082, 65530, 1441832, 131082, 65532, 655400, 131080, 65532, 1048616, 65545, 65528, 1048610, -196599, 65535, 1048692, 327690, 1, 1441834, 327691, 1, 1441834, 327692, 1, 1441834, 458763, 1, 1441826, 458764, 1, 1441826, 524301, 65530, 1441828, 524301, 65531, 1441828, 524301, 65532, 1441828, 524301, 65533, 1441828, 524301, 65534, 1441828, 524301, 65535, 1441828, 524301, 0, 1441828, 524300, 0, 1441828, 524299, 0, 1441828, 524298, 0, 1441828, 524297, 0, 1441828, 393229, 65530, 42, 393229, 65531, 42, 393229, 65532, 42, 393229, 65533, 42, 393229, 65534, 42, 393229, 65535, 42, 393228, 0, 1441834, 393227, 0, 1441834, 393226, 0, 1441834, 393225, 0, 1441834, -327667, 65534, 655362, -196595, 65534, 6, 327689, 1, 1441834, 524301, 1, 1441828, 393229, 0, 655406, 393229, 1, 1441838, 327693, 1, 655406, 327693, 0, 1048619, 458765, 1, 1048612, 65544, 65526, 1048610, 65544, 65527, 34, 65544, 65528, 34, 196616, 65526, 1048611, 196617, 65526, 1048611, 327688, 65525, 1048611, 327689, 65525, 1048611, 458760, 65524, 1048615, 458761, 65524, 1048615, 196616, 65525, 1048610, 196617, 65525, 1048610, 327688, 65524, 1048610, 327689, 65524, 1048610, 65544, 65525, 1441836, 65545, 65525, 1441836, 196616, 65524, 1441836, 196617, 65524, 1441836, 327688, 65523, 1441836, 327689, 65523, 1441836, 458760, 65523, 1441828, 458761, 65523, 1441828, 458761, 65522, 1441828, 458760, 65522, 1441828, 458760, 65521, 1441828, 458761, 65521, 1441828, 458761, 65520, 1441828, 458760, 65520, 1441828, -393224, 65535, 114, -393224, 0, 114, -393224, 1, 655477, -393224, 65534, 1441909)
 }
-metadata/_editor_floor_ = Vector3(0, -3, 0)
-
-[node name="ChunkLoadingHotspot-molino2entry" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.5)
-script = ExtResource("2_2x748")
-hotspotName = "Molino2_entrance"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_puzzle1.tscn"
-rootNode = NodePath("..")
-metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
-
-[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-molino2entry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-shape = SubResource("BoxShape3D_80foe")
-debug_color = Color(1, 0.64705884, 0, 0.5)
-metadata/LoadShape = true
-
-[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-molino2entry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
-shape = SubResource("BoxShape3D_qx7fy")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
-
-[node name="ChunkLoadingHotspot-molino2exit" type="Node3D" parent="." node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7, -10.5)
-script = ExtResource("2_2x748")
-hotspotName = "Molino2_exit"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_minifork.tscn"
-rootNode = NodePath("..")
-metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
-
-[node name="LoadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-molino2exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.5, 0)
-shape = SubResource("BoxShape3D_j8nl5")
-debug_color = Color(1, 0.64705884, 0, 0.5)
-metadata/LoadShape = true
-
-[node name="UnloadShape" type="CollisionShape3D" parent="ChunkLoadingHotspot-molino2exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5, 1)
-shape = SubResource("BoxShape3D_nal7q")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
+metadata/_editor_floor_ = Vector3(0, -7, 0)
 
 [node name="Stickers" type="Node3D" parent="."]
 
 [node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_osh58")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 9.5, 0, -1.5)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 9.5, 0, -0.5)
 placed = true
 sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle2"
 
 [node name="FanSticker3" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_osh58")]
-transform = Transform3D(-4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 6.5, 0, -3.5)
+transform = Transform3D(-4.371139e-08, -4.371139e-08, 1, -1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 6.3, 0, -0.5)
 placed = true
 sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle2"
@@ -123,22 +107,16 @@ originalParent = "Molino_puzzle2"
 [node name="StickerPlacements" type="Node3D" parent="."]
 
 [node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6, 0, -1.5)
-
-[node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6, 0, -2.5)
-
-[node name="Placeholder Sticker Area3" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6, 0, -3.5)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 6, 0, -0.5)
 
 [node name="Placeholder Sticker Area4" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -0.5, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -0.5, -0.5)
 
 [node name="Placeholder Sticker Area6" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -0.5, -3.5)
 
 [node name="Placeholder Sticker Area5" parent="StickerPlacements" instance=ExtResource("3_viyk7")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 9.5, 3, -1)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 9.5, 3, 0)
 
 [node name="Elevator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -0.5, 1.5)
@@ -168,36 +146,123 @@ railReference = NodePath("../PlatformRail")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
 shape = SubResource("BoxShape3D_m1jej")
 
-[node name="ExitElevator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.5, -10.5)
+[node name="Props" type="Node3D" parent="."]
 
-[node name="MovingPlatform" parent="ExitElevator" node_paths=PackedStringArray("railReference") instance=ExtResource("3_m1jej")]
-railReference = NodePath("../PlatformRail")
-isPermanent = true
+[node name="Fan Machines" type="Node3D" parent="Props"]
 
-[node name="PlatformRail" parent="ExitElevator" node_paths=PackedStringArray("platformReference") instance=ExtResource("4_viyk7")]
-curve = SubResource("Curve3D_32ax7")
-platformReference = NodePath("../MovingPlatform")
+[node name="Fan Placement" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.6, -0.5000006)
 
-[node name="BottomCaller" parent="ExitElevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_osh58")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
-railReference = NodePath("../PlatformRail")
+[node name="Fan Placement3" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.5, 2.4, -5.9604645e-07)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitElevator/BottomCaller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-shape = SubResource("BoxShape3D_osh58")
+[node name="Fan Placement2" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 9.5, -0.5, 0.099999405)
 
-[node name="TopCaller" parent="ExitElevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_osh58")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 5.5, 0)
-callTo = 1
-railReference = NodePath("../PlatformRail")
+[node name="Fan Placement4" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 13.1, -0.5, -3.5000005)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitElevator/TopCaller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-shape = SubResource("BoxShape3D_r1tyr")
+[node name="Collumns" type="Node3D" parent="Props"]
 
-[node name="Fences" type="Node3D" parent="."]
+[node name="PathExtruder" type="Path3D" parent="Props/Collumns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, -1.6, 0.100000024)
+curve = SubResource("Curve3D_bvpi6")
+script = ExtResource("8_caj7f")
+extrudeDirection = 0
+shapeThickness = 4.1
+material = ExtResource("9_6fuqp")
+collisionLayer = 1
+resolution = 2.0
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="PathExtruder3" type="Path3D" parent="Props/Collumns"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.2, -1.6, -3.4)
+curve = SubResource("Curve3D_bvpi6")
+script = ExtResource("8_caj7f")
+extrudeDirection = 0
+shapeThickness = 4.1
+material = ExtResource("9_6fuqp")
+collisionLayer = 1
+resolution = 2.0
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="PathExtruder2" type="Path3D" parent="Props/Collumns"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.2, -2.2, -4.7999997)
+curve = ExtResource("10_kapp8")
+script = ExtResource("8_caj7f")
+extrudeDirection = 0
+shapeThickness = 3.0
+material = ExtResource("9_6fuqp")
+collisionLayer = 1
+resolution = 2.0
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Fences" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.5, 1)
 
-[node name="Wood Fence" parent="Fences" instance=ExtResource("8_32ax7")]
+[node name="Wood Fence" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 curve = SubResource("Curve3D_r1tyr")
+
+[node name="Walls" type="Node3D" parent="Props"]
+
+[node name="WallGenerator" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.5, 4)
+curve = SubResource("Curve3D_6fuqp")
+script = ExtResource("13_5cjl0")
+wallHeight = 10.0
+material = ExtResource("14_caj7f")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Monte Exit" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9000022, -11.5, 1.3999987)
+curve = SubResource("Curve3D_kapp8")
+script = ExtResource("13_5cjl0")
+wallHeight = 10.0
+material = ExtResource("14_6fuqp")
+customProfileShape = SubResource("Curve_5cjl0")
+customProfileShapeDown = SubResource("Curve_kq3d6")
+customWallWidth = 2.0
+resolution = 3.0
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Widgets" type="Node3D" parent="."]
+
+[node name="ChunkLoadingHotspot-molino2entry" type="Node3D" parent="Widgets" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -2, -7.450581e-09)
+script = ExtResource("2_2x748")
+hotspotName = "Molino2_entrance"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_puzzle1.tscn"
+rootNode = NodePath("../..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2entry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+shape = SubResource("BoxShape3D_80foe")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2entry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
+shape = SubResource("BoxShape3D_qx7fy")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
+
+[node name="ChunkLoadingHotspot-molino2exit" type="Node3D" parent="Widgets" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 4.3, -16)
+script = ExtResource("2_2x748")
+hotspotName = "Molino2_exit"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_minifork.tscn"
+rootNode = NodePath("../..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.5, 0)
+shape = SubResource("BoxShape3D_j8nl5")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -5, 1)
+shape = SubResource("BoxShape3D_nal7q")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true

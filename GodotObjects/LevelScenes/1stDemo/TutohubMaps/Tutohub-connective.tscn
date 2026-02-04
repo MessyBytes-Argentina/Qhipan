@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=180 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -121,6 +121,22 @@ point_count = 5
 [sub_resource type="Curve" id="Curve_inrfn"]
 _data = [Vector2(0.220339, 0), 0.0, 2.7011652, 0, 0, Vector2(1, 1), 0.5107663, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_notbd"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, 0, 0, 0, 0, 0, 0, 0.2, 0, 0.25, 0.5, 0, 0, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_dxenn"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, 0, 0, 0, 0, 0, 0, 0.2, 0, 0.25, 0.5, 0, 0, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_p7x5o"]
 _data = {
@@ -1126,7 +1142,7 @@ sceneParent = NodePath("../../../..")
 
 [node name="PathExtruder" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1.2)
-curve = ExtResource("12_en8j3")
+curve = SubResource("Curve3D_notbd")
 script = ExtResource("13_n1n0r")
 extrudeDirection = 0
 shapeThickness = 1.75
@@ -1137,7 +1153,7 @@ metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="PathExtruder2" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Collumn Pathway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, -0.5, 1.2)
-curve = ExtResource("12_en8j3")
+curve = SubResource("Curve3D_dxenn")
 script = ExtResource("13_n1n0r")
 extrudeDirection = 0
 shapeThickness = 1.75
