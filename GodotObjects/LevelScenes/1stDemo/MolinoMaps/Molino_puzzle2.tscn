@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=54 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -19,10 +19,15 @@
 [ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="14_caj7f"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="16_4lybr"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="17_8rbat"]
+[ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="18_0y02q"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="18_coq2h"]
 [ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="19_l7nsy"]
+[ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartEP.tres" id="19_qmpux"]
 [ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="20_aeeo3"]
+[ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/StartLP.tres" id="20_ufcgp"]
 [ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="21_bqiac"]
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndEP.tres" id="21_kmm3r"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer a Interior Frío/EndLP.tres" id="22_txbe1"]
 
 [sub_resource type="Curve3D" id="Curve3D_osh58"]
 _data = {
@@ -142,6 +147,9 @@ size = Vector3(1.9, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nal7q"]
 size = Vector3(1.8000001, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvgo0"]
+size = Vector3(2.2, 1, 1)
 
 [sub_resource type="Curve" id="Curve_6dxpo"]
 _data = [Vector2(0, 0.1721484), 0.0, 0.09611068, 0, 1, Vector2(0.5679245, 0.22673202), 0.09611068, 0.0, 1, 0, Vector2(1, 0.2904129), 0.0, 0.0, 0, 0]
@@ -480,6 +488,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1000004, -2.3990004, 7.7)
 shape = SubResource("BoxShape3D_nal7q")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
+
+[node name="EnvironmentLerper" type="Area3D" parent="Widgets" groups=["EnvironmentLerpers"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.6, -14.1)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("18_0y02q")
+startEnvironment = ExtResource("19_qmpux")
+startLight = ExtResource("20_ufcgp")
+endEnvironment = ExtResource("21_kmm3r")
+endLight = ExtResource("22_txbe1")
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="Widgets/EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6000004, 0, 0)
+shape = SubResource("BoxShape3D_xvgo0")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="Widgets/EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 0, 0)
+
+[node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999996, 0, 0)
 
 [node name="Deco Chunk3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -4.499999, -0.19999987, -3.2000005)
