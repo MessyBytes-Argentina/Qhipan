@@ -134,7 +134,7 @@ func _body_exited(body: Node3D) -> void:
 
 ## Executed on every physics frame.
 func _physics_process(_delta: float) -> void:
-	if not playerInside: return
+	if not playerInside or not player or not startMarker or not endMarker: return
 	var projection: Vector3 = project_point_on_line(player.global_position, startMarker.global_position, endMarker.global_position)
 	var progress: float = clampf(inverse_lerp(0.0, startMarker.global_position.distance_to(endMarker.global_position), startMarker.global_position.distance_to(projection)), 0.0, 1.0)
 	lerp_environment(progress)

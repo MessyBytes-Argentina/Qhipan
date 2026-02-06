@@ -52,6 +52,10 @@ const gravity: float = 32
 
 ## Signal emmited when camera is zooming in or out.
 signal zooming_out(zoomingOut: bool)
+## Signal emmited when camera is about to rotate.
+signal camera_rotating(goalAngle: float)
+## Signal emmited when camera angle changes.
+signal camera_rotated(newAngle: float)
 
 ## Animation states.
 enum States {Idle, Walk, Float}
@@ -289,6 +293,7 @@ func camera_rotation_check() -> void:
 		rotateCamLeftSound.play()
 	else:
 		rotateCamRightSound.play()
+	camera_rotating.emit(cameraPivot.rotation.y + cameraRotation)
 
 ## Called when the camera finishes rotating.
 func camera_rotation_finished() -> void:
@@ -300,6 +305,7 @@ func camera_rotation_finished() -> void:
 		cameraRotationTween.kill()
 		cameraRotationTween = null
 	cubeCutout.rotatingCamera = false
+	camera_rotated.emit(cameraPivot.rotation.y)
 
 ## Checks and handles the camera zoom.
 func camera_zoom_check() -> void:

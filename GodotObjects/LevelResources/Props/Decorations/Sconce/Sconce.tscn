@@ -119,7 +119,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u02aw")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_psxnf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5psv"]
 render_priority = 0
 shader = ExtResource("1_vounl")
 shader_parameter/albedo = Color(3.32, 4.878, 4.838, 1)
@@ -179,7 +179,7 @@ colors = PackedColorArray(0.6392157, 0, 1, 1, 0.8862745, 0.7411765, 0.26666668, 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0npob"]
 gradient = SubResource("Gradient_y5ndi")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4uyk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h14oc"]
 render_priority = 2
 shader = ExtResource("8_xpaws")
 shader_parameter/pixelation = Vector2(512, 512)
@@ -292,6 +292,7 @@ shadow_mesh = SubResource("ArrayMesh_1hwok")
 script = ExtResource("1_a4uyk")
 albedo = Color(3.32, 4.878, 4.838, 1)
 emission = Color(0, 0, 0, 1)
+localWallDirection = Vector3(0, 0, 1)
 meshes = [NodePath("Crystal")]
 omniLights = [NodePath("Crystal/OmniLight3D")]
 shine = NodePath("Crystal/Shine")
@@ -304,7 +305,7 @@ autoplay = "Sconce Loop"
 
 [node name="Crystal" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_07nm2")
-surface_material_override/0 = SubResource("ShaderMaterial_psxnf")
+surface_material_override/0 = SubResource("ShaderMaterial_n5psv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Crystal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00094908476, 0.24745272, 0)
@@ -316,7 +317,7 @@ omni_attenuation = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
 layers = 2
 mesh = SubResource("QuadMesh_psxnf")
-surface_material_override/0 = SubResource("ShaderMaterial_a4uyk")
+surface_material_override/0 = SubResource("ShaderMaterial_h14oc")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_etxkd")
