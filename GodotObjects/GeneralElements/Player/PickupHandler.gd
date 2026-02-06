@@ -109,14 +109,18 @@ func do_grab() -> void:
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
 	if areaHighlight.visible:
-		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_position(placeholderArea.global_position)
-		if surface: surface.used = currentPickup
-		currentPickup.place_sticker(surface.globalPosition, surface.direction, surface.specialScale)
-		surface.node.sticker_activity()
-		surface.used = currentPickup
-		stickSound.play_sound()
+		# call animation here
 		return true
 	return false
+
+## Places the sticker on hand
+func place_sticker() -> void:
+	var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_position(placeholderArea.global_position)
+	if surface: surface.used = currentPickup
+	currentPickup.place_sticker(surface.globalPosition, surface.direction, surface.specialScale)
+	surface.node.sticker_activity()
+	surface.used = currentPickup
+	stickSound.play_sound()
 
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false, forceDrop: bool = false) -> void:
