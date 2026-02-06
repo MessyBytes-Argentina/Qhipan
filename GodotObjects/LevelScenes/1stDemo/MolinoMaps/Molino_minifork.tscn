@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=53 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_yg432"]
@@ -90,13 +90,6 @@ point_count = 2
 [sub_resource type="Curve3D" id="Curve3D_5cbxj"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_3akwu"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -544,10 +537,6 @@ curve = SubResource("Curve3D_rc3x7")
 [node name="Wood Fence3" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9)
 curve = SubResource("Curve3D_5cbxj")
-
-[node name="Wood Fence4" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.9)
-curve = SubResource("Curve3D_3akwu")
 
 [node name="Wood Fence5" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -0.05000019)
