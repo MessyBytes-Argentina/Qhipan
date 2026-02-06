@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="8_32ax7"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="8_caj7f"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="9_6fuqp"]
-[ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="10_kapp8"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="12_kapp8"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="13_5cjl0"]
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="13_8rbat"]
@@ -46,6 +45,14 @@ size = Vector3(2, 1, 2)
 closed = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, -0.3000002, 0, -0.100000024, 0, 0, 0, 0.2, 0, 0.25, 0.6999998, 0, -0.100000024, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, 0, 0, 0.5),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ufcgp"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.25, 0, -0.2, 0, 0, 0, 0, 0, 0, 0.2, 0, 0.25, 0.5, 0, 0, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, -0.2, 0, -0.25, 0, 0, 0.5),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -333,7 +340,7 @@ metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="PathExtruder2" type="Path3D" parent="Props/Collumns"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.2, -2.2, -4.7999997)
-curve = ExtResource("10_kapp8")
+curve = SubResource("Curve3D_ufcgp")
 script = ExtResource("8_caj7f")
 extrudeDirection = 0
 shapeThickness = 3.0
