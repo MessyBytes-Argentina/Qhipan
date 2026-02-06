@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://650b4kttgfpu"]
 
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_d6ko3"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="1_4sdxd"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_5srw4"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_tjgq7"]
 [ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_albedo.png" id="5_ta64f"]
@@ -9,7 +9,7 @@
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_d6ko3")
+shader = ExtResource("1_4sdxd")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("3_tjgq7")
 shader_parameter/fresnel_gradient = ExtResource("2_5srw4")

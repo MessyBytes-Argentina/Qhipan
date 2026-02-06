@@ -1,0 +1,69 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://hbu6fusu7u2t"]
+
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_rikia"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_3b7wg"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_xjtyo"]
+[ext_resource type="Texture2D" uid="uid://dhq8qe4w0lonl" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_albedo.png" id="4_ckj2q"]
+[ext_resource type="Texture2D" uid="uid://jcp1ww4cm0n5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_normal.png" id="5_semr2"]
+[ext_resource type="Texture2D" uid="uid://on6si4lfd2us" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_orm.png" id="6_qpdc7"]
+[ext_resource type="Texture2D" uid="uid://b1e01xyh76n2k" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_albedo.png" id="7_mapfc"]
+[ext_resource type="Texture2D" uid="uid://dijal3o7gpf3i" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_normal.png" id="8_4yuwf"]
+[ext_resource type="Texture2D" uid="uid://bumi0vgq7osj5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_orm.png" id="9_w0o84"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rikia")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_xjtyo")
+shader_parameter/fresnel_gradient = ExtResource("2_3b7wg")
+shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
+shader_parameter/top_texture_scale = 1.0
+shader_parameter/side_texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = ExtResource("7_mapfc")
+shader_parameter/side_texture_albedo = ExtResource("4_ckj2q")
+shader_parameter/enable_normal = true
+shader_parameter/top_texture_normal = ExtResource("8_4yuwf")
+shader_parameter/side_texture_normal = ExtResource("5_semr2")
+shader_parameter/top_normal_scale = 1.51
+shader_parameter/side_normal_scale = 3.55
+shader_parameter/top_texture_orm = ExtResource("9_w0o84")
+shader_parameter/side_texture_orm = ExtResource("6_qpdc7")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.5
+shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

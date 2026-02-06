@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://clex35ja8dihj"]
+
+[sub_resource type="Gradient" id="Gradient_ogw22"]
+offsets = PackedFloat32Array(0, 0.22828785, 0.7741935, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o0iym"]
+gradient = SubResource("Gradient_ogw22")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ayenh"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 0, 1)
+spread = 90.0
+flatness = 1.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+angular_velocity_min = -5.000016
+angular_velocity_max = 4.999984
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+radial_velocity_min = -1.0000223
+radial_velocity_max = 0.99997765
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -0.10000224
+radial_accel_max = 0.09999776
+damping_min = 0.3
+damping_max = 0.3
+color_ramp = SubResource("GradientTexture1D_o0iym")
+hue_variation_min = -0.030000022
+hue_variation_max = 0.029999977
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_sute1"]
+offsets = PackedFloat32Array(0.37100738, 0.997543)
+colors = PackedColorArray(1, 0.6745098, 0, 0, 1, 0.6745098, 0, 0.78431374)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4m4ua"]
+frequency = 0.0014
+fractal_gain = 0.8
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_lacunarity = 2.035
+domain_warp_fractal_gain = 2.61
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_53agh"]
+noise = SubResource("FastNoiseLite_4m4ua")
+color_ramp = SubResource("Gradient_sute1")
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_615vi"]
+render_priority = 2
+transparency = 4
+cull_mode = 2
+depth_draw_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("NoiseTexture2D_53agh")
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_40cn8"]
+material = SubResource("StandardMaterial3D_615vi")
+size = Vector2(0.07, 0.07)
+
+[node name="Sand" type="GPUParticles3D"]
+emitting = false
+amount = 100
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ayenh")
+draw_pass_1 = SubResource("QuadMesh_40cn8")

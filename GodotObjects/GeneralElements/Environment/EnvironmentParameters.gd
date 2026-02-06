@@ -1,3 +1,4 @@
+@tool
 extends Resource
 
 ## Resource class that holds, lerps, and sets environment parameters.
@@ -88,6 +89,6 @@ func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -
 	res.glow_strength = lerp(glow_strength, goal.glow_strength, progress)
 	res.glow_bloom = lerp(glow_bloom, goal.glow_bloom, progress)
 	res.brightness = lerp(brightness, goal.brightness, progress)
-	res.brightness = lerp(contrast, goal.contrast, progress)
-	res.brightness = lerp(saturation, goal.saturation, progress)
+	res.contrast = lerp(contrast, goal.contrast, progress)
+	res.saturation = lerp(saturation, goal.saturation, progress)
 	return res

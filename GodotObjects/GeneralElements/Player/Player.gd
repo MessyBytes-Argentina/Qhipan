@@ -73,7 +73,7 @@ enum States {Idle, Walk, Float}
 ## Reference to the poof particle emitter.
 @onready var poof: MultipleParticle3DEmitter = %Poof
 ## Reference to the poof sound player.
-@onready var poofSound: RandomPitchPlayer = %PoofSound
+@onready var poofSound: RandomSoundPlayer = %PoofSound
 ## Reference to the player shadow decal.
 @onready var shadowDecal: Decal = %ShadowDecal
 ## Reference to the fall sound player.
@@ -184,7 +184,7 @@ var currentCoolSticker: PocketSticker
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	poof.emit_particles()
+	#poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)

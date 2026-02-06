@@ -49,4 +49,5 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_ajmos")

@@ -14,6 +14,8 @@ const OFFSET: float = 0.4
 
 ## Reference to the mesh.
 @onready var mesh: MeshInstance3D = %MeshInstance3D
+## Reference to the collision shape.
+@onready var collisionShape: CollisionShape3D = %CollisionShape3D
 ## Mesh Material.
 var material: ShaderMaterial
 ## Reference to the player pickup handler
@@ -55,6 +57,11 @@ func _ready() -> void:
 	pickupHandler = player.grabArea
 	material = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
+	mesh.mesh = mesh.mesh.duplicate()
+	mesh.mesh.size = Vector2(scale.x, scale.y)
+	collisionShape.shape = collisionShape.shape.duplicate()
+	collisionShape.shape.size = Vector3(scale.x, scale.y, 0.0)
+	scale = Vector3.ONE
 
 func _process(delta: float) -> void:
 	var decayed_points:Array[Vector4] = _points.decay_points(delta, DECAY_SPEED)

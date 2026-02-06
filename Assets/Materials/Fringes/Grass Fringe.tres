@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://etwcqmb62vpm"]
 
 [ext_resource type="Texture2D" uid="uid://bkr72s1a3lc7f" path="res://Assets/Materials/Fringes/Grass Fringe_albedo.png" id="1"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_1i2hp"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="1_1i2hp"]
 [ext_resource type="Texture2D" uid="uid://1vcaih8w73pq" path="res://Assets/Materials/Fringes/Grass Fringe_orm.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_pne8n"]
 [ext_resource type="Texture2D" uid="uid://b8dqfcwatwwyo" path="res://Assets/Materials/Fringes/Grass Fringe_normal.png" id="3"]

@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://crgf5xu4phs2"]
 
 [ext_resource type="Texture2D" uid="uid://cavr63jlmenhk" path="res://Assets/Materials/Fringes/Earth Fringe_albedo.png" id="1"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="1_v6v01"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="1_v6v01"]
 [ext_resource type="Texture2D" uid="uid://bhhwux4tpvpm6" path="res://Assets/Materials/Fringes/Earth Fringe_orm.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_e06sv"]
 [ext_resource type="Texture2D" uid="uid://l0unuk0yl2uk" path="res://Assets/Materials/Fringes/Earth Fringe_normal.png" id="3"]

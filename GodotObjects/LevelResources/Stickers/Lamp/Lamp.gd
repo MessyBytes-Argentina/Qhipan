@@ -20,6 +20,8 @@ const stickerTextures: Dictionary[String, Texture2D] = {
 	"on": preload("uid://da3qteoalmnj6"),
 	"off": preload("uid://k8c3uc7gxr4w")
 }
+## Light wall separation.
+const LIGHTWALLSEPARATION: float = 0.2
 ## Light shine parameters
 const SHINEPARAMETERS: Dictionary[String, Variant] = {"animationTime": 0.5, "transIn": Tween.TRANS_CUBIC, "easeIn": Tween.EASE_IN_OUT, "transOut": Tween.TRANS_QUART, "easeOut": Tween.EASE_OUT, "heldSize": Vector2.ONE * 1.5, "defaultSize": Vector2.ONE * 2.0}
 
@@ -67,6 +69,9 @@ var shineAnimationMode: String = "Off"
 func _ready() -> void:
 	super()
 	if Engine.is_editor_hint(): return
+	shineMaterial = shine.get_surface_override_material(0).duplicate()
+	shine.set_surface_override_material(0, shineMaterial)
+	shine.mesh = shine.mesh.duplicate()
 	while not player:
 		player = get_tree().get_first_node_in_group("Player")
 		await get_tree().process_frame
@@ -76,9 +81,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	isReadyToTween = true
 	camera = get_tree().get_first_node_in_group("Camera")
-	shineMaterial = shine.get_surface_override_material(0).duplicate()
-	shine.set_surface_override_material(0, shineMaterial)
-	shine.mesh = shine.mesh.duplicate()
 
 ## Animates shine parameters.
 func animate_shine(on: bool) -> void:
@@ -113,6 +115,7 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_mask_value(2, false)
 			stickerLightArea.set_collision_mask_value(2, false)
 			light.position.y = -GRABHEIGHT / 2.0
+			light.position.z = 0.0
 			light.light_size = 1.0
 			light.shadow_bias = 10.0
 			shine.mesh.size = SHINEPARAMETERS.heldSize
@@ -123,6 +126,7 @@ func set_size(mode: ScaleModes) -> void:
 			mesh.hide()
 			animate_light_fade(0.0)
 			light.position.y = 0.0
+			light.position.z = 0.0
 			shine.mesh.size = SHINEPARAMETERS.defaultSize
 			if shineAnimationMode not in ["AnimatingOut", "Off"]: animate_shine(false)
 			set_assets("off")
@@ -134,6 +138,7 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_mask_value(2, true)
 			stickerLightArea.set_collision_mask_value(2, true)
 			light.position.y = 0.0
+			light.position.z = LIGHTWALLSEPARATION
 			light.light_size = 0.0
 			light.shadow_bias = 0.1
 			shine.mesh.size = SHINEPARAMETERS.defaultSize

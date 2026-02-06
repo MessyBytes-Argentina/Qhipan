@@ -47,6 +47,7 @@ func _ready() -> void:
 		sceneParent = testSceneParent
 	update_texture()
 	bob_sticker_hightlight()
+	if not Engine.is_editor_hint(): if pedestalName in GeneralVariables.inventory.activePedestals: activate_pedestal(true)
 
 ## Executed on input.
 func _unhandled_input(event: InputEvent) -> void:
@@ -65,6 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Activates pedestal.
 func activate_pedestal(skip: bool = false) -> void:
 	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName, skip)
+	if pedestalName not in GeneralVariables.inventory.activePedestals: GeneralVariables.inventory.activePedestals.append(pedestalName)
 	highlight.hide()
 	stickerHighlightTween.kill()
 	highlight.queue_free()

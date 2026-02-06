@@ -15,7 +15,7 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## SoundPlayer for the open sound
-@onready var openSound: RandomPitchPlayer = %OpenSound
+@onready var openSound: RandomSoundPlayer = %OpenSound
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:

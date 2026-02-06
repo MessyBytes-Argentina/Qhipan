@@ -52,7 +52,7 @@ func _ready() -> void:
 				loadShapes.append(a)
 				a.set_meta("LoadShape", true)
 			elif a.name == "UnloadShape":
-				loadShapes.append(a)
+				unloadShapes.append(a)
 				a.set_meta("UnloadShape", true)
 		)
 	_reset_shapes()
@@ -68,6 +68,7 @@ func _reset_shapes() -> void:
 	if len(loadShapes) == 0: add_shape("LoadShape")
 	if len(unloadShapes) == 0: add_shape("UnloadShape")
 
+## Adds collision shape.
 func add_shape(shape: String) -> void:
 	var currentShape: CollisionShape3D = CollisionShape3D.new()
 	add_child(currentShape)

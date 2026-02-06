@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LightParameters" load_steps=2 format=3 uid="uid://pemsm3bybhgf"]
+
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="1_hxvt6"]
+
+[resource]
+script = ExtResource("1_hxvt6")
+color = Color(0.975514, 0.9322049, 0.98619324, 1)
+energy = 0.1
+angle = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"

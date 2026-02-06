@@ -40,6 +40,7 @@ transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0, -1.5, 0)
 shape = SubResource("HeightMapShape3D_7xcgd")
 
 [node name="DarknessArea" type="Area3D" parent="."]
+unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 18
 

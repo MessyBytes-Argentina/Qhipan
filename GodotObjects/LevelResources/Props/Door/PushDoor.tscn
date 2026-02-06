@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=4 uid="uid://xwsbpt7bioko"]
+[gd_scene load_steps=20 format=4 uid="uid://xwsbpt7bioko"]
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
 [ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_55ifw"]
 [ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
-[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/Door Activate.mp3" id="4_ekaqn"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="5_wpwc1"]
+[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="4_ekaqn"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_wpwc1"]
+[ext_resource type="Resource" uid="uid://fcwoju7q3gpe" path="res://Assets/Sounds/SFXResources/DoorOpen.tres" id="7_hu4jo"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_72boo"]
 _surfaces = [{
@@ -359,8 +360,7 @@ stream = ExtResource("4_ekaqn")
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("5_wpwc1")
-minPitchScale = 0.5
-maxPitchScale = 0.6
+soundResource = ExtResource("7_hu4jo")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [connection signal="body_entered" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_in_range"]

@@ -1,0 +1,256 @@
+[gd_scene load_steps=22 format=4 uid="uid://bc5kl5oyjudpv"]
+
+[ext_resource type="Script" uid="uid://66ugtkkgojn" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/broken_sconce.gd" id="1_ahcsi"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="2_46hgy"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_c5qfl"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="4_0ph5w"]
+[ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="5_0d6yk"]
+[ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Piedras/Piedras_normal.png" id="6_ywwg3"]
+[ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="7_8upnf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds5qq"]
+render_priority = 0
+shader = ExtResource("2_46hgy")
+shader_parameter/albedo = Color(3.3204336, 4.878095, 4.838155, 1)
+shader_parameter/light_gradient = ExtResource("4_0ph5w")
+shader_parameter/fresnel_gradient = ExtResource("3_c5qfl")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("5_0d6yk")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("6_ywwg3")
+shader_parameter/normal_scale = 9.4730012099675
+shader_parameter/texture_orm = ExtResource("7_8upnf")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.27999999374144
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u02aw"]
+_surfaces = [{
+"aabb": AABB(-0.087198, 0.126431, -0.09006, 0.178089, 0.263371, 0.191091),
+"format": 34896613377,
+"index_count": 102,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAgAEAAAAAQADAAUAAwAEAAUABQAEAAYAAQAFAAcABwAFAAYABgAEAAgACAAHAAYABAAJAAgACQAEAAIACgAHAAgACAAJAAoACwAHAAoACgAJAAwADAALAAoADAAJAA0ACQACAA0ADgAMAA0ADQACAA4ACwAMAA4ADgACAA8ADgAPAAsADwACABAAAgABABAACwAPABEAEAABABIAEAASAA8AAQAHABIADwASABEAEgAHAAsAEQASAAsA"),
+"name": "Crystal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 19,
+"vertex_data": PackedByteArray("UjyTpR8sAADwia95AAAAANgrpeNcjAAAlROaPsZdAADwCMkqOpIAAPJRWy4FQQAAa2sAACOKAABYmAIHBIQAAKUfMRuqrAAAAADrukO+AAC1LlkmItEAAKTZ7i+itQAA6kr/UP//AACRQDmvQugAAHty4Lhv9AAAkqKS12y/AABrdf//fGYAAP//O31mnQAALP/hhT1MAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hyvuq"]
+_surfaces = [{
+"aabb": AABB(-0.087198, 0.126431, -0.09006, 0.178089, 0.263371, 0.191091),
+"attribute_data": PackedByteArray("eogwgv168nKMrP9//595a6tnner/X2nGR3ANy9Bgf6hGM59uvKnln2+wDV59dfwVfXX8FW+wDV7WgP8p1oHTiJ5pKKb/Xxd1aT6ic/+f8mj9evJyFmPjXHqGTdOrZ53qR3ANy/ib5aH/n/2T8Jykyv+fAMz4m+Wh9m5YtP+fjYzWgdOInmkopv+f8mi2btpKb7ANXtaA/ynFzM9a/bP/fw62+VL/n3lr1oD/KaF13TB9dfwV/18Xdf9facahdWVtomee6vZuWLT4m+Wh0GB/qBlepqcZXqan+JvloXqGTdPwnKTKX3SYIXqGTdP/nwDM/58AzHqGTdPwnKTKnmkopvZuWLTlRR57RjOfbtBgf6gSVplhaT6ic30sQmF4L9Fq"),
+"format": 34896613399,
+"index_count": 102,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcABwAFAAgACQAKAAsADAANAA4ADwAQABEAEQAQABIAEwAUABUAFgAXABgAGQAaABsAGwAaABwAHQAeAB8AHwAeACAAIAAeACEAIgAjACQAJAAjACUAJgAnACgAKAAnACkAKgArACwALQAuAC8ALwAuADAAMQAyADMAMwAyADQANQA2ADcANwA2ADgAOQA6ADsAPAA9AD4APwBAAEEAQQBAAEIAQgBAAEMARABFAEYARgBFAEcA"),
+"material": SubResource("ShaderMaterial_ds5qq"),
+"name": "Crystal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("UjyTpR8sq+Xwia95AAB/5dgrpeNcjGrla3X//3xmXuWk2e4vorUp61iYAgcEhPvrtS5ZJiLR2emlHzEbqqwE6mtrAAAjitDwe3LguG/0ST6SopLXbL9JPqTZ7i+itUk+pNnuL6K1ROaSopLXbL9E5v//O31mnUTmUjyTpR8sm/CVE5o+xl2N9vCJr3kAAA7z8lFbLgVBVvtrdf//fGau/PCJr3kAAK78LP/hhT1MrvzqSv9Q//9Ez6TZ7i+itUTPtS5ZJiLRRM8AAOu6Q77CstgrpeNcjJeskUA5r0Lou6d7cuC4b/QapQAA67pDvoDS8AjJKjqST9LYK6XjXIzM0VI8k6UfLHLRlROaPsZdXNNrdf//fGa47yz/4YU9TIL7kqKS12y/vvP//zt9Zp0N/nty4Lhv9FnR2Cul41yMf8+SopLXbL9U0Gt1//98Zm/O//87fWads+ws/+GFPUyz7KTZ7i+itbPs8ImveQAAWhZYmAIHBIQMHiz/4YU9TAkapNnuL6K1oiLwCMkqOpJrMwAA67pDvgkepR8xG6qs8By1LlkmItEDCrUuWSYi0bbOAADrukO+0MzqSv9Q//84zpFAOa9C6N/LpNnuL6K1okfqSv9Q//+iR3ty4Lhv9KJHe3LguG/0mZ/qSv9Q//+Zn5FAOa9C6JmflROaPsZdLfbwCMkqOpJa9PJRWy4FQbD0a2sAACOK0POlHzEbqqxf8/CJr3kAANnl8lFbLgVBo+VYmAIHBIQJ5WtrAAAjiqXki6/lxc+wH8Vtsb7Ex7GHxKAiwu/LIifwWiIg72MiNe/KI3nyzh6nFM4epxTOHqcUgJ+UeoCflHqAn5R68cD/0szQv8XjxzHNXtwUvCs5LCwrOSwsKzksLNYWLuLWFi7i1hYu4mf8EUER+462vvA9sdrloatrvRvYs7x92LC6j9kwuVzaYsCH1uy0RJNSrfGbNbJdllkgdilblZinnJZLpwuWbqdXlx6n2gBcQ9oAXEPaAFxDewZtq3IPfVOnAwJZbx54TGDgU+KL7H3dHO1D3a32dtm94cjhh+BD4m7h6OHp34LiGRMFEBkTBRAZEwUQgyP+DYMj/g2DI/4NYVGkVVtPc1e8Tx1XwU7+V0BOcVijS/dDtUqPROlHV0bvRZpH")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u02aw")
+
+[sub_resource type="Gradient" id="Gradient_cimqv"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ixk3v"]
+gradient = SubResource("Gradient_cimqv")
+
+[sub_resource type="Gradient" id="Gradient_7yamr"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kk2n3"]
+gradient = SubResource("Gradient_7yamr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gsysf"]
+load_path = "res://.godot/imported/Piedras_albedo.png-f038e6eadf6b8014e1d2d4a1614f5d4b.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3h21"]
+load_path = "res://.godot/imported/Piedras_normal.png-203bcc12a44b88fe2a88eef94bcf16cc.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbntc"]
+load_path = "res://.godot/imported/Piedras_orm.png-dc5d9c353e08b0266582d32dfacf6b88.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bon7h"]
+render_priority = 0
+shader = ExtResource("2_46hgy")
+shader_parameter/albedo = Color(0.99969536, 1.3528494, 1.3528494, 1)
+shader_parameter/light_gradient = SubResource("GradientTexture1D_kk2n3")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_ixk3v")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_gsysf")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = SubResource("CompressedTexture2D_j3h21")
+shader_parameter/normal_scale = 9.4730012099675
+shader_parameter/texture_orm = SubResource("CompressedTexture2D_lbntc")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.27999999374144
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="Animation" id="Animation_x0dpn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crystal/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crystal/OmniLight3D:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.5370987, 0.5370987, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crystal/OmniLight3D:omni_attenuation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8gx4m"]
+resource_name = "idle"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Crystal/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.9604645e-08, 0.40000004, 0.70000005, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1.319508, 1.7411014, 1.7411015, 2.297397),
+"update": 0,
+"values": [0.0, 0.3, 0.0, 0.25, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crystal/OmniLight3D:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.5370987, 0.5370987, 1), Color(9.048581e-06, 0.8088836, 0.80888367, 1), Color(0, 0.5370987, 0.5370987, 1), Color(0, 0.5370987, 0.5370987, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crystal/OmniLight3D:omni_attenuation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.9604645e-08, 0.40000004, 0.70000005, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 0.25, 0.25, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5v4p"]
+_data = {
+&"RESET": SubResource("Animation_x0dpn"),
+&"idle": SubResource("Animation_8gx4m")
+}
+
+[node name="FallenCrystal" type="Node3D"]
+script = ExtResource("1_ahcsi")
+
+[node name="Crystal" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.7010078e-08, 0.9063078, -0.4226182, -1, 2.9802322e-08, 0, 1.2595004e-08, 0.4226182, 0.9063078, -0.24999976, 0.10000038, -0.099999785)
+mesh = SubResource("ArrayMesh_hyvuq")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_bon7h")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Crystal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00094908476, 0.24745272, 0)
+light_color = Color(0, 0.5370987, 0.5370987, 1)
+light_energy = 0.25
+light_size = 0.2
+omni_range = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f5v4p")
+}

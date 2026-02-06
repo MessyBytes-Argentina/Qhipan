@@ -17,13 +17,13 @@ const RAYCOLLISIONLAYERS: Array[int] = [1, 4, 9, 13]
 const STICKERRADIUS: float = 0.132
 
 ## Pick up sound player reference
-@onready var pickupSound: RandomPitchPlayer = $Pickup
+@onready var pickupSound: RandomSoundPlayer = $Pickup
 ## Remove sound player reference
-@onready var removeSound: RandomPitchPlayer = $Remove
+@onready var removeSound: RandomSoundPlayer = $Remove
 ## Drop sound player reference
-@onready var dropSound: RandomPitchPlayer = $Drop
+@onready var dropSound: RandomSoundPlayer = $Drop
 ## Stick sound player reference
-@onready var stickSound: RandomPitchPlayer = $Stick
+@onready var stickSound: RandomSoundPlayer = $Stick
 ## Sticker highlight sprite reference
 @onready var highlight: Sprite3D = %Highlight
 ## Area highlight sprite reference
@@ -100,7 +100,7 @@ func do_grab() -> void:
 		if surface: 
 			surface.node.sticker_activity()
 			surface.used = null
-	else: pickupSound.play_sound()
+	elif currentPickup is not InventorySticker: pickupSound.play_sound()
 	currentPickup.grab(self)
 	currentPickup.reparent(self)
 	pickupOnHand = true

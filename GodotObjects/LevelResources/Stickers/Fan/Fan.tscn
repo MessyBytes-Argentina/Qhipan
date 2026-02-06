@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cjg3u8idl755x"]
+[gd_scene load_steps=31 format=3 uid="uid://cjg3u8idl755x"]
 
 [ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.gd" id="1_2wwg3"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="2_e06n3"]
@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dunhq8g73hkfo" path="res://Assets/Textures/Stickers/Fan/Vent-4.png" id="4_6ngi6"]
 [ext_resource type="Texture2D" uid="uid://coje2mtnbxmjy" path="res://Assets/Textures/Stickers/Fan/Vent-2.png" id="5_2hw6u"]
 [ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="5_tax0g"]
-[ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/Fan_On.mp3" id="10_tax0g"]
-[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomPitchSoundPlayer.gd" id="11_5l5r5"]
+[ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/SFX/Fan_On.mp3" id="10_tax0g"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="11_5l5r5"]
+[ext_resource type="Resource" uid="uid://coqgjf3xf8t63" path="res://Assets/Sounds/SFXResources/FanSpinup.tres" id="12_0hayw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -318,4 +319,5 @@ stream = ExtResource("10_tax0g")
 volume_db = 20.0
 bus = &"SFX"
 script = ExtResource("11_5l5r5")
+soundResource = ExtResource("12_0hayw")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"

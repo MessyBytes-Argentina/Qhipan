@@ -6,11 +6,14 @@ class_name EnvironmentLerper
 
 ## Constant for debug appearance.
 const SHAPEPARAMETERS: Dictionary[String, Variant] = {"areaColor": Color.BLUE_VIOLET * Color(Color.WHITE, 0.5), "shapeSize": Vector3.ONE * 0.25, "shapeRotation": Vector3(35.4, 60.2, 45.3), "startColor": Color.CHARTREUSE * Color(Color.WHITE, 0.85), "endColor": Color.CRIMSON * Color(Color.WHITE, 0.85)}
+## Constant for test.
+const ENVIRONMENTSCENE: String = "uid://b7st877p5uct1"
 
 ## The environment for the start of the lerper.
 @export var startEnvironment: EnvironmentParameters
 ## The light for the start of the lerper.
 @export var startLight: LightParameters
+## 
 ## The environment for the end of the lerper.
 @export var endEnvironment: EnvironmentParameters
 ## The light for the end of the lerper.
@@ -19,6 +22,13 @@ const SHAPEPARAMETERS: Dictionary[String, Variant] = {"areaColor": Color.BLUE_VI
 @export_range(0.0, 1.0, 0.01) var startSkyLerp: float = 0.0
 ## Maximum distance from the start of the lerper to end lerping to the end.
 @export_range(0.0, 1.0, 0.01) var endSkyLerp: float = 1.0
+## Test section.
+@export_category("Test section")
+## Test progress.
+@export_range(0.0, 1.0, 0.01) var testProgress: float = 0.0:
+	set(value):
+		testProgress = value
+		if is_node_ready() and Engine.is_editor_hint(): _test_environment()
 
 ## Reference to the area shape.
 var areaShape: CollisionShape3D
@@ -40,6 +50,8 @@ var colorCorrection: ShaderMaterial
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		if not is_in_group("EnvironmentLerpers"): add_to_group("EnvironmentLerpers", true)
+		_remove_test()
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(1, false)
 		set_collision_mask_value(2, true)
@@ -86,6 +98,22 @@ func _ready() -> void:
 		sun = environmentObjects.sun
 		colorCorrection = environmentObjects.colorCorrectionMaterial
 
+## Delete test objects.
+func _remove_test() -> void:
+	get_children().map(func(a: Node): if a is EnvironmentObjects: a.queue_free())
+
+## Test function to check for environment and light.
+func _test_environment() -> void:
+	get_tree().call_group("EnvironmentLerpers", "_remove_test")
+	var environmentScene: EnvironmentObjects = load(ENVIRONMENTSCENE).instantiate()
+	add_child(environmentScene)
+	if not environmentScene.is_node_ready(): await environmentScene.ready
+	environment = environmentScene.environment
+	sun = environmentScene.sun
+	sun.rotation = -rotation
+	colorCorrection = environmentScene.colorCorrectionMaterial
+	lerp_environment(testProgress)
+
 ## Executed when player enters the area.
 func _body_entered(body: Node3D) -> void:
 	if body is not Player: return
@@ -108,7 +136,7 @@ func _body_exited(body: Node3D) -> void:
 func _physics_process(_delta: float) -> void:
 	if not playerInside: return
 	var projection: Vector3 = project_point_on_line(player.global_position, startMarker.global_position, endMarker.global_position)
-	var progress: float = inverse_lerp(0.0, startMarker.global_position.distance_to(endMarker.global_position), startMarker.global_position.distance_to(projection))
+	var progress: float = clampf(inverse_lerp(0.0, startMarker.global_position.distance_to(endMarker.global_position), startMarker.global_position.distance_to(projection)), 0.0, 1.0)
 	lerp_environment(progress)
 
 ## Projects player position to lerp line.
