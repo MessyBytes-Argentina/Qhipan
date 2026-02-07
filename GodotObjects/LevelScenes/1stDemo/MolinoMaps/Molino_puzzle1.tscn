@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://dsdruex0h4hcf"]
+[gd_scene load_steps=77 format=4 uid="uid://dsdruex0h4hcf"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_pkd4n"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_80foe"]
@@ -189,6 +189,20 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_4lvkr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7, 0, 0, 0, 0, 0, 0, -0.92, -0.415, 0.7, 0, 0, 0, 0, 0, 0, -0.92, 0, 1.455, 0, 0, 0, 0, 0, 0, 0.87000084, -0.099999905, 1.455, 0, 0, 0, 0, 0, 0, 1.9850006, 1, 1.455, 0, 0, 0, 0, 0, 0, 2.7999992, 1, 1.3550001, 0, 0, 0, 0, 0, 0, 2.7999992, 1, -0.525),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_fvok3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.10000038, 0, -0.635, 0, 0, 0, 0, 0, 0, -0.9899998, -0.4100001, -0.635, 0, 0, 0, 0, 0, 0, -0.99, 0, -1.385, 0, 0, 0, 0, 0, 0, 0.9449997, 0, -1.385, 0, 0, 0, 0, 0, 0, 1.915, 0.975, -1.385, 0, 0, 0, 0, 0, 0, 2.905, 0.975, -1.385, 0, 0, 0, 0, 0, 0, 3.795, 0.975, -0.505, 0, 0, 0, 0, 0, 0, 3.795, 0.975, 0.435),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [sub_resource type="Curve3D" id="Curve3D_7fie3"]
 _data = {
@@ -678,6 +692,14 @@ curve = SubResource("Curve3D_n58cx")
 [node name="Wood Fence18" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 1, 1.9000001)
 curve = SubResource("Curve3D_s0owl")
+
+[node name="Wood Fence19" parent="Props/Fences" instance=ExtResource("11_1k3do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1, 3.5, 1.5000001)
+curve = SubResource("Curve3D_4lvkr")
+
+[node name="Wood Fence20" parent="Props/Fences" instance=ExtResource("11_1k3do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1, 3.5, 0.50000006)
+curve = SubResource("Curve3D_fvok3")
 
 [node name="Fringes" type="Node3D" parent="Props"]
 
