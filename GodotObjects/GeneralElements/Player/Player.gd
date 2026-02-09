@@ -131,7 +131,9 @@ var spriteFlipTween: Tween
 ## Used to check if sprite should flip.
 var lastHorizontal: float = 1
 ## Whether the sprite is facing backwards.
-var facingBack: bool = false
+var facingBack: float = 0
+## Last facing direction.
+var lastFacingBack: bool = false
 ## Accumultation of nogravity areas.
 var noGravityZones: Array[Node3D] = []
 ## Saving last movement distance for distance checking.
@@ -418,7 +420,7 @@ func play_fall_sound() -> void:
 func check_movement_animation(currentInputDirection: Vector3) -> void:
 	if currentState != States.Float: currentState = States.Walk if currentInputDirection.length() > 0 else States.Idle
 	if currentInputDirection.z == 0 and currentState != States.Idle: return
-	facingBack = currentInputDirection.z < 0
+	facingBack = currentInputDirection.z
 
 ## Switches player animation state.
 func animation_check(override: States = currentState) -> void:
@@ -427,7 +429,8 @@ func animation_check(override: States = currentState) -> void:
 		return
 	currentState = override
 	if coolStickerGrabbing: return
-	var newAnimationName = ("Grab_" if grabArea.pickupOnHand and currentState not in [States.Slap] else "") + States.keys()[currentState] as String + ("_Back" if facingBack else "")
+	lastFacingBack = lastFacingBack if facingBack == 0 else facingBack < 0
+	var newAnimationName = ("Grab_" if grabArea.pickupOnHand and currentState not in [States.Slap] else "") + States.keys()[currentState] as String + ("_Back" if lastFacingBack else "")
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
