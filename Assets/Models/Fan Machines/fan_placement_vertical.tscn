@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpkf0okc884ry"]
+
+[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_jbdo0"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="2_mop7j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("1_jbdo0")
+height = 0.5
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7fie3"]
+material = ExtResource("1_jbdo0")
+radius = 0.1
+height = 0.3
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnklw"]
+size = Vector3(1.0290039, 0.5, 1)
+
+[node name="Fan Placement Vertical" type="StaticBody3D"]
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("SphereMesh_bg3w0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42285788, 0.100000024, 0)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, 0.40000057)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, -0.39999962)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018115312, 0.35000002, 0)
+shape = SubResource("BoxShape3D_xnklw")
+
+[node name="Placeholder Sticker Area" parent="." instance=ExtResource("2_mop7j")]
+transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -4.3711392e-08, 1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, 0, 0.6, 0)
