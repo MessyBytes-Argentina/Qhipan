@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=195 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -142,6 +142,14 @@
 [ext_resource type="Texture2D" uid="uid://fr22ohfqhubu" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 1_n_2.png" id="108_axr7f"]
 [ext_resource type="Texture2D" uid="uid://bjtbehlclyte8" path="res://Assets/Textures/Character/WALK BACK/BW 1_n_3.png" id="108_t0jmp"]
 [ext_resource type="Texture2D" uid="uid://cg0l0e0kkwf38" path="res://Assets/Textures/Character/GRAB WALK BACK/GRAB BW 1_n_3.png" id="109_rljs2"]
+[ext_resource type="Texture2D" uid="uid://cidqmpraocbei" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 1_n_0.png" id="129_io5h4"]
+[ext_resource type="Texture2D" uid="uid://bbciq0cnuk6b2" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 1_n_1.png" id="130_1nwq5"]
+[ext_resource type="Texture2D" uid="uid://cvrd1tiix3a07" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 1_n_2.png" id="131_q1b61"]
+[ext_resource type="Texture2D" uid="uid://b0a86666roswf" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 1_n_3.png" id="132_6p00r"]
+[ext_resource type="Texture2D" uid="uid://cmhac0mblk1q1" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 1_n_0.png" id="137_64w1u"]
+[ext_resource type="Texture2D" uid="uid://cuiqlf1kugywo" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 1_n_1.png" id="138_w8txx"]
+[ext_resource type="Texture2D" uid="uid://0bk81drgnfyv" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 1_n_2.png" id="139_vhqig"]
+[ext_resource type="Texture2D" uid="uid://dtnkyxqh4d6gx" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 1_n_3.png" id="140_782io"]
 [ext_resource type="Texture2D" uid="uid://cw5fp7q45sb6o" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 1.png" id="141_fvg7f"]
 [ext_resource type="Texture2D" uid="uid://dl5x63uhhimyi" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 2.png" id="142_4gkn6"]
 [ext_resource type="Texture2D" uid="uid://bdjmpjbd5waje" path="res://Assets/Textures/Character/SLAP STICKER/SLAP 3.png" id="143_4eb0g"]
@@ -1238,6 +1246,180 @@ tracks/9/keys = {
 "values": [ExtResource("14_kc7ad")]
 }
 
+[sub_resource type="Animation" id="Animation_io5h4"]
+resource_name = "Slap"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("141_fvg7f"), ExtResource("142_4gkn6"), ExtResource("143_4eb0g"), ExtResource("144_e4bby")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("141_fvg7f"), ExtResource("142_4gkn6"), ExtResource("143_4eb0g"), ExtResource("144_e4bby")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("129_io5h4"), ExtResource("130_1nwq5"), ExtResource("131_q1b61"), ExtResource("132_6p00r")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("129_io5h4"), ExtResource("130_1nwq5"), ExtResource("131_q1b61"), ExtResource("132_6p00r")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GrabArea")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"place_sticker"
+}, {
+"args": [],
+"method": &"_slap_finished"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"block_inputs"
+}, {
+"args": [],
+"method": &"enable_inputs"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1nwq5"]
+resource_name = "Slap_Back"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("145_tqeq8"), ExtResource("146_ev2up"), ExtResource("147_1jlix"), ExtResource("148_a6q8b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("145_tqeq8"), ExtResource("146_ev2up"), ExtResource("147_1jlix"), ExtResource("148_a6q8b")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("137_64w1u"), ExtResource("138_w8txx"), ExtResource("139_vhqig"), ExtResource("140_782io")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("137_64w1u"), ExtResource("138_w8txx"), ExtResource("139_vhqig"), ExtResource("140_782io")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GrabArea")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"place_sticker"
+}, {
+"args": [],
+"method": &"_slap_finished"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"block_inputs"
+}, {
+"args": [],
+"method": &"enable_inputs"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_6681y"]
 resource_name = "Walk"
 length = 0.8
@@ -1386,175 +1568,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("46_8hsli"), ExtResource("47_8njlr"), ExtResource("48_f7h1j"), ExtResource("49_rr2ib"), ExtResource("50_3jjt7"), ExtResource("51_xq41j"), ExtResource("52_6fycs"), ExtResource("53_ujwi3"), ExtResource("34_w2rxr"), ExtResource("35_l1a28"), ExtResource("36_0t7aq"), ExtResource("37_x0qs5"), ExtResource("42_o7oki"), ExtResource("43_uqbk1"), ExtResource("44_i00t0"), ExtResource("45_sjywp"), ExtResource("7_5jpe1"), ExtResource("8_6pvne"), ExtResource("9_504ik"), ExtResource("10_x38go"), ExtResource("30_bity2"), ExtResource("31_dkmaj"), ExtResource("32_kp4bv"), ExtResource("10_yiccp"), ExtResource("22_x0qs5"), ExtResource("23_30xxu"), ExtResource("24_3v7y4"), ExtResource("25_ovj28"), ExtResource("26_ybulr"), ExtResource("27_nbpqb"), ExtResource("28_60daa"), ExtResource("29_xdwbk"), ExtResource("2_cphfr"), ExtResource("7_fj5th"), ExtResource("8_3fd1v"), ExtResource("9_mxndk"), ExtResource("14_dkmaj"), ExtResource("15_kp4bv"), ExtResource("16_vmy0v"), ExtResource("17_84qwu"), ExtResource("10_2fn2m"), ExtResource("11_lpbw1"), ExtResource("12_wm78n"), ExtResource("13_bity2"), ExtResource("18_yiccp"), ExtResource("19_w2rxr"), ExtResource("20_l1a28"), ExtResource("21_0t7aq")]
-}
-
-[sub_resource type="Animation" id="Animation_io5h4"]
-resource_name = "Slap"
-length = 0.8
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("141_fvg7f"), ExtResource("142_4gkn6"), ExtResource("143_4eb0g"), ExtResource("144_e4bby")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("141_fvg7f"), ExtResource("142_4gkn6"), ExtResource("143_4eb0g"), ExtResource("144_e4bby")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad")]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("GrabArea")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"place_sticker"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"block_inputs"
-}, {
-"args": [],
-"method": &"enable_inputs"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_1nwq5"]
-resource_name = "Slap_Back"
-length = 0.8
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:surface_material_override/0:albedo_texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("145_tqeq8"), ExtResource("146_ev2up"), ExtResource("147_1jlix"), ExtResource("148_a6q8b")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("145_tqeq8"), ExtResource("146_ev2up"), ExtResource("147_1jlix"), ExtResource("148_a6q8b")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad"), ExtResource("14_kc7ad")]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("GrabArea")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"place_sticker"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"block_inputs"
-}, {
-"args": [],
-"method": &"enable_inputs"
-}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ihfjc"]

@@ -58,7 +58,7 @@ signal camera_rotating(goalAngle: float)
 signal camera_rotated(newAngle: float)
 
 ## Animation states.
-enum States {Idle, Walk, Float}
+enum States {Idle, Walk, Float, Slap}
 
 
 #region On Ready Variables
@@ -187,6 +187,7 @@ var currentCoolSticker: PocketSticker
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	grabArea.player = self
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
 	#poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
@@ -420,9 +421,13 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 	facingBack = currentInputDirection.z < 0
 
 ## Switches player animation state.
-func animation_check() -> void:
+func animation_check(override: States = currentState) -> void:
+	if animationPlayer.is_playing() and animationPlayer.current_animation in ["Slap", "Slap_Back"]:
+		currentState = States.Slap
+		return
+	currentState = override
 	if coolStickerGrabbing: return
-	var newAnimationName = ("Grab_" if grabArea.pickupOnHand else "") + States.keys()[currentState] as String + ("_Back" if facingBack else "")
+	var newAnimationName = ("Grab_" if grabArea.pickupOnHand and currentState not in [States.Slap] else "") + States.keys()[currentState] as String + ("_Back" if facingBack else "")
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName

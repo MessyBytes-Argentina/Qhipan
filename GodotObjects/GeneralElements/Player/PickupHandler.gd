@@ -32,6 +32,8 @@ const STICKERRADIUS: float = 0.132
 @onready var highlightPivot: Node3D = %HighlightPivot
 ## PlaceholderArea reference for sticker placement detection
 @onready var placeholderArea: Area3D = %PlaceholderArea
+## Reference to the player.
+var player: Player
 
 ## List of stickers in grabbing range
 var closeStickers: Array[StickerBase] = []
@@ -109,7 +111,7 @@ func do_grab() -> void:
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
 	if areaHighlight.visible:
-		# call animation here
+		player.animation_check(Player.States.Slap)
 		return true
 	return false
 
@@ -121,6 +123,9 @@ func place_sticker() -> void:
 	surface.node.sticker_activity()
 	surface.used = currentPickup
 	stickSound.play_sound()
+	currentPickup.deactivate_on_player_effect()
+	currentPickup = null
+	pickupOnHand = false
 
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false, forceDrop: bool = false) -> void:
@@ -134,6 +139,7 @@ func drop(onReset: bool = false, forceDrop: bool = false) -> void:
 			if not canDrop or (inDarkness and not inLight): return
 			currentPickup.drop()
 			dropSound.play_sound()
+		else: return
 		currentPickup.deactivate_on_player_effect()
 		currentPickup = null
 		pickupOnHand = false
@@ -205,3 +211,7 @@ func add_anti_drop_area(area: AntiDropArea) -> void:
 func remove_anti_drop_area(area: AntiDropArea) -> void:
 	if antiDropAreaCollection.has(area):
 		antiDropAreaCollection.erase(area)
+
+## Finish slap animation
+func _slap_finished() -> void:
+	player.animation_check(Player.States.Idle)
