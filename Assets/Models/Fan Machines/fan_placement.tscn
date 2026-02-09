@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://g4nvui5dhffk"]
+
+[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_xnklw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
+lightmap_size_hint = Vector2i(17, 9)
+material = ExtResource("1_xnklw")
+height = 0.5
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_7fie3"]
+material = ExtResource("1_xnklw")
+radius = 0.1
+height = 0.3
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnklw"]
+size = Vector3(0.5673828, 1, 1)
+
+[node name="Fan Placement" type="StaticBody3D"]
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("SphereMesh_bg3w0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45920587, 0.100000024, 0)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, 0.40000057)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, -0.39999962)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.6, 0)
+shape = SubResource("BoxShape3D_xnklw")

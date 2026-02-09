@@ -1,18 +1,15 @@
-[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=15 format=3 uid="uid://jyf2ifcvqb52"]
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=11 format=3 uid="uid://jyf2ifcvqb52"]
 
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_0brr2"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_aaf5q"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_ar384"]
 [ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneCutoutMaterialMaker.gd" id="3_koauu"]
-[ext_resource type="Texture2D" uid="uid://dhq8qe4w0lonl" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_albedo.png" id="4_m8628"]
-[ext_resource type="Texture2D" uid="uid://jcp1ww4cm0n5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_normal.png" id="5_neivt"]
-[ext_resource type="Texture2D" uid="uid://on6si4lfd2us" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_orm.png" id="6_wtn0b"]
-[ext_resource type="Texture2D" uid="uid://b1e01xyh76n2k" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_albedo.png" id="7_kai1g"]
-[ext_resource type="Texture2D" uid="uid://dijal3o7gpf3i" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_normal.png" id="8_nakcr"]
-[ext_resource type="Texture2D" uid="uid://bumi0vgq7osj5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_orm.png" id="9_63yvk"]
+[ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="4_gyrky"]
+[ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="5_pq6br"]
+[ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="6_8oogb"]
 [ext_resource type="Texture2D" uid="uid://p08muovdssbe" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_heightmap.png" id="11_ftgfk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnl8x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaf5q"]
 render_priority = 0
 shader = ExtResource("1_aaf5q")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -22,22 +19,22 @@ shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = ExtResource("7_kai1g")
-shader_parameter/side_texture_albedo = ExtResource("4_m8628")
+shader_parameter/top_texture_albedo = ExtResource("4_gyrky")
+shader_parameter/side_texture_albedo = ExtResource("4_gyrky")
 shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = ExtResource("8_nakcr")
-shader_parameter/side_texture_normal = ExtResource("5_neivt")
+shader_parameter/top_texture_normal = ExtResource("5_pq6br")
+shader_parameter/side_texture_normal = ExtResource("5_pq6br")
 shader_parameter/top_normal_scale = 1.51
-shader_parameter/side_normal_scale = 3.55
-shader_parameter/top_texture_orm = ExtResource("9_63yvk")
-shader_parameter/side_texture_orm = ExtResource("6_wtn0b")
+shader_parameter/side_normal_scale = 1.51
+shader_parameter/top_texture_orm = ExtResource("6_8oogb")
+shader_parameter/side_texture_orm = ExtResource("6_8oogb")
 shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 0.0
-shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_ao_light_affect = 1.0
+shader_parameter/side_ao_light_affect = 1.0
 shader_parameter/top_roughness = 1.0
 shader_parameter/side_roughness = 1.0
-shader_parameter/top_metallic_specular = 0.5
-shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic_specular = 0.0
+shader_parameter/side_metallic_specular = 0.0
 shader_parameter/top_metallic = 0.0
 shader_parameter/side_metallic = 0.0
 shader_parameter/enable_emission = false
@@ -70,26 +67,17 @@ shader_parameter/auxMode = false
 shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
 shader_parameter/auxBoxRotation = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036an"]
-albedo_texture = ExtResource("4_m8628")
-roughness_texture = ExtResource("6_wtn0b")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_scale = 3.55
-normal_texture = ExtResource("5_neivt")
-ao_enabled = true
-ao_texture = ExtResource("6_wtn0b")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r36a"]
-albedo_texture = ExtResource("7_kai1g")
-roughness_texture = ExtResource("9_63yvk")
+albedo_texture = ExtResource("4_gyrky")
+metallic_specular = 0.0
+roughness_texture = ExtResource("6_8oogb")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_scale = 1.51
-normal_texture = ExtResource("8_nakcr")
+normal_texture = ExtResource("5_pq6br")
 ao_enabled = true
-ao_texture = ExtResource("9_63yvk")
-heightmap_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("6_8oogb")
 heightmap_scale = 2.5
 heightmap_deep_parallax = true
 heightmap_min_layers = 8
@@ -100,9 +88,9 @@ heightmap_texture = ExtResource("11_ftgfk")
 script = ExtResource("3_koauu")
 topSurfaceMaterial = SubResource("StandardMaterial3D_8r36a")
 topSize = null
-sideSurfaceMaterial = SubResource("StandardMaterial3D_036an")
+sideSurfaceMaterial = SubResource("StandardMaterial3D_8r36a")
 sideSize = null
 lightGradient = ExtResource("2_ar384")
 fresnelGradient = ExtResource("1_0brr2")
-finalizeShaderMaterial = SubResource("ShaderMaterial_pnl8x")
+finalizeShaderMaterial = SubResource("ShaderMaterial_aaf5q")
 metadata/_custom_type_script = "uid://duwq10b1isvmn"
