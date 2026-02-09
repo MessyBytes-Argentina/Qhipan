@@ -98,7 +98,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s2p10")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
-size = Vector3(1.4520187, 1.6296997, 0.72924805)
+size = Vector3(1.1219158, 1.2114563, 0.72924805)
 
 [node name="SmallPedestalKey" type="StaticBody3D" node_paths=PackedStringArray("sceneParent")]
 script = ExtResource("1_re33t")
@@ -107,6 +107,7 @@ sceneParent = NodePath(".")
 
 [node name="Bloque" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(0.6528359, 0, 0, 0, 0.6528359, 0, 0, 0, 0.9467543, 0, 0.07359135, 0)
 mesh = SubResource("ArrayMesh_txe4u")
 metadata/extras = {
 "yp_decal": {}
@@ -114,6 +115,7 @@ metadata/extras = {
 
 [node name="StickerSlot" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(0.92516106, 0, 0, 0, 0.92516106, 0, 0, 0, 0.92516106, 0, -0.16696233, -0.02566117)
 mesh = SubResource("ArrayMesh_hb5s7")
 metadata/extras = {
 "yp_decal": {}
@@ -121,21 +123,22 @@ metadata/extras = {
 
 [node name="Base_001" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(0.847211, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_o0lvu")
 metadata/extras = {
 "yp_decal": {}
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026435852, 0.81484985, -0.051879883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044070244, 0.60572815, -0.051879883)
 shape = SubResource("BoxShape3D_bi05e")
 
 [node name="StickerMarker" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.90509194, 0.19848782)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.6673055, 0.18100029)
 script = ExtResource("4_hb5s7")
 validStickers = 4
-specialStickerScale = 0.75
+specialStickerScale = 0.65
 metadata/_custom_type_script = "uid://cpapjcv8gch4b"
 
 [connection signal="sticker" from="StickerMarker" to="." method="_on_sticker"]
