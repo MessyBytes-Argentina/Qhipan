@@ -4,6 +4,9 @@ extends CharacterBody3D
 class_name Player
 
 #region Constants
+## Animation states.
+enum States {Idle, Walk, Float, Slap}
+
 ## How much the camera rotates for each button press.
 const CAMERAROTATIONSTEP: float = PI / 4.0
 ## Camera rotation animation time.
@@ -34,6 +37,10 @@ const MAXFALLVOLUME: float = -5.0
 const MINFALLPITCH: float = 1.5
 ## Maximum fall volume.
 const MAXFALLPITCH: float = 1.0
+## Regular animation states with no grab mode.
+const NOGRABSTATES: Array[States] = [States.Slap]
+## Regular animation states that can't be interrupted.
+const NOINTERRUPTSTATES: Array[States] = [States.Slap]
 
 ## Time it takes for the player sprite to flip.
 const spriteFlipDuration: float = 0.5
@@ -56,10 +63,6 @@ signal zooming_out(zoomingOut: bool)
 signal camera_rotating(goalAngle: float)
 ## Signal emmited when camera angle changes.
 signal camera_rotated(newAngle: float)
-
-## Animation states.
-enum States {Idle, Walk, Float, Slap}
-
 
 #region On Ready Variables
 ## Reference to the camera pivot for rotations.
@@ -424,13 +427,15 @@ func check_movement_animation(currentInputDirection: Vector3) -> void:
 
 ## Switches player animation state.
 func animation_check(override: States = currentState) -> void:
-	if animationPlayer.is_playing() and animationPlayer.current_animation in ["Slap", "Slap_Back"]:
-		currentState = States.Slap
-		return
+	if animationPlayer.is_playing():
+		for state in NOINTERRUPTSTATES:
+			if animationPlayer.current_animation.begins_with(States.keys()[state]):
+				currentState = state
+				return
 	currentState = override
 	if coolStickerGrabbing: return
 	lastFacingBack = lastFacingBack if facingBack == 0 else facingBack < 0
-	var newAnimationName = ("Grab_" if grabArea.pickupOnHand and currentState not in [States.Slap] else "") + States.keys()[currentState] as String + ("_Back" if lastFacingBack else "")
+	var newAnimationName = ("Grab_" if grabArea.pickupOnHand and currentState not in NOGRABSTATES else "") + States.keys()[currentState] as String + ("_Back" if lastFacingBack else "")
 	if newAnimationName != currentAnimation:
 		animationPlayer.play(newAnimationName)
 		currentAnimation = newAnimationName
