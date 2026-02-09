@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://g4nvui5dhffk"]
+[gd_scene load_steps=6 format=3 uid="uid://g4nvui5dhffk"]
 
 [ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_xnklw"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="2_v3wob"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
 lightmap_size_hint = Vector2i(17, 9)
@@ -43,3 +44,6 @@ mesh = SubResource("SphereMesh_7fie3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.6, 0)
 shape = SubResource("BoxShape3D_xnklw")
+
+[node name="Placeholder Sticker Area" parent="." instance=ExtResource("2_v3wob")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0.6, 0)
