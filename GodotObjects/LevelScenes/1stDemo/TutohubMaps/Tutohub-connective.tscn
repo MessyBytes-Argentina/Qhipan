@@ -1079,8 +1079,8 @@ randomRange = -0.695
 noiseTexture = SubResource("NoiseTexture2D_i0g0w")
 randomYRotation = true
 randomSize = true
-randomSizeFactorMin = 2.0
-randomSizeFactorMax = 3.0
+randomSizeFactorMin = 1.2
+randomSizeFactorMax = 2.0
 objectScenes = Array[PackedScene]([ExtResource("68_p3fv4"), ExtResource("69_ujq21"), ExtResource("70_q1abf"), ExtResource("71_hitj2")])
 
 [sub_resource type="ObjectResource" id="ObjectResource_o4ush"]
@@ -2574,6 +2574,7 @@ surface_material_override/0 = ExtResource("58_dxenn")
 [node name="TerraBrush" type="TerraBrush" parent="."]
 dataPath = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective"
 textureSets = SubResource("TextureSetsResource_ujq21")
+defaultObjectFrequency = 8
 objects = Array[ObjectResource]([SubResource("ObjectResource_o4ush")])
 terrainZones = SubResource("ZonesResource_c0uas")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
