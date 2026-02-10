@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_ak0ru"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_v6v01")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("3_ak0ru")
