@@ -2,32 +2,31 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://21jcunl0ok2b"
-path.s3tc="res://.godot/imported/Earth_normal.png-3c99d584b7af01bcc8ca68d01d2991a8.s3tc.ctex"
+uid="uid://bxcc8v5gvkwp5"
+path="res://.godot/imported/brush_preview.png-ec1e3cc226980b406570383e2eebbb8d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Texturas/Earth_normal.png"
-dest_files=["res://.godot/imported/Earth_normal.png-3c99d584b7af01bcc8ca68d01d2991a8.s3tc.ctex"]
+source_file="res://addons/terrabrush/Assets/brush_preview.png"
+dest_files=["res://.godot/imported/brush_preview.png-ec1e3cc226980b406570383e2eebbb8d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/Materials/Terrenos/Tierra Sola/Earth_normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

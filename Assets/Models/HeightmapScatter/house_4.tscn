@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0k8808h70e4d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_optv1"]
+albedo_color = Color(0.91764706, 0.78039217, 0.31764707, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5d2fm"]
+material = SubResource("StandardMaterial3D_optv1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3180"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+grow_amount = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_optv1"]
+material = SubResource("StandardMaterial3D_b3180")
+size = Vector3(1.2, 1.2, 1.2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_4iokb"]
+material = SubResource("StandardMaterial3D_b3180")
+size = Vector3(1.3, 1.3, 1.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu3fo"]
+albedo_color = Color(0.91764706, 0.7176471, 0.5019608, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_b3180"]
+material = SubResource("StandardMaterial3D_iu3fo")
+
+[node name="House1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_5d2fm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_optv1")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("PrismMesh_4iokb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("PrismMesh_b3180")
