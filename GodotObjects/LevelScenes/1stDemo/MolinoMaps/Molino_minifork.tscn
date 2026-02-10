@@ -1,8 +1,11 @@
-[gd_scene load_steps=66 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=79 format=4 uid="uid://2vwefawy2u4p"]
 
+[ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
+[ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="2_rc3x7"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_yg432"]
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="3_3m86x"]
+[ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="3_6go3k"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="5_ysmym"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="6_3m86x"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="7_fuxsb"]
@@ -16,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="15_lby3b"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="16_35xyp"]
 [ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="17_drosb"]
+[ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="18_obwoo"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="18_wt8xg"]
 [ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="19_lby3b"]
 [ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="20_obwoo"]
@@ -23,6 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://bpkf0okc884ry" path="res://Assets/Models/Fan Machines/fan_placement_vertical.tscn" id="21_lby3b"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="22_bcwfp"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="23_7wx1f"]
+
+[sub_resource type="Resource" id="Resource_iwp2i"]
+script = ExtResource("3_6go3k")
+name = "MolinoLock"
+image = ExtResource("2_rc3x7")
+backImage = ExtResource("2_rc3x7")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="Curve3D" id="Curve3D_stqvm"]
 _data = {
@@ -158,7 +169,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_bcwfp"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.85857964, 0, 1.8585796, 0, 0, 0, 0, 0, 0, 0.070711136, 0, 1.0707121, 0, 0, 0, 0, 0, 0, 0.07070923, 0, -0.2121315, 0, 0, 0, 0, 0, 0, 0.78786755, 0, -0.9292898, 0, 0, 0, 0, 0, 0, 2.1414223, 0, -0.8585777, 0, 0, 0, 0, 0, 0, 2.9292908, 0, -0.07070923),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.85857964, 0, 1.8585796, 0, 0, 0, 0, 0, 0, 0.070711136, 0, 1.0707121, 0, 0, 0, 0, 0, 0, 0.07070923, 0, -0.2121315, 0, 0, 0, 0, 0, 0, 0.78786755, 0, -0.9292898, 0, 0, 0, 0, 0, 0, 2.1414223, 0, -0.8585777, 0, 0, 0, 0, 0, 0, 2.8624315, 0, -0.13756847),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -232,6 +243,27 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_hswoo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.37022495, -0.014127493, 0.36941212, 0, 0, 0, 0, 0.01, 0.125, 0.35908794, -0.34779847, -0.33941603, 0, 0, 0, 0, 0, 0, 2.7162333, -2.4595313, -2.736258),
+"tilts": PackedFloat32Array(0, 0, 0.04363323)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_rl8gh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.37022495, -0.014127493, 0.25480264, 0, 0, 0, 0, 0.01, -0.125, 0.3698759, -0.42025083, -0.38076043, 0, 0, 0, 0, 0, 0, 2.6526327, -2.4595313, -2.7918143),
+"tilts": PackedFloat32Array(0, 0, 0.04363323)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_vnmr8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2.804165, -3, -2.7837129),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oblum"]
 transparency = 1
@@ -368,6 +400,41 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lby3b"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_obwoo"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lby3b")
+flip_faces = true
+size = Vector2(28, 3)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_0xjka"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lby3b")
+flip_faces = true
+size = Vector2(25, 11)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_lby3b"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lby3b")
+flip_faces = true
+size = Vector2(24.2, 7)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_bcwfp"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_lby3b")
+flip_faces = true
+size = Vector2(24, 7)
+orientation = 1
+
 [node name="Molino_minifork" type="Node3D"]
 
 [node name="Rooms" type="Node3D" parent="."]
@@ -377,10 +444,10 @@ point_count = 4
 [node name="Stickers" type="Node3D" parent="Rooms/Fork"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
-[node name="Alternator" parent="Rooms/Fork/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_3m86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 5, 0)
+[node name="EntranceSticker" parent="Rooms/Fork/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("1_7wx1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.493394, 4.6000004, 0.10055083)
+sticker = SubResource("Resource_iwp2i")
 sceneParent = NodePath("../../../..")
-originalParent = "Molino_minifork"
 
 [node name="AntiStickerAreas" type="Node3D" parent="Rooms/Fork"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.5, 0, 0.5)
@@ -709,6 +776,24 @@ curve = SubResource("Curve3D_asqe7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -6, -9.938593)
 curve = SubResource("Curve3D_8wr6t")
 
+[node name="Rope Rail" parent="Props/Fences" instance=ExtResource("18_obwoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.88421, -0.5, -0.28578544)
+curve = SubResource("Curve3D_hswoo")
+colliderSize = Vector2(0.1, 0.7)
+
+[node name="Rope Rail2" parent="Props/Fences" instance=ExtResource("18_obwoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.416272, -0.5076415, -0.8932607)
+curve = SubResource("Curve3D_rl8gh")
+colliderSize = Vector2(0.1, 0.7)
+
+[node name="Rope Rail4" parent="Props/Fences" instance=ExtResource("18_obwoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.762555, -3.1, -5.8524466)
+curve = SubResource("Curve3D_vnmr8")
+
+[node name="Rope Rail5" parent="Props/Fences" instance=ExtResource("18_obwoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.127288, -3.1, -5.254415)
+curve = SubResource("Curve3D_vnmr8")
+
 [node name="PorticoA2" type="MeshInstance3D" parent="Props"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.499999, -0.5, 0.5)
 mesh = SubResource("ArrayMesh_beusl")
@@ -777,7 +862,7 @@ transform = Transform3D(-4.3711385e-08, 1, 4.3711392e-08, -1, -4.371139e-08, 4.3
 transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 3.5, -0.5999999, 15)
 
 [node name="Fan Placement Vertical" parent="Props/Fan Machines" instance=ExtResource("21_lby3b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -0.6, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -0.6, 0.6)
 
 [node name="Columns" type="Node3D" parent="Props"]
 
@@ -1033,3 +1118,37 @@ wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Ceilings" type="Node3D" parent="Props"]
+
+[node name="Ceiling" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 9.4, 0.5)
+mesh = SubResource("QuadMesh_obwoo")
+
+[node name="Ceiling2" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 9.400001, 15.4)
+mesh = SubResource("QuadMesh_0xjka")
+
+[node name="Ceiling3" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 9.400001, -13.6)
+mesh = SubResource("QuadMesh_lby3b")
+
+[node name="Ceiling4" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.799999, 9.400001, -6.6000004)
+mesh = SubResource("QuadMesh_lby3b")
+
+[node name="Ceiling5" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.799999, 9.400001, 6.3999996)
+mesh = SubResource("QuadMesh_bcwfp")
+
+[node name="Ceiling6" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 9.999999, 9.400001, -4.9)
+mesh = SubResource("QuadMesh_bcwfp")
+
+[node name="Ceiling7" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 10.999999, 9.400001, 5.1)
+mesh = SubResource("QuadMesh_bcwfp")
+
+[node name="Ceiling8" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 0.99999994, 14.999999, 9.400001, 0.099999905)
+mesh = SubResource("QuadMesh_bcwfp")
