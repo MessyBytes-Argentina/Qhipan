@@ -2577,5 +2577,5 @@ textureSets = SubResource("TextureSetsResource_ujq21")
 defaultObjectFrequency = 8
 objects = Array[ObjectResource]([SubResource("ObjectResource_o4ush")])
 terrainZones = SubResource("ZonesResource_c0uas")
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9986295, -0.05233596, 0, 0.05233596, 0.9986295, 0, -6, 0)
 metadata/_edit_lock_ = false
