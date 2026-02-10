@@ -375,13 +375,13 @@ surface_material_override/1 = ExtResource("8_x0jxa")
 [node name="Sconces" type="Node3D" parent="Props/Miscelaneous"]
 
 [node name="Sconce" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -7.543584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.796905, 3.7, -7.543584)
 
 [node name="Sconce2" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -9.243584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.810984, 3.7, -9.243584)
 
 [node name="Sconce3" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -14.243584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.811683, 3.7, -14.243584)
 
 [node name="Sconce4" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -16.243584)
@@ -716,7 +716,7 @@ spot_angle = 53.5
 spot_angle_attenuation = 1.2311431
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Props"]
-transform = Transform3D(-0.7941643, 0.21027024, 0.57016623, 0.6064602, 0.21424693, 0.76570505, 0.038848627, 0.95387876, -0.29766777, -5.5000005, -0.30000025, -12.899999)
+transform = Transform3D(-0.61014026, 0.25855666, 0.7489175, 0.7913405, 0.1525247, 0.5920444, 0.038848627, 0.95387876, -0.2976678, -2.6000004, -0.30000025, -12.899999)
 light_color = Color(0.290833, 0.08925275, 0.42326143, 1)
 light_energy = 0.5
 shadow_enabled = true
@@ -728,7 +728,7 @@ spot_angle = 73.42
 spot_angle_attenuation = 3.482199
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Props"]
-transform = Transform3D(0.045903657, -0.29928187, -0.95306, -0.9981902, 0.023361038, -0.055413213, 0.038848642, 0.95387876, -0.29766786, 2.3999999, 8.5, -14.399998)
+transform = Transform3D(-0.12812762, -0.29067847, -0.94820315, -0.99099654, 0.07497588, 0.11092578, 0.038848635, 0.95387876, -0.29766777, -1.1000001, 8.5, -14.399998)
 light_color = Color(0.7855554, 0.39039046, 0.3584091, 1)
 light_energy = 0.3
 shadow_enabled = true
