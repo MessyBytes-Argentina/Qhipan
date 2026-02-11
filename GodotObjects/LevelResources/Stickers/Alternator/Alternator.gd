@@ -47,7 +47,7 @@ func check_out_of_group(groups: Array) -> void:
 		if not groups.has(obj.groupParent): switch_object(obj)
 
 ## Places the sticker, disables the held area and clears the list of objects
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0) -> void:
 	disablingArea = true
 	disable_area()
 	super(pos, direction, overrideSize)

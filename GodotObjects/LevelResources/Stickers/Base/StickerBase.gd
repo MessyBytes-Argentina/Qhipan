@@ -142,7 +142,7 @@ func check_placement() -> void:
 		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
 		if closest != null: 
 			if closest.globalPosition.distance_to(global_position) <= MAXPREPLACEDDISTANCE: 
-				place_sticker(closest.globalPosition, closest.direction, closest.specialScale)
+				place_sticker(closest.globalPosition, closest.direction, closest.specialScale, closest.specialFlags)
 				closest.used = self
 				closest.node.sticker_activity()
 				return
@@ -202,7 +202,7 @@ func prerender() -> void:
 	billboard.pixel_size = billboardsize
 
 ## Places the sticker on the given area facing the given direction
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0) -> void:
 	set_size(ScaleModes.PLACED)
 	meshes.scale = overrideSize
 	placedPosition = pos

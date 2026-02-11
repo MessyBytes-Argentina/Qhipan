@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhp6mup3grffc"]
+[gd_scene load_steps=5 format=3 uid="uid://bhp6mup3grffc"]
 
+[ext_resource type="Script" uid="uid://c4bu42j3ajl1x" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.gd" id="1_qjnqx"]
 [ext_resource type="Material" uid="uid://650b4kttgfpu" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder.tres" id="1_s51y8"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="2_qjnqx"]
 
@@ -9,6 +10,7 @@ size = Vector2(0.75, 0.75)
 orientation = 1
 
 [node name="Placeholder Sticker Area" type="Node3D"]
+script = ExtResource("1_qjnqx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

@@ -235,8 +235,8 @@ bottom_radius = 1.25
 height = 7.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
-radius = 0.6
-height = 1.2
+radius = 0.8
+height = 1.6
 
 [sub_resource type="Gradient" id="Gradient_xq41j"]
 offsets = PackedFloat32Array(0, 0.488889, 0.563235, 0.569118, 0.67619, 0.692064)

@@ -5,6 +5,10 @@ class_name FanSticker
 
 ## Default fan range.
 const DEFAULTFANRANGE: float = 3.0
+## No fan on player bitflag.
+const NOPLAYERFAN: int = 1
+## No antigravity on player bitflag.
+const NOPLAYERANTIGRAVITY: int = 2
 
 ## Fan range. Use only on fixed fans.
 @export_range(1.0, 20.0, 1.0) var fanRange = 3.0
@@ -15,6 +19,8 @@ const DEFAULTFANRANGE: float = 3.0
 @onready var spinupSound: RandomSoundPlayer = %SpinupSound
 ## Pushing area reference.
 @onready var fan: Fan = %Fan
+## NoGravity area reference.
+@onready var noGravity: NoGravityZone = %NoGravity
 
 ## OnPlayerEffect node reference.
 var onPlayerEffectRef: LedgeDetection
@@ -34,7 +40,9 @@ func _ready() -> void:
 		fan.switch_fan(false)
 
 ## Plays sound and places the fan then starts the fan animation.
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0) -> void:
+	fan.canAffectPlayer = specialFlags & NOPLAYERFAN == 0
+	noGravity.canAffectPlayer = specialFlags & NOPLAYERANTIGRAVITY == 0
 	if grabed:
 		spinupSound.play_sound()
 	super(pos, direction, overrideSize)
@@ -46,6 +54,9 @@ func grab(node: Node3D) -> void:
 	animationPlayer.play("RESET")
 	fan.switch_fan(false)
 	grabed = true
+	await get_tree().process_frame
+	fan.canAffectPlayer = true
+	noGravity.canAffectPlayer = true
 
 ## Checks every frame to turn the fan off when not grabed or placed
 func _process(_delta: float) -> void:

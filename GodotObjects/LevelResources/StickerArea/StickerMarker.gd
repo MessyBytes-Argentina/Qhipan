@@ -16,6 +16,8 @@ signal sticker(placed: StickerBase)
 @export_flags("Alternator", "Fan", "Key", "Lamp") var validStickers: int = 15
 ## Scale of the placed sticker
 @export_range(0.0, 5.0, 0.01) var specialStickerScale: float = 1.0
+## Special Flags.
+@export_flags("noPlayerFan", "NoPlayerAntigravity") var specialFlags: int = 0
 
 ## Surface data.
 var data: StickerableSurfaceData
@@ -73,12 +75,7 @@ func _save_data() -> void:
 	var pointingTo: Node3D = Node3D.new()
 	pointingTo.position = Vector3.UP
 	add_child(pointingTo)
-	data = StickerableSurfaceData.new()
-	data.node = self
-	data.direction = global_position.direction_to(pointingTo.global_position)
-	data.globalPosition = global_position
-	data.validStickers = validStickers
-	data.specialScale = Vector3.ONE * specialStickerScale
+	data = StickerableSurfaceData.new(self, pointingTo)
 	while not GeneralVariables.stickerableSurfacesManager:
 		await get_tree().process_frame
 	GeneralVariables.stickerableSurfacesManager.load_data(data)

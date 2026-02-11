@@ -40,8 +40,10 @@ const noGravityAreaMargin: float = 0.15
 
 ## Last raycast collision length.
 var lastRayCollision: float = 0.0
-## Flag to indicate setup is ready
+## Flag to indicate setup is ready.
 var setupReady: bool = false
+## Flag to affect player.
+var canAffectPlayer: bool = true
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
@@ -99,8 +101,12 @@ func switch_fan(mode: bool = not isOn) -> void:
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
-	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true)
+	if body.has_node("InvoluntaryPushModule"): 
+		if body is Player and not canAffectPlayer: return
+		body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:
-	if body.has_node("InvoluntaryPushModule"): body.get_node("InvoluntaryPushModule").stop_pushing(self, true)
+	if body.has_node("InvoluntaryPushModule"): 
+		if body is Player and not canAffectPlayer: return
+		body.get_node("InvoluntaryPushModule").stop_pushing(self, true)
