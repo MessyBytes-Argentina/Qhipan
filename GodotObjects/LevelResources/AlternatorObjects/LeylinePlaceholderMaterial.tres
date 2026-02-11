@@ -1,12 +1,18 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvmehcouey5tr"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dvmehcouey5tr"]
 
-[ext_resource type="Texture2D" uid="uid://h4yeub8rtwsd" path="res://Assets/Textures/LeylineTest.png" id="1_tdmqi"]
+[sub_resource type="Gradient" id="Gradient_0qb65"]
+offsets = PackedFloat32Array(0.39999998, 0.45, 0.5, 0.55, 0.6)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tdmqi"]
+gradient = SubResource("Gradient_0qb65")
+fill_from = Vector2(1, 1)
 
 [resource]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("1_tdmqi")
+albedo_texture = SubResource("GradientTexture2D_tdmqi")
 uv1_scale = Vector3(0.75, 5, 1)
 uv1_offset = Vector3(0, 1.3, 0)
 stencil_mode = 3
