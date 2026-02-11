@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://ds40hobe7ugw5"]
+[gd_scene load_steps=58 format=4 uid="uid://ds40hobe7ugw5"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_cdgvd"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_fjvai"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerEnvironment.tres" id="17_1qbfm"]
 [ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="18_87ntp"]
 [ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerLight.tres" id="18_jr0f5"]
+[ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="19_1qbfm"]
 [ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="19_l20m2"]
 
 [sub_resource type="Curve3D" id="Curve3D_wwpq5"]
@@ -213,6 +214,23 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr0f5"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_gsbgo"]
+material = SubResource("StandardMaterial3D_jr0f5")
+size = Vector2(4, 15)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_7yvys"]
+material = SubResource("StandardMaterial3D_jr0f5")
+size = Vector2(4, 6)
+orientation = 1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_imouj"]
 size = Vector3(1.6, 1, 0.5)
 
@@ -248,6 +266,10 @@ size = Vector3(3, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsbgo"]
 size = Vector3(4.3, 4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agjl4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_151im"]
 
 [node name="DemoHub-Connective" type="Node3D"]
 
@@ -375,13 +397,13 @@ surface_material_override/1 = ExtResource("8_x0jxa")
 [node name="Sconces" type="Node3D" parent="Props/Miscelaneous"]
 
 [node name="Sconce" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -7.543584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.796905, 3.7, -7.543584)
 
 [node name="Sconce2" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -9.243584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.810984, 3.7, -9.243584)
 
 [node name="Sconce3" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -14.243584)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.811683, 3.7, -14.243584)
 
 [node name="Sconce4" parent="Props/Miscelaneous/Sconces" instance=ExtResource("11_iqlko")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.8, 3.7, -16.243584)
@@ -703,45 +725,27 @@ wallMode = 1
 material = ExtResource("10_iqlko")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Props"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.70000005, 3.6999998, -8.599999)
-light_color = Color(0.6692805, 0.9210669, 0.95329255, 1)
-light_energy = 0.2
-light_cull_mask = 4294967293
-shadow_enabled = true
-shadow_blur = 0.5
-spot_range = 7.625
-spot_attenuation = -0.29
-spot_angle = 53.5
-spot_angle_attenuation = 1.2311431
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Props"]
-transform = Transform3D(-0.7941643, 0.21027024, 0.57016623, 0.6064602, 0.21424693, 0.76570505, 0.038848627, 0.95387876, -0.29766777, -5.5000005, -0.30000025, -12.899999)
-light_color = Color(0.290833, 0.08925275, 0.42326143, 1)
-light_energy = 0.5
-shadow_enabled = true
-shadow_normal_bias = 0.779
-shadow_blur = 3.083
-spot_range = 10.364
-spot_attenuation = -1.32
-spot_angle = 73.42
-spot_angle_attenuation = 3.482199
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="Props"]
-transform = Transform3D(0.045903657, -0.29928187, -0.95306, -0.9981902, 0.023361038, -0.055413213, 0.038848642, 0.95387876, -0.29766786, 2.3999999, 8.5, -14.399998)
-light_color = Color(0.7855554, 0.39039046, 0.3584091, 1)
-light_energy = 0.3
-shadow_enabled = true
-shadow_normal_bias = 0.779
-shadow_blur = 3.083
-spot_range = 13.0
-spot_attenuation = -1.07
-spot_angle = 54.82
-spot_angle_attenuation = 3.482199
-
 [node name="Ceilings" type="Node3D" parent="Props"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.963639, 5.5, -12.1)
+mesh = SubResource("QuadMesh_gsbgo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.92808336, 0, 0.37237233, 0, 1, 0, -0.37237233, 0, 0.92808336, 10.463639, 5.5, -21.1)
+mesh = SubResource("QuadMesh_7yvys")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.48865175, 0, 0.872479, 0, 1, 0, -0.872479, 0, 0.48865175, 7.4636393, 5.5, -24.563648)
+mesh = SubResource("QuadMesh_7yvys")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.59988976, 0, -0.8000826, 0, 1, 0, 0.8000826, 0, 0.59988976, 7.979054, 5.5, 0.9652936)
+mesh = SubResource("QuadMesh_7yvys")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Props/Ceilings"]
+transform = Transform3D(0.96922255, 0, -0.24618717, 0, 1, 0, 0.24618717, 0, 0.96922255, 10.448223, 5.5, -2.828942)
+mesh = SubResource("QuadMesh_7yvys")
 
 [node name="Metaprogression Blocks" type="Node3D" parent="Props"]
 
@@ -772,6 +776,44 @@ color = Color(0.62490547, 1.2811433, 1.3535374, 1)
 texture = ExtResource("11_wwpq5")
 forceScale = Vector3(1.105, 10, 0.2)
 pedestalName = "DestileriaLock"
+
+[node name="Ambience Lights" type="Node3D" parent="Props"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Props/Ambience Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.70000005, 3.6999998, -8.599999)
+light_color = Color(0.6692805, 0.9210669, 0.95329255, 1)
+light_energy = 0.2
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_blur = 0.5
+spot_range = 7.625
+spot_attenuation = -0.29
+spot_angle = 53.5
+spot_angle_attenuation = 1.2311431
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Props/Ambience Lights"]
+transform = Transform3D(-0.61014026, 0.25855666, 0.7489175, 0.7913405, 0.15252468, 0.5920444, 0.038848627, 0.95387876, -0.2976678, -2.6000004, -0.30000025, -12.899999)
+light_color = Color(0.290833, 0.08925275, 0.42326143, 1)
+light_energy = 0.5
+shadow_enabled = true
+shadow_normal_bias = 0.779
+shadow_blur = 3.083
+spot_range = 10.364
+spot_attenuation = -1.32
+spot_angle = 73.42
+spot_angle_attenuation = 3.482199
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Props/Ambience Lights"]
+transform = Transform3D(-0.12812762, -0.29067847, -0.9482032, -0.99099654, 0.07497588, 0.11092575, 0.038848635, 0.95387876, -0.29766783, -1.1000001, 8.5, -14.399998)
+light_color = Color(0.7855554, 0.39039046, 0.3584091, 1)
+light_energy = 0.3
+shadow_enabled = true
+shadow_normal_bias = 0.779
+shadow_blur = 3.083
+spot_range = 13.0
+spot_attenuation = -1.07
+spot_angle = 54.82
+spot_angle_attenuation = 3.482199
 
 [node name="Widgets" type="Node3D" parent="."]
 
@@ -924,6 +966,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 1.6, -8.5)
 
 [node name="EndMarker" type="Node3D" parent="Widgets/EnvironmentLerper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.799999, 3.1000001, -8.599999)
+
+[node name="ObjectOccluder" type="Node3D" parent="Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 2.5, -8.3)
+script = ExtResource("19_1qbfm")
+hideObjects = [NodePath("../../Props/Ceilings")]
+sceneParent = NodePath("../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6000004, 0.5, 0)
+shape = SubResource("BoxShape3D_agjl4")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0.5999999, 0)
+shape = SubResource("BoxShape3D_151im")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
 
 [node name="StickerLamp" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_hptrn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -2.9802322e-08, -3)

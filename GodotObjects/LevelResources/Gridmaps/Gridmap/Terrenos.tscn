@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=4 uid="uid://bq8o70mwcgyk1"]
+[gd_scene load_steps=118 format=4 uid="uid://bq8o70mwcgyk1"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_g1mlp"]
 [ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Arena.tres" id="2_yesjg"]
@@ -7,7 +7,8 @@
 [ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Tierra con Pasto.tres" id="6_130gx"]
 [ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/New Earth.tres" id="7_130gx"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="7_rn5q8"]
-[ext_resource type="Material" uid="uid://hbu6fusu7u2t" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/Baldosa Molino.tres" id="10_1436h"]
+[ext_resource type="Material" uid="uid://hbu6fusu7u2t" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Baldosa Molino.tres" id="10_1436h"]
+[ext_resource type="Material" uid="uid://dr5ln2aluhdhm" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Cemento Molino.tres" id="11_3vkiw"]
 [ext_resource type="Material" uid="uid://c8vavedstuk0q" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosa Interior/Baldosa Interior.tres" id="13_uedv8"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="15_rn5q8"]
 
@@ -2348,165 +2349,330 @@ surface_material_override/0 = ExtResource("15_rn5q8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LadrilloInterior/CornerRemovedUpsideDown__LadrilloInterior/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b64xo")
 
-[node name="BaldosaColorida" type="Node3D" parent="."]
+[node name="BaldosaMolino" type="Node3D" parent="."]
+visible = false
 script = ExtResource("1_g1mlp")
 
-[node name="Corner__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="Corner__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_u8r2u")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/Corner__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/Corner__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/Corner__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/Corner__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_yv50f")
 
-[node name="CornerRemoved__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="CornerRemoved__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_w32gy")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/CornerRemoved__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/CornerRemoved__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/CornerRemoved__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/CornerRemoved__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4v6ds")
 
-[node name="Cube__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="Cube__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_oxyoc")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/Cube__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/Cube__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/Cube__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/Cube__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jkvta")
 
-[node name="Ramp__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="Ramp__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_8xvft")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/Ramp__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/Ramp__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/Ramp__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/Ramp__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hj4p7")
 
-[node name="Slab__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="Slab__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_hnmod")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/Slab__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/Slab__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/Slab__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/Slab__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gpnb6")
 
-[node name="Wedge__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="Wedge__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_uu3ko")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/Wedge__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/Wedge__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/Wedge__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/Wedge__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vlluh")
 
-[node name="SlabCorner__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabCorner__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_q0c0e")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabCorner__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabCorner__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabCorner__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabCorner__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_10pef")
 
-[node name="SlabRamp__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabRamp__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_qpqb6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabRamp__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabRamp__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabRamp__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabRamp__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_a4m78")
 
-[node name="SlabWedge__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabWedge__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_pmnsh")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabWedge__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabWedge__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabWedge__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabWedge__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mj4po")
 
-[node name="SlabCornerRemoved__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabCornerRemoved__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_ih2l2")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabCornerRemoved__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabCornerRemoved__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabCornerRemoved__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabCornerRemoved__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8ctai")
 
-[node name="SlabRampUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabRampUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_7a2tu")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabRampUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabRampUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabRampUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabRampUpsideDown__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_j6prr")
 
-[node name="SlabCornerUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabCornerUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_x8688")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabCornerUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabCornerUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabCornerUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabCornerUpsideDown__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3ub0h")
 
-[node name="RampUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="RampUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_vq2k6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/RampUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/RampUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/RampUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/RampUpsideDown__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5nfle")
 
-[node name="CornerUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="CornerUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_ah0as")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/CornerUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/CornerUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/CornerUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/CornerUpsideDown__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_23xl1")
 
-[node name="SlabCornerRemovedUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="SlabCornerRemovedUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_cs2m1")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/SlabCornerRemovedUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/SlabCornerRemovedUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/SlabCornerRemovedUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/SlabCornerRemovedUpsideDown__BaldosaColorida/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ja6cr")
 
-[node name="CornerRemovedUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaColorida"]
+[node name="CornerRemovedUpsideDown__BaldosaColorida" type="MeshInstance3D" parent="BaldosaMolino"]
 mesh = SubResource("ArrayMesh_ssos6")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("10_1436h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaColorida/CornerRemovedUpsideDown__BaldosaColorida"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BaldosaMolino/CornerRemovedUpsideDown__BaldosaColorida"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaColorida/CornerRemovedUpsideDown__BaldosaColorida/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaldosaMolino/CornerRemovedUpsideDown__BaldosaColorida/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_b64xo")
+
+[node name="CementoMolino" type="Node3D" parent="."]
+script = ExtResource("1_g1mlp")
+collectionMaterial = ExtResource("11_3vkiw")
+
+[node name="Corner__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_u8r2u")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/Corner__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/Corner__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_yv50f")
+
+[node name="CornerRemoved__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_w32gy")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/CornerRemoved__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/CornerRemoved__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4v6ds")
+
+[node name="Cube__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_oxyoc")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/Cube__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/Cube__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkvta")
+
+[node name="Ramp__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_8xvft")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/Ramp__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/Ramp__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_hj4p7")
+
+[node name="Slab__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_hnmod")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/Slab__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/Slab__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gpnb6")
+
+[node name="Wedge__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_uu3ko")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/Wedge__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/Wedge__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vlluh")
+
+[node name="SlabCorner__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_q0c0e")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabCorner__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabCorner__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_10pef")
+
+[node name="SlabRamp__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_qpqb6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabRamp__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabRamp__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a4m78")
+
+[node name="SlabWedge__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_pmnsh")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabWedge__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabWedge__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mj4po")
+
+[node name="SlabCornerRemoved__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_ih2l2")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabCornerRemoved__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabCornerRemoved__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8ctai")
+
+[node name="SlabRampUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_7a2tu")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabRampUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabRampUpsideDown__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j6prr")
+
+[node name="SlabCornerUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_x8688")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabCornerUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabCornerUpsideDown__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3ub0h")
+
+[node name="RampUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_vq2k6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/RampUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/RampUpsideDown__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5nfle")
+
+[node name="CornerUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_ah0as")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/CornerUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/CornerUpsideDown__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_23xl1")
+
+[node name="SlabCornerRemovedUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_cs2m1")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/SlabCornerRemovedUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/SlabCornerRemovedUpsideDown__BaldosaColorida2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ja6cr")
+
+[node name="CornerRemovedUpsideDown__BaldosaColorida2" type="MeshInstance3D" parent="CementoMolino"]
+mesh = SubResource("ArrayMesh_ssos6")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("11_3vkiw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CementoMolino/CornerRemovedUpsideDown__BaldosaColorida2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CementoMolino/CornerRemovedUpsideDown__BaldosaColorida2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b64xo")

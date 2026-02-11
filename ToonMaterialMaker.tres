@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="4_gyrky"]
 [ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="5_pq6br"]
 [ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="6_8oogb"]
-[ext_resource type="Texture2D" uid="uid://p08muovdssbe" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Colore_heightmap.png" id="11_ftgfk"]
+[ext_resource type="Texture2D" uid="uid://p08muovdssbe" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/MM-Baldosado Colore_heightmap.png" id="11_ftgfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aaf5q"]
 render_priority = 0
