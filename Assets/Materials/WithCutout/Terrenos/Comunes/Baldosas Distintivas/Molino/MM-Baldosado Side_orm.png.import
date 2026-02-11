@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1e01xyh76n2k"
-path.s3tc="res://.godot/imported/MM-Baldosado Colore_albedo.png-509f8591b1dd704b63affa03cd4461bf.s3tc.ctex"
+uid="uid://on6si4lfd2us"
+path.s3tc="res://.godot/imported/MM-Baldosado Side_orm.png-6cffe3c96971f7d0eed4f456b1620f0e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/MM-Baldosado Colore_albedo.png"
-dest_files=["res://.godot/imported/MM-Baldosado Colore_albedo.png-509f8591b1dd704b63affa03cd4461bf.s3tc.ctex"]
+source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/MM-Baldosado Side_orm.png"
+dest_files=["res://.godot/imported/MM-Baldosado Side_orm.png-6cffe3c96971f7d0eed4f456b1620f0e.s3tc.ctex"]
 
 [params]
 
@@ -26,8 +26,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Molino/MM-Baldosado Side_normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
