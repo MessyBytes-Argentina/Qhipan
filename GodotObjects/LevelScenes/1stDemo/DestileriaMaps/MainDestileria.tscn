@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://cfha4i1lvvl3r"]
+[gd_scene load_steps=70 format=4 uid="uid://cfha4i1lvvl3r"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_kxvkw"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_ndg3s"]
@@ -27,6 +27,7 @@
 [ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/WithCutout/Piedras.tres" id="25_ug4pu"]
 [ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe.tscn" id="26_vlw36"]
 [ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="26_y0kcf"]
+[ext_resource type="Material" uid="uid://cej5kko0l2g43" path="res://Assets/Materials/WithCutout/Walls/DirtNoFade.tres" id="27_pabsu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix7dh"]
 shading_mode = 0
@@ -206,69 +207,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_748up"]
-offsets = PackedFloat32Array(0.75, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6smc2"]
-gradient = SubResource("Gradient_748up")
-
-[sub_resource type="Gradient" id="Gradient_hyvuq"]
-offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
-colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cimqv"]
-gradient = SubResource("Gradient_hyvuq")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ixk3v"]
-load_path = "res://.godot/imported/New Earth_albedo.png-b7193e0d43c8cb4f872e46a75981cf84.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7yamr"]
-load_path = "res://.godot/imported/New Earth_normal.png-f345253196a2610e706bec6c34af04ed.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kk2n3"]
-load_path = "res://.godot/imported/New Earth_orm.png-a592d22ea5d21df2752829c0fc667a21.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsysf"]
-render_priority = 0
-shader = ExtResource("26_y0kcf")
-shader_parameter/distance_fade_min = -0.5
-shader_parameter/distance_fade_max = 0.5
-shader_parameter/goesDown = false
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/fade_color_up = Color(0, 0, 0, 1)
-shader_parameter/fade_color_down = Color(0, 0, 0, 1)
-shader_parameter/blur_range = 0.25
-shader_parameter/light_gradient = SubResource("GradientTexture1D_cimqv")
-shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_6smc2")
-shader_parameter/texture_scale = 2.0000000298024
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_ixk3v")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = SubResource("CompressedTexture2D_7yamr")
-shader_parameter/normal_scale = 2.570000882075
-shader_parameter/texture_orm = SubResource("CompressedTexture2D_kk2n3")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/height = 0.0
-shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
-shader_parameter/cameraMiddleRotation = 0.0
-shader_parameter/squareSize = 0.0
-shader_parameter/auxMode = false
-shader_parameter/rotating = false
-shader_parameter/globalPlayerPosition = Vector3(0, 0, 0)
-
 [sub_resource type="Gradient" id="Gradient_j3h21"]
 offsets = PackedFloat32Array(0.75, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
@@ -445,7 +383,8 @@ pedestalName = "destileriaPuzzle1"
 sceneParent = NodePath("../../..")
 
 [node name="ChackanaDoor" parent="Destileria_puzzle1/Metaprogression" instance=ExtResource("9_8gx4m")]
-transform = Transform3D(2.1894392e-07, 0, 2.9, 0, 2.9, 0, -2.9, 0, 2.1894392e-07, -10.5, -3.5, -0.5)
+transform = Transform3D(2.2573873e-07, 0, 2.99, 0, 2.99, 0, -2.99, 0, 2.2573873e-07, -10.5, -3.5, -0.5)
+visible = false
 pedestalName = "destileriaPuzzle1"
 
 [node name="Ceilings" type="Node3D" parent="Destileria_puzzle1"]
@@ -526,7 +465,7 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="ObjectOccluder" type="Node3D" parent="Destileria_puzzle1" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
 script = ExtResource("12_tq55b")
-showObjects = [NodePath("../../Destileria_puzzle2")]
+showObjects = [NodePath("../../Destileria_puzzle2"), NodePath("../Metaprogression/ChackanaDoor")]
 hideObjects = [NodePath("../Walls/WallR2"), NodePath("../Walls/WallL2"), NodePath("../Ceilings")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
@@ -646,6 +585,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.5, 1.5)
 
 [node name="Darkness" parent="Destileria_puzzle2" instance=ExtResource("6_tq55b")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -5, 0.20000005, 0.5)
+visible = false
 size = Vector3(7, 1.5, 5)
 
 [node name="Details" type="Node3D" parent="Destileria_puzzle2"]
@@ -671,7 +611,8 @@ pedestalName = "destileriaPuzzle2"
 sceneParent = NodePath("../../..")
 
 [node name="ChackanaDoor" parent="Destileria_puzzle2/Metaprogression" instance=ExtResource("9_8gx4m")]
-transform = Transform3D(2.1894392e-07, 0, 2.9, 0, 2.9, 0, -2.9, 0, 2.1894392e-07, -19.5, -0.5, 0.5)
+transform = Transform3D(2.2573873e-07, 0, 2.99, 0, 2.99, 0, -2.99, 0, 2.2573873e-07, -19.5, -0.5, 0.5)
+visible = false
 pedestalName = "destileriaPuzzle2"
 
 [node name="Walls" type="Node3D" parent="Destileria_puzzle2"]
@@ -694,7 +635,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -0.01)
 curve = SubResource("Curve3D_aemv4")
 script = ExtResource("10_bctba")
 wallHeight = 1.0
-material = SubResource("ShaderMaterial_gsysf")
+material = ExtResource("27_pabsu")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallRDDown" type="Path3D" parent="Destileria_puzzle2/Walls"]
@@ -723,7 +664,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, 3.01)
 curve = SubResource("Curve3D_0x5eh")
 script = ExtResource("10_bctba")
 wallHeight = 1.0
-material = SubResource("ShaderMaterial_gsysf")
+material = ExtResource("27_pabsu")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallRDDown2" type="Path3D" parent="Destileria_puzzle2/Walls"]
@@ -737,7 +678,7 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="ObjectOccluder" type="Node3D" parent="Destileria_puzzle2" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
 script = ExtResource("12_tq55b")
-showObjects = [NodePath("../Darkness")]
+showObjects = [NodePath("../Darkness"), NodePath("../Metaprogression/ChackanaDoor")]
 hideObjects = [NodePath("../BlackWalls")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
