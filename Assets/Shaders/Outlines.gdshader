@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, depth_test_disabled;
+render_mode unshaded, depth_draw_never;
 stencil_mode read, 1, compare_not_equal;
 
 uniform sampler2D depth_texture : hint_depth_texture,filter_linear_mipmap;

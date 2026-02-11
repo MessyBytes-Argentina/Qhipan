@@ -20,7 +20,7 @@ size = Vector3(3, 3, 3)
 orientation = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggxyo"]
-render_priority = -2
+render_priority = -3
 shader = ExtResource("3_s5ihy")
 shader_parameter/size = Vector3(1, 1, 1)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cfha4i1lvvl3r"]
+[gd_scene load_steps=70 format=4 uid="uid://cfha4i1lvvl3r"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_kxvkw"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_ndg3s"]
@@ -21,12 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://bs433x5xelnxm" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_normal.png" id="18_pabsu"]
 [ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_orm.png" id="19_ug4pu"]
 [ext_resource type="PackedScene" uid="uid://bc5kl5oyjudpv" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/fallen_crystal.tscn" id="21_yhx78"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s8wsd"]
-size = Vector3(0.5, 1, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_74imo"]
-size = Vector3(0.5, 1, 3)
+[ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="22_v3mx2"]
+[ext_resource type="PackedScene" uid="uid://cnyaxl7dggkt4" path="res://GodotObjects/LevelResources/InvisiblePlatform/InvisiblePlatform.tscn" id="23_vlw36"]
+[ext_resource type="ArrayMesh" uid="uid://dv1jhmyfjq74g" path="res://Assets/Models/Piedras/Piedra1.obj" id="24_pabsu"]
+[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/WithCutout/Piedras.tres" id="25_ug4pu"]
+[ext_resource type="PackedScene" uid="uid://b0xel8u8n4c62" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/earth_fringe.tscn" id="26_vlw36"]
+[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="26_y0kcf"]
+[ext_resource type="Material" uid="uid://cej5kko0l2g43" path="res://Assets/Materials/WithCutout/Walls/DirtNoFade.tres" id="27_pabsu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix7dh"]
 shading_mode = 0
@@ -87,10 +88,10 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ix7dh"]
-size = Vector3(1, 1, 4)
+size = Vector3(1, 1, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ejsxi"]
-size = Vector3(1, 1, 3)
+size = Vector3(1, 1, 8.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e68cp"]
 render_priority = 0
@@ -183,6 +184,155 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1hwok")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8pxy"]
+size = Vector3(0.5, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cplfn"]
+size = Vector3(0.5, 3.5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x5eh"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_aemv4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15, -3.5, -2, 0, 0, 0, 0, 0, 0, -15, -3.5, -3, 0, 0, 0, 0, 0, 0, -36, -3.5, -3, 0, 0, 0, 0, 0, 0, -36, -3.5, -2, 0, 0, 0, 0, 0, 0, -38, -3.5, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_pabsu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15, -3.5, -3, 0, 0, 0, 0, 0, 0, -36, -3.5, -3),
+"tilts": PackedFloat32Array(-1.5707964, -1.5707964)
+}
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_j3h21"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lbntc"]
+gradient = SubResource("Gradient_j3h21")
+
+[sub_resource type="Gradient" id="Gradient_4h2x3"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bon7h"]
+gradient = SubResource("Gradient_4h2x3")
+
+[sub_resource type="Gradient" id="Gradient_tq866"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e5qju"]
+gradient = SubResource("Gradient_tq866")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nheon"]
+load_path = "res://.godot/imported/New Earth_albedo.png-b7193e0d43c8cb4f872e46a75981cf84.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g0wr6"]
+load_path = "res://.godot/imported/New Earth_normal.png-f345253196a2610e706bec6c34af04ed.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bpsk1"]
+load_path = "res://.godot/imported/New Earth_orm.png-a592d22ea5d21df2752829c0fc667a21.s3tc.ctex"
+
+[sub_resource type="Gradient" id="Gradient_nbmhr"]
+offsets = PackedFloat32Array(0, 0.47115386)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xnm2u"]
+gradient = SubResource("Gradient_nbmhr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqk4u"]
+render_priority = 0
+shader = ExtResource("26_y0kcf")
+shader_parameter/distance_fade_min = -0.5
+shader_parameter/distance_fade_max = 0.5
+shader_parameter/goesDown = false
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/fade_color_up = Color(0, 0, 0, 1)
+shader_parameter/fade_color_down = Color(0, 0, 0, 1)
+shader_parameter/vertical_fade = SubResource("GradientTexture1D_xnm2u")
+shader_parameter/screen_vertical_fade = SubResource("GradientTexture1D_e5qju")
+shader_parameter/blur_range = 0.25
+shader_parameter/light_gradient = SubResource("GradientTexture1D_bon7h")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_lbntc")
+shader_parameter/texture_scale = 2.0000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_nheon")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = SubResource("CompressedTexture2D_g0wr6")
+shader_parameter/normal_scale = 2.570000882075
+shader_parameter/texture_orm = SubResource("CompressedTexture2D_bpsk1")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/height = 0.0
+shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
+shader_parameter/cameraMiddleRotation = 0.0
+shader_parameter/squareSize = 0.0
+shader_parameter/auxMode = false
+shader_parameter/rotating = false
+shader_parameter/globalPlayerPosition = Vector3(0, 0, 0)
+
+[sub_resource type="Curve3D" id="Curve3D_ug4pu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -38, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_y0kcf"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -15, -3.5, 3, 0, 0, 0, 0, 0, 0, -36, -3.5, 3),
+"tilts": PackedFloat32Array(1.5707964, 1.5707964)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_0x5eh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -38, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_748up"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -38, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -2, 0, 0, 0, 0, 0, 0, -36, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -1, 0, 0, 0, 0, 0, 0, -15, -3.5, -2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="QuadMesh" id="QuadMesh_vlw36"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(5, 10)
+
+[sub_resource type="QuadMesh" id="QuadMesh_pabsu"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(20, 25)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ug4pu"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(20, 1.12)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0x5eh"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(20, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_y0kcf"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(16, 3)
+
 [node name="MainDestileria" type="Node3D"]
 
 [node name="Destileria_puzzle1" type="Node3D" parent="."]
@@ -192,26 +342,6 @@ data = {
 "cells": PackedInt32Array(-524293, 1, 655442, -524293, 0, 655442, -524293, 65535, 655442, -524293, 65534, 655442, -524293, 65533, 82, -524294, 65533, 82, -524294, 65534, 655442, -524294, 65535, 655442, -524294, 0, 655442, -524294, 1, 82, -524295, 65533, 82, -524295, 65534, 655442, -524295, 65535, 655442, -524295, 0, 82, -524295, 1, 82, -524293, 65532, 82, -524294, 65532, 82, -524295, 65532, 82, -524295, 65531, 82, -524294, 65531, 82, -524296, 65532, 82, -524296, 65531, 85, -524297, 65532, 85, -524296, 65533, 82, -524296, 65534, 655442, -524296, 65535, 655442, -524296, 0, 82, -524296, 1, 82, -524297, 1, 82, -524297, 0, 82, -524297, 65535, 655442, -524297, 65534, 655442, -524297, 65533, 82, -524294, 3, 1048658, -524294, 2, 1048658, -524295, 2, 1048658, -524296, 2, 1048658, -524296, 3, 1048661, -524295, 3, 1048658, -524293, 2, 1048658, -524297, 2, 1048661, -524298, 65534, 1048658, -524298, 65535, 655442, -524299, 65535, 1048658, -524298, 0, 1048658, -524299, 0, 1048658, -524299, 65534, 1048658, -524300, 65534, 1048658, -524300, 65535, 1048658, -524300, 0, 1048658, -524293, 3, 655442, -524293, 65531, 655442, -524292, 65532, 655442, -524292, 2, 655442, -524292, 1, 655442, -524292, 0, 655442, -524292, 65535, 655442, -524292, 65534, 655442, -524292, 65533, 655442, -524290, 65534, 655442, -524290, 65535, 655442, -524290, 0, 655442, -589827, 0, 655450, -589827, 65535, 655450, -589827, 65534, 655450, -524291, 0, 655442, -524291, 65535, 655442, -524291, 65534, 655442, -524291, 1, 655442, -524291, 65533, 655442, -524298, 1, 1048661, -524298, 65533, 85, -524292, 65531, 1441877, -524291, 65532, 1441877, -524290, 65533, 1441877, -524290, 1, 655445, -524291, 2, 655445, -524292, 3, 655445, -589822, 65534, 655452, -589822, 65535, 655452, -589822, 0, 655452, -131063, 65534, 655450, -131063, 65535, 655450, -131063, 0, 655450, 9, 65534, 87, 9, 65535, 87, 9, 0, 87, -65526, 65535, 655442, -65526, 0, 655442, -65525, 65534, 655442, -65525, 65535, 655442, -65525, 0, 655442, -65524, 65534, 655442, -65524, 65535, 655442, -65524, 0, 655442, -589823, 0, 655442, -589823, 65535, 655442, -589823, 65534, 655442, -589824, 65534, 655442, -524289, 65534, 655442, -524289, 65535, 655442, -589824, 65535, 655442, -589824, 0, 655442, -524289, 0, 655442, -65526, 65534, 655442, -458750, 65534, 87, -458750, 65535, 87, -458750, 0, 87, -393213, 65534, 87, -393213, 65535, 87, -393213, 0, 87, -327676, 0, 87, -327676, 65535, 87, -327676, 65534, 87, -262139, 65534, 87, -262139, 65535, 87, -262139, 0, 87, -196602, 0, 87, -196602, 65535, 87, -196602, 65534, 87, -131065, 65534, 87, -131065, 65535, 87, -131065, 0, 87, -65528, 0, 87, -65528, 65535, 87, -65528, 65534, 87, -393220, 3, 655461, -393219, 2, 655461, -393220, 65531, 1441893, -393219, 65532, 1441893, -393220, 65532, 1441890, -393220, 2, 1441890)
 }
 metadata/_editor_floor_ = Vector3(0, -7, 0)
-
-[node name="ChunkLoadingHotspot-puzzle2" type="Node3D" parent="Destileria_puzzle1" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -3, -0.5)
-script = ExtResource("2_ndg3s")
-hotspotName = "destileria-enter2"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle2.tscn"
-rootNode = NodePath("../..")
-metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
-
-[node name="LoadShape" type="CollisionShape3D" parent="Destileria_puzzle1/ChunkLoadingHotspot-puzzle2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
-shape = SubResource("BoxShape3D_s8wsd")
-debug_color = Color(1, 0.64705884, 0, 0.5)
-metadata/LoadShape = true
-
-[node name="UnloadShape" type="CollisionShape3D" parent="Destileria_puzzle1/ChunkLoadingHotspot-puzzle2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
-shape = SubResource("BoxShape3D_74imo")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
 
 [node name="Stickers" type="Node3D" parent="Destileria_puzzle1"]
 
@@ -253,7 +383,8 @@ pedestalName = "destileriaPuzzle1"
 sceneParent = NodePath("../../..")
 
 [node name="ChackanaDoor" parent="Destileria_puzzle1/Metaprogression" instance=ExtResource("9_8gx4m")]
-transform = Transform3D(2.1894392e-07, 0, 2.9, 0, 2.9, 0, -2.9, 0, 2.1894392e-07, -10.5, -3.5, -0.5)
+transform = Transform3D(2.2573873e-07, 0, 2.99, 0, 2.99, 0, -2.99, 0, 2.2573873e-07, -10.5, -3.5, -0.5)
+visible = false
 pedestalName = "destileriaPuzzle1"
 
 [node name="Ceilings" type="Node3D" parent="Destileria_puzzle1"]
@@ -332,8 +463,9 @@ wallMode = 1
 material = ExtResource("11_tq55b")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="ObjectOccluder" type="Node3D" parent="Destileria_puzzle1" node_paths=PackedStringArray("hideObjects", "sceneParent")]
+[node name="ObjectOccluder" type="Node3D" parent="Destileria_puzzle1" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
 script = ExtResource("12_tq55b")
+showObjects = [NodePath("../../Destileria_puzzle2"), NodePath("../Metaprogression/ChackanaDoor")]
 hideObjects = [NodePath("../Walls/WallR2"), NodePath("../Walls/WallL2"), NodePath("../Ceilings")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
@@ -370,3 +502,245 @@ skeleton = NodePath("")
 
 [node name="FallenCrystal" parent="Destileria_puzzle1/Details/BrokenSconce3" instance=ExtResource("21_yhx78")]
 transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 0.099999905, -0.54999995, -0.099999905)
+
+[node name="Destileria_puzzle2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -3, -1)
+visible = false
+
+[node name="GridmapObject" parent="Destileria_puzzle2" instance=ExtResource("1_kxvkw")]
+data = {
+"cells": PackedInt32Array(-131073, 0, 82, -131073, 65535, 82, -196608, 65535, 82, -196608, 0, 82, -196608, 1, 82, -131073, 1, 82, -131074, 65535, 82, -131074, 0, 82, -131074, 1, 82, -131075, 0, 82, -131076, 0, 82, -131076, 65535, 82, -131076, 65534, 82, -131077, 65534, 82, -131078, 65534, 82, -131079, 65534, 82, -131079, 65535, 82, -131079, 0, 82, -131079, 1, 82, -131080, 1, 82, -131081, 1, 82, -131082, 1, 82, -131083, 1, 82, -131083, 0, 82, -131083, 65535, 82, -131082, 65535, 82, -131081, 65535, 82, -131081, 0, 82, -131082, 0, 82, -262154, 65535, 1441874, -262154, 1, 1441874, -262155, 1, 1441874, -262155, 65535, 1441874, -262153, 65535, 1441874, -262153, 1, 1441874, -131082, 2, 655426, -262155, 2, 66, -262153, 2, 1048642, -131081, 2, 655428, -262154, 2, 1048642, -196608, 65534, 82, -262145, 1, 1048642, -327680, 1, 66, -327680, 0, 66, -262145, 0, 82, -262145, 65535, 82, -327680, 65535, 66, -262146, 1, 655426, -262146, 0, 82, -262146, 65535, 82, -131090, 1, 1048658, -131090, 0, 1048658, -131090, 65535, 1048658, -131091, 65535, 1048658, -131091, 0, 1048658, -131091, 1, 1048658, -131092, 1, 1048658, -131092, 0, 1048658, -131092, 65535, 1048658, -131093, 1, 1048658, -131093, 0, 1048658, -131093, 65535, 1048658, -131094, 0, 1048658, -262155, 0, 82, -262154, 0, 82, -262153, 0, 82, -262162, 1, 82, -262162, 0, 82, -262162, 65535, 82, -262163, 1, 82, -262164, 1, 82, -262164, 0, 82, -262163, 0, 82, -262164, 65535, 82, -262163, 65535, 82, -393236, 65534, 66, -393236, 65535, 66, -393236, 0, 66, -393236, 1, 66, -393236, 2, 66, -393235, 65534, 66, -393235, 65535, 66, -393235, 0, 66, -393235, 1, 66, -393235, 2, 66, -393234, 65534, 66, -393234, 65535, 66, -393234, 0, 66, -393234, 1, 66, -393234, 2, 66, -393233, 65534, 66, -393233, 65535, 66, -393233, 0, 66, -393233, 1, 66, -393233, 2, 66, -393232, 65534, 66, -393232, 65535, 66, -393232, 0, 66, -393232, 1, 66, -393232, 2, 66, -393231, 65534, 66, -393231, 65535, 66, -393231, 0, 66, -393231, 1, 66, -393231, 2, 66, -393230, 65534, 66, -393230, 65535, 66, -393230, 0, 66, -393230, 1, 66, -393230, 2, 66, -393229, 65534, 66, -393229, 65535, 66, -393229, 0, 66, -393229, 1, 66, -393229, 2, 66, -393228, 65534, 66, -393228, 65535, 66, -393228, 0, 66, -393228, 1, 66, -393228, 2, 66, -393227, 65534, 66, -393227, 65535, 66, -393227, 0, 66, -393227, 1, 66, -393227, 2, 66, -393226, 65534, 66, -393226, 65535, 66, -393226, 0, 66, -393226, 1, 66, -393226, 2, 66, -393225, 65534, 66, -393225, 65535, 66, -393225, 0, 66, -393225, 1, 66, -393225, 2, 66, -393224, 65534, 66, -393224, 65535, 66, -393224, 0, 66, -393224, 1, 66, -393224, 2, 66, -393223, 65534, 66, -393223, 65535, 66, -393223, 0, 66, -393223, 1, 66, -393223, 2, 66, -393222, 65534, 66, -393222, 65535, 66, -393222, 0, 66, -393222, 1, 66, -393222, 2, 66, -393221, 65534, 66, -393221, 65535, 66, -393221, 0, 66, -393221, 1, 66, -393221, 2, 66, -393220, 65534, 66, -393220, 65535, 66, -393220, 0, 66, -393220, 1, 66, -393220, 2, 66, -393219, 65534, 66, -393219, 65535, 66, -393219, 0, 66, -393219, 1, 66, -393219, 2, 66, -393218, 65534, 66, -393218, 65535, 66, -393218, 0, 66, -393218, 1, 66, -393218, 2, 66, -393217, 65534, 66, -393217, 65535, 66, -393217, 0, 66, -393217, 1, 66, -393217, 2, 66, -458752, 65534, 66, -458752, 65535, 66, -458752, 0, 66, -458752, 1, 66, -458752, 2, 66, -131073, 65534, 82, -196610, 65534, 1441865, -262147, 65535, 71, -262147, 65534, 1441865, -262146, 65534, 655428, -262145, 65534, 82, -327680, 65534, 82, -262145, 2, 82, -327680, 2, 82, -262146, 2, 1048642, -196611, 2, 1048644, -262147, 2, 655428, -262148, 2, 655433, -262149, 2, 71, -196612, 2, 71, -262148, 1, 1048640, -327685, 1, 1048646, -131073, 2, 82, -131074, 2, 1048642, -196608, 2, 82, -65536, 2, 70, -1, 2, 1048649, -196616, 2, 720964, -196615, 2, 720970, -131083, 2, 67, -262156, 2, 68, -196620, 2, 655433, -196621, 2, 1048646, -196620, 1, 71, -196620, 0, 1048646, -262157, 2, 655433, -262156, 0, 655433, -262157, 1, 71, -262157, 0, 1048646, -262158, 2, 1048646, -262156, 65535, 1048646, -131094, 65535, 1048658, -131094, 1, 1048658, -262164, 65534, 1048658, -131092, 65534, 1048658, -131091, 65534, 1048658, -262163, 65534, 1048658, -262164, 2, 1048658, -131092, 2, 1048658, -262163, 2, 1048658, -131091, 2, 1048658, -262162, 2, 655445, -131090, 2, 655445, -131090, 65534, 1441877, -262162, 65534, 1441877, -131074, 65534, 85, -2, 2, 71, -2, 1, 1048646, -1, 1, 70, -131075, 2, 67, -131075, 1, 1048640, -196611, 65534, 655430, -262148, 65534, 655430, -262147, 1, 655425, -262147, 0, 71)
+}
+metadata/_editor_floor_ = Vector3(0, -5, 0)
+
+[node name="ChunkLoadingHotspot-minifork" type="Node3D" parent="Destileria_puzzle2" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 0.5)
+script = ExtResource("2_ndg3s")
+hotspotName = "destileria-enterMinifork"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_minifork.tscn"
+rootNode = NodePath("../..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="Destileria_puzzle2/ChunkLoadingHotspot-minifork"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0, -0.5)
+shape = SubResource("BoxShape3D_e8pxy")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="Destileria_puzzle2/ChunkLoadingHotspot-minifork"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.75, -1.25, 0)
+shape = SubResource("BoxShape3D_cplfn")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
+
+[node name="Doorways" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="PushDoor" parent="Destileria_puzzle2/Doorways" node_paths=PackedStringArray("sceneParent") instance=ExtResource("22_v3mx2")]
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, -8.1, -2, -1.5)
+sceneParent = NodePath("../../..")
+
+[node name="Stickers" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="KeySticker" parent="Destileria_puzzle2/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_7cnhx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.5, 0, 0.5)
+sceneParent = NodePath("../../..")
+originalParent = "MainDestileria"
+
+[node name="StickerPlacements" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="Invisible Platforms" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="InvisiblePlatform1" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -0.5, 0.5)
+
+[node name="InvisiblePlatform2" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, 0.5)
+
+[node name="InvisiblePlatform3" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, -0.5)
+
+[node name="InvisiblePlatform4" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -0.5, -1.5)
+
+[node name="InvisiblePlatform5" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -0.5, -1.5)
+
+[node name="InvisiblePlatform6" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -0.5, -1.5)
+
+[node name="InvisiblePlatform7" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -0.5, -1.5)
+
+[node name="InvisiblePlatform8" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -0.5, -0.5)
+
+[node name="InvisiblePlatform9" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -0.5, 0.5)
+
+[node name="InvisiblePlatform10" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -0.5, 1.5)
+
+[node name="InvisiblePlatform12" parent="Destileria_puzzle2/Invisible Platforms" instance=ExtResource("23_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.5, 1.5)
+
+[node name="Darkness" parent="Destileria_puzzle2" instance=ExtResource("6_tq55b")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -5, 0.20000005, 0.5)
+visible = false
+size = Vector3(7, 1.5, 5)
+
+[node name="Details" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Destileria_puzzle2/Details"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destileria_puzzle2/Details/StaticBody3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("24_pabsu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("25_ug4pu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destileria_puzzle2/Details/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_0x5eh")
+
+[node name="Metaprogression" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="SmallPedestalKey" parent="Destileria_puzzle2/Metaprogression" node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_w24ym")]
+transform = Transform3D(0.49999994, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999994, -18.5, -0.5, -0.5)
+pedestalName = "destileriaPuzzle2"
+sceneParent = NodePath("../../..")
+
+[node name="ChackanaDoor" parent="Destileria_puzzle2/Metaprogression" instance=ExtResource("9_8gx4m")]
+transform = Transform3D(2.2573873e-07, 0, 2.99, 0, 2.99, 0, -2.99, 0, 2.2573873e-07, -19.5, -0.5, 0.5)
+visible = false
+pedestalName = "destileriaPuzzle2"
+
+[node name="Walls" type="Node3D" parent="Destileria_puzzle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3, 1)
+
+[node name="WallR" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -0.01)
+curve = SubResource("Curve3D_aemv4")
+script = ExtResource("10_bctba")
+wallHeight = 4.0
+material = ExtResource("11_tq55b")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Earth Fringe Face Y" parent="Destileria_puzzle2/Walls" instance=ExtResource("26_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 0)
+curve = SubResource("Curve3D_pabsu")
+
+[node name="WallRD" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -0.01)
+curve = SubResource("Curve3D_aemv4")
+script = ExtResource("10_bctba")
+wallHeight = 1.0
+material = ExtResource("27_pabsu")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallRDDown" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, -0.05)
+curve = SubResource("Curve3D_aemv4")
+script = ExtResource("10_bctba")
+wallHeight = 4.0
+wallMode = 1
+material = SubResource("ShaderMaterial_sqk4u")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallL" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 3.01)
+curve = SubResource("Curve3D_ug4pu")
+script = ExtResource("10_bctba")
+wallHeight = 4.0
+material = ExtResource("11_tq55b")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Earth Fringe Face Y2" parent="Destileria_puzzle2/Walls" instance=ExtResource("26_vlw36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, -1)
+curve = SubResource("Curve3D_y0kcf")
+
+[node name="WallRD2" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, 3.01)
+curve = SubResource("Curve3D_0x5eh")
+script = ExtResource("10_bctba")
+wallHeight = 1.0
+material = ExtResource("27_pabsu")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallRDDown2" type="Path3D" parent="Destileria_puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -2, 3.05)
+curve = SubResource("Curve3D_748up")
+script = ExtResource("10_bctba")
+wallHeight = 4.0
+wallMode = 1
+material = SubResource("ShaderMaterial_sqk4u")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="ObjectOccluder" type="Node3D" parent="Destileria_puzzle2" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
+script = ExtResource("12_tq55b")
+showObjects = [NodePath("../Darkness"), NodePath("../Metaprogression/ChackanaDoor")]
+hideObjects = [NodePath("../BlackWalls")]
+sceneParent = NodePath("../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0.5)
+shape = SubResource("BoxShape3D_ix7dh")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 1.25)
+shape = SubResource("BoxShape3D_ejsxi")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
+
+[node name="BlackWalls" type="Node3D" parent="Destileria_puzzle2"]
+
+[node name="Ceiling" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(-4.371139e-08, -0.9999999, -4.371138e-08, 0, -4.371138e-08, 0.9999999, -1, 4.3711385e-08, 1.9106853e-15, -3.9500008, 2.45, 0.5)
+layers = 4
+mesh = SubResource("QuadMesh_vlw36")
+skeleton = NodePath("../../..")
+
+[node name="Wall" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(-4.3711385e-08, -0.9999999, -4.3711378e-08, 1, -4.3711378e-08, -4.371139e-08, 4.371139e-08, -4.371138e-08, 0.9999999, -11.45, -7.55, 3.06)
+layers = 4
+mesh = SubResource("QuadMesh_pabsu")
+skeleton = NodePath("../../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(4.371138e-08, 0.9999999, 1.3113414e-07, 1, -4.3711374e-08, -4.3711385e-08, -4.371138e-08, 1.3113416e-07, -0.9999999, -11.45, -7.55, -2.06)
+layers = 4
+mesh = SubResource("QuadMesh_pabsu")
+skeleton = NodePath("../../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(4.3711378e-08, -1.7484554e-07, 0.9999999, 1, -4.371137e-08, -4.371138e-08, 4.371138e-08, 0.9999999, 1.7484552e-07, 1.0500002, -7.55, -1.5)
+layers = 4
+mesh = SubResource("QuadMesh_ug4pu")
+skeleton = NodePath("../../..")
+
+[node name="Wall4" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(4.3711378e-08, -1.7484554e-07, 0.9999999, 1, -4.371137e-08, -4.371138e-08, 4.371138e-08, 0.9999999, 1.7484552e-07, 1.05, -7.55, 2.56)
+layers = 4
+mesh = SubResource("QuadMesh_ug4pu")
+skeleton = NodePath("../../..")
+
+[node name="Wall6" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(-4.371138e-08, -0.9999999, -2.1855689e-07, 1, -4.3711367e-08, -4.3711378e-08, 4.371137e-08, -2.185569e-07, 0.9999999, 2.05, -7.55, 2.06)
+layers = 4
+mesh = SubResource("QuadMesh_0x5eh")
+skeleton = NodePath("../../..")
+
+[node name="Wall7" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(4.371137e-08, 0.9999999, 1.3113413e-07, 1, -4.3711363e-08, -4.3711374e-08, -4.371137e-08, 1.3113413e-07, -0.9999999, 2.05, -7.55, -1.06)
+layers = 4
+mesh = SubResource("QuadMesh_0x5eh")
+skeleton = NodePath("../../..")
+
+[node name="Wall5" type="MeshInstance3D" parent="Destileria_puzzle2/BlackWalls"]
+transform = Transform3D(4.3711378e-08, -1.7484554e-07, 0.9999999, 1, -4.371137e-08, -4.371138e-08, 4.371138e-08, 0.9999999, 1.7484552e-07, 1.0500002, -9.55, 0.5)
+layers = 4
+mesh = SubResource("QuadMesh_y0kcf")
+skeleton = NodePath("../../..")

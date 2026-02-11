@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cch6il6i8uixx"
-path="res://.godot/imported/Earth_albedo.png-fd1d11fb6c7fae9c63d3edc33c60012c.ctex"
+path.s3tc="res://.godot/imported/Earth_albedo.png-fd1d11fb6c7fae9c63d3edc33c60012c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Texturas/Earth_albedo.png"
-dest_files=["res://.godot/imported/Earth_albedo.png-fd1d11fb6c7fae9c63d3edc33c60012c.ctex"]
+dest_files=["res://.godot/imported/Earth_albedo.png-fd1d11fb6c7fae9c63d3edc33c60012c.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

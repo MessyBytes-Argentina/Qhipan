@@ -291,7 +291,7 @@ _data = {
 &"SlideUp": SubResource("Animation_2hdbo")
 }
 
-[node name="PushDoor" type="Node3D" node_paths=PackedStringArray("sceneParent")]
+[node name="OneWayDoor" type="Node3D" node_paths=PackedStringArray("sceneParent")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_y1jv8")
 openAnimation = 4
@@ -362,8 +362,6 @@ stream = ExtResource("5_pjlfb")
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("6_3qa02")
-minPitchScale = 0.5
-maxPitchScale = 0.6
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [connection signal="body_entered" from="Centered/UpPivot/DownPivot/PlayerPushChecker" to="Centered/UpPivot/DownPivot/PlayerPushChecker" method="player_in_range"]

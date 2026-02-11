@@ -15,7 +15,7 @@ const PATHSIMPLIFYANGLE: float = 15
 enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 
 ## How tall is the wall.
-@export_range(2.0, 10.0, 1.0) var wallHeight: float = 5.0
+@export_range(1.0, 20.0, 1.0) var wallHeight: float = 5.0
 ## Create a second wall going down for when looking the other way around.
 @export var wallMode: WallModes = WallModes.ONLY_UP
 ## Wall material.

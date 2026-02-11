@@ -1,0 +1,66 @@
+[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://cej5kko0l2g43"]
+
+[ext_resource type="Shader" uid="uid://c78mbher83fha" path="res://Assets/Shaders/ToonWallThickOneSampler.gdshader" id="1_q1rnk"]
+
+[sub_resource type="Gradient" id="Gradient_748up"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6smc2"]
+gradient = SubResource("Gradient_748up")
+
+[sub_resource type="Gradient" id="Gradient_hyvuq"]
+offsets = PackedFloat32Array(0.25, 0.25, 0.75, 0.75)
+colors = PackedColorArray(0, 0, 0, 1, 0.33, 0.33, 0.33, 1, 0.33, 0.33, 0.33, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cimqv"]
+gradient = SubResource("Gradient_hyvuq")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ixk3v"]
+load_path = "res://.godot/imported/New Earth_albedo.png-b7193e0d43c8cb4f872e46a75981cf84.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7yamr"]
+load_path = "res://.godot/imported/New Earth_normal.png-f345253196a2610e706bec6c34af04ed.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kk2n3"]
+load_path = "res://.godot/imported/New Earth_orm.png-a592d22ea5d21df2752829c0fc667a21.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_q1rnk")
+shader_parameter/distance_fade_min = -0.5
+shader_parameter/distance_fade_max = 0.5
+shader_parameter/goesDown = false
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/fade_color_up = Color(0, 0, 0, 1)
+shader_parameter/fade_color_down = Color(0, 0, 0, 1)
+shader_parameter/blur_range = 0.25
+shader_parameter/light_gradient = SubResource("GradientTexture1D_cimqv")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_6smc2")
+shader_parameter/texture_scale = 2.0000000298024
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_ixk3v")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = SubResource("CompressedTexture2D_7yamr")
+shader_parameter/normal_scale = 2.570000882075
+shader_parameter/texture_orm = SubResource("CompressedTexture2D_kk2n3")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/height = 0.0
+shader_parameter/cameraMiddlePoint = Vector3(0, -1.5, 0.5)
+shader_parameter/cameraMiddleRotation = 0.0
+shader_parameter/squareSize = 0.0
+shader_parameter/auxMode = false
+shader_parameter/rotating = false
+shader_parameter/globalPlayerPosition = Vector3(0, 0, 0)
