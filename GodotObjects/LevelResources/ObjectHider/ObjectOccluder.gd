@@ -39,6 +39,8 @@ var forceMode: ForceModes = ForceModes.OFF
 func _ready() -> void:
 	var children: Array[Node] = get_children()
 	children.map(func(a: Node): 
+		if a is not CollisionShape3D: return
+		if not a.shape: a.queue_free(); return
 		if a.has_meta("ONShape"): onShapes.append(a) 
 		elif a.has_meta("OFFShape"): offShapes.append(a)
 		else:
