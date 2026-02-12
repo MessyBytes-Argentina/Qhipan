@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=80 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bpkf0okc884ry" path="res://Assets/Models/Fan Machines/fan_placement_vertical.tscn" id="21_lby3b"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="22_bcwfp"]
 [ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="23_7wx1f"]
+[ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce.tscn" id="28_rc3x7"]
 
 [sub_resource type="Resource" id="Resource_iwp2i"]
 script = ExtResource("3_6go3k")
@@ -58,24 +59,24 @@ point_count = 10
 
 [sub_resource type="Curve3D" id="Curve3D_8380l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.5),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.5),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_vh01l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, -1.5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 2.9905481, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, -1.5),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_tnr2l"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1.5),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, -2.3841858e-07, 0, -1, 0, 0, 0, 0, 0, 0, 0.5, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_14d7h"]
 _data = {
@@ -1153,3 +1154,32 @@ mesh = SubResource("QuadMesh_bcwfp")
 [node name="Ceiling8" type="MeshInstance3D" parent="Props/Ceilings"]
 transform = Transform3D(0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 0.99999994, 14.999999, 9.400001, 0.099999905)
 mesh = SubResource("QuadMesh_bcwfp")
+
+[node name="Sconces" type="Node3D" parent="Props"]
+
+[node name="Sconce" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.541745, 1, 1.6197425)
+
+[node name="Sconce2" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.541745, 1, -0.6142254)
+
+[node name="Sconce4" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.541745, 1, -9.05245)
+
+[node name="Sconce5" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.4417453, 1, -8.959416)
+
+[node name="Sconce6" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 3.4417448, 1, 9.051885)
+
+[node name="Sconce7" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 5.5417447, 1, 8.920656)
+
+[node name="Sconce3" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 4.141745, 1, 0.4857746)
+
+[node name="Sconce8" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 4.5417457, -6, -8.214226)
+
+[node name="Sconce9" parent="Props/Sconces" instance=ExtResource("28_rc3x7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.5417457, -6, -9.96221)

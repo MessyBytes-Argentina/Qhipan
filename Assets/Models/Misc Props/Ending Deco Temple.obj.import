@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddjnscsr3fmcf"
+path="res://.godot/imported/Ending Deco Temple.obj-7ada5f645f9328b0327bb967c1ab389d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Ending Deco Temple.obj-7ada5f645f9328b0327bb967c1ab389d.mesh"]
+
+source_file="res://Assets/Models/Misc Props/Ending Deco Temple.obj"
+dest_files=["res://.godot/imported/Ending Deco Temple.obj-7ada5f645f9328b0327bb967c1ab389d.mesh", "res://.godot/imported/Ending Deco Temple.obj-7ada5f645f9328b0327bb967c1ab389d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
