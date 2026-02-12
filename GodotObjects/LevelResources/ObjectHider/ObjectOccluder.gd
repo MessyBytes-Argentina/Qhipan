@@ -6,6 +6,8 @@ class_name ObjectOccluder
 
 ## Visual data for the colliders.
 const DEBUGCOLORS: Dictionary[String, Color] = {"ONShape": Color.DEEP_SKY_BLUE * Color(Color.WHITE, 0.5), "OFFShape": Color.DEEP_PINK * Color(Color.WHITE, 0.5)}
+## Forced mode enum
+enum ForceModes {OFF, TRUE, FALSE}
 
 ## Objects to show.
 @export var showObjects: Array[Node3D] = []
@@ -30,6 +32,8 @@ var onShapes: Array[CollisionShape3D] = []
 var offShapes: Array[CollisionShape3D] = []
 ## Current mode.
 var isActive: bool = false
+## Force flag.
+var forceMode: ForceModes = ForceModes.OFF
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -102,6 +106,7 @@ func _make_area(shape: CollisionShape3D, mode: String) -> void:
 func _on_body_entered(body: Node, mode: bool) -> void:
 	if body is not Player: return
 	if mode == isActive: return
+	if forceMode != ForceModes.OFF: return
 	do_show_hide(mode)
 	isActive = mode
 	GeneralVariables.saveManager.store_change(self, sceneParent)
@@ -111,6 +116,15 @@ func restore_save(mode: bool) -> void:
 	isActive = mode
 	do_show_hide(mode)
 
+## Shows and hides what's been setup.
 func do_show_hide(mode: bool) -> void:
 	for object in hideObjects: object.visible = not mode
 	for object in showObjects: object.visible = mode
+
+## Forces a mode.
+func force_mode(mode: bool) -> void:
+	if mode: forceMode = ForceModes.TRUE
+	else: forceMode = ForceModes.FALSE
+	do_show_hide(mode)
+	isActive = mode
+	GeneralVariables.saveManager.store_change(self, sceneParent)

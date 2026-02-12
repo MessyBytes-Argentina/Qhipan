@@ -12,6 +12,10 @@ class_name SmallPedestal
 @export var pedestalName: String
 ## Parent node reference for placement.
 @export var sceneParent: Node
+## Tied up occluders.
+@export var occluders: Dictionary[ObjectOccluder, bool] = {}
+## Occluders delay.
+@export var occluderDelay: float = 0.8
 
 ## Reference to the sticker marker.
 @onready var stickerMarker: StickerMarker = %StickerMarker
@@ -31,6 +35,9 @@ func _ready() -> void:
 ## Activates pedestal.
 func activate_pedestal(skip: bool = false) -> void:
 	get_tree().call_group("Metaprogression", "pedestal_activated", pedestalName, skip)
+	await get_tree().create_timer(occluderDelay).timeout
+	for occluder in occluders:
+		occluder.force_mode(occluders[occluder])
 
 ## Updates debug texture.
 func update_texture() -> void:

@@ -37,6 +37,8 @@ const MAXFALLVOLUME: float = -5.0
 const MINFALLPITCH: float = 1.5
 ## Maximum fall volume.
 const MAXFALLPITCH: float = 1.0
+## Movement speed i nthe air.
+const AIRMOVEMENTMULTIPLIER: float = 0.5
 ## Regular animation states with no grab mode.
 const NOGRABSTATES: Array[States] = [States.Slap]
 ## Regular animation states that can't be interrupted.
@@ -398,7 +400,7 @@ func move_character(delta: float) -> void:
 		currentState = States.Idle
 		animation_check()
 	if currentState == States.Float and (pushForce * Vector3(1.0, 0.0, 1.0)).length() > 0: floorCheck = true
-	velocity = lastInvoluntarySpeed + lastVoluntarySpeed
+	velocity = lastInvoluntarySpeed + lastVoluntarySpeed * (1.0 if is_on_floor() or len(noGravityZones) > 0 else AIRMOVEMENTMULTIPLIER)
 	move_and_slide()
 	if floorCheck and global_position.y < lastY:
 		global_position.y = lastY
