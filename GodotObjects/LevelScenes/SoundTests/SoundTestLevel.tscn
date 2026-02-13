@@ -1,0 +1,282 @@
+[gd_scene load_steps=41 format=3 uid="uid://b8cuiswalgjil"]
+
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_3pwcs"]
+[ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="2_8cdyi"]
+[ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="3_w0v3n"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_3cdh6"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="5_3cdh6"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="5_gkxfj"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="5_vpgie"]
+[ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="6_vpgie"]
+[ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="7_4agif"]
+[ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="9_v4yy3"]
+[ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="10_vnox1"]
+[ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="11_6586n"]
+[ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="12_hbogg"]
+[ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="13_prjjh"]
+[ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="14_47exq"]
+[ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="14_6586n"]
+[ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="15_47exq"]
+[ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="15_i02dd"]
+[ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="16_47exq"]
+[ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="16_i02dd"]
+[ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="17_pl8ql"]
+[ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="18_i02dd"]
+[ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="22_xmjqg"]
+[ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="23_raxne"]
+[ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="24_4agif"]
+[ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="25_aqlqk"]
+[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="27_aqlqk"]
+[ext_resource type="PackedScene" uid="uid://b6tpow1ja1rde" path="res://GodotObjects/LevelResources/Props/InfoCrystal/InfoCrystal.tscn" id="28_s0ppa"]
+[ext_resource type="Texture2D" uid="uid://wwi5je5202th" path="res://GodotObjects/LevelScenes/Tests/monke.png" id="29_hkv03"]
+
+[sub_resource type="Gradient" id="Gradient_t8iic"]
+offsets = PackedFloat32Array(0.4222798, 0.52590674)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4uvdm"]
+gradient = SubResource("Gradient_t8iic")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_0ophg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.69485295, 0.9375)
+colors = PackedColorArray(0.6728826, 0.0026693314, 0.9131139, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ixft"]
+gradient = SubResource("Gradient_0ophg")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8333333, 0.15811966)
+
+[sub_resource type="Gradient" id="Gradient_vnox1"]
+offsets = PackedFloat32Array(0.42227983, 0.52590674)
+colors = PackedColorArray(0, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6586n"]
+gradient = SubResource("Gradient_vnox1")
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_i02dd"]
+script = ExtResource("16_i02dd")
+name = "GREEN"
+image = ExtResource("16_47exq")
+backImage = ExtResource("16_47exq")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="Resource" id="Resource_pl8ql"]
+script = ExtResource("16_i02dd")
+name = "BLUE"
+image = ExtResource("18_i02dd")
+backImage = ExtResource("18_i02dd")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="Resource" id="Resource_xmjqg"]
+script = ExtResource("16_i02dd")
+name = "YELLOW"
+image = ExtResource("17_pl8ql")
+backImage = ExtResource("17_pl8ql")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vjep4"]
+size = Vector3(2, 1.5, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_raxne"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="SoundTestScene" type="Node3D"]
+
+[node name="GridmapObject" parent="." instance=ExtResource("1_3pwcs")]
+data = {
+"cells": PackedInt32Array(-131073, 0, 50, -131073, 65535, 50, -196608, 65535, 50, -196608, 0, 50, -196607, 65535, 18, -196607, 0, 18, -131074, 0, 18, -131074, 65535, 18, -196608, 1, 18, -131073, 1, 18, -196608, 65534, 18, -131073, 65534, 18, -196607, 65533, 98, -196608, 65533, 98, -131073, 65533, 98, -131074, 65533, 98, -131074, 65534, 18, -196607, 65534, 18, -196606, 65534, 18, -196606, 65535, 18, -196606, 0, 18, -196606, 1, 18, -196607, 1, 18, -196607, 2, 18, -196608, 2, 18, -131073, 2, 18, -131074, 2, 18, -131074, 1, 18, -131075, 1, 18, -131075, 0, 18, -131075, 65535, 18, -131075, 65534, 18, -196607, 4, 18, -196607, 3, 18, -196608, 3, 18, -131073, 3, 18, -131074, 3, 18, -131074, 4, 18, -131073, 4, 18, -131073, 5, 18, -196608, 5, 18, -196608, 4, 18, -196607, 5, 18, -131074, 5, 18, -131074, 6, 18, -131073, 6, 18, -196608, 6, 18, -196607, 6, 18, -196607, 7, 18, -196608, 7, 18, -131073, 7, 18, -131074, 7, 18, -131075, 2, 18, -131075, 3, 18, -131075, 4, 18, -131075, 5, 18, -131075, 6, 18, -131075, 7, 18, -327679, 8, 1048578, -327680, 8, 1048578, -262145, 8, 1048578, -262146, 8, 1048578, -262147, 8, 1048578, -131075, 8, 1048595, -262147, 9, 1048578, -262146, 9, 1048578, -327679, 9, 1048578, -196608, 9, 1048594, -131073, 9, 1048594, -327679, 10, 1048578, -327680, 10, 1048578, -262145, 10, 1048578, -262146, 10, 1048578, -262147, 10, 1048578, -196608, 11, 1048594, -131073, 11, 1048594, -327679, 11, 1048578, -327679, 12, 1048578, -327680, 12, 1048578, -262145, 12, 1048578, -262146, 12, 1048578, -262146, 11, 1048578, -262147, 11, 1048578, -262147, 12, 1048578, -196606, 8, 1048594, -196606, 9, 1048594, -196606, 10, 1048594, -196606, 13, 1048594, -196606, 12, 1048594, -196606, 11, 1048594, -196607, 13, 1048594, -196608, 13, 1048594, -131073, 13, 1048594, -131074, 13, 1048594, -131075, 13, 1048594, -131076, 13, 1048594, -131076, 8, 1048594, -131076, 9, 1048594, -131076, 10, 1048594, -131076, 11, 1048594, -131076, 12, 1048594, -131076, 7, 1048594, -196606, 7, 1048594, -262145, 11, 1048578, -327680, 11, 1048578, -262145, 9, 1048578, -327680, 9, 1048578, -131076, 6, 1048594, -131076, 5, 1048594, -131076, 4, 1048594, -131076, 3, 1048594, -131076, 2, 1048594, -131076, 1, 1048594, -131076, 0, 1048594, -131076, 65535, 18, -131076, 65534, 18, -131077, 65534, 82, -131077, 65535, 82, -131077, 0, 82, -131077, 1, 82, -131077, 2, 82, -131077, 3, 66, -131077, 4, 66, -131077, 5, 66, -131077, 6, 66, -131077, 7, 66, -131078, 7, 82, -131078, 6, 82, -131078, 5, 82, -131078, 4, 82, -131078, 3, 82, -131078, 2, 82, -131078, 1, 82, -131078, 0, 82, -131078, 65535, 82, -131078, 65534, 82, -131079, 65534, 82, -131079, 65535, 82, -131079, 0, 82, -131079, 1, 82, -131079, 2, 82, -131079, 3, 66, -131079, 4, 66, -131079, 5, 66, -131079, 6, 66, -131079, 7, 66, -131080, 7, 82, -131080, 6, 82, -131080, 5, 82, -131080, 4, 82, -131080, 3, 82, -131080, 2, 82, -131080, 1, 82, -131080, 0, 82, -131080, 65535, 82, -131080, 65534, 82, -131081, 65534, 66, -131081, 65535, 66, -131081, 0, 66, -131081, 1, 66, -131081, 2, 66, -131081, 3, 66, -131081, 4, 66, -131081, 5, 66, -131081, 6, 66, -131081, 7, 66, -196606, 6, 18, -196606, 5, 18, -196606, 4, 18, -196606, 3, 18, -196606, 2, 18, -196605, 7, 18, -196605, 6, 18, -196605, 5, 18, -196605, 4, 18, -196605, 3, 18, -196604, 2, 18, -196604, 1, 18, -196604, 0, 18, -196604, 65535, 18, -196605, 65535, 18, -196605, 0, 18, -196605, 1, 18, -196605, 2, 18, -196604, 3, 18, -196604, 4, 18, -196604, 5, 18, -196604, 6, 18, -196604, 7, 18, -196603, 6, 18, -196603, 5, 18, -196603, 4, 18, -196603, 3, 18, -196603, 2, 18, -196603, 1, 18, -196603, 0, 18, -196603, 65535, 18, -196603, 7, 18, -196602, 7, 18, -196602, 6, 18, -196602, 5, 18, -196602, 4, 18, -196602, 3, 18, -196602, 2, 18, -196602, 1, 18, -196602, 0, 18, -196602, 65535, 18, -196601, 65535, 18, -196601, 0, 18, -196601, 1, 18, -196601, 2, 18, -196601, 3, 18, -196601, 4, 18, -196601, 5, 18, -196601, 6, 18, -196601, 7, 18, -196607, 65532, 98, -196608, 65532, 98, -131073, 65532, 98, -131074, 65532, 98, -131074, 65531, 98, -131073, 65531, 98, -196608, 65531, 98, -196607, 65531, 98, -196607, 65530, 98, -196608, 65530, 98, -131073, 65530, 98, -131074, 65530, 98, -131074, 65529, 98, -131073, 65529, 98, -196608, 65529, 98, -196607, 65529, 98, -196605, 65534, 18, -196604, 65534, 18, -196603, 65534, 18, -196606, 65533, 98, -196606, 65532, 98, -196606, 65531, 98, -196606, 65530, 98, -196606, 65529, 98, -196605, 65529, 98, -196605, 65530, 98, -196605, 65531, 98, -196605, 65532, 98, -196605, 65533, 98, -196602, 65534, 18, -196601, 65534, 18, -65533, 5, 655367, -65534, 5, 655364, -65535, 6, 655394, -65532, 65533, 655460, -65531, 65533, 655460, -65530, 65533, 655460, -65529, 65533, 655460, -65532, 65532, 655460, -65532, 65531, 655460, -65532, 65530, 655460, -65532, 65529, 655460, -65532, 65528, 655460, -65533, 65528, 655460, -65534, 65528, 655460, -65535, 65528, 655460, -65536, 65528, 655460, -1, 65528, 655460, -2, 65528, 655460, -3, 65528, 655460, -3, 65529, 655460, -3, 65530, 655460, -3, 65531, 655460, -3, 65532, 655460, -3, 65533, 655460, -4, 65533, 655460, -5, 65533, 655460, -6, 65533, 655460, -7, 65533, 655460, -8, 65533, 655460, -9, 65533, 655460, -10, 65533, 655460, -10, 65534, 655460, -10, 65535, 655460, -10, 0, 655460, -10, 1, 655460, -10, 2, 655460, -10, 3, 655460, -10, 4, 655460, -10, 5, 655460, -10, 6, 655460, -10, 7, 655460, -10, 8, 655460, -9, 8, 655460, -8, 8, 655460, -7, 8, 655460, -6, 8, 655460, -5, 8, 655460, -5, 9, 655460, -5, 10, 655460, -5, 11, 655460, -5, 12, 655460, -5, 13, 655460, -5, 14, 655460, -4, 14, 655460, -3, 14, 655460, -2, 14, 655460, -1, 14, 655460, -65534, 14, 655460, -65533, 14, 655460, -65535, 14, 655460, -65536, 14, 655460, -65533, 13, 655460, -65533, 12, 655460, -65533, 11, 655460, -65533, 10, 655460, -65533, 9, 655460, -65533, 8, 655460, -65532, 8, 655460, -65531, 8, 655460, -65530, 8, 655460, -65529, 8, 655460, -65528, 8, 655460, -65528, 7, 655460, -65528, 6, 655460, -65528, 5, 655460, -65528, 4, 655460, -65528, 3, 655460, -65528, 2, 655460, -65528, 1, 655460, -65528, 0, 655460, -65528, 65535, 655460, -65528, 65534, 655460, -65528, 65533, 655460)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="Alternator" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_8cdyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0.5)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="Alternator2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_8cdyi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 1)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_w0v3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 7)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_gkxfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -1.5)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="StickerPlacements" type="Node3D" parent="."]
+
+[node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("5_vpgie")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 0, 7)
+
+[node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("5_vpgie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 3.5)
+
+[node name="AlternatingGroup" type="Node3D" parent="."]
+script = ExtResource("7_4agif")
+
+[node name="LeyLine" parent="AlternatingGroup" instance=ExtResource("6_vpgie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.5, 3)
+
+[node name="AlternatingBlock" parent="AlternatingGroup" instance=ExtResource("5_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.5, 7.5)
+
+[node name="AlternatingBlock2" parent="AlternatingGroup" instance=ExtResource("5_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -0.5, -1.5)
+isOff = true
+
+[node name="AlternatingGroup2" type="Node3D" parent="."]
+script = ExtResource("7_4agif")
+
+[node name="LeyLine" parent="AlternatingGroup2" instance=ExtResource("6_vpgie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 3)
+
+[node name="AlternatingBlock" parent="AlternatingGroup2" instance=ExtResource("5_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, 7.5)
+
+[node name="AlternatingGroup3" type="Node3D" parent="."]
+script = ExtResource("7_4agif")
+
+[node name="LeyLine" parent="AlternatingGroup3" instance=ExtResource("6_vpgie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.5, 3)
+
+[node name="AlternatingBlock" parent="AlternatingGroup3" instance=ExtResource("5_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, -0.5, 7.5)
+isOff = true
+
+[node name="metaprogressionBlocks" type="Node3D" parent="."]
+
+[node name="PlaceholderMetaprogressionBlock" parent="metaprogressionBlocks" instance=ExtResource("9_v4yy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -2.5)
+color = Color(0, 0, 1, 1)
+texture = SubResource("GradientTexture2D_4uvdm")
+pedestalName = "BLUE"
+
+[node name="PlaceholderMetaprogressionBlock2" parent="metaprogressionBlocks" instance=ExtResource("9_v4yy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -4.5)
+color = Color(0, 1, 0, 1)
+texture = SubResource("GradientTexture2D_8ixft")
+pedestalName = "GREEN"
+
+[node name="PlaceholderMetaprogressionBlock3" parent="metaprogressionBlocks" instance=ExtResource("9_v4yy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -6.5)
+color = Color(0.611917, 0.5370564, 0, 1)
+texture = SubResource("GradientTexture2D_6586n")
+pedestalName = "YELLOW"
+
+[node name="SmallPedestalKey" parent="metaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_vnox1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, -0.5, -1.5)
+pedestalName = "keyDoor"
+sceneParent = NodePath("../..")
+
+[node name="InventoryPedestal3" parent="metaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_6586n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, -0.5, -4.5)
+pedestalName = "GREEN"
+sceneParent = NodePath("../..")
+
+[node name="InventoryPedestal2" parent="metaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("12_hbogg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, -0.5, -2.5)
+pedestalName = "BLUE"
+sceneParent = NodePath("../..")
+
+[node name="InventoryPedestal" parent="metaprogressionBlocks" node_paths=PackedStringArray("sceneParent") instance=ExtResource("13_prjjh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5, -0.5, -6.5)
+pedestalName = "YELLOW"
+sceneParent = NodePath("../..")
+
+[node name="ChackanaDoor" parent="metaprogressionBlocks" instance=ExtResource("14_6586n")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 7.5, -0.5, -0.5)
+pedestalName = "keyDoor"
+
+[node name="metaprogressionStickers" type="Node3D" parent="."]
+
+[node name="GREEN" parent="metaprogressionStickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_47exq")]
+transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, 2.5, 0, -4.5)
+sticker = SubResource("Resource_i02dd")
+sceneParent = NodePath("../..")
+
+[node name="BLUE" parent="metaprogressionStickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_47exq")]
+transform = Transform3D(0, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, 0, 2.499999, 0, -2.5)
+sticker = SubResource("Resource_pl8ql")
+sceneParent = NodePath("../..")
+
+[node name="YELLOW" parent="metaprogressionStickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_47exq")]
+transform = Transform3D(0, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, 0, 2.499448, 0, -6.406607)
+sticker = SubResource("Resource_xmjqg")
+sceneParent = NodePath("../..")
+
+[node name="PushDoors" type="Node3D" parent="."]
+
+[node name="PushDoor" parent="PushDoors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_47exq")]
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, 6, 0, 1)
+sceneParent = NodePath("../..")
+
+[node name="PushDoor2" parent="PushDoors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_47exq")]
+transform = Transform3D(-4.371139e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371139e-08, 1.9106859e-15, 6, 0, 2.5)
+sceneParent = NodePath("../..")
+
+[node name="PushDoor3" parent="PushDoors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_47exq")]
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, 6, 0, 4)
+sceneParent = NodePath("../..")
+
+[node name="PushDoor4" parent="PushDoors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("14_47exq")]
+transform = Transform3D(1.3113416e-07, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, -1.3113416e-07, -5.7320575e-15, 6, 0, 5.5)
+sceneParent = NodePath("../..")
+
+[node name="PushDoor1way" parent="PushDoors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_i02dd")]
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, 6, 0, 7)
+isOneWay = true
+sceneParent = NodePath("../..")
+
+[node name="AntiStickerArea" parent="." instance=ExtResource("22_xmjqg")]
+transform = Transform3D(-8.742278e-08, 0, 1, 0, 2, 0, -2, 0, -4.371139e-08, -4, 0.5, -1)
+
+[node name="MovingPlatform" type="Node3D" parent="."]
+
+[node name="MovingPlatform" parent="MovingPlatform" node_paths=PackedStringArray("railReference") instance=ExtResource("23_raxne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5)
+railReference = NodePath("../PlatformRail")
+isPermanent = true
+powered = true
+
+[node name="PlatformCaller" parent="MovingPlatform" node_paths=PackedStringArray("railReference") instance=ExtResource("24_4agif")]
+railReference = NodePath("../PlatformRail")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform/PlatformCaller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, 5.5)
+shape = SubResource("BoxShape3D_vjep4")
+
+[node name="PlatformRail" parent="MovingPlatform" node_paths=PackedStringArray("platformReference") instance=ExtResource("25_aqlqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5)
+curve = SubResource("Curve3D_raxne")
+platformReference = NodePath("../MovingPlatform")
+
+[node name="Darkness" parent="." instance=ExtResource("27_aqlqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 3.5)
+size = Vector3(3, 1, 3)
+
+[node name="InfoCrystal" parent="." instance=ExtResource("28_s0ppa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -0.5)
+infoSpriteKeyboard = ExtResource("29_hkv03")
+infoSpriteController = ExtResource("29_hkv03")
