@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://ctta1r0ixo6cq"]
+[gd_scene load_steps=45 format=4 uid="uid://ctta1r0ixo6cq"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_y5paf"]
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="2_r55ux"]
@@ -287,6 +287,28 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_igpoo")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwo46"]
+albedo_color = Color(0.61339027, 0.61339027, 0.61339027, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3k7ir"]
+material = SubResource("StandardMaterial3D_gwo46")
+radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_0sgra"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u7q5b"]
+gradient = SubResource("Gradient_0sgra")
+fill_from = Vector2(0.5, 0.3)
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pjnm"]
+albedo_color = Color(0.15630692, 0.33497095, 0.23885101, 1)
+albedo_texture = SubResource("GradientTexture2D_u7q5b")
+
+[sub_resource type="SphereMesh" id="SphereMesh_aq7tq"]
+material = SubResource("StandardMaterial3D_7pjnm")
+radius = 100.0
+
 [node name="Ending" type="Node3D"]
 
 [node name="GridmapObject" parent="." instance=ExtResource("1_y5paf")]
@@ -408,30 +430,38 @@ originalParent = "Ending"
 transform = Transform3D(-2.3604152e-08, 0, -0.54, 0, 0.54, 0, 0.54, 0, -2.3604152e-08, 1, -14.631552, 92.67772)
 mesh = SubResource("ArrayMesh_hgceq")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.080063, 15.353722, 149.93083)
-light_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
+[node name="OmniLight3D" type="OmniLight3D" parent="EndingDecoTemple"]
+transform = Transform3D(-8.094702e-08, 0, 1.8518518, 0, 1.8518518, 0, -1.8518518, 0, -8.094702e-08, 104.172424, 93.12088, 0.7776568)
+light_color = Color(2.6129937, 1.7335202, 0.18817274, 1)
 light_energy = 8.644
 omni_range = 84.0
 omni_attenuation = 0.222
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0800629, -5.6462784, 99.230835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0800629, -6.0462785, 110.83083)
 light_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
 light_energy = 8.644
 omni_range = 22.6
 omni_attenuation = 0.222
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.193275, -5.6462784, 99.230835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.393275, -8.746279, 101.63084)
 light_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
 light_energy = 8.644
 omni_range = 22.6
 omni_attenuation = 0.222
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.553627, -5.6462784, 99.230835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.853626, -9.646278, 109.230835)
 light_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
 light_energy = 8.644
 omni_range = 22.6
 omni_attenuation = 0.222
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0, 151)
+mesh = SubResource("SphereMesh_3k7ir")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4, 0, 0, 0, 2.9802322e-08, 1, 0, -1, 2.9802322e-08, -7.3, -97, 141)
+mesh = SubResource("SphereMesh_aq7tq")
