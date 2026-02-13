@@ -37,8 +37,6 @@ const MAXFALLVOLUME: float = -5.0
 const MINFALLPITCH: float = 1.5
 ## Maximum fall volume.
 const MAXFALLPITCH: float = 1.0
-## Movement speed i nthe air.
-const AIRMOVEMENTMULTIPLIER: float = 0.5
 ## Regular animation states with no grab mode.
 const NOGRABSTATES: Array[States] = [States.Slap]
 ## Regular animation states that can't be interrupted.
@@ -56,7 +54,9 @@ const acceleration: float = 20.0
 ## Character movement decceleration.
 const decceleration: float = 20.0
 ## Character gravity.
-const gravity: float = 32
+const gravity: float = 20
+## Movement speed in the air.
+const airMovementMultiplier: float = 0.35
 #endregion
 
 ## Signal emmited when camera is zooming in or out.
@@ -400,7 +400,7 @@ func move_character(delta: float) -> void:
 		currentState = States.Idle
 		animation_check()
 	if currentState == States.Float and (pushForce * Vector3(1.0, 0.0, 1.0)).length() > 0: floorCheck = true
-	velocity = lastInvoluntarySpeed + lastVoluntarySpeed * (1.0 if is_on_floor() or len(noGravityZones) > 0 else AIRMOVEMENTMULTIPLIER)
+	velocity = lastInvoluntarySpeed + lastVoluntarySpeed * (1.0 if is_on_floor() or len(noGravityZones) > 0 else airMovementMultiplier)
 	move_and_slide()
 	if floorCheck and global_position.y < lastY:
 		global_position.y = lastY
