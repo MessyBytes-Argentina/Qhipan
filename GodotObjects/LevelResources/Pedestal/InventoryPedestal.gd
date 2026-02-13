@@ -15,6 +15,10 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 		if Engine.is_editor_hint() and is_node_ready(): update_texture()
 ## Used to identify which objects to trigger
 @export var pedestalName: String
+## Tied up occluders.
+@export var occluders: Dictionary[ObjectOccluder, bool] = {}
+## Occluders delay.
+@export var occluderDelay: float = 0.8
 
 
 ## Sticker highlight sprite reference
@@ -77,6 +81,9 @@ func activate_pedestal(skip: bool = false) -> void:
 	area.set_deferred("monitoring", false)
 	await get_tree().process_frame
 	area.queue_free()
+	await get_tree().create_timer(occluderDelay).timeout
+	for occluder in occluders:
+		occluder.force_mode(occluders[occluder])
 
 ## Updates debug texture.
 func update_texture() -> void:

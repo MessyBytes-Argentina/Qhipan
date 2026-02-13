@@ -39,6 +39,8 @@ var outlineMaterial: ShaderMaterial
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
+	outlineMaterial = outlineBlocker.get_surface_override_material(0).duplicate()
+	outlineBlocker.set_surface_override_material(0, outlineMaterial)
 	await get_tree().create_timer(0.5).timeout
 	lights = darknessArea.get_overlapping_areas()
 	_collision_shape_set()
@@ -57,7 +59,6 @@ func _collision_shape_set() -> void:
 	outlineBlocker.mesh.subdivide_width = int(size.x * float(DARKNESSCOLLISIONRESOLUTION))
 	outlineBlocker.mesh.subdivide_depth = int(size.z * float(DARKNESSCOLLISIONRESOLUTION))
 	outlineBlocker.position.y = -size.y / 2.0
-	outlineMaterial = outlineBlocker.get_surface_override_material(0)
 	outlineMaterial.set_shader_parameter("size", size)
 	await get_tree().create_timer(0.5).timeout
 	isReadyToCheck = true

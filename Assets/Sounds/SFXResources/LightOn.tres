@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CentralizedSoundResource" load_steps=5 format=3 uid="uid://c4ep0voqskkol"]
+
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_krbxl"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_jebi2"]
+[ext_resource type="AudioStream" uid="uid://dy8ooybfj1xai" path="res://Assets/Sounds/SFX/Light_On.mp3" id="3_jebi2"]
+
+[sub_resource type="Resource" id="Resource_ipadj"]
+script = ExtResource("2_jebi2")
+sound = ExtResource("3_jebi2")
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[resource]
+script = ExtResource("1_krbxl")
+soundCollection = Dictionary[ExtResource("2_jebi2"), int]({
+SubResource("Resource_ipadj"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
