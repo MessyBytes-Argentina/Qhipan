@@ -835,11 +835,11 @@ hideObjects = [NodePath("../BlackWalls")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
-[node name="ONShape2" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+[node name="ONShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+[node name="OFFShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 

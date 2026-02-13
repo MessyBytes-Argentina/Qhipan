@@ -12,7 +12,7 @@ uniform sampler2D light_gradient;
 uniform sampler2D fresnel_gradient;
 
 //Worldspace triplanar parameters
-uniform vec3 offset = vec3(0.5);
+uniform vec3 offset = vec3(0.0);
 uniform float top_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float side_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float blend_sharpness : hint_range(0.0, 150.0, 0.001) = 10.0;
@@ -136,9 +136,9 @@ void vertex() {
 
 vec4 triplanar_texture(sampler2D top_sampler, sampler2D side_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
 	vec4 samp = vec4(0.0);
-	if (samp == vec4(0.0)) {samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * p_weights.y;}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * p_weights.x;}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * p_weights.z;}
+	if (samp == vec4(0.0)) {samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * ceil(p_weights.y);}
+	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * ceil(p_weights.x);}
+	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * ceil(p_weights.z);}
 	return samp;
 }
 

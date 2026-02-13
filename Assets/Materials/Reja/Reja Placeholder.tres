@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bby0oncnjol87"]
-
-[ext_resource type="Shader" path="res://Assets/Materials/Reja/Reja Placeholder.gdshader" id="1"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1")
