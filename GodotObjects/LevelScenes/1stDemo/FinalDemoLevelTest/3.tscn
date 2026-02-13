@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://mhhjxxhofdd1"]
+[gd_scene load_steps=59 format=4 uid="uid://mhhjxxhofdd1"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ei3d0"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="2_jdcq3"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="21_40uk2"]
 [ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Piedras/Piedras_normal.png" id="22_xpts7"]
 [ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="23_i2wbm"]
-[ext_resource type="Script" uid="uid://d3w0wk3wy7c4n" path="res://GodotObjects/GeneralElements/GeneralLights/GeneralLights.gd" id="24_artqo"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce.tscn" id="25_fhmcd"]
 
 [sub_resource type="Curve3D" id="Curve3D_f57d1"]
@@ -740,7 +739,6 @@ metadata/_custom_type_script = "uid://cctq08qihhy37"
 transform = Transform3D(-1, 0, 4.371139e-08, 0, 1, 0, -4.371139e-08, 0, -1, 4, 3, -0.39999998)
 mesh = SubResource("ArrayMesh_ci5lr")
 skeleton = NodePath("../..")
-script = ExtResource("24_artqo")
 
 [node name="Sconces" type="Node3D" parent="Props"]
 
