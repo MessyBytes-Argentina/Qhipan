@@ -102,9 +102,11 @@ func regenerate_wall_shape() -> void:
 			if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
-	shadowPolygon.polygon = _create_wall_shape(true, false)
-	polygon.show()
-	shadowPolygon.show()
+	if wallMode == WallModes.ONLY_DOWN:
+		shadowPolygon.polygon = _create_wall_shape(true, false)
+		polygon.show()
+		shadowPolygon.show()
+	elif shadowPolygon: shadowPolygon.queue_free()
 	match wallMode:
 		WallModes.BOTH_WAYS:
 			downPolygon = polygon.duplicate()
