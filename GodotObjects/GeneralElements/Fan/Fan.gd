@@ -19,7 +19,7 @@ const STICKERFLAG: int = 2
 ## Amount of force the player is pushed by
 const pushForce: float = 300.0
 ## Pushing area diameter
-const areaDiameter: float = 0.8
+const areaDiameter: float = 0.4
 ## Extra lenght of no gravity
 const noGravityAreaMargin: float = 0.15
 
