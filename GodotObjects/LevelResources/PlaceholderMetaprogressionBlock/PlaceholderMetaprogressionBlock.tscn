@@ -39,6 +39,7 @@ shader_parameter/BASE_DENSITY = 0.435
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvs20"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwrcv"]
+render_priority = 2
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -65,7 +66,6 @@ point_count = 3
 curve = SubResource("Curve_l3cxi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2wiv4"]
-emission_shape_scale = Vector3(1, 0, 1)
 emission_shape = 3
 emission_box_extents = Vector3(0.5, 0, 0.5)
 angle_min = 1.0728835e-05
@@ -90,12 +90,11 @@ texture = SubResource("GradientTexture2D_2wiv4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_w56md")
 surface_material_override/0 = SubResource("ShaderMaterial_mc7gx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_yvs20")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]

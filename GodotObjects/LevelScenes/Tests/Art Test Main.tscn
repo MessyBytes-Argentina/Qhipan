@@ -1,14 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg8x05qu5iain"]
+[gd_scene load_steps=3 format=3 uid="uid://dg8x05qu5iain"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
-[ext_resource type="PackedScene" uid="uid://ctta1r0ixo6cq" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/ending.tscn" id="5_x7val"]
 
 [node name="Art Main Test" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.5, 18.752253, -2.5)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 9.5, 15.252253, -10.5)
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("3_feuco")]
-
-[node name="Ending" parent="." instance=ExtResource("5_x7val")]

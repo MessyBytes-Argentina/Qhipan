@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://cn8horxwxvjy0"]
+[gd_scene load_steps=160 format=4 uid="uid://cn8horxwxvjy0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_euh2j"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_8uuqi"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="6_wnc0r"]
 [ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="7_n1sgo"]
 [ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="8_3d3yf"]
+[ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="8_13ivo"]
+[ext_resource type="Texture2D" uid="uid://bqk4ilao2r2e7" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_normal.png" id="9_2flga"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="9_km3fw"]
+[ext_resource type="Texture2D" uid="uid://df28hnp1vy8bk" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_orm.png" id="10_3sahy"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="10_vasbn"]
 [ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="11_l7h8e"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="12_hw0k4"]
@@ -45,6 +48,111 @@
 [ext_resource type="Image" uid="uid://ix00dmtwx2g7" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Color_0_0.res" id="43_wgxsv"]
 [ext_resource type="Image" uid="uid://dpgx0my2ge5lv" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Heightmap_0_0.res" id="44_28cyw"]
 [ext_resource type="Image" uid="uid://b03xo3xlc18dq" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Splatmap_0_0_0.res" id="45_x5na0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k11qp"]
+render_priority = 0
+shader = ExtResource("12_hw0k4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("14_cs4na")
+shader_parameter/fresnel_gradient = ExtResource("13_18ql4")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("8_13ivo")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("9_2flga")
+shader_parameter/normal_scale = 2.0000008549999997
+shader_parameter/texture_orm = ExtResource("10_3sahy")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_k11qp")
+height = 0.5
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_leulj"]
+render_priority = 0
+shader = ExtResource("12_hw0k4")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("14_cs4na")
+shader_parameter/fresnel_gradient = ExtResource("13_18ql4")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("8_13ivo")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("9_2flga")
+shader_parameter/normal_scale = 2.0000008549999997
+shader_parameter/texture_orm = ExtResource("10_3sahy")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7fie3"]
+material = SubResource("ShaderMaterial_leulj")
+radius = 0.1
+height = 0.3
+radial_segments = 12
+rings = 40
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnklw"]
+size = Vector3(0.5673828, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oblum"]
 transparency = 1
@@ -149,7 +257,7 @@ albedo_texture = ExtResource("11_l7h8e")
 albedo_color = Color(0.32999998, 0.8101667, 1, 1)
 albedo_texture = ExtResource("11_l7h8e")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eyjwk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6oou6"]
 render_priority = 0
 shader = ExtResource("12_hw0k4")
 shader_parameter/albedo = Color(1.9710795, 1.7770292, 0.7058714, 1)
@@ -311,7 +419,7 @@ _surfaces = [{
 "index_count": 1236,
 "index_data": PackedByteArray("5QC5ALoAugC5AOYA5wCRAJAAkACRAAAAAACRAOgA6ADpAAAAAADpAOoA6gDpAJQAlADpAOsA6wDpAOwA7ADpAAkACQDpAJUA7QDuAAIAAgDuAO8A7wDuAJIA8ADxAAcABwDxAPIA8gDxAJoA8wD0APUA9QD2APMA9wD2APUA9QD0APgA+AD0AAUABQD0APkA+gD7APwA/QD+AJYAlgD+AP8A/wD+ABIAEgD+AAABAQECAQMBAwECARMAEwACAQQBBAECAZgAmAACAZcAlwACAQUBBQECAREAEQACAQYBBwEIAQkBCgELAQsACwAMAQoBDQEMAQsADgEMAQ0BCwALAQ8BDwELAZMAkwALARABEAELAREBEQELAQoACgALARIBEwEUARUBFQEUARYBFgEUAQEAAQAUARcBFwEUARgBGAEUAQQAGQEaARsBGwEaARwBHQEeAZkAmQAeAR8BHwEeAQYABgAeASABIAEeASEBIQEeAQgACAAeASIBIgEeASMBIwEeAZsAJAElASYBJgElAQwAJwEoASkBKQEoASoBKgEoAQ4ADgAoASsBKwEoASwBLAEoAS0BLQEoAS4BLgEoAQ8ADwAoAS8BMAExATIBMgExAQ0ADQAxATMBMwExAZwAnAAxATQBNAE1AZwANgE1ATQBNwE4ATkBOQE4AQMAOgE7ARAAEAA7ATwBPAE7AT0BswCyAD4BPgGyAD8BFQCdAJ4AngCdAJ8AnwCdABQAFACdAKAAoACdAEABQAGdAKEAoQCdAKIAogCdABYAFgCdAEEBQQGdAKMAowCdABcAFwCdAKQApACdAEIBQgGdAKUAQwGtAK8ArwCtAEQBpgBFARoAGgBFAUYBHABHAaoAqgBHAasASAFJAUoBSgFJAUsBTAFNAU4BTgFNASEATwEeALEAsQAeALAAUAFRAVIBUgFRAVMBVAGpAFUBVQGpABgAVgElALYAtgAlALcAVwFYAVkBWQFYAVoBWwFcASMAIwBcAV0BJwBeAb4AvgBeAbwAXwFgAWEBYQFgAWIBYwFkAWUBZQFkAWYBMABnATIAMgBnAWgBaQHBAMIAwgDBAGoBwABrAb8AvwBrAWwBxQBtAcYAxgBtAW4BbwFwAXEBcQFwAXIBKABzASoAKgBzAXQBdQEtAHYBdgEtAC8AdwF4AXkBeQF4AXoBwwB7AcQAxAB7AXwBLAB9AS4ALgB9AX4BfwGAAYEBgQGAAYIBgwGEAYUBhQGEAYYBhwE1AIgBiAE1ADcAiQExAIoBigExADMANACLATYANgCLAYwBpwAZAI0BjQEZAI4BHQCsAI8BjwGsAJABkQGuAJIBkgGuAJMBIgC0AJQBlAG0AJUBlgEfAJcBlwEfAJgBmQGaAZsBmwGaAZwBGwCoAJ0BnQGoAJ4BuAAkAJ8BnwEkAKABoQGiAaMBowGiAaQBtQAgAKUBpQEgAKYBJgC9AKcBpwG9AKgBqQG7AKoBqgG7AKsBrAGtAa4BrgGtAa8BsAGxAbIBsgGxAbMBtAG1AbYBtgG1AbcBuAG5AboBugG5AbsBvAE4AMgAyAA4ADoAvQG+Ab8BvwG+AcsAwAHKAMEBwQHKAMwAOQDQADsAOwDQANIAwgHDAcQBxAHDAcUBxgHHAcgByAHHAckBPgDHADwAPADHAMkAygHLAc0AzQDLAcwBzQHOAc8BzwHOAdAB0QE9ANMA0wA9AD8A0gHTAdQB1AHTAdEA1QHPANYB1gHPAM4A1wHYAdkB2QHYAdoB2wHcAd0B3QHcAd4B3wHgAeEB4QHgAeIB4wHkAeUB5QHkAeYB5wEpAOgB6AEpACsA6QHqAesB6wHqAewB7QFFAO4B7gFFAEQARABFAO8B7wFFAPAB8AFFAPEB8QFFAPIB8gFFAEYARgBFAPMB8wFFAPQB9AFFAEcARwBFAPUB9QFFANQA1ABFAPYB9gFFAPcB+AHVANYA1gDVANcA+QH6AfsB+wH6AfwB/QFMAP4B/gFMAE0AUAD/AVIAUgD/AQACAQICAgMCAwICAgQCBQIGAgcCBwIGAggCCQJIAAoCCgJIAEkATgALAk8ATwALAgwCDQJAAA4CDgJAAEEASgAPAksASwAPAhACEQISAhMCEwISAhQCQgAVAkMAQwAVAhYCFwJRABgCGAJRAFMAGQIaAhsCGwIaAhwCHQIeAh8CHwIeAiACIQIiAiMCIwIiAiQCJQJZACYCJgJZAFgAWABZACcCJwJZACgCKAJZACkCKQJZACoCKgJZAFoAWgBZACsCKwJZACwCLAJZAFsAWwBZAC0CLQJZANgA2ABZAC4CLgJZAC8CMALZANoA2gDZANsAMQIyAjMCMwIyAjQCNQJgADYCNgJgAGEAZgA3AmcAZwA3AjgCOQI6AjsCOwI6AjwCPQI+Aj8CPwI+AkACQQJcAEICQgJcAF0AYgBDAmMAYwBDAkQCRQJUAEYCRgJUAFUAXgBHAl8AXwBHAkgCSQJKAksCSwJKAkwCVgBNAlcAVwBNAk4CTwJkAFACUAJkAGUAUQJSAlMCUwJSAlQCVQJWAlcCVwJWAlgCWQJaAlsCWwJaAlwCXQJtAF4CXgJtAGwAbABtAF8CXwJtAGACYAJtAGECYQJtAGICYgJtAG4AbgBtAGMCYwJtAGQCZAJtAG8AbwBtAGUCZQJtANwA3ABtAGYCZgJtAGcCaALdAN4A3gDdAN8AaQJqAmsCawJqAmwCbQJ0AG4CbgJ0AHUAegBvAnsAewBvAnACcQJyAnMCcwJyAnQCdQJ2AncCdwJ2AngCeQJwAHoCegJwAHEAdgB7AncAdwB7AnwCfQJoAH4CfgJoAGkAcgB/AnMAcwB/AoACgQKCAoMCgwKCAoQCagCFAmsAawCFAoYChwJ4AIgCiAJ4AHkAiQKKAosCiwKKAowCjQKOAo8CjwKOApACkQKSApMCkwKSApQClQKBAJYClgKBAIAAgACBAJcClwKBAJgCmAKBAJkCmQKBAJoCmgKBAIIAggCBAJsCmwKBAJwCnAKBAIMAgwCBAJ0CnQKBAOAA4ACBAJ4CngKBAJ8CoALhAOIA4gDhAOMAoQKiAqMCowKiAqQCpQKIAKYCpgKIAIkAjQCnAowAjACnAqgCqQKqAqsCqwKqAuQArAKtAq4CrgKtAq8CsAKEALECsQKEAIUAigCyAosAiwCyArMCtAJ8ALUCtQJ8AH0AhgC2AocAhwC2ArcCuAK5AroCugK5ArsCfgC8An8AfwC8Ar0CvgKPAL8CvwKPAI4AwALBAsICwgLBAsMCxALFAsYCxgLFAscC"),
 "lods": [0.029292434, PackedByteArray("kACRAAAAAACRAAIAAgCRAJIAkAADAJEAAgADAAAACgADAJAAkQADAAEAkwADAAoAAAADAJQAlAADAAkACwADAJMAAQADAAQACQADAJUAlQCWAAsAlQADAJYACwCWABAAEAADAAsAlgADABIAEQADABAAEgADABMAlwADABEAEwADAJgAmAADAJcABAADAJkABACZAAUABQADAAIABQCZAJoAmgADAAUABwADAJoAmQADAAYABgADAAgACACbAAMACAADAJsAAwCbAJwAmwADAAwADQADAJwADAADAA4ADwADAA0ADgADAA8AFQCdAJ4AngCdAJ8AnwCdABQAFACdAKAAoACdAKEAoQCdAKIAogCdABYAFgCdAKMAowCdABcAFwCdAKQApACdAKUApgCnABoAGgCnABkApwCmAKgAqACmAKkAqACpABsAGwCpABgAHAAdAKoAqgAdAKsAHQCsAKsAqgCrAK0ArACuAKsArQCrAK8AqwCuAK8ArwCwAK0ArgAfAK8AsQCwAK8ArwAfALEAsQAeALAAHwAeALEAsgCzACIAIgCzACEAswCyACMAIgC0ALIAIwCyACAAtAC1ALIAtQAgALIAJAAlALYAtgAlALcAuAAkALYAtgC3ALkAuQC4ALYAuQC3ALoAuwC4ALkAugC8ALkAvAC7ALkAvQC7ALwAvgC8ALoAJgC9ALwAvgAmALwAJwAmAL4AMgAwAL8AMADAAL8AwAAxAL8AvwAxADMAKADBACoAKgDBAMIAwQApAMIAwgApACsAwwAtAMQAxAAtAC8ALADDAMQALgAsAMQAxQA1AMYAxgA1ADcANgDFAMYANADFADYAxwA4AMgAyAA4ADoAyQDHAMgAOADKADoAPADHAMkAOgDKAMsAPgDHADwAywDKAMwAzQA+ADwAygA5AMwAzgA+AM0AzAA5ADsAzwA+AM4AOQDQADsA0QDPAM4AOwDQANIAPwDPANEA0gDQANMAPQDPAD8A0AA9ANMA0wA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcARwBFANQASADVANYA1QBIAEkA1gDVANcASgDWANcASwBKANcATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAWwBZANgAXADZANoA2QBcAF0A2gDZANsAXgDaANsAXwBeANsAYABhAGIAYgBhAGMAZABlAGYAZgBlAGcAaABpAGoAagBpAGsAbABtAG4AbgBtAG8AbwBtANwAcADdAN4A3QBwAHEA3gDdAN8AcgDeAN8AcwByAN8AdAB1AHYAdgB1AHcAeAB5AHoAegB5AHsAfAB9AH4AfgB9AH8AgACBAIIAggCBAIMAgwCBAOAAhADhAOIA4QCEAIUA4gDhAOMAhgDiAOMAhwCGAOMAiACJAIoAigCJAIsAjACNAOQAjQCPAOQA5ACPAI4A"), 0.22177473, PackedByteArray("AAABAAIAAAADAAEAAgADAAAAAQADAAQABQADAAIABAAGAAUABAADAAYABQAGAAcABwADAAUABgADAAgAAAADAAkACgADAAAACQADAAsACwADAAoACAADAAwACAAMAAMAAwAMAA0ADAADAA4ADwADAA0ADgADAA8AEAADAAsACwADABAAEQADABAAEAADABIAEwADABEAEgADABMAFAAVABYAFgAVABcAGAAZABoAGQAYABsAHAAdAB4AHwAeAB0AIAAhACIAIQAgACMAJAAlACYAJwAmACUAKAApACoAKgApACsALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA4ADoAOQA9ADsAPgA4ADwAOwA9AD8APQA+AD8APwA+ADwAQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAXABdAF4AXgBdAF8AYABhAGIAYgBhAGMAZABlAGYAZgBlAGcAaABpAGoAagBpAGsAbABtAG4AbgBtAG8AcABxAHIAcgBxAHMAdAB1AHYAdgB1AHcAeAB5AHoAegB5AHsAfAB9AH4AfgB9AH8AgACBAIIAggCBAIMAhACFAIYAhgCFAIcAiACJAIoAigCJAIsAjACNAI4AjQCPAI4A")],
-"material": SubResource("ShaderMaterial_eyjwk"),
+"material": SubResource("ShaderMaterial_6oou6"),
 "name": "Placa",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -2054,8 +2162,33 @@ originalParent = "FinalDemoLevel"
 
 [node name="Fan Machines" type="Node3D" parent="1/Props"]
 
-[node name="Fan Placement" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
+[node name="Fan Placement" type="StaticBody3D" parent="1/Props/Fan Machines"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.9, 0.5)
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="1/Props/Fan Machines/Fan Placement"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("SphereMesh_bg3w0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="1/Props/Fan Machines/Fan Placement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45920587, 0.100000024, 0)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="1/Props/Fan Machines/Fan Placement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, 0.40000057)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="1/Props/Fan Machines/Fan Placement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, -0.39999962)
+mesh = SubResource("SphereMesh_7fie3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1/Props/Fan Machines/Fan Placement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.6, 0)
+shape = SubResource("BoxShape3D_xnklw")
+
+[node name="Placeholder Sticker Area" parent="1/Props/Fan Machines/Fan Placement" instance=ExtResource("30_hxrls")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0.6, 0)
+specialFlags = 3
 
 [node name="Fan Placement2" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.9, -0.5)
