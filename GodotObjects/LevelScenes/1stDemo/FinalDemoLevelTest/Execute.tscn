@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsd3y1fqexib7"]
 
+[ext_resource type="PackedScene" uid="uid://cn8horxwxvjy0" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/FinalDemoLevel.tscn" id="2_15g61"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_hcdsl"]
-[ext_resource type="PackedScene" uid="uid://bwdma5xc3s4o1" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/1.tscn" id="4_bimqd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15g61"]
 sky_horizon_color = Color(0, 0, 0, 1)
@@ -55,4 +55,4 @@ shadow_caster_mask = 4294967293
 [node name="Player" parent="." instance=ExtResource("2_hcdsl")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 2, 1.5)
 
-[node name="1" parent="." instance=ExtResource("4_bimqd")]
+[node name="FinalDemoLevel" parent="." instance=ExtResource("2_15g61")]

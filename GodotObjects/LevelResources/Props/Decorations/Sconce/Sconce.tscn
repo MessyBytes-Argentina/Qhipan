@@ -292,7 +292,6 @@ shadow_mesh = SubResource("ArrayMesh_1hwok")
 script = ExtResource("1_a4uyk")
 albedo = Color(3.32, 4.878, 4.838, 1)
 emission = Color(0, 0, 0, 1)
-localWallDirection = Vector3(0, 0, 1)
 meshes = [NodePath("Crystal")]
 omniLights = [NodePath("Crystal/OmniLight3D")]
 shine = NodePath("Crystal/Shine")
