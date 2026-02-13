@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=4 uid="uid://cn8horxwxvjy0"]
+[gd_scene load_steps=152 format=4 uid="uid://cn8horxwxvjy0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_euh2j"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_8uuqi"]
@@ -530,15 +530,151 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_bc7ck"]
-material = ExtResource("24_sw0ds")
-size = Vector3(0.1, 0.5, 1)
+[sub_resource type="ArrayMesh" id="ArrayMesh_8kvvm"]
+_surfaces = [{
+"aabb": AABB(-0.032246, 0, -0.110554, 0.059912004, 0.596073, 0.238709),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Plancha",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("MN7/////AAD//wAALLMAAAAA/////wAAFFUAACyzAAD//wAAmAQAAAAAevsAAAAAMN56+wAAAAAUVQAAmAQAAA==")
+}, {
+"aabb": AABB(0.017692, 0, 0.219912, 0.04733, 0.490847, 0.215258),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Plancha.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//+e84nlAABZ2AAA//8AAB0cnvOJ5QAAAAAAAP//AABZ2AAATR0AAB0c//8AAAAA/////wAAAAAAAAAATR0AAA==")
+}, {
+"aabb": AABB(0.010973, 0, -0.40506, 0.054521002, 0.459079, 0.230015),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAADAAEAAgAFAAAAAgADAAUABgAEAAAAAAAFAAYABwADAAQABQADAAcABgAHAAQABQAHAAYA"),
+"name": "Plancha.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("0LvB+P//AAD//wAAmdwAAAAAwfj//wAALkQAAJncAAD//wAA5xwAAAAA//8AAAAA0Lv//wAAAAAuRAAA5xwAAA==")
+}, {
+"aabb": AABB(-0.02, 0.2, 0.156183, 0.04, 0.10000001, 0.36381698),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQAAQAEAAMABQAAAAIAAwAFAAIABAAAAAYABgAAAAUAAwAEAAcABgAHAAQABwAFAAMABQAHAAYA"),
+"name": "Transversal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD/////AAD///////8AAAAAAAD//wAA//8AAP//AAD/////AAAAAAAAAAAvBgAAAAD//wAAAAD//wAALwYAAA==")
+}, {
+"aabb": AABB(-0.060281, 0.178509, -0.25912, 0.040102, 0.14311302, 0.462474),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAQAAAAQABAADAAEAAgAFAAAAAwAFAAIABAAAAAYAAAAFAAYABQAEAAYABwADAAQABwAFAAMABwAEAAUA"),
+"name": "Transversal.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("pgCxIcQBAAD///EhAAAAAKYAv//PCwAA/////wsKAABY/wAAH/IAAAAA1d25/QAAAABRANrvAABY/4Td//8AAA==")
+}, {
+"aabb": AABB(-0.02, 0.2, -0.52, 0.04, 0.10000001, 0.383833),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIABAAAAAMABAABAAAAAwACAAUABQAEAAMAAgABAAYABQACAAYAAQAFAAYABwAEAAUABwABAAQABwAFAAEA"),
+"name": "Transversal.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAP//iPgAAAAAAAAAAAAA//8AAAAAAAD/////AAAAAP//AACH/gAAAAAAAP//AAD/////EPcAAA==")
+}]
+blend_shape_mode = 0
 
-[sub_resource type="Resource" id="Resource_hxauq"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_jlms1"]
+_surfaces = [{
+"aabb": AABB(-0.032246, 0, -0.110554, 0.059912004, 0.596073, 0.238709),
+"attribute_data": PackedByteArray("/5////9f////n/+//1//v/+f/7//X/+//5//f/9f/3//n/9//1//f/+f/z//X/8//5//P/9f/z//nwAA/18AAP9f/3//H/9//1//P/8f/z//3/9//5//f//f/z//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Plancha",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("MN7/////rcD//wAALLNxwQAA/////7bAFFUAACyzfcEAAP////9R0xRVAAAss5LVAAB6+wAAztMUVQAAmARH1gAAevsAAMr/FFUAAJgEyf8w3nr7AADK////AACYBMn/MN56+wAAe9X//wAAmATI1zDe/////wbW//8AACyziNgUVQAAmARU1RRVAAAss1TV//8AAJgEVNX//wAALLNU1QAA/////1/WAAB6+wAAX9Yw3v////9f1jDeevsAAF/W2QY8+doGW/nZBj752gZd+W7REtg71J/WDtK/1xLVMNY0QQg/lUCmPyxBDz+MQK8/ESsvKmEojCtrKoMqiSf5K1RVVFVUVVRVVFVUVVRVVFVJq0mrSatJq0mrSatJq0mr")
+}, {
+"aabb": AABB(0.017692, 0, 0.219912, 0.04733, 0.490847, 0.215258),
+"attribute_data": PackedByteArray("/5////9f////n/+//1//v/+f/7//X/+//5//f/9f/3//n/9//1//f/+f/z//X/8//5//P/9f/z//nwAA/18AAP9f/3//H/9//1//P/8f/z//3/9//5//f//f/z//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Plancha.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("//+e84nlYb9Z2AAA//+Ovx0cnvOJ5WS/AAAAAP//kb8dHJ7zieUu1gAAAAD//zrWHRz//wAAMtYAAAAATR0+1h0c//8AAIv+AAAAAE0div7/////AACL/lnYAABNHYr+/////wAA1NNZ2AAATR3f0///nvOJ5dfTWdgAAP//49MAAAAATR1U1QAAAAD//1TVWdgAAE0dVNVZ2AAA//9U1R0cnvOJ5YPSHRz//wAAg9L//57zieWD0v////8AAIPSFv30Ahb98QIW/fQCFv3wAtfWXNTl1lXU3NZa1OrWU9RzQB9BUkA/QXJAIEFQQEFB6CtnKtkrbirjK2kq1StwKlRVVFVUVVRVVFVUVVRVVFXiqOKo4qjiqOKo4qjiqOKo")
+}, {
+"aabb": AABB(0.010973, 0, -0.40506, 0.054521002, 0.459079, 0.230015),
+"attribute_data": PackedByteArray("/5////9f////n/+//1//v/+f/7//X/+//5//f/9f/3//n/9//1//f/+f/z//X/8//5//P/9f/z//nwAA/18AAP9f/3//H/9//1//P/8f/z//3/9//5//f//f/z//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Plancha.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("0LvB+P//XsH//wAAmdxewQAAwfj//17BLkQAAJncXsEAAMH4//9x1C5EAACZ3JLWAAD//wAAKNUuRAAA5xx31wAA//8AAGT+LkQAAOccZP7Qu///AABk/v//AADnHGT+0Lv//wAAvNT//wAA5xzb1tC7wfj//2zV//8AAJncxtcuRAAA5xxU1S5EAACZ3FTV//8AAOccVNX//wAAmdxU1QAAwfj//wTUAAD//wAABNTQu8H4//8E1NC7//8AAATUQQTf+0EE3/tBBN/7QQTf+9XSRddn1fHVttPR1m/WadXmQeg/5kHoP+ZB6D/mQeg/tSzqKC0qOCrfK1gpICnDKlRVVFVUVVRVVFVUVVRVVFXaqdqp2qnaqdqp2qnaqdqp")
+}, {
+"aabb": AABB(-0.02, 0.2, 0.156183, 0.04, 0.10000001, 0.36381698),
+"attribute_data": PackedByteArray("/z//XwAA/1//P/+fAAD/n/FV/58N6v+f/3/WNCjr/1////9fKOv/X////58N6v+f/78Nyv9/Dcr/v//f/3//39VU/1//P/9f8VX/n/8//5//v/8f/3//H/+/1jT/f9Y0"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Transversal",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD/////AAD///////8AAAAAAAD//wAA//8AAP//AAAAAAAALwaSA///AAAvBowDAAD//wAASQP/////AAAaA////////wAA/////wAAAAD//wAA//8AAP//AAAvBgAA//8AAC8G/z8AAAAALwb/P///AAD///8/AAAAAP///z8AAP//AAAAAAAA/////wAAAAAAAC8GAAAAAAAA//8AAP////////8/AAD//////z//////AAD/PwAA//8AAP8//3//f/9//3//f/9//3//fwAA/3/bDblyZyc/WsgvOFL/v/9//7//f/+//3//v/9/AAD/fwAA/38AAP9/AAD/f/8//3//P/9//z//f/8//3////9/////f////3////9/")
+}, {
+"aabb": AABB(-0.060281, 0.178509, -0.25912, 0.040102, 0.14311302, 0.462474),
+"attribute_data": PackedByteArray("AU9+gEOvfoA8X3IvFLB/QDnJf0AUsH9A98d+gEOvfoA8n4WQPF+6kDyfOak8X/aoOcl/QPfHfoA8X8UWxTZ+gDyfghY8X8UWPJ+nLzxfci8wTn9AgjV/QAFPfoDFNn6A"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Transversal.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("pgCxIcQB5QX///EhAAAZBqYAv//PC5IG/////wsKpwZY/4Td//8/Af////8LCj8BWP8AAB/yPwH///EhAAA/Af//8SEAADs+pgCxIcQBOz5Y/wAAH/I7PgAAUQDa7zs+WP+E3f//Ba5Y/wAAH/IqjAAA1d25/V+mAABRANrvG4lY/4Td///DQQAA1d25/cNB/////wsKw0GmAL//zwvDQaYAv//PCz8BAADV3bn9PwGmALEhxAE/AQAAUQDa7z8B2v/vemz4qouy4yaeSN76ok2/oH5Nv6B+Tb+gfk2/oH6uAFWBmAApgY0BNH+9ARt/DhIX9ZYee9A3E7LxsioXrSX/Qn46/21+yv6WgJn+roCf/q3An/6twJ/+rcCf/q3A")
+}, {
+"aabb": AABB(-0.02, 0.2, -0.52, 0.04, 0.10000001, 0.383833),
+"attribute_data": PackedByteArray("+2AnPx9PJz/7YCd/S00nf/ugJz/7YCc/+6Anf/tgJ3/7oHAt+2BLLfugJz/7YCc/s7InP4e0J3/7YEstS00nf7OyJz/7oCc/h7Qnf/ugJ3/7oCd/+2Anf/ugs5L7YNeS"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": ExtResource("24_sw0ds"),
+"name": "Transversal.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAD//wAAAAAAAP//iPgAAAAAAAAAAAAAAAAAAP//AAD/////AAAAAAAA//8AAAAA//8AAAAAAAAAAAAAAAAAAP////8Q9/4/AAD//4j4/j//////AAD/PwAA//8AAP8//////xD3cJn//wAAh/7OhwAA//+I+MOTAAAAAP//DoX/////EPcAAP////8AAAAA//8AAIf+AAD//wAAAAAAAP//AAAAAP8/AAAAAAAA/z///wAAh/7/PwAAAAD///8//z//f/8//3//P/9//z//f////3////9/////f////3+m/SuBz/0XgdX/FID///9/4PHEDo/mbSsl8CUTedYpVP+//3//v/9//7//f/+//38AAP9/DgAdgM0Am4HbALeB")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8kvvm")
+
+[sub_resource type="Resource" id="Resource_k50ks"]
 script = ExtResource("23_xr4iu")
-mesh = SubResource("BoxMesh_bc7ck")
-snapPointToPath = 1
-baseOffset = Vector2(0, 0.35)
+mesh = SubResource("ArrayMesh_jlms1")
+baseOffset = Vector2(0, 0)
 offsetStart = 0.5
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
@@ -549,12 +685,26 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Resource" id="Resource_13ivo"]
+script = ExtResource("23_xr4iu")
+mesh = SubResource("ArrayMesh_jlms1")
+baseOffset = Vector2(0, 0)
+offsetStart = 0.5
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
+
 [sub_resource type="Curve3D" id="Curve3D_x77sq"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2, 1, -1, 0, 0, 0, 0, 0, 0, 1, 1, -1),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_2flga"]
+script = ExtResource("23_xr4iu")
+mesh = SubResource("ArrayMesh_jlms1")
+baseOffset = Vector2(0, 0)
+offsetStart = 0.5
+metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhv2t"]
 size = Vector3(3, 1.25, 2.8500001)
@@ -565,6 +715,9 @@ size = Vector3(2, 1.5, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bn7d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1avr2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3sahy"]
+size = Vector3(3, 1.25, 2.8500001)
 
 [sub_resource type="Curve3D" id="Curve3D_2c4cn"]
 closed = true
@@ -775,18 +928,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_43nvr"]
-material = ExtResource("24_sw0ds")
-size = Vector3(0.1, 0.5, 1)
-
-[sub_resource type="Resource" id="Resource_u8djx"]
-script = ExtResource("23_xr4iu")
-mesh = SubResource("BoxMesh_43nvr")
-snapPointToPath = 1
-baseOffset = Vector2(0, 0.35)
-offsetStart = 0.5
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
-
 [sub_resource type="Curve3D" id="Curve3D_kc5hi"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 1, -2, 0, 0, 0, 0, 0, 0, 1, 1, -1, 0, 0, 0, 0, 0, 0, 0, 1, -1),
@@ -800,18 +941,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_ecngb"]
-material = ExtResource("24_sw0ds")
-size = Vector3(0.1, 0.5, 1)
-
-[sub_resource type="Resource" id="Resource_uqqst"]
-script = ExtResource("23_xr4iu")
-mesh = SubResource("BoxMesh_ecngb")
-snapPointToPath = 1
-baseOffset = Vector2(0, 0.35)
-offsetStart = 0.5
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ny0it"]
 size = Vector3(3, 1.25, 2.8500001)
@@ -1315,18 +1444,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_8kvvm"]
-material = ExtResource("24_sw0ds")
-size = Vector3(0.1, 0.5, 1)
-
-[sub_resource type="Resource" id="Resource_jlms1"]
-script = ExtResource("23_xr4iu")
-mesh = SubResource("BoxMesh_8kvvm")
-snapPointToPath = 1
-baseOffset = Vector2(0, 0.35)
-offsetStart = 0.5
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
-
 [sub_resource type="Curve3D" id="Curve3D_k50ks"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 1, -2, 0, 0, 0, 0, 0, 0, 1, 1, -1, 0, 0, 0, 0, 0, 0, 0, 1, -1),
@@ -1334,27 +1451,12 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3sahy"]
-size = Vector3(3, 1.25, 2.8500001)
-
 [sub_resource type="Curve3D" id="Curve3D_ei3d0"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2, 1, -1, 0, 0, 0, 0, 0, 0, 1, 1, -1),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_k11qp"]
-material = ExtResource("24_sw0ds")
-size = Vector3(0.1, 0.5, 1)
-
-[sub_resource type="Resource" id="Resource_leulj"]
-script = ExtResource("23_xr4iu")
-mesh = SubResource("BoxMesh_k11qp")
-snapPointToPath = 1
-baseOffset = Vector2(0, 0.35)
-offsetStart = 0.5
-metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6oou6"]
 transparency = 1
@@ -2066,19 +2168,19 @@ collisionLayer = 4096
 
 [node name="Wood Fence2" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_cr368")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_hxauq")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_4hdch")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_hxauq")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_13ivo")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence4" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_x77sq")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_hxauq")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_2flga")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
@@ -2152,6 +2254,16 @@ transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08
 [node name="Placeholder Sticker Area15" parent="1/Widgets/StickerPlacements" instance=ExtResource("30_hxrls")]
 transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 1, 0.50000006)
 
+[node name="Area3D" type="Area3D" parent="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("25_jghdm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.625, -0.47500002)
+shape = SubResource("BoxShape3D_3sahy")
+
 [node name="2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 visible = false
@@ -2203,19 +2315,19 @@ collisionLayer = 4096
 
 [node name="Wood Fence2" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_ppkgv")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_u8djx")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_kc5hi")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_u8djx")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence4" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_prdqs")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_uqqst")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
@@ -2410,7 +2522,6 @@ transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08
 
 [node name="3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-visible = false
 
 [node name="GridmapObject" parent="3" instance=ExtResource("1_euh2j")]
 data = {
@@ -2460,30 +2571,21 @@ collisionLayer = 4096
 [node name="Wood Fence2" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_q2v77")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_jlms1")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
 [node name="Wood Fence3" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_k50ks")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_jlms1")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
-
-[node name="Area3D" type="Area3D" parent="3/Props/Fences"]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("25_jghdm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="3/Props/Fences/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.625, -0.47500002)
-shape = SubResource("BoxShape3D_3sahy")
 
 [node name="Wood Fence4" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_ei3d0")
-multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_leulj")])
+multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
 
@@ -2824,7 +2926,7 @@ omni_attenuation = 0.222
 
 [connection signal="area_entered" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_exited"]
+[connection signal="area_entered" from="1/Area3D" to="1/Area3D" method="_on_light_entered"]
+[connection signal="area_exited" from="1/Area3D" to="1/Area3D" method="_on_light_exited"]
 [connection signal="area_entered" from="2/Props/Fences/Area3D" to="2/Props/Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="2/Props/Fences/Area3D" to="2/Props/Fences/Area3D" method="_on_light_exited"]
-[connection signal="area_entered" from="3/Props/Fences/Area3D" to="3/Props/Fences/Area3D" method="_on_light_entered"]
-[connection signal="area_exited" from="3/Props/Fences/Area3D" to="3/Props/Fences/Area3D" method="_on_light_exited"]
