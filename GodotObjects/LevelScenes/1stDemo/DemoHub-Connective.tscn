@@ -287,10 +287,10 @@ metadata/_editor_floor_ = Vector3(0, -11, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 1)
 
 [node name="WallGenerator" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.1, 0)
 curve = SubResource("Curve3D_wwpq5")
 script = ExtResource("9_x0jxa")
-wallHeight = 10.0
+wallHeight = 15.0
 material = ExtResource("10_iqlko")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
@@ -314,18 +314,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 4.7, -25.00000
 visible = false
 operation = 2
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Walls/WallGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -16.500002)
-visible = false
-operation = 2
-
 [node name="CSGBox3D6" type="CSGBox3D" parent="Walls/WallGenerator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -9.500002)
 visible = false
 operation = 2
 
+[node name="CSGBox3D7" type="CSGBox3D" parent="Walls/WallGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.1999998, -16.6)
+visible = false
+operation = 2
+size = Vector3(1, 2.2, 1)
+
 [node name="WallGenerator2" type="Path3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8961387, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.0961385, 0)
 curve = SubResource("Curve3D_1qbfm")
 script = ExtResource("9_x0jxa")
 wallHeight = 4.0
@@ -726,6 +727,7 @@ material = ExtResource("10_iqlko")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Ceilings" type="Node3D" parent="Props"]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Ceilings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.963639, 5.5, -12.1)
@@ -871,7 +873,7 @@ metadata/UnloadShape = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -15.5)
 script = ExtResource("2_fjvai")
 hotspotName = "DestileriaFinaleDemohub"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_finale.tscn"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_minifork.tscn"
 rootNode = NodePath("../../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
