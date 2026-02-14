@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dijal3o7gpf3i"
-path.s3tc="res://.godot/imported/MM-Baldosado Colore_normal.png-511f37ee5ad0d7d686aa3edb4b434d91.s3tc.ctex"
+path="res://.godot/imported/MM-Baldosado Colore_normal.png-511f37ee5ad0d7d686aa3edb4b434d91.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/MM-Baldosado Colore_normal.png"
-dest_files=["res://.godot/imported/MM-Baldosado Colore_normal.png-511f37ee5ad0d7d686aa3edb4b434d91.s3tc.ctex"]
+dest_files=["res://.godot/imported/MM-Baldosado Colore_normal.png-511f37ee5ad0d7d686aa3edb4b434d91.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
