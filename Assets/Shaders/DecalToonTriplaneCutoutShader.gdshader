@@ -137,8 +137,8 @@ void vertex() {
 vec4 triplanar_texture(sampler2D top_sampler, sampler2D side_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
 	vec4 samp = vec4(0.0);
 	if (samp == vec4(0.0)) {samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * ceil(p_weights.y);}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * ceil(p_weights.x);}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * ceil(p_weights.z);}
+	else if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * ceil(p_weights.x);}
+	else if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * ceil(p_weights.z);}
 	return samp;
 }
 

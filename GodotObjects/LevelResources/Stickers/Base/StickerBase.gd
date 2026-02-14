@@ -283,13 +283,16 @@ func do_reparent(newPos: Vector3 = global_position) -> void:
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
 		bodies.sort_custom(func(a: Node3D, b: Node3D): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 		if len(bodies) == 0: await get_tree().process_frame
-		else: sceneParent = get_root_parent(bodies[0])
+		else: 
+			sceneParent = get_root_parent(bodies[0])
+			await get_tree().process_frame
 	reparent(sceneParent)
 	global_position = newPos
 
 ## Special recursive check to get root scene.
 func get_root_parent(node: Node) -> Node:
 	var tempParent: Node = node.get_parent()
+	if not tempParent: return null
 	if tempParent.has_meta("isRoot"):
 		return tempParent
 	else:

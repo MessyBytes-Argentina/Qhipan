@@ -155,7 +155,7 @@ func set_hotspot_position() -> void:
 func _instantiate_scene():
 	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
 	rootNode.get_parent().call_deferred("add_child", loadedScene)
-	await get_tree().process_frame
+	await loadedScene.ready
 	loadedScene.set_meta("isRoot", true)
 	set_hotspot_position()
 	loadedHotspot.loadedHotspot = self
