@@ -3,9 +3,9 @@
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_d2iov"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_bpk0i"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_abrjr"]
-[ext_resource type="Texture2D" uid="uid://dhq8qe4w0lonl" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/MM-Baldosado Side_albedo.png" id="4_1ar6n"]
-[ext_resource type="Texture2D" uid="uid://jcp1ww4cm0n5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/MM-Baldosado Side_normal.png" id="5_ymd3u"]
-[ext_resource type="Texture2D" uid="uid://on6si4lfd2us" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/MM-Baldosado Side_orm.png" id="6_uls6a"]
+[ext_resource type="Texture2D" uid="uid://dhq8qe4w0lonl" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/MM-Baldosado Side_albedo.png" id="4_1ar6n"]
+[ext_resource type="Texture2D" uid="uid://jcp1ww4cm0n5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/MM-Baldosado Side_normal.png" id="5_ymd3u"]
+[ext_resource type="Texture2D" uid="uid://on6si4lfd2us" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/MM-Baldosado Side_orm.png" id="6_uls6a"]
 
 [resource]
 render_priority = 0
@@ -13,7 +13,7 @@ shader = ExtResource("1_d2iov")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/light_gradient = ExtResource("3_abrjr")
 shader_parameter/fresnel_gradient = ExtResource("2_bpk0i")
-shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
+shader_parameter/offset = Vector3(0, 0, 0)
 shader_parameter/top_texture_scale = 1.0
 shader_parameter/side_texture_scale = 1.0
 shader_parameter/blend_sharpness = 10.0

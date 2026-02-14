@@ -796,14 +796,14 @@ forceScale = Vector3(1.105, 3, 0.2)
 pedestalName = "MolinoLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance2" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039354518, 1.893675, -16.261091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, 2.5, -16.261)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("10_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)
 pedestalName = "MolinoLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance3" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039354518, 1.893675, -20.861092)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, 2.5, -20.861)
 color = Color(0.62490547, 1.2811433, 1.3535374, 1)
 texture = ExtResource("11_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)

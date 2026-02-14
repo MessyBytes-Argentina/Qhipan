@@ -22,7 +22,7 @@ extends Node3D
 		shineGradient = value
 		if Engine.is_editor_hint(): set_color_changes()
 ## Direction to the wall in local coordinates if this goes against the wall
-@export_custom(PROPERTY_HINT_RANGE, "-1.0, 1.0, 1.0") var localWallDirection: Vector3
+@export_range(-1, 360, 1, "radians_as_degrees") var localWallDirection: float = 0
 ## Tests color changes.
 @export_tool_button("Refresh", "Reload") var refresh: Callable = set_color_changes
 ## References group
@@ -37,16 +37,19 @@ extends Node3D
 ## Shine material.
 var shineMaterial: ShaderMaterial
 ## Occlude on camera angles.
-var invalidAngles: Array[float] = [-0.25, 0.0, 0.25]
+var invalidAngles: Array[float] = [1.75, 2.0, 0.25]
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_color_changes()
 	if Engine.is_editor_hint(): return
-	if localWallDirection == Vector3.ZERO: return
-	var appliedRotationToWall: float = abs(rotation.y / PI) + abs(Vector2(localWallDirection.x, localWallDirection.z).angle_to(Vector2.DOWN) / PI)
+	if localWallDirection == -1: return
+	var appliedRotationToWall: float = global_rotation.y / PI + localWallDirection / PI
+	while appliedRotationToWall < 0: appliedRotationToWall += 2.0
+	if appliedRotationToWall > 2.00: appliedRotationToWall = fmod(appliedRotationToWall, 2.0)
 	for i in range(len(invalidAngles)):
 		invalidAngles[i] = abs(snappedf(invalidAngles[i] + appliedRotationToWall, 0.01))
+		if invalidAngles[i] > 2.00: invalidAngles[i] = fmod(invalidAngles[i], 2.0)
 	var player: Player = get_tree().get_first_node_in_group("Player")
 	if not player.is_node_ready():
 		await player.ready
@@ -56,8 +59,11 @@ func _ready() -> void:
 
 ## Checks for obstacles.
 func check_camera_angle(angle: float) -> void:
-	angle = snappedf(abs(angle) / PI, 0.01)
-	if angle > 2.01: angle = fmod(angle, 2.0)
+	while angle < 0: angle += PI * 2.0
+	angle = fmod(angle, PI * 2.0)
+	angle = snappedf(angle / PI, 0.01)
+	if angle == 2.0: angle = 0.0
+	if angle > 2.00: angle = fmod(angle, 2.0)
 	if angle in invalidAngles:
 		hide()
 	else:
@@ -67,8 +73,9 @@ func check_camera_angle(angle: float) -> void:
 func set_color_changes() -> void:
 	if not is_node_ready():
 		await ready
-	shineMaterial = shine.get_surface_override_material(0).duplicate()
-	shine.set_surface_override_material(0, shineMaterial)
+	if shine:
+		shineMaterial = shine.get_surface_override_material(0).duplicate()
+		shine.set_surface_override_material(0, shineMaterial)
 	for mesh in meshes:
 		var material: ShaderMaterial = mesh.get_surface_override_material(0).duplicate()
 		material.set_shader_parameter("albedo", albedo)

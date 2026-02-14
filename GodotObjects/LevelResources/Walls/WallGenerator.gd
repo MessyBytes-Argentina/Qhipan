@@ -15,7 +15,7 @@ const PATHSIMPLIFYANGLE: float = 15
 enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 
 ## How tall is the wall.
-@export_range(1.0, 20.0, 1.0) var wallHeight: float = 5.0
+@export_range(1.0, 100.0, 1.0) var wallHeight: float = 5.0
 ## Create a second wall going down for when looking the other way around.
 @export var wallMode: WallModes = WallModes.ONLY_UP
 ## Wall material.
@@ -102,9 +102,9 @@ func regenerate_wall_shape() -> void:
 			if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
-	if wallMode == WallModes.ONLY_DOWN:
+	polygon.show()
+	if wallMode != WallModes.ONLY_DOWN:
 		shadowPolygon.polygon = _create_wall_shape(true, false)
-		polygon.show()
 		shadowPolygon.show()
 	elif shadowPolygon: shadowPolygon.queue_free()
 	match wallMode:

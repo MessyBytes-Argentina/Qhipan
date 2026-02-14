@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 ## Which stickers can be placed here.
 @export_flags("Alternator", "Fan", "Key", "Lamp") var validStickers: int = 15
@@ -7,11 +7,13 @@ extends Node3D
 ## Special Flags.
 @export_flags("noPlayerFan", "NoPlayerAntigravity") var specialFlags: int = 0
 
-## Reference to the sticker marker.
-@onready var stickerMarker: StickerMarker = $MeshInstance3D/StickerMarker
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	stickerMarker.validStickers = validStickers
-	stickerMarker.specialStickerScale = specialStickerScale
-	stickerMarker.specialFlags = specialFlags
+	process_children(self)
+
+func process_children(node: Node) -> void:
+	if node is StickerMarker:
+		node.validStickers = validStickers
+		node.specialStickerScale = specialStickerScale
+		node.specialFlags = specialFlags
+	for child in node.get_children(): process_children(child)

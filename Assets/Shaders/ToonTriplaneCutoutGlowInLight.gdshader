@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
 
@@ -11,7 +11,6 @@ uniform sampler2D light_gradient;
 uniform sampler2D fresnel_gradient;
 
 //Worldspace triplanar parameters
-uniform vec3 offset = vec3(0.0);
 uniform float top_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float side_texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float blend_sharpness : hint_range(0.0, 150.0, 0.001) = 10.0;
@@ -70,6 +69,15 @@ uniform sampler2D top_texture_anisotropy_flowmap : hint_anisotropy, filter_linea
 uniform sampler2D side_texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
 uniform float top_anisotropy : hint_range(0.0, 1.0, 0.01);
 uniform float side_anisotropy : hint_range(0.0, 1.0, 0.01);
+
+// Light Source
+uniform float minAlpha: hint_range(0.0, 1.0, 0.1) = 0.0;
+uniform float lightFuzzyness: hint_range(1.0, 100.0, 0.1) = 1.0;
+const float playerLightRange = 1.5;
+const int trackedLights = 6;
+uniform vec4 lights[trackedLights];
+uniform bool playerHoldsLight = false;
+uniform vec3 actualPlayerPosition;
 
 // Cutout Variables
 uniform bool cylinderCutout = false;
@@ -130,14 +138,13 @@ void vertex() {
 	triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	power_normal /= dot(power_normal, vec3(1.0));
 	triplanar_pos *= vec3(1.0, -1.0, 1.0);
-	triplanar_pos += offset;
 }
 
 vec4 triplanar_texture(sampler2D top_sampler, sampler2D side_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
 	vec4 samp = vec4(0.0);
-	if (samp == vec4(0.0)) {samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * ceil(p_weights.y);}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * ceil(p_weights.x);}
-	if (samp == vec4(0.0)) {samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * ceil(p_weights.z);}
+	samp += texture(side_sampler, p_triplanar_pos.xy * vec2(sign(world_normal.z), 1.0) / side_texture_scale) * p_weights.z;
+	samp += texture(top_sampler, p_triplanar_pos.xz / top_texture_scale) * p_weights.y;
+	samp += texture(side_sampler, p_triplanar_pos.zy * vec2(-sign(world_normal.x), 1.0) / side_texture_scale) * p_weights.x;
 	return samp;
 }
 
@@ -174,9 +181,18 @@ void fragment() {
 	if (resultShape < 0.0 && docutout) {discard;}
 	float borderDistance = smoothstep(0.0, borderSize, resultShape) * float(docutout) + float(docutout == false);
 
-	// Albedo & Alpha
+	// Albedo
 	vec4 base_albedo = triplanar_texture(top_texture_albedo, side_texture_albedo, power_normal, triplanar_pos);
 	ALBEDO = base_albedo.rgb * albedo.rgb;
+
+	// Alpha
+	float lightAlpha = minAlpha;
+	for (int i = 0; i < trackedLights; i++) {
+		lightAlpha = max(lightAlpha, lights[i].w > 0.0 ? -sdSphere(worldVector - vec3(lights[i].x, worldVector.y, lights[i].z), lights[i].w) : 0.0);
+	}
+	lightAlpha = clamp(smoothstep(0.1, 0.2, max(lightAlpha, playerHoldsLight ? -sdSphere(worldVector - vec3(actualPlayerPosition.x, worldVector.y, actualPlayerPosition.z), playerLightRange) : 0.0)), 0.0, 1.0);
+	lightAlpha = clamp(lightAlpha * 50.0 / lightFuzzyness, 0.0, 1.0);
+	ALPHA = base_albedo.a * albedo.a * lightAlpha;
 
 	// ORM Sampler
 	vec4 base_ORM = triplanar_texture(top_texture_orm, side_texture_orm, power_normal, triplanar_pos);

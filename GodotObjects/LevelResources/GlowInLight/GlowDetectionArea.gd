@@ -53,11 +53,15 @@ func _get_shaders(node: Node) -> void:
 
 func _store_shaders(mesh: Mesh) -> void:
 	if mesh is PrimitiveMesh:
-		shaders.append(mesh.material)
+		if mesh.material is ShaderMaterial:
+			var material: ShaderMaterial = mesh.material.duplicate()
+			shaders.append(material)
+			mesh.material = material
 		return
 	for i in mesh.get_surface_count():
 		if mesh.surface_get_material(i) is ShaderMaterial:
 			var material: ShaderMaterial = mesh.surface_get_material(i).duplicate()
+			if not material: continue
 			shaders.append(material)
 			mesh.surface_set_material(i, material)
 

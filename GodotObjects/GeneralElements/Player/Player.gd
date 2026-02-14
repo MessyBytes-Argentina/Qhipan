@@ -301,7 +301,7 @@ func camera_rotation_check() -> void:
 		rotateCamLeftSound.play()
 	else:
 		rotateCamRightSound.play()
-	camera_rotating.emit(cameraPivot.rotation.y + cameraRotation)
+	camera_rotating.emit(cameraPivot.global_rotation.y + cameraRotation)
 
 ## Called when the camera finishes rotating.
 func camera_rotation_finished() -> void:
@@ -313,7 +313,7 @@ func camera_rotation_finished() -> void:
 		cameraRotationTween.kill()
 		cameraRotationTween = null
 	cubeCutout.rotatingCamera = false
-	camera_rotated.emit(cameraPivot.rotation.y)
+	camera_rotated.emit(cameraPivot.global_rotation.y)
 
 ## Checks and handles the camera zoom.
 func camera_zoom_check() -> void:

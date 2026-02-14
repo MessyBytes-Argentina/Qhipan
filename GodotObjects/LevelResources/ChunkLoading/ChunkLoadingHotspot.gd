@@ -40,6 +40,8 @@ var unloadShapes: Array[CollisionShape3D] = []
 var loadedScene: Node = null
 ## Reference to the loaded scene's matching hotspot.
 var loadedHotspot: ChunkLoadingHotspot
+## Instancing thread.
+var threadInstantiate: Thread
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
@@ -61,6 +63,7 @@ func _ready() -> void:
 		rootNode = get_tree().edited_scene_root
 	else:
 		_setup_areas()
+		threadInstantiate = Thread.new()
 
 ## Resets debug shapes.
 func _reset_shapes() -> void:
@@ -122,13 +125,7 @@ func _start_load() -> void:
 	if ResourceLoader.load_threaded_get_status(sceneToLoad) in [ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE]:
 		push_error("An error occurred while loading scene '" + sceneToLoad + "'.")
 		return
-	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
-	rootNode.get_parent().add_child(loadedScene)
-	loadedScene.set_meta("isRoot", true)
-	set_hotspot_position()
-	loadedHotspot.loadedHotspot = self
-	loadedHotspot.loadedScene = rootNode
-	GeneralVariables.saveManager.request_scene_load(loadedScene)
+	threadInstantiate.start(_instantiate_scene)
 
 ## Unloads scene.
 func _do_unload() -> void:
@@ -153,3 +150,14 @@ func set_hotspot_position() -> void:
 	hotspots = hotspots.filter(func(a: ChunkLoadingHotspot): return a.hotspotName == hotspotName and a != self)
 	loadedHotspot = hotspots[0]
 	if len(hotspots) > 0: loadedScene.global_position = -loadedHotspot.global_position + global_position
+
+## Finishes instantiating in a secondary thread
+func _instantiate_scene():
+	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
+	rootNode.get_parent().call_deferred("add_child", loadedScene)
+	await get_tree().process_frame
+	loadedScene.set_meta("isRoot", true)
+	set_hotspot_position()
+	loadedHotspot.loadedHotspot = self
+	loadedHotspot.loadedScene = rootNode
+	GeneralVariables.saveManager.request_scene_load(loadedScene)

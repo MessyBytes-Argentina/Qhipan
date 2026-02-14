@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpkf0okc884ry"]
+[gd_scene load_steps=15 format=3 uid="uid://bpkf0okc884ry"]
 
+[ext_resource type="Script" uid="uid://c4bu42j3ajl1x" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.gd" id="1_7qrop"]
 [ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_jbdo0"]
-[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="2_mop7j"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="3_8jocq"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_eswym"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_o2e3n"]
+[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_albedo.png" id="6_y0344"]
+[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_normal.png" id="7_y7dmb"]
+[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_orm.png" id="8_fm7dw"]
+[ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="9_atvr6"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
 lightmap_size_hint = Vector2i(17, 9)
@@ -22,8 +29,57 @@ is_hemisphere = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnklw"]
 size = Vector3(1.0290039, 0.5, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvyl4"]
+render_priority = 0
+shader = ExtResource("3_8jocq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("5_o2e3n")
+shader_parameter/fresnel_gradient = ExtResource("4_eswym")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("6_y0344")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("7_y7dmb")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("8_fm7dw")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_e4t6e"]
+material = SubResource("ShaderMaterial_wvyl4")
+size = Vector2(0.75, 0.75)
+orientation = 1
+
 [node name="Fan Placement Vertical" type="StaticBody3D"]
 collision_layer = 5
+script = ExtResource("1_7qrop")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -45,5 +101,13 @@ mesh = SubResource("SphereMesh_7fie3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018115312, 0.35000002, 0)
 shape = SubResource("BoxShape3D_xnklw")
 
-[node name="Placeholder Sticker Area" parent="." instance=ExtResource("2_mop7j")]
+[node name="Placeholder Sticker Area" type="Node3D" parent="."]
 transform = Transform3D(-4.3711385e-08, -4.3711392e-08, 1, -4.3711392e-08, 1, 4.371139e-08, -1, -4.371139e-08, -4.371139e-08, 0, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Placeholder Sticker Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_e4t6e")
+
+[node name="StickerMarker" type="Node3D" parent="Placeholder Sticker Area/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
+script = ExtResource("9_atvr6")

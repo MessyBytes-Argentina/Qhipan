@@ -3,6 +3,8 @@ extends StaticBody3D
 
 ## Standard particle amount
 const PARTICLES: int = 6
+## Minimum particle amount
+const MINPARTICLES: int = 6
 ## Standard particle duration
 const PARTICLESLIFE: float = 2.0
 ## Time to disappear
@@ -28,6 +30,8 @@ const ANIMATIONTIME: float = 1.0
 
 ## Reference to the main mesh of the block.
 @onready var mesh: MeshInstance3D = %MeshInstance3D
+## Reference to the collision shape.
+@onready var collisionShape: CollisionShape3D = %CollisionShape3D
 ## Referernce to the gpu particles.
 @onready var gpuParticles3d: GPUParticles3D = %GPUParticles3D
 
@@ -44,10 +48,13 @@ func update_texture() -> void:
 	particleMaterial.albedo_texture = texture
 	gpuParticles3d.set_material_override(particleMaterial)
 	mesh.scale = forceScale
+	collisionShape.shape.size = forceScale
 	gpuParticles3d.lifetime = PARTICLESLIFE * forceScale.y
 	gpuParticles3d.process_material = gpuParticles3d.process_material.duplicate()
-	gpuParticles3d.process_material.emission_shape_scale = forceScale * Vector3(1.0, 0.0, 1.0)
-	gpuParticles3d.amount = PARTICLES * round(forceScale.x * forceScale.z)
+	gpuParticles3d.process_material.emission_shape_scale = forceScale
+	gpuParticles3d.amount = max(MINPARTICLES, PARTICLES * round(forceScale.x * forceScale.y * forceScale.z))
+	gpuParticles3d.position.y = -forceScale.y / 2.0
+	scale = Vector3.ONE
 
 ## Called when pedestal is activated.
 func pedestal_activated(activatedPedestal: String, skip: bool = false) -> void:

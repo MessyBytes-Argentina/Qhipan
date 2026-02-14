@@ -1,4 +1,4 @@
-[gd_scene load_steps=226 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=224 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -113,18 +113,6 @@ name = "Puzzle3"
 image = ExtResource("7_5n13k")
 backImage = ExtResource("7_5n13k")
 metadata/_custom_type_script = "uid://cs5riap1rgf6x"
-
-[sub_resource type="Gradient" id="Gradient_143k4"]
-offsets = PackedFloat32Array(0.17446809, 0.31914893, 0.34979424, 0.5020576, 0.79012346, 0.87659574, 0.8893617)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.40367445, 1.0242026e-05, 0.29251394, 1, 0.5577189, 1.4150441e-05, 0.4041389, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fjpl"]
-gradient = SubResource("Gradient_143k4")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_3fjpl"]
 _data = {
@@ -1176,22 +1164,24 @@ pedestalName = "Puzzle2"
 sceneParent = NodePath("../../../..")
 
 [node name="PlaceholderMetaprogressionBlockEntrance" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(1.2431976, 0, 0, 0, 1.5, 0, 0, 0, 0.34674352, -0.5, -0.5, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.35, 1.5)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("3_5onks")
-forceScale = Vector3(0.945, 1.3, 1)
+forceScale = Vector3(1.2, 1.75, 0.25)
 pedestalName = "Entrance"
 
 [node name="PlaceholderMetaprogressionBlockPuzzle2" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(-8.742278e-08, 0, -1, 0, 2, 0, 2, 0, -4.371139e-08, 2.5, -0.5, -6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.1499999, 0.55, -6)
 color = Color(0.708783, 1.0260962, 0.5402103, 1)
 texture = ExtResource("6_p7x5o")
+forceScale = Vector3(2, 2.1, 0.25)
 pedestalName = "Puzzle2"
 
 [node name="PlaceholderMetaprogressionBlockPuzzle3" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(4.75, 0, 3.5527137e-15, 0, 5.7500005, 0, -1.687539e-14, 0, 1, -0.5, -0.7, -13.4)
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.5, 1, -13.4)
 color = Color(0.15948172, 0.873581, 1.1413766, 1)
-texture = SubResource("GradientTexture2D_3fjpl")
+texture = ExtResource("7_5n13k")
+forceScale = Vector3(5, 3, 0.5)
 pedestalName = "Puzzle3"
 
 [node name="InventoryPedestal" parent="Rooms/Tutohub-connectivehub/metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("12_fdnxg")]
