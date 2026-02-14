@@ -10,8 +10,6 @@ const MINTIME: float = 1.0
 const MAXTIME: float = 2.0
 ## Leylien width
 const WIDTH: float = 0.5
-## Maximimum frames for stagger
-const FRAMESTAGGERMAX: int = 20
 
 ## Is the leyline on by default
 @export var startsFull: bool = false:
@@ -48,7 +46,7 @@ var currentOnState: bool = false
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		randomize()
-		var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
+		var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
 		for _i in range(randomframes): await get_tree().process_frame
 	reset_shapes()
 	if startsFull:

@@ -13,8 +13,6 @@ const PATHINTERVAL: float = 0.01
 const PATHSIMPLIFYANGLE: float = 15
 ## Wall modes.
 enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
-## Maximimum frames for stagger
-const FRAMESTAGGERMAX: int = 20
 
 ## How tall is the wall.
 @export_range(1.0, 100.0, 1.0) var wallHeight: float = 5.0
@@ -60,7 +58,7 @@ func _ready() -> void:
 	if not GeneralVariables.is_node_ready():
 		await GeneralVariables.ready
 	randomize()
-	var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
+	var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
 	for _i in range(randomframes): await get_tree().process_frame
 	if material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(material)
 

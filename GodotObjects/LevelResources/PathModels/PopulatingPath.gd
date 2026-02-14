@@ -7,8 +7,6 @@ class_name PathPopulator
 const PRECISIONPOINT: float = 0.001
 ## How long to show collider for.
 const COLLIDERTIMER: float = 10
-## Maximimum frames for stagger
-const FRAMESTAGGERMAX: int = 20
 
 ## List of meshes to use for populating the path.
 @export var multiMeshResources: Array[PathPopulatorResource] = []
@@ -34,7 +32,7 @@ func _ready():
 	if Engine.is_editor_hint(): curve_changed.connect(_update_multimesh)
 	else:
 		randomize()
-		var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
+		var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
 		for _i in range(randomframes): await get_tree().process_frame
 	_update_multimesh()
 

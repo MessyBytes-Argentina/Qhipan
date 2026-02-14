@@ -132,6 +132,11 @@ func _start_load() -> void:
 ## Unloads scene.
 func _do_unload() -> void:
 	if not loadedScene: return
+	if not loadedScene.is_node_ready():
+		await loadedScene.ready
+		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
 	loadedScene.queue_free()
 	loadedScene = null
 	loadedHotspot = null
@@ -168,4 +173,4 @@ func _instantiate_scene():
 
 ## Thread must be disposed (or "joined"), for portability.
 func _exit_tree():
-	if threadInstantiate.is_alive(): threadInstantiate.wait_to_finish()
+	if threadInstantiate: if threadInstantiate.is_alive(): threadInstantiate.wait_to_finish()

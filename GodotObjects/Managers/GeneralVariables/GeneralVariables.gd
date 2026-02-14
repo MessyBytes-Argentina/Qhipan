@@ -10,6 +10,8 @@ const materialsResourceGroup: String = "uid://b0jco1ngdo5fe"
 const MOUSEMOVEMENTTHRESHOLD: float = 15
 ## Root nodes to ignore for root tagging.
 const IGNOREROOTNODES: PackedStringArray = ["EnvironmentObjects", "Player"]
+## Maximimum frames for stagger
+const FRAMESTAGGERMAX: int = 60
 
 ## Is the player using a gamepad.
 var usingGamepad: bool = false
