@@ -984,6 +984,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column10" type="Path3D" parent="Props/Columns"]
@@ -993,6 +994,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column11" type="Path3D" parent="Props/Columns"]
@@ -1002,6 +1004,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column12" type="Path3D" parent="Props/Columns"]
@@ -1011,6 +1014,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column13" type="Path3D" parent="Props/Columns"]
@@ -1020,6 +1024,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 8.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column14" type="Path3D" parent="Props/Columns"]
@@ -1029,6 +1034,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 8.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column15" type="Path3D" parent="Props/Columns"]
@@ -1038,6 +1044,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 8.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column16" type="Path3D" parent="Props/Columns"]
@@ -1047,6 +1054,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 8.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column2" type="Path3D" parent="Props/Columns"]
@@ -1056,6 +1064,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column3" type="Path3D" parent="Props/Columns"]
@@ -1065,6 +1074,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column4" type="Path3D" parent="Props/Columns"]
@@ -1074,6 +1084,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column5" type="Path3D" parent="Props/Columns"]
@@ -1083,6 +1094,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column6" type="Path3D" parent="Props/Columns"]
@@ -1092,6 +1104,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column7" type="Path3D" parent="Props/Columns"]
@@ -1101,6 +1114,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column8" type="Path3D" parent="Props/Columns"]
@@ -1110,6 +1124,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Big Column9" type="Path3D" parent="Props/Columns"]
@@ -1119,6 +1134,7 @@ script = ExtResource("16_35xyp")
 wallHeight = 10.0
 wallMode = 1
 material = ExtResource("17_drosb")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Ceilings" type="Node3D" parent="Props"]

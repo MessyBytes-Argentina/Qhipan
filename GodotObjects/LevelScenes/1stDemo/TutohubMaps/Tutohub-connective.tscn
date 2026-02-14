@@ -1309,6 +1309,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 3.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator2" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1321,6 +1322,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 2.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator3" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1333,6 +1335,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 2.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator4" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1345,6 +1348,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 2.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator5" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1357,6 +1361,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 2.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator6" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1369,6 +1374,7 @@ customProfileShape = SubResource("Curve_lku13")
 customProfileShapeDown = SubResource("Curve_xt1wf")
 customWallWidth = 2.0
 resolution = 3.0
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator7" type="Path3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
@@ -1707,6 +1713,7 @@ curve = SubResource("Curve3D_fuaq1")
 script = ExtResource("8_143k4")
 wallMode = 1
 material = ExtResource("38_a74g7")
+collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Pushdoors" type="Node3D" parent="Rooms/Tutohub-Puzzle1"]
