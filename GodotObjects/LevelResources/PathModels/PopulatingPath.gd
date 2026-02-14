@@ -7,6 +7,8 @@ class_name PathPopulator
 const PRECISIONPOINT: float = 0.001
 ## How long to show collider for.
 const COLLIDERTIMER: float = 10
+## Maximimum frames for stagger
+const FRAMESTAGGERMAX: int = 20
 
 ## List of meshes to use for populating the path.
 @export var multiMeshResources: Array[PathPopulatorResource] = []
@@ -30,6 +32,9 @@ enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEF
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.is_editor_hint(): curve_changed.connect(_update_multimesh)
+	randomize()
+	var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
+	for _i in range(randomframes): await get_tree().process_frame
 	_update_multimesh()
 
 ## Repopulates the path with the multimeshes.
