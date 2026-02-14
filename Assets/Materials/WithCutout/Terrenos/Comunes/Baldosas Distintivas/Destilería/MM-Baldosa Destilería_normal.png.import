@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwhs2slhunqnt"
-path.s3tc="res://.godot/imported/MM-Baldosa Destilería_normal.png-bc9b724ceb2c01e2593bebe24df5cf48.s3tc.ctex"
+path="res://.godot/imported/MM-Baldosa Destilería_normal.png-bc9b724ceb2c01e2593bebe24df5cf48.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/MM-Baldosa Destilería_normal.png"
-dest_files=["res://.godot/imported/MM-Baldosa Destilería_normal.png-bc9b724ceb2c01e2593bebe24df5cf48.s3tc.ctex"]
+dest_files=["res://.godot/imported/MM-Baldosa Destilería_normal.png-bc9b724ceb2c01e2593bebe24df5cf48.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

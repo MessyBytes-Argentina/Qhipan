@@ -2,11 +2,11 @@
 
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
 
-[sub_resource type="Gradient" id="Gradient_v4p8q"]
+[sub_resource type="Gradient" id="Gradient_1500c"]
 colors = PackedColorArray(0, 0, 0, 1, 0.07599326, 0.05926363, 0.103962, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
-gradient = SubResource("Gradient_v4p8q")
+gradient = SubResource("Gradient_1500c")
 width = 1920
 height = 1082
 fill_from = Vector2(1, 1)

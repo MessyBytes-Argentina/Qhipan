@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc65cpqffuj7o"
-path="res://.godot/imported/Pasto Neo_normal.png-14b7d1c9c445bdf8ceba1081d112934f.ctex"
+uid="uid://dh1gq7kgap3wq"
+path="res://.godot/imported/MM-Baldosa Destilería_normal.png-cdf02633c24e1e861a7f0c4e39c760a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_normal.png"
-dest_files=["res://.godot/imported/Pasto Neo_normal.png-14b7d1c9c445bdf8ceba1081d112934f.ctex"]
+source_file="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/test fix/MM-Baldosa Destilería_normal.png"
+dest_files=["res://.godot/imported/MM-Baldosa Destilería_normal.png-cdf02633c24e1e861a7f0c4e39c760a4.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Materials/WithCutout/Terrenos/Comunes/Pasto Neo/Pasto Neo_normal.png"
+roughness/src_normal="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/test fix/MM-Baldosa Destilería_normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
