@@ -125,6 +125,8 @@ func _start_load() -> void:
 	if ResourceLoader.load_threaded_get_status(sceneToLoad) in [ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE]:
 		push_error("An error occurred while loading scene '" + sceneToLoad + "'.")
 		return
+	if threadInstantiate: if threadInstantiate.is_alive(): threadInstantiate.wait_to_finish()
+	threadInstantiate = Thread.new()
 	threadInstantiate.start(_instantiate_scene)
 
 ## Unloads scene.
@@ -156,8 +158,14 @@ func _instantiate_scene():
 	loadedScene = ResourceLoader.load_threaded_get(sceneToLoad).instantiate()
 	rootNode.get_parent().call_deferred("add_child", loadedScene)
 	await loadedScene.ready
-	loadedScene.set_meta("isRoot", true)
+	await get_tree().process_frame
 	set_hotspot_position()
 	loadedHotspot.loadedHotspot = self
 	loadedHotspot.loadedScene = rootNode
 	GeneralVariables.saveManager.request_scene_load(loadedScene)
+	await get_tree().process_frame
+	loadedScene.set_meta("isRoot", true)
+
+## Thread must be disposed (or "joined"), for portability.
+func _exit_tree():
+	if threadInstantiate.is_alive(): threadInstantiate.wait_to_finish()

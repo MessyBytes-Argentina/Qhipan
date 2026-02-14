@@ -3,6 +3,9 @@ extends Path3D
 ## Class that extrudes a shape from a 3D path
 class_name PathExtruder
 
+## Maximimum frames for stagger
+const FRAMESTAGGERMAX: int = 20
+
 ## Valid extrude directions.
 enum Directions {UP, DOWN, FORWARD, BACK, LEFT, RIGHT}
 ## Direction to extrude towards.
@@ -24,6 +27,10 @@ enum Directions {UP, DOWN, FORWARD, BACK, LEFT, RIGHT}
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		randomize()
+		var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
+		for _i in range(randomframes): await get_tree().process_frame
 	_do_extrude()
 
 ## Creates the final shape.
