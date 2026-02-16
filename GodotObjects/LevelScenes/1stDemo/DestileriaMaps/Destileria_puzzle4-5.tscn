@@ -4,23 +4,17 @@
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_ldbm5"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="4_glker"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="5_8rapv"]
-[ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="7_2pt7e"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="7_3alkv"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="8_wsq7i"]
 [ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="9_glfkv"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="10_kqn08"]
 
-[sub_resource type="Curve3D" id="Curve3D_3alkv"]
+[sub_resource type="Curve3D" id="Curve3D_afjih"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0.89, 0, -3),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.5, 0, -3, 0, 0, 0, 0, 0, 0, 8, 0, -3, 0, 0, 0, 0, 0, 0, 8, 0, -2, 0, 0, 0, 0, 0, 0, 13, 0, -2, 0, 0, 0, 0, 0, 0, 13, 0, -7, 0, 0, 0, 0, 0, 0, 8, 0, -7, 0, 0, 0, 0, 0, 0, 8, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 6, 0, 2, 0, 0, 0, 0, 0, 0, 6, 0, -3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 3
-
-[sub_resource type="Curve3D" id="Curve3D_wsq7i"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5.3, 0, 0, 0, 0, 0, 0, 7.915, 0, -5.3, 0, 0, 0, 0, 0, 0, 8.1, 0, -6.41, 0, 0, 0, 0, 0, 0, 12.435, 0, -6.41, 0, 0, 0, 0, 0, 0, 12.435, 0, -2.065, 0, 0, 0, 0, 0, 0, 8.16, 0, -2.065, 0, 0, 0, 0, 0, 0, 7.95, 0, -2.995, 0, 0, 0, 0, 0, 0, 5.1499996, 0, -2.995),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 9
+point_count = 13
 
 [node name="Destileria_puzzle4-5" type="Node3D"]
 
@@ -85,12 +79,10 @@ size = Vector3(1, 1, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 size = Vector3(1, 1, 5)
 
-[node name="Fences" type="Node3D" parent="."]
-
-[node name="Stone Fence" parent="Fences" instance=ExtResource("7_2pt7e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8999999, 3, 9.2)
-curve = SubResource("Curve3D_3alkv")
-
-[node name="Stone Fence2" parent="Fences" instance=ExtResource("7_2pt7e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 3, 9.2)
-curve = SubResource("Curve3D_wsq7i")
+[node name="WallGenerator" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3, 9.5)
+curve = SubResource("Curve3D_afjih")
+script = ExtResource("7_3alkv")
+wallHeight = 3.0
+material = ExtResource("8_wsq7i")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
