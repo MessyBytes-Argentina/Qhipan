@@ -1,11 +1,20 @@
-[gd_resource type="Environment" load_steps=5 format=3 uid="uid://bjvxddp7ihpwv"]
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://bjvxddp7ihpwv"]
 
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
-[ext_resource type="Texture2D" uid="uid://didfs0hrwojph" path="res://Assets/Textures/Skybox/Skyboxe-Mountain Dawn.png" id="2_ricvt"]
+
+[sub_resource type="Gradient" id="Gradient_1500c"]
+colors = PackedColorArray(0, 0, 0, 1, 0.07599326, 0.05926363, 0.103962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
+gradient = SubResource("Gradient_1500c")
+width = 1920
+height = 1082
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.41880342)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqc3i"]
 shader = ExtResource("1_ricvt")
-shader_parameter/startPanorama = ExtResource("2_ricvt")
+shader_parameter/startPanorama = SubResource("GradientTexture2D_n5fu6")
 shader_parameter/panoramaProgress = 0.0
 shader_parameter/skyContribution = 0.75
 

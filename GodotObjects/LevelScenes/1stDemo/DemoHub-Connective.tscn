@@ -315,13 +315,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.940697e-08, 4.7, -25.00000
 visible = false
 operation = 2
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Walls/WallGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, -9.500002)
-visible = false
-operation = 2
-
 [node name="CSGBox3D7" type="CSGBox3D" parent="Walls/WallGenerator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.1999998, -16.6)
+visible = false
+operation = 2
+size = Vector3(1, 2.2, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Walls/WallGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.1999998, -9.6)
 visible = false
 operation = 2
 size = Vector3(1, 2.2, 1)
@@ -867,10 +868,10 @@ transform = Transform3D(-6.775265e-08, 0, 1, 0, 1.6099999, 0, -1.55, 0, -4.37113
 [node name="Chunk Loaders" type="Node3D" parent="Widgets"]
 
 [node name="ChunkLoadingHotspot-DestileriaPuzzle1" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -8.6)
 script = ExtResource("2_fjvai")
 hotspotName = "Destileria1_entrance"
-sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle1.tscn"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/MainDestileria.tscn"
 rootNode = NodePath("../../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
@@ -1038,5 +1039,6 @@ sceneParent = NodePath("..")
 
 [node name="InventoryPedestal2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("19_l20m2")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -8.4, -4.5, -15.5)
+texture = ExtResource("11_wwpq5")
 pedestalName = "DestileriaLock"
 sceneParent = NodePath("..")
