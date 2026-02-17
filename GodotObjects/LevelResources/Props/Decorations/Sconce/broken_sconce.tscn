@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://17aglbv45lu0"]
+[gd_scene load_steps=12 format=4 uid="uid://17aglbv45lu0"]
 
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_x85ol"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_0a2st"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8774wnvepjx" path="res://Assets/Materials/Switch Blocks/Azul/Switch Block Azul_albedo.png" id="4_8rwgy"]
 [ext_resource type="Texture2D" uid="uid://bs433x5xelnxm" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_normal.png" id="5_fvyp3"]
 [ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_orm.png" id="6_p0ijl"]
+[ext_resource type="Script" uid="uid://bu0cc5bk06ki" path="res://GodotObjects/GeneralElements/OnWallObject.gd" id="7_v0jhd"]
 [ext_resource type="PackedScene" uid="uid://bc5kl5oyjudpv" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/fallen_crystal.tscn" id="7_wpk0s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e68cp"]
@@ -103,6 +104,7 @@ shadow_mesh = SubResource("ArrayMesh_1hwok")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6smc2")
 skeleton = NodePath("")
+script = ExtResource("7_v0jhd")
 
 [node name="FallenCrystal" parent="." instance=ExtResource("7_wpk0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29999995, -0.54999995, 0)

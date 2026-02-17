@@ -17,7 +17,7 @@ enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 const FRAMESTAGGERMAX: int = 20
 
 ## How tall is the wall.
-@export_range(1.0, 100.0, 1.0) var wallHeight: float = 5.0
+@export_range(1.0, 100.0, 0.5) var wallHeight: float = 5.0
 ## Create a second wall going down for when looking the other way around.
 @export var wallMode: WallModes = WallModes.ONLY_UP
 ## Wall material.
