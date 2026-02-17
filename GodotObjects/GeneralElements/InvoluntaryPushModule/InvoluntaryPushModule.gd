@@ -8,6 +8,7 @@ var pushingForces: Dictionary[Node3D, Vector3] = {}
 ## Is currently blocking voluntary movement.
 var blockingMovement: int = 0
 
+#region Player to Fan center
 ## Player reference
 var player: Player = null
 ## Speed to the center point when pushed by a Fan
@@ -48,6 +49,7 @@ func get_fan_center() -> Vector3:
 	if currentFanDirection.z == 1.0 or currentFanDirection.z == -1.0:
 		center.z = player.global_position.z
 	return center
+#endregion
 
 ## Adds a push force to the pushingForces list
 func push(node: Node3D, direction: Vector3, force: float, blocksMovement: bool) -> void:
