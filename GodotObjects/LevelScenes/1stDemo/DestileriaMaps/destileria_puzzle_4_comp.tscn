@@ -1,0 +1,244 @@
+[gd_scene load_steps=25 format=3 uid="uid://bjq5ht1ys7jum"]
+
+[ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_mp4qe"]
+[ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_bnbd0"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="3_chiop"]
+[ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="4_54dke"]
+[ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="5_8lg17"]
+[ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="6_823fv"]
+[ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="7_d2c6w"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="8_qmvnx"]
+[ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="9_2ky1u"]
+[ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="10_spd6m"]
+
+[sub_resource type="Curve3D" id="Curve3D_miufg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3.5, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bilnp"]
+size = Vector3(3, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehr50"]
+size = Vector3(2, 1, 3)
+
+[sub_resource type="Curve3D" id="Curve3D_fpt0c"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 1, 0, 0, 0, 0, 0, 0, -5, 0, 1, 0, 0, 0, 0, 0, 0, -5, 0, 9, 0, 0, 0, 0, 0, 0, -4, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 1, 0, 9, 0, 0, 0, 0, 0, 0, 1, 0, 6, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 3, 0, -1, 0, 0, 0, 0, 0, 0, 3, 0, -3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
+
+[sub_resource type="Curve3D" id="Curve3D_b54xi"]
+_data = {
+"points": PackedVector3Array(-0.4, 0, -0.5, 0, 0, 0, 1.1000004, 0, 1.6000004, 0, 0, 0, 0, 0, 0, 1.1999998, 0, -0.10000038, 0, 0, 0, 0, 0, 0, 0.19999981, 0, -1.1000004, 0, 0, 0, 0, 0, 0, -2.8000002, 0, -1.1000004),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ce4p3"]
+_data = {
+"points": PackedVector3Array(-0.4, 0, -0.5, 0, 0, 0, 0.8000002, 0, -1.1000004, 0, 0, 0, 0, 0, 0, -0.20000076, 0, -0.10000038, 0, 0, 0, 0, 0, 0, -0.19999981, 0, 0.8999996),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_4qmej"]
+closed = true
+_data = {
+"points": PackedVector3Array(-0.4, 0, -0.5, 0, 0, 0, 0, 0, 1, -0.5, 0, 0.4, 0, 0, 0, 1, 0, 1, 0.4, 0, 0.5, 0, 0, 0, 1, 0, 0, 0.5, 0, -0.4, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_t6u1v"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4.999, 0, 0, 0, 0, 0, 0, 3, 0, -4.999),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_keq1n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.10000038, 0, -0.19999981, 0, 0, 0, 0, 0, 0, 0.10000038, 0, 5.04),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vy62f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8b0c"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52yaf"]
+size = Vector3(3, 0.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cedh"]
+size = Vector3(3, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1mtl"]
+
+[node name="Destileria_puzzle_4_comp" type="Node3D"]
+
+[node name="GridmapObject" parent="." instance=ExtResource("1_mp4qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.5)
+data = {
+"cells": PackedInt32Array(-131074, 2, 655522, -131074, 3, 655522, -131074, 4, 655522, -131074, 5, 655522, -131074, 6, 655522, -131074, 7, 1048741, -131073, 7, 655506, -196608, 7, 655525, -196608, 6, 655522, -196608, 5, 655522, -196608, 4, 655522, -196608, 3, 655522, -196608, 2, 655522, -131073, 1, 655506, -131073, 2, 655506, -131073, 3, 655506, -131073, 4, 655506, -131073, 5, 655506, -131073, 6, 655506, 327680, 8, 164, 327680, 9, 655524, 327680, 10, 655528, 393215, 10, 655524, 393215, 9, 655508, 393214, 9, 655508, 393214, 10, 655524, 393213, 10, 655524, 393212, 10, 655524, 393211, 10, 1048744, 393211, 9, 655524, 393212, 9, 655508, 393213, 9, 655508, 393213, 8, 655524, 393212, 8, 655508, 393211, 8, 655524, 393214, 8, 1048740, -196608, 1, 162, -131074, 1, 162, -131074, 0, 165, -131073, 65535, 165, -196608, 65535, 162, -131073, 0, 146, -196608, 0, 146, -196607, 0, 146, -196607, 65535, 146, -196607, 65534, 146, -196608, 65534, 162, -196606, 65535, 162, -196606, 65534, 162, -196606, 0, 655525, -196607, 1, 655525)
+}
+metadata/_editor_floor_ = Vector3(0, -3, 0)
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_bnbd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3.5)
+sceneParent = NodePath("../..")
+originalParent = "Destileria_puzzle_4_comp"
+
+[node name="StickerPlacements" type="Node3D" parent="."]
+
+[node name="Placeholder Sticker Area" parent="StickerPlacements" instance=ExtResource("3_chiop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 5)
+
+[node name="Elevator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 10)
+
+[node name="PlatformRail" parent="Elevator" node_paths=PackedStringArray("platformReference") instance=ExtResource("4_54dke")]
+curve = SubResource("Curve3D_miufg")
+platformReference = NodePath("../MovingPlatform")
+
+[node name="BottomCaller" parent="Elevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_8lg17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+railReference = NodePath("../PlatformRail")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/BottomCaller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_bilnp")
+
+[node name="TopCaller" parent="Elevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_8lg17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.5, 1)
+callTo = 1
+railReference = NodePath("../PlatformRail")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/TopCaller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+shape = SubResource("BoxShape3D_ehr50")
+
+[node name="MovingPlatform" parent="Elevator" node_paths=PackedStringArray("railReference") instance=ExtResource("6_823fv")]
+railReference = NodePath("../PlatformRail")
+isPermanent = true
+
+[node name="Grates" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.375, 5)
+
+[node name="Darkness Clumps" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 5)
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="Props"]
+
+[node name="Bellow" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 2.5)
+curve = SubResource("Curve3D_fpt0c")
+script = ExtResource("7_d2c6w")
+wallHeight = 3.0
+wallMode = 2
+material = ExtResource("8_qmvnx")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Props/Walls/Bellow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -2.6999998)
+visible = false
+operation = 2
+size = Vector3(1, 2, 1)
+
+[node name="WallGenerator6" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7000008, 3.0000005, 9.599998)
+curve = SubResource("Curve3D_b54xi")
+script = ExtResource("7_d2c6w")
+wallHeight = 8.0
+wallMode = 1
+material = ExtResource("8_qmvnx")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator7" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29999924, 3.0000005, 9.599998)
+curve = SubResource("Curve3D_ce4p3")
+script = ExtResource("7_d2c6w")
+wallHeight = 7.0
+wallMode = 1
+material = ExtResource("8_qmvnx")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator8" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3999996, 2.6000004, 10.699999)
+curve = SubResource("Curve3D_4qmej")
+script = ExtResource("7_d2c6w")
+wallMode = 1
+material = ExtResource("8_qmvnx")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4990005, -0.5, 8.5)
+curve = SubResource("Curve3D_t6u1v")
+script = ExtResource("7_d2c6w")
+wallMode = 1
+material = ExtResource("8_qmvnx")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Fences" type="Node3D" parent="Props"]
+
+[node name="Stone Fence" parent="Props/Fences" instance=ExtResource("9_2ky1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2999992, -0.5, 3.4000006)
+curve = SubResource("Curve3D_keq1n")
+
+[node name="Widgets" type="Node3D" parent="."]
+
+[node name="ChunkLoadingHotspot2-enterpuzzle-4-5" type="Node3D" parent="Widgets" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 9.500002)
+script = ExtResource("10_spd6m")
+hotspotName = "destileria-enterpuzzle4-5"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_puzzle4-5.tscn"
+rootNode = NodePath("../..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot2-enterpuzzle-4-5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -2, 0.5)
+shape = SubResource("BoxShape3D_vy62f")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot2-enterpuzzle-4-5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -4.5)
+shape = SubResource("BoxShape3D_j8b0c")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
+
+[node name="UnloadShape2" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot2-enterpuzzle-4-5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -3.25, -0.75)
+shape = SubResource("BoxShape3D_52yaf")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
+
+[node name="ChunkLoadingHotspot-enterpuzzle-4" type="Node3D" parent="Widgets" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.5)
+script = ExtResource("10_spd6m")
+hotspotName = "destileria-enterpuzzle4"
+sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/Destileria_minifork.tscn"
+rootNode = NodePath("../..")
+metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
+
+[node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-enterpuzzle-4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5)
+shape = SubResource("BoxShape3D_1cedh")
+debug_color = Color(1, 0.64705884, 0, 0.5)
+metadata/LoadShape = true
+
+[node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-enterpuzzle-4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10.5)
+shape = SubResource("BoxShape3D_w1mtl")
+debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
+metadata/UnloadShape = true
