@@ -29,12 +29,8 @@ enum SnapPoints {CENTER, TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEF
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
-	if Engine.is_editor_hint(): curve_changed.connect(_update_multimesh)
-	else:
-		randomize()
-		var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
-		for _i in range(randomframes): await get_tree().process_frame
-	_update_multimesh()
+	if not Engine.is_editor_hint(): GeneralVariables.add_to_stagger_queue(_update_multimesh)
+	else: _update_multimesh()
 
 ## Repopulates the path with the multimeshes.
 func _update_multimesh():

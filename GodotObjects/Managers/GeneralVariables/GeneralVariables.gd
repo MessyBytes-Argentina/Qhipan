@@ -10,8 +10,10 @@ const materialsResourceGroup: String = "uid://b0jco1ngdo5fe"
 const MOUSEMOVEMENTTHRESHOLD: float = 15
 ## Root nodes to ignore for root tagging.
 const IGNOREROOTNODES: PackedStringArray = ["EnvironmentObjects", "Player"]
-## Maximimum frames for stagger
+## Maximimum frames for stagger.
 const FRAMESTAGGERMAX: int = 60
+## Stagger wait time.
+const STAGGERWAIT: float = 0.1
 
 ## Is the player using a gamepad.
 var usingGamepad: bool = false
@@ -19,10 +21,14 @@ var usingGamepad: bool = false
 var cutoutMaterials: Array[ShaderMaterial] = []
 ## The Sticker inventory.
 var inventory: StickerInventory
-## The Stickerable Surface Manager
+## The Stickerable Surface Manager.
 var stickerableSurfacesManager: StickerableSurfacesManager
-## The save manager
+## The save manager.
 var saveManager: SaveManager
+## The queue of functions to stagger.
+var toStagger: Array[Callable] = []
+## Stagger Timer.
+var staggerTimer: SceneTreeTimer
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,3 +61,26 @@ func _input(event: InputEvent) -> void:
 	if usingGamepad != currentlyGamepad:
 		usingGamepad = currentlyGamepad
 		input_mode_changed.emit(usingGamepad)
+
+## Staggers function calls by frames.
+func add_to_stagger_queue(callable: Callable) -> void:
+	toStagger.append(callable)
+	if staggerTimer: return
+	staggerTimer = get_tree().create_timer(0.1)
+	staggerTimer.timeout.connect(_execute_queue)
+
+## Does the queue stagger.
+func _execute_queue() -> void:
+	if staggerTimer: staggerTimer = null
+	var staggerArray: Array[Array] = []
+	while len(toStagger) > FRAMESTAGGERMAX:
+		staggerArray.append(toStagger.slice(0, FRAMESTAGGERMAX))
+		toStagger.reverse()
+		toStagger.resize(len(toStagger) - FRAMESTAGGERMAX)
+		toStagger.reverse()
+	staggerArray.append(toStagger.duplicate())
+	toStagger.clear()
+	for i in range(len(staggerArray[0])):
+		for j in range(len(staggerArray)):
+			staggerArray[j][i].call()
+		await get_tree().process_frame

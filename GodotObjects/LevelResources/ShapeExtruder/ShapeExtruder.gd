@@ -24,11 +24,8 @@ enum Directions {UP, DOWN, FORWARD, BACK, LEFT, RIGHT}
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		randomize()
-		var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
-		for _i in range(randomframes): await get_tree().process_frame
-	_do_extrude()
+	if not Engine.is_editor_hint(): GeneralVariables.add_to_stagger_queue(_do_extrude)
+	else: _do_extrude()
 
 ## Creates the final shape.
 func _do_extrude() -> void:

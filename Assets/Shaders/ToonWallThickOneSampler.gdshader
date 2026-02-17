@@ -162,7 +162,7 @@ void fragment() {
 	ALPHA = step(0.5, ALPHA);
 	vec4 normalPositions = vec4(worldVector.xz + world_normal.xz, worldVector.xz - world_normal.xz);
 	vec2 distances = vec2(distance(normalPositions.xy, globalPlayerPosition.xz), distance(normalPositions.zw, globalPlayerPosition.xz));
-	bool normalCheckToPlayer = distances.x > distances.y;
+	bool normalCheckToPlayer = distances.x > distances.y && !goesDown;
 	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
 	// Distance Fade: Pixel Alpha
 	bool doCutout = !rotating && auxMode && normalCheckToPlayer;

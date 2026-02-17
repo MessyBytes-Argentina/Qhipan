@@ -44,11 +44,8 @@ var currentOnState: bool = false
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		randomize()
-		var randomframes: int = randi_range(0, GeneralVariables.FRAMESTAGGERMAX)
-		for _i in range(randomframes): await get_tree().process_frame
-	reset_shapes()
+	if not Engine.is_editor_hint(): GeneralVariables.add_to_stagger_queue(reset_shapes)
+	else: reset_shapes()
 	if startsFull:
 		loadPath.curve = curve.duplicate()
 		currentOnState = true
