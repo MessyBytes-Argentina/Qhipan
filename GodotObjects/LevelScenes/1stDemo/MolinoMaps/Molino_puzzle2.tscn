@@ -259,7 +259,7 @@ sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle2"
 
 [node name="FanSticker2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_osh58")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 3, -3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 3, -3.6)
 sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle2"
 
