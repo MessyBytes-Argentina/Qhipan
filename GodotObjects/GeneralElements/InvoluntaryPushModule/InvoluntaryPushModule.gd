@@ -9,6 +9,8 @@ var pushingForces: Dictionary[Node3D, Vector3] = {}
 var blockingMovement: int = 0
 
 #region Parent to Fan center
+## Turn lerp to center on or off.
+@export var doLerpToCenter: bool = false
 ## Parent reference
 @onready var parent: Node3D = $".."
 ## Speed to the center point when pushed by a Fan
@@ -53,7 +55,7 @@ func push(node: Node3D, direction: Vector3, force: float, blocksMovement: bool) 
 	if node is Fan:
 		currentFan = node
 		currentFanDirection = direction
-		pushToCenter = true
+		pushToCenter = doLerpToCenter
 
 ## Removes a push force from the pushingForces list
 func stop_pushing(node: Node3D, blockedMovement: bool) -> void:

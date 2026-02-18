@@ -1604,6 +1604,7 @@ script = ExtResource("1_iw8fe")
 [node name="InvoluntaryPushModule" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_bjorx")
+doLerpToCenter = true
 
 [node name="DarknessBlockerModule" type="Node" parent="."]
 unique_name_in_owner = true

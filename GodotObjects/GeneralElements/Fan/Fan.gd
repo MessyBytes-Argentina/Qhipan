@@ -91,7 +91,6 @@ func check_obstacles() -> void:
 		return
 	var currentRayCollision: float = roundf(global_position.distance_to(blockingRaycast.get_collision_point()))
 	if lastRayCollision != currentRayCollision:
-		print(currentRayCollision, blockingRaycast.collide_with_areas, blockingRaycast.collide_with_bodies, blockingRaycast.collision_mask)
 		lastRayCollision = currentRayCollision
 		set_area_size(lastRayCollision)
 

@@ -793,10 +793,10 @@ mesh = SubResource("QuadMesh_7yvys")
 [node name="Metaprogression Blocks" type="Node3D" parent="Props"]
 
 [node name="PlaceholderMetaprogressionBlockEntrance" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1606455, 3.493675, -12.161091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15, 4, -12.15)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("10_wwpq5")
-forceScale = Vector3(1.105, 3, 0.2)
+forceScale = Vector3(1, 3, 0.2)
 pedestalName = "MolinoLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance2" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
@@ -814,7 +814,7 @@ forceScale = Vector3(1.105, 6, 0.2)
 pedestalName = "DestileriaLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance4" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.139355, -0.10632515, -12.161091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.139, 0.5, -12.15)
 color = Color(0.62490547, 1.2811433, 1.3535374, 1)
 texture = ExtResource("11_wwpq5")
 forceScale = Vector3(1.105, 10, 0.2)
