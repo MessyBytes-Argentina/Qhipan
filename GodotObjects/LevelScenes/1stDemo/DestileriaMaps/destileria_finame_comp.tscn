@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c2lxh7gg1mdwq"]
+[gd_scene load_steps=58 format=3 uid="uid://c2lxh7gg1mdwq"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_vanr6"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_82ki5"]
@@ -132,6 +132,20 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_2p6m8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, 70, 0, 0, 5, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0, -5, 0, 0, 12, 0, 0, 0, 0, 0, 0, 5, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_qfu2l"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 5, 0, 0, 58, 0, 0, 0, 0, 0, 0, 5, 0, 70),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_166qt"]
 _data = {
@@ -599,6 +613,29 @@ curve = SubResource("Curve3D_kgjj1")
 script = ExtResource("13_ijwpa")
 wallHeight = 8.0
 wallMode = 2
+material = ExtResource("14_q267d")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="WallGenerator2" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 7.5, -44)
+curve = SubResource("Curve3D_2p6m8")
+script = ExtResource("13_ijwpa")
+wallHeight = 7.0
+material = ExtResource("14_q267d")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Props/Walls/WallGenerator2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 29.5)
+visible = false
+operation = 2
+size = Vector3(1, 2, 1)
+
+[node name="WallGenerator3" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 7.5, -44)
+curve = SubResource("Curve3D_qfu2l")
+script = ExtResource("13_ijwpa")
+wallHeight = 11.0
+wallMode = 1
 material = ExtResource("14_q267d")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 

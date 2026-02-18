@@ -44,6 +44,8 @@ var lastRayCollision: float = 0.0
 var setupReady: bool = false
 ## Flag to affect player.
 var canAffectPlayer: bool = true
+## Flag to check for length.
+var canCheckLength: bool = false
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
@@ -77,7 +79,7 @@ func _ready() -> void:
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	check_obstacles()
+	if canCheckLength: check_obstacles()
 
 ## Checks for wind blocking elements
 func check_obstacles() -> void:
@@ -89,6 +91,7 @@ func check_obstacles() -> void:
 		return
 	var currentRayCollision: float = roundf(global_position.distance_to(blockingRaycast.get_collision_point()))
 	if lastRayCollision != currentRayCollision:
+		print(currentRayCollision, blockingRaycast.collide_with_areas, blockingRaycast.collide_with_bodies, blockingRaycast.collision_mask)
 		lastRayCollision = currentRayCollision
 		set_area_size(lastRayCollision)
 
@@ -98,6 +101,10 @@ func switch_fan(mode: bool = not isOn) -> void:
 	set_deferred("monitoring", isOn)
 	if fanParticles: fanParticles.emitting = mode
 	noGravity.set_deferred("monitoring", isOn and hasAntigravity)
+	if mode:
+		lastRayCollision = -1
+		canCheckLength = true
+	else: canCheckLength = false
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
