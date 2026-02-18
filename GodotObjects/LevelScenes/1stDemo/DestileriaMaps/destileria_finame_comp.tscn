@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c2lxh7gg1mdwq"]
+[gd_scene load_steps=56 format=3 uid="uid://c2lxh7gg1mdwq"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_vanr6"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_82ki5"]
@@ -64,13 +64,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_m0iei"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -3.3, 0, 0, 0, 0, 0, 0, 0, 0, -4.7, 0, 0, 0, 0, 0, 0, 0.5, 0, -4.7, 0, 0, 0, 0, 0, 0, 0.5, 1.01, -4.7, 0, 0, 0, 0, 0, 0, 1, 1.01, -4.7),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
 
 [sub_resource type="Resource" id="Resource_22e3m"]
 script = ExtResource("15_2p6m8")
@@ -142,14 +135,14 @@ point_count = 8
 
 [sub_resource type="Curve3D" id="Curve3D_166qt"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.505, 0, 0, 0, 0, 0, 0.4249997, 0, 2.47),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0.5, 0, 2.5),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_4dhm3"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.74, 0, 0, 0, 0, 0, -0.27500033, 0, 2.47),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0, 0, 0, 0, -0.3, 0, 2.5),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -487,14 +480,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 
 [node name="LeylinePath" type="Path3D" parent="Widgets/AltGroupD"]
 curve = SubResource("Curve3D_5ry4g")
-script = ExtResource("8_vhec0")
-stencilMaterial = ExtResource("9_e0ruc")
-glowMaterial = ExtResource("10_2p6m8")
-metadata/_custom_type_script = "uid://cpiv1eys17w7w"
-
-[node name="LeylinePath2" type="Path3D" parent="Widgets/AltGroupD"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2)
-curve = SubResource("Curve3D_m0iei")
 script = ExtResource("8_vhec0")
 stencilMaterial = ExtResource("9_e0ruc")
 glowMaterial = ExtResource("10_2p6m8")

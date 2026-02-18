@@ -10,8 +10,6 @@ const MINTIME: float = 1.0
 const MAXTIME: float = 2.0
 ## Leylien width
 const WIDTH: float = 0.5
-## Maximimum frames for stagger
-const FRAMESTAGGERMAX: int = 20
 
 ## Is the leyline on by default
 @export var startsFull: bool = false:
@@ -46,11 +44,8 @@ var currentOnState: bool = false
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		randomize()
-		var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
-		for _i in range(randomframes): await get_tree().process_frame
-	reset_shapes()
+	if not Engine.is_editor_hint(): GeneralVariables.add_to_stagger_queue(reset_shapes)
+	else: reset_shapes()
 	if startsFull:
 		loadPath.curve = curve.duplicate()
 		currentOnState = true

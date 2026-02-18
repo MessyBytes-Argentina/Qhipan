@@ -13,8 +13,6 @@ const PATHINTERVAL: float = 0.01
 const PATHSIMPLIFYANGLE: float = 15
 ## Wall modes.
 enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
-## Maximimum frames for stagger
-const FRAMESTAGGERMAX: int = 20
 
 ## How tall is the wall.
 @export_range(1.0, 100.0, 0.5) var wallHeight: float = 5.0
@@ -55,14 +53,10 @@ var shadowPolygon: CSGPolygon3D
 
 ## Executed when node first enters the scene.
 func _ready() -> void:
-	regenerate_wall_shape()
-	if Engine.is_editor_hint(): return
-	if not GeneralVariables.is_node_ready():
-		await GeneralVariables.ready
-	randomize()
-	var randomframes: int = randi_range(0, FRAMESTAGGERMAX)
-	for _i in range(randomframes): await get_tree().process_frame
-	if material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(material)
+	if not Engine.is_editor_hint(): 
+		add_material_to_cutout(material)
+		GeneralVariables.add_to_stagger_queue(regenerate_wall_shape)
+	else: regenerate_wall_shape()
 
 ## Reverts the path points.
 func flip_path() -> void:
@@ -81,6 +75,13 @@ func flip_path() -> void:
 		curve.set_point_in(i, flippedPathIn[i])
 		curve.set_point_out(i, flippedPathOut[i])
 	regenerate_wall_shape()
+
+## Makes the material update with cutout.
+func add_material_to_cutout(materialToStore: Material) -> void:
+	if material is not ShaderMaterial: return
+	if Engine.is_editor_hint(): return
+	if not GeneralVariables.is_node_ready(): await GeneralVariables.ready
+	if materialToStore not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(materialToStore)
 
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
@@ -101,10 +102,7 @@ func regenerate_wall_shape() -> void:
 	if customProfileShape and material is ShaderMaterial: 
 		polygon.material = material.duplicate()
 		polygon.material.set_shader_parameter("height", wallHeight)
-		if not Engine.is_editor_hint():
-			if not GeneralVariables.is_node_ready():
-				await GeneralVariables.ready
-			if polygon.material not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(polygon.material)
+		add_material_to_cutout(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	polygon.show()
@@ -206,3 +204,8 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 			downPolygon.flip_faces = true
 			res[0] = Vector2(res[1].x, 0.0)
 		return res
+
+## Cleans unique materials.
+func _exit_tree():
+	if customProfileShape and material is ShaderMaterial:
+		GeneralVariables.cutoutMaterials.erase(polygon.material)
