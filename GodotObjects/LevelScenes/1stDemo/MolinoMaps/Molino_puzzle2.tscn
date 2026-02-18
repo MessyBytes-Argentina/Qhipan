@@ -36,7 +36,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32ax7"]
-size = Vector3(2, 1, 2)
+size = Vector3(4.5, 1, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1jej"]
 size = Vector3(2, 1, 2)
@@ -151,10 +151,10 @@ _data = [Vector2(0, 0), 0.0, 2.0328138, 0, 0, Vector2(1, 1), 0.51076627, 0.0, 0,
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
-size = Vector3(4, 3, 1)
+size = Vector3(1, 2, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qx7fy"]
-size = Vector3(6, 1, 1)
+size = Vector3(1.5, 1, 10.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8nl5"]
 size = Vector3(1.9, 1, 1)
@@ -273,13 +273,14 @@ isPermanent = true
 [node name="PlatformRail" parent="Elevator" node_paths=PackedStringArray("platformReference") instance=ExtResource("4_viyk7")]
 curve = SubResource("Curve3D_osh58")
 platformReference = NodePath("../MovingPlatform")
+speed = 2.0
 
 [node name="BottomCaller" parent="Elevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_osh58")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, 0)
 railReference = NodePath("../PlatformRail")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/BottomCaller"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, -0.25)
 shape = SubResource("BoxShape3D_32ax7")
 
 [node name="TopCaller" parent="Elevator" node_paths=PackedStringArray("railReference") instance=ExtResource("5_osh58")]
@@ -298,8 +299,8 @@ shape = SubResource("BoxShape3D_m1jej")
 [node name="Fan Placement" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.6, -0.5000006)
 
-[node name="Fan Placement3" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.5, 2.4, -5.9604645e-07)
+[node name="Fan Placement2" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.5, 2.4, -0.01)
 
 [node name="Fan Placement Vertical" parent="Props/Fan Machines" instance=ExtResource("7_bqiac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -1.1, -0.5)
@@ -463,13 +464,13 @@ rootNode = NodePath("../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2entry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.199999, 3.5, -5.699999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.199999, 4, 7.300001)
 shape = SubResource("BoxShape3D_80foe")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2entry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.099999, 4, -8.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.349999, 4, 5.8500004)
 shape = SubResource("BoxShape3D_qx7fy")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
@@ -483,7 +484,7 @@ rootNode = NodePath("../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-molino2exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9499998, -2.3000002, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9499998, -1.8000002, 4.5)
 shape = SubResource("BoxShape3D_j8nl5")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
