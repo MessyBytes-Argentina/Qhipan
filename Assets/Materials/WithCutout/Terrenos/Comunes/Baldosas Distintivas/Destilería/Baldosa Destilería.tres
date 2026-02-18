@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://b64dv1g5m72qf" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/MM-Baldosa Destilería_orm.png" id="9_8c5xd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t2axs"]
-load_path = "res://.godot/imported/MM-Baldosa Destilería_normal.png-cdf02633c24e1e861a7f0c4e39c760a4.ctex"
 
 [resource]
 render_priority = 0

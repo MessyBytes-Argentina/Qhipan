@@ -102,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.6, 0)
 shape = SubResource("BoxShape3D_xnklw")
 
 [node name="Placeholder Sticker Area" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0.6, 0)
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0.01, 0.6, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Placeholder Sticker Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
