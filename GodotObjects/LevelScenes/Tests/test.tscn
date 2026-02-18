@@ -262,6 +262,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25201, 1, 5.79806)
 sceneParent = NodePath("..")
 originalParent = "test"
 
+[node name="Key3" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_2ohs3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7520099, 2, 10.298059)
+sceneParent = NodePath("..")
+originalParent = "test"
+
 [node name="Key2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_2ohs3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50402, 1, 5.59612)
 sceneParent = NodePath("..")
