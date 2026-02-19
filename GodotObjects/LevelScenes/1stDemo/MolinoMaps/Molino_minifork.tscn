@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=76 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
@@ -117,6 +117,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 14
+
+[sub_resource type="Curve3D" id="Curve3D_1pww5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2, 0, -16, 0, 0, 0, 0, 0, 0, 2, 0, -9, 0, 0, 0, 0, 0, 0, 4, 0, -9, 0, 0, 0, 0, 0, 0, 4, 0, -3, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 4, 0, 6, 0, 0, 0, 0, 0, 0, 4, 0, 11, 0, 0, 0, 0, 0, 0, 2, 0, 11, 0, 0, 0, 0, 0, 0, 2, 0, 22),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [sub_resource type="Curve3D" id="Curve3D_7s7ie"]
 _data = {
@@ -400,20 +407,6 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lby3b"]
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-disable_receive_shadows = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_0xjka"]
-lightmap_size_hint = Vector2i(7, 7)
-material = SubResource("StandardMaterial3D_lby3b")
-flip_faces = true
-size = Vector2(38, 18.71)
-orientation = 1
-
 [node name="Molino_minifork" type="Node3D"]
 
 [node name="Rooms" type="Node3D" parent="."]
@@ -663,11 +656,10 @@ shape = SubResource("BoxShape3D_iwp2i")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="ObjectOccluder2-Top Wall" type="Node3D" parent="Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
+[node name="ObjectOccluder2-Top Wall" type="Node3D" parent="Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -3, -5)
 script = ExtResource("15_7wx1f")
-showObjects = [NodePath("../../Props/Ceilings/Ceiling2")]
-hideObjects = [NodePath("../../Props/Walls/Top Wall")]
+hideObjects = [NodePath("../../Props/Walls/Top Wall Bottom Occlude")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
@@ -692,7 +684,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.49999997, -1)
 curve = SubResource("Curve3D_cndt3")
 script = ExtResource("16_35xyp")
 wallHeight = 10.0
-wallMode = 2
 material = ExtResource("17_drosb")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
@@ -701,6 +692,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100000024, 1, 1.5)
 visible = false
 operation = 2
 size = Vector3(0.8, 2, 1)
+
+[node name="Top Wall Bottom Occlude" type="Path3D" parent="Props/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.49999997, -1)
+curve = SubResource("Curve3D_1pww5")
+script = ExtResource("16_35xyp")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("17_drosb")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Bottom Wall" type="Path3D" parent="Props/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.49999997, -1)
@@ -1159,14 +1159,6 @@ wallMode = 1
 material = ExtResource("17_drosb")
 collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="Ceilings" type="Node3D" parent="Props"]
-
-[node name="Ceiling2" type="MeshInstance3D" parent="Props/Ceilings"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15.6, -0.5999994, 1.9999996)
-visible = false
-gi_mode = 2
-mesh = SubResource("QuadMesh_0xjka")
 
 [node name="Sconces" type="Node3D" parent="Props"]
 
