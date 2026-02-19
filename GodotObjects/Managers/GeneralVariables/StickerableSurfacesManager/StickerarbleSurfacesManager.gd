@@ -15,9 +15,15 @@ func delete_data(data: StickerableSurfaceData) -> void:
 	loadedStickerableSurfaces.erase(data)
 
 ## Returns the closest viable surface for a given sticker.
-func get_closest_valid_surface(position: Vector3, sticker: StickerBase) -> StickerableSurfaceData:
+func get_closest_valid_surface(position: Vector3, sticker: StickerBase, from: Vector3 = Vector3.ZERO, layerMask: int = -1, distanceMax: float = 0, spaceState: PhysicsDirectSpaceState3D = null) -> StickerableSurfaceData:
 	var stickerType: int = check_type(sticker)
-	var validSurfaces: Array[StickerableSurfaceData] = loadedStickerableSurfaces.filter(func(a: StickerableSurfaceData): return a.validStickers & stickerType > 0 and a.used == null)
+	var validSurfaces: Array[StickerableSurfaceData] = loadedStickerableSurfaces.filter(func(a: StickerableSurfaceData):
+		if layerMask > -1:
+			var raycast = PhysicsRayQueryParameters3D.create(from, from.direction_to(a.globalPosition) * (from.distance_to(a.globalPosition) - distanceMax) + from)
+			raycast.collision_mask = layerMask
+			if spaceState.intersect_ray(raycast): return false
+		return a.validStickers & stickerType > 0 and a.used == null
+		)
 	if len(validSurfaces) > 0:
 		if len(validSurfaces) > 1:
 			validSurfaces.sort_custom(func(a: StickerableSurfaceData, b: StickerableSurfaceData): return a.globalPosition.distance_to(position) < b.globalPosition.distance_to(position))

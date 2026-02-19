@@ -65,9 +65,10 @@ script = ExtResource("1_e4k1j")
 sceneParent = NodePath(".")
 originalParent = "Alternator"
 
-[node name="InvoluntaryPushModule" type="Node" parent="."]
+[node name="InvoluntaryPushModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("2_5ap3j")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8ww4f")

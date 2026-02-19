@@ -85,9 +85,10 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_pdvbf")
 sceneParent = NodePath(".")
 
-[node name="InvoluntaryPushModule" type="Node" parent="."]
+[node name="InvoluntaryPushModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("2_1efht")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_8ww4f")

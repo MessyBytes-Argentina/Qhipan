@@ -206,7 +206,8 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 		return res
 
 ## Cleans unique materials.
-func _exit_tree():
+func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
-	if customProfileShape and material is ShaderMaterial:
-		GeneralVariables.cutoutMaterials.erase(polygon.material)
+	if what == NOTIFICATION_PREDELETE:
+		if customProfileShape and material is ShaderMaterial and polygon:
+			GeneralVariables.cutoutMaterials.erase(polygon.material)
