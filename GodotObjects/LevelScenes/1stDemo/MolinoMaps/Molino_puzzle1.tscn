@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://dsdruex0h4hcf"]
+[gd_scene load_steps=83 format=4 uid="uid://dsdruex0h4hcf"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_pkd4n"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_80foe"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="23_r8fon"]
 [ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="24_bn2x3"]
 [ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="25_fb6tw"]
+[ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="27_ehnte"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_m7p33"]
 material = ExtResource("13_lcx8y")
@@ -348,7 +349,7 @@ shadow_mesh = SubResource("ArrayMesh_35vhv")
 
 [sub_resource type="Curve3D" id="Curve3D_04jal"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9, 0, -20.990412, 0, 0, 0, 0, 0, 0, 9, 0, -14.810152, 0, 0, 0, 0, 0, 0, 9, 0, -5.708905, 0, 0, 0, 0, 0, 0, 8.104129, 0, -0.2146492, 0, 0, 0, 0, 0, 0, 6.4333596, 0, 1.5828485, 0, 0, 0, 0, 0, 0, 2.933466, 0, 2.3000002),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9, 0, -20.990412, 0, 0, 0, 0, 0, 0, 9, 0, -18.310152, 0, 0, 0, 0, 0, 0, 9, 0, -3.3089051, 0, 0, 0, 0, 0, 0, 8.104129, 0, -0.2146492, 0, 0, 0, 0, 0, 0, 6.4333596, 0, 1.5828485, 0, 0, 0, 0, 0, 0, 2.933466, 0, 2.3000002),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -521,6 +522,18 @@ sections = 10
 section_length = 1.0
 curve = SubResource("Curve_ehnte")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oo63"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_r8fon"]
+material = SubResource("StandardMaterial3D_5oo63")
+size = Vector2(2.2, 1.2)
+orientation = 1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
 size = Vector3(1, 1, 3)
 
@@ -531,6 +544,12 @@ size = Vector3(1, 1, 3)
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m7p33"]
+size = Vector3(1, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn2x3"]
+size = Vector3(1, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fb6tw"]
 size = Vector3(1, 1, 3)
 
 [node name="Molino_puzzle1" type="Node3D"]
@@ -775,7 +794,7 @@ surface_material_override/1 = ExtResource("15_hbnpc")
 [node name="Walls" type="Node3D" parent="Props"]
 
 [node name="Entrada" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.900001, -3.499999, 9.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.89, -3.5, 9.9)
 curve = SubResource("Curve3D_04jal")
 script = ExtResource("16_u2yv7")
 wallHeight = 10.0
@@ -784,9 +803,10 @@ collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Props/Walls/Entrada"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.5, -9.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -9.4)
 visible = false
 operation = 2
+size = Vector3(1, 2, 1)
 
 [node name="WallGenerator3" type="Path3D" parent="Props/Walls"]
 transform = Transform3D(0.9659258, 0, 0.25881916, 0, 1, 0, -0.25881916, 0, 0.9659258, -7.8, -3.2999992, 10)
@@ -896,6 +916,12 @@ transform = Transform3D(2.017839, 0, 0.5999999, 0, 1.1999999, 0, -1.1649997, 0, 
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
+[node name="Unload Hider" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(-4.371139e-08, 1.0000001, 0, -1, -4.371139e-08, 0, 8.881784e-16, 0, 1.0000001, -3.1000001, 0.5, 0.5)
+visible = false
+mesh = SubResource("QuadMesh_r8fon")
+skeleton = NodePath("../../Widgets")
+
 [node name="Widgets" type="Node3D" parent="."]
 
 [node name="ChunkLoadingHotspot-DemoHubConnective" type="Node3D" parent="Widgets" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
@@ -937,3 +963,22 @@ transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -14.999997,
 shape = SubResource("BoxShape3D_m7p33")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
+
+[node name="ObjectOccluder" type="Node3D" parent="Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0.6)
+script = ExtResource("27_ehnte")
+showObjects = [NodePath("../../Props/Unload Hider")]
+sceneParent = NodePath("../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 0)
+shape = SubResource("BoxShape3D_bn2x3")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, 0)
+shape = SubResource("BoxShape3D_fb6tw")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
