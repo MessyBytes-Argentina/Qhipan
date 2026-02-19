@@ -15,6 +15,8 @@ const MAXSURFACEDISTANCE: float = 2.25
 const RAYCOLLISIONLAYERS: Array[int] = [1, 4, 9, 13]
 ## Sticker area radius.
 const STICKERRADIUS: float = 0.132
+## Sticker list
+enum StickerList {ALTERNATOR = 1, FAN = 2, LAMP = 4, KEY = 8, INVENTORY = 16}
 
 ## Pick up sound player reference
 @onready var pickupSound: RandomSoundPlayer = $Pickup
@@ -59,12 +61,18 @@ var inDarkness: bool = false
 var inLight: bool = false
 ## Flag turns true when zooming out
 var zoomedOut: bool = false
+## Blocked stickers array
+var blockedStickersArray: Array[int] = []
+## Actually blocked stickers
+var blockedStickers: int
 ## Tween for the highlight bobbing animation
 var stickerHighlightTween: Tween
 ## Collection of areas that stop the player from dropping or grabbing stickers
 var antiDropAreaCollection: Array[AntiDropArea] = []
 ## Layers turned into usable mask
 var layerMask: int
+## Sticker mask for when all stickers are available
+var stickerMask: int
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,7 +82,9 @@ func _ready() -> void:
 	highlightHeight = highlight.position.y
 	area_exited.connect(_on_area_exited)
 	bob_sticker_hightlight()
-	layerMask = RAYCOLLISIONLAYERS.reduce(func(accum: int, a: int = 0): return accum + pow(2, a - 1))
+	layerMask = RAYCOLLISIONLAYERS.reduce(func(accum: int, a: int = 0): return accum + pow(2, a - 1), 0)
+	stickerMask = StickerList.keys().reduce(func(accum: int, a: StringName): return accum + StickerList[a], 0)
+	blockedStickers = stickerMask
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
@@ -89,8 +99,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		if len(antiDropAreaCollection) > 0: return
 		if not pickupOnHand:
 			do_grab()
-		else:
+		elif get_sticker_class(currentPickup) & blockedStickers != 0:
 			drop()
+
+## Checks for sticker class
+func get_sticker_class(sticker: StickerBase) -> StickerList:
+	if sticker is AlternatorSticker: return StickerList.ALTERNATOR
+	if sticker is FanSticker: return StickerList.FAN
+	if sticker is LampSticker: return StickerList.LAMP
+	if sticker is KeySticker: return StickerList.KEY
+	else: return StickerList.INVENTORY
 
 ## Grabs the closest sticker available
 func do_grab() -> void:
@@ -114,6 +132,13 @@ func check_available_area() -> bool:
 		player.animation_check(Player.States.Slap)
 		return true
 	return false
+
+## Adds or removes stickers block to queue
+func sticker_block(stickerTypes: int, doAdd: bool) -> void:
+	if doAdd: blockedStickersArray.append(stickerTypes)
+	else: blockedStickersArray.erase(stickerTypes)
+	if len(blockedStickersArray) == 0: blockedStickers = stickerMask
+	else: blockedStickers = blockedStickersArray.reduce(func(accum: int, a: int): return accum & ~a, stickerMask)
 
 ## Places the sticker on hand
 func place_sticker() -> void:
@@ -160,6 +185,7 @@ func sort_close_stickers() -> void:
 	currentlyAvailableStickers = closeStickers.duplicate()
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
+		if get_sticker_class(a) & blockedStickers == 0: return false
 		var raycast = PhysicsRayQueryParameters3D.create(global_position, global_position.direction_to(a.global_position) * (global_position.distance_to(a.global_position) - STICKERRADIUS) + global_position)
 		raycast.collision_mask = layerMask
 		return not a.inDarkness and not spaceState.intersect_ray(raycast)
@@ -179,7 +205,7 @@ func get_closest_surface() -> void:
 	if not pickupOnHand:
 		if areaHighlight: areaHighlight.hide()
 		return
-	var closestSurface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, currentPickup)
+	var closestSurface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, currentPickup, global_position, layerMask, STICKERRADIUS, get_world_3d().direct_space_state)
 	if closestSurface == null: return
 	if global_position.distance_to(closestSurface.globalPosition) > MAXSURFACEDISTANCE:
 		placeholderArea.set_deferred("monitorable", false)
