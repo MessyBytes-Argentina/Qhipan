@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://dsdruex0h4hcf"]
+[gd_scene load_steps=84 format=4 uid="uid://dsdruex0h4hcf"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_pkd4n"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_80foe"]
@@ -31,6 +31,16 @@
 [sub_resource type="QuadMesh" id="QuadMesh_m7p33"]
 material = ExtResource("13_lcx8y")
 size = Vector2(25, 29)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ehnte"]
+material = ExtResource("13_lcx8y")
+size = Vector2(12.685, 29)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_r8fon"]
+material = ExtResource("13_lcx8y")
+size = Vector2(10.57, 11.36)
 orientation = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_02jha"]
@@ -387,17 +397,17 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_v4d34"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 31.17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 11, 0, 0, 0, -40, 0, -10),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_oacx1"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31.17, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 11, -40, 0, -10, 0, 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_vumcl"]
 _data = [Vector2(0, 0.20398885), 0.0, 0.2295978, 0, 1, Vector2(0.3169811, 0.27676702), 0.2295978, 0.019978784, 1, 1, Vector2(1, 0.2904129), 0.0, 0.0, 0, 0]
@@ -609,6 +619,14 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.35
 [node name="Surface2" type="MeshInstance3D" parent="Props/Rock Bed Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0999994, -0.899999, 3.3000002)
 mesh = SubResource("QuadMesh_m7p33")
+
+[node name="Surface3" type="MeshInstance3D" parent="Props/Rock Bed Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7, -1.09, 3.3000002)
+mesh = SubResource("QuadMesh_ehnte")
+
+[node name="Surface4" type="MeshInstance3D" parent="Props/Rock Bed Test"]
+transform = Transform3D(0.99999994, 0, 1.589326e-08, 0, 1, 0, -1.589326e-08, 0, 0.99999994, 16.699997, -0.899999, -8.7)
+mesh = SubResource("QuadMesh_r8fon")
 
 [node name="Instance Mesh" type="MeshInstance3D" parent="Props/Rock Bed Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.2999998, 0)
@@ -846,19 +864,19 @@ collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator4" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, -26)
 curve = SubResource("Curve3D_v4d34")
 script = ExtResource("16_u2yv7")
-wallHeight = 10.0
+wallHeight = 15.0
 material = ExtResource("18_6dxpo")
 collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator5" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, -26)
 curve = SubResource("Curve3D_oacx1")
 script = ExtResource("16_u2yv7")
-wallHeight = 10.0
+wallHeight = 20.0
 wallMode = 1
 material = ExtResource("18_6dxpo")
 collisionLayer = 0
@@ -914,13 +932,18 @@ transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
+[node name="Deco Chunk11" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 30.6, 3.7, -0.60000014)
+mesh = SubResource("TubeTrailMesh_ehnte")
+skeleton = NodePath("../..")
+
 [node name="Deco Chunk6" type="MeshInstance3D" parent="Props"]
 transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 26.5, -0.29999995, -8.1)
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk7" type="MeshInstance3D" parent="Props"]
-transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 23.6, 0.70000005, -10.400001)
+transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 22.800001, 0.70000005, -10.400001)
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 

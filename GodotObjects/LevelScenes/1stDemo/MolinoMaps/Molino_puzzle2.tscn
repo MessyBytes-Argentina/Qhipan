@@ -122,17 +122,17 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_6fuqp"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -13, 0, 0, 0, 0, 0, 0, 4, 0, -28),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -2, 0, 0, 0, 0, 0, 0, 8.01, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -11, 0, 0, 0, 0, 0, 0, 4, 0, -13, 0, 0, 0, 0, 0, 0, 4, 0, -28, 0, 0, 0, 0, 0, 0, -10, 0, -28),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 7
+point_count = 8
 
-[sub_resource type="Curve3D" id="Curve3D_kq3d6"]
+[sub_resource type="Curve3D" id="Curve3D_txbe1"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4, 0, -28, 0, 0, 0, 0, 0, 0, 4, 0, -13, 0, 0, 0, 0, 0, 0, 4, 0, -11, 0, 0, 0, 0, 0, 0, 8.01, 0, -11, 0, 0, 0, 0, 0, 0, 8.01, 0, -2, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 1, 0, 3),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0, -28, 0, 0, 0, 0, 0, 0, 4, 0, -28, 0, 0, 0, 0, 0, 0, 4, 0, -13, 0, 0, 0, 0, 0, 0, 4, 0, -11, 0, 0, 0, 0, 0, 0, 8.01, 0, -11, 0, 0, 0, 0, 0, 0, 8.01, 0, -2, 0, 0, 0, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 1, 0, 3),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 7
+point_count = 8
 
 [sub_resource type="Curve3D" id="Curve3D_kapp8"]
 closed = true
@@ -428,13 +428,14 @@ material = ExtResource("14_caj7f")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Props/Walls/WallGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8999996, 6, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8999996, 6.5, -18)
 visible = false
 operation = 2
+size = Vector3(1, 2, 1)
 
 [node name="WallGenerator2" type="Path3D" parent="Props/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.5, 4)
-curve = SubResource("Curve3D_kq3d6")
+curve = SubResource("Curve3D_txbe1")
 script = ExtResource("13_5cjl0")
 wallHeight = 10.0
 wallMode = 1
@@ -519,17 +520,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10000038, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999996, 0, 0)
 
 [node name="Deco Chunk3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -4.499999, -0.19999987, -3.2000005)
+transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -3.299999, -0.19999987, -3.2000005)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -1.499999, -1.1999998, -6.200001)
+transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -0.79999906, -1.1999998, -6.200001)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk5" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.815677, 0, -0.3803565, 0, 0.9, 0, 0.3803565, 0, 0.815677, -5.499999, -2.1, -7.200001)
+transform = Transform3D(0.73723686, 0, 0.51621866, 0, 0.8999998, 0, -0.51621866, 0, 0.73723686, -5.899999, -2.1, -2.800001)
+mesh = SubResource("TubeTrailMesh_4lybr")
+skeleton = NodePath("../..")
+
+[node name="Deco Chunk15" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.815677, 0, -0.3803565, 0, 0.9, 0, 0.3803565, 0, 0.815677, -5.499999, -3, -6.200001)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
@@ -549,31 +555,31 @@ mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk9" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.08715564, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, 0.08715564, -6.6274548, -0.19999987, 6.3181944)
+transform = Transform3D(0.08715564, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, 0.08715564, -5.6274548, -0.19999987, 3.3181944)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk10" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.08715564, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, 0.08715564, -2.5293784, -1.1999998, 7.4162703)
+transform = Transform3D(0.08715564, 0, -0.9961947, 0, 1, 0, 0.9961947, 0, 0.08715564, 1.2706215, -1.1999998, 5.4162703)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk11" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.07844007, 0, -0.8965752, 0, 0.8999998, 0, 0.8965752, 0, 0.07844007, -3.6633527, -2.1, 3.452169)
+transform = Transform3D(0.07844007, 0, -0.8965752, 0, 0.8999998, 0, 0.8965752, 0, 0.07844007, -2.8633525, -3.8, 2.952169)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk12" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7660443, 0, 0.6427877, 0, 1, 0, -0.6427877, 0, -0.7660443, 4.754594, 1.0000002, 7.1231737)
+transform = Transform3D(-1.1337456, 0, 0.95132595, 0, 1.48, 0, -0.95132595, 0, -1.1337456, 4.754594, 1.0000002, 7.1231737)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk13" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7660443, 0, 0.6427877, 0, 1, 0, -0.6427877, 0, -0.7660443, 1.0803592, 1.7881393e-07, 9.2444935)
+transform = Transform3D(-0.7660443, 0, 0.6427877, 0, 1, 0, -0.6427877, 0, -0.7660443, -8.919641, 1.7881393e-07, 4.2444935)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk14" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.6894398, 0, 0.5785089, 0, 0.89999986, 0, -0.5785089, 0, -0.6894398, 4.6852427, -0.8999999, 11.245696)
+transform = Transform3D(-0.30781794, 0, 0.8457233, 0, 0.89999986, 0, -0.8457233, 0, -0.30781794, -1.3147573, -2.8999999, 4.245696)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
