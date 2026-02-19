@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://dsdruex0h4hcf"]
+[gd_scene load_steps=78 format=4 uid="uid://dsdruex0h4hcf"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_pkd4n"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_80foe"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="16_u2yv7"]
 [ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="17_uick7"]
 [ext_resource type="PackedScene" uid="uid://g4nvui5dhffk" path="res://Assets/Models/Fan Machines/fan_placement.tscn" id="18_1k3do"]
-[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="18_6dxpo"]
 [ext_resource type="PackedScene" uid="uid://bpkf0okc884ry" path="res://Assets/Models/Fan Machines/fan_placement_vertical.tscn" id="20_ehnte"]
 [ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="20_vumcl"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="21_6dxpo"]
@@ -31,16 +30,6 @@
 [sub_resource type="QuadMesh" id="QuadMesh_m7p33"]
 material = ExtResource("13_lcx8y")
 size = Vector2(25, 29)
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_ehnte"]
-material = ExtResource("13_lcx8y")
-size = Vector2(12.685, 29)
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_r8fon"]
-material = ExtResource("13_lcx8y")
-size = Vector2(10.57, 11.36)
 orientation = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_02jha"]
@@ -359,10 +348,10 @@ shadow_mesh = SubResource("ArrayMesh_35vhv")
 
 [sub_resource type="Curve3D" id="Curve3D_04jal"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.2221632, 0, -22.3, 0, 0, 0, 0, 0, 0, 6.2000003, 0, -21.1, 0, 0, 0, 0, 0, 0, 9, 0, -18.890411, 0, 0, 0, 0, 0, 0, 9, 0, -14.810152, 0, 0, 0, 0, 0, 0, 9, 0, -5.708905, 0, 0, 0, 0, 0, 0, 8.104129, 0, -2.514649, 0, 0, 0, 0, 0, 0, 6.4333596, 0, -0.7171519, 0, 0, 0, 0, 0, 0, 2.9334662, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9, 0, -20.990412, 0, 0, 0, 0, 0, 0, 9, 0, -14.810152, 0, 0, 0, 0, 0, 0, 9, 0, -5.708905, 0, 0, 0, 0, 0, 0, 8.104129, 0, -0.2146492, 0, 0, 0, 0, 0, 0, 6.4333596, 0, 1.5828485, 0, 0, 0, 0, 0, 0, 2.933466, 0, 2.3000002),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
-point_count = 8
+point_count = 6
 
 [sub_resource type="Curve3D" id="Curve3D_tt8bp"]
 _data = {
@@ -378,36 +367,6 @@ point_count = 3
 [sub_resource type="Curve" id="Curve_1k3do"]
 _data = [Vector2(0, 0), 0.0, 2.0328138, 0, 0, Vector2(1, 1), 0.51076627, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_bg3w0"]
-closed = true
-_data = {
-"points": PackedVector3Array(-1, 0, 0, 0, 0, -0.25, 0, 0, 0, -1, 0, 0, 1, 0, 0, 5.9999995, 0, 0.39999962, 1, 0, 0, -1, 0, 0, 8.3, 0, 7.480385, -0.19, 0, 0, -1.53, 0, 0, 2.3000011, 0, 4.4803843),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="Curve" id="Curve_7fie3"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.29661018, 0.31465036), 0.0, 0.0, 0, 0, Vector2(1, 0.76914537), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_2b2m0"]
-_data = [Vector2(0, 0), 0.0, 2.0328138, 0, 0, Vector2(1, 1), 0.51076627, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_v4d34"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 11, 0, 0, 0, -40, 0, -10),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
-[sub_resource type="Curve3D" id="Curve3D_oacx1"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 11, -40, 0, -10, 0, 0, 0, 0, 0, 0, -32, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
 
 [sub_resource type="Curve" id="Curve_vumcl"]
 _data = [Vector2(0, 0.20398885), 0.0, 0.2295978, 0, 1, Vector2(0.3169811, 0.27676702), 0.2295978, 0.019978784, 1, 1, Vector2(1, 0.2904129), 0.0, 0.0, 0, 0]
@@ -549,6 +508,19 @@ sections = 10
 section_length = 1.0
 curve = SubResource("Curve_6dxpo")
 
+[sub_resource type="Curve" id="Curve_ehnte"]
+_data = [Vector2(0, 0.12384796), 0.0, 0.065928556, 0, 1, Vector2(0.5679245, 0.1612904), 0.065928556, 0.0, 1, 0, Vector2(1, 0.15380192), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_count = 2
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_r8fon"]
+material = SubResource("ShaderMaterial_ehnte")
+radius = 10.0
+radial_steps = 6
+sections = 10
+section_length = 1.0
+curve = SubResource("Curve_ehnte")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
 size = Vector3(1, 1, 3)
 
@@ -619,14 +591,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.35
 [node name="Surface2" type="MeshInstance3D" parent="Props/Rock Bed Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0999994, -0.899999, 3.3000002)
 mesh = SubResource("QuadMesh_m7p33")
-
-[node name="Surface3" type="MeshInstance3D" parent="Props/Rock Bed Test"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7, -1.09, 3.3000002)
-mesh = SubResource("QuadMesh_ehnte")
-
-[node name="Surface4" type="MeshInstance3D" parent="Props/Rock Bed Test"]
-transform = Transform3D(0.99999994, 0, 1.589326e-08, 0, 1, 0, -1.589326e-08, 0, 0.99999994, 16.699997, -0.899999, -8.7)
-mesh = SubResource("QuadMesh_r8fon")
 
 [node name="Instance Mesh" type="MeshInstance3D" parent="Props/Rock Bed Test"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.2999998, 0)
@@ -837,51 +801,6 @@ resolution = 3.0
 collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 13.300001, -5, -22.4)
-curve = SubResource("Curve3D_bg3w0")
-script = ExtResource("16_u2yv7")
-wallHeight = 10.0
-material = ExtResource("17_uick7")
-customProfileShape = SubResource("Curve_7fie3")
-customProfileShapeDown = SubResource("Curve_2b2m0")
-customWallWidth = 3.0
-resolution = 3.0
-collisionLayer = 0
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator2" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(0.5, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, 0.5, 2.600001, -3.4, -18.199999)
-curve = SubResource("Curve3D_bg3w0")
-script = ExtResource("16_u2yv7")
-wallHeight = 10.0
-material = ExtResource("17_uick7")
-customProfileShape = SubResource("Curve_7fie3")
-customProfileShapeDown = SubResource("Curve_2b2m0")
-customWallWidth = 3.0
-resolution = 3.0
-collisionLayer = 0
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator4" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, -26)
-curve = SubResource("Curve3D_v4d34")
-script = ExtResource("16_u2yv7")
-wallHeight = 15.0
-material = ExtResource("18_6dxpo")
-collisionLayer = 0
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="WallGenerator5" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, -1, -26)
-curve = SubResource("Curve3D_oacx1")
-script = ExtResource("16_u2yv7")
-wallHeight = 20.0
-wallMode = 1
-material = ExtResource("18_6dxpo")
-collisionLayer = 0
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
 [node name="Fan Machines" type="Node3D" parent="Props"]
 
 [node name="Fan Placement" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
@@ -928,7 +847,7 @@ mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk5" type="MeshInstance3D" parent="Props"]
-transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 27.6, 1.7, -3.6000001)
+transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0, 0.59999985, 27.6, -2.3, -3.9)
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
@@ -947,8 +866,33 @@ transform = Transform3D(0.59999985, 0, -1.0392305, 0, 1.1999999, 0, 1.0392305, 0
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
+[node name="Deco Chunk13" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0.31058267, 0, -1.159111, 0, 1.1999998, 0, 1.159111, 0, 0.31058267, 8.700002, 5.7, -10.900001)
+mesh = SubResource("TubeTrailMesh_ehnte")
+skeleton = NodePath("../..")
+
+[node name="Deco Chunk14" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0.31058267, 0, -1.159111, 0, 1.1999998, 0, 1.159111, 0, 0.31058267, 5.7000012, 2.7, -10.900001)
+mesh = SubResource("TubeTrailMesh_ehnte")
+skeleton = NodePath("../..")
+
+[node name="Deco Chunk15" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(0.31058267, 0, -1.159111, 0, 1.1999998, 0, 1.159111, 0, 0.31058267, 2.7000012, 0.6999998, -10.900001)
+mesh = SubResource("TubeTrailMesh_ehnte")
+skeleton = NodePath("../..")
+
+[node name="Deco Chunk16" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(-1.0392306, 0, -0.5999998, 0, 1.1999998, 0, 0.5999998, 0, -1.0392306, -0.89999855, -0.3000002, -9.800001)
+mesh = SubResource("TubeTrailMesh_r8fon")
+skeleton = NodePath("../..")
+
 [node name="Deco Chunk8" type="MeshInstance3D" parent="Props"]
 transform = Transform3D(1.1591108, 0, -0.31058294, 0, 1.1999998, 0, 0.31058294, 0, 1.1591108, 18.600002, 1.7, -11.400001)
+mesh = SubResource("TubeTrailMesh_ehnte")
+skeleton = NodePath("../..")
+
+[node name="Deco Chunk12" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(2.017839, 0, 0.5999999, 0, 1.1999999, 0, -1.1649997, 0, 1.0392308, 13.300002, -1.3, -11.400001)
 mesh = SubResource("TubeTrailMesh_ehnte")
 skeleton = NodePath("../..")
 
