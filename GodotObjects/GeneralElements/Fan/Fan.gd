@@ -109,7 +109,7 @@ func switch_fan(mode: bool = not isOn) -> void:
 func push(body: Node3D) -> void:
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
-		body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true)
+		body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true, true)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:

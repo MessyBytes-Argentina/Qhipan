@@ -137,9 +137,10 @@ script = ExtResource("4_ws05p")
 sceneParent = NodePath(".")
 originalParent = "KeySticker"
 
-[node name="InvoluntaryPushModule" type="Node" parent="."]
+[node name="InvoluntaryPushModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("2_s3lcm")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
