@@ -41,8 +41,8 @@ func push(node: Node3D, direction: Vector3, force: float, blocksMovement: bool, 
 	if node is Fan:
 		currentForce = node
 		currentForceDirection = direction
+		forceCenter = node.global_position
 		pushToCenter = doLerpToCenter and lerpsToCenter
-		forceCenter = currentForce.global_position
 
 ## Removes a push force from the pushingForces list
 func stop_pushing(node: Node3D, blockedMovement: bool) -> void:
