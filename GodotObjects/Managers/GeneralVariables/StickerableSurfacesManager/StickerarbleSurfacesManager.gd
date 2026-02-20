@@ -19,9 +19,10 @@ func get_closest_valid_surface(position: Vector3, sticker: StickerBase, from: Ve
 	var stickerType: int = check_type(sticker)
 	var validSurfaces: Array[StickerableSurfaceData] = loadedStickerableSurfaces.filter(func(a: StickerableSurfaceData):
 		if layerMask > -1:
-			var raycast = PhysicsRayQueryParameters3D.create(from, from.direction_to(a.globalPosition) * (from.distance_to(a.globalPosition) - distanceMax) + from)
-			raycast.collision_mask = layerMask
-			if spaceState.intersect_ray(raycast): return false
+			if from.distance_to(a.globalPosition) > distanceMax:
+				var raycast = PhysicsRayQueryParameters3D.create(from, from.direction_to(a.globalPosition) * (from.distance_to(a.globalPosition) - distanceMax) + from)
+				raycast.collision_mask = layerMask
+				if spaceState.intersect_ray(raycast): return false
 		return a.validStickers & stickerType > 0 and a.used == null
 		)
 	if len(validSurfaces) > 0:

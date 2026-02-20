@@ -1,56 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsd3y1fqexib7"]
 
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_5poq5"]
 [ext_resource type="PackedScene" uid="uid://cn8horxwxvjy0" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/FinalDemoLevel.tscn" id="2_15g61"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_hcdsl"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_15g61"]
-sky_horizon_color = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_ix3bf"]
-sky_material = SubResource("ProceduralSkyMaterial_15g61")
-
-[sub_resource type="Environment" id="Environment_5poq5"]
-background_mode = 2
-background_color = Color(0.384314, 0.454902, 0.54902, 1)
-sky = SubResource("Sky_ix3bf")
-ambient_light_source = 2
-ambient_light_color = Color(0.384314, 0.454902, 0.54902, 1)
-ambient_light_energy = 0.5
-tonemap_mode = 2
-ssao_enabled = true
-ssao_radius = 2.0
-ssao_intensity = 4.0
-ssil_enabled = true
-sdfgi_energy = 7.275
-glow_enabled = true
-glow_levels/4 = 1.0
-glow_levels/5 = 3.0
-glow_strength = 0.53
-glow_bloom = 0.5
-glow_blend_mode = 1
-fog_mode = 1
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_depth_begin = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="2_vfstq"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="3_bimqd"]
 
 [node name="MainTest" type="Node3D"]
 
-[node name="EnvironmentObjects" type="Node3D" parent="." groups=["EnvironmentObjects"]]
-metadata/Environment = NodePath("")
-metadata/Sun = NodePath("DirectionalLight3D")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentObjects"]
-environment = SubResource("Environment_5poq5")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentObjects"]
-transform = Transform3D(-0.86602557, -0.4999999, -2.1855687e-08, 0, -4.3711374e-08, 0.9999996, -0.5000002, 0.86602515, 3.785516e-08, 0, 0, 0)
-light_energy = 0.025
-shadow_enabled = true
-shadow_caster_mask = 4294967293
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_5poq5")]
+startEnvironment = ExtResource("2_vfstq")
+startLight = ExtResource("3_bimqd")
 
 [node name="Player" parent="." instance=ExtResource("2_hcdsl")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -2, 2, 1.5)

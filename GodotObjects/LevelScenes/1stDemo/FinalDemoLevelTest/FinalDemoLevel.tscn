@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://cn8horxwxvjy0"]
+[gd_scene load_steps=161 format=4 uid="uid://cn8horxwxvjy0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_euh2j"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_8uuqi"]
@@ -32,10 +32,15 @@
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="29_gafll"]
 [ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="30_hxrls"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="32_8kvvm"]
+[ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="32_leulj"]
+[ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="33_6oou6"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="33_jlms1"]
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="34_k50ks"]
+[ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="34_qcj0b"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="35_13ivo"]
+[ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerEnvironment.tres" id="35_v3i10"]
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="36_2flga"]
+[ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerLight.tres" id="36_wgxsv"]
 [ext_resource type="Texture2D" uid="uid://bp7xvj8wm1h5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_albedo.png" id="37_3sahy"]
 [ext_resource type="Texture2D" uid="uid://bc65cpqffuj7o" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_normal.png" id="38_k11qp"]
 [ext_resource type="Texture2D" uid="uid://cch6il6i8uixx" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Texturas/Earth_albedo.png" id="39_leulj"]
@@ -45,6 +50,7 @@
 [ext_resource type="Image" uid="uid://ix00dmtwx2g7" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Color_0_0.res" id="43_wgxsv"]
 [ext_resource type="Image" uid="uid://dpgx0my2ge5lv" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Heightmap_0_0.res" id="44_28cyw"]
 [ext_resource type="Image" uid="uid://b03xo3xlc18dq" path="res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending/Splatmap_0_0_0.res" id="45_x5na0"]
+[ext_resource type="Shader" uid="uid://b3j56mpbhl28k" path="res://Assets/Shaders/GeneralFog.gdshader" id="46_k50ks"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oblum"]
 transparency = 1
@@ -149,7 +155,7 @@ albedo_texture = ExtResource("11_l7h8e")
 albedo_color = Color(0.32999998, 0.8101667, 1, 1)
 albedo_texture = ExtResource("11_l7h8e")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlms1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k11qp"]
 render_priority = 0
 shader = ExtResource("12_hw0k4")
 shader_parameter/albedo = Color(1.9710795, 1.7770292, 0.7058714, 1)
@@ -311,7 +317,7 @@ _surfaces = [{
 "index_count": 1236,
 "index_data": PackedByteArray("5QC5ALoAugC5AOYA5wCRAJAAkACRAAAAAACRAOgA6ADpAAAAAADpAOoA6gDpAJQAlADpAOsA6wDpAOwA7ADpAAkACQDpAJUA7QDuAAIAAgDuAO8A7wDuAJIA8ADxAAcABwDxAPIA8gDxAJoA8wD0APUA9QD2APMA9wD2APUA9QD0APgA+AD0AAUABQD0APkA+gD7APwA/QD+AJYAlgD+AP8A/wD+ABIAEgD+AAABAQECAQMBAwECARMAEwACAQQBBAECAZgAmAACAZcAlwACAQUBBQECAREAEQACAQYBBwEIAQkBCgELAQsACwAMAQoBDQEMAQsADgEMAQ0BCwALAQ8BDwELAZMAkwALARABEAELAREBEQELAQoACgALARIBEwEUARUBFQEUARYBFgEUAQEAAQAUARcBFwEUARgBGAEUAQQAGQEaARsBGwEaARwBHQEeAZkAmQAeAR8BHwEeAQYABgAeASABIAEeASEBIQEeAQgACAAeASIBIgEeASMBIwEeAZsAJAElASYBJgElAQwAJwEoASkBKQEoASoBKgEoAQ4ADgAoASsBKwEoASwBLAEoAS0BLQEoAS4BLgEoAQ8ADwAoAS8BMAExATIBMgExAQ0ADQAxATMBMwExAZwAnAAxATQBNAE1AZwANgE1ATQBNwE4ATkBOQE4AQMAOgE7ARAAEAA7ATwBPAE7AT0BswCyAD4BPgGyAD8BFQCdAJ4AngCdAJ8AnwCdABQAFACdAKAAoACdAEABQAGdAKEAoQCdAKIAogCdABYAFgCdAEEBQQGdAKMAowCdABcAFwCdAKQApACdAEIBQgGdAKUAQwGtAK8ArwCtAEQBpgBFARoAGgBFAUYBHABHAaoAqgBHAasASAFJAUoBSgFJAUsBTAFNAU4BTgFNASEATwEeALEAsQAeALAAUAFRAVIBUgFRAVMBVAGpAFUBVQGpABgAVgElALYAtgAlALcAVwFYAVkBWQFYAVoBWwFcASMAIwBcAV0BJwBeAb4AvgBeAbwAXwFgAWEBYQFgAWIBYwFkAWUBZQFkAWYBMABnATIAMgBnAWgBaQHBAMIAwgDBAGoBwABrAb8AvwBrAWwBxQBtAcYAxgBtAW4BbwFwAXEBcQFwAXIBKABzASoAKgBzAXQBdQEtAHYBdgEtAC8AdwF4AXkBeQF4AXoBwwB7AcQAxAB7AXwBLAB9AS4ALgB9AX4BfwGAAYEBgQGAAYIBgwGEAYUBhQGEAYYBhwE1AIgBiAE1ADcAiQExAIoBigExADMANACLATYANgCLAYwBpwAZAI0BjQEZAI4BHQCsAI8BjwGsAJABkQGuAJIBkgGuAJMBIgC0AJQBlAG0AJUBlgEfAJcBlwEfAJgBmQGaAZsBmwGaAZwBGwCoAJ0BnQGoAJ4BuAAkAJ8BnwEkAKABoQGiAaMBowGiAaQBtQAgAKUBpQEgAKYBJgC9AKcBpwG9AKgBqQG7AKoBqgG7AKsBrAGtAa4BrgGtAa8BsAGxAbIBsgGxAbMBtAG1AbYBtgG1AbcBuAG5AboBugG5AbsBvAE4AMgAyAA4ADoAvQG+Ab8BvwG+AcsAwAHKAMEBwQHKAMwAOQDQADsAOwDQANIAwgHDAcQBxAHDAcUBxgHHAcgByAHHAckBPgDHADwAPADHAMkAygHLAc0AzQDLAcwBzQHOAc8BzwHOAdAB0QE9ANMA0wA9AD8A0gHTAdQB1AHTAdEA1QHPANYB1gHPAM4A1wHYAdkB2QHYAdoB2wHcAd0B3QHcAd4B3wHgAeEB4QHgAeIB4wHkAeUB5QHkAeYB5wEpAOgB6AEpACsA6QHqAesB6wHqAewB7QFFAO4B7gFFAEQARABFAO8B7wFFAPAB8AFFAPEB8QFFAPIB8gFFAEYARgBFAPMB8wFFAPQB9AFFAEcARwBFAPUB9QFFANQA1ABFAPYB9gFFAPcB+AHVANYA1gDVANcA+QH6AfsB+wH6AfwB/QFMAP4B/gFMAE0AUAD/AVIAUgD/AQACAQICAgMCAwICAgQCBQIGAgcCBwIGAggCCQJIAAoCCgJIAEkATgALAk8ATwALAgwCDQJAAA4CDgJAAEEASgAPAksASwAPAhACEQISAhMCEwISAhQCQgAVAkMAQwAVAhYCFwJRABgCGAJRAFMAGQIaAhsCGwIaAhwCHQIeAh8CHwIeAiACIQIiAiMCIwIiAiQCJQJZACYCJgJZAFgAWABZACcCJwJZACgCKAJZACkCKQJZACoCKgJZAFoAWgBZACsCKwJZACwCLAJZAFsAWwBZAC0CLQJZANgA2ABZAC4CLgJZAC8CMALZANoA2gDZANsAMQIyAjMCMwIyAjQCNQJgADYCNgJgAGEAZgA3AmcAZwA3AjgCOQI6AjsCOwI6AjwCPQI+Aj8CPwI+AkACQQJcAEICQgJcAF0AYgBDAmMAYwBDAkQCRQJUAEYCRgJUAFUAXgBHAl8AXwBHAkgCSQJKAksCSwJKAkwCVgBNAlcAVwBNAk4CTwJkAFACUAJkAGUAUQJSAlMCUwJSAlQCVQJWAlcCVwJWAlgCWQJaAlsCWwJaAlwCXQJtAF4CXgJtAGwAbABtAF8CXwJtAGACYAJtAGECYQJtAGICYgJtAG4AbgBtAGMCYwJtAGQCZAJtAG8AbwBtAGUCZQJtANwA3ABtAGYCZgJtAGcCaALdAN4A3gDdAN8AaQJqAmsCawJqAmwCbQJ0AG4CbgJ0AHUAegBvAnsAewBvAnACcQJyAnMCcwJyAnQCdQJ2AncCdwJ2AngCeQJwAHoCegJwAHEAdgB7AncAdwB7AnwCfQJoAH4CfgJoAGkAcgB/AnMAcwB/AoACgQKCAoMCgwKCAoQCagCFAmsAawCFAoYChwJ4AIgCiAJ4AHkAiQKKAosCiwKKAowCjQKOAo8CjwKOApACkQKSApMCkwKSApQClQKBAJYClgKBAIAAgACBAJcClwKBAJgCmAKBAJkCmQKBAJoCmgKBAIIAggCBAJsCmwKBAJwCnAKBAIMAgwCBAJ0CnQKBAOAA4ACBAJ4CngKBAJ8CoALhAOIA4gDhAOMAoQKiAqMCowKiAqQCpQKIAKYCpgKIAIkAjQCnAowAjACnAqgCqQKqAqsCqwKqAuQArAKtAq4CrgKtAq8CsAKEALECsQKEAIUAigCyAosAiwCyArMCtAJ8ALUCtQJ8AH0AhgC2AocAhwC2ArcCuAK5AroCugK5ArsCfgC8An8AfwC8Ar0CvgKPAL8CvwKPAI4AwALBAsICwgLBAsMCxALFAsYCxgLFAscC"),
 "lods": [0.029292434, PackedByteArray("kACRAAAAAACRAAIAAgCRAJIAkAADAJEAAgADAAAACgADAJAAkQADAAEAkwADAAoAAAADAJQAlAADAAkACwADAJMAAQADAAQACQADAJUAlQCWAAsAlQADAJYACwCWABAAEAADAAsAlgADABIAEQADABAAEgADABMAlwADABEAEwADAJgAmAADAJcABAADAJkABACZAAUABQADAAIABQCZAJoAmgADAAUABwADAJoAmQADAAYABgADAAgACACbAAMACAADAJsAAwCbAJwAmwADAAwADQADAJwADAADAA4ADwADAA0ADgADAA8AFQCdAJ4AngCdAJ8AnwCdABQAFACdAKAAoACdAKEAoQCdAKIAogCdABYAFgCdAKMAowCdABcAFwCdAKQApACdAKUApgCnABoAGgCnABkApwCmAKgAqACmAKkAqACpABsAGwCpABgAHAAdAKoAqgAdAKsAHQCsAKsAqgCrAK0ArACuAKsArQCrAK8AqwCuAK8ArwCwAK0ArgAfAK8AsQCwAK8ArwAfALEAsQAeALAAHwAeALEAsgCzACIAIgCzACEAswCyACMAIgC0ALIAIwCyACAAtAC1ALIAtQAgALIAJAAlALYAtgAlALcAuAAkALYAtgC3ALkAuQC4ALYAuQC3ALoAuwC4ALkAugC8ALkAvAC7ALkAvQC7ALwAvgC8ALoAJgC9ALwAvgAmALwAJwAmAL4AMgAwAL8AMADAAL8AwAAxAL8AvwAxADMAKADBACoAKgDBAMIAwQApAMIAwgApACsAwwAtAMQAxAAtAC8ALADDAMQALgAsAMQAxQA1AMYAxgA1ADcANgDFAMYANADFADYAxwA4AMgAyAA4ADoAyQDHAMgAOADKADoAPADHAMkAOgDKAMsAPgDHADwAywDKAMwAzQA+ADwAygA5AMwAzgA+AM0AzAA5ADsAzwA+AM4AOQDQADsA0QDPAM4AOwDQANIAPwDPANEA0gDQANMAPQDPAD8A0AA9ANMA0wA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcARwBFANQASADVANYA1QBIAEkA1gDVANcASgDWANcASwBKANcATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAWwBZANgAXADZANoA2QBcAF0A2gDZANsAXgDaANsAXwBeANsAYABhAGIAYgBhAGMAZABlAGYAZgBlAGcAaABpAGoAagBpAGsAbABtAG4AbgBtAG8AbwBtANwAcADdAN4A3QBwAHEA3gDdAN8AcgDeAN8AcwByAN8AdAB1AHYAdgB1AHcAeAB5AHoAegB5AHsAfAB9AH4AfgB9AH8AgACBAIIAggCBAIMAgwCBAOAAhADhAOIA4QCEAIUA4gDhAOMAhgDiAOMAhwCGAOMAiACJAIoAigCJAIsAjACNAOQAjQCPAOQA5ACPAI4A"), 0.22177473, PackedByteArray("AAABAAIAAAADAAEAAgADAAAAAQADAAQABQADAAIABAAGAAUABAADAAYABQAGAAcABwADAAUABgADAAgAAAADAAkACgADAAAACQADAAsACwADAAoACAADAAwACAAMAAMAAwAMAA0ADAADAA4ADwADAA0ADgADAA8AEAADAAsACwADABAAEQADABAAEAADABIAEwADABEAEgADABMAFAAVABYAFgAVABcAGAAZABoAGQAYABsAHAAdAB4AHwAeAB0AIAAhACIAIQAgACMAJAAlACYAJwAmACUAKAApACoAKgApACsALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA4ADoAOQA9ADsAPgA4ADwAOwA9AD8APQA+AD8APwA+ADwAQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsAXABdAF4AXgBdAF8AYABhAGIAYgBhAGMAZABlAGYAZgBlAGcAaABpAGoAagBpAGsAbABtAG4AbgBtAG8AcABxAHIAcgBxAHMAdAB1AHYAdgB1AHcAeAB5AHoAegB5AHsAfAB9AH4AfgB9AH8AgACBAIIAggCBAIMAhACFAIYAhgCFAIcAiACJAIoAigCJAIsAjACNAI4AjQCPAI4A")],
-"material": SubResource("ShaderMaterial_jlms1"),
+"material": SubResource("ShaderMaterial_k11qp"),
 "name": "Placa",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -1741,6 +1747,9 @@ size = Vector3(1.4, 1, 1.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_leulj"]
 size = Vector3(1.4, 1, 1.4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5na0"]
+size = Vector3(1, 3, 1)
+
 [sub_resource type="Curve3D" id="Curve3D_dwml8"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.3, 0, -0.6000004, 0, 0, 0, 0, 0, 0, -0.7, 0, -1.2, 0, 0, 0, 0, 0, 0, -0.8, 0, -2.3, 0, 0, 0, 0, 0, 0, -2.7, 0, -2.4, 0, 0, 0, 0, 0, 0, -2.7, 0, -9.700001, 0, 0, 0, 0, 0, 0, 4.7000003, 0, -9.7, 0, 0, 0, 0, 0, 0, 4.7000003, 0, -2.3, 0, 0, 0, 0, 0, 0, 2.8, 0, -2.2, 0, 0, 0, 0, 0, 0, 2.7, 0, -1.0999999, 0, 0, 0, 0, 0, 0, 2.2, 0, -0.6000004),
@@ -2007,6 +2016,32 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_igpoo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sahy"]
+shader = ExtResource("46_k50ks")
+shader_parameter/base_density = 0.8
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/emission = Color(0.585062, 0.585062, 0.5850621, 1)
+shader_parameter/fade_out_height = 10000.0
+shader_parameter/fade_out_distance = 5.0
+shader_parameter/noise_amounts = Vector3(0.1, 0.35, 0.25)
+shader_parameter/noise_scales = Vector3(1, 1, 1)
+shader_parameter/noise_velocity1 = Vector3(0.1, 0, 0)
+shader_parameter/noise_velocity2 = Vector3(0.2, 0, -0.2)
+shader_parameter/noise_velocity3 = Vector3(0, 0.1, 0.05)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13ivo"]
+shader = ExtResource("46_k50ks")
+shader_parameter/base_density = 0.10000000475
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/emission = Color(0.585062, 0.585062, 0.5850621, 1)
+shader_parameter/fade_out_height = 10000.0
+shader_parameter/fade_out_distance = 10000.0
+shader_parameter/noise_amounts = Vector3(0.1, 0.35, 0.25)
+shader_parameter/noise_scales = Vector3(1, 1, 1)
+shader_parameter/noise_velocity1 = Vector3(0.1, 0, 0)
+shader_parameter/noise_velocity2 = Vector3(0.2, 0, -0.2)
+shader_parameter/noise_velocity3 = Vector3(0, 0.1, 0.05)
 
 [node name="FinalDemoLevel" type="Node3D"]
 
@@ -2788,6 +2823,54 @@ debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 metadata/OFFShape = true
 
+[node name="EnvironmentLerper" type="Area3D" parent="3/Widgets" groups=["EnvironmentLerpers"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 5, -3.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("32_leulj")
+startEnvironment = ExtResource("33_6oou6")
+startLight = ExtResource("34_qcj0b")
+endEnvironment = ExtResource("35_v3i10")
+endLight = ExtResource("36_wgxsv")
+startSkyLerp = 0.33
+endSkyLerp = 0.8
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="3/Widgets/EnvironmentLerper"]
+shape = SubResource("BoxShape3D_x5na0")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="3/Widgets/EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="EndMarker" type="Node3D" parent="3/Widgets/EnvironmentLerper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="EnvironmentLerper2" type="Area3D" parent="3/Widgets" groups=["EnvironmentLerpers"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 5, -3.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("32_leulj")
+startEnvironment = ExtResource("33_6oou6")
+startLight = ExtResource("34_qcj0b")
+endEnvironment = ExtResource("35_v3i10")
+endLight = ExtResource("36_wgxsv")
+startSkyLerp = 0.33
+endSkyLerp = 0.8
+metadata/_custom_type_script = "uid://bddbbu1gkhxjt"
+
+[node name="AreaShape" type="CollisionShape3D" parent="3/Widgets/EnvironmentLerper2"]
+shape = SubResource("BoxShape3D_x5na0")
+debug_color = Color(0.5411765, 0.16862746, 0.8862745, 0.5)
+
+[node name="StartMarker" type="Node3D" parent="3/Widgets/EnvironmentLerper2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="EndMarker" type="Node3D" parent="3/Widgets/EnvironmentLerper2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
 [node name="Ending" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
@@ -2940,6 +3023,18 @@ light_color = Color(2.6126626, 2.6126626, 2.6126626, 1)
 light_energy = 8.644
 omni_range = 22.6
 omni_attenuation = 0.222
+
+[node name="FogVolume" type="FogVolume" parent="Ending"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.5, 0)
+size = Vector3(70, 2, 70)
+shape = 0
+material = SubResource("ShaderMaterial_3sahy")
+
+[node name="FogVolume2" type="FogVolume" parent="Ending"]
+transform = Transform3D(0.99619484, -0.087155774, 3.7981125e-09, 0.08715573, 0.9961948, -6.697098e-10, 0, 2.9802322e-08, 0.9999998, -0.5, -22.5, 20.5)
+size = Vector3(100, 10, 100)
+shape = 0
+material = SubResource("ShaderMaterial_13ivo")
 
 [connection signal="area_entered" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_exited"]

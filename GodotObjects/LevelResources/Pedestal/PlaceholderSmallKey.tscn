@@ -98,7 +98,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s2p10")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
-size = Vector3(1.1219158, 1.2114563, 0.72924805)
+size = Vector3(0.8, 0.25, 0.6)
 
 [node name="SmallPedestalKey" type="StaticBody3D" node_paths=PackedStringArray("sceneParent")]
 script = ExtResource("1_re33t")
@@ -130,7 +130,7 @@ metadata/extras = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044070244, 0.60572815, -0.051879883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.125, 0)
 shape = SubResource("BoxShape3D_bi05e")
 
 [node name="StickerMarker" type="Node3D" parent="."]
