@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn3a8oiupqm6a"]
+[gd_scene load_steps=7 format=3 uid="uid://bn3a8oiupqm6a"]
 
 [ext_resource type="Texture2D" uid="uid://d7equ6jsxa2b" path="res://Assets/Textures/Settings/boton generico rojo 2.png" id="1_fu2eo"]
 [ext_resource type="Texture2D" uid="uid://v4a5tv5kichu" path="res://Assets/Textures/Settings/slider fondo 4.png" id="2_fu2eo"]
@@ -12,12 +12,19 @@ texture_margin_right = 15.0
 texture_margin_bottom = 15.0
 axis_stretch_horizontal = 2
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxtw7"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fu2eo"]
 texture = ExtResource("2_fu2eo")
-texture_margin_left = 15.0
-texture_margin_top = 15.0
-texture_margin_right = 15.0
-texture_margin_bottom = 15.0
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mks5w"]
+texture = ExtResource("2_fu2eo")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="HSlider" type="HSlider"]
 offset_right = 60.0
@@ -29,8 +36,8 @@ theme_override_icons/grabber_highlight = ExtResource("1_fu2eo")
 theme_override_icons/grabber_disabled = ExtResource("1_fu2eo")
 theme_override_icons/tick = ExtResource("1_fu2eo")
 theme_override_styles/slider = SubResource("StyleBoxTexture_a3hrv")
-theme_override_styles/grabber_area = SubResource("StyleBoxTexture_kxtw7")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_kxtw7")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_fu2eo")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_mks5w")
 min_value = -60.0
 max_value = 6.0
 step = 0.1
