@@ -36,6 +36,8 @@ class_name EnvironmentParameters
 @export_range(0.1, 8.0, 0.001) var saturation: float = 1.0
 ## Postprocessing brightness.
 @export var color_correction: Texture = GradientTexture2D.new()
+## Affects darkness, keep at default if darkness is in the scene.
+@export_range(0.5, 0.99, 0.01) var temporal_reprojection: float = 0.95
 
 ## Storage for lerping to another sky.
 var secondPanorama: Texture2D
@@ -60,6 +62,7 @@ func set_environment(environment: Environment, colorCorrection: ShaderMaterial) 
 	environment.adjustment_brightness = brightness
 	environment.adjustment_contrast = contrast
 	environment.adjustment_saturation = saturation
+	environment.volumetric_fog_temporal_reprojection_amount = temporal_reprojection
 	var skyMaterial: ShaderMaterial = environment.sky.sky_material
 	skyMaterial.set_shader_parameter("startPanorama", sky_panorama)
 	skyMaterial.set_shader_parameter("goalPanorama", secondPanorama)
@@ -91,4 +94,5 @@ func lerp_to(goal: EnvironmentParameters, progress: float, skyProgress: float) -
 	res.brightness = lerp(brightness, goal.brightness, progress)
 	res.contrast = lerp(contrast, goal.contrast, progress)
 	res.saturation = lerp(saturation, goal.saturation, progress)
+	res.temporal_reprojection = lerp(temporal_reprojection, goal.temporal_reprojection, progress)
 	return res

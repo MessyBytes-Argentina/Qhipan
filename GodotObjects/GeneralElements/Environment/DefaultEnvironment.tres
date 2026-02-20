@@ -3,7 +3,8 @@
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
 
 [sub_resource type="Gradient" id="Gradient_1500c"]
-colors = PackedColorArray(0, 0, 0, 1, 0.07599326, 0.05926363, 0.103962, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
 gradient = SubResource("Gradient_1500c")
