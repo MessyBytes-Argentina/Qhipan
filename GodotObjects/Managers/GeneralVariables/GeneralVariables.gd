@@ -83,5 +83,7 @@ func _execute_queue() -> void:
 	for i in range(len(staggerArray[0])):
 		for j in range(len(staggerArray)):
 			if len(staggerArray[j]) > i:
+				if not staggerArray[j][i]: continue
+				if not staggerArray[j][i].get_object(): continue
 				staggerArray[j][i].call()
 		await get_tree().process_frame
