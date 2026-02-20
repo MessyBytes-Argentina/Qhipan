@@ -253,7 +253,7 @@ size = Vector3(2, 1, 0.5)
 size = Vector3(2.1000001, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cja0d"]
-size = Vector3(2, 1, 0.90000004)
+size = Vector3(1.2, 1, 2.6000001)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0jxa"]
 size = Vector3(1, 1, 2)
@@ -872,6 +872,7 @@ transform = Transform3D(-6.775265e-08, 0, 1, 0, 1.6099999, 0, -1.55, 0, -4.37113
 
 [node name="ChunkLoadingHotspot-DestileriaPuzzle1" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -8.6)
+visible = false
 script = ExtResource("2_fjvai")
 hotspotName = "Destileria1_entrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/MainDestileria.tscn"
@@ -892,6 +893,7 @@ metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-MolinoPuzzle1" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -8.5)
+visible = false
 script = ExtResource("2_fjvai")
 hotspotName = "Molino1_entrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_puzzle1.tscn"
@@ -912,6 +914,7 @@ metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-DestileriaFinale" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -4, -15.5)
+visible = false
 script = ExtResource("2_fjvai")
 hotspotName = "DestileriaFinaleDemohub"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/destileria_finame_comp.tscn"
@@ -945,13 +948,14 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="Widgets/Chunk Loaders/ChunkLoadingHotspot-MolinoFinale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1000004, 0, 5.1499996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, -2.6999998, 6.699999)
 shape = SubResource("BoxShape3D_cja0d")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-EndPuzzle" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -24)
+visible = false
 script = ExtResource("2_fjvai")
 hotspotName = "EndEntrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/1.tscn"
@@ -972,6 +976,7 @@ metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-TutoHub" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, 1)
+visible = false
 script = ExtResource("2_fjvai")
 hotspotName = "demohub_entrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn"

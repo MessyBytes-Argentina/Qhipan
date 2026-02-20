@@ -12,15 +12,13 @@ fill_from = Vector2(0, 1)
 fill_to = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_1500c"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.103743516, 0.10374353, 0.103743516, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_n5fu6"]
 gradient = SubResource("Gradient_1500c")
 width = 1920
 height = 1082
-fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.41880342)
+fill_from = Vector2(1, 0.25616023)
 
 [resource]
 script = ExtResource("1_v4p8q")
