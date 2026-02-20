@@ -44,10 +44,10 @@ func _ready() -> void:
 		if a.has_meta("ONShape"): onShapes.append(a) 
 		elif a.has_meta("OFFShape"): offShapes.append(a)
 		else:
-			if a.name == "ONShape":
+			if a.name.begins_with("ONShape"):
 				onShapes.append(a)
 				a.set_meta("ONShape", true)
-			elif a.name == "OFFShape":
+			elif a.name.begins_with("OFFShape"):
 				offShapes.append(a)
 				a.set_meta("OFFShape", true)
 		)

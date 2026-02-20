@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=4 uid="uid://cn8horxwxvjy0"]
+[gd_scene load_steps=157 format=4 uid="uid://cn8horxwxvjy0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_euh2j"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_8uuqi"]
@@ -722,9 +722,6 @@ size = Vector3(2, 1.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1avr2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3sahy"]
-size = Vector3(3, 1.25, 2.8500001)
-
 [sub_resource type="Curve3D" id="Curve3D_2c4cn"]
 closed = true
 _data = {
@@ -947,9 +944,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ny0it"]
-size = Vector3(3, 1.25, 2.8500001)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2v77"]
 transparency = 1
@@ -1806,12 +1800,6 @@ size = Vector3(5, 15, 30)
 material = SubResource("StandardMaterial3D_a7ofp")
 size = Vector3(10, 5, 30)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yuhlt"]
-size = Vector3(4, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0lvfn"]
-size = Vector3(4, 1, 1)
-
 [sub_resource type="TextureSetResource" id="TextureSetResource_c0uas"]
 name = "Grass"
 albedoTexture = ExtResource("37_3sahy")
@@ -2195,6 +2183,7 @@ localWallDirection = 4.71238898038469
 [node name="Wall" type="Path3D" parent="1/Props"]
 curve = SubResource("Curve3D_f57d1")
 script = ExtResource("17_ayr2k")
+wallHeight = 6.0
 wallMode = 2
 material = ExtResource("18_eqcvj")
 
@@ -2302,16 +2291,6 @@ transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08
 [node name="Placeholder Sticker Area15" parent="1/Widgets/StickerPlacements" instance=ExtResource("30_hxrls")]
 transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, -0.5, 1, 0.50000006)
 
-[node name="Area3D" type="Area3D" parent="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("25_jghdm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="1/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.625, -0.47500002)
-shape = SubResource("BoxShape3D_3sahy")
-
 [node name="2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 visible = false
@@ -2346,8 +2325,10 @@ originalParent = "FinalDemoLevel"
 [node name="Props" type="Node3D" parent="2"]
 
 [node name="Wall" type="Path3D" parent="2/Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_2c4cn")
 script = ExtResource("17_ayr2k")
+wallHeight = 6.0
 wallMode = 2
 material = ExtResource("18_eqcvj")
 
@@ -2378,15 +2359,6 @@ curve = SubResource("Curve3D_prdqs")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
 colliderSize = Vector2(0.3, 1)
-
-[node name="Area3D" type="Area3D" parent="2/Props/Fences"]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("25_jghdm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="2/Props/Fences/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 1.625, -0.47500002)
-shape = SubResource("BoxShape3D_ny0it")
 
 [node name="Fan Machines" type="Node3D" parent="2/Props"]
 
@@ -2604,6 +2576,7 @@ originalParent = "FinalDemoLevel"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_5iimv")
 script = ExtResource("17_ayr2k")
+wallHeight = 6.0
 wallMode = 2
 material = ExtResource("18_eqcvj")
 
@@ -2956,30 +2929,6 @@ mesh = SubResource("BoxMesh_8kqki")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 25.3, 109)
 mesh = SubResource("BoxMesh_u4rx3")
 
-[node name="Widgets" type="Node3D" parent="Ending"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
-
-[node name="ChunkLoadingHotspot" type="Node3D" parent="Ending/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("27_ylf57")
-showObjects = [NodePath("../../../3")]
-sceneParent = NodePath("../../..")
-metadata/_custom_type_script = "uid://blllvpjbphq1w"
-
-[node name="ONShape" type="CollisionShape3D" parent="Ending/Widgets/ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.39999998, 1.6)
-shape = SubResource("BoxShape3D_yuhlt")
-debug_color = Color(1, 0.64705884, 0, 0.5)
-metadata/LoadShape = true
-metadata/ONShape = true
-
-[node name="OFFShape" type="CollisionShape3D" parent="Ending/Widgets/ChunkLoadingHotspot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 3.5)
-shape = SubResource("BoxShape3D_0lvfn")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/UnloadShape = true
-metadata/OFFShape = true
-
 [node name="TerraBrush" type="TerraBrush" parent="Ending"]
 dataPath = "res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/Demo Ending/Ending"
 textureSets = SubResource("TextureSetsResource_rn2m1")
@@ -3038,7 +2987,3 @@ material = SubResource("ShaderMaterial_13ivo")
 
 [connection signal="area_entered" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_exited"]
-[connection signal="area_entered" from="1/Area3D" to="1/Area3D" method="_on_light_entered"]
-[connection signal="area_exited" from="1/Area3D" to="1/Area3D" method="_on_light_exited"]
-[connection signal="area_entered" from="2/Props/Fences/Area3D" to="2/Props/Fences/Area3D" method="_on_light_entered"]
-[connection signal="area_exited" from="2/Props/Fences/Area3D" to="2/Props/Fences/Area3D" method="_on_light_exited"]

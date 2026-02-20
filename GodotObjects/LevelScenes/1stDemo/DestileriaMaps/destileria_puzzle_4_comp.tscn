@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjq5ht1ys7jum"]
+[gd_scene load_steps=29 format=3 uid="uid://bjq5ht1ys7jum"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_mp4qe"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_bnbd0"]
@@ -73,11 +73,8 @@ point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vy62f"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_52yaf"]
-size = Vector3(3, 0.5, 1.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8b0c"]
-size = Vector3(5, 1, 5)
+size = Vector3(5, 1, 9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1cedh"]
 size = Vector3(3, 1, 2)
@@ -228,13 +225,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/ONShape = true
 
 [node name="OFFShape" type="CollisionShape3D" parent="Widgets/Occluder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -3.25, -0.75)
-shape = SubResource("BoxShape3D_52yaf")
-debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
-metadata/OFFShape = true
-
-[node name="OFFShape2" type="CollisionShape3D" parent="Widgets/Occluder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1.5, -5.5)
 shape = SubResource("BoxShape3D_j8b0c")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 
