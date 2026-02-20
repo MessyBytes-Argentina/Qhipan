@@ -664,7 +664,7 @@ colliderSize = Vector2(0.3, 2)
 [node name="Wood Fence12" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, -0.5, -4.9)
 curve = SubResource("Curve3D_bn2x3")
-colliderSize = Vector2(0.3, 2)
+colliderSize = Vector2(0.3, 0.5)
 
 [node name="Wood Fence13" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, -0.5, -3.1)

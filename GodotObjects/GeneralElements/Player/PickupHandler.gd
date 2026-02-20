@@ -186,9 +186,11 @@ func sort_close_stickers() -> void:
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
 		if get_sticker_class(a) & blockedStickers == 0: return false
+		if a.inDarkness: return false
+		if global_position.distance_to(a.global_position) <= STICKERRADIUS: return true
 		var raycast = PhysicsRayQueryParameters3D.create(global_position, global_position.direction_to(a.global_position) * (global_position.distance_to(a.global_position) - STICKERRADIUS) + global_position)
 		raycast.collision_mask = layerMask
-		return not a.inDarkness and not spaceState.intersect_ray(raycast)
+		return not spaceState.intersect_ray(raycast)
 	)
 	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 
 		if highlight: highlight.hide()
