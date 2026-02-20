@@ -190,6 +190,7 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4990005, -0.5, 8.5)
 curve = SubResource("Curve3D_t6u1v")
 script = ExtResource("7_d2c6w")
+wallHeight = 8.0
 wallMode = 1
 material = ExtResource("8_qmvnx")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
