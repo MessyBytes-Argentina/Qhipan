@@ -74,10 +74,12 @@ func activate_pedestal(skip: bool = false) -> void:
 	highlight.hide()
 	stickerHighlightTween.kill()
 	highlight.queue_free()
-	var material: StandardMaterial3D = placedSticker.get_surface_override_material(0).duplicate()
-	material.albedo_texture = sticker.image
-	placedSticker.set_surface_override_material(0, material)
-	placedSticker.show()
+	if placedSticker:
+		var material: StandardMaterial3D = placedSticker.get_surface_override_material(0).duplicate()
+		if sticker:
+			material.albedo_texture = sticker.image
+		placedSticker.set_surface_override_material(0, material)
+		placedSticker.show()
 	area.set_deferred("monitoring", false)
 	await get_tree().process_frame
 	area.queue_free()

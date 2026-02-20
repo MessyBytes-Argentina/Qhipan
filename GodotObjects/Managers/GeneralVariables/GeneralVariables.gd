@@ -82,5 +82,6 @@ func _execute_queue() -> void:
 	toStagger.clear()
 	for i in range(len(staggerArray[0])):
 		for j in range(len(staggerArray)):
-			staggerArray[j][i].call()
+			if len(staggerArray[j]) > i:
+				staggerArray[j][i].call()
 		await get_tree().process_frame
