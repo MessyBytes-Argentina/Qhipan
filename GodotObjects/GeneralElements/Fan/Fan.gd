@@ -59,10 +59,10 @@ func set_area_size(overridenSize: float = areaHeight) -> void:
 		blockingRaycast.target_position.y = overridenSize + noGravityAreaMargin
 	if fanParticles:
 		if not setupReady:
+			setupReady = true
+			await get_tree().process_frame
 			fanParticles.amount = roundi(areaHeight / 3.0 * float(fanParticles.amount))
 			fanParticles.lifetime = areaHeight / 3.0 * fanParticles.lifetime
-			await get_tree().process_frame
-			setupReady = true
 		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
 
 ## Called when the node enters the scene tree for the first time.
