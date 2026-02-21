@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iinhb"]
-albedo_color = Color(3.0018063, 1.2795826, 3.7399013, 0)
+albedo_color = Color(0.0075333444, 0.0010539782, 0.012617188, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dgtsm"]
 _surfaces = [{
@@ -53,7 +53,7 @@ _surfaces = [{
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
 "material": SubResource("StandardMaterial3D_iinhb"),
-"name": "Cremita",
+"name": "Interior",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
