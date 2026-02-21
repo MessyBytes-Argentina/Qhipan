@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=206 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -224,6 +224,77 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_6dxpo"]
+_data = [Vector2(0, 0.1721484), 0.0, 0.09611068, 0, 1, Vector2(0.5679245, 0.22673202), 0.09611068, 0.0, 1, 0, Vector2(1, 0.2904129), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehnte"]
+render_priority = 0
+shader = ExtResource("53_l7bbn")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("55_ybp0o")
+shader_parameter/fresnel_gradient = ExtResource("54_lhey2")
+shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
+shader_parameter/top_texture_scale = 1.0
+shader_parameter/side_texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = ExtResource("66_qlig2")
+shader_parameter/side_texture_albedo = ExtResource("66_qlig2")
+shader_parameter/enable_normal = true
+shader_parameter/top_texture_normal = ExtResource("67_i0g0w")
+shader_parameter/side_texture_normal = ExtResource("67_i0g0w")
+shader_parameter/top_normal_scale = 1.51
+shader_parameter/side_normal_scale = 1.51
+shader_parameter/top_texture_orm = ExtResource("58_prin4")
+shader_parameter/side_texture_orm = ExtResource("58_prin4")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/top_ao_light_affect = 1.0
+shader_parameter/side_ao_light_affect = 1.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.0
+shader_parameter/side_metallic_specular = 0.0
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_14t51"]
+material = SubResource("ShaderMaterial_ehnte")
+radius = 10.0
+radial_steps = 6
+sections = 10
+section_length = 1.0
+curve = SubResource("Curve_6dxpo")
 
 [sub_resource type="Curve3D" id="Curve3D_5n13k"]
 _data = {
@@ -502,6 +573,13 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Curve3D" id="Curve3D_xsgam"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, -0.9999999, 0, 0, 0, 0, 0, 0, 16, 0, -1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [sub_resource type="Curve3D" id="Curve3D_5tbw5"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.01, 0, -2.01, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 16, 0, 1),
@@ -509,7 +587,28 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve3D" id="Curve3D_wfdgi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 16, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_ucst0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [sub_resource type="Curve3D" id="Curve3D_oq1ii"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_ssq6m"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2),
 "tilts": PackedFloat32Array(0, 0)
@@ -631,80 +730,9 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_6dxpo"]
-_data = [Vector2(0, 0.1721484), 0.0, 0.09611068, 0, 1, Vector2(0.5679245, 0.22673202), 0.09611068, 0.0, 1, 0, Vector2(1, 0.2904129), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_count = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehnte"]
-render_priority = 0
-shader = ExtResource("53_l7bbn")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/light_gradient = ExtResource("55_ybp0o")
-shader_parameter/fresnel_gradient = ExtResource("54_lhey2")
-shader_parameter/offset = Vector3(0.5, 0.5, 0.5)
-shader_parameter/top_texture_scale = 1.0
-shader_parameter/side_texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/top_texture_albedo = ExtResource("66_qlig2")
-shader_parameter/side_texture_albedo = ExtResource("66_qlig2")
-shader_parameter/enable_normal = true
-shader_parameter/top_texture_normal = ExtResource("67_i0g0w")
-shader_parameter/side_texture_normal = ExtResource("67_i0g0w")
-shader_parameter/top_normal_scale = 1.51
-shader_parameter/side_normal_scale = 1.51
-shader_parameter/top_texture_orm = ExtResource("58_prin4")
-shader_parameter/side_texture_orm = ExtResource("58_prin4")
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/top_ao_light_affect = 1.0
-shader_parameter/side_ao_light_affect = 1.0
-shader_parameter/top_roughness = 1.0
-shader_parameter/side_roughness = 1.0
-shader_parameter/top_metallic_specular = 0.0
-shader_parameter/side_metallic_specular = 0.0
-shader_parameter/top_metallic = 0.0
-shader_parameter/side_metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/top_emission = Color(0, 0, 0, 1)
-shader_parameter/side_emission = Color(0, 0, 0, 1)
-shader_parameter/top_emission_energy_multiplier = 1.0
-shader_parameter/side_emission_energy_multiplier = 1.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/top_clearcoat = 1.0
-shader_parameter/side_clearcoat = 1.0
-shader_parameter/top_clearcoat_roughness = 0.5
-shader_parameter/side_clearcoat_roughness = 0.5
-shader_parameter/enable_anisotropy = false
-shader_parameter/top_anisotropy = 0.0
-shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_14t51"]
-material = SubResource("ShaderMaterial_ehnte")
-radius = 10.0
-radial_steps = 6
-sections = 10
-section_length = 1.0
-curve = SubResource("Curve_6dxpo")
-
 [sub_resource type="Curve3D" id="Curve3D_pke07"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, -1.985, 0, 3.545, 0, 0, 0, -0.095, 0, 0, 0.055, 0, 0, 0, 0, -1, -1.51, 0, 0.38, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 2, 0, -2),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.465, 0, 0, 0.055, 0, 0, 0, 0, -1, -1.51, 0, 0.38, 0, 0, 0, 1, 0, -2, 0, 0, 0, 0, 0, 0, 2, 0, -2),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -1106,6 +1134,46 @@ customProfileShapeDown = SubResource("Curve_xt1wf")
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
+[node name="Deco Chunk3" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, 4.800001, -0.19999987, -1.9000001)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk4" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -5.199999, 0.80000013, 0.5)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk5" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.9848077, 0, -0.17364824, 0, 1, 0, 0.17364824, 0, 0.9848077, -5.199999, -1.1999998, 3)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk6" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -5.199999, 0.8000002, 5.5038605)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk7" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -5.199999, -0.19999981, 7.5038605)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk8" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.9848077, 0, -0.17364824, 0, 1, 0, 0.17364824, 0, 0.9848077, 4.2867746, -1.1999998, 1.8832321)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk9" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, 4.2867746, 1.1755214, 4.3870926)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
+[node name="Deco Chunk10" type="MeshInstance3D" parent="Rooms/Tutohub-connectivehub/Props/Deco Walls"]
+transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, 4.2867746, -1.0857868, 8.387093)
+mesh = SubResource("TubeTrailMesh_14t51")
+skeleton = NodePath("../../../../../..")
+
 [node name="Fences" type="Node3D" parent="Rooms/Tutohub-connectivehub/Props"]
 
 [node name="Wood Fence" parent="Rooms/Tutohub-connectivehub/Props/Fences" instance=ExtResource("25_5onks")]
@@ -1339,7 +1407,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0, -6)
 [node name="ObjectOccluder" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 script = ExtResource("34_n5fu6")
-hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3")]
+hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../../../TerraBrush")]
 sceneParent = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
@@ -1357,7 +1425,6 @@ metadata/OFFShape = true
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
-visible = false
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle1" instance=ExtResource("1_emjup")]
 data = {
@@ -1561,9 +1628,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle2" instance=ExtResource("1_emjup")]
 data = {
-"cells": PackedInt32Array(-589824, 1, 1048658, -524289, 0, 1048658, -524289, 1, 1048660, -589822, 1, 1048658, -589820, 1, 1048658, -589821, 1, 1048658, -589823, 1, 82, -589819, 1, 655442, -589818, 1, 655442, -589817, 1, 655442, -589816, 1, 655362, -589819, 0, 655442, -589818, 0, 655442, -589817, 0, 82, -589816, 0, 82, -589816, 65535, 82, -589817, 65535, 82, -589818, 65535, 82, -589819, 65535, 655442, -589820, 0, 655442, -589820, 65535, 655442, -589815, 1, 655362, -458743, 1, 1048580, -589815, 0, 1441874, -589815, 65535, 1441874, -458744, 1, 7, -589814, 65535, 2, -589814, 0, 82, -589814, 1, 655362, -589813, 1, 1048578, -589813, 0, 1048578, -589813, 65535, 1048578, -589813, 65534, 1048578, -458740, 65535, 3, -458740, 0, 3, -458739, 0, 655362, -458739, 65535, 655362, -458738, 0, 655362, -458738, 65535, 1048578, -458738, 1, 1048578, -458739, 65534, 655361, -458740, 65534, 1048576, -458739, 1, 1441793, -458740, 1, 655360, -458738, 65534, 1048578, -131077, 65535, 82, -131077, 0, 82, -131078, 0, 82, -131078, 65535, 82, -65537, 0, 84, -65537, 65535, 84, -524289, 65535, 82, -589821, 0, 82, -589821, 65535, 82, -589814, 65534, 2, -458743, 0, 1441799, -458744, 0, 1048582, -589812, 1, 1048578, -589811, 1, 1048578, -589810, 1, 1048578, -589812, 0, 1048578, -589811, 0, 1048578, -589810, 0, 1048578, -589810, 65535, 1048578, -589811, 65535, 1048578, -589812, 65535, 1048578, -589812, 65534, 1048578, -589811, 65534, 1048578, -589810, 65534, 1048578, -458741, 1, 655363, -458742, 1, 655362, -458742, 0, 1441795, -458741, 0, 0, -589809, 0, 2, -589809, 65535, 2, -458737, 0, 2, -458737, 65535, 2, -327665, 0, 2, -327665, 65535, 2, -589809, 1, 2, -458737, 1, 2, -458737, 65534, 2, -589809, 65534, 2, -327665, 65534, 1441795, -327665, 1, 1048579, -327666, 0, 3, -327666, 65535, 3, -327666, 65534, 1048576, -327666, 1, 655360)
+"cells": PackedInt32Array(-589824, 1, 162, -524289, 0, 162, -524289, 1, 164, -589822, 1, 162, -589820, 1, 162, -589821, 1, 162, -589823, 1, 162, -589819, 1, 162, -589818, 1, 162, -589817, 1, 162, -589816, 1, 655362, -589819, 0, 162, -589818, 0, 162, -589817, 0, 162, -589816, 0, 162, -589816, 65535, 162, -589817, 65535, 162, -589818, 65535, 162, -589819, 65535, 162, -589820, 0, 162, -589820, 65535, 162, -589815, 1, 655362, -458743, 1, 1048580, -589815, 0, 162, -589815, 65535, 162, -458744, 1, 7, -589814, 65535, 2, -589814, 0, 162, -589814, 1, 655362, -589813, 1, 1048578, -589813, 0, 1048578, -589813, 65535, 1048578, -589813, 65534, 1048578, -458740, 65535, 3, -458740, 0, 3, -458739, 0, 655362, -458739, 65535, 655362, -458738, 0, 655362, -458738, 65535, 1048578, -458738, 1, 1048578, -458739, 65534, 655361, -458740, 65534, 1048576, -458739, 1, 1441793, -458740, 1, 655360, -458738, 65534, 1048578, -131077, 65535, 162, -131077, 0, 162, -131078, 0, 162, -131078, 65535, 162, -65537, 0, 164, -65537, 65535, 164, -524289, 65535, 162, -589821, 0, 162, -589821, 65535, 162, -589814, 65534, 2, -458743, 0, 1441799, -458744, 0, 1048582, -589812, 1, 1048578, -589811, 1, 1048578, -589810, 1, 1048578, -589812, 0, 1048578, -589811, 0, 1048578, -589810, 0, 1048578, -589810, 65535, 1048578, -589811, 65535, 1048578, -589812, 65535, 1048578, -589812, 65534, 1048578, -589811, 65534, 1048578, -589810, 65534, 1048578, -458741, 1, 655363, -458742, 1, 655362, -458742, 0, 1441795, -458741, 0, 0, -589809, 0, 2, -589809, 65535, 2, -458737, 0, 2, -458737, 65535, 2, -327665, 0, 2, -327665, 65535, 2, -589809, 1, 2, -458737, 1, 2, -458737, 65534, 2, -589809, 65534, 2, -327665, 65534, 1441795, -327665, 1, 1048579, -327666, 0, 3, -327666, 65535, 3, -327666, 65534, 1048576, -327666, 1, 655360)
 }
-metadata/_editor_floor_ = Vector3(0, -9, 0)
+metadata/_editor_floor_ = Vector3(0, -3, 0)
 
 [node name="Pushdoors" type="Node3D" parent="Rooms/Tutohub-Puzzle2"]
 
@@ -1644,40 +1711,85 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -3.5, 1.5)
 
 [node name="Walls" type="Node3D" parent="Rooms/Tutohub-Puzzle2"]
 
-[node name="LateralI" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.5, -1.01)
+[node name="LateralI Up" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -1.0100002)
 curve = SubResource("Curve3D_7bfx3")
 script = ExtResource("8_143k4")
-wallHeight = 9.0
+wallHeight = 6.0
 material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="LateralD" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -4.5, 1)
+[node name="LateralI Down" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, -1.0100002)
+curve = SubResource("Curve3D_xsgam")
+script = ExtResource("8_143k4")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="LateralD Up" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 1)
 curve = SubResource("Curve3D_5tbw5")
 script = ExtResource("8_143k4")
-wallHeight = 9.0
+wallHeight = 6.0
 material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-Puzzle2/Walls/LateralD"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.39999962, 4, -0.5)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-Puzzle2/Walls/LateralD Up"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.39999962, 0, -0.5)
 visible = false
 layers = 0
 operation = 2
 polygon = PackedVector2Array(-0.4, 0, -0.3, 2.1000001, 1.4, 2.1000001, 1.4, 0)
 
-[node name="WallGenerator" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.8, 1)
+[node name="LateralD Down" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 1)
+curve = SubResource("Curve3D_wfdgi")
+script = ExtResource("8_143k4")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Patcher Entrance 1" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.5, 1)
+curve = SubResource("Curve3D_ucst0")
+script = ExtResource("8_143k4")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Patcher Entrance 2" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, -0.5, -1)
+curve = SubResource("Curve3D_ucst0")
+script = ExtResource("8_143k4")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Patcher Entrance 3" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 1)
 curve = SubResource("Curve3D_oq1ii")
+script = ExtResource("8_143k4")
+wallHeight = 10.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Patcher Entrance 4" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1, -3.5, -1)
+curve = SubResource("Curve3D_ssq6m")
 script = ExtResource("8_143k4")
 wallHeight = 7.0
 wallMode = 1
 material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator2" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -2)
+[node name="Bellow Down" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, -2)
 curve = SubResource("Curve3D_lgup0")
 script = ExtResource("8_143k4")
 wallHeight = 7.0
@@ -1685,7 +1797,7 @@ wallMode = 1
 material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator3" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+[node name="Backspace Down" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -3.5000002, 2)
 curve = SubResource("Curve3D_q3opy")
 script = ExtResource("8_143k4")
@@ -1697,7 +1809,7 @@ customWallWidth = 5.0
 customDownWallWidth = 4.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator4" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
+[node name="Backspace Up" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -3.5000002, 2)
 curve = SubResource("Curve3D_rm4ct")
 script = ExtResource("8_143k4")
@@ -1841,46 +1953,6 @@ curve = SubResource("Curve3D_b1ush")
 script = ExtResource("8_143k4")
 material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
-[node name="Deco Chunk3" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -3.1999989, -0.19999987, 4.1)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk4" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -13.199999, 0.80000013, 6.5)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk5" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.9848077, 0, -0.17364824, 0, 1, 0, 0.17364824, 0, 0.9848077, -13.199999, -1.1999998, 9)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk6" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -13.199999, 0.8000002, 11.50386)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk7" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -13.199999, -0.19999981, 13.50386)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk8" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.9848077, 0, -0.17364824, 0, 1, 0, 0.17364824, 0, 0.9848077, -3.7132254, -1.1999998, 7.883232)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk9" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -3.7132254, 1.1755214, 10.387093)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
-
-[node name="Deco Chunk10" type="MeshInstance3D" parent="Rooms/Tutohub-Puzzle2/Props/Deco Walls"]
-transform = Transform3D(0.93969274, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.93969274, -3.7132254, -1.0857868, 14.387093)
-mesh = SubResource("TubeTrailMesh_14t51")
-skeleton = NodePath("../../../../../..")
 
 [node name="Fringes" type="Node3D" parent="Rooms/Tutohub-Puzzle2/Props"]
 
