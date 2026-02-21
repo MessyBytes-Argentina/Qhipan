@@ -17,6 +17,9 @@ uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_en
 uniform ivec2 albedo_texture_size;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
 
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_scale : hint_range(-16.0, 16.0) = 1.0;
+
 uniform float roughness : hint_range(0.0, 1.0);
 uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
 uniform vec4 metallic_texture_channel;
@@ -45,7 +48,10 @@ void fragment() {
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	vec4 current_glass = is_lit ? glass_lit_color: glass_color;
 	ALBEDO = mix(current_glass.rgb, albedo_tex.rgb, albedo_tex.a) * albedo.rgb;
-
+	
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb * albedo_tex.a;
+	NORMAL_MAP_DEPTH = normal_scale * albedo_tex.a;
+	
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
 	SPECULAR = specular;
