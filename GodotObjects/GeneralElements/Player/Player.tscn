@@ -1607,9 +1607,10 @@ script = ExtResource("2_bjorx")
 doLerpToCenter = true
 parent = NodePath("..")
 
-[node name="DarknessBlockerModule" type="Node" parent="."]
+[node name="DarknessBlockerModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
 script = ExtResource("3_2q27j")
+parent = NodePath("..")
 
 [node name="ForcedMovement" type="Node" parent="."]
 unique_name_in_owner = true

@@ -21,6 +21,7 @@ var pickupHandler: PickupHandler
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_parent().ready
+	await get_tree().create_timer(2.0).timeout
 	_get_shaders(get_parent())
 	if Engine.is_editor_hint():
 		for shader in shaders:
@@ -45,11 +46,11 @@ func _process(_delta: float) -> void:
 		shader.set_shader_parameter("playerHoldsLight", pickupHandler.currentPickup is LampSticker)
 		shader.set_shader_parameter("actualPlayerPosition", player.global_position)
 
-func _get_shaders(node: Node) -> void:
-	if node is MultiMeshInstance3D: _store_shaders(node.multimesh.mesh)
-	if node is MeshInstance3D: _store_shaders(node.mesh)
-	for child in node.get_children():
-		_get_shaders(child)
+func _get_shaders(refNode: Node) -> void:
+	if refNode == self: return
+	if refNode is MultiMeshInstance3D: _store_shaders(refNode.multimesh.mesh)
+	if refNode is MeshInstance3D: _store_shaders(refNode.mesh)
+	refNode.get_children().map(_get_shaders)
 
 func _store_shaders(mesh: Mesh) -> void:
 	if mesh is PrimitiveMesh:

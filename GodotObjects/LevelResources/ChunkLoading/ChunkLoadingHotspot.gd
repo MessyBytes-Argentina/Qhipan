@@ -48,10 +48,10 @@ func _ready() -> void:
 		if a.has_meta("LoadShape"): loadShapes.append(a) 
 		elif a.has_meta("UnloadShape"): unloadShapes.append(a)
 		else:
-			if a.name == "LoadShape":
+			if a.name.begins_with("LoadShape"):
 				loadShapes.append(a)
 				a.set_meta("LoadShape", true)
-			elif a.name == "UnloadShape":
+			elif a.name.begins_with("UnloadShape"):
 				unloadShapes.append(a)
 				a.set_meta("UnloadShape", true)
 		)
