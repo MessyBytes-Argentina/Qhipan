@@ -2,6 +2,7 @@ extends StaticBody3D
 class_name LitGlass
 
 @export var lightRange: float = 5.0
+@export var lightAttenuation: float = 3.0
 
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 @onready var light: OmniLight3D = %OmniLight3D
@@ -14,6 +15,7 @@ func _ready() -> void:
 	material = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
 	light.omni_range = lightRange
+	light.omni_attenuation = lightAttenuation
 
 func switch_state() -> void:
 	state = not state
