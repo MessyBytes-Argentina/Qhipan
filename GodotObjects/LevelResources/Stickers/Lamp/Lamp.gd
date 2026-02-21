@@ -24,6 +24,8 @@ const stickerTextures: Dictionary[String, Texture2D] = {
 const LIGHTWALLSEPARATION: float = 0.2
 ## Light shine parameters
 const SHINEPARAMETERS: Dictionary[String, Variant] = {"animationTime": 0.5, "transIn": Tween.TRANS_CUBIC, "easeIn": Tween.EASE_IN_OUT, "transOut": Tween.TRANS_QUART, "easeOut": Tween.EASE_OUT, "heldSize": Vector2.ONE * 1.5, "defaultSize": Vector2.ONE * 2.0}
+## No light effects bitflag.
+const NOLIGHTEFFECTS: int = 4
 
 ## The floating mesh with no lighting on.
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
@@ -64,6 +66,8 @@ var shineMaterial: ShaderMaterial
 var shineAlpha: float = 0.0
 ## Current shine animation mode.
 var shineAnimationMode: String = "Off"
+## Are effects turned on.
+var effectsOn: bool = true
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -159,7 +163,7 @@ func set_assets(state: String) -> void:
 
 ## Animates the light area
 func animate_light_fade(newValue: float) -> void:
-	light.show()
+	if effectsOn: light.show()
 	if lightTween:
 		lightTween.finished.disconnect(_on_light_fade_finish)
 		lastLightValue = nextLightValue
@@ -234,6 +238,14 @@ func prerender() -> void:
 	billboardZoomedOut.fixed_size = true
 	billboardZoomedOut.pixel_size = zoomsize
 	billboard.pixel_size = billboardsize
+
+## Places the light then applies special changes.
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0) -> void:
+	if specialFlags & NOLIGHTEFFECTS:
+		effectsOn = false
+		light.hide()
+		shine.hide()
+	super(pos, direction, overrideSize, specialFlags)
 
 ## Activates the sticker effect when held by the player
 func activate_on_player_effect() -> void:

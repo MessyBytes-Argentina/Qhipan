@@ -50,6 +50,8 @@ var polygon: CSGPolygon3D
 var downPolygon: CSGPolygon3D
 ## Reference to the shadow proyecting polygon.
 var shadowPolygon: CSGPolygon3D
+## Stored materials.
+var storedMaterials: Array[ShaderMaterial] = []
 
 ## Executed when node first enters the scene.
 func _ready() -> void:
@@ -81,7 +83,8 @@ func add_material_to_cutout(materialToStore: Material) -> void:
 	if material is not ShaderMaterial: return
 	if Engine.is_editor_hint(): return
 	if not GeneralVariables.is_node_ready(): await GeneralVariables.ready
-	if materialToStore not in GeneralVariables.cutoutMaterials: GeneralVariables.cutoutMaterials.append(materialToStore)
+	storedMaterials.append(materialToStore)
+	GeneralVariables.to_cutout_materials(storedMaterials, true, false)
 
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
@@ -209,5 +212,4 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
-		if customProfileShape and material is ShaderMaterial and polygon:
-			GeneralVariables.cutoutMaterials.erase(polygon.material)
+		GeneralVariables.to_cutout_materials(storedMaterials, false, true)

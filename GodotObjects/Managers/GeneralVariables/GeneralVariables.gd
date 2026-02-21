@@ -19,6 +19,8 @@ const STAGGERWAIT: float = 0.1
 var usingGamepad: bool = false
 ## The collection of materials that have a cutout mode.
 var cutoutMaterials: Array[ShaderMaterial] = []
+## Non duplicate cutout materials.
+var uniqueCutoutMaterials: Array[ShaderMaterial] = []
 ## The Sticker inventory.
 var inventory: StickerInventory
 ## The Stickerable Surface Manager.
@@ -62,6 +64,18 @@ func _input(event: InputEvent) -> void:
 		usingGamepad = currentlyGamepad
 		input_mode_changed.emit(usingGamepad)
 
+## Adds material to cutout list.
+func to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool, doRemake: bool = false) -> void:
+	if doAdd: cutoutMaterials.append_array(materials)
+	else: materials.map(func(a: ShaderMaterial): cutoutMaterials.erase(a))
+	if doRemake:
+		make_unique_cutout_materials()
+
+## Makes a list with unique cutout materials.
+func make_unique_cutout_materials() -> void:
+	uniqueCutoutMaterials = []
+	cutoutMaterials.map(func(a: ShaderMaterial): if a not in uniqueCutoutMaterials: uniqueCutoutMaterials.append(a))
+
 ## Staggers function calls by frames.
 func add_to_stagger_queue(callable: Callable) -> void:
 	toStagger.append(callable)
@@ -87,3 +101,4 @@ func _execute_queue() -> void:
 				if not staggerArray[j][i].get_object(): continue
 				staggerArray[j][i].call()
 		await get_tree().process_frame
+	make_unique_cutout_materials()

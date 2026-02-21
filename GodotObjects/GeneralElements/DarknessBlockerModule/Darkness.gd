@@ -12,6 +12,8 @@ const ONLIGHTUPDATETIMES: int = 5
 const MARGIN: float = 0.5
 ## Darkness margin for detecting light.
 const DARKMARGIN: float = 0.25
+## Collision layers to block raycast.
+const RAYCOLLISIONLAYERS: Array[int] = [1, 6, 7]
 
 ## Reference to the collision shape of the fog.
 @onready var darknessCollisionShape: CollisionShape3D = %DarknessCollisionShape
@@ -34,10 +36,13 @@ var lightsTweening: Array[LampSticker] = []
 var isReadyToCheck: bool = false
 ## Outline blocker material.
 var outlineMaterial: ShaderMaterial
+## Layers turned into usable mask.
+var layerMask: int
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	layerMask = RAYCOLLISIONLAYERS.reduce(func(accum: int, a: int = 0): return accum + pow(2, a - 1), 0)
 	outlineBlocker.mesh = outlineBlocker.mesh.duplicate(true)
 	outlineMaterial = outlineBlocker.get_surface_override_material(0).duplicate()
 	outlineBlocker.set_surface_override_material(0, outlineMaterial)
@@ -112,7 +117,7 @@ func update_collision_shape() -> void:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
 				raycast.hit_from_inside = false
 				raycast.hit_back_faces = false
-				raycast.collision_mask = 1
+				raycast.collision_mask = layerMask
 				if spaceState.intersect_ray(raycast): continue
 				collisionMap.map_data[i] = 0.0
 				if lightStart.distance_to(relativeGlobalPosition) <= lightDistances[lightStart]:
