@@ -27,7 +27,7 @@ rings = 40
 is_hemisphere = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnklw"]
-size = Vector3(0.5673828, 1, 1)
+size = Vector3(0.5673828, 0.25, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wvyl4"]
 render_priority = 0
@@ -78,7 +78,7 @@ size = Vector2(0.75, 0.75)
 orientation = 1
 
 [node name="Fan Placement" type="StaticBody3D"]
-collision_layer = 5
+collision_layer = 4
 script = ExtResource("1_wevj4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -98,7 +98,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15920615, 0.100000024, -0.
 mesh = SubResource("SphereMesh_7fie3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28369138, 0.22500002, 0)
 shape = SubResource("BoxShape3D_xnklw")
 
 [node name="Placeholder Sticker Area" type="Node3D" parent="."]

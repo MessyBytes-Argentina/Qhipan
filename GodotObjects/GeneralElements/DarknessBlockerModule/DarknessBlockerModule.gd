@@ -4,7 +4,7 @@ extends Node
 class_name DarknessBlockerModule
 
 ## Collision layers to block raycast.
-const RAYCOLLISIONLAYERS: Array[int] = [1, 6]
+const RAYCOLLISIONLAYERS: Array[int] = [1, 6, 7]
 
 ## Parent reference.
 @export var parent: PhysicsBody3D
@@ -21,7 +21,7 @@ var lightAreaDetectors: Array[Node]
 var darknessAreas: Array[Node]
 ## Is holding a light.
 var holdingLight: bool = false
-## Layers turned into usable mask
+## Layers turned into usable mask.
 var layerMask: int
 
 ## Called when the node enters the scene tree for the first time.
@@ -44,7 +44,7 @@ func light_area(lightArea: Node, entered: bool) -> void:
 func _process(_delta: float) -> void:
 	if not grabArea.inLight and len(stickerLightAreas) == 0: return
 	var spaceState: PhysicsDirectSpaceState3D = parent.get_world_3d().direct_space_state
-	grabArea.inLight = !stickerLightAreas.any(func(a: Node):
+	grabArea.inLight = !stickerLightAreas.all(func(a: Node):
 		var raycast = PhysicsRayQueryParameters3D.create(parent.global_position, parent.global_position.direction_to(a.global_position) * parent.global_position.distance_to(a.global_position))
 		raycast.collision_mask = layerMask
 		return spaceState.intersect_ray(raycast)

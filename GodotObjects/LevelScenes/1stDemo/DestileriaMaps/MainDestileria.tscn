@@ -872,10 +872,10 @@ script = ExtResource("25_y0kcf")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.299999, -4.55, -0.54999983)
 
 [node name="Sconce" parent="Destileria_puzzle2/Details" instance=ExtResource("13_8gx4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, 2.8000002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1, 2.8000002)
 
 [node name="Sconce2" parent="Destileria_puzzle2/Details" instance=ExtResource("13_8gx4m")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.5, 0, -1.7999997)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.5, 1, -1.7999997)
 
 [node name="Metaprogression" type="Node3D" parent="Destileria_puzzle2"]
 

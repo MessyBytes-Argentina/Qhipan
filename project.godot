@@ -170,6 +170,7 @@ pause={
 3d_physics/layer_4="Darkness"
 3d_physics/layer_5="Light"
 3d_physics/layer_6="Walls"
+3d_physics/layer_7="BlocksLampLight"
 3d_physics/layer_9="AntiStickerArea"
 3d_physics/layer_10="Stickers"
 3d_physics/layer_11="StickerPlacement"

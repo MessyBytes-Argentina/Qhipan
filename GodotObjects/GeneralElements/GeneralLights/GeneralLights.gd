@@ -46,10 +46,11 @@ func _ready() -> void:
 	if localWallDirection == -1: return
 	var appliedRotationToWall: float = global_rotation.y / PI + localWallDirection / PI
 	while appliedRotationToWall < 0: appliedRotationToWall += 2.0
-	if appliedRotationToWall > 2.00: appliedRotationToWall = fmod(appliedRotationToWall, 2.0)
+	if appliedRotationToWall > 2.0: appliedRotationToWall = fmod(appliedRotationToWall, 2.0)
 	for i in range(len(invalidAngles)):
 		invalidAngles[i] = abs(snappedf(invalidAngles[i] + appliedRotationToWall, 0.01))
-		if invalidAngles[i] > 2.00: invalidAngles[i] = fmod(invalidAngles[i], 2.0)
+		if invalidAngles[i] > 2.0: invalidAngles[i] = fmod(invalidAngles[i], 2.0)
+		if invalidAngles[i] == 2.0: invalidAngles[i] = 0.0
 	var player: Player = get_tree().get_first_node_in_group("Player")
 	if not player.is_node_ready():
 		await player.ready
@@ -63,7 +64,8 @@ func check_camera_angle(angle: float) -> void:
 	angle = fmod(angle, PI * 2.0)
 	angle = snappedf(angle / PI, 0.01)
 	if angle == 2.0: angle = 0.0
-	if angle > 2.00: angle = fmod(angle, 2.0)
+	if angle > 2.0: angle = fmod(angle, 2.0)
+	if name == "Sconce_Test": print(angle)
 	if angle in invalidAngles:
 		hide()
 	else:

@@ -47,7 +47,6 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 		spinupSound.play_sound()
 	super(pos, direction, overrideSize)
 	animationPlayer.play("SpinUp")
-	
 
 ## Turns off the fan and grabs it
 func grab(node: Node3D) -> void:
