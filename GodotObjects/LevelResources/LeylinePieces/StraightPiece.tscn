@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp8mywnu1uwvl"]
+
+[ext_resource type="Shader" uid="uid://dubm80uf8txvv" path="res://Assets/Shaders/Leyline.gdshader" id="1_5fjyv"]
+[ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="1_muisu"]
+[ext_resource type="Texture2D" uid="uid://651tv8rs7ag0" path="res://Assets/Textures/Laylines/LeylineTextPixelPathMask.png" id="2_66408"]
+[ext_resource type="Texture2D" uid="uid://bt22jfakxwfss" path="res://Assets/Textures/Laylines/LeylineTextPixelPath.png" id="3_sd624"]
+[ext_resource type="Texture2D" uid="uid://bwcoxx6h3l152" path="res://Assets/Textures/Laylines/LeylineTextPixelPathEmpty.png" id="4_wse1y"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_66408"]
+orientation = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sd624"]
+render_priority = 2
+shader = ExtResource("1_5fjyv")
+shader_parameter/progress = 0.0
+shader_parameter/under = ExtResource("4_wse1y")
+shader_parameter/over = ExtResource("3_sd624")
+shader_parameter/mask = ExtResource("2_66408")
+shader_parameter/segments = 1.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[node name="LeylineStraightPiece" type="Node3D"]
+script = ExtResource("1_muisu")
+
+[node name="LeylinePiece" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.01, 0)
+mesh = SubResource("QuadMesh_66408")
+surface_material_override/0 = SubResource("ShaderMaterial_sd624")

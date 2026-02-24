@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bun480bt8ssjs"]
+[gd_scene load_steps=13 format=3 uid="uid://bun480bt8ssjs"]
 
 [ext_resource type="Script" uid="uid://b2hxonrdflvq3" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingObject.gd" id="1_06fcw"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="4_2hb3y"]
@@ -10,6 +10,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06fcw"]
 size = Vector3(0.9, 1.4, 0.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ud1p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ud1p"]
 
@@ -24,7 +26,7 @@ height = 1024
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg4bo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5n3c"]
 render_priority = 0
 shader = ExtResource("5_eg4bo")
 shader_parameter/progress = 0.0
@@ -69,9 +71,9 @@ shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
 shader_parameter/auxBoxRotation = 0.0
 
 [node name="AlternatingBlock" type="StaticBody3D"]
-collision_layer = 8193
 collision_mask = 0
 script = ExtResource("1_06fcw")
+heldAreaEffect = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
@@ -87,8 +89,18 @@ script = ExtResource("4_2hb3y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717346, 0)
 shape = SubResource("BoxShape3D_06fcw")
 
+[node name="CheckArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 8192
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4ud1p")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_4ud1p")
-surface_material_override/0 = SubResource("ShaderMaterial_eg4bo")
+surface_material_override/0 = SubResource("ShaderMaterial_c5n3c")

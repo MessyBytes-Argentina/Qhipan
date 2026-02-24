@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b5tgvck52s4wj"]
+
+[ext_resource type="Shader" uid="uid://dubm80uf8txvv" path="res://Assets/Shaders/Leyline.gdshader" id="1_qdplh"]
+[ext_resource type="Texture2D" uid="uid://651tv8rs7ag0" path="res://Assets/Textures/Laylines/LeylineTextPixelPathMask.png" id="2_jxxy4"]
+[ext_resource type="Texture2D" uid="uid://bt22jfakxwfss" path="res://Assets/Textures/Laylines/LeylineTextPixelPath.png" id="3_rgu5a"]
+[ext_resource type="Texture2D" uid="uid://bwcoxx6h3l152" path="res://Assets/Textures/Laylines/LeylineTextPixelPathEmpty.png" id="4_b2q8s"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_qdplh")
+shader_parameter/progress = 0.0
+shader_parameter/under = ExtResource("4_b2q8s")
+shader_parameter/over = ExtResource("3_rgu5a")
+shader_parameter/mask = ExtResource("2_jxxy4")
+shader_parameter/segments = 1.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

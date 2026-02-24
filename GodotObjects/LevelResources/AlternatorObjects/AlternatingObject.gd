@@ -22,11 +22,15 @@ const ANIMATIONPARAMETERS: Dictionary[String, Variant] = {
 		if not Engine.is_editor_hint() or not is_node_ready(): return
 		progress = 1.0 if isOff else 0.0
 		_animation_tick(progress)
+## Can be affected by held area.
+@export var heldAreaEffect: bool = true
 
 ## Reference to the mesh.
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 ## Reference to the collision shape.
 @onready var collisionShape: CollisionShape3D = %CollisionShape3D
+## Reference to the check area.
+@onready var checkArea: Area3D = %CheckArea
 
 ## Tween used for animating the block.
 var tween: Tween
@@ -39,6 +43,8 @@ var shape: BoxShape3D
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
+	set_collision_layer_value(14, false)
+	if not heldAreaEffect: checkArea.queue_free()
 	material = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
 	progress = 1.0 if isOff else 0.0

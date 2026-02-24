@@ -18,33 +18,35 @@ var activatedGroups: Array[AlternatingGroup]
 var disablingArea: bool = false
 
 ## Adds an alternating object to the list and switches it's state
-func add_alternating_object(obj) -> void:
+func add_alternating_object(obj: Node) -> void:
 	if placed: return
 	if objectCollection.has(obj): return
+	if obj is Area3D:
+		obj = obj.get_parent()
 	if obj is AlternatingObject or obj is MovingPlatform:
 		objectCollection.append(obj)
-		switch_object(obj)
+		obj.switch_state()
 
 ## Removes an alternating object from the list and switches it's state
-func remove_alternating_object(obj) -> void:
+func remove_alternating_object(obj: Node) -> void:
 	if disablingArea: return
+	print(obj.name)
+	if obj is Area3D:
+		obj = obj.get_parent()
+	print(obj.name)
 	if objectCollection.has(obj): objectCollection.erase(obj)
-	switch_object(obj)
+	obj.switch_state()
 
 ## Empties the list of alternating objects
 func clear_alternating_objects() -> void:
 	for obj in objectCollection:
-		switch_object(obj)
+		obj.switch_state()
 	objectCollection.clear()
-
-## Switches the state of the given object
-func switch_object(obj) -> void:
-	obj.switch_state()
 
 ## Checks for alternating objects not on the activating groups and switches them
 func check_out_of_group(groups: Array) -> void:
 	for obj in objectCollection:
-		if not groups.has(obj.groupParent): switch_object(obj)
+		if not groups.has(obj.groupParent): obj.switch_object()
 
 ## Places the sticker, disables the held area and clears the list of objects
 func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0) -> void:
@@ -100,6 +102,8 @@ func enable_area() -> void:
 	heldAreaChecker.monitorable = true
 	heldAreaChecker.body_entered.connect(add_alternating_object)
 	heldAreaChecker.body_exited.connect(remove_alternating_object)
+	heldAreaChecker.area_entered.connect(add_alternating_object)
+	heldAreaChecker.area_exited.connect(remove_alternating_object)
 
 ## Disables the heldAreaChecker
 func disable_area() -> void:
@@ -110,6 +114,10 @@ func disable_area() -> void:
 		heldAreaChecker.body_entered.disconnect(add_alternating_object)
 	if heldAreaChecker.body_exited.is_connected(remove_alternating_object):
 		heldAreaChecker.body_exited.disconnect(remove_alternating_object)
+	if heldAreaChecker.area_entered.is_connected(add_alternating_object):
+		heldAreaChecker.area_entered.disconnect(add_alternating_object)
+	if heldAreaChecker.area_exited.is_connected(remove_alternating_object):
+		heldAreaChecker.area_exited.disconnect(remove_alternating_object)
 
 ## Deprecated group activation
 #func activate_group(objList: Array) -> void:
