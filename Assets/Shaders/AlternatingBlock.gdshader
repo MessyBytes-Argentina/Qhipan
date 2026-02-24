@@ -132,7 +132,7 @@ void fragment() {
 	vec3 world_pos = wpos(INV_VIEW_MATRIX, VERTEX);
 	vec3 applied_fresnel = basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0;
 	ALBEDO = albedo.rgb + applied_fresnel;
-	vec2 base_uv = UV;
+	vec2 base_uv = vec2(UV.x * 3.0, UV.y * 2.0);
 
 	//Cylinder cutout
 	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
