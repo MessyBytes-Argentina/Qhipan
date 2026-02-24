@@ -1,76 +1,82 @@
-[gd_scene load_steps=10 format=4 uid="uid://bun480bt8ssjs"]
+[gd_scene load_steps=12 format=3 uid="uid://bun480bt8ssjs"]
 
 [ext_resource type="Script" uid="uid://b2hxonrdflvq3" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingObject.gd" id="1_06fcw"]
-[ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="1_ipu0j"]
-[ext_resource type="Material" uid="uid://dlsrpuw0cb45d" path="res://Assets/Materials/WithCutout/BloquesAlternantes/Switch Block Azul.tres" id="3_2hb3y"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="4_2hb3y"]
+[ext_resource type="Shader" uid="uid://cdwry2j0kdtdw" path="res://Assets/Shaders/AlternatingBlock.gdshader" id="5_eg4bo"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="6_c5n3c"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="7_lalsh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2hb3y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("1_ipu0j")
-roughness = 0.5
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_svvih"]
-_surfaces = [{
-"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("/v8AAP//AAAAAAAAAAAAAAAAAAD//wAA/v8AAAAAAAAAAP//AAAAAP///////wAAAAD/////AAD/////AAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_eg4bo"]
-resource_name = "BasePieces_Cube"
-_surfaces = [{
-"aabb": AABB(-0.5, -5.96046e-08, -0.5, 1, 1, 1),
-"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_6leej"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 24,
-"vertex_data": PackedByteArray("/v8AAP////8AAAAAAAD//wAAAAD//////v8AAAAA///+/wAAAAD//wAA//8AAP//AAAAAAAA////////AAD///////8AAP//AAD///////8AAP//AAD///////////////////////8AAAAA/////wAA/////////v8AAP/////+/wAAAABU1f///////1TV/////wAAVNX+/wAA//9U1QAA//8AAFTVAAAAAP//VNUAAAAAAABU1QAA/////1TV/3//P/9//z//f/8//3//P/9/////f////3////9/////f/+//3//v/9//7//f/+//3//f/9//3//f/9//3//f6oqqiqqKqoqqiqqKqoqqipUVaqqVFWqqlRVqqpUVaqq")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_svvih")
+[sub_resource type="BoxShape3D" id="BoxShape3D_eg4bo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06fcw"]
 size = Vector3(0.9, 1.4, 0.9)
 
-[node name="AlternatingBlock" type="CharacterBody3D"]
-collision_layer = 8192
+[sub_resource type="BoxMesh" id="BoxMesh_4ud1p"]
+
+[sub_resource type="Gradient" id="Gradient_4ud1p"]
+offsets = PackedFloat32Array(0.5, 0.7, 0.85, 0.95)
+colors = PackedColorArray(0.78431374, 0.78431374, 0.78431374, 1, 0.39215687, 0.39215687, 0.39215687, 1, 0.78431374, 0.78431374, 0.78431374, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5n3c"]
+gradient = SubResource("Gradient_4ud1p")
+width = 1024
+height = 1024
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg4bo"]
+render_priority = 0
+shader = ExtResource("5_eg4bo")
+shader_parameter/progress = 0.0
+shader_parameter/diameter = 0.8499999810008
+shader_parameter/height = 0.0999999977648
+shader_parameter/albedo = Color(0.3019608, 0.9764706, 0.99607843, 1)
+shader_parameter/light_gradient = ExtResource("7_lalsh")
+shader_parameter/fresnel_gradient = ExtResource("6_c5n3c")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_c5n3c")
+shader_parameter/enable_normal = false
+shader_parameter/normal_scale = 1.0
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
+[node name="AlternatingBlock" type="StaticBody3D"]
+collision_layer = 8193
 collision_mask = 0
 script = ExtResource("1_06fcw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-visible = false
-shape = SubResource("BoxShape3D_2hb3y")
-
-[node name="ObjectMesh" type="MeshInstance3D" parent="."]
-unique_name_in_owner = true
-mesh = SubResource("ArrayMesh_eg4bo")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_2hb3y")
-
-[node name="CubeCollider" type="StaticBody3D" parent="ObjectMesh"]
-unique_name_in_owner = true
-
-[node name="ObjectCollider" type="CollisionShape3D" parent="ObjectMesh/CubeCollider"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_2hb3y")
+shape = SubResource("BoxShape3D_eg4bo")
 
 [node name="AntiDropArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -81,6 +87,8 @@ script = ExtResource("4_2hb3y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717346, 0)
 shape = SubResource("BoxShape3D_06fcw")
 
-[node name="ModeSwitchTimer" type="Timer" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-one_shot = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_4ud1p")
+surface_material_override/0 = SubResource("ShaderMaterial_eg4bo")
