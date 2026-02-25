@@ -715,7 +715,7 @@ sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle1"
 
 [node name="KeySticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_w44tt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1, 0, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7, 1, -1.7)
 sceneParent = NodePath("../..")
 originalParent = "Molino_puzzle1"
 
@@ -771,7 +771,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, -0.5, 1.9000001)
 curve = SubResource("Curve3D_y57pn")
 
 [node name="PorticoA2" type="MeshInstance3D" parent="Props/Fences/Wood Fence3"]
-transform = Transform3D(0.49999994, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999994, -5.75, 0, 5.300001)
+transform = Transform3D(0.5967851, 0, 0.8024011, 0, 1, 0, -0.8024011, 0, 0.5967851, -5.7325745, 0, 5.4067526)
 mesh = SubResource("ArrayMesh_ehnte")
 skeleton = NodePath("../../../../../..")
 surface_material_override/0 = ExtResource("14_y57pn")

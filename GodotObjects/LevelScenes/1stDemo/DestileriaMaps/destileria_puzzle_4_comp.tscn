@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjq5ht1ys7jum"]
+[gd_scene load_steps=28 format=3 uid="uid://bjq5ht1ys7jum"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_mp4qe"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_bnbd0"]
@@ -44,11 +44,12 @@ _data = {
 point_count = 5
 
 [sub_resource type="Curve3D" id="Curve3D_ce4p3"]
+closed = true
 _data = {
-"points": PackedVector3Array(-0.4, 0, -0.5, 0, 0, 0, 0.8000002, 0, -1.1000004, 0, 0, 0, 0, 0, 0, -0.20000076, 0, -0.10000038, 0, 0, 0, 0, 0, 0, -0.19999981, 0, 0.8999996, 0, 0, 0, 0, 0, 0, -1.2, 0, 0.9, 0, 0, 0, 0, 0, 0, -1.2, 0, -0.1, 0, 0, 0, 0, 0, 0, -2.2, 0, -1.1, 0, 0, 0, 0, 0, 0, -5.2, 0, -1.1),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.8000002, 0, -1.1000004, 0, 0, 0, 0, 0, 0, -0.20000076, 0, -0.10000038, 0, 0, 0, 0, 0, 0, -0.19999981, 0, 0.8999996, 0, 0, 0, 0, 0, 0, -1.2, 0, 0.9, 0, 0, 0, 0, 0, 0, -1.2, 0, -0.1, 0, 0, 0, 0, 0, 0, -2.2, 0, -1.1, 0, 0, 0, 0, 0, 0, -5.2, 0, -1.1, 0, 0, 0, 0, 0, 0, -5.2, 0, 2, 0, 0, 0, 0, 0, 0, -4.2, 0, 3, 0, 0, 0, 0, 0, 0, -0.2, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, 2),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 7
+point_count = 11
 
 [sub_resource type="Curve3D" id="Curve3D_t6u1v"]
 _data = {
@@ -56,13 +57,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-
-[sub_resource type="Curve3D" id="Curve3D_8lg17"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 0, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 6, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
 
 [sub_resource type="Curve3D" id="Curve3D_keq1n"]
 _data = {
@@ -77,7 +71,7 @@ point_count = 2
 size = Vector3(5, 1, 9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1cedh"]
-size = Vector3(3, 1, 2)
+size = Vector3(3, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1mtl"]
 
@@ -195,16 +189,6 @@ wallMode = 1
 material = ExtResource("8_qmvnx")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
-[node name="WallGenerator2" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4990005, 3, 8.5)
-visible = false
-curve = SubResource("Curve3D_8lg17")
-script = ExtResource("7_d2c6w")
-wallHeight = 11.5
-wallMode = 1
-material = ExtResource("8_qmvnx")
-metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
-
 [node name="Fences" type="Node3D" parent="Props"]
 
 [node name="Stone Fence" parent="Props/Fences" instance=ExtResource("9_2ky1u")]
@@ -235,7 +219,7 @@ metadata/OFFShape = true
 [node name="Occluder2" type="Node3D" parent="Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 9.500002)
 script = ExtResource("10_8lg17")
-showObjects = [NodePath("../../Props/Walls/WallGenerator2")]
+showObjects = [NodePath("")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
@@ -260,7 +244,7 @@ rootNode = NodePath("../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="Widgets/ChunkLoadingHotspot-enterpuzzle-4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
 shape = SubResource("BoxShape3D_1cedh")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true

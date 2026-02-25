@@ -1,48 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://banlalnkd4uiq"]
+[gd_scene load_steps=5 format=3 uid="uid://banlalnkd4uiq"]
 
 [ext_resource type="Script" uid="uid://d4kga0lfadomd" path="res://GodotObjects/LevelResources/Props/Glass/Glass.gd" id="1_j3dgb"]
-[ext_resource type="Shader" uid="uid://cslh1svjoe47e" path="res://Assets/Shaders/LitGlass.gdshader" id="1_mo823"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_j3dgb"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_1ucbk"]
+[ext_resource type="Material" uid="uid://87yjqkwsjky" path="res://GodotObjects/LevelResources/Props/Glass/Glass Material Fallback.tres" id="2_f4b8h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7fq5l"]
 size = Vector3(3, 0.5, 3)
-
-[sub_resource type="Gradient" id="Gradient_sagqi"]
-offsets = PackedFloat32Array(0.9, 0.9, 0.92, 0.98, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 0.17447203, 0.20420334, 0.24582905, 1, 0.17254902, 0.20392157, 0.24705882, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_p7afy"]
-gradient = SubResource("Gradient_sagqi")
-width = 1024
-height = 1024
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0os8n"]
-render_priority = 1
-shader = ExtResource("1_mo823")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/glass_color = Color(0, 1, 1, 0.19607843)
-shader_parameter/glass_lit_color = Color(1, 0.78431374, 0, 0.78431374)
-shader_parameter/is_lit = false
-shader_parameter/light_gradient = ExtResource("3_1ucbk")
-shader_parameter/fresnel_gradient = ExtResource("2_j3dgb")
-shader_parameter/texture_albedo = SubResource("GradientTexture2D_p7afy")
-shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/lit_emission = Color(1, 0.78431374, 0, 1)
-shader_parameter/emission_energy = 0.0
-shader_parameter/lit_emission_energy = 4.99999988824
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxjx7"]
 size = Vector3(3, 0.25, 3)
@@ -55,7 +17,7 @@ script = ExtResource("1_j3dgb")
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_7fq5l")
 skeleton = NodePath("../../../Grates")
-surface_material_override/0 = SubResource("ShaderMaterial_0os8n")
+surface_material_override/0 = ExtResource("2_f4b8h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nxjx7")
