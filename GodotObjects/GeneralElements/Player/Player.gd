@@ -118,6 +118,8 @@ signal camera_rotated(newAngle: float)
 @onready var coolSticker: Sprite3D = %CoolSticker
 ## Reference to cool sticker shine.
 @onready var shine: MeshInstance3D = %Shine
+## Reference to the alternator held effect.
+@onready var alternatorHeldEffect: MeshInstance3D = %AlternatorHeldEffect
 #endregion
 
 #region Variables

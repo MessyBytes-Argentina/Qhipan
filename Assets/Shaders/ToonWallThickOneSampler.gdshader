@@ -168,7 +168,7 @@ void fragment() {
 	bool doCutout = !rotating&& normalCheckToPlayer; // && auxMode 
 	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
-	ALBEDO = mix(ALBEDO, goesDown ? fade_color_down : fade_color_up, 1.0 - smoothstep(0.0, 1.0, top_obfuscation.r * screen_obfuscation.r * selective_screen_obfuscation * smoothstep(0.0, 0.5, current_selective_mask)));
+	ALBEDO = clamp(mix(ALBEDO, goesDown ? fade_color_down : fade_color_up, 1.0 - smoothstep(0.0, 1.0, top_obfuscation.r * screen_obfuscation.r * selective_screen_obfuscation * smoothstep(0.0, 0.5, current_selective_mask))), vec3(0.0), vec3(1.0));
 
 	// ORM Sampler
 	vec4 base_ORM = triplanar_texture(texture_orm, power_normal, triplanar_pos) * ALPHA * current_selective_mask;

@@ -1,11 +1,52 @@
-[gd_scene load_steps=11 format=4 uid="uid://binvrpy31ahx6"]
+[gd_scene load_steps=15 format=4 uid="uid://binvrpy31ahx6"]
 
 [ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_4qakn"]
 [ext_resource type="Material" uid="uid://cfkxbb4k5yns7" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/Cemento Destilería.tres" id="3_7x5hj"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_ob2je"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_0ptab"]
+[ext_resource type="Material" uid="uid://dlhk43ultf6xw" path="res://Assets/Materials/WithCutout/BloquesAlternantes/MovingPlatform internal.tres" id="6_vqjp4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iinhb"]
-albedo_color = Color(0.0075333444, 0.0010539782, 0.012617188, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtoqw"]
+render_priority = 0
+shader = ExtResource("3_4qakn")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/light_gradient = ExtResource("5_0ptab")
+shader_parameter/fresnel_gradient = ExtResource("4_ob2je")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/enable_normal = false
+shader_parameter/normal_scale = 1.0
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dgtsm"]
 _surfaces = [{
@@ -52,7 +93,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
-"material": SubResource("StandardMaterial3D_iinhb"),
+"material": SubResource("ShaderMaterial_mtoqw"),
 "name": "Interior",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -79,9 +120,11 @@ collision_layer = 8193
 collision_mask = 8192
 script = ExtResource("1_qh56c")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.104680926, 0)
 mesh = SubResource("ArrayMesh_mibjh")
+surface_material_override/1 = ExtResource("6_vqjp4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049999997, 0)
@@ -122,3 +165,4 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [connection signal="body_entered" from="StopCheck" to="." method="stop_moving"]
 [connection signal="body_entered" from="PlayerChecker" to="." method="check_power"]
+[connection signal="body_exited" from="PlayerChecker" to="." method="player_off"]

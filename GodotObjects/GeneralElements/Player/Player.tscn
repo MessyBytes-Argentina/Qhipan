@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=198 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -158,6 +158,7 @@
 [ext_resource type="Texture2D" uid="uid://bdc824p55k71v" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 2.png" id="146_ev2up"]
 [ext_resource type="Texture2D" uid="uid://cw7fd8gsmo6re" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 3.png" id="147_1jlix"]
 [ext_resource type="Texture2D" uid="uid://bji8lkq3pgt3h" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 4.png" id="148_a6q8b"]
+[ext_resource type="Shader" uid="uid://cvyi8x0g1llyf" path="res://Assets/Shaders/AlternatorArea.gdshader" id="159_1nwq5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
@@ -1593,6 +1594,22 @@ _data = {
 &"preload": SubResource("Animation_xq41j")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_q1b61"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6p00r"]
+render_priority = 1
+shader = ExtResource("159_1nwq5")
+shader_parameter/albedo = Color(0, 1, 1, 1)
+shader_parameter/emission_color = Color(0, 1, 1, 1)
+shader_parameter/emission_amount = 0.50000002375
+shader_parameter/rim_steepness = 3.50000016625
+shader_parameter/rim_steepness_movement = 1.0000000475
+shader_parameter/animation_speed = 3.0000000447036
+shader_parameter/uv_scale = Vector3(0, 0, 0)
+shader_parameter/uv_offset = Vector3(0, 0, 0)
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
 collision_layer = 2
@@ -1895,3 +1912,10 @@ transform = Transform3D(-0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 
 
 [node name="DetectionRaycast4" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
 transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -0.35355335, -0.050000012, 0.353553)
+
+[node name="AlternatorHeldEffect" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_q1b61")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_6p00r")
