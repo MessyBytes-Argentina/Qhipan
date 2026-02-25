@@ -4,11 +4,11 @@ class_name AlternatingObject
 
 ## Parameter to be used for the on and off animation.
 const ANIMATIONPARAMETERS: Dictionary[String, Variant] = {
-	"time": 0.3,
+	"time": 0.5,
 	"ease": Tween.EaseType.EASE_OUT,
-	"trans": Tween.TransitionType.TRANS_BACK,
+	"trans": Tween.TransitionType.TRANS_BOUNCE,
 	"offColor": Color("cc4f6d"),
-	"onColor": Color("4df9fe"),
+	"onColor": Color("3dc7cc"),
 	"onSize": Vector3(0.6, 0.1, 0.6),
 	"onPosition": Vector3(0.0, 0.05, 0.0),
 	"offSize": Vector3(1.0, 1.0, 1.0),
