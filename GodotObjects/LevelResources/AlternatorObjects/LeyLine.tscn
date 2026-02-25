@@ -1,23 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4llfjretvmtq"]
+[gd_scene load_steps=11 format=3 uid="uid://b4llfjretvmtq"]
 
 [ext_resource type="Script" uid="uid://cleoji6ng6n2x" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.gd" id="1_7bq5v"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="2_7bq5v"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="2_gf76q"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_0qu5i"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="4_xskrr"]
+[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_albedo.png" id="5_23152"]
+[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_normal.png" id="6_ixv30"]
+[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_orm.png" id="7_fg5lw"]
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cc2ww"]
-transparency = 1
-albedo_color = Color(0, 1, 0, 0.196078)
-emission_enabled = true
-emission = Color(0, 1, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvyl4"]
+render_priority = 0
+shader = ExtResource("2_gf76q")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("4_xskrr")
+shader_parameter/fresnel_gradient = ExtResource("3_0qu5i")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("5_23152")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("6_ixv30")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("7_fg5lw")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = true
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_5l3es"]
-material = SubResource("ORMMaterial3D_cc2ww")
-size = Vector3(1, 0.01, 1)
+[sub_resource type="QuadMesh" id="QuadMesh_g7bac"]
+material = SubResource("ShaderMaterial_wvyl4")
+size = Vector2(0.75, 0.75)
+orientation = 1
 
 [node name="LeyLine" type="Node3D"]
 script = ExtResource("1_7bq5v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_5l3es")
+mesh = SubResource("QuadMesh_g7bac")
 
 [node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
 unique_name_in_owner = true
