@@ -61,6 +61,7 @@ orientation = 1
 script = ExtResource("1_7bq5v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_g7bac")
 
 [node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
