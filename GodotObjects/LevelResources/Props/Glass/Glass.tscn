@@ -1,10 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://banlalnkd4uiq"]
+[gd_scene load_steps=13 format=3 uid="uid://banlalnkd4uiq"]
 
 [ext_resource type="Script" uid="uid://d4kga0lfadomd" path="res://GodotObjects/LevelResources/Props/Glass/Glass.gd" id="1_j3dgb"]
-[ext_resource type="Material" uid="uid://87yjqkwsjky" path="res://GodotObjects/LevelResources/Props/Glass/Glass Material Fallback.tres" id="2_f4b8h"]
+[ext_resource type="Shader" uid="uid://cslh1svjoe47e" path="res://Assets/Shaders/LitGlass.gdshader" id="2_mo823"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_j3dgb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7fq5l"]
 size = Vector3(3, 0.5, 3)
+
+[sub_resource type="Gradient" id="Gradient_1ucbk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.23859648, 0.50877196, 0.6912281, 0.8350877)
+colors = PackedColorArray(0, 0, 0, 1, 0.37036446, 0.3703645, 0.37036446, 1, 0.629675, 0.6296747, 0.6296747, 1, 0.8732984, 0.8732984, 0.8732984, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7fq5l"]
+gradient = SubResource("Gradient_1ucbk")
+
+[sub_resource type="Gradient" id="Gradient_sagqi"]
+offsets = PackedFloat32Array(0.8, 0.8, 0.807, 0.9954887, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 0.17447203, 0.20420334, 0.24582905, 1, 0.17254902, 0.20392157, 0.24705882, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p7afy"]
+gradient = SubResource("Gradient_sagqi")
+width = 1024
+height = 1024
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_mo823"]
+offsets = PackedFloat32Array(0.8, 0.8, 0.937594, 0.9766917, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.84705883, 0.64705884, 0.8235294, 1, 0.49803922, 0.49803922, 1, 1, 0.8, 0.49019608, 0.89411765, 1, 0.36862746, 0.21568628, 0.8901961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3dgb"]
+gradient = SubResource("Gradient_mo823")
+width = 1024
+height = 1024
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sagqi"]
+render_priority = 1
+shader = ExtResource("2_mo823")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/glass_color = Color(0.3795, 0.55, 0.55, 0.5882353)
+shader_parameter/glass_lit_color = Color(0.45000002, 0.62, 0.75, 0.5882353)
+shader_parameter/is_lit = false
+shader_parameter/light_gradient = SubResource("GradientTexture1D_7fq5l")
+shader_parameter/fresnel_gradient = ExtResource("3_j3dgb")
+shader_parameter/texture_albedo = SubResource("GradientTexture2D_p7afy")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0
+shader_parameter/texture_normal = SubResource("GradientTexture2D_j3dgb")
+shader_parameter/normal_scale = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/lit_emission = Color(0.47970536, 1.6289232, 1.4182332, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/lit_emission_energy = 4.99999988824
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxjx7"]
 size = Vector3(3, 0.25, 3)
@@ -12,12 +70,14 @@ size = Vector3(3, 0.25, 3)
 [node name="Glass" type="StaticBody3D"]
 collision_layer = 4096
 script = ExtResource("1_j3dgb")
+lightRange = 3.5
+lightAttenuation = 2.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_7fq5l")
 skeleton = NodePath("../../../Grates")
-surface_material_override/0 = ExtResource("2_f4b8h")
+surface_material_override/0 = SubResource("ShaderMaterial_sagqi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nxjx7")
@@ -26,7 +86,7 @@ shape = SubResource("BoxShape3D_nxjx7")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999998, 0)
 visible = false
-light_color = Color(0.68975353, 0.6753321, 3.85046e-07, 1)
-light_energy = 0.5
+light_color = Color(1, 0.67616665, 0.32999998, 1)
+light_energy = 0.3
 light_indirect_energy = 0.1
 omni_attenuation = 3.0
