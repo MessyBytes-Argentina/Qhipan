@@ -47,6 +47,7 @@ func _ready() -> void:
 	if not heldAreaEffect: checkArea.queue_free()
 	material = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
+	GeneralVariables.to_cutout_materials([material], true, true)
 	progress = 1.0 if isOff else 0.0
 	shape = collisionShape.shape.duplicate()
 	collisionShape.shape = shape
@@ -79,3 +80,9 @@ func _animation_tick(currentProgress: float) -> void:
 	material.set_shader_parameter("albedo", lerp(ANIMATIONPARAMETERS.onColor, ANIMATIONPARAMETERS.offColor, progress))
 	shape.size = ANIMATIONPARAMETERS.offSize.lerp(ANIMATIONPARAMETERS.onSize, progress)
 	collisionShape.position = ANIMATIONPARAMETERS.offPosition.lerp(ANIMATIONPARAMETERS.onPosition, progress)
+
+## Cleans unique materials.
+func _notification(what) -> void:
+	if Engine.is_editor_hint(): return
+	if what == NOTIFICATION_PREDELETE:
+		GeneralVariables.to_cutout_materials([material], false, true)

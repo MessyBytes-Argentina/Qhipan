@@ -44,6 +44,7 @@ var currentEmission: float
 func _ready() -> void:
 	material = mesh.get_surface_override_material(1).duplicate()
 	mesh.set_surface_override_material(1, material)
+	GeneralVariables.to_cutout_materials([material], true, true)
 	mode = "permanent" if isPermanent else "on" if powered else "off"
 	animate()
 
@@ -97,10 +98,18 @@ func animate() -> void:
 	tween.set_loops()
 	tween.play()
 
+## One animation tick for material color.
 func _animation_tick_color(newColor: Color) -> void:
 	material.set_shader_parameter("emission", newColor)
 	currentColor = newColor
 
+## One animation tick for material emission.
 func _animation_tick_emission(newEmission: float) -> void:
 	material.set_shader_parameter("emission_energy_multiplier", newEmission)
 	currentEmission = newEmission
+
+## Cleans unique materials.
+func _notification(what) -> void:
+	if Engine.is_editor_hint(): return
+	if what == NOTIFICATION_PREDELETE:
+		GeneralVariables.to_cutout_materials([material], false, true)
