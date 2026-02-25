@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
 [ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="3_x7val"]
 [ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="4_cops7"]
-[ext_resource type="PackedScene" uid="uid://c2lxh7gg1mdwq" path="res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/destileria_finame_comp.tscn" id="5_x7val"]
+[ext_resource type="PackedScene" uid="uid://dvwxq31fg57on" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective.tscn" id="5_x7val"]
 
 [node name="Art Main Test" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6.3, -0.2477467, -1.5999999)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.7000003, 0.65225345, 5.3)
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("3_feuco")]
 startEnvironment = ExtResource("3_x7val")
 startLight = ExtResource("4_cops7")
 
-[node name="Destileria_finame_comp" parent="." instance=ExtResource("5_x7val")]
+[node name="Tutohub-connective" parent="." instance=ExtResource("5_x7val")]
