@@ -92,8 +92,10 @@ var UUID: int
 var hasBeenMoved: bool = false
 ## Area to get scene parent.
 var parentChecker: Area3D
-## Has been moved
+## Has been moved.
 var moved: bool = false
+## Placed particles.
+var placedParticles: MultipleParticle3DEmitter
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -105,6 +107,7 @@ func _ready() -> void:
 		return
 	if self is not InventorySticker:
 		parentChecker = %ParentChecker
+		placedParticles = %StickedPlacedParticles
 	collisionMask = collision_mask
 	meshMaterial = mesh.get_surface_override_material(0).duplicate(true)
 	mesh.set_surface_override_material(0, meshMaterial)
@@ -203,6 +206,10 @@ func prerender() -> void:
 
 ## Places the sticker on the given area facing the given direction
 func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0) -> void:
+	if not Vector3.UP.cross(direction).is_zero_approx():
+		look_at(global_position - direction)
+	else:
+		look_at(global_position - direction, Vector3.FORWARD)
 	set_size(ScaleModes.PLACED)
 	meshes.scale = overrideSize
 	placedPosition = pos
@@ -214,10 +221,6 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 	if hasBeenMoved:
 		_push_save()
 	if not placed or not is_inside_tree(): return
-	if not Vector3.UP.cross(direction).is_zero_approx():
-		look_at(global_position - direction)
-	else:
-		look_at(global_position - direction, Vector3.FORWARD)
 
 ## Changes the current state and visuals to the given mode
 func set_size(mode: ScaleModes) -> void:
@@ -243,7 +246,7 @@ func set_size(mode: ScaleModes) -> void:
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
-			just_placed.emit(true)
+			if placedParticles: placedParticles.emit_particles()
 		ScaleModes.ZOOMEDOUT:
 			stop_rotation()
 			billboardZoomedOut.show()

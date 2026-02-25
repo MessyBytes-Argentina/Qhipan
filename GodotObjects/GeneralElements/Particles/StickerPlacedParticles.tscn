@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dssmeu7eu6c87"]
+
+[sub_resource type="Curve" id="Curve_uu4m4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16065574, 1), 0.0, 0.0, 0, 0, Vector2(0.8327869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_04518"]
+curve = SubResource("Curve_uu4m4")
+
+[sub_resource type="Curve" id="Curve_m1gsm"]
+_data = [Vector2(0, 0.5431034), 0.0, 0.0, 0, 0, Vector2(0.25573772, 1), 0.0, 0.0, 0, 0, Vector2(0.6098361, 1), 0.0, 0.0, 0, 0, Vector2(0.73770493, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4741379), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_ydot8"]
+curve = SubResource("Curve_m1gsm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tlieo"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.3
+emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.5
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, -3, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_ydot8")
+alpha_curve = SubResource("CurveTexture_04518")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = -2.2351742e-08
+
+[sub_resource type="Gradient" id="Gradient_33nv2"]
+offsets = PackedFloat32Array(0.59717315, 0.65371025, 0.66784453)
+colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_knxql"]
+gradient = SubResource("Gradient_33nv2")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dptnu"]
+render_priority = 2
+transparency = 4
+depth_draw_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_knxql")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_tdjl0"]
+material = SubResource("StandardMaterial3D_dptnu")
+size = Vector2(0.2, 0.2)
+
+[node name="StickedPlacedParticles" type="GPUParticles3D"]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_tlieo")
+draw_pass_1 = SubResource("QuadMesh_tdjl0")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://djwsba7job37w"]
+[gd_scene load_steps=21 format=3 uid="uid://djwsba7job37w"]
 
 [ext_resource type="Script" uid="uid://csgnlylxgx63a" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.gd" id="1_e4k1j"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_5ap3j"]
 [ext_resource type="Texture2D" uid="uid://cwttjkrp2u6bv" path="res://Assets/Textures/Stickers/Pila/Pila.png" id="3_e4k1j"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_ci8xp"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_f7etb"]
 [ext_resource type="Shader" uid="uid://cvyi8x0g1llyf" path="res://Assets/Shaders/AlternatorArea.gdshader" id="4_wts1r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
@@ -98,6 +100,13 @@ layers = 2
 mesh = SubResource("QuadMesh_h7mp7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_r7e5t")
+
+[node name="StickedPlacedParticles" type="Node3D" parent="Meshes/Mesh"]
+unique_name_in_owner = true
+script = ExtResource("4_ci8xp")
+particles = Array[PackedScene]([ExtResource("4_f7etb")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true

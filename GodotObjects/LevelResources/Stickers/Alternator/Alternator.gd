@@ -30,10 +30,8 @@ func add_alternating_object(obj: Node) -> void:
 ## Removes an alternating object from the list and switches it's state
 func remove_alternating_object(obj: Node) -> void:
 	if disablingArea: return
-	print(obj.name)
 	if obj is Area3D:
 		obj = obj.get_parent()
-	print(obj.name)
 	if objectCollection.has(obj): objectCollection.erase(obj)
 	obj.switch_state()
 

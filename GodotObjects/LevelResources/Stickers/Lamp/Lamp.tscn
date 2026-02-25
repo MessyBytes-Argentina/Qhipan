@@ -1,9 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://obi7mybs0j53"]
+[gd_scene load_steps=26 format=3 uid="uid://obi7mybs0j53"]
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
 [ext_resource type="Texture2D" uid="uid://k8c3uc7gxr4w" path="res://Assets/Textures/Stickers/Lamp/Lamp OFF.png" id="3_w5ix8"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_45nsf"]
 [ext_resource type="Shader" uid="uid://b3tfln6gs0vrs" path="res://Assets/Shaders/LightShine.gdshader" id="4_enf8r"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_q57fi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -136,6 +138,13 @@ layers = 2
 mesh = SubResource("QuadMesh_h7mp7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_45nsf")
+
+[node name="StickedPlacedParticles" type="Node3D" parent="Meshes/Mesh"]
+unique_name_in_owner = true
+script = ExtResource("4_q57fi")
+particles = Array[PackedScene]([ExtResource("4_45nsf")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true

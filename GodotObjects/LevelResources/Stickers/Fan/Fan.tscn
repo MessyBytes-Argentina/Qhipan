@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cjg3u8idl755x"]
+[gd_scene load_steps=33 format=3 uid="uid://cjg3u8idl755x"]
 
 [ext_resource type="Script" uid="uid://b486wq7j61ehe" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.gd" id="1_2wwg3"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="2_e06n3"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ct67p5u0qvkh4" path="res://Assets/Textures/Stickers/Fan/Vent-3.png" id="3_rl7rx"]
 [ext_resource type="Script" uid="uid://trd7162s7a8s" path="res://GodotObjects/LevelResources/NoGravityZone/NoGravity.gd" id="4_2hw6u"]
 [ext_resource type="Texture2D" uid="uid://dunhq8g73hkfo" path="res://Assets/Textures/Stickers/Fan/Vent-4.png" id="4_6ngi6"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_k686k"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_tjtrd"]
 [ext_resource type="Texture2D" uid="uid://coje2mtnbxmjy" path="res://Assets/Textures/Stickers/Fan/Vent-2.png" id="5_2hw6u"]
 [ext_resource type="PackedScene" uid="uid://cfplkh261v3fy" path="res://GodotObjects/GeneralElements/Particles/fan_particles.tscn" id="5_tax0g"]
 [ext_resource type="AudioStream" uid="uid://kthao1hdecjd" path="res://Assets/Sounds/SFX/Fan_On.mp3" id="10_tax0g"]
@@ -202,6 +204,13 @@ layers = 2
 mesh = SubResource("QuadMesh_y2i5e")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_5tnm2")
+
+[node name="StickedPlacedParticles" type="Node3D" parent="Meshes/Mesh"]
+unique_name_in_owner = true
+script = ExtResource("4_tjtrd")
+particles = Array[PackedScene]([ExtResource("4_k686k")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true

@@ -1881,6 +1881,7 @@ autoplay = "preload"
 
 [node name="LedgeDetection" type="Node3D" parent="." groups=["OnPlayerFan"]]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -0.6, 0)
+visible = false
 script = ExtResource("72_4biwg")
 
 [node name="DetectionRaycast" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]

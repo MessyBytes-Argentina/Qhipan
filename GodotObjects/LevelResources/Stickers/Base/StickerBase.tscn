@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://205amao8uwa2"]
+[gd_scene load_steps=16 format=3 uid="uid://205amao8uwa2"]
 
 [ext_resource type="Script" uid="uid://d2p44ct5iuibl" path="res://GodotObjects/LevelResources/Stickers/Base/StickerBase.gd" id="1_8ww4f"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_p36o8"]
 [ext_resource type="Texture2D" uid="uid://bfy3yeb6lf4bb" path="res://Assets/Textures/Stickers/Fan/Vent-1.png" id="2_r43o5"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_eri71"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_l6ayo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -78,6 +80,13 @@ layers = 2
 mesh = SubResource("QuadMesh_h7mp7")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_r7e5t")
+
+[node name="StickedPlacedParticles" type="Node3D" parent="Meshes/Mesh"]
+unique_name_in_owner = true
+script = ExtResource("4_eri71")
+particles = Array[PackedScene]([ExtResource("4_l6ayo")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true

@@ -65,7 +65,6 @@ func check_camera_angle(angle: float) -> void:
 	angle = snappedf(angle / PI, 0.01)
 	if angle == 2.0: angle = 0.0
 	if angle > 2.0: angle = fmod(angle, 2.0)
-	if name == "Sconce_Test": print(angle)
 	if angle in invalidAngles:
 		hide()
 	else:

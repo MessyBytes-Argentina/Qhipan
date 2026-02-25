@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://5y3mxiemv321"]
+[gd_scene load_steps=24 format=3 uid="uid://5y3mxiemv321"]
 
 [ext_resource type="Texture2D" uid="uid://btx8bgjlyo51g" path="res://Assets/Textures/Stickers/Key/Key-1.png" id="2_mjg6o"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_s3lcm"]
 [ext_resource type="Texture2D" uid="uid://c2vn60pfuuqgq" path="res://Assets/Textures/Stickers/Key/Key-Used.png" id="3_loxqr"]
 [ext_resource type="Script" uid="uid://bok5ycfda8ov6" path="res://GodotObjects/LevelResources/Stickers/Key/Key.gd" id="4_ws05p"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="5_33fpy"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="5_loryj"]
 [ext_resource type="Texture2D" uid="uid://ddl4r2wmhi7dh" path="res://Assets/Textures/Stickers/Key/key-2.png" id="5_ws05p"]
 [ext_resource type="Texture2D" uid="uid://bl5tesrbned68" path="res://Assets/Textures/Stickers/Key/Key-3.png" id="6_loxqr"]
 
@@ -155,6 +157,13 @@ layers = 2
 mesh = SubResource("QuadMesh_mjg6o")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ws05p")
+
+[node name="StickedPlacedParticles" type="Node3D" parent="Meshes/Mesh"]
+unique_name_in_owner = true
+script = ExtResource("5_loryj")
+particles = Array[PackedScene]([ExtResource("5_33fpy")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="Back" type="MeshInstance3D" parent="Meshes"]
 unique_name_in_owner = true
