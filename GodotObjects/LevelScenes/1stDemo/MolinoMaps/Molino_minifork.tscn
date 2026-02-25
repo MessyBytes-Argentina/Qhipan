@@ -116,7 +116,7 @@ shadow_mesh = SubResource("ArrayMesh_35vhv")
 
 [sub_resource type="Curve3D" id="Curve3D_stqvm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.9, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7000003, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -503,15 +503,19 @@ script = ExtResource("8_lffbj")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="AlternatingBlock" parent="Rooms/Molino_puzzle3/Group1" instance=ExtResource("9_gdvbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999981, 0, -1)
+heldAreaEffect = true
 
 [node name="LeyLine" parent="Rooms/Molino_puzzle3/Group1" instance=ExtResource("10_35xyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999981, 0, 0)
 
 [node name="ExitBlocks" type="Node3D" parent="Rooms/Molino_puzzle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 2.5)
 
 [node name="AlternatingBlock2" parent="Rooms/Molino_puzzle3/ExitBlocks" instance=ExtResource("9_gdvbg")]
+collision_layer = 4096
 isOff = true
+heldAreaEffect = true
 
 [node name="PushDoor" parent="Rooms/Molino_puzzle3" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_drosb")]
 transform = Transform3D(-1, 8.742278e-08, 3.8213718e-15, 0, -4.37114e-08, 1, 8.742278e-08, 1, 4.37114e-08, -0.5, 0, 4.55)
@@ -559,7 +563,9 @@ originalParent = "Molino_minifork"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -1.5)
 
 [node name="AlternatingBlock2" parent="Rooms/Molino_puzzle4/ExitBlocks" instance=ExtResource("9_gdvbg")]
+collision_layer = 4096
 isOff = true
+heldAreaEffect = true
 
 [node name="Group1" type="Node3D" parent="Rooms/Molino_puzzle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -6.5)
@@ -570,9 +576,11 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="AlternatingBlock2" parent="Rooms/Molino_puzzle4/Group1" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
+heldAreaEffect = true
 
 [node name="AlternatingBlock" parent="Rooms/Molino_puzzle4/Group1" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+heldAreaEffect = true
 
 [node name="Group2" type="Node3D" parent="Rooms/Molino_puzzle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, -7.5)
@@ -583,21 +591,26 @@ metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="AlternatingBlock3" parent="Rooms/Molino_puzzle4/Group2" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 1)
+heldAreaEffect = true
 
 [node name="AntiStickerAreas" type="Node3D" parent="Rooms/Molino_puzzle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -5)
 
 [node name="PushDoor" parent="Rooms/Molino_puzzle4" node_paths=PackedStringArray("sceneParent") instance=ExtResource("15_lby3b")]
-transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, -1.0999999, 0.95, -5.5)
+transform = Transform3D(-4.371139e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.371139e-08, 1.9106859e-15, -1.0999999, 1, -5.5)
 sceneParent = NodePath("../../..")
 
 [node name="AlternatingBlock4" parent="Rooms/Molino_puzzle4" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -8.5)
+collision_layer = 4096
 isOff = true
+heldAreaEffect = true
 
 [node name="AlternatingBlock5" parent="Rooms/Molino_puzzle4" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -8.5)
+collision_layer = 4096
 isOff = true
+heldAreaEffect = true
 
 [node name="Fences" type="Node3D" parent="Rooms/Molino_puzzle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, -5)
@@ -799,6 +812,8 @@ curve = SubResource("Curve3D_obwoo")
 [node name="Wood Fence" parent="Props/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 0)
 curve = SubResource("Curve3D_xxbuv")
+colliderSize = Vector2(0.1, 0.6)
+collisionSnapPointToPath = 8
 
 [node name="Wood Fence8" parent="Props/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 17.9, -3, -5.2999997)
@@ -844,29 +859,35 @@ curve = SubResource("Curve3D_1u3us")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -6, -9.1)
 curve = SubResource("Curve3D_asqe7")
 colliderSize = Vector2(0.1, 0.6)
+collisionSnapPointToPath = 8
 
 [node name="Wood Fence13" parent="Props/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, -6, -9.938593)
 curve = SubResource("Curve3D_8wr6t")
 colliderSize = Vector2(0.1, 0.6)
+collisionSnapPointToPath = 2
 
 [node name="Rope Rail" parent="Props/Fences" instance=ExtResource("18_obwoo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.88421, -0.5, -0.28578544)
 curve = SubResource("Curve3D_hswoo")
 colliderSize = Vector2(0.1, 0.7)
+collisionSnapPointToPath = 2
 
 [node name="Rope Rail2" parent="Props/Fences" instance=ExtResource("18_obwoo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.416272, -0.5076415, -0.8932607)
 curve = SubResource("Curve3D_rl8gh")
 colliderSize = Vector2(0.1, 0.7)
+collisionSnapPointToPath = 7
 
 [node name="Rope Rail4" parent="Props/Fences" instance=ExtResource("18_obwoo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.762555, -3.1, -5.8524466)
 curve = SubResource("Curve3D_vnmr8")
+collisionSnapPointToPath = 2
 
 [node name="Rope Rail5" parent="Props/Fences" instance=ExtResource("18_obwoo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.127288, -3.1, -5.254415)
 curve = SubResource("Curve3D_vnmr8")
+collisionSnapPointToPath = 8
 
 [node name="Fan Machines" type="Node3D" parent="Props"]
 
