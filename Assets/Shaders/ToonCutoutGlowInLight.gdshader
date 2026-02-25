@@ -214,7 +214,7 @@ void fragment() {
 	}
 
 	// Cutout border painting
-	ALBEDO = mix(borderColor, ALBEDO, borderDistance);
+	ALBEDO = clamp(mix(borderColor, ALBEDO, borderDistance), vec3(0.0), vec3(1.0));
 	EMISSION = mix(borderColor * borderEmission, EMISSION, borderDistance);
 }
 

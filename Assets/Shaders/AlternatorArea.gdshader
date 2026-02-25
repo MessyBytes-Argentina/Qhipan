@@ -8,6 +8,8 @@ uniform vec4 emission_color : source_color;
 uniform sampler2D texture_albedo : source_color;
 uniform float emission_amount: hint_range(0.0, 16.0) = 5.0f; 
 uniform float rim_steepness : hint_range(0.0f, 16.0f) = 3.0f; //higher values mean a smaller rim.
+uniform float rim_steepness_movement : hint_range(0.0f, 4.0f) = 0.5f; //higher values mean a smaller rim.
+uniform float animation_speed : hint_range(0.0, 10.0, 0.1) = 0.2;
 uniform vec3 uv_scale;
 uniform vec3 uv_offset;
 
@@ -22,6 +24,7 @@ void fragment() {
 	ALBEDO = clamp(albedo.rgb * albedo_tex.rgb, vec3(0.0), vec3(1.0));
 	EMISSION = emission_color.rgb * emission_amount;
 	float NdotV = dot(NORMAL, VIEW);
-	float rim_light = pow(1.0 - NdotV, rim_steepness);
+	float current_rim = rim_steepness + sin(TIME * animation_speed) * rim_steepness_movement;
+	float rim_light = pow(1.0 - NdotV, current_rim);
 	ALPHA = clamp(rim_light * emission_color.a / PI, 0.0, 1.0);
 }

@@ -7,15 +7,20 @@ class_name AlternatorSticker
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
 ## Pivot node reference for placement
 @onready var pivot: Node3D = %Pivot
-## Held effect when grabbed
-@onready var heldEffect: MeshInstance3D = %HeldEffect
 
+## Reference to the player.
+var player: Player
 ## List of alternating objects currently in range when held
 var objectCollection: Array = []
 ## List of alternating groups activated when placed
 var activatedGroups: Array[AlternatingGroup]
 ## Flag that turns on when disabling the held area
 var disablingArea: bool = false
+
+## Executed when node enters scene tree.
+func _ready() -> void:
+	super()
+	player = get_tree().get_first_node_in_group("Player")
 
 ## Adds an alternating object to the list and switches it's state
 func add_alternating_object(obj: Node) -> void:
@@ -94,8 +99,7 @@ func set_size(mode: ScaleModes) -> void:
 
 ## Enables the heldAreaChecker
 func enable_area() -> void:
-	heldAreaChecker.position.y = -GRABHEIGHT
-	heldEffect.show()
+	player.alternatorHeldEffect.show()
 	heldAreaChecker.monitoring = true
 	heldAreaChecker.monitorable = true
 	heldAreaChecker.body_entered.connect(add_alternating_object)
@@ -105,7 +109,7 @@ func enable_area() -> void:
 
 ## Disables the heldAreaChecker
 func disable_area() -> void:
-	heldEffect.hide()
+	player.alternatorHeldEffect.hide()
 	heldAreaChecker.monitoring = false
 	heldAreaChecker.monitorable = false
 	if heldAreaChecker.body_entered.is_connected(add_alternating_object):
