@@ -16,8 +16,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.37036446, 0.3703645, 0.37036446, 1, 0.62
 gradient = SubResource("Gradient_1ucbk")
 
 [sub_resource type="Gradient" id="Gradient_sagqi"]
-offsets = PackedFloat32Array(0.8, 0.8, 0.807, 0.9954887, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1, 0.17447203, 0.20420334, 0.24582905, 1, 0.17254902, 0.20392157, 0.24705882, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.9, 0.901, 0.92556393, 0.9744361, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.17254902, 0.20392157, 0.24705882, 1, 0.17447203, 0.20420334, 0.24582905, 1, 0.17254902, 0.20392157, 0.24705882, 1, 0.11119685, 0.11119685, 0.11119681, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p7afy"]
 gradient = SubResource("Gradient_sagqi")
@@ -26,16 +26,21 @@ height = 1024
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_mo823"]
-offsets = PackedFloat32Array(0.8, 0.8, 0.937594, 0.9766917, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0.84705883, 0.64705884, 0.8235294, 1, 0.49803922, 0.49803922, 1, 1, 0.8, 0.49019608, 0.89411765, 1, 0.36862746, 0.21568628, 0.8901961, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j3dgb"]
+noise_type = 3
+frequency = 0.007
+offset = Vector3(0, 0, 298.44)
+fractal_type = 2
+fractal_octaves = 10
+fractal_lacunarity = 4.375
+fractal_ping_pong_strength = 1.14
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3dgb"]
-gradient = SubResource("Gradient_mo823")
-width = 1024
-height = 1024
-fill = 2
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1ucbk"]
+noise = SubResource("FastNoiseLite_j3dgb")
+seamless = true
+in_3d_space = true
+as_normal_map = true
+bump_strength = 10.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sagqi"]
 render_priority = 1
@@ -49,12 +54,13 @@ shader_parameter/fresnel_gradient = ExtResource("3_j3dgb")
 shader_parameter/texture_albedo = SubResource("GradientTexture2D_p7afy")
 shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
 shader_parameter/point_size = 1.0
-shader_parameter/texture_normal = SubResource("GradientTexture2D_j3dgb")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_1ucbk")
 shader_parameter/normal_scale = 1.0
 shader_parameter/roughness = 1.0
+shader_parameter/texture_metallic = SubResource("NoiseTexture2D_1ucbk")
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.499999988824
+shader_parameter/metallic = 0.0999999977648
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/lit_emission = Color(0.47970536, 1.6289232, 1.4182332, 1)
 shader_parameter/emission_energy = 0.0
@@ -70,8 +76,7 @@ size = Vector3(3, 0.25, 3)
 [node name="Glass" type="StaticBody3D"]
 collision_layer = 4096
 script = ExtResource("1_j3dgb")
-lightRange = 3.5
-lightAttenuation = 2.5
+lightAttenuation = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
@@ -89,4 +94,4 @@ visible = false
 light_color = Color(1, 0.67616665, 0.32999998, 1)
 light_energy = 0.3
 light_indirect_energy = 0.1
-omni_attenuation = 3.0
+omni_attenuation = 2.0
