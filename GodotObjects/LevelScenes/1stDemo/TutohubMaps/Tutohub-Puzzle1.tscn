@@ -180,7 +180,9 @@ sceneParent = NodePath("../..")
 
 [node name="AlternatingBlock" parent="." instance=ExtResource("3_rg6tx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, -1.5, -3.5)
+collision_layer = 4096
 isOff = true
+heldAreaEffect = true
 
 [node name="AlternatingGroup" type="Node3D" parent="."]
 script = ExtResource("2_7ghvw")
@@ -190,12 +192,14 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5
 
 [node name="AlternatingBlock" parent="AlternatingGroup" instance=ExtResource("3_rg6tx")]
 transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 1, -6.4615035, -0.5, 0.8)
+heldAreaEffect = true
 
 [node name="AlternatingGroup2" type="Node3D" parent="."]
 script = ExtResource("2_7ghvw")
 
 [node name="AlternatingBlock" parent="AlternatingGroup2" instance=ExtResource("3_rg6tx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.3, -9.500001, -0.5, -5.2999997)
+heldAreaEffect = true
 
 [node name="LeyLine" parent="AlternatingGroup2" instance=ExtResource("7_q6li1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, -0.5, -4.5)
