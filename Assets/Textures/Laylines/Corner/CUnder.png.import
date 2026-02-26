@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt22jfakxwfss"
-path.s3tc="res://.godot/imported/LeylineTextPixelPath.png-616db159bd023985de421ec28558c71b.s3tc.ctex"
+uid="uid://cb71j3f3f0oul"
+path.s3tc="res://.godot/imported/CUnder.png-1053ea2661e47bc89e75d30d369242fe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Laylines/Staight/LeylineTextPixelPath.png"
-dest_files=["res://.godot/imported/LeylineTextPixelPath.png-616db159bd023985de421ec28558c71b.s3tc.ctex"]
+source_file="res://Assets/Textures/Laylines/Corner/CUnder.png"
+dest_files=["res://.godot/imported/CUnder.png-1053ea2661e47bc89e75d30d369242fe.s3tc.ctex"]
 
 [params]
 
