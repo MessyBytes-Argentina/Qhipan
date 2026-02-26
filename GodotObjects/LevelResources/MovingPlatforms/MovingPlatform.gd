@@ -44,7 +44,7 @@ var currentEmission: float
 func _ready() -> void:
 	material = mesh.get_surface_override_material(1).duplicate()
 	mesh.set_surface_override_material(1, material)
-	GeneralVariables.to_cutout_materials([material], true, true)
+	GeneralVariables.queue_to_cutout_materials([material], true)
 	mode = "permanent" if isPermanent else "on" if powered else "off"
 	animate()
 
@@ -111,4 +111,4 @@ func _animation_tick_emission(newEmission: float) -> void:
 ## Cleans unique materials.
 func _notification(what) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.to_cutout_materials([material], false, true)
+		GeneralVariables.queue_to_cutout_materials([material], false)

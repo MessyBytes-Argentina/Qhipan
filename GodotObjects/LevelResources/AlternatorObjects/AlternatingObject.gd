@@ -14,6 +14,8 @@ const ANIMATIONPARAMETERS: Dictionary[String, Variant] = {
 	"offSize": Vector3(1.0, 1.0, 1.0),
 	"offPosition": Vector3(0.0, 0.5, 0.0)
 }
+## Base material
+const BASEMATERIAL: ShaderMaterial = preload("uid://drmr7fxqvd7lv")
 
 ## Current state of the alternating object.
 @export var isOff: bool = false:
@@ -45,9 +47,10 @@ var shape: BoxShape3D
 func _ready() -> void:
 	set_collision_layer_value(14, false)
 	if not heldAreaEffect: checkArea.queue_free()
-	material = mesh.get_surface_override_material(0).duplicate()
+	material = BASEMATERIAL.duplicate()
+	material.render_priority = 1
 	mesh.set_surface_override_material(0, material)
-	if not Engine.is_editor_hint(): GeneralVariables.to_cutout_materials([material], true, true)
+	if not Engine.is_editor_hint(): GeneralVariables.queue_to_cutout_materials([material], true)
 	progress = 1.0 if isOff else 0.0
 	shape = collisionShape.shape.duplicate()
 	collisionShape.shape = shape
@@ -85,4 +88,4 @@ func _animation_tick(currentProgress: float) -> void:
 func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.to_cutout_materials([material], false, true)
+		GeneralVariables.queue_to_cutout_materials([material], false)

@@ -17,8 +17,14 @@ const STAGGERWAIT: float = 0.1
 
 ## Is the player using a gamepad.
 var usingGamepad: bool = false
+## The collection of standard cutout materials.
+var standardCutoutMaterials: Array[ShaderMaterial] = []
+## The collection of materials that have a cutout mode in queue.
+var queueCutoutMaterials: Array[Dictionary] = []
 ## The collection of materials that have a cutout mode.
 var cutoutMaterials: Array[ShaderMaterial] = []
+## Cutout Stagger Timer.
+var cutoutStaggerTimer: SceneTreeTimer
 ## Non duplicate cutout materials.
 var uniqueCutoutMaterials: Array[ShaderMaterial] = []
 ## The Sticker inventory.
@@ -31,11 +37,14 @@ var saveManager: SaveManager
 var toStagger: Array[Callable] = []
 ## Stagger Timer.
 var staggerTimer: SceneTreeTimer
+## Stagger flag.
+var staggerFlag: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var materials: ResourceGroup = load(materialsResourceGroup)
-	materials.load_all_into(cutoutMaterials)
+	materials.load_all_into(standardCutoutMaterials)
+	cutoutMaterials = standardCutoutMaterials.duplicate()
 	inventory = StickerInventory.new()
 	inventory.name = "Inventory"
 	add_child(inventory)
@@ -64,17 +73,30 @@ func _input(event: InputEvent) -> void:
 		usingGamepad = currentlyGamepad
 		input_mode_changed.emit(usingGamepad)
 
+## Adds material to cutout list queue.
+func queue_to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool) -> void:
+	queueCutoutMaterials.append({"materials": materials, "doAdd": doAdd})
+	if cutoutStaggerTimer: return
+	cutoutStaggerTimer = get_tree().create_timer(0.5)
+	cutoutStaggerTimer.timeout.connect(do_cutout_materials_queue)
+
+## Executes cutout material queue.
+func do_cutout_materials_queue() -> void:
+	if cutoutStaggerTimer: staggerTimer = null
+	while staggerFlag: await get_tree().process_frame
+	for queuedCall in queueCutoutMaterials: _to_cutout_materials(queuedCall.materials, queuedCall.doAdd)
+	queueCutoutMaterials.clear()
+	make_unique_cutout_materials()
+
 ## Adds material to cutout list.
-func to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool, doRemake: bool = false) -> void:
+func _to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool) -> void:
 	if doAdd: cutoutMaterials.append_array(materials)
-	else: materials.map(func(a: ShaderMaterial): cutoutMaterials.erase(a))
-	if doRemake:
-		make_unique_cutout_materials()
+	else: for material in materials: cutoutMaterials.erase(material)
 
 ## Makes a list with unique cutout materials.
 func make_unique_cutout_materials() -> void:
-	uniqueCutoutMaterials = []
-	cutoutMaterials.map(func(a: ShaderMaterial): if a not in uniqueCutoutMaterials: uniqueCutoutMaterials.append(a))
+	uniqueCutoutMaterials = standardCutoutMaterials.duplicate()
+	for material in cutoutMaterials: if material not in uniqueCutoutMaterials: uniqueCutoutMaterials.append(material)
 
 ## Staggers function calls by frames.
 func add_to_stagger_queue(callable: Callable) -> void:
@@ -82,6 +104,7 @@ func add_to_stagger_queue(callable: Callable) -> void:
 	if staggerTimer: return
 	staggerTimer = get_tree().create_timer(0.1)
 	staggerTimer.timeout.connect(_execute_queue)
+	staggerFlag = true
 
 ## Does the queue stagger.
 func _execute_queue() -> void:
@@ -101,4 +124,4 @@ func _execute_queue() -> void:
 				if not staggerArray[j][i].get_object(): continue
 				staggerArray[j][i].call()
 		await get_tree().process_frame
-	make_unique_cutout_materials()
+	staggerFlag = false

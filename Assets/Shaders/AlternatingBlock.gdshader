@@ -1,5 +1,4 @@
 shader_type spatial;
-
 render_mode blend_mix, depth_prepass_alpha, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "res://Assets/Shaders/noises.gdshaderinc"
@@ -92,7 +91,6 @@ void vertex() {
 	float vertexy = float(VERTEX.y > 0.0);
 	VERTEX.xz = mix(VERTEX.xz, vertexxz, progress * vertexy);
 	VERTEX.y = mix(VERTEX.y, VERTEX.y * (height - 0.5) * 2.0, progress * vertexy);
-	
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
 
 	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
@@ -135,7 +133,7 @@ void fragment() {
 	vec2 base_uv = vec2(UV.x * 3.0, UV.y * 2.0);
 
 	//Cylinder cutout
-	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
+	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.01;
 	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
 	float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
 	vec3 boxWorldPosition = worldVector - boxPosition;

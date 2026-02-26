@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dt4jndoftnsvs"]
+
+[ext_resource type="Shader" uid="uid://dubm80uf8txvv" path="res://Assets/Shaders/Leyline.gdshader" id="1_47s1p"]
+[ext_resource type="Texture2D" uid="uid://del1hhu1lv7db" path="res://Assets/Textures/Laylines/T/TSideMask.png" id="2_qsms3"]
+[ext_resource type="Texture2D" uid="uid://bq2pjjdkqsrv1" path="res://Assets/Textures/Laylines/T/TOver.png" id="3_ao1gs"]
+[ext_resource type="Texture2D" uid="uid://cin0f8j3c5jbo" path="res://Assets/Textures/Laylines/T/TUnder.png" id="4_d7cpu"]
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_47s1p")
+shader_parameter/progress = 0.0
+shader_parameter/under = ExtResource("4_d7cpu")
+shader_parameter/over = ExtResource("3_ao1gs")
+shader_parameter/mask = ExtResource("2_qsms3")
+shader_parameter/rotationAngle = 1.0000000447036
+shader_parameter/flipX = true
+shader_parameter/flipY = false
+shader_parameter/segments = 1.0
+shader_parameter/scaleCorrection = 0.95
+shader_parameter/emission = Color(0, 1, 1, 1)
+shader_parameter/emission_energy_multiplier = 0.7999999821184
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(0, 0, 0, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
