@@ -110,6 +110,5 @@ func _animation_tick_emission(newEmission: float) -> void:
 
 ## Cleans unique materials.
 func _notification(what) -> void:
-	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.to_cutout_materials([material], false, true)
