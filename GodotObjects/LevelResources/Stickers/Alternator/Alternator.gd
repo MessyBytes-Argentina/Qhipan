@@ -5,8 +5,6 @@ class_name AlternatorSticker
 
 ## Area that checks for alternating objets when held
 @onready var heldAreaChecker: Area3D = %HeldAreaChecker
-## Pivot node reference for placement
-@onready var pivot: Node3D = %Pivot
 
 ## Reference to the player.
 var player: Player
@@ -85,17 +83,6 @@ func force_area_check() -> Array:
 func add_obj_list(objList: Array) -> void:
 	for obj in objList:
 		add_alternating_object(obj)
-
-## Positions the cheking areas in the correct position
-func set_size(mode: ScaleModes) -> void:
-	super(mode)
-	match mode:
-		ScaleModes.GRABBED:
-			pivot.top_level = false
-		_:
-			pivot.top_level = true
-	await get_tree().physics_frame
-	pivot.global_position = global_position
 
 ## Enables the heldAreaChecker
 func enable_area() -> void:
