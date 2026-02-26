@@ -12,7 +12,7 @@ const PIECESIZE: Vector2 = Vector2.ONE
 const PIECEAVERTICALDISPLACEMENT: float = 0.001
 ## Parameters for the arrow that only shows in the editor.
 const EDITORARROW: Dictionary[String, Variant] = {
-	"size" = Vector3(0.3, 0.2, 0.1),
+	"size" = Vector3(0.3, 0.2, 0.01),
 	"rotation" = Vector3(-PI / 2.0, -PI / 2.0, 0.0),
 	"color" = Color.CYAN
 }
@@ -103,9 +103,15 @@ func _ready() -> void:
 	var editorMesh: MeshInstance3D = MeshInstance3D.new()
 	editorMesh.mesh = PrismMesh.new()
 	editorMesh.mesh.size = EDITORARROW.size
+	editorMesh.position.x = EDITORARROW.size.x / 3.0
 	editorMesh.rotation = EDITORARROW.rotation
 	var editorMaterial: ORMMaterial3D = ORMMaterial3D.new()
 	editorMaterial.albedo_color = EDITORARROW.color
+	editorMaterial.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	editorMaterial.disable_receive_shadows = true
+	editorMaterial.emission_enabled = true
+	editorMaterial.emission = EDITORARROW.color
+	editorMaterial.emission_energy_multiplier = 2.0
 	editorMesh.set_surface_override_material(0, editorMaterial)
 	pivot.add_child(editorMesh)
 
