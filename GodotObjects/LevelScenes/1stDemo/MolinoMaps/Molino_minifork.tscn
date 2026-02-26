@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=81 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="9_gdvbg"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="10_35xyp"]
 [ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="11_drosb"]
+[ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="12_rc3x7"]
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="15_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="15_lby3b"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="16_35xyp"]
@@ -508,11 +509,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, 5.5)
 script = ExtResource("8_lffbj")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
-[node name="AlternatingBlock" parent="Rooms/Molino_puzzle3/Group1" instance=ExtResource("9_gdvbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999981, 0, -1)
-
 [node name="LeyLine" parent="Rooms/Molino_puzzle3/Group1" instance=ExtResource("10_35xyp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19999981, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.19999981, 0, 1)
+
+[node name="LeylinePiece" type="Node3D" parent="Rooms/Molino_puzzle3/Group1"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.19999981, 0, 0.5)
+script = ExtResource("12_rc3x7")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock" parent="Rooms/Molino_puzzle3/Group1/LeylinePiece" instance=ExtResource("9_gdvbg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 0, 0)
 
 [node name="ExitBlocks" type="Node3D" parent="Rooms/Molino_puzzle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 2.5)
