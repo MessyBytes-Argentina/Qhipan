@@ -5,9 +5,9 @@
 [ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="3_tp6us"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_y0c6h"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_bamom"]
-[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_albedo.png" id="6_86col"]
-[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_normal.png" id="7_dpkn8"]
-[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Chakana Placeholder_orm.png" id="8_6exg0"]
+[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_albedo.png" id="6_86col"]
+[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_normal.png" id="7_dpkn8"]
+[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_orm.png" id="8_6exg0"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="9_0kue2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bg3w0"]
