@@ -561,7 +561,6 @@ collisionLayer = 0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="Ceilings" type="Node3D" parent="Props"]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Props/Ceilings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.963639, 5.5, -12.1)
