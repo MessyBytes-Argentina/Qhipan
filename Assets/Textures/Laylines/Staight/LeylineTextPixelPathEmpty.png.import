@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://651tv8rs7ag0"
-path.s3tc="res://.godot/imported/LeylineTextPixelPathMask.png-9d17a4851a13cc6aad55f0c522a00ed2.s3tc.ctex"
+uid="uid://bwcoxx6h3l152"
+path.s3tc="res://.godot/imported/LeylineTextPixelPathEmpty.png-d825619699b7692bbdfc03ba9518fdd7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Laylines/LeylineTextPixelPathMask.png"
-dest_files=["res://.godot/imported/LeylineTextPixelPathMask.png-9d17a4851a13cc6aad55f0c522a00ed2.s3tc.ctex"]
+source_file="res://Assets/Textures/Laylines/Staight/LeylineTextPixelPathEmpty.png"
+dest_files=["res://.godot/imported/LeylineTextPixelPathEmpty.png-d825619699b7692bbdfc03ba9518fdd7.s3tc.ctex"]
 
 [params]
 
