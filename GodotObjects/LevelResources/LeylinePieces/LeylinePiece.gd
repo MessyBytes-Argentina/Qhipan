@@ -90,11 +90,11 @@ func _ready() -> void:
 	pivot.add_child(leylinePiece)
 	add_child(pivot)
 	material = LEYLINEMATERIAL.duplicate()
-	material.render_priority = 2
+	material.render_priority = 1
 	leylinePiece.set_surface_override_material(0, material)
 	set_piece()
 	set_length()
-	if not Engine.is_editor_hint(): GeneralVariables.to_cutout_materials([material], true, true)
+	if not Engine.is_editor_hint(): GeneralVariables.queue_to_cutout_materials([material], true)
 	leylineParent = get_parent() if get_parent() is LeylinePiece else null
 	for child in get_children(): 
 		if child is LeylinePiece: leylineChildren.append(child)
@@ -190,4 +190,4 @@ func animation_finished() -> void:
 func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.to_cutout_materials([material], false, true)
+		GeneralVariables.queue_to_cutout_materials([material], false)

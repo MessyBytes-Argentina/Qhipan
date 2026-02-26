@@ -110,7 +110,7 @@ void fragment() {
 	EMISSION = emission * emission_energy_multiplier * float(adjustedStep > 1.0 - progress);
 	
 	//Cylinder cutout
-	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.02;
+	bool docutout = cylinderCutout && world_pos.y > playerPosition.y + 0.05;
 	vec3 cylinderWorldPosition = worldVector - cylinderPosition;
 	float sdfCylinder = sdRoundCone(cylinderWorldPosition, -cylinderHeight / 2.0 * cylinderRotation, cylinderHeight / 2.0 * cylinderRotation, cylinderRadius1, cylinderRadius2);
 	vec3 boxWorldPosition = worldVector - boxPosition;

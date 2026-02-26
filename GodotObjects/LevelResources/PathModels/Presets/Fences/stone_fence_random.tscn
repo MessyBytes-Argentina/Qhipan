@@ -1,58 +1,10 @@
-[gd_scene load_steps=22 format=4 uid="uid://c0nhfx01gy36r"]
+[gd_scene load_steps=16 format=4 uid="uid://c0nhfx01gy36r"]
 
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_e4rwk"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_me25i"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_27d72"]
-[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_wr3qa"]
-[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_wgj61"]
-[ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="6_w6kte"]
-[ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Piedras/Piedras_normal.png" id="7_47soh"]
-[ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="8_67442"]
+[ext_resource type="Material" uid="uid://dvh71xrpif3tn" path="res://Assets/Materials/WithCutout/PiedrasFence.tres" id="3_4lhjl"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="9_5f7vu"]
 [ext_resource type="Script" uid="uid://cqarofy2kggt" path="res://GodotObjects/LevelResources/Walls/RandomMultimeshInstance.gd" id="10_me25i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_00bqr"]
-render_priority = 0
-shader = ExtResource("3_27d72")
-shader_parameter/albedo = Color(0.6081552, 0.9799805, 0.9810595, 1)
-shader_parameter/light_gradient = ExtResource("5_wgj61")
-shader_parameter/fresnel_gradient = ExtResource("4_wr3qa")
-shader_parameter/texture_scale = 1.0000000149012
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("6_w6kte")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("7_47soh")
-shader_parameter/normal_scale = 3.0250009036874985
-shader_parameter/texture_orm = ExtResource("8_67442")
-shader_parameter/enable_ambient_occlusion = true
-shader_parameter/ao_light_affect = 0.96999997831856
-shader_parameter/roughness = 0.470000022325
-shader_parameter/metallic_specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 0.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 0.0
-shader_parameter/clearcoat_roughness = 0.0
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jum5m"]
 _surfaces = [{
@@ -77,7 +29,7 @@ _surfaces = [{
 "index_count": 144,
 "index_data": PackedByteArray("FgAmAAAAAAAmABUAFAABAAIAAgABABoAGwAGACcAJwAGAB0AIgAoABEAEQAoACMAKQAqAA0ADQAqACsAKQAlACoAEAAlACkAJQAOACoAKgAOACwAKgAsACsAKwAsAA8AIQALAAkACQALAB4ALQAuAC8ALwAuADAAIAAxADIAMgAxAB8ADAAzADQANAAzADUANgA3ADgAOAA3ABMAJAASADkAOQASADoAOwA8AD0APQA8AD4APwBAAEEAQQBAAAoAHAAIAEIAQgAIAEMARABFAEYARgBFAEcASAAZAEkASQAZAEoAGAAHAEsASwAHAEwATQBOAE8ATwBOAFAAUQBSAFMAUwBSAAMAFwAEAFQAVAAEAFUABQBWAFcAVwBWAFgA"),
 "lods": [0.11790828, PackedByteArray("FAABAAIAFAAVAAEAFgAVABQAFgADABUAFgAEAAMAFwAEABYABQAXABYAGAAHAAEAAQAHABkAAQAZABoAAgABABoAGgAZAAgAAgAaABsAGwAaAAYAHAAIAAYABgAIAAoABgAKAB0AGwAGAB0AHgAbAB0ACwAbAB4ACwACAB8ACQALAB4AIAACAAsAIQALAAkAIQAgAAsAEQAiACMAIgATACMAIgASABMAJAASACIADQAOAA8AJQAOAA0AEAAlAA0A"), 0.5661285, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMABQAEAAAAAgABAAYAAQAHAAYABgAHAAgABgAIAAkAAgAGAAkACQAIAAoACwACAAkADAACAAsADAALAAkADQAOAA8AEAAOAA0AEQASABMA")],
-"material": SubResource("ShaderMaterial_00bqr"),
+"material": ExtResource("3_4lhjl"),
 "name": "Columna",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -120,7 +72,7 @@ _surfaces = [{
 "index_count": 144,
 "index_data": PackedByteArray("FwAjABUAFQAjACQAGQAlAA8ADwAlACYAGgAnAAsACwAnABsAHAAoAAUABQAoAB0AKQAqAAcABwAqACsAKQAsACoACgAsACkALAAIACoAKgAIAC0AKgAtACsAKwAtAAkAIQAuAAIAAgAuAB8ALwAgADAAMAAgAAEAIgADADEAMQADADIAAAAzADQANAAzADUANgA3ADgAOAA3AAYANgAEADcAHgAEADYAOQA6ADsAOwA6ADwAPQA+AD8APwA+AA0AQAAMAEEAQQAMAEIADgBDAEQARABDAEUARgBHAEgASABHABEARgAQAEcASQAQAEYAEgBKAEsASwBKAEwATQBOAE8ATwBOABYAGAAUAFAAUAAUAFEAEwBSAFMAUwBSAFQA"),
 "lods": [0.073291585, PackedByteArray("FQAXABYAFwAUABYAGAAUABcAEwAYABcADwAZABEAGQAQABEAEgAQABkACwAaABsAGgANABsAGgAMAA0ADgAMABoAHAAdAAUAHAAeAB0AAQAeABwAHgAEAB0AHQAEAAYAHwAgAAEAIQAgAB8AAgAhAB8AIQADACAAIgADACEAAAAiACEABwAIAAkACgAIAAcA"), 0.18239434, PackedByteArray("AAABAAIAAAADAAEAAQAEAAUABQAEAAYABwAIAAkACgAIAAcACwAMAA0ADgAMAAsADwAQABEAEgAQAA8AEwAUABUAFQAUABYA")],
-"material": SubResource("ShaderMaterial_00bqr"),
+"material": ExtResource("3_4lhjl"),
 "name": "Bajo1",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -162,7 +114,7 @@ _surfaces = [{
 "index_count": 144,
 "index_data": PackedByteArray("IAAiABMAEwAiACMAFwAkAA8ADwAkACUAGAAmAAsACwAmABkAJwAaAAkACQAaABsAKAApAAAAAAApACoAKQArACoAKgArAAIAHgAsAAYABgAsAC0ALgAdAC8ALwAdAAUAHwAHADAAMAAHADEABAAyADMAMwAyADQANQABADYANgABADcAAwA4ADkAOQA4ADoAOwA8AD0APQA8AAoAHAAIAD4APgAIAD8AQABBAEIAQgBBAEMARABFAEYARgBFAA0ARwAMAEgASAAMAEkADgBKAEsASwBKAEwATQBOAE8ATwBOABEATQAQAE4AUAAQAE0AEgBRAFIAUgBRAFMAVABVAFYAVgBVABUAIQAUAFcAVwAUAFgAFgBZAFoAWgBZAFsA"),
 "lods": [0.06893786, PackedByteArray("DwAXABEAFwAQABEAEgAQABcACwAYABkAGAANABkAGAAMAA0ADgAMABgACQAaABsAGgAKABsAGgAIAAoAHAAIABoACQAcABoABQAcAAkABgAdAAUAHgAdAAYAHgAHAB0AHwAHAB4ABAAfAB4AAAABAAIAAwABAAAAIAAVABMAIAAUABUAIQAUACAAFgAhACAA"), 0.14822875, PackedByteArray("AAABAAIAAwABAAAABAAFAAYABAAHAAUABQAIAAkACQAIAAoACwAMAA0ADgAMAAsADwAQABEAEgAQAA8AEwAUABUAFgAUABMA")],
-"material": SubResource("ShaderMaterial_00bqr"),
+"material": ExtResource("3_4lhjl"),
 "name": "Bajo2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

@@ -1,17 +1,17 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dt4jndoftnsvs"]
 
-[ext_resource type="Shader" uid="uid://dubm80uf8txvv" path="res://Assets/Shaders/Leyline.gdshader" id="1_jdh38"]
-[ext_resource type="Texture2D" uid="uid://del1hhu1lv7db" path="res://Assets/Textures/Laylines/T/TSideMask.png" id="2_jdh38"]
-[ext_resource type="Texture2D" uid="uid://bq2pjjdkqsrv1" path="res://Assets/Textures/Laylines/T/TOver.png" id="3_1lv5m"]
-[ext_resource type="Texture2D" uid="uid://cin0f8j3c5jbo" path="res://Assets/Textures/Laylines/T/TUnder.png" id="4_wfijd"]
+[ext_resource type="Shader" uid="uid://dubm80uf8txvv" path="res://Assets/Shaders/Leyline.gdshader" id="1_47s1p"]
+[ext_resource type="Texture2D" uid="uid://del1hhu1lv7db" path="res://Assets/Textures/Laylines/T/TSideMask.png" id="2_qsms3"]
+[ext_resource type="Texture2D" uid="uid://bq2pjjdkqsrv1" path="res://Assets/Textures/Laylines/T/TOver.png" id="3_ao1gs"]
+[ext_resource type="Texture2D" uid="uid://cin0f8j3c5jbo" path="res://Assets/Textures/Laylines/T/TUnder.png" id="4_d7cpu"]
 
 [resource]
 render_priority = 2
-shader = ExtResource("1_jdh38")
+shader = ExtResource("1_47s1p")
 shader_parameter/progress = 0.0
-shader_parameter/under = ExtResource("4_wfijd")
-shader_parameter/over = ExtResource("3_1lv5m")
-shader_parameter/mask = ExtResource("2_jdh38")
+shader_parameter/under = ExtResource("4_d7cpu")
+shader_parameter/over = ExtResource("3_ao1gs")
+shader_parameter/mask = ExtResource("2_qsms3")
 shader_parameter/rotationAngle = 1.0000000447036
 shader_parameter/flipX = true
 shader_parameter/flipY = false

@@ -84,7 +84,7 @@ func add_material_to_cutout(materialToStore: Material) -> void:
 	if Engine.is_editor_hint(): return
 	if not GeneralVariables.is_node_ready(): await GeneralVariables.ready
 	storedMaterials.append(materialToStore)
-	GeneralVariables.to_cutout_materials(storedMaterials, true, false)
+	GeneralVariables.queue_to_cutout_materials(storedMaterials, true)
 
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
@@ -212,4 +212,4 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.to_cutout_materials(storedMaterials, false, true)
+		GeneralVariables.queue_to_cutout_materials(storedMaterials, false)

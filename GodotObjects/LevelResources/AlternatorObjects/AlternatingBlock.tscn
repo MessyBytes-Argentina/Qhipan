@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bun480bt8ssjs"]
+[gd_scene load_steps=13 format=3 uid="uid://bun480bt8ssjs"]
 
 [ext_resource type="Script" uid="uid://b2hxonrdflvq3" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingObject.gd" id="1_06fcw"]
-[ext_resource type="Material" uid="uid://bplnhss2npxei" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock Textile.tres" id="3_06fcw"]
+[ext_resource type="Shader" uid="uid://cdwry2j0kdtdw" path="res://Assets/Shaders/AlternatingBlock.gdshader" id="3_c5n3c"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="4_2hb3y"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_lalsh"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_w2j1e"]
+[ext_resource type="Texture2D" uid="uid://d1idumi3axx2" path="res://Assets/Materials/WithCutout/BloquesAlternantes/Textile/Textile Roughness.png" id="6_34abf"]
+[ext_resource type="Texture2D" uid="uid://bgd56w8luewlk" path="res://Assets/Materials/WithCutout/BloquesAlternantes/Textile/Textile Normal.png" id="7_d0byb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c5n3c"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tucv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06fcw"]
 size = Vector3(0.9, 1.4, 0.9)
@@ -13,6 +17,52 @@ size = Vector3(0.9, 1.4, 0.9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ud1p"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_db7fa"]
+render_priority = 0
+shader = ExtResource("3_c5n3c")
+shader_parameter/progress = 0.999999977648
+shader_parameter/diameter = 0.8499999810008
+shader_parameter/height = 0.0999999977648
+shader_parameter/albedo = Color(0.23921569, 0.78039217, 0.8, 1)
+shader_parameter/light_gradient = ExtResource("5_w2j1e")
+shader_parameter/fresnel_gradient = ExtResource("4_lalsh")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("6_34abf")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("7_d0byb")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("6_34abf")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.1999999955296
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0
+
 [node name="AlternatingBlock" type="StaticBody3D"]
 collision_mask = 0
 script = ExtResource("1_06fcw")
@@ -20,7 +70,7 @@ script = ExtResource("1_06fcw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_c5n3c")
+shape = SubResource("BoxShape3D_tucv6")
 
 [node name="AntiDropArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -45,4 +95,4 @@ shape = SubResource("BoxShape3D_4ud1p")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_4ud1p")
-surface_material_override/0 = ExtResource("3_06fcw")
+surface_material_override/0 = SubResource("ShaderMaterial_db7fa")
