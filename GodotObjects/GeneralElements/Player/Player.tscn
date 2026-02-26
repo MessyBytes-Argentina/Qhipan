@@ -1595,8 +1595,8 @@ _data = {
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_q1b61"]
-radius = 1.5
-height = 3.0
+radius = 1.25
+height = 2.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6p00r"]
 render_priority = 1
