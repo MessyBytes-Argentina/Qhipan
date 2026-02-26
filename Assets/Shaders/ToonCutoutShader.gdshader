@@ -15,15 +15,15 @@ uniform float texture_scale : hint_range(0.1, 5.0, 0.1) = 1.0;
 uniform float blend_sharpness : hint_range(0.0, 150.0, 0.001) = 10.0;
 
 // Worldspace Albedo Texture Variables
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_disable;
 
 // Normal
 uniform bool enable_normal = false;
-uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_disable;
 uniform float normal_scale : hint_range(-16.0, 16.0) = 1.0;
 
 // ORM
-uniform sampler2D texture_orm : filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_orm : filter_linear_mipmap, repeat_disable;
 
 // Ambient Oclussion
 uniform bool enable_ambient_occlusion = false;
@@ -38,19 +38,19 @@ uniform float metallic : hint_range(0.0, 1.0, 0.01);
 
 // Emission
 uniform bool enable_emission = false;
-uniform sampler2D texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_emission : source_color, hint_default_black, filter_linear_mipmap, repeat_disable;
 uniform vec3 emission : source_color;
 uniform float emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
 
 // Clearcoat
 uniform bool enable_clearcoat = false;
-uniform sampler2D texture_clearcoat : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_clearcoat : hint_default_white, filter_linear_mipmap, repeat_disable;
 uniform float clearcoat : hint_range(0.0, 1.0, 0.01);
 uniform float clearcoat_roughness : hint_range(0.0, 1.0, 0.01);
 
 // Anisotropy
 uniform bool enable_anisotropy = false;
-uniform sampler2D texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_anisotropy_flowmap : hint_anisotropy, filter_linear_mipmap, repeat_disable;
 uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 
 // Cutout Variables

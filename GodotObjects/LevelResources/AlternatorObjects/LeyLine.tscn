@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4llfjretvmtq"]
+[gd_scene load_steps=12 format=3 uid="uid://b4llfjretvmtq"]
 
 [ext_resource type="Script" uid="uid://cleoji6ng6n2x" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.gd" id="1_7bq5v"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="2_7bq5v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_albedo.png" id="5_23152"]
 [ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_normal.png" id="6_ixv30"]
 [ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_orm.png" id="7_fg5lw"]
+[ext_resource type="Material" uid="uid://bgmps1heu1ecu" path="res://Assets/Materials/WithCutout/Sticker Placements/Layline Placement/Off/Chakana Layline Off.tres" id="8_0qu5i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wvyl4"]
 render_priority = 0
@@ -54,15 +55,16 @@ shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_g7bac"]
 material = SubResource("ShaderMaterial_wvyl4")
-size = Vector2(0.75, 0.75)
 orientation = 1
 
 [node name="LeyLine" type="Node3D"]
 script = ExtResource("1_7bq5v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0)
 mesh = SubResource("QuadMesh_g7bac")
+surface_material_override/0 = ExtResource("8_0qu5i")
 
 [node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
 unique_name_in_owner = true
