@@ -2474,6 +2474,10 @@ shape = SubResource("BoxShape3D_jlms1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
+[node name="OFFShape" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
+
 [node name="ChunkLoadingHotspot2" type="Node3D" parent="2/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("27_ylf57")
@@ -2707,6 +2711,10 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 metadata/ONShape = true
 
+[node name="OFFShape" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
+
 [node name="Darkness" parent="3/Widgets" instance=ExtResource("29_gafll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, -0.5)
 size = Vector3(3, 0.5, 3)
@@ -2869,11 +2877,6 @@ terrainZones = SubResource("ZonesResource_igsd6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -50, 0)
 metadata/_edit_lock_ = true
 
-[node name="KeySticker" parent="Ending" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_8uuqi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 18.7, 1.5)
-sceneParent = NodePath("../..")
-originalParent = "FinalDemoLevel"
-
 [node name="EndingDecoTemple" type="MeshInstance3D" parent="Ending"]
 transform = Transform3D(-2.3604152e-08, 0, -0.54, 0, 0.54, 0, 0.54, 0, -2.3604152e-08, 1, -14.631552, 92.67772)
 mesh = SubResource("ArrayMesh_hgceq")
@@ -2948,7 +2951,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+color = Color(0.9, 0.9, 0.84599996, 0)
 
 [connection signal="area_entered" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_entered"]
 [connection signal="area_exited" from="1/Props/Fences/Area3D" to="1/Props/Fences/Area3D" method="_on_light_exited"]
