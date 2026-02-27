@@ -59,6 +59,8 @@ func _ready() -> void:
 ## Tags first loaded scene with meta tag for scene roots.
 func tag_first_scene() -> void:
 	await get_tree().process_frame
+	if get_parent().get_children().any(func(a: Node): return a is SceneManager):
+		return
 	for node in get_parent().get_children():
 		if node is Node3D:
 			for child in node.get_children():
