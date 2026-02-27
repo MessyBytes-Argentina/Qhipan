@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bepcupksdg3h5"]
+[gd_scene load_steps=19 format=3 uid="uid://bepcupksdg3h5"]
 
 [ext_resource type="Texture2D" uid="uid://c65ev3edfbnpf" path="res://Assets/Textures/9sliceTest.png" id="1_ycww2"]
 [ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="2_qj3d8"]
@@ -10,11 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://bfhtpc03pnxfe" path="res://Assets/Sounds/ButtonsSFX/Bounce3.ogg" id="5_1ytef"]
 [ext_resource type="PackedScene" uid="uid://bn3a8oiupqm6a" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/VolumeSlider/PlaceholderButtonsAndSlider/HSlider.tscn" id="5_rp3o8"]
 [ext_resource type="Texture2D" uid="uid://cs4e3nctadyrt" path="res://Assets/Textures/Settings/Musica.png" id="7_ycww2"]
-[ext_resource type="Texture2D" uid="uid://hnysgs8elrdp" path="res://Assets/Textures/Buttons/HOVER.png" id="8_3ggm8"]
 [ext_resource type="Texture2D" uid="uid://0ngd41ahergv" path="res://Assets/Textures/Settings/Musica OFF.png" id="8_qj3d8"]
-[ext_resource type="Texture2D" uid="uid://cjjjyvtqxst0f" path="res://Assets/Textures/Buttons/PRESSED.png" id="9_t1gfv"]
 [ext_resource type="Script" uid="uid://bmy4rxan6ndx0" path="res://GodotObjects/GeneralElements/UI/SettingsCloseButton.gd" id="11_cqhlc"]
-[ext_resource type="Script" uid="uid://dsbdtcedvujab" path="res://GodotObjects/GeneralElements/UI/RestartLevel.gd" id="11_qf23i"]
 [ext_resource type="Texture2D" uid="uid://ln5evk5d1bgq" path="res://Assets/Textures/Settings/Sound.png" id="12_h58lc"]
 [ext_resource type="Texture2D" uid="uid://dxdj4hn2ccpjm" path="res://Assets/Textures/Settings/Sound OFF.png" id="13_o3k8a"]
 [ext_resource type="Texture2D" uid="uid://dgjow6pqy0hky" path="res://Assets/Textures/Settings/boton generico rojo.png" id="14_ycww2"]
@@ -45,20 +42,6 @@ texture_margin_left = 30.0
 texture_margin_top = 30.0
 texture_margin_right = 30.0
 texture_margin_bottom = 30.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kplp2"]
-texture = ExtResource("9_t1gfv")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 12.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqt6w"]
-texture = ExtResource("8_3ggm8")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
 
 [node name="SimpleSettingsMenu" type="MarginContainer"]
 custom_minimum_size = Vector2(512, 300)
@@ -163,7 +146,6 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MusicVolumeHSlider/MusicVolumeButton")
 focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
-focus_neighbor_bottom = NodePath("../../RestartLevel")
 focus_mode = 0
 texture_normal = ExtResource("12_h58lc")
 texture_pressed = ExtResource("13_o3k8a")
@@ -176,46 +158,6 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../SoundsVolumeButton")
 focus_neighbor_top = NodePath("../../MusicVolumeHSlider/HSlider")
 focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
-focus_neighbor_bottom = NodePath("../../RestartLevel")
-
-[node name="RestartLevel" type="Button" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer" node_paths=PackedStringArray("music", "sound", "closeButton")]
-custom_minimum_size = Vector2(200, 48)
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../SFXVolumeHSlider/HSlider")
-focus_neighbor_right = NodePath("../../../../CloseButtonMarginContainer/CloseButton")
-focus_neighbor_bottom = NodePath(".")
-theme_override_fonts/font = ExtResource("2_yfyft")
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxTexture_40ed2")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kplp2")
-theme_override_styles/hover = SubResource("StyleBoxTexture_nqt6w")
-theme_override_styles/focus = SubResource("StyleBoxTexture_nqt6w")
-script = ExtResource("11_qf23i")
-music = NodePath("../MusicVolumeHSlider")
-sound = NodePath("../SFXVolumeHSlider")
-closeButton = NodePath("../../../../CloseButtonMarginContainer/CloseButton")
-
-[node name="MarginContainer" type="MarginContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/RestartLevel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_top = -8
-
-[node name="Label" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/RestartLevel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("2_yfyft")
-theme_override_font_sizes/font_size = 26
-text = "Restart level"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CloseButtonMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
