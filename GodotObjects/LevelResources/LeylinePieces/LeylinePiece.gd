@@ -117,8 +117,11 @@ func _ready() -> void:
 	pivot.add_child(editorMesh)
 	if Engine.is_editor_hint(): 
 		for child in get_children(): 
-			if child.get_child(0).name == "LeylinePieceMesh" and child.get_child(0) is MeshInstance3D and child != pivot and child.name == "Pivot": 
-				child.queue_free()
+			if child != pivot and child.name == "Pivot": 
+				for granchild in child.get_children():
+					if granchild.name == "LeylinePieceMesh" and granchild is MeshInstance3D:
+						child.queue_free()
+						return
 
 ## Sets this piece's length.
 func set_length() -> void:
