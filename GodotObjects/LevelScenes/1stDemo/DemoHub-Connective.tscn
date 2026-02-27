@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="6_01brn"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="6_mc10n"]
 [ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="7_cja0d"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="8_x0jxa"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="8_x0jxa"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="9_imc7x"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="9_x0jxa"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="10_iqlko"]
@@ -585,28 +585,28 @@ mesh = SubResource("QuadMesh_7yvys")
 [node name="Metaprogression Blocks" type="Node3D" parent="Props"]
 
 [node name="PlaceholderMetaprogressionBlockEntrance" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0499997, 2.5, -11.049999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0499997, -0.5, -11.049999)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("10_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)
 pedestalName = "MolinoLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance2" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, 2.5, -16.261)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, -0.5, -16.261)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("10_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)
 pedestalName = "MolinoLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance3" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, 2.5, -20.861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039, -0.5, -20.861)
 color = Color(0.62490547, 1.2811433, 1.3535374, 1)
 texture = ExtResource("11_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)
 pedestalName = "DestileriaLock"
 
 [node name="PlaceholderMetaprogressionBlockEntrance4" parent="Props/Metaprogression Blocks" instance=ExtResource("9_imc7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.939, 2.5, -11.049999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.939, -0.5, -11.049999)
 color = Color(0.62490547, 1.2811433, 1.3535374, 1)
 texture = ExtResource("11_wwpq5")
 forceScale = Vector3(1.105, 6, 0.2)
