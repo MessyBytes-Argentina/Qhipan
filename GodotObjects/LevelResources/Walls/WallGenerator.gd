@@ -156,8 +156,12 @@ func organize_cut_shapes() -> void:
 			var duplicated: CSGShape3D = child.duplicate()
 			polygon.add_child(duplicated)
 			duplicated.material = polygon.material
-			child.hide()
 			duplicated.show()
+			duplicated = child.duplicate()
+			downPolygon.add_child(duplicated)
+			duplicated.material = polygon.material
+			duplicated.show()
+			child.hide()
 		else:
 			child.reparent(polygon)
 			child.material = polygon.material

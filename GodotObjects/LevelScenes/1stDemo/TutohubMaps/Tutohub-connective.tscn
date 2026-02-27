@@ -1435,7 +1435,7 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Walls" type="Node3D" parent="Rooms/Tutohub-Puzzle1"]
 
 [node name="WallGenerator" type="Path3D" parent="Rooms/Tutohub-Puzzle1/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -1.5, 2.001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 2)
 curve = SubResource("Curve3D_xmmk3")
 script = ExtResource("8_143k4")
 wallHeight = 11.0
@@ -1450,6 +1450,20 @@ operation = 2
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Rooms/Tutohub-Puzzle1/Walls/WallGenerator"]
 transform = Transform3D(0, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 0, -0.3, 3, -10)
+visible = false
+operation = 2
+
+[node name="WallGenerator2" type="Path3D" parent="Rooms/Tutohub-Puzzle1/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2)
+curve = SubResource("Curve3D_xmmk3")
+script = ExtResource("8_143k4")
+wallHeight = 11.0
+wallMode = 1
+material = ExtResource("38_a74g7")
+metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Rooms/Tutohub-Puzzle1/Walls/WallGenerator2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.5, -5.5)
 visible = false
 operation = 2
 
