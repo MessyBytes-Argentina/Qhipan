@@ -73,6 +73,7 @@ func stop_moving(body: Node3D) -> void:
 
 ## Switches the powered flag to the opposite.
 func switch_state() -> void:
+	if isPermanent: return
 	powered = !powered
 	mode = "on" if powered else "off"
 	transition_color()
