@@ -1670,7 +1670,7 @@ sceneParent = NodePath("../../../..")
 [node name="Stickers" type="Node3D" parent="Rooms/Tutohub-Puzzle2"]
 
 [node name="Alternator" parent="Rooms/Tutohub-Puzzle2/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3flle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
 sceneParent = NodePath("../../../..")
 originalParent = "Tutohub-connective"
 
