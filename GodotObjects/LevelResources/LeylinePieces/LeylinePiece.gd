@@ -82,7 +82,7 @@ func _ready() -> void:
 	pivot = Node3D.new()
 	pivot.name = "Pivot"
 	leylinePiece = MeshInstance3D.new()
-	leylinePiece.name = "LeylinePiece"
+	leylinePiece.name = "LeylinePieceMesh"
 	mesh = QuadMesh.new()
 	mesh.size = PIECESIZE
 	mesh.orientation = PlaneMesh.FACE_Y
@@ -115,7 +115,7 @@ func _ready() -> void:
 	editorMaterial.emission_energy_multiplier = 2.0
 	editorMesh.set_surface_override_material(0, editorMaterial)
 	pivot.add_child(editorMesh)
-	if Engine.is_editor_hint(): for child in get_children(): if child.get_child(0).name == "LeylinePiece" and child != pivot: child.queue_free()
+	if Engine.is_editor_hint(): for child in get_children(): if child.get_child(0).name == "LeylinePieceMesh" and child != pivot: child.queue_free()
 
 ## Sets this piece's length.
 func set_length() -> void:
