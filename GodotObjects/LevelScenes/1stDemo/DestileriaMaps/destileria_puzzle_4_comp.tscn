@@ -178,6 +178,7 @@ script = ExtResource("7_d2c6w")
 wallHeight = 11.5
 wallMode = 1
 material = ExtResource("8_qmvnx")
+collisionDown = true
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator" type="Path3D" parent="Props/Walls"]
@@ -219,7 +220,7 @@ metadata/OFFShape = true
 [node name="Occluder2" type="Node3D" parent="Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3, 9.500002)
 script = ExtResource("10_8lg17")
-showObjects = [NodePath("")]
+showObjects = [null]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
