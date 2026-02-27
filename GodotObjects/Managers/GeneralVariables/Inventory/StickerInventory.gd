@@ -41,5 +41,6 @@ func remove_sticker(stickerName: String) -> PocketSticker:
 
 ## TEMPORARY BOOK CODE
 func _ready() -> void:
-	book = load("uid://knl3pi3ldyma").instantiate()
-	add_child(book)
+	var bookScene: CanvasLayer = load("uid://knl3pi3ldyma").instantiate()
+	add_child(bookScene)
+	book = bookScene.get_child(0)

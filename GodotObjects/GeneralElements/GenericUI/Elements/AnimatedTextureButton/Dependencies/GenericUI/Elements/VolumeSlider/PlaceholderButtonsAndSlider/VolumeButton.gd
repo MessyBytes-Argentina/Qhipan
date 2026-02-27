@@ -1,4 +1,5 @@
-extends Button
+extends TextureButton
+
 const ANIMATION: Dictionary[String, Variant] = {
 	"scale": 1.2,
 	"time": 0.5,
@@ -7,21 +8,14 @@ const ANIMATION: Dictionary[String, Variant] = {
 	"rotation": deg_to_rad(30)
 }
 
-## Name to close the popup window
-@export var popupName: String = "Settings"
 @export var pivotOffset: Vector2 = Vector2.ZERO
 
 var tween: Tween
 var progress: float = 0.0
 var goalAngle: float
-var canBeClosed: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pressed.connect(_on_pressed)
-	canBeClosed = false
-	await get_tree().create_timer(0.5).timeout
-	canBeClosed = true
 	focus_entered.connect(_on_focus)
 	mouse_entered.connect(_on_focus)
 	focus_exited.connect(_on_focus_lost)
@@ -47,16 +41,3 @@ func _animation_tick(currentProgress: float) -> void:
 	progress = currentProgress
 	rotation = lerp(0.0, goalAngle, progress)
 	scale = Vector2.ONE * lerp(1.0, ANIMATION.scale, progress)
-
-## When pressed unlocks the player controls and closes the window
-func _on_pressed() -> void:
-	if not canBeClosed: return
-	await get_tree().process_frame
-	canBeClosed = false
-	get_tree().call_group("Player", "set", "onSettings", false)
-	PopupManager.close_popup_by_name(popupName)
-	GeneralVariables.inventory.book.hide_book()
-
-## Calls _on_pressed
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"): _on_pressed()

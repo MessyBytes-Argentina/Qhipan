@@ -111,6 +111,7 @@ _slider = NodePath("HSlider")
 bus = 2
 
 [node name="MusicVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("4_qf23i")]
+z_index = 2
 custom_minimum_size = Vector2(64, 4)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
@@ -122,6 +123,7 @@ texture_pressed = ExtResource("8_qj3d8")
 texture_hover = ExtResource("7_ycww2")
 texture_disabled = ExtResource("8_qj3d8")
 texture_focused = ExtResource("7_ycww2")
+pivotOffset = Vector2(0, 30)
 
 [node name="HSlider" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/MusicVolumeHSlider" instance=ExtResource("5_rp3o8")]
 layout_mode = 2
@@ -142,6 +144,7 @@ soundOnChange = ExtResource("5_1ytef")
 bus = 1
 
 [node name="SoundsVolumeButton" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/SFXVolumeHSlider" instance=ExtResource("4_2bmqm")]
+z_index = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MusicVolumeHSlider/MusicVolumeButton")

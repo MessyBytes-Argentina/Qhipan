@@ -11,6 +11,8 @@ func _ready() -> void:
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)
 	PopupManager.closed_popup.connect(_on_settings_closed)
 	set_controller_mode(GeneralVariables.usingGamepad)
+	## BULLSHIT FOR THE DEMO
+	GeneralVariables.inventory.book.get_parent().hide()
 
 ## Switches between mouse and controller for selection
 func set_controller_mode(isController: bool) -> void:

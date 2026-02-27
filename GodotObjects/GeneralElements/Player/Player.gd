@@ -233,6 +233,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			onSettings = true
 			PopupManager.show_popup("Settings")
 			GeneralVariables.inventory.book.show_book()
+			## BULLSHIT FOR THE DEMO
+			GeneralVariables.inventory.book.get_parent().show()
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()

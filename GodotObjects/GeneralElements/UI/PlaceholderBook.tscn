@@ -216,8 +216,12 @@ _data = {
 &"Sticker4_remove": SubResource("Animation_rg2ff")
 }
 
-[node name="PlaceholderBook" type="SubViewportContainer"]
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 3
+
+[node name="PlaceholderBook" type="SubViewportContainer" parent="."]
 top_level = true
+z_index = 10
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -228,59 +232,59 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_kslwr")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="PlaceholderBook"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="PlaceholderBook/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
 cull_mask = 131072
 current = true
 fov = 25.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlaceholderBook/SubViewport"]
 unique_name_in_owner = true
 root_node = NodePath("../Book")
 libraries = {
 &"": SubResource("AnimationLibrary_23hlu")
 }
 
-[node name="Book" type="Node3D" parent="SubViewport"]
+[node name="Book" type="Node3D" parent="PlaceholderBook/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 
-[node name="HalfModel" parent="SubViewport/Book" instance=ExtResource("2_lnpl3")]
+[node name="HalfModel" parent="PlaceholderBook/SubViewport/Book" instance=ExtResource("2_lnpl3")]
 transform = Transform3D(-1, 0, 2.3841858e-07, 0, 1, 0, 2.3841858e-07, 0, 1, 0, 0, 0)
 
-[node name="CoverPivot" type="Node3D" parent="SubViewport/Book"]
+[node name="CoverPivot" type="Node3D" parent="PlaceholderBook/SubViewport/Book"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0.1)
 
-[node name="HalfModel2" parent="SubViewport/Book/CoverPivot" instance=ExtResource("2_lnpl3")]
+[node name="HalfModel2" parent="PlaceholderBook/SubViewport/Book/CoverPivot" instance=ExtResource("2_lnpl3")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.35000002, 0, 0.1)
 
-[node name="Sticker1" type="Sprite3D" parent="SubViewport/Book"]
+[node name="Sticker1" type="Sprite3D" parent="PlaceholderBook/SubViewport/Book"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
 layers = 131072
 pixel_size = 0.0005
 texture = ExtResource("1_cmxnc")
 
-[node name="Sticker2" type="Sprite3D" parent="SubViewport/Book"]
+[node name="Sticker2" type="Sprite3D" parent="PlaceholderBook/SubViewport/Book"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
 layers = 131072
 pixel_size = 0.0005
 texture = ExtResource("1_cmxnc")
 
-[node name="Sticker3" type="Sprite3D" parent="SubViewport/Book"]
+[node name="Sticker3" type="Sprite3D" parent="PlaceholderBook/SubViewport/Book"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
 layers = 131072
 pixel_size = 0.0005
 texture = ExtResource("1_cmxnc")
 
-[node name="Sticker4" type="Sprite3D" parent="SubViewport/Book"]
+[node name="Sticker4" type="Sprite3D" parent="PlaceholderBook/SubViewport/Book"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4.5)
 layers = 131072
