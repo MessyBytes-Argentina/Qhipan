@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=206 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -49,7 +49,6 @@
 [ext_resource type="PackedScene" uid="uid://tlq0fen0uti3" path="res://GodotObjects/GeneralElements/Particles/DustTest.tscn" id="47_buqda"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="48_v3cjv"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="49_mxdex"]
-[ext_resource type="PackedScene" uid="uid://coi3r40vtute" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/big_rocks.tscn" id="50_efdds"]
 [ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="50_wfdgi"]
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="51_8jqqo"]
 [ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="52_usc8t"]
@@ -472,6 +471,13 @@ size = Vector3(1, 1, 2.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7isej"]
 size = Vector3(0.6, 1, 1.7)
 
+[sub_resource type="Resource" id="Resource_fuaq1"]
+script = ExtResource("3_ihy67")
+name = "Puzzle2"
+image = ExtResource("6_p7x5o")
+backImage = ExtResource("6_p7x5o")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
+
 [sub_resource type="Curve3D" id="Curve3D_xmmk3"]
 closed = true
 _data = {
@@ -487,13 +493,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="Resource" id="Resource_fuaq1"]
-script = ExtResource("3_ihy67")
-name = "Puzzle2"
-image = ExtResource("6_p7x5o")
-backImage = ExtResource("6_p7x5o")
-metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="Curve3D" id="Curve3D_wrbw1"]
 closed = true
@@ -659,13 +658,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_v2gma"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, -0.125, 0, -3.53, 0, 0, 1.62, 0.305, 0, 0, 0, 0, 0, 0.70000076, 0, -2.385),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
 [sub_resource type="Curve3D" id="Curve3D_oa1xw"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.065, 0.04, 0, 0, 0, 0, 0, 0, 0, 0.9, -0.96, 0),
@@ -708,18 +700,10 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve3D" id="Curve3D_66qek"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
 [sub_resource type="Curve3D" id="Curve3D_ndrjl"]
 closed = true
 _data = {
-"points": PackedVector3Array(-1, 0, 0, 0, 0, -0.25, 0, 0, 0, -1, 0, 0, 1, 0, 0, 3, 0, 0, 1, 0, 0, -1, 0, 0, 3, 0, 3, -0.19, 0, 0, -1.53, 0, 0, 0, 0, 3),
+"points": PackedVector3Array(-1, 0, 0, 0, 0, -0.25, 0, 0, 0, -1, 0, 0, 1, 0, 0, 3, 0, 0, 1, 0, 0, -1, 0, 0, 2.5050244, 0, 2.7878685, -0.19, 0, 0, -1.53, 0, 0, 0, 0, 3),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -1252,6 +1236,7 @@ size = Vector3(3.6000001, 3.1000001, 3.5)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
+metadata/_edit_lock_ = true
 
 [node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
 script = ExtResource("34_n5fu6")
@@ -1432,6 +1417,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 0, 0.049999714)
 shape = SubResource("BoxShape3D_7isej")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
+
+[node name="Puzzle2Sticker" parent="Rooms/Tutohub-connectivehub" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -0.5, 0.099999905, -8)
+sticker = SubResource("Resource_fuaq1")
+sceneParent = NodePath("../../..")
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
@@ -1651,13 +1641,14 @@ size = Vector3(10.400001, 9.1, 11.400001)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
+metadata/_edit_lock_ = true
 
 [node name="Tutohub-Puzzle2" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle2" instance=ExtResource("1_emjup")]
 data = {
-"cells": PackedInt32Array(-589824, 1, 162, -524289, 0, 162, -524289, 1, 164, -589822, 1, 162, -589820, 1, 162, -589821, 1, 162, -589823, 1, 162, -589819, 1, 162, -589818, 1, 162, -589817, 1, 162, -589816, 1, 655362, -589819, 0, 162, -589818, 0, 162, -589817, 0, 162, -589816, 0, 162, -589816, 65535, 162, -589817, 65535, 162, -589818, 65535, 162, -589819, 65535, 162, -589820, 0, 162, -589820, 65535, 162, -589815, 1, 655362, -458743, 1, 1048580, -589815, 0, 162, -589815, 65535, 162, -458744, 1, 7, -589814, 65535, 2, -589814, 0, 162, -589814, 1, 655362, -589813, 1, 1048578, -589813, 0, 1048578, -589813, 65535, 1048578, -589813, 65534, 1048578, -458740, 65535, 3, -458740, 0, 3, -458739, 0, 655362, -458739, 65535, 655362, -458738, 0, 655362, -458738, 65535, 1048578, -458738, 1, 1048578, -458739, 65534, 655361, -458740, 65534, 1048576, -458739, 1, 1441793, -458740, 1, 655360, -458738, 65534, 1048578, -131077, 65535, 162, -131077, 0, 162, -131078, 0, 162, -131078, 65535, 162, -65537, 0, 164, -65537, 65535, 164, -524289, 65535, 162, -589821, 0, 162, -589821, 65535, 162, -589814, 65534, 2, -458743, 0, 1441799, -458744, 0, 1048582, -589812, 1, 1048578, -589811, 1, 1048578, -589810, 1, 1048578, -589812, 0, 1048578, -589811, 0, 1048578, -589810, 0, 1048578, -589810, 65535, 1048578, -589811, 65535, 1048578, -589812, 65535, 1048578, -589812, 65534, 1048578, -589811, 65534, 1048578, -589810, 65534, 1048578, -458741, 1, 655363, -458742, 1, 655362, -458742, 0, 1441795, -458741, 0, 0, -589809, 0, 2, -589809, 65535, 2, -458737, 0, 2, -458737, 65535, 2, -327665, 0, 2, -327665, 65535, 2, -589809, 1, 2, -458737, 1, 2, -458737, 65534, 2, -589809, 65534, 2, -327665, 65534, 1441795, -327665, 1, 1048579, -327666, 0, 3, -327666, 65535, 3, -327666, 65534, 1048576, -327666, 1, 655360)
+"cells": PackedInt32Array(-589824, 1, 162, -524289, 0, 162, -524289, 1, 164, -589822, 1, 162, -589820, 1, 162, -589821, 1, 162, -589823, 1, 162, -589819, 1, 162, -589818, 1, 162, -589817, 1, 162, -589816, 1, 655362, -589819, 0, 162, -589818, 0, 162, -589817, 0, 162, -589816, 0, 162, -589816, 65535, 162, -589817, 65535, 162, -589818, 65535, 162, -589819, 65535, 162, -589820, 0, 162, -589820, 65535, 162, -589815, 1, 655362, -458743, 1, 655458, -589815, 0, 162, -589815, 65535, 162, -458744, 1, 7, -589814, 65535, 2, -589814, 0, 162, -589814, 1, 655362, -589813, 1, 1048578, -589813, 0, 1048578, -589813, 65535, 1048578, -589813, 65534, 1048578, -458740, 65535, 3, -458740, 0, 3, -458739, 0, 655362, -458739, 65535, 655362, -458738, 0, 655362, -458738, 65535, 1048578, -458738, 1, 1048578, -458739, 65534, 655361, -458740, 65534, 1048576, -458739, 1, 1441793, -458740, 1, 655360, -458738, 65534, 1048578, -131077, 65535, 162, -131077, 0, 162, -131078, 0, 162, -131078, 65535, 162, -65537, 0, 164, -65537, 65535, 164, -524289, 65535, 162, -589821, 0, 162, -589821, 65535, 162, -589814, 65534, 2, -458743, 0, 655458, -458744, 0, 1048582, -589812, 1, 1048578, -589811, 1, 1048578, -589810, 1, 1048578, -589812, 0, 1048578, -589811, 0, 1048578, -589810, 0, 1048578, -589810, 65535, 1048578, -589811, 65535, 1048578, -589812, 65535, 1048578, -589812, 65534, 1048578, -589811, 65534, 1048578, -589810, 65534, 1048578, -458741, 1, 655363, -458742, 1, 655362, -458742, 0, 1441795, -458741, 0, 0, -589809, 0, 2, -589809, 65535, 2, -458737, 0, 2, -458737, 65535, 2, -327665, 0, 2, -327665, 65535, 2, -589809, 1, 2, -458737, 1, 2, -458737, 65534, 2, -589809, 65534, 2, -327665, 65534, 1441795, -327665, 1, 1048579, -327666, 0, 3, -327666, 65535, 3, -327666, 65534, 1048576, -327666, 1, 655360, -327671, 0, 655458, -458743, 65535, 655458, -196599, 0, 655458)
 }
 metadata/_editor_floor_ = Vector3(0, -3, 0)
 
@@ -1671,6 +1662,11 @@ sceneParent = NodePath("../../../..")
 
 [node name="Alternator" parent="Rooms/Tutohub-Puzzle2/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3flle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+sceneParent = NodePath("../../../..")
+originalParent = "Tutohub-connective"
+
+[node name="Alternator2" parent="Rooms/Tutohub-Puzzle2/Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3flle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
 sceneParent = NodePath("../../../..")
 originalParent = "Tutohub-connective"
 
@@ -1691,7 +1687,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 shape = SubResource("BoxShape3D_tofyh")
 
 [node name="MovingPlatform" parent="Rooms/Tutohub-Puzzle2/Platform1" node_paths=PackedStringArray("railReference") instance=ExtResource("48_v3cjv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999998, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0)
 railReference = NodePath("../PlatformRail")
 
 [node name="PlatformRail" parent="Rooms/Tutohub-Puzzle2/Platform1" node_paths=PackedStringArray("platformReference") instance=ExtResource("49_mxdex")]
@@ -1721,19 +1717,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -3.5, 1.5)
 curve = SubResource("Curve3D_sqk63")
 platformReference = NodePath("../MovingPlatform")
 
-[node name="AlternatingGroup1" type="Node3D" parent="Rooms/Tutohub-Puzzle2"]
-script = ExtResource("41_p4wax")
-
-[node name="AlternatingBlock3" parent="Rooms/Tutohub-Puzzle2/AlternatingGroup1" instance=ExtResource("40_vlngr")]
-transform = Transform3D(1, 0, 0, 0, 1.05, 0, 0, 0, 1.1525975, 10.5, -2.5, 1.5)
+[node name="AlternatingBlock3" parent="Rooms/Tutohub-Puzzle2" instance=ExtResource("40_vlngr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -2.5, 1.5)
 collision_layer = 4096
 isOff = true
 
+[node name="AlternatingBlock4" parent="Rooms/Tutohub-Puzzle2" instance=ExtResource("40_vlngr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -2.5, -0.5)
+collision_layer = 4096
+isOff = true
+metadata/_edit_lock_ = true
+
+[node name="AlternatingGroup1" type="Node3D" parent="Rooms/Tutohub-Puzzle2"]
+script = ExtResource("41_p4wax")
+
 [node name="LeyLine" parent="Rooms/Tutohub-Puzzle2/AlternatingGroup1" instance=ExtResource("42_7isej")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.1000004, -3.5, 1.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, -3.5, 1.5)
 
 [node name="LeylinePiece" type="Node3D" parent="Rooms/Tutohub-Puzzle2/AlternatingGroup1"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.1000004, -3.5000002, 1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, -3.5, 1)
 script = ExtResource("50_wfdgi")
 exits = 6
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
@@ -1760,14 +1762,14 @@ length = 3.0
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="LeylinePiece" type="Node3D" parent="Rooms/Tutohub-Puzzle2/AlternatingGroup1/LeylinePiece/LeylinePiece2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.099999905, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
 script = ExtResource("50_wfdgi")
 length = 3.0
 verticalAngle = 3
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock2" parent="Rooms/Tutohub-Puzzle2/AlternatingGroup1/LeylinePiece/LeylinePiece2/LeylinePiece" instance=ExtResource("40_vlngr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6000004, 2.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)
 collision_layer = 4096
 isOff = true
 
@@ -1892,11 +1894,6 @@ curve = SubResource("Curve3D_il6re")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0.5)
 curve = SubResource("Curve3D_5ioaj")
 
-[node name="Big Rocks" parent="Rooms/Tutohub-Puzzle2/Props/Fences" instance=ExtResource("50_efdds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, -3.6, 0.6)
-curve = SubResource("Curve3D_v2gma")
-colliderSize = Vector2(1.4, 1.05)
-
 [node name="Bridge3" parent="Rooms/Tutohub-Puzzle2/Props/Fences" instance=ExtResource("15_knjsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, -0.6, 0)
 curve = SubResource("Curve3D_oa1xw")
@@ -1942,17 +1939,6 @@ curve = ExtResource("12_en8j3")
 script = ExtResource("13_n1n0r")
 extrudeDirection = 0
 shapeThickness = 3.0
-material = ExtResource("52_usc8t")
-collisionLayer = 1
-resolution = 2.0
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Column4" type="Path3D" parent="Rooms/Tutohub-Puzzle2/Props/Columnas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.700001, -3.5, 0)
-curve = SubResource("Curve3D_66qek")
-script = ExtResource("13_n1n0r")
-extrudeDirection = 0
-shapeThickness = 2.8
 material = ExtResource("52_usc8t")
 collisionLayer = 1
 resolution = 2.0
@@ -2034,6 +2020,7 @@ size = Vector3(6.1, 5.9, 4.6)
 script = ExtResource("46_hjwt0")
 particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
+metadata/_edit_lock_ = true
 
 [node name="Tutohub-Puzzle3" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
