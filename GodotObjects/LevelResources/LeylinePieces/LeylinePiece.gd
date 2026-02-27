@@ -1,3 +1,4 @@
+@icon("uid://cq26nlkrot578")
 @tool
 extends Node3D
 
@@ -98,7 +99,7 @@ func _ready() -> void:
 	leylineParent = get_parent() if get_parent() is LeylinePiece else null
 	for child in get_children(): 
 		if child is LeylinePiece: leylineChildren.append(child)
-		if child is AlternatingObject or child is MovingPlatform or child is LitGlass: alternableChildren.append(child)
+		if child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: alternableChildren.append(child)
 	if not Engine.is_editor_hint(): return
 	var editorMesh: MeshInstance3D = MeshInstance3D.new()
 	editorMesh.mesh = PrismMesh.new()
@@ -114,6 +115,7 @@ func _ready() -> void:
 	editorMaterial.emission_energy_multiplier = 2.0
 	editorMesh.set_surface_override_material(0, editorMaterial)
 	pivot.add_child(editorMesh)
+	for child in get_children(): if child.get_child(0).name == "LeylinePiece" and child != pivot: child.queue_free()
 
 ## Sets this piece's length.
 func set_length() -> void:

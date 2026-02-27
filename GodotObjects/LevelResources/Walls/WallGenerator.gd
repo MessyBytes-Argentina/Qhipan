@@ -38,6 +38,9 @@ enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 @export var blocksLight: bool = true
 ## Wall collision layer.
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
+## Add collision on only down.
+@export var collisionDown: bool = false
+## Regenerate wall button.
 @export_tool_button("Regenerate Wall", "ArrayMesh") var regenerateWall: Callable = regenerate_wall_shape
 ## Flips the path in case the wall is drawn on the opposite side.
 @export_tool_button("Flip Path", "AnimationAutoFit") var flipPath: Callable = flip_path
@@ -118,7 +121,10 @@ func regenerate_wall_shape() -> void:
 			downPolygon = polygon.duplicate()
 			add_child(downPolygon)
 			downPolygon.polygon = _create_wall_shape(false, true)
-			downPolygon.use_collision = false
+			if not collisionDown: downPolygon.use_collision = false
+			else: 
+				downPolygon.use_collision = true
+				downPolygon.collision_layer = collisionLayer
 			downPolygon.material = downPolygon.material.duplicate()
 			downPolygon.material.set_shader_parameter("goesDown", true)
 			if not blocksLight:
@@ -127,7 +133,10 @@ func regenerate_wall_shape() -> void:
 			downPolygon = polygon.duplicate()
 			add_child(downPolygon)
 			downPolygon.polygon = _create_wall_shape(false, true)
-			downPolygon.use_collision = false
+			if not collisionDown: downPolygon.use_collision = false
+			else: 
+				downPolygon.use_collision = true
+				downPolygon.collision_layer = collisionLayer
 			downPolygon.material = downPolygon.material.duplicate()
 			downPolygon.material.set_shader_parameter("goesDown", true)
 			if not blocksLight:
