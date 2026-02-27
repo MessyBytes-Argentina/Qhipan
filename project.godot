@@ -35,6 +35,7 @@ GeneralVariables="*res://GodotObjects/Managers/GeneralVariables/GeneralVariables
 
 [display]
 
+window/size/mode=3
 window/fullsize=false
 window/bg_color=Color(0, 0, 0, 1)
 window/image="uid://dn8lpixxsjk3g"
