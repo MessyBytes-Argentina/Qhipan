@@ -1,7 +1,7 @@
 extends Control
 
 ## This Scene handles transitioning fro main scenes.
-class_name StoryWriterSceneManager
+class_name SceneManager
 
 ## Signals the end of a scene switch.
 signal finished()
@@ -10,9 +10,10 @@ signal finished()
 const loadExtraTime: float = 1.0
 ## The animation time.
 const loadAnimationTime: float = 1.0
+## Tiem to load the same scene.
 const loadSameScene: float = 0.5
 ## The wait time after the animation finished.
-const loadAnimationExtraTime: float = 0.0
+const loadAnimationExtraTime: float = 0.5
 ## The time to spread back the hexes on loading time extended.
 const loadAnimationWaitTime: float = 0.5
 

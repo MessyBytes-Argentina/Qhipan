@@ -15,7 +15,7 @@ func _ready() -> void:
 	MusicManager.set_synchro_clip_volume("main",[1],-60.0,0.1)
 	for particle in particles.get_children(): particle.emitting = true
 	for particleEmmitter in particleEmiters.get_children(): particleEmmitter.emit_particles()
-	var sceneManager: StoryWriterSceneManager = null
+	var sceneManager: SceneManager = null
 	while not sceneManager:
 		await get_tree().process_frame
 		sceneManager = get_tree().get_first_node_in_group("SceneManager")

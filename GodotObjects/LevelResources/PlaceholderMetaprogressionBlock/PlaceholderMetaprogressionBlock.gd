@@ -53,8 +53,8 @@ func update_texture() -> void:
 	gpuParticles3d.process_material = gpuParticles3d.process_material.duplicate()
 	gpuParticles3d.process_material.emission_shape_scale = forceScale
 	gpuParticles3d.amount = max(MINPARTICLES, PARTICLES * round(forceScale.x * forceScale.y * forceScale.z))
-	gpuParticles3d.position.y = -forceScale.y / 2.0
 	scale = Vector3.ONE
+	mesh.position.y = forceScale.y / 2.0
 
 ## Called when pedestal is activated.
 func pedestal_activated(activatedPedestal: String, skip: bool = false) -> void:

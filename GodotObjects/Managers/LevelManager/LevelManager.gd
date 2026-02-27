@@ -1,12 +1,12 @@
 extends Node
 
 ## Path to the credits scene
-const creditsScene: String = "uid://b8wvtujbncu6r"
+const creditsScene: String = "uid://bclmhvt3fe7tl"
 
 ## Array with the list of paths to the levels scenes
 var levelList: Array[String]
 ## Reference to the SceneManager (assigned at the ready function)
-var sceneManager: StoryWriterSceneManager
+var sceneManager: SceneManager
 ## Current level id for the list progress
 var currentLvlId: int = 0
 ## Restarted flag

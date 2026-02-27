@@ -7,9 +7,9 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skuak"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1jkq"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h2pr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1jkq"]
 
 [node name="Control" type="Control" groups=["SceneManager"]]
 layout_mode = 3
@@ -106,36 +106,36 @@ theme_override_constants/separation = 0
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Settings")
-theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
-theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_skuak")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_skuak")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_skuak")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_skuak")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_skuak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_skuak")
 text = "Start"
 script = ExtResource("1_oq7qy")
-levelList = Array[String](["uid://crmvcuof5gyt2", "uid://bc7t04hvqoifc", "uid://l62ulb285l1f", "uid://dp0p4t6cc64a6", "uid://baa07m7c51sm4", "uid://bclmhvt3fe7tl", "uid://dq782t3gqfnxn"])
+levelList = Array[String](["uid://d1qns2ftphyp6"])
 
 [node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
-theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
-theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
 theme_override_fonts/font = ExtResource("1_l0taq")
 theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5h2pr")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_5h2pr")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
 text = "Settings"
 script = ExtResource("2_6u8ck")

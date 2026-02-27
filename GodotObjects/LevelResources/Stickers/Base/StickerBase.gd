@@ -246,7 +246,7 @@ func set_size(mode: ScaleModes) -> void:
 			back.show()
 			billboardZoomedOut.hide()
 			meshes.scale = Vector3.ONE
-			if placedParticles: placedParticles.emit_particles()
+			if placedParticles and hasBeenMoved: placedParticles.emit_particles()
 		ScaleModes.ZOOMEDOUT:
 			stop_rotation()
 			billboardZoomedOut.show()

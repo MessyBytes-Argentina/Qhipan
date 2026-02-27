@@ -960,21 +960,21 @@ pedestalName = "Puzzle2"
 sceneParent = NodePath("../../../..")
 
 [node name="PlaceholderMetaprogressionBlockEntrance" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.35, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.65, 1.5)
 color = Color(1.4430209, 1.1029316, 0.4734047, 1)
 texture = ExtResource("3_5onks")
 forceScale = Vector3(1.2, 1.75, 0.25)
 pedestalName = "Entrance"
 
 [node name="PlaceholderMetaprogressionBlockPuzzle2" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.1499999, 0.55, -6)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.1499999, -0.45, -6)
 color = Color(0.708783, 1.0260962, 0.5402103, 1)
 texture = ExtResource("6_p7x5o")
 forceScale = Vector3(2, 2.1, 0.25)
 pedestalName = "Puzzle2"
 
 [node name="PlaceholderMetaprogressionBlockPuzzle3" parent="Rooms/Tutohub-connectivehub/metaprogress" instance=ExtResource("6_3flle")]
-transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.5, 1, -13.4)
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -0.5, -0.5, -13.4)
 color = Color(0.15948172, 0.873581, 1.1413766, 1)
 texture = ExtResource("7_5n13k")
 forceScale = Vector3(5, 3, 0.5)
