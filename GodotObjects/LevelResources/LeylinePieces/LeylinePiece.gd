@@ -115,7 +115,7 @@ func _ready() -> void:
 	editorMaterial.emission_energy_multiplier = 2.0
 	editorMesh.set_surface_override_material(0, editorMaterial)
 	pivot.add_child(editorMesh)
-	for child in get_children(): if child.get_child(0).name == "LeylinePiece" and child != pivot: child.queue_free()
+	if Engine.is_editor_hint(): for child in get_children(): if child.get_child(0).name == "LeylinePiece" and child != pivot: child.queue_free()
 
 ## Sets this piece's length.
 func set_length() -> void:
