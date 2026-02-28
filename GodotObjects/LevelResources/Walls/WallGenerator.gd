@@ -157,10 +157,11 @@ func organize_cut_shapes() -> void:
 			polygon.add_child(duplicated)
 			duplicated.material = polygon.material
 			duplicated.show()
-			duplicated = child.duplicate()
-			downPolygon.add_child(duplicated)
-			duplicated.material = polygon.material
-			duplicated.show()
+			if downPolygon:
+				duplicated = child.duplicate()
+				downPolygon.add_child(duplicated)
+				duplicated.material = polygon.material
+				duplicated.show()
 			child.hide()
 		else:
 			child.reparent(polygon)

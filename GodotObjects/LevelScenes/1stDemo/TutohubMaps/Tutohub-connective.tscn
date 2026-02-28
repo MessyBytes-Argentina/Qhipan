@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=199 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -443,15 +443,23 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y25gd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrbw1"]
+size = Vector3(4, 1, 11.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a74g7"]
-size = Vector3(1, 1, 2.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vlngr"]
-size = Vector3(2, 1, 6)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfdgi"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_p4wax"]
-size = Vector3(1, 1, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucst0"]
+size = Vector3(1, 1, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssq6m"]
+size = Vector3(1, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5fu6"]
+size = Vector3(1, 1, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7isej"]
+size = Vector3(0.6, 1, 1.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8f3oy"]
 size = Vector3(3.3, 1, 1)
@@ -464,12 +472,6 @@ size = Vector3(3, 1, 9.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pvqj"]
 size = Vector3(4, 4, 5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_n5fu6"]
-size = Vector3(1, 1, 2.2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7isej"]
-size = Vector3(0.6, 1, 1.7)
 
 [sub_resource type="Resource" id="Resource_fuaq1"]
 script = ExtResource("3_ihy67")
@@ -535,7 +537,7 @@ point_count = 4
 [sub_resource type="Curve3D" id="Curve3D_66qek"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, -0.2, -2.3999996, 0, -1, 0, 0, 0, 0.2, 0, 0.25, 0.5, 0, -1, 0, 0, 0, -0.25, 0, 0.2, 0.5, 0, 0.5, 0, 0, 0, 0, 0, 0, -2.3999996, 0, 0.5),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.5, 0, -1, 0, 0, 0, 0, 0, 0, 0.5, 0, -1, 0, 0, 0, 0, 0, 0, 0.5, 0, 0.5, 0, 0, 0, 0, 0, 0, -2.5, 0, 0.5),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -1188,34 +1190,65 @@ particleScene = ExtResource("47_buqda")
 metadata/_custom_type_script = "uid://cdqgatbj6wnfu"
 metadata/_edit_lock_ = true
 
-[node name="ObjectHider Puzzle 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
+[node name="ObjectHider Hub" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
 script = ExtResource("34_n5fu6")
-showObjects = [NodePath("../../../Tutohub-Puzzle1")]
 hideObjects = [NodePath("../../../Tutohub-Puzzle2"), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../GridmapObject"), NodePath("../../Walls"), NodePath("../../Props/Deco Walls"), NodePath("../../Props/Fringes"), NodePath("../../Props/Fences"), NodePath("../../metaprogress"), NodePath("../../../../TerraBrush"), NodePath("../../Props/Collumn Pathway"), NodePath("../../Props/PorticoA")]
 sceneParent = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
-[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -3.5)
+[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Hub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1.1, -7.5)
 shape = SubResource("BoxShape3D_wrbw1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3.25)
+[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Hub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -3.5)
 shape = SubResource("BoxShape3D_a74g7")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7.5)
-shape = SubResource("BoxShape3D_vlngr")
+[node name="OFFShape2" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Hub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -11.5)
+shape = SubResource("BoxShape3D_wfdgi")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
-[node name="OFFShape3" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectHider Puzzle 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -11.5)
-shape = SubResource("BoxShape3D_p4wax")
+[node name="ObjectOccluder P 1" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -7)
+script = ExtResource("34_n5fu6")
+showObjects = [NodePath("../../../Tutohub-Puzzle1")]
+sceneParent = NodePath("../../../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099999905, 0.5, -0.5)
+shape = SubResource("BoxShape3D_ucst0")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.5, -0.5)
+shape = SubResource("BoxShape3D_ssq6m")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
+
+[node name="ObjectOccluder P 2" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+script = ExtResource("34_n5fu6")
+hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../../../TerraBrush")]
+sceneParent = NodePath("../../../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, 0, -0.099999905)
+shape = SubResource("BoxShape3D_n5fu6")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 0, 0.049999714)
+shape = SubResource("BoxShape3D_7isej")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
@@ -1228,7 +1261,7 @@ rootNode = NodePath("../../../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ChunkLoadingHotspot-Demohub"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999995, 0, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999995, 0, 8.5)
 shape = SubResource("BoxShape3D_8f3oy")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
@@ -1349,25 +1382,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9, 0, -6)
 [node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0, -6)
 
-[node name="ObjectOccluder" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-script = ExtResource("34_n5fu6")
-hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../../../TerraBrush")]
-sceneParent = NodePath("../../../..")
-metadata/_custom_type_script = "uid://blllvpjbphq1w"
-
-[node name="ONShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3000002, 0, -0.099999905)
-shape = SubResource("BoxShape3D_n5fu6")
-debug_color = Color(0, 0.7490196, 1, 0.5)
-metadata/ONShape = true
-
-[node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4000001, 0, 0.049999714)
-shape = SubResource("BoxShape3D_7isej")
-debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
-metadata/OFFShape = true
-
 [node name="Puzzle2Sticker" parent="Rooms/Tutohub-connectivehub" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
 transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -0.5, 0.099999905, -8)
 sticker = SubResource("Resource_fuaq1")
@@ -1375,7 +1389,6 @@ sceneParent = NodePath("../../..")
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
-visible = false
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle1" instance=ExtResource("1_emjup")]
 data = {
@@ -1470,7 +1483,7 @@ script = ExtResource("50_wfdgi")
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Rooms/Tutohub-Puzzle1/AlternatingGroup/LeylinePiece" instance=ExtResource("40_vlngr")]
-transform = Transform3D(-0.5, 0, 8.742278e-08, 0, 1, 0, -4.371139e-08, 0, -1, 1.2615042, 0, 0)
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 1.5, 0, 0)
 
 [node name="AlternatingGroup2" type="Node3D" parent="Rooms/Tutohub-Puzzle1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
@@ -1499,7 +1512,7 @@ exits = 2
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Rooms/Tutohub-Puzzle1/AlternatingGroup2/LeylinePiece/LeylinePiece/LeylinePiece" instance=ExtResource("40_vlngr")]
-transform = Transform3D(1.9106853e-15, -4.3711385e-08, -0.3, -1, -4.371139e-08, 5.7320567e-16, -4.371139e-08, 1, -1.3113417e-08, 0.49999905, 0.50000095, -0.49999964)
+transform = Transform3D(1.9106853e-15, -4.371139e-08, -1, -1, -4.371139e-08, 2.2351868e-22, -4.371139e-08, 1, -4.371139e-08, 0.49999905, 0.50000095, -0.49999964)
 
 [node name="Metaprogress" type="Node3D" parent="Rooms/Tutohub-Puzzle1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
@@ -1573,7 +1586,7 @@ material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator5" type="Path3D" parent="Rooms/Tutohub-Puzzle1/Props/Deco Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6000004, -0.5, -5.547966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.5, -5.5)
 curve = SubResource("Curve3D_66qek")
 script = ExtResource("8_143k4")
 wallHeight = 7.0
@@ -1755,7 +1768,7 @@ material = ExtResource("38_a74g7")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-Puzzle2/Walls/LateralD Up"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.39999962, 0, -0.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.39999962, 3, -0.5)
 visible = false
 layers = 0
 operation = 2
