@@ -579,7 +579,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -3.3500001, 1.5)
 specialFlags = 4
 
 [node name="Fan Placement" parent="Widgets/StickerPlacements" instance=ExtResource("7_22e3m")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.5, -1.6, 1)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.5, -1.5, 1)
 
 [node name="AltGroupA" type="Node3D" parent="Widgets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, -1, -2.5)

@@ -966,6 +966,7 @@ curve = SubResource("Curve3D_3fjpl")
 script = ExtResource("8_143k4")
 wallHeight = 10.0
 material = ExtResource("14_tlqgd")
+noCutout = true
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-connectivehub/Walls/WallGenerator"]
@@ -980,6 +981,7 @@ curve = SubResource("Curve3D_4smwb")
 script = ExtResource("8_143k4")
 wallMode = 2
 material = ExtResource("14_tlqgd")
+noCutout = true
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Rooms/Tutohub-connectivehub/Walls/WallGenerator2"]
@@ -1389,6 +1391,7 @@ sceneParent = NodePath("../../..")
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
+visible = false
 
 [node name="GridmapObject" parent="Rooms/Tutohub-Puzzle1" instance=ExtResource("1_emjup")]
 data = {

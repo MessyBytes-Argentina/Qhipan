@@ -1,6 +1,6 @@
 @tool
 extends Area3D
-
+## Used to accumulate lights for objects hidden in darkness.
 class_name GlowDetectionArea
 
 ## AmmountOfLightsToProcess.
@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 		j += 1
 	for shader in shaders:
 		shader.set_shader_parameter("lights", lightsParameters)
-		shader.set_shader_parameter("playerHoldsLight", pickupHandler.currentPickup is LampSticker)
+		shader.set_shader_parameter("playerHoldsLight", pickupHandler.currentPickup is LampSticker if pickupHandler.currentPickup else false)
 		shader.set_shader_parameter("actualPlayerPosition", player.global_position)
 
 func _get_shaders(refNode: Node) -> void:

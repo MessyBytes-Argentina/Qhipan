@@ -120,8 +120,8 @@ func restore_save(mode: bool) -> void:
 
 ## Shows and hides what's been setup.
 func do_show_hide(mode: bool) -> void:
-	for object in hideObjects: object.visible = not mode
-	for object in showObjects: object.visible = mode
+	for object in hideObjects: if object: object.set_deferred("visible", not mode)
+	for object in showObjects: if object: object.set_deferred("visible", mode)
 
 ## Forces a mode.
 func force_mode(mode: bool) -> void:

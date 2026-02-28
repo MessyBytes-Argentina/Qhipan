@@ -755,7 +755,7 @@ debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true
 
 [node name="ChunkLoadingHotspot-EndPuzzle" type="Node3D" parent="Widgets/Chunk Loaders" node_paths=PackedStringArray("rootNode") groups=["ChunkLoadingHotspots"]]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5, 0, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -24)
 script = ExtResource("2_fjvai")
 hotspotName = "EndEntrance"
 sceneToLoad = "res://GodotObjects/LevelScenes/1stDemo/FinalDemoLevelTest/1.tscn"
@@ -830,6 +830,18 @@ metadata/ONShape = true
 
 [node name="OFFShape" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0.5999999, 0)
+shape = SubResource("BoxShape3D_151im")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
+
+[node name="ONShape2" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6000004, 0.5, -6.5)
+shape = SubResource("BoxShape3D_agjl4")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape2" type="CollisionShape3D" parent="Widgets/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0.5999999, -6.5)
 shape = SubResource("BoxShape3D_151im")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true

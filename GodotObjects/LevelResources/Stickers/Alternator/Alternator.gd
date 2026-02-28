@@ -87,8 +87,8 @@ func add_obj_list(objList: Array) -> void:
 ## Enables the heldAreaChecker
 func enable_area() -> void:
 	player.alternatorHeldEffect.show()
-	heldAreaChecker.monitoring = true
-	heldAreaChecker.monitorable = true
+	heldAreaChecker.set_deferred("monitoring", true)
+	heldAreaChecker.set_deferred("monitorable", true)
 	heldAreaChecker.body_entered.connect(add_alternating_object)
 	heldAreaChecker.body_exited.connect(remove_alternating_object)
 	heldAreaChecker.area_entered.connect(add_alternating_object)
@@ -97,8 +97,8 @@ func enable_area() -> void:
 ## Disables the heldAreaChecker
 func disable_area() -> void:
 	player.alternatorHeldEffect.hide()
-	heldAreaChecker.monitoring = false
-	heldAreaChecker.monitorable = false
+	heldAreaChecker.set_deferred("monitoring", false)
+	heldAreaChecker.set_deferred("monitorable", false)
 	if heldAreaChecker.body_entered.is_connected(add_alternating_object):
 		heldAreaChecker.body_entered.disconnect(add_alternating_object)
 	if heldAreaChecker.body_exited.is_connected(remove_alternating_object):

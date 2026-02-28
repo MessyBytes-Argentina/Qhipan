@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="21_cvmp3"]
 [ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="22_d457b"]
 [ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="25_fpt0c"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="26_b54xi"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="26_b54xi"]
 
 [sub_resource type="Curve3D" id="Curve3D_uqbb7"]
 _data = {
@@ -396,7 +396,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 
 [node name="UnloadShape" type="CollisionShape3D" parent="Widgets/ChunkLoaders/ChunkLoadingHotspot-enterpuzzle-3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3.8, 8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3.8, 8.5)
 shape = SubResource("BoxShape3D_1wwje")
 debug_color = Color(0.8627451, 0.078431375, 0.23529412, 0.5)
 metadata/UnloadShape = true

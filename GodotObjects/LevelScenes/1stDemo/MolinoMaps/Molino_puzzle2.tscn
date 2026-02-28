@@ -297,10 +297,10 @@ shape = SubResource("BoxShape3D_m1jej")
 [node name="Fan Machines" type="Node3D" parent="Props"]
 
 [node name="Fan Placement" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.6, -0.5000006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.5, -0.5000006)
 
 [node name="Fan Placement2" parent="Props/Fan Machines" instance=ExtResource("7_6fuqp")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.5, 2.4, -0.01)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.5, 2.5, -0.01)
 
 [node name="Fan Placement Vertical" parent="Props/Fan Machines" instance=ExtResource("7_bqiac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -1.1, -0.5)
