@@ -15,6 +15,7 @@ config/version="1.1"
 run/main_scene="uid://dkdx1yrx643d4"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/image="uid://dn8lpixxsjk3g"
 config/icon="uid://bl5tesrbned68"
@@ -36,6 +37,9 @@ GeneralVariables="*res://GodotObjects/Managers/GeneralVariables/GeneralVariables
 [display]
 
 window/size/mode=3
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/mode="canvas_items"
 window/fullsize=false
 window/bg_color=Color(0, 0, 0, 1)
 window/image="uid://dn8lpixxsjk3g"

@@ -15,6 +15,8 @@ const FRAMESTAGGERMAX: int = 60
 ## Stagger wait time.
 const STAGGERWAIT: float = 0.1
 
+## Reference to the scene manager if it's loaded.
+var sceneManager: SceneManager
 ## Is the player using a gamepad.
 var usingGamepad: bool = false
 ## The collection of standard cutout materials.
