@@ -98,7 +98,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s2p10")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bi05e"]
-size = Vector3(0.8, 0.25, 0.6)
+size = Vector3(0.8, 0.3, 0.6)
 
 [node name="SmallPedestalKey" type="StaticBody3D" node_paths=PackedStringArray("sceneParent")]
 script = ExtResource("1_re33t")
@@ -107,7 +107,7 @@ sceneParent = NodePath(".")
 
 [node name="Bloque" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.6528359, 0, 0, 0, 0.6528359, 0, 0, 0, 0.9467543, 0, 0.07359135, 0)
+transform = Transform3D(0.6528359, 0, 0, 0, 0.6528359, 0, 0, 0, 0.9467543, 0, 0.02359135, 0)
 mesh = SubResource("ArrayMesh_txe4u")
 metadata/extras = {
 "yp_decal": {}
@@ -115,7 +115,7 @@ metadata/extras = {
 
 [node name="StickerSlot" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.92516106, 0, 0, 0, 0.92516106, 0, 0, 0, 0.92516106, 0, -0.16696233, -0.02566117)
+transform = Transform3D(0.92516106, 0, 0, 0, 0.92516106, 0, 0, 0, 0.92516106, 0, -0.21696232, -0.02566117)
 mesh = SubResource("ArrayMesh_hb5s7")
 metadata/extras = {
 "yp_decal": {}
@@ -123,19 +123,19 @@ metadata/extras = {
 
 [node name="Base_001" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.847211, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.847211, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = SubResource("ArrayMesh_o0lvu")
 metadata/extras = {
 "yp_decal": {}
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.125, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.049999993, 0)
 shape = SubResource("BoxShape3D_bi05e")
 
 [node name="StickerMarker" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.6673055, 0.18100029)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.6173055, 0.18100029)
 script = ExtResource("4_hb5s7")
 validStickers = 4
 specialStickerScale = 0.65

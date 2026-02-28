@@ -2353,39 +2353,51 @@ colliderSize = Vector2(0.3, 1)
 
 [node name="Fan Placement" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.5)
+specialFlags = 1
 
 [node name="Fan Placement2" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -0.5)
+specialFlags = 1
 
 [node name="Fan Placement3" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
+specialFlags = 1
 
 [node name="Fan Placement4" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement5" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement6" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement7" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -1.5)
+specialFlags = 1
 
 [node name="Fan Placement8" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -0.5)
+specialFlags = 1
 
 [node name="Fan Placement9" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, 0.5)
+specialFlags = 1
 
 [node name="Fan Placement10" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 1, 2)
+specialFlags = 1
 
 [node name="Fan Placement11" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 1, 2)
+specialFlags = 1
 
 [node name="Fan Placement12" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.5, 1, 2)
+specialFlags = 1
 
 [node name="Anti Sticker" type="Node3D" parent="2/Props"]
 
@@ -2589,39 +2601,51 @@ colliderSize = Vector2(0.3, 1)
 
 [node name="Fan Placement" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.5)
+specialFlags = 1
 
 [node name="Fan Placement2" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -0.5)
+specialFlags = 1
 
 [node name="Fan Placement3" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
+specialFlags = 1
 
 [node name="Fan Placement4" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement5" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement6" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1, -3)
+specialFlags = 1
 
 [node name="Fan Placement7" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -1.5)
+specialFlags = 1
 
 [node name="Fan Placement8" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -0.5)
+specialFlags = 1
 
 [node name="Fan Placement9" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, 0.5)
+specialFlags = 1
 
 [node name="Fan Placement10" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 1, 2)
+specialFlags = 1
 
 [node name="Fan Placement11" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 1, 2)
+specialFlags = 1
 
 [node name="Fan Placement12" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.5, 1, 2)
+specialFlags = 1
 
 [node name="Anti Sticker" type="Node3D" parent="3/Props"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.9, 0, -1.1)
@@ -2792,6 +2816,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Ending" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 
 [node name="GridmapObject" parent="Ending" instance=ExtResource("1_euh2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)

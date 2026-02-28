@@ -879,7 +879,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -13.
 [node name="Metaprogression" type="Node3D" parent="Destileria_puzzle2"]
 
 [node name="SmallPedestalKey" parent="Destileria_puzzle2/Metaprogression" node_paths=PackedStringArray("sceneParent") instance=ExtResource("9_w24ym")]
-transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, -19.5, -0.5, 2.5)
+transform = Transform3D(-0.7071067, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071067, -19.55, -0.5, 2.5500002)
 pedestalName = "destileriaPuzzle2"
 sceneParent = NodePath("../../..")
 

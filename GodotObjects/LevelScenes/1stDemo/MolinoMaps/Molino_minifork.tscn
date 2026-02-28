@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=97 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
@@ -160,6 +160,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_kluub"]
+transparency = 4
+albedo_color = Color(0.627451, 0.1254902, 0.9411765, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_5cbxj"]
 _data = {
@@ -920,6 +924,24 @@ curve = SubResource("Curve3D_4vh7k")
 [node name="Wood Fence6" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.90000004, 0.05000019)
 curve = SubResource("Curve3D_rc3x7")
+colliderSize = Vector2(0.1, 1.5)
+
+[node name="@CSGPolygon3D@38085" type="CSGPolygon3D" parent="Rooms/Molino_puzzle4/Fences/Wood Fence6"]
+use_collision = true
+collision_mask = 0
+polygon = PackedVector2Array(-0.05, 0, -0.05, 1.5, 0.05, 1.5, 0.05, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 1.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("ORMMaterial3D_kluub")
 
 [node name="Wood Fence3" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9)
