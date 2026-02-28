@@ -2479,7 +2479,7 @@ shape = SubResource("BoxShape3D_jlms1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape2" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
@@ -2716,7 +2716,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 metadata/ONShape = true
 
-[node name="OFFShape" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape2" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
@@ -2792,7 +2792,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Ending" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 
 [node name="GridmapObject" parent="Ending" instance=ExtResource("1_euh2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
@@ -2881,11 +2880,6 @@ textureSets = SubResource("TextureSetsResource_rn2m1")
 terrainZones = SubResource("ZonesResource_igsd6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -50, 0)
 metadata/_edit_lock_ = true
-
-[node name="KeySticker" parent="Ending" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_8uuqi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 18.7, 1.5)
-sceneParent = NodePath("../..")
-originalParent = "FinalDemoLevel"
 
 [node name="EndingDecoTemple" type="MeshInstance3D" parent="Ending"]
 transform = Transform3D(-2.3604152e-08, 0, -0.54, 0, 0.54, 0, 0.54, 0, -2.3604152e-08, 1, -14.631552, 92.67772)

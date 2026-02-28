@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
-[ext_resource type="PackedScene" uid="uid://ds40hobe7ugw5" path="res://GodotObjects/LevelScenes/1stDemo/DemoHub-Connective.tscn" id="3_uc5ix"]
+[ext_resource type="PackedScene" uid="uid://c2lxh7gg1mdwq" path="res://GodotObjects/LevelScenes/1stDemo/DestileriaMaps/destileria_finame_comp.tscn" id="3_uc5ix"]
 
 [node name="Art Main Test" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.7000003, 0.15225345, -0.19999981)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.7000003, 0.15225345, -0.6999998)
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("3_feuco")]
 
-[node name="DemoHub-Connective" parent="." instance=ExtResource("3_uc5ix")]
+[node name="Destileria_finame_comp" parent="." instance=ExtResource("3_uc5ix")]

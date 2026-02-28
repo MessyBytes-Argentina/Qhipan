@@ -473,13 +473,6 @@ size = Vector3(3, 1, 9.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pvqj"]
 size = Vector3(4, 4, 5)
 
-[sub_resource type="Resource" id="Resource_fuaq1"]
-script = ExtResource("3_ihy67")
-name = "Puzzle2"
-image = ExtResource("6_p7x5o")
-backImage = ExtResource("6_p7x5o")
-metadata/_custom_type_script = "uid://cs5riap1rgf6x"
-
 [sub_resource type="Curve3D" id="Curve3D_xmmk3"]
 closed = true
 _data = {
@@ -495,6 +488,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Resource" id="Resource_fuaq1"]
+script = ExtResource("3_ihy67")
+name = "Puzzle2"
+image = ExtResource("6_p7x5o")
+backImage = ExtResource("6_p7x5o")
+metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 
 [sub_resource type="Curve3D" id="Curve3D_wrbw1"]
 closed = true
@@ -1383,11 +1383,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9, 0, -6)
 
 [node name="EndMarker" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets/EnvironmentLerper4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0, -6)
-
-[node name="Puzzle2Sticker" parent="Rooms/Tutohub-connectivehub" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_cwlqd")]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -0.5, 0.099999905, -8)
-sticker = SubResource("Resource_fuaq1")
-sceneParent = NodePath("../../..")
 
 [node name="Tutohub-Puzzle1" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, -4)
