@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://2vwefawy2u4p"]
+[gd_scene load_steps=82 format=4 uid="uid://2vwefawy2u4p"]
 
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="1_7wx1f"]
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_u5eqn"]
@@ -418,6 +418,21 @@ disable_receive_shadows = true
 material = SubResource("StandardMaterial3D_6go3k")
 size = Vector2(2.2, 1.2)
 orientation = 1
+
+[sub_resource type="Curve3D" id="Curve3D_1pww5"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5, 0, -16, 0, 0, 0, 10, 0, 0, 18, 0, -16, 10, 0, 0, 0, 0, 0, 18, 0, 22, 0, 0, 0, 0, 0, 0, -5, 0, 22),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg1jm"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
 
 [node name="Molino_minifork" type="Node3D"]
 
@@ -1297,3 +1312,12 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0
 visible = false
 mesh = SubResource("QuadMesh_iwp2i")
 skeleton = NodePath("../../Widgets")
+
+[node name="PathExtruder" type="Path3D" parent="Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -20.5, 0)
+curve = SubResource("Curve3D_1pww5")
+script = ExtResource("22_bcwfp")
+shapeThickness = 0.01
+material = SubResource("StandardMaterial3D_bg1jm")
+resolution = 20.0
+metadata/_custom_type_script = "uid://cctq08qihhy37"

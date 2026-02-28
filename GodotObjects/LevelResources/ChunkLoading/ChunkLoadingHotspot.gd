@@ -134,6 +134,7 @@ func load_scene() -> void:
 	loadedHotspot.loadedScene = rootNode
 	GeneralVariables.saveManager.request_scene_load(loadedScene)
 	loadedScene.set_meta("isRoot", true)
+	prints("load:", sceneToLoad.get_file())
 
 ## Unloads scene.
 func _do_unload() -> void:
@@ -146,6 +147,7 @@ func _do_unload() -> void:
 	loadedScene.queue_free()
 	loadedScene = null
 	loadedHotspot = null
+	prints("unload:", sceneToLoad.get_file(), loadedScene)
 
 ## Shows the packed scene for checking alignment
 func test_position() -> void:

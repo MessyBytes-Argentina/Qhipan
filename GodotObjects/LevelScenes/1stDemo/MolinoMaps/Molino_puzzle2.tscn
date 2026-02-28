@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=57 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -149,6 +149,17 @@ point_count = 3
 [sub_resource type="Curve" id="Curve_kq3d6"]
 _data = [Vector2(0, 0), 0.0, 2.0328138, 0, 0, Vector2(1, 1), 0.51076627, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ix7dh"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_bqiac"]
+material = SubResource("StandardMaterial3D_ix7dh")
+size = Vector2(20, 14)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80foe"]
 size = Vector3(1, 2, 7)
@@ -453,6 +464,12 @@ customProfileShapeDown = SubResource("Curve_kq3d6")
 customWallWidth = 2.0
 resolution = 3.0
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Ceiling4" type="MeshInstance3D" parent="Props"]
+transform = Transform3D(-4.371139e-08, -0.9999999, -4.371138e-08, 0, -4.371138e-08, 0.9999999, -1, 4.3711385e-08, 1.9106853e-15, 3.2000008, -11.549999, -14)
+layers = 4
+mesh = SubResource("QuadMesh_bqiac")
+skeleton = NodePath("../../..")
 
 [node name="Widgets" type="Node3D" parent="."]
 
