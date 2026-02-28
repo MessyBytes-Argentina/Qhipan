@@ -2229,7 +2229,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.8
 
 [node name="Widgets" type="Node3D" parent="1"]
 
-[node name="ChunkLoadingHotspot" type="Node3D" parent="1/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot" type="Node3D" parent="1/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("27_ylf57")
 showObjects = [NodePath("../../../2")]
@@ -2466,7 +2466,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.8
 
 [node name="Widgets" type="Node3D" parent="2"]
 
-[node name="ChunkLoadingHotspot" type="Node3D" parent="2/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot" type="Node3D" parent="2/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("27_ylf57")
 showObjects = [NodePath("../../../1")]
@@ -2479,11 +2479,11 @@ shape = SubResource("BoxShape3D_jlms1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
-[node name="ChunkLoadingHotspot2" type="Node3D" parent="2/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot2" type="Node3D" parent="2/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("27_ylf57")
 showObjects = [NodePath("../../../3")]
@@ -2702,7 +2702,7 @@ transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -2.8
 
 [node name="Widgets" type="Node3D" parent="3"]
 
-[node name="ChunkLoadingHotspot" type="Node3D" parent="3/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot" type="Node3D" parent="3/Widgets" node_paths=PackedStringArray("showObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("27_ylf57")
 showObjects = [NodePath("../../../2")]
@@ -2716,7 +2716,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 metadata/ONShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
@@ -2732,7 +2732,7 @@ transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08
 [node name="Placeholder Sticker Area14" parent="3/Widgets/StickerPlacements" instance=ExtResource("30_hxrls")]
 transform = Transform3D(1.9106855e-15, -4.3711392e-08, 1.0000001, -4.3711392e-08, 1.0000001, 4.3711392e-08, -1, -4.3711395e-08, 0, 3.5, 0.5, -3.5)
 
-[node name="ChunkLoadingHotspot2" type="Node3D" parent="3/Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent") groups=["ChunkLoadingHotspots"]]
+[node name="ChunkLoadingHotspot2" type="Node3D" parent="3/Widgets" node_paths=PackedStringArray("showObjects", "hideObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("27_ylf57")
 showObjects = [NodePath("../../../Ending")]

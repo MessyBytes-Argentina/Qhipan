@@ -48,6 +48,7 @@ func update_texture() -> void:
 	particleMaterial.albedo_texture = texture
 	gpuParticles3d.set_material_override(particleMaterial)
 	mesh.scale = forceScale
+	collisionShape.shape = collisionShape.shape.duplicate()
 	collisionShape.shape.size = forceScale
 	gpuParticles3d.lifetime = PARTICLESLIFE * forceScale.y
 	gpuParticles3d.process_material = gpuParticles3d.process_material.duplicate()
@@ -55,6 +56,7 @@ func update_texture() -> void:
 	gpuParticles3d.amount = max(MINPARTICLES, PARTICLES * round(forceScale.x * forceScale.y * forceScale.z))
 	scale = Vector3.ONE
 	mesh.position.y = forceScale.y / 2.0
+	collisionShape.position.y = forceScale.y / 2.0
 
 ## Called when pedestal is activated.
 func pedestal_activated(activatedPedestal: String, skip: bool = false) -> void:
