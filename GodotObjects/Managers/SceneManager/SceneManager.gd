@@ -23,7 +23,8 @@ const loadAnimationWaitTime: float = 0.5
 @onready var loaderSubViewport: SubViewport = %LoaderSubViewport
 ## Reference to the main subviewport.
 @onready var mainSubViewport: Control = %MainSubViewportContainer
-@onready var blockScreen: CanvasLayer = $BlockScreen
+## Reference to the screen blocker.
+@onready var blockScreen: CanvasLayer = %BlockScreen
 
 ## A Dictionary of scenes loaded.
 var loadedScenes: Dictionary[String, Dictionary] = {}
@@ -37,10 +38,16 @@ var currentViewportSize: Vector2
 var transitionTween: Tween
 ## Doing transition setup.
 var inSetup: bool = false
-
+## The current scene.
 var currentScene: String
+## Variable using for reloading scene, currently on desuse.
 var reloaded: bool = false
+## Is the switch scene already requested.
 var requestedSwitch: bool = false
+
+## Executed when entering scene tree.
+func _ready() -> void:
+	GeneralVariables.sceneManager = self
 
 ## Starts loading a given scene.
 func load_scene(sceneName: String, path: String) -> void:
@@ -135,6 +142,7 @@ func finish_scene_switch() -> void:
 	get_tree().paused = false
 	finished.emit()
 
+## Finishes transitioning.
 func fin_transition() -> void:
 	blockScreen.hide()
 	var player: Player = get_tree().get_first_node_in_group("Player")

@@ -161,7 +161,7 @@ func drop(onReset: bool = false, forceDrop: bool = false) -> void:
 			currentPickup.drop()
 			dropSound.play_sound()
 		elif not check_available_area():
-			if not canDrop or (inDarkness and not inLight): return
+			if not canDrop or (inDarkness and not inLight and currentPickup is LampSticker): return
 			currentPickup.drop()
 			dropSound.play_sound()
 		else: return

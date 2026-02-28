@@ -40,6 +40,8 @@ enum WallModes {ONLY_UP, ONLY_DOWN, BOTH_WAYS}
 @export_custom(PROPERTY_HINT_LAYERS_3D_PHYSICS, "") var collisionLayer: int = 32
 ## Add collision on only down.
 @export var collisionDown: bool = false
+## Don't add the material to cutout list.
+@export var noCutout: bool = false
 ## Regenerate wall button.
 @export_tool_button("Regenerate Wall", "ArrayMesh") var regenerateWall: Callable = regenerate_wall_shape
 ## Flips the path in case the wall is drawn on the opposite side.
@@ -83,8 +85,9 @@ func flip_path() -> void:
 
 ## Makes the material update with cutout.
 func add_material_to_cutout(materialToStore: Material) -> void:
-	if material is not ShaderMaterial: return
 	if Engine.is_editor_hint(): return
+	if noCutout: return
+	if materialToStore is not ShaderMaterial: return
 	if not GeneralVariables.is_node_ready(): await GeneralVariables.ready
 	storedMaterials.append(materialToStore)
 	GeneralVariables.queue_to_cutout_materials(storedMaterials, true)
@@ -104,7 +107,7 @@ func regenerate_wall_shape() -> void:
 		shadowPolygon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	if not blocksLight:
 		polygon.layers = 2
-	polygon.material = material
+	polygon.material = material.duplicate() if noCutout else material
 	if customProfileShape and material is ShaderMaterial: 
 		polygon.material = material.duplicate()
 		polygon.material.set_shader_parameter("height", wallHeight)
@@ -157,10 +160,11 @@ func organize_cut_shapes() -> void:
 			polygon.add_child(duplicated)
 			duplicated.material = polygon.material
 			duplicated.show()
-			duplicated = child.duplicate()
-			downPolygon.add_child(duplicated)
-			duplicated.material = polygon.material
-			duplicated.show()
+			if downPolygon:
+				duplicated = child.duplicate()
+				downPolygon.add_child(duplicated)
+				duplicated.material = polygon.material
+				duplicated.show()
 			child.hide()
 		else:
 			child.reparent(polygon)

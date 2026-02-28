@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Arena.tres" id="13_lcx8y"]
 [ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Materials/WithCutout/Baldosas-1.tres" id="14_buigm"]
 [ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="14_y57pn"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="15_hbnpc"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="15_hbnpc"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="16_u2yv7"]
 [ext_resource type="PackedScene" uid="uid://g4nvui5dhffk" path="res://Assets/Models/Fan Machines/fan_placement.tscn" id="18_1k3do"]
 [ext_resource type="PackedScene" uid="uid://bpkf0okc884ry" path="res://Assets/Models/Fan Machines/fan_placement_vertical.tscn" id="20_ehnte"]
@@ -764,7 +764,6 @@ colliderSize = Vector2(0.1, 2)
 [node name="Wood Fence2" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, -0.5, 0.90000004)
 curve = SubResource("Curve3D_1k3do")
-colliderSize = Vector2(0.1, 0.6)
 
 [node name="Wood Fence3" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3, -0.5, 1.9000001)
@@ -957,19 +956,19 @@ size = Vector3(1, 2, 1)
 [node name="Fan Machines" type="Node3D" parent="Props"]
 
 [node name="Fan Placement" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.6, 9.599999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.5, 9.599999)
 
 [node name="Fan Placement6" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
 transform = Transform3D(4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, -3.821371e-15, -8.742278e-08, -1, 22.9, -0.5, 0.9999995)
 
 [node name="Fan Placement2" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.6, 9.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.5, 9.4)
 
 [node name="Fan Placement4" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.6, 11.099999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.5, 11.099999)
 
 [node name="Fan Placement3" parent="Props/Fan Machines" instance=ExtResource("18_1k3do")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.6, 7.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.5, 7.7)
 
 [node name="Fan Placement Vertical" parent="Props/Fan Machines" instance=ExtResource("20_ehnte")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -1.1, -0.5)

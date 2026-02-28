@@ -1,21 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://bclmhvt3fe7tl"]
+[gd_scene load_steps=9 format=3 uid="uid://bclmhvt3fe7tl"]
 
+[ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="1_f8fyq"]
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_qvjrn"]
-[ext_resource type="Script" uid="uid://csiekn50petma" path="res://GodotObjects/GeneralElements/UI/one_more_button.gd" id="6_petif"]
+[ext_resource type="Texture2D" uid="uid://cscql47hjgnl7" path="res://Assets/Textures/Settings/patroncito prueba.png" id="2_3rqk1"]
+[ext_resource type="Script" uid="uid://c8yqk5lhkwmyt" path="res://GodotObjects/GeneralElements/UI/RestartButton.gd" id="4_f8fyq"]
 
-[sub_resource type="Gradient" id="Gradient_4jg4w"]
-offsets = PackedFloat32Array(0, 0.8655462, 1)
-colors = PackedColorArray(0.6752622, 0.6172905, 0.32501185, 1, 0.9144207, 0.9178091, 0.9145085, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kq4gf"]
-gradient = SubResource("Gradient_4jg4w")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(0.6196581, 0.02991453)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek0d3"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynqbw"]
+shader = ExtResource("1_f8fyq")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed = 0.1
+shader_parameter/scale = 0.5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_petif"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rqk1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynqbw"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,14 +40,44 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_kq4gf")
-expand_mode = 2
+color = Color(0.29411766, 0.41960785, 0.46666667, 1)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ynqbw")
+use_parent_material = true
+custom_minimum_size = Vector2(256, 0)
+offset_right = 256.0
+offset_bottom = 648.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("2_3rqk1")
+expand_mode = 5
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ynqbw")
+use_parent_material = true
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 648.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+texture = ExtResource("2_3rqk1")
+expand_mode = 5
+stretch_mode = 1
+flip_h = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
@@ -60,11 +91,11 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 149
+theme_override_constants/separation = 20
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 114
+theme_override_constants/separation = 8
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 clip_contents = false
@@ -76,40 +107,54 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "Thanks for playing the Demo!
+text = "[center]Thanks for playing!
 
-We apreciate your feedback, 
-the link below goes to a 
-Google Form with a few 
-questions (no data needed)"
+We apreciate your feedback!
+
+"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 3
 vertical_alignment = 3
 justification_flags = 161
 
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="SurveyButton" type="LinkButton" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/margin_top = -100
-
-[node name="RestartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
+focus_next = NodePath("../RestartButton")
+focus_previous = NodePath("../RestartButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
-theme_override_colors/font_outline_color = Color(0.0862745, 0.156863, 0.247059, 1)
-theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_qvjrn")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_ek0d3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ek0d3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ek0d3")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ek0d3")
+theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_petif")
 text = "Link to Survey"
-script = ExtResource("6_petif")
+
+[node name="RestartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SurveyButton")
+focus_neighbor_bottom = NodePath("../SurveyButton")
+focus_next = NodePath("../SurveyButton")
+focus_previous = NodePath("../SurveyButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_fonts/font = ExtResource("1_qvjrn")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_3rqk1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3rqk1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3rqk1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3rqk1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ynqbw")
+text = "Go to Main Menu"
+script = ExtResource("4_f8fyq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -124,7 +169,7 @@ theme_override_constants/margin_bottom = -10
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0.7114114, 0.28357708, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0.3882353, 0.12156863, 0.08627451, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 60
@@ -138,7 +183,7 @@ vertical_alignment = 1
 [node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/font_outline_color = Color(0.7114114, 0.28357708, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0.3882353, 0.12156863, 0.08627451, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("1_qvjrn")
 theme_override_font_sizes/normal_font_size = 32

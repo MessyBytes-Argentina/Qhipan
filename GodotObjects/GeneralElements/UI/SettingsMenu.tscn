@@ -75,6 +75,7 @@ theme_override_constants/margin_right = -5
 theme_override_constants/margin_bottom = -5
 
 [node name="TextureRect" type="TextureRect" parent="Body PanelContainer/MarginContainer"]
+texture_repeat = 2
 material = SubResource("ShaderMaterial_vyjs1")
 layout_mode = 2
 texture = ExtResource("3_h58lc")

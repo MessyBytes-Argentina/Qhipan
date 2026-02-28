@@ -210,6 +210,8 @@ func _ready() -> void:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
 	cutout_cube_rotation_check(cameraPivot.rotation.y)
+	## BULLSHIT FOR THE DEMO
+	GeneralVariables.inventory.book.get_parent().show()
 
 ## Handles player input.
 func _unhandled_input(_event: InputEvent) -> void:
@@ -233,8 +235,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 			onSettings = true
 			PopupManager.show_popup("Settings")
 			GeneralVariables.inventory.book.show_book()
-			## BULLSHIT FOR THE DEMO
-			GeneralVariables.inventory.book.get_parent().show()
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	camera_rotation_check()

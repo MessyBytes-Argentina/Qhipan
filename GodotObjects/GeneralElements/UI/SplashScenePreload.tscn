@@ -25,7 +25,7 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_81nvi"]
 viewport_path = NodePath("CanvasLayer/SubViewport")
 
-[node name="Node3D" type="Node"]
+[node name="SplashScreen" type="Node"]
 script = ExtResource("1_dxbmg")
 sounds = Array[AudioStream]([ExtResource("9_8jf77"), ExtResource("8_obfha"), ExtResource("7_ecpr7"), ExtResource("6_5ktst"), ExtResource("5_38xoa"), ExtResource("4_d0xu3"), ExtResource("3_0rg7o"), ExtResource("2_tv7nj"), ExtResource("10_s5eie"), ExtResource("11_p2227"), ExtResource("12_sg3fy"), ExtResource("13_28kp4"), ExtResource("14_as1pu"), ExtResource("15_6x7mq")])
 

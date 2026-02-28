@@ -84,6 +84,7 @@ func _body_exited(body: Node3D) -> void:
 		whiteout.color.a = 1.0
 		player.block_inputs()
 		await get_tree().create_timer(WAITAFTERFADE).timeout
+		if GeneralVariables.sceneManager: GeneralVariables.sceneManager.shaderColorRect.color = whiteout.color
 		LevelManager.next_level()
 
 ## Executed on every physics frame.

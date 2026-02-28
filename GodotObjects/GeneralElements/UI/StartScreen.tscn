@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=10 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://GodotObjects/GeneralElements/UI/StartButton.gd" id="1_oq7qy"]
-[ext_resource type="Texture2D" uid="uid://b5r3wq5nek6me" path="res://GodotObjects/GeneralElements/UI/Start-Credit-Background.png" id="1_t72tu"]
+[ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="1_skuak"]
+[ext_resource type="Texture2D" uid="uid://cscql47hjgnl7" path="res://Assets/Textures/Settings/patroncito prueba.png" id="2_5h2pr"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://GodotObjects/GeneralElements/UI/SettingsButton.gd" id="2_6u8ck"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5xbo"]
+shader = ExtResource("1_skuak")
+shader_parameter/direction = Vector2(0, -1)
+shader_parameter/speed = 0.1
+shader_parameter/scale = 0.5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_skuak"]
 
@@ -34,14 +41,44 @@ handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_t72tu")
-expand_mode = 2
+color = Color(0.29411766, 0.41960785, 0.46666667, 1)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_g5xbo")
+use_parent_material = true
+custom_minimum_size = Vector2(256, 0)
+offset_right = 245.0
+offset_bottom = 648.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource("2_5h2pr")
+expand_mode = 5
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_g5xbo")
+use_parent_material = true
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 648.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 3
+texture = ExtResource("2_5h2pr")
+expand_mode = 5
+stretch_mode = 1
+flip_h = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
