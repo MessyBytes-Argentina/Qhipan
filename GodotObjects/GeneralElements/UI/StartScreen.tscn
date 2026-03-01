@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=18 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://GodotObjects/GeneralElements/UI/StartButton.gd" id="1_oq7qy"]
 [ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="1_skuak"]
 [ext_resource type="Texture2D" uid="uid://cscql47hjgnl7" path="res://Assets/Textures/Settings/patroncito prueba.png" id="2_5h2pr"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://GodotObjects/GeneralElements/UI/SettingsButton.gd" id="2_6u8ck"]
+[ext_resource type="Script" uid="uid://cgdjowmbwthce" path="res://GodotObjects/GeneralElements/UI/exit.gd" id="6_8b5k1"]
 [ext_resource type="Texture2D" uid="uid://cyixxjjg7udo2" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/WASD.PNG" id="6_08rek"]
 [ext_resource type="Script" uid="uid://xjdg17q3e7ox" path="res://GodotObjects/GeneralElements/UI/controls.gd" id="6_40imq"]
 [ext_resource type="Texture2D" uid="uid://civbeuqddpg3d" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/LEFT STICK.PNG" id="7_40imq"]
@@ -145,7 +146,7 @@ theme_override_constants/margin_bottom = 80
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -20
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -184,6 +185,24 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
 text = "Settings"
 script = ExtResource("2_6u8ck")
 
+[node name="Exit" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5h2pr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
+text = "Exit"
+script = ExtResource("6_8b5k1")
+
 [node name="Controls" type="MarginContainer" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 3
 anchor_left = 1.0
@@ -196,17 +215,20 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 60
 script = ExtResource("6_40imq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/Controls"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/Controls/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/separation = 20
 
 [node name="Move" type="Label" parent="SubViewportContainer/SubViewport/Controls/HBoxContainer/VBoxContainer"]
@@ -240,11 +262,13 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 145)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MoveKB" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/HBoxContainer/KeyboardControls"]
 custom_minimum_size = Vector2(151, 101)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("6_08rek")
 expand_mode = 3
 stretch_mode = 5
@@ -253,6 +277,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(156, 48)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("8_8b5k1")
 stretch_mode = 5
 
@@ -260,6 +285,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(155, 48)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("10_sxy6y")
 expand_mode = 3
 stretch_mode = 5
@@ -269,11 +295,13 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MoveJoy" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/HBoxContainer/GamepadControls"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("7_40imq")
 expand_mode = 3
 stretch_mode = 5
@@ -282,6 +310,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("9_m0qkv")
 expand_mode = 3
 stretch_mode = 5
@@ -289,6 +318,7 @@ stretch_mode = 5
 [node name="Camera Joy" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/HBoxContainer/GamepadControls"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("11_mpavm")
 expand_mode = 3
 stretch_mode = 5
