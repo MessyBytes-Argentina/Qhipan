@@ -3,6 +3,8 @@ extends Node
 
 ## Signals when input mode has been changed.
 signal input_mode_changed(isGamepad: bool)
+## Signals that the game state changed.
+signal new_gamestate(playing: bool)
 
 ## Reference to the cutout materials [ResourceGroup].
 const materialsResourceGroup: String = "uid://b0jco1ngdo5fe"

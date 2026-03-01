@@ -48,8 +48,9 @@ func show_book() -> void:
 	play_animation("Open")
 
 ## Hides the book.
-func hide_book() -> void:
-	play_animation("Close")
+func hide_book(doNow: bool = false) -> void:
+	if not doNow: play_animation("Close")
+	else: play_animation("Closed")
 
 ## Animates sticking a sticker.
 func animate_sticker() -> void:

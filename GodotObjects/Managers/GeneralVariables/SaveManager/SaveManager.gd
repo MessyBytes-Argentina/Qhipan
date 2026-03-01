@@ -11,7 +11,7 @@ var currentSave: SaveResource
 
 ## Creates empty save resource to begin with.
 func _ready() -> void:
-	currentSave = SaveResource.new()
+	GeneralVariables.new_gamestate.connect(_on_new_gamestate)
 
 ## Saves environment parameters.
 func save_environment(environment: EnvironmentParameters, light: LightParameters) -> void:
@@ -30,3 +30,7 @@ func delete_sticker(sticker: StickerBase) -> void:
 ## Loads a scene changes. Make sure that scene root nodes all have unique names.
 func request_scene_load(scene: Node, loadEnvironment: bool = false) -> void:
 	currentSave.load_changes(scene, loadEnvironment)
+
+## Refreshes save on restart DEMO SHIT
+func _on_new_gamestate(isPlaying: bool) -> void:
+	if isPlaying: currentSave = SaveResource.new()

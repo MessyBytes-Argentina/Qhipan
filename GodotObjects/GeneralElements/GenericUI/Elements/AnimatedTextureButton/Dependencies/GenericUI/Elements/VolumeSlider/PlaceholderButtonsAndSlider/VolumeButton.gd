@@ -20,6 +20,7 @@ func _ready() -> void:
 	mouse_entered.connect(_on_focus)
 	focus_exited.connect(_on_focus_lost)
 	mouse_exited.connect(_on_focus_lost)
+	pressed.connect(_pressed)
 	pivot_offset = size / 2.0 + pivotOffset
 
 func _on_focus() -> void:
@@ -41,3 +42,6 @@ func _animation_tick(currentProgress: float) -> void:
 	progress = currentProgress
 	rotation = lerp(0.0, goalAngle, progress)
 	scale = Vector2.ONE * lerp(1.0, ANIMATION.scale, progress)
+
+func _pressed() -> void:
+	rotation = goalAngle

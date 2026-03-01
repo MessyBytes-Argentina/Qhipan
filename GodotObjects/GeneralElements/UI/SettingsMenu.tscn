@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bepcupksdg3h5"]
+[gd_scene load_steps=21 format=3 uid="uid://bepcupksdg3h5"]
 
 [ext_resource type="Texture2D" uid="uid://c65ev3edfbnpf" path="res://Assets/Textures/9sliceTest.png" id="1_ycww2"]
 [ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="2_qj3d8"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ln5evk5d1bgq" path="res://Assets/Textures/Settings/Sound.png" id="12_h58lc"]
 [ext_resource type="Texture2D" uid="uid://dxdj4hn2ccpjm" path="res://Assets/Textures/Settings/Sound OFF.png" id="13_o3k8a"]
 [ext_resource type="Texture2D" uid="uid://dgjow6pqy0hky" path="res://Assets/Textures/Settings/boton generico rojo.png" id="14_ycww2"]
+[ext_resource type="Script" uid="uid://xyecc0kp5tbq" path="res://GodotObjects/GeneralElements/UI/ToMainMenu.gd" id="15_moqiu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3k8a"]
 texture = ExtResource("1_ycww2")
@@ -32,16 +33,27 @@ shader_parameter/direction = Vector2(1, 0.075)
 shader_parameter/speed = 0.5
 shader_parameter/scale = 2.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4dvbu"]
+content_margin_left = 40.0
+content_margin_top = 35.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+texture = ExtResource("14_ycww2")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_40ed2"]
 content_margin_left = 40.0
 content_margin_top = 40.0
 content_margin_right = 40.0
 content_margin_bottom = 40.0
 texture = ExtResource("14_ycww2")
-texture_margin_left = 30.0
-texture_margin_top = 30.0
-texture_margin_right = 30.0
-texture_margin_bottom = 30.0
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 
 [node name="SimpleSettingsMenu" type="MarginContainer"]
 custom_minimum_size = Vector2(512, 300)
@@ -162,6 +174,40 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../SoundsVolumeButton")
 focus_neighbor_top = NodePath("../../MusicVolumeHSlider/HSlider")
 focus_neighbor_right = NodePath("../../../../../CloseButtonMarginContainer/CloseButton")
+
+[node name="To Main Menu" type="Button" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../MusicVolumeHSlider")
+theme_override_styles/normal = SubResource("StyleBoxTexture_4dvbu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4dvbu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4dvbu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_4dvbu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_4dvbu")
+script = ExtResource("15_moqiu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/To Main Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="MainMenuLabel" type="Label" parent="Body PanelContainer/BodyMarginContainer/VBoxContainer/To Main Menu/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_yfyft")
+theme_override_font_sizes/font_size = 32
+text = "To Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseButtonMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

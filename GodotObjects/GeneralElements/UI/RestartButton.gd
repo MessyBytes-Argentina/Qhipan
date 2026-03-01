@@ -1,5 +1,7 @@
 extends Button
 
+const playScreen: String = "uid://3iena3lvxxgn"
+
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)
@@ -13,4 +15,5 @@ func set_controller_mode(isController: bool) -> void:
 
 ## Calls the LevelManager to load the first level of the current list
 func restart() -> void:
-	LevelManager.change_to_id(0)
+	GeneralVariables.sceneManager.shaderColorRect.color = Color.BLACK
+	GeneralVariables.sceneManager.load_and_switch(playScreen)

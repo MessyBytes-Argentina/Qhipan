@@ -196,6 +196,7 @@ var currentCoolSticker: PocketSticker
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
+	GeneralVariables.new_gamestate.emit(true)
 	grabArea.player = self
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
 	#poof.emit_particles()
@@ -488,3 +489,8 @@ func check_falling() -> bool:
 		falling = false
 	return falling
 #endregion
+
+## Called when player leaves the scene DEMO SHIT
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		GeneralVariables.new_gamestate.emit(false)

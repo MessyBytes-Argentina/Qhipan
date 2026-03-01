@@ -1,10 +1,16 @@
 extends Button
+
 const ANIMATION: Dictionary[String, Variant] = {
-	"scale": 1.2,
+	"scale": 1.1,
 	"time": 0.5,
 	"ease": Tween.EaseType.EASE_OUT, 
 	"trans": Tween.TransitionType.TRANS_BACK,
-	"rotation": deg_to_rad(30)
+	"rotation": deg_to_rad(5)
+}
+const playScreen: String = "uid://3iena3lvxxgn"
+const TEXTS: Dictionary[String, String] = {
+	"normal": "To Main Menu",
+	"confirm": "Are you sure?"
 }
 
 ## Name to close the popup window
@@ -15,10 +21,16 @@ var tween: Tween
 var progress: float = 0.0
 var goalAngle: float
 var canBeClosed: bool = false
+var checking: bool = false
+
+@onready var label: Label = %MainMenuLabel
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GeneralVariables.input_mode_changed.connect(set_controller_mode)
+	set_controller_mode(GeneralVariables.usingGamepad)
 	pressed.connect(_on_pressed)
+	GeneralVariables.new_gamestate.connect(_on_new_gamestate)
 	canBeClosed = false
 	await get_tree().create_timer(0.5).timeout
 	canBeClosed = true
@@ -27,6 +39,16 @@ func _ready() -> void:
 	focus_exited.connect(_on_focus_lost)
 	mouse_exited.connect(_on_focus_lost)
 	pivot_offset = size / 2.0 + pivotOffset
+
+## Switches between mouse and controller for selection
+func set_controller_mode(isController: bool) -> void:
+	if isController: grab_focus()
+	else: release_focus()
+
+## Calls the LevelManager to load the first level of the current list
+func restart() -> void:
+	GeneralVariables.sceneManager.shaderColorRect.color = Color.BLACK
+	GeneralVariables.sceneManager.load_and_switch(playScreen)
 
 func _on_focus() -> void:
 	if tween: if tween.is_running(): tween.kill()
@@ -42,6 +64,8 @@ func _on_focus_lost() -> void:
 	var time: float = ANIMATION.time * progress
 	tween.tween_method(_animation_tick, progress, 0.0, time).set_ease(ANIMATION.ease as Tween.EaseType). set_trans(ANIMATION.trans as Tween.TransitionType)
 	tween.play()
+	checking = false
+	label.text = TEXTS.normal
 
 func _animation_tick(currentProgress: float) -> void:
 	progress = currentProgress
@@ -51,13 +75,14 @@ func _animation_tick(currentProgress: float) -> void:
 ## When pressed unlocks the player controls and closes the window
 func _on_pressed() -> void:
 	rotation = goalAngle
-	if not canBeClosed: return
-	await get_tree().process_frame
-	canBeClosed = false
-	get_tree().call_group("Player", "set", "onSettings", false)
+	if not checking:
+		checking = true
+		label.text = TEXTS.confirm
+		return
 	PopupManager.close_popup_by_name(popupName)
-	GeneralVariables.inventory.book.hide_book()
+	GeneralVariables.inventory.book.hide_book(true)
+	restart()
+	label.text = TEXTS.normal
 
-## Calls _on_pressed
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"): _on_pressed()
+func _on_new_gamestate(isPlaying: bool) -> void:
+	visible = isPlaying
