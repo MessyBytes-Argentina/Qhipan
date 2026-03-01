@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://3iena3lvxxgn"]
+[gd_scene load_steps=16 format=3 uid="uid://3iena3lvxxgn"]
 
 [ext_resource type="FontFile" uid="uid://v0yw6sydn4sw" path="res://Assets/Types/DarumadropOne-Regular.ttf" id="1_l0taq"]
 [ext_resource type="Script" uid="uid://b5yx1h1cqeu7n" path="res://GodotObjects/GeneralElements/UI/StartButton.gd" id="1_oq7qy"]
 [ext_resource type="Shader" uid="uid://clfjjf8br171e" path="res://Assets/Shaders/ScrollingTexture.gdshader" id="1_skuak"]
 [ext_resource type="Texture2D" uid="uid://cscql47hjgnl7" path="res://Assets/Textures/Settings/patroncito prueba.png" id="2_5h2pr"]
 [ext_resource type="Script" uid="uid://bbx0f3fn8mq5a" path="res://GodotObjects/GeneralElements/UI/SettingsButton.gd" id="2_6u8ck"]
+[ext_resource type="Texture2D" uid="uid://cyixxjjg7udo2" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/WASD.PNG" id="6_08rek"]
+[ext_resource type="Texture2D" uid="uid://civbeuqddpg3d" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/LEFT STICK.PNG" id="7_40imq"]
+[ext_resource type="Texture2D" uid="uid://mfhmiem0i544" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/SPACE.PNG" id="8_8b5k1"]
+[ext_resource type="Texture2D" uid="uid://dkgo4y7ucpw8b" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/Joystic Interact.PNG" id="9_m0qkv"]
+[ext_resource type="Texture2D" uid="uid://bfj865nekp58h" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/QE.PNG" id="10_sxy6y"]
+[ext_resource type="Texture2D" uid="uid://6ccafc85g7dv" path="res://GodotObjects/GeneralElements/GenericUI/Elements/AnimatedTextureButton/Dependencies/GenericUI/Elements/Control Icons/LB RB.PNG" id="11_mpavm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g5xbo"]
 shader = ExtResource("1_skuak")
@@ -176,3 +182,81 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5h2pr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a1jkq")
 text = "Settings"
 script = ExtResource("2_6u8ck")
+
+[node name="Controls" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 765.0
+offset_top = 357.99997
+offset_right = 1021.00024
+offset_bottom = 631.0
+scale = Vector2(0.6124967, 0.6124967)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/Controls"]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 167.0
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Move" type="Label" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.21176471, 0.14117648, 0.13333334, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 36
+text = "Move     "
+
+[node name="MoveKB" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_08rek")
+
+[node name="MoveJoy" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_40imq")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Interact" type="Label" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.21176471, 0.14117648, 0.13333334, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 36
+text = "Ineract"
+
+[node name="InteractKB" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("8_8b5k1")
+
+[node name="InteractJoy" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+texture = ExtResource("9_m0qkv")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Camera" type="Label" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.21176471, 0.14117648, 0.13333334, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_l0taq")
+theme_override_font_sizes/font_size = 36
+text = "Camera"
+
+[node name="CameraKB" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("10_sxy6y")
+
+[node name="Camera Joy" type="TextureRect" parent="SubViewportContainer/SubViewport/Controls/VBoxContainer/HBoxContainer3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("11_mpavm")
