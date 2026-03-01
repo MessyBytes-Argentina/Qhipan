@@ -26,6 +26,8 @@ const LIGHTWALLSEPARATION: float = 0.2
 const SHINEPARAMETERS: Dictionary[String, Variant] = {"animationTime": 0.5, "transIn": Tween.TRANS_CUBIC, "easeIn": Tween.EASE_IN_OUT, "transOut": Tween.TRANS_QUART, "easeOut": Tween.EASE_OUT, "heldSize": Vector2.ONE * 1.5, "defaultSize": Vector2.ONE * 2.0}
 ## No light effects bitflag.
 const NOLIGHTEFFECTS: int = 4
+## Wait time for after placing lamp to return player to not holding effect.
+const NOHELDEFFECTWAIT: float = 1.0
 
 ## The floating mesh with no lighting on.
 @onready var floatingMesh: MeshInstance3D = %FloatingMesh
@@ -253,6 +255,7 @@ func activate_on_player_effect() -> void:
 
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
+	if placed: await get_tree().create_timer(NOHELDEFFECTWAIT).timeout
 	player.get_node("DarknessBlockerModule").holding_light(false)
 
 ## Signals that the body entered the light area
