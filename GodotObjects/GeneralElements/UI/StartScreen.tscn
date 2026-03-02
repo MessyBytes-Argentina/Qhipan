@@ -150,6 +150,7 @@ theme_override_constants/separation = -20
 
 [node name="StartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Exit")
 focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
@@ -170,6 +171,7 @@ levelList = Array[String](["uid://d1qns2ftphyp6"])
 [node name="Settings" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../Exit")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
@@ -187,7 +189,8 @@ script = ExtResource("2_6u8ck")
 
 [node name="Exit" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../StartButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)

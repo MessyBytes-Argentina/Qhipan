@@ -4,6 +4,8 @@ extends Button
 @export var levelList: Array[String]
 ## Setting button reference.
 @onready var settingsButton: Button = $"../Settings"
+## Exit button reference.
+@onready var exitButton: Button = $"../Exit"
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +22,7 @@ func set_controller_mode(isController: bool) -> void:
 	else: 
 		release_focus()
 		settingsButton.release_focus()
+		exitButton.release_focus()
 
 ## Calls LevelManager to assaing the list of levels and load the first one
 func start() -> void:

@@ -196,7 +196,6 @@ var currentCoolSticker: PocketSticker
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	GeneralVariables.new_gamestate.emit(true)
 	grabArea.player = self
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
 	#poof.emit_particles()
@@ -213,6 +212,7 @@ func _ready() -> void:
 	cutout_cube_rotation_check(cameraPivot.rotation.y)
 	## BULLSHIT FOR THE DEMO
 	GeneralVariables.inventory.book.get_parent().show()
+	GeneralVariables.in_game_switch(true)
 
 ## Handles player input.
 func _unhandled_input(_event: InputEvent) -> void:
@@ -493,4 +493,4 @@ func check_falling() -> bool:
 ## Called when player leaves the scene DEMO SHIT
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.new_gamestate.emit(false)
+		GeneralVariables.in_game_switch(false)

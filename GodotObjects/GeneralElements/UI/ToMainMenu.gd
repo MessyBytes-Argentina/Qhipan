@@ -22,15 +22,17 @@ var progress: float = 0.0
 var goalAngle: float
 var canBeClosed: bool = false
 var checking: bool = false
+var hadFocus: bool = false
 
 @onready var label: Label = %MainMenuLabel
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GeneralVariables.input_mode_changed.connect(set_controller_mode)
+	GeneralVariables.new_gamestate.connect(_on_new_gamestate)
+	visible = GeneralVariables.inGame
 	set_controller_mode(GeneralVariables.usingGamepad)
 	pressed.connect(_on_pressed)
-	GeneralVariables.new_gamestate.connect(_on_new_gamestate)
 	canBeClosed = false
 	await get_tree().create_timer(0.5).timeout
 	canBeClosed = true
@@ -51,12 +53,14 @@ func restart() -> void:
 	GeneralVariables.sceneManager.load_and_switch(playScreen)
 
 func _on_focus() -> void:
+	if hadFocus: return
 	if tween: if tween.is_running(): tween.kill()
 	tween = create_tween()
 	var time: float = ANIMATION.time * (1.0 - progress)
 	goalAngle = [-1, 1].pick_random() * ANIMATION.rotation
 	tween.tween_method(_animation_tick, progress, 1.0, time).set_ease(ANIMATION.ease as Tween.EaseType). set_trans(ANIMATION.trans as Tween.TransitionType)
 	tween.play()
+	hadFocus = true
 
 func _on_focus_lost() -> void:
 	if tween: if tween.is_running(): tween.kill()
@@ -66,6 +70,7 @@ func _on_focus_lost() -> void:
 	tween.play()
 	checking = false
 	label.text = TEXTS.normal
+	hadFocus = false
 
 func _animation_tick(currentProgress: float) -> void:
 	progress = currentProgress
@@ -85,4 +90,4 @@ func _on_pressed() -> void:
 	label.text = TEXTS.normal
 
 func _on_new_gamestate(isPlaying: bool) -> void:
-	visible = isPlaying
+	set_deferred("visible", isPlaying)

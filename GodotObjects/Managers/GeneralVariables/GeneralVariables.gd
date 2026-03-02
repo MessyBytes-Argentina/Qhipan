@@ -43,6 +43,8 @@ var toStagger: Array[Callable] = []
 var staggerTimer: SceneTreeTimer
 ## Stagger flag.
 var staggerFlag: bool = false
+## Are you currently playing?
+var inGame: bool
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,6 +61,7 @@ func _ready() -> void:
 	saveManager.name = "SaveManager"
 	add_child(saveManager)
 	tag_first_scene()
+	new_gamestate.connect(test)
 
 ## Tags first loaded scene with meta tag for scene roots.
 func tag_first_scene() -> void:
@@ -131,3 +134,11 @@ func _execute_queue() -> void:
 				staggerArray[j][i].call()
 		await get_tree().process_frame
 	staggerFlag = false
+
+## Switches from ingame to out of game for settigns and such.
+func in_game_switch(isIngame: bool) -> void:
+	inGame = isIngame
+	new_gamestate.emit(inGame)
+
+func test(isIngame: bool) -> void:
+	prints("a", isIngame)

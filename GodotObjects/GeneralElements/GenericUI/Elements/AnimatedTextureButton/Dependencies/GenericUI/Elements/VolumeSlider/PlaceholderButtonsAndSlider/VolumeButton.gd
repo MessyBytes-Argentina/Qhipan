@@ -13,6 +13,7 @@ const ANIMATION: Dictionary[String, Variant] = {
 var tween: Tween
 var progress: float = 0.0
 var goalAngle: float
+var hadFocus: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,12 +25,14 @@ func _ready() -> void:
 	pivot_offset = size / 2.0 + pivotOffset
 
 func _on_focus() -> void:
+	if hadFocus: return
 	if tween: if tween.is_running(): tween.kill()
 	tween = create_tween()
 	var time: float = ANIMATION.time * (1.0 - progress)
 	goalAngle = [-1, 1].pick_random() * ANIMATION.rotation
 	tween.tween_method(_animation_tick, progress, 1.0, time).set_ease(ANIMATION.ease as Tween.EaseType). set_trans(ANIMATION.trans as Tween.TransitionType)
 	tween.play()
+	hadFocus = true
 
 func _on_focus_lost() -> void:
 	if tween: if tween.is_running(): tween.kill()
@@ -37,6 +40,7 @@ func _on_focus_lost() -> void:
 	var time: float = ANIMATION.time * progress
 	tween.tween_method(_animation_tick, progress, 0.0, time).set_ease(ANIMATION.ease as Tween.EaseType). set_trans(ANIMATION.trans as Tween.TransitionType)
 	tween.play()
+	hadFocus = false
 
 func _animation_tick(currentProgress: float) -> void:
 	progress = currentProgress
