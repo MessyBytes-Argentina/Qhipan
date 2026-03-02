@@ -44,3 +44,10 @@ func _ready() -> void:
 	var bookScene: CanvasLayer = load("uid://knl3pi3ldyma").instantiate()
 	add_child(bookScene)
 	book = bookScene.get_child(0)
+	GeneralVariables.new_gamestate.connect(new_game_check)
+
+## DEMO CLEAR INVENTORY
+func new_game_check(isNewGame: bool) -> void:
+	if isNewGame:
+		currentInventory.clear()
+		activePedestals.clear()
