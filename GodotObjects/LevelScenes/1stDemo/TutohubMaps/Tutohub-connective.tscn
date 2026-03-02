@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=201 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -453,7 +453,10 @@ size = Vector3(4, 1, 11.5)
 size = Vector3(1, 1, 9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ssq6m"]
-size = Vector3(1, 1, 12)
+size = Vector3(13.1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66qek"]
+size = Vector3(4.7000003, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5fu6"]
 size = Vector3(1, 1, 2.2)
@@ -499,7 +502,7 @@ metadata/_custom_type_script = "uid://cs5riap1rgf6x"
 [sub_resource type="Curve3D" id="Curve3D_wrbw1"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.49999952, -2, 0, 0, 0, 0, 0, 0, 0, -5.9, -1.905, 0, 0, 0, 0, 0, 0, 0, -6, -2, -5.7, 0, 0, 0, 0, 0, 0, 0.5700002, -2.1049998, -5.615),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.49999952, -2, 0, 0, 0, 0, 0, 0, 0, -6, -2, 0, 0, 0, 0, 0, 0, 0, -6, -2, -5.5, 0, 0, 0, 0, 0, 0, 0.5, -2, -5.5),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -692,7 +695,7 @@ point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_ybp0o"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0.099999905, 0, -1.5, -0.525, 0, 0.23, 0, 0, -0.305, 0, 0, -3, 0, 0, 0, 0, 0, 0, 2, 0, -3, 0, 0, 0.835, 0, 0, -2.99, 4.1000004, 0, -4.1000004, 0, 0, 3.315, 0, 0, 0, 3.7999997, 0, -10.5, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -16.800001, 0, 0, 0, 0, 0, 0, -0.79999995, 0, -16.999998, 0, 0, 0, 0, 0, 0, -0.9000001, 0, -20.300003),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.29999995, 0, 0, 0, 0, 0, 0, 0, 0, 0.099999905, 0, -1.5, -0.525, 0, 0.23, 0, 0, -0.305, 0, 0, -3.5, 0, 0, 0, 0, 0, 0, 2, 0, -3.5, 0, 0, 0.835, 0, 0, -2.99, 4.1000004, 0, -4.6000004, 0, 0, 3.315, 0, 0, 0, 3.7999997, 0, -10.5, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -16.800001, 0, 0, 0, 0, 0, 0, -0.79999995, 0, -16.999998, 0, 0, 0, 0, 0, 0, -0.9000001, 0, -20.300003),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
@@ -933,7 +936,7 @@ pedestalName = "Entrance"
 sceneParent = NodePath("../../../..")
 
 [node name="InventoryPedestalPuzzle2" parent="Rooms/Tutohub-connectivehub/metaprogress" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_y25gd")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6, -0.3, -7.7000003)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6, -0.5, -7.7000003)
 texture = ExtResource("6_p7x5o")
 pedestalName = "Puzzle2"
 sceneParent = NodePath("../../../..")
@@ -1235,15 +1238,21 @@ debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
 [node name="OFFShape" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.5, -18)
 shape = SubResource("BoxShape3D_ssq6m")
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
+[node name="ONShape2" type="CollisionShape3D" parent="Rooms/Tutohub-connectivehub/Widgets/ObjectOccluder P 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8500001, 0.6, -11.200001)
+shape = SubResource("BoxShape3D_66qek")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
 [node name="ObjectOccluder P 2" type="Node3D" parent="Rooms/Tutohub-connectivehub/Widgets" node_paths=PackedStringArray("hideObjects", "sceneParent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 script = ExtResource("34_n5fu6")
-hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../../../TerraBrush")]
+hideObjects = [NodePath("../.."), NodePath("../../../Tutohub-Puzzle3"), NodePath("../../../../TerraBrush"), NodePath("../../../Tutohub-Puzzle1")]
 sceneParent = NodePath("../../../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
@@ -1539,8 +1548,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 [node name="Fences" type="Node3D" parent="Rooms/Tutohub-Puzzle1/Props"]
 
 [node name="Stone Fence" parent="Rooms/Tutohub-Puzzle1/Props/Fences" instance=ExtResource("41_y25gd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.3, -0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3000002, 1.5, -0.6999998)
 curve = SubResource("Curve3D_wrbw1")
+colliderSize = Vector2(0.3, 2.5)
+collisionSnapPointToPath = 2
 
 [node name="Bridge" parent="Rooms/Tutohub-Puzzle1/Props/Fences" instance=ExtResource("15_knjsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, -1.8695986, -1.6011264)
@@ -1623,6 +1634,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.9
 
 [node name="AmbientParticles" type="CSGBox3D" parent="Rooms/Tutohub-Puzzle1/Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7000003, -0.15000033, -3.2999997)
+visible = false
 layers = 0
 size = Vector3(10.400001, 9.1, 11.400001)
 script = ExtResource("46_hjwt0")
