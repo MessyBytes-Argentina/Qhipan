@@ -70,8 +70,8 @@ func _input(_event: InputEvent) -> void:
 
 ## Switches between mouse and controller for selection
 func set_controller_mode(isController: bool) -> void:
+	recursive_release_focus(get_parent().get_parent())
 	if isController: grab_focus()
-	else: recursive_release_focus(get_parent().get_parent())
 
 func recursive_release_focus(node: Node) -> void:
 	if node is Button or node is TextureButton: node.release_focus()

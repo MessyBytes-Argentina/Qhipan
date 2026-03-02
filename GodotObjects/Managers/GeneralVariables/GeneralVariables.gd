@@ -16,6 +16,8 @@ const IGNOREROOTNODES: PackedStringArray = ["EnvironmentObjects", "Player"]
 const FRAMESTAGGERMAX: int = 60
 ## Stagger wait time.
 const STAGGERWAIT: float = 0.1
+## Controller minimum threshold to consider input.
+const CONTROLLERCHECKSENSIBILITY: float = 0.1
 
 ## Reference to the scene manager if it's loaded.
 var sceneManager: SceneManager
@@ -77,6 +79,7 @@ func tag_first_scene() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: if event.relative.length() < MOUSEMOVEMENTTHRESHOLD: return
 	var currentlyGamepad: bool = event is InputEventJoypadButton or event is InputEventJoypadMotion
+	if currentlyGamepad: if event is InputEventJoypadMotion: if abs(event.axis_value) < CONTROLLERCHECKSENSIBILITY: return
 	if usingGamepad != currentlyGamepad:
 		usingGamepad = currentlyGamepad
 		input_mode_changed.emit(usingGamepad)

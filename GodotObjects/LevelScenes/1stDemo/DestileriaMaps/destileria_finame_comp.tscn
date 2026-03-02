@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://c2lxh7gg1mdwq"]
+[gd_scene load_steps=82 format=4 uid="uid://c2lxh7gg1mdwq"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_vanr6"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="2_82ki5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="16_wpc71"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="17_wpc71"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="18_ijwpa"]
+[ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/portico.tscn" id="22_5oo63"]
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="22_q267d"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="23_2p6m8"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="23_3xso3"]
@@ -734,7 +735,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5, -1.25, 3.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, -1.25, 3.5)
 
 [node name="EntranceSticker" parent="Widgets" node_paths=PackedStringArray("sceneParent") instance=ExtResource("13_vhec0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7, 0.5, -3.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 0.5, -3)
 sticker = SubResource("Resource_22e3m")
 sceneParent = NodePath("../..")
 
@@ -811,10 +812,10 @@ operation = 2
 size = Vector3(1, 2, 2)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Props/Walls/WallGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.9999999, -8.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.7499999, -8.8)
 visible = false
 operation = 2
-size = Vector3(1, 2, 1)
+size = Vector3(1, 1.5, 1)
 
 [node name="WallGenerator4" type="Path3D" parent="Props/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.5, 4)
@@ -885,7 +886,7 @@ material = ExtResource("14_q267d")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 
 [node name="WallGenerator2" type="Path3D" parent="Props/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 7.5, -44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.900002, 7.5, -44)
 curve = SubResource("Curve3D_2p6m8")
 script = ExtResource("13_ijwpa")
 wallHeight = 7.0
@@ -906,6 +907,9 @@ wallHeight = 11.0
 wallMode = 1
 material = ExtResource("14_q267d")
 metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
+
+[node name="Portico" parent="Props/Walls" instance=ExtResource("22_5oo63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.5, -4.9000006)
 
 [node name="Fences" type="Node3D" parent="Props"]
 

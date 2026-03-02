@@ -18,11 +18,10 @@ func _ready() -> void:
 
 ## Switches between mouse and controller for selection
 func set_controller_mode(isController: bool) -> void:
+	release_focus()
+	settingsButton.release_focus()
+	exitButton.release_focus()
 	if isController: grab_focus()
-	else: 
-		release_focus()
-		settingsButton.release_focus()
-		exitButton.release_focus()
 
 ## Calls LevelManager to assaing the list of levels and load the first one
 func start() -> void:

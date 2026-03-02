@@ -123,6 +123,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../RestartButton")
 focus_neighbor_bottom = NodePath("../RestartButton")
+focus_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -132,13 +133,14 @@ theme_override_fonts/font = ExtResource("1_qvjrn")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_petif")
 text = "Link to Survey"
+uri = "https://docs.google.com/forms/d/e/1FAIpQLSfJZA9HqZ7Zvz3oqKwksPeWzU-mUTWvf-ZBV6ZTXLM9rGPFaw/viewform?usp=header"
 
 [node name="RestartButton" type="Button" parent="SubViewportContainer/SubViewport/CenterContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../SurveyButton")
 focus_neighbor_bottom = NodePath("../SurveyButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.79607844, 0.44313726, 0.19215687, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.796078, 0.443137, 0.192157, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.211765, 0.141176, 0.133333, 1)
