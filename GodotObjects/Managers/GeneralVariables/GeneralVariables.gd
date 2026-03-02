@@ -61,7 +61,6 @@ func _ready() -> void:
 	saveManager.name = "SaveManager"
 	add_child(saveManager)
 	tag_first_scene()
-	new_gamestate.connect(test)
 
 ## Tags first loaded scene with meta tag for scene roots.
 func tag_first_scene() -> void:
@@ -139,6 +138,3 @@ func _execute_queue() -> void:
 func in_game_switch(isIngame: bool) -> void:
 	inGame = isIngame
 	new_gamestate.emit(inGame)
-
-func test(isIngame: bool) -> void:
-	prints("a", isIngame)

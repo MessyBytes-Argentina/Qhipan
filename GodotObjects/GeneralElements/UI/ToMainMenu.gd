@@ -84,8 +84,8 @@ func _on_pressed() -> void:
 		checking = true
 		label.text = TEXTS.confirm
 		return
-	PopupManager.close_popup_by_name(popupName)
 	GeneralVariables.inventory.book.hide_book(true)
+	PopupManager.close_popup_by_name(popupName)
 	restart()
 	label.text = TEXTS.normal
 

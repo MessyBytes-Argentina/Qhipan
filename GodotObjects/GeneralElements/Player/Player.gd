@@ -169,6 +169,8 @@ var fallSoundPlayed: bool = false
 var respawnFall: bool = true
 ## The tween used to popup the reset message.
 var popupTween: Tween
+## Flag for rotating camera.
+var rotatingCamera: bool = false
 ## Flag for when the player camera is zooming.
 var zooming: bool = false
 ## Flag for when the player camera is zoomed out.
@@ -284,10 +286,12 @@ func sprite_flip_check() -> void:
 
 ## Checks and handles rotating the camera.
 func camera_rotation_check() -> void:
-	if cameraRotationTween: return
+	if cameraRotationTween or rotatingCamera == true: return
 	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
+	cameraRotation = clamp(cameraRotation, -CAMERAROTATIONSTEP, CAMERAROTATIONSTEP)
 	if cameraRotation == 0: return
 	cubeCutout.rotatingCamera = true
+	rotatingCamera = true
 	currentCameraRotation += cameraRotation
 	cutout_cube_rotation_check(cameraPivot.rotation.y + cameraRotation)
 	await get_tree().physics_frame
@@ -318,6 +322,7 @@ func camera_rotation_finished() -> void:
 		cameraRotationTween.kill()
 		cameraRotationTween = null
 	cubeCutout.rotatingCamera = false
+	rotatingCamera = false
 	camera_rotated.emit(cameraPivot.global_rotation.y)
 
 ## Checks and handles the camera zoom.
