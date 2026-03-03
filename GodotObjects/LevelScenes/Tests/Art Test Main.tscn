@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
-[ext_resource type="PackedScene" uid="uid://dsdruex0h4hcf" path="res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_puzzle1.tscn" id="3_uc5ix"]
+[ext_resource type="PackedScene" uid="uid://2vwefawy2u4p" path="res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/Molino_minifork.tscn" id="3_uc5ix"]
 
 [node name="Art Main Test" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_uc5ix")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 13.7, 0.6522534, 0.7000002)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.2, 0.6522534, 5.7000003)
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("3_feuco")]
 
-[node name="Molino_puzzle1" parent="." instance=ExtResource("3_uc5ix")]
+[node name="Molino_minifork" parent="." instance=ExtResource("3_uc5ix")]

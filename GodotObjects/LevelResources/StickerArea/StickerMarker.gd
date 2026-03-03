@@ -14,10 +14,12 @@ signal sticker(placed: StickerBase)
 
 ## Which stickers can be placed here.
 @export_flags("Alternator", "Fan", "Key", "Lamp") var validStickers: int = 15
-## Scale of the placed sticker
+## Scale of the placed sticker.
 @export_range(0.0, 5.0, 0.01) var specialStickerScale: float = 1.0
 ## Special Flags.
 @export_flags("noPlayerFan", "NoPlayerAntigravity") var specialFlags: int = 0
+## Fan range override.
+@export_range(-1, 20, 0.5) var overrideFanLength: float = -1
 
 ## Surface data.
 var data: StickerableSurfaceData

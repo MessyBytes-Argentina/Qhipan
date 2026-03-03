@@ -62,6 +62,7 @@ func _on_pressed() -> void:
 	canBeClosed = false
 	get_tree().call_group("Player", "set", "onSettings", false)
 	PopupManager.close_popup_by_name(popupName)
+	await get_tree().process_frame
 	GeneralVariables.inventory.book.hide_book()
 
 ## Calls _on_pressed

@@ -247,7 +247,7 @@ func prerender() -> void:
 	billboard.pixel_size = billboardsize
 
 ## Places the light then applies special changes.
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0, _extraParameters: Dictionary = {}) -> void:
 	if specialFlags & NOLIGHTEFFECTS:
 		effectsOn = false
 		light.hide()

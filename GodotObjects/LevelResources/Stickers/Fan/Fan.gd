@@ -24,6 +24,8 @@ const NOPLAYERANTIGRAVITY: int = 2
 
 ## OnPlayerEffect node reference.
 var onPlayerEffectRef: LedgeDetection
+## Override range for placement.
+var overrideRange: float = -1
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,8 +42,9 @@ func _ready() -> void:
 		fan.switch_fan(false)
 
 ## Plays sound and places the fan then starts the fan animation.
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0, extraParameters: Dictionary = {}) -> void:
 	fan.canAffectPlayer = specialFlags & NOPLAYERFAN == 0
+	if extraParameters.has("overrideFanLength"): set_override_range(extraParameters.overrideFanLength)
 	noGravity.canAffectPlayer = specialFlags & NOPLAYERANTIGRAVITY == 0
 	if grabed:
 		spinupSound.play_sound()
@@ -57,6 +60,7 @@ func grab(node: Node3D) -> void:
 	await get_tree().process_frame
 	fan.canAffectPlayer = true
 	noGravity.canAffectPlayer = true
+	set_override_range(-1)
 
 ## Checks every frame to turn the fan off when not grabed or placed
 func _process(_delta: float) -> void:
@@ -73,3 +77,9 @@ func activate_on_player_effect() -> void:
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
 	onPlayerEffectRef.disable_push()
+
+## Sets override range.
+func set_override_range(newRange: float) -> void:
+	overrideRange = newRange
+	fanRange = overrideRange if overrideRange > -1 else DEFAULTFANRANGE
+	fan.set_area_size()

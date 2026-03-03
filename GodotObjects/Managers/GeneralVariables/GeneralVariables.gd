@@ -107,7 +107,12 @@ func _to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool) -> void
 ## Makes a list with unique cutout materials.
 func make_unique_cutout_materials() -> void:
 	uniqueCutoutMaterials = standardCutoutMaterials.duplicate()
-	for material in cutoutMaterials: if material not in uniqueCutoutMaterials: uniqueCutoutMaterials.append(material)
+	for i in range(len(cutoutMaterials) - 1, -1, -1): 
+		if not cutoutMaterials[i] or cutoutMaterials[i] == null or cutoutMaterials[i] in standardCutoutMaterials:
+			cutoutMaterials.remove_at(i)
+			continue
+		if cutoutMaterials[i] not in uniqueCutoutMaterials: 
+			uniqueCutoutMaterials.append(cutoutMaterials[i])
 
 ## Staggers function calls by frames.
 func add_to_stagger_queue(callable: Callable) -> void:

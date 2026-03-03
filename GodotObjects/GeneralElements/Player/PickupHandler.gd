@@ -144,7 +144,7 @@ func sticker_block(stickerTypes: int, doAdd: bool) -> void:
 func place_sticker() -> void:
 	var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_position(placeholderArea.global_position)
 	if surface: surface.used = currentPickup
-	currentPickup.place_sticker(surface.globalPosition, surface.direction, surface.specialScale, surface.specialFlags)
+	currentPickup.place_sticker(surface.globalPosition, surface.direction, surface.specialScale, surface.specialFlags, surface.extraParameters)
 	surface.node.sticker_activity()
 	surface.used = currentPickup
 	stickSound.play_sound()

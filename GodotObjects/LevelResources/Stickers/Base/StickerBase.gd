@@ -205,7 +205,7 @@ func prerender() -> void:
 	billboard.pixel_size = billboardsize
 
 ## Places the sticker on the given area facing the given direction
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, _specialFlags: int = 0, _extraParameters: Dictionary = {}) -> void:
 	if not Vector3.UP.cross(direction).is_zero_approx():
 		look_at(global_position - direction)
 	else:

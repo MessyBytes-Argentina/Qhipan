@@ -16,6 +16,8 @@ var validStickers: int = 15
 var specialScale: Vector3 = Vector3.ONE
 ## Special flags.
 var specialFlags: int = 0
+## Fan range override.
+var extraParameters: Dictionary = {}
 
 func _init(surface: StickerMarker = null, pointingTo: Node3D = null) -> void:
 	if not surface: return
@@ -25,3 +27,4 @@ func _init(surface: StickerMarker = null, pointingTo: Node3D = null) -> void:
 	validStickers = surface.validStickers
 	specialScale = Vector3.ONE * surface.specialStickerScale
 	specialFlags = surface.specialFlags
+	extraParameters.overrideFanLength = surface.overrideFanLength

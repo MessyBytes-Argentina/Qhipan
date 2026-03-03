@@ -47,7 +47,6 @@ func _ready() -> void:
 	GeneralVariables.new_gamestate.connect(new_game_check)
 
 ## DEMO CLEAR INVENTORY
-func new_game_check(isNewGame: bool) -> void:
-	if isNewGame:
-		currentInventory.clear()
-		activePedestals.clear()
+func new_game_check(_isNewGame: bool) -> void:
+	currentInventory.clear()
+	activePedestals.clear()
