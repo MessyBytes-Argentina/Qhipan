@@ -95,6 +95,7 @@ func _physics_process(_delta: float) -> void:
 ## Handles player input.
 func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
+	if player.onSettings: return
 	if event.is_action_pressed("interact") and not zoomedOut and canGrab and not inNoStickerArea:
 		if len(antiDropAreaCollection) > 0: return
 		if not pickupOnHand:

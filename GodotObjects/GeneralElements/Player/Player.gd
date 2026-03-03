@@ -234,7 +234,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	inputDirection = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"), 0.0, Input.get_action_strength("backwards") - Input.get_action_strength("forwards"))
 	if Input.is_action_just_pressed("pause"):
-		if not PopupManager.is_popup("Settings"):
+		if not PopupManager.is_popup("Settings") and not coolStickerGrabbing:
 			onSettings = true
 			PopupManager.show_popup("Settings")
 			GeneralVariables.inventory.book.show_book()
