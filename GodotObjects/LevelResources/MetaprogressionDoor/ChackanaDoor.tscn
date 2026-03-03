@@ -1,7 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://b6whyy35seo3"]
+[gd_scene load_steps=24 format=4 uid="uid://b6whyy35seo3"]
 
 [ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="1_76s3h"]
 [ext_resource type="Script" uid="uid://cr6lpcw1i81uy" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.gd" id="1_elvij"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="3_ffp7s"]
+[ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="4_spmsl"]
+[ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="5_fpm1j"]
+[ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="6_dkvro"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_llc0q"]
 _surfaces = [{
@@ -261,6 +265,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.3962634, 0)]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RandomSoundPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.73333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_aqkc2"]
 resource_name = "OpenedDoor"
@@ -469,6 +487,21 @@ _data = {
 &"RESET": SubResource("Animation_s4h8s")
 }
 
+[sub_resource type="Resource" id="Resource_echi1"]
+script = ExtResource("5_fpm1j")
+sound = ExtResource("6_dkvro")
+baseVolumeDB = -5.0
+basePitchScale = 0.6
+pitchScaleVariation = 0.2
+metadata/_custom_type_script = "uid://cuftb0125fe8y"
+
+[sub_resource type="Resource" id="Resource_c6hdi"]
+script = ExtResource("4_spmsl")
+soundCollection = Dictionary[ExtResource("5_fpm1j"), int]({
+SubResource("Resource_echi1"): 1
+})
+metadata/_custom_type_script = "uid://dbeicj2vr2k5j"
+
 [node name="ChackanaDoor" type="Node3D" groups=["Metaprogression"]]
 script = ExtResource("1_elvij")
 
@@ -525,3 +558,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_xw1pg")
 }
+
+[node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_ffp7s")
+soundResource = SubResource("Resource_c6hdi")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"

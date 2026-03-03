@@ -34,6 +34,8 @@ const ANIMATIONTIME: float = 1.0
 @onready var collisionShape: CollisionShape3D = %CollisionShape3D
 ## Referernce to the gpu particles.
 @onready var gpuParticles3d: GPUParticles3D = %GPUParticles3D
+## Sound player.
+@onready var audioPlayer: AudioStreamPlayer = %AudioStreamPlayer
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
@@ -68,5 +70,6 @@ func pedestal_activated(activatedPedestal: String, skip: bool = false) -> void:
 			tween.tween_property(mesh.mesh, "size", Vector3(1.0, 0.0, 1.0), ANIMATIONTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 			tween.parallel().tween_property(mesh, "position", Vector3(0.0, 0.0, 0.0), ANIMATIONTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 			tween.play()
+			audioPlayer.play()
 			await tween.finished
 		queue_free()

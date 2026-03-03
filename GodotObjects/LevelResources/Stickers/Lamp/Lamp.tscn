@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://obi7mybs0j53"]
+[gd_scene load_steps=28 format=3 uid="uid://obi7mybs0j53"]
 
 [ext_resource type="Script" uid="uid://cu2qm1oc11let" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.gd" id="1_w5ix8"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_jmcjq"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_45nsf"]
 [ext_resource type="Shader" uid="uid://b3tfln6gs0vrs" path="res://Assets/Shaders/LightShine.gdshader" id="4_enf8r"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_q57fi"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="7_88s4x"]
+[ext_resource type="Resource" uid="uid://c4ep0voqskkol" path="res://Assets/Sounds/SFXResources/LightOn.tres" id="8_bbr6q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8ww4f"]
 radius = 0.25
@@ -240,6 +242,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 layers = 8
 mesh = SubResource("QuadMesh_45nsf")
 surface_material_override/0 = SubResource("ShaderMaterial_451n8")
+
+[node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_88s4x")
+soundResource = ExtResource("8_bbr6q")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [connection signal="body_entered" from="Shapes/LightArea" to="." method="_light_body_entered"]
 [connection signal="body_exited" from="Shapes/LightArea" to="." method="_light_body_exited"]

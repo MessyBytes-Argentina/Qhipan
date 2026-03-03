@@ -10,6 +10,8 @@ const FANPUSHDISTANCE: float = 1.5
 @onready var player: Player = $".."
 ## Forced movement node reference
 @onready var forcedMovement: ForcedMovement = %ForcedMovement
+## Jump sound
+@onready var jumpSound: RandomSoundPlayer = %Jump
 
 ## Flag that turns on when the player has a sticker on hand
 var stickerOnHand: bool = false
@@ -43,13 +45,14 @@ func _physics_process(_delta: float) -> void:
 			var normalDirection: Vector3 = raycast.get_collision_normal()
 			if normalDirection == Vector3.ZERO or player.forcedNoGravity : return
 			if not check_player_direction(normalDirection): continue
-			yeet_the_player(normalDirection)
+			do_player_jump(normalDirection)
 			return
 
 ## Makes the player jump in the given direction by FANPUSHDISTANCE
-func yeet_the_player(direction: Vector3) -> void:
+func do_player_jump(direction: Vector3) -> void:
 	ableToPush = false
 	set_raycasts_detection(false)
+	jumpSound.play_sound()
 	var targetPosition: Vector3 = player.global_position + (direction * FANPUSHDISTANCE)
 	forcedMovement.push_player(targetPosition)
 

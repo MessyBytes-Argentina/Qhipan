@@ -55,6 +55,7 @@ unique_name_in_owner = true
 shape = SubResource("BoxShape3D_ajmos")
 
 [node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_hh7r4")
 soundResource = ExtResource("4_m6dsx")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"

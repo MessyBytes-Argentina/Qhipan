@@ -20,4 +20,4 @@ func get_sound() -> SoundResource:
 ## Creates weighted sound list.
 func _create_weighted_sound_list() -> void:
 	if len(weightedSoundList) > 0: return
-	for sound in soundCollection: range(soundCollection[sound]).map(func(_a: int): weightedSoundList.append(sound))
+	for sound in soundCollection: range(max(soundCollection[sound], 1)).map(func(_a: int): weightedSoundList.append(sound))

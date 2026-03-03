@@ -43,6 +43,8 @@ const NOHELDEFFECTWAIT: float = 1.0
 @onready var stickerLightArea: Area3D = %StickerLightArea
 ## Light shine
 @onready var shine: MeshInstance3D = %Shine
+## Sound player
+@onready var soundPlayer: RandomSoundPlayer = %RandomSoundPlayer
 
 ## Reference to the player character
 var player: Player
@@ -116,6 +118,7 @@ func set_size(mode: ScaleModes) -> void:
 	super(mode)
 	match mode:
 		ScaleModes.GRABBED:
+			soundPlayer.play_sound()
 			floatingMesh.hide()
 			animate_light_fade(LIGHTRANGEGRABED)
 			lightShape.shape.radius = 0
@@ -141,6 +144,7 @@ func set_size(mode: ScaleModes) -> void:
 			set_assets("off")
 			isHeld = false
 		ScaleModes.PLACED:
+			if isHeld: soundPlayer.play_sound()
 			floatingMesh.hide()
 			mesh.show()
 			animate_light_fade(LIGHTRANGEPLACED)

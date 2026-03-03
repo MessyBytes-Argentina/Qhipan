@@ -17,7 +17,7 @@ const OFFSET: float = 0.4
 ## Reference to the collision shape.
 @onready var collisionShape: CollisionShape3D = %CollisionShape3D
 ## Sound player
-@onready var soundPlayer: RandomSoundPlayer = $RandomSoundPlayer
+@onready var soundPlayer: RandomSoundPlayer = %RandomSoundPlayer
 ## Mesh Material.
 var material: ShaderMaterial
 ## Reference to the player pickup handler

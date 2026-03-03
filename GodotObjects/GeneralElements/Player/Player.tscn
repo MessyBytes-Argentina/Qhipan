@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=200 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -33,6 +33,8 @@
 [ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutCube.gd" id="12_xf0c4"]
 [ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/SFX/Ripping.mp3" id="13_8hsli"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Textures/Character/WALK/WALK 4.png" id="13_bity2"]
+[ext_resource type="AudioStream" uid="uid://ci1w1v448c8i" path="res://Assets/Sounds/SFX/Fanfarre.mp3" id="13_q1b61"]
+[ext_resource type="Resource" uid="uid://bww2up38wsu88" path="res://Assets/Sounds/SFXResources/JumpAndGlide.tres" id="14_6p00r"]
 [ext_resource type="Texture2D" uid="uid://wd4evw80tj5p" path="res://Assets/Textures/Character/IDLE BACK/BACK 1.png" id="14_dkmaj"]
 [ext_resource type="Texture2D" uid="uid://i4fsbfnm2ojp" path="res://Assets/Textures/Character/BACK FLOAT/BACK FLOAT 1_n_3.png" id="14_f2480"]
 [ext_resource type="Texture2D" uid="uid://bxr8ni8pps0bx" path="res://Assets/Textures/Character/GRAB IDLE/IG 1_n_0.png" id="14_iaihc"]
@@ -389,6 +391,20 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("35_j4462"), ExtResource("36_qg1xx"), ExtResource("37_p4ocl"), ExtResource("38_ueqbd")]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PlayerSounds/Fanfare")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n0ub2"]
@@ -1663,6 +1679,16 @@ stream = ExtResource("7_upgpw")
 [node name="CamZoomOut" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("8_xvk8m")
+
+[node name="Fanfare" type="AudioStreamPlayer" parent="PlayerSounds"]
+stream = ExtResource("13_q1b61")
+
+[node name="Jump" type="AudioStreamPlayer" parent="PlayerSounds"]
+unique_name_in_owner = true
+bus = &"SFX"
+script = ExtResource("10_8hsli")
+soundResource = ExtResource("14_6p00r")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
