@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://v4l7in5irof5"]
+[gd_scene load_steps=8 format=4 uid="uid://v4l7in5irof5"]
 
 [ext_resource type="Script" uid="uid://ds7jwxemwltp7" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.gd" id="1_turgd"]
 [ext_resource type="Shader" uid="uid://cntgou3iy0wgy" path="res://Assets/Shaders/WobblyArea.gdshader" id="2_g7h2i"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="3_hh7r4"]
+[ext_resource type="Resource" uid="uid://bymjjmevmewpb" path="res://Assets/Sounds/SFXResources/AntiSticker.tres" id="4_m6dsx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajmos"]
 size = Vector3(1, 1, 0)
@@ -51,3 +53,8 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_ajmos")
+
+[node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_hh7r4")
+soundResource = ExtResource("4_m6dsx")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
