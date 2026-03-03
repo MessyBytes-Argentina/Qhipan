@@ -16,12 +16,16 @@ const OFFSET: float = 0.4
 @onready var mesh: MeshInstance3D = %MeshInstance3D
 ## Reference to the collision shape.
 @onready var collisionShape: CollisionShape3D = %CollisionShape3D
+## Sound player
+@onready var soundPlayer: RandomSoundPlayer = $RandomSoundPlayer
 ## Mesh Material.
 var material: ShaderMaterial
 ## Reference to the player pickup handler
 var pickupHandler: PickupHandler
 ## Point bufffer for area shader
 var _points: PointBuffer = PointBuffer.new(32)
+## Has player just entered
+var playerEntered: bool = false
 
 ## Point bufffer class for area shader
 class PointBuffer:
@@ -70,14 +74,18 @@ func _process(delta: float) -> void:
 ## Called when a body enters the area.
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Player: return
+	if playerEntered: return
 	if pickupHandler.pickupOnHand: pickupHandler.drop(false, true)
 	pickupHandler.inNoStickerArea = true
+	soundPlayer.play_sound()
 	var pos: Vector3 = body.global_position
 	for i in AMOUNT:
 		_points.push(to_local(pos))
 		await get_tree().create_timer(DELAY).timeout
+	playerEntered = true
 
 ## Called when a body exits the area.
 func _on_body_exited(body: Node3D) -> void:
 	if body is not Player: return
+	playerEntered = false
 	pickupHandler.inNoStickerArea = false

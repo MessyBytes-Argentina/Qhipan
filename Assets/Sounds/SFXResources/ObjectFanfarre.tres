@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_4x6aj"]
 [ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_oehtk"]
-[ext_resource type="AudioStream" uid="uid://bi3iv1xs0xddx" path="res://Assets/Sounds/SFX/Object_Fanfarre.mp3" id="3_oehtk"]
+[ext_resource type="AudioStream" uid="uid://bi3iv1xs0xddx" path="res://Assets/Sounds/SFX/Metaprogression.mp3" id="3_oehtk"]
 
 [sub_resource type="Resource" id="Resource_lda2h"]
 script = ExtResource("2_oehtk")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="1_f5u20"]
 [ext_resource type="Script" uid="uid://cuftb0125fe8y" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/SoundResource.gd" id="2_atgd6"]
-[ext_resource type="AudioStream" uid="uid://tek7251yt6co" path="res://Assets/Sounds/SFX/Jump_And_Glade.mp3" id="3_atgd6"]
+[ext_resource type="AudioStream" uid="uid://tek7251yt6co" path="res://Assets/Sounds/SFX/Jump_And_Glide.mp3" id="3_atgd6"]
 
 [sub_resource type="Resource" id="Resource_24e4b"]
 script = ExtResource("2_atgd6")
