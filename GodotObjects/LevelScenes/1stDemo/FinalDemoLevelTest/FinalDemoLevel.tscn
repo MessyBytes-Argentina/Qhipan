@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=4 uid="uid://cn8horxwxvjy0"]
+[gd_scene load_steps=147 format=4 uid="uid://cn8horxwxvjy0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_euh2j"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="2_8uuqi"]
@@ -130,7 +130,7 @@ shadow_mesh = SubResource("ArrayMesh_lk2ob")
 [sub_resource type="Curve3D" id="Curve3D_n03uh"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -3),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0, 0, -0.5, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -3),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -1022,14 +1022,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6tvik")
 
-[sub_resource type="Curve3D" id="Curve3D_rihxu"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -3),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6tvik"]
 albedo_color = Color(5.6718717, 12.910137, 15.824987, 1)
 albedo_texture = ExtResource("11_l7h8e")
@@ -1527,14 +1519,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sw7vi")
-
-[sub_resource type="Curve3D" id="Curve3D_kn0xv"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, 0, 0, 0, 0, 0, 0, 0, -0.4, 0, -3, 0, 0, 0, 0, 0, 0, 0, 0, -3),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhmcd"]
 albedo_color = Color(5.6718717, 12.910137, 15.824987, 1)
@@ -2066,50 +2050,62 @@ originalParent = "FinalDemoLevel"
 [node name="Fan Placement2" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement13" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement3" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement4" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement5" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement6" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement7" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement8" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement9" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement10" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement11" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement12" parent="1/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Anti Sticker" type="Node3D" parent="1/Props"]
 
@@ -2128,16 +2124,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1)
 curve = SubResource("Curve3D_n03uh")
 script = ExtResource("9_km3fw")
 extrudeDirection = 0
-shapeThickness = 0.4
+shapeThickness = 0.6
 material = ExtResource("10_vasbn")
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="Tope4" type="Path3D" parent="1/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1)
 curve = SubResource("Curve3D_n03uh")
 script = ExtResource("9_km3fw")
 extrudeDirection = 0
-shapeThickness = 0.4
+shapeThickness = 0.6
 material = ExtResource("10_vasbn")
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
@@ -2146,16 +2142,16 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 
 curve = SubResource("Curve3D_n03uh")
 script = ExtResource("9_km3fw")
 extrudeDirection = 0
-shapeThickness = 0.4
+shapeThickness = 0.6
 material = ExtResource("10_vasbn")
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="Tope3" type="Path3D" parent="1/Props"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 2.9)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 3)
 curve = SubResource("Curve3D_n03uh")
 script = ExtResource("9_km3fw")
 extrudeDirection = 0
-shapeThickness = 0.4
+shapeThickness = 0.6
 material = ExtResource("10_vasbn")
 metadata/_custom_type_script = "uid://cctq08qihhy37"
 
@@ -2187,24 +2183,25 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.5,
 curve = SubResource("Curve3D_qacvl")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_211gt"), SubResource("Resource_hna0a")])
 collisionLayer = 4096
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence2" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_cr368")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence3" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_4hdch")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_13ivo")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence4" parent="1/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_x77sq")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_2flga")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Area3D" type="Area3D" parent="1/Props/Fences"]
 collision_layer = 0
@@ -2330,74 +2327,123 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.5
 curve = SubResource("Curve3D_t8fo1")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_gxstf"), SubResource("Resource_wx0yl")])
 collisionLayer = 4096
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence2" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_ppkgv")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence3" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_kc5hi")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence4" parent="2/Props/Fences" instance=ExtResource("20_0ddb4")]
 curve = SubResource("Curve3D_prdqs")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Fan Machines" type="Node3D" parent="2/Props"]
 
 [node name="Fan Placement" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement2" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement3" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement4" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement5" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement6" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement7" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement8" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement9" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement10" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement11" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement12" parent="2/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
+
+[node name="Tope" type="Path3D" parent="2/Props/Fan Machines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope4" type="Path3D" parent="2/Props/Fan Machines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope2" type="Path3D" parent="2/Props/Fan Machines"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, -3.5)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope3" type="Path3D" parent="2/Props/Fan Machines"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 3)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="Anti Sticker" type="Node3D" parent="2/Props"]
 
@@ -2420,42 +2466,6 @@ mesh = SubResource("ArrayMesh_t5b4n")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("7_n1sgo")
 surface_material_override/1 = ExtResource("8_3d3yf")
-
-[node name="Tope" type="Path3D" parent="2/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1)
-curve = SubResource("Curve3D_rihxu")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope4" type="Path3D" parent="2/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 1, 1)
-curve = SubResource("Curve3D_rihxu")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope2" type="Path3D" parent="2/Props"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, -3.5)
-curve = SubResource("Curve3D_rihxu")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope3" type="Path3D" parent="2/Props"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 2.9)
-curve = SubResource("Curve3D_rihxu")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="CrystalTally" type="MeshInstance3D" parent="2/Props"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.5, 3, -4)
@@ -2491,7 +2501,7 @@ shape = SubResource("BoxShape3D_jlms1")
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape" type="CollisionShape3D" parent="2/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
@@ -2575,77 +2585,126 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.5,
 curve = SubResource("Curve3D_10svf")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_ppkgv"), SubResource("Resource_ny0it")])
 collisionLayer = 4096
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence2" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_q2v77")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence3" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_k50ks")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Wood Fence4" parent="3/Props/Fences" instance=ExtResource("20_0ddb4")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -1)
 curve = SubResource("Curve3D_ei3d0")
 multiMeshResources = Array[ExtResource("21_ewaiq")]([SubResource("Resource_k50ks")])
 collisionLayer = 4096
-colliderSize = Vector2(0.3, 1)
+colliderSize = Vector2(0.05, 3)
 
 [node name="Fan Machines" type="Node3D" parent="3/Props"]
 
 [node name="Fan Placement" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement2" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement3" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement4" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement5" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement6" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.5, 1, -3)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement7" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -1.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement8" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, -0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement9" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3, 1, 0.5)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement10" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement11" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
 
 [node name="Fan Placement12" parent="3/Props/Fan Machines" instance=ExtResource("5_v8ohx")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.5, 1, 2)
 specialFlags = 1
+overrideFanLength = 3.5
+
+[node name="Tope" type="Path3D" parent="3/Props/Fan Machines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope4" type="Path3D" parent="3/Props/Fan Machines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope2" type="Path3D" parent="3/Props/Fan Machines"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, -3.5)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
+
+[node name="Tope3" type="Path3D" parent="3/Props/Fan Machines"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 3)
+curve = SubResource("Curve3D_n03uh")
+script = ExtResource("9_km3fw")
+extrudeDirection = 0
+shapeThickness = 0.6
+material = ExtResource("10_vasbn")
+metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="Anti Sticker" type="Node3D" parent="3/Props"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.9, 0, -1.1)
@@ -2669,42 +2728,6 @@ mesh = SubResource("ArrayMesh_cfwi0")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("7_n1sgo")
 surface_material_override/1 = ExtResource("8_3d3yf")
-
-[node name="Tope" type="Path3D" parent="3/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 1)
-curve = SubResource("Curve3D_kn0xv")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope4" type="Path3D" parent="3/Props"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 1, 1)
-curve = SubResource("Curve3D_kn0xv")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope2" type="Path3D" parent="3/Props"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, -3.5)
-curve = SubResource("Curve3D_kn0xv")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
-
-[node name="Tope3" type="Path3D" parent="3/Props"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 1, 2.9)
-curve = SubResource("Curve3D_kn0xv")
-script = ExtResource("9_km3fw")
-extrudeDirection = 0
-shapeThickness = 0.4
-material = ExtResource("10_vasbn")
-metadata/_custom_type_script = "uid://cctq08qihhy37"
 
 [node name="CrystalTally" type="MeshInstance3D" parent="3/Props"]
 transform = Transform3D(-1, 0, 4.371139e-08, 0, 1, 0, -4.371139e-08, 0, -1, 4, 3, -0.49999997)
@@ -2740,7 +2763,7 @@ debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
 metadata/ONShape = true
 
-[node name="OFFShape2" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
+[node name="OFFShape" type="CollisionShape3D" parent="3/Widgets/ChunkLoadingHotspot"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
