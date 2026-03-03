@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=57 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -98,10 +98,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_bqiac"]
-transparency = 4
-albedo_color = Color(0.627451, 0.1254902, 0.9411765, 0.5)
 
 [sub_resource type="Curve3D" id="Curve3D_0y02q"]
 _data = {
@@ -404,25 +400,8 @@ colliderSize = Vector2(0.2, 0.6)
 [node name="Wood Fence8" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.3999996, -1, -6.6000004)
 curve = SubResource("Curve3D_bqiac")
-colliderSize = Vector2(0.4, 1)
+colliderSize = Vector2(0.4, 3.5)
 collisionSnapPointToPath = 8
-
-[node name="@CSGPolygon3D@31059" type="CSGPolygon3D" parent="Props/Fences/Wood Fence8"]
-use_collision = true
-collision_mask = 0
-polygon = PackedVector2Array(-0.4, 0, -0.4, 1, 0, 1, 0, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 1.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = true
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("ORMMaterial3D_bqiac")
 
 [node name="Wood Fence6" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -4.95, 1.7)
