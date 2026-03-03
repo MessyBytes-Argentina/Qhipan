@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=4 uid="uid://dvwxq31fg57on"]
+[gd_scene load_steps=203 format=4 uid="uid://dvwxq31fg57on"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_emjup"]
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="2_cwlqd"]
@@ -817,6 +817,12 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7bbn"]
+size = Vector3(1, 1, 2.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhey2"]
+size = Vector3(1, 1, 2.3)
+
 [sub_resource type="TextureSetResource" id="TextureSetResource_c0uas"]
 name = "Grass"
 albedoTexture = ExtResource("62_efdds")
@@ -1020,10 +1026,6 @@ metadata/_custom_type_script = "uid://d4b07ry1uvwgr"
 [node name="PushDoor" parent="Rooms/Tutohub-connectivehub/Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("10_pvjif")]
 transform = Transform3D(-4.371139e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.371139e-08, 1.9106859e-15, -3, 0, -3.5)
 isOneWay = true
-sceneParent = NodePath("../../../..")
-
-[node name="PushDoor2" parent="Rooms/Tutohub-connectivehub/Doors" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_2remw")]
-transform = Transform3D(5.9604645e-08, 1, 4.3711406e-08, 0, -4.37114e-08, 1, 1, -5.9604645e-08, -2.6645353e-15, -3, 0, -11.5)
 sceneParent = NodePath("../../../..")
 
 [node name="Props" type="Node3D" parent="Rooms/Tutohub-connectivehub"]
@@ -2561,6 +2563,27 @@ multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_ujq21
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.3391727, 1.5)
 curve = SubResource("Curve3D_70io1")
 multiMeshResources = Array[ExtResource("16_inrfn")]([SubResource("Resource_ujq21")])
+
+[node name="AlternatingBlock" parent="Rooms" instance=ExtResource("40_vlngr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, -0.5, -11.5)
+
+[node name="ObjectOccluder" type="Node3D" parent="Rooms" node_paths=PackedStringArray("hideObjects", "sceneParent")]
+script = ExtResource("34_n5fu6")
+hideObjects = [NodePath("../AlternatingBlock")]
+sceneParent = NodePath("../..")
+metadata/_custom_type_script = "uid://blllvpjbphq1w"
+
+[node name="ONShape" type="CollisionShape3D" parent="Rooms/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+shape = SubResource("BoxShape3D_l7bbn")
+debug_color = Color(0, 0.7490196, 1, 0.5)
+metadata/ONShape = true
+
+[node name="OFFShape" type="CollisionShape3D" parent="Rooms/ObjectOccluder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3000002, 0, -6.0499997)
+shape = SubResource("BoxShape3D_lhey2")
+debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
+metadata/OFFShape = true
 
 [node name="TerraBrush" type="TerraBrush" parent="."]
 dataPath = "res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective"
