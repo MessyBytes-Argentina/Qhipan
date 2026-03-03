@@ -400,7 +400,8 @@ colliderSize = Vector2(0.2, 0.6)
 [node name="Wood Fence8" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.3999996, -1, -6.6000004)
 curve = SubResource("Curve3D_bqiac")
-colliderSize = Vector2(0.2, 0.6)
+colliderSize = Vector2(0.4, 3.5)
+collisionSnapPointToPath = 8
 
 [node name="Wood Fence6" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -4.95, 1.7)
