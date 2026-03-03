@@ -70,6 +70,8 @@ var shineAlpha: float = 0.0
 var shineAnimationMode: String = "Off"
 ## Are effects turned on.
 var effectsOn: bool = true
+## Is it currently held.
+var isHeld: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -127,6 +129,7 @@ func set_size(mode: ScaleModes) -> void:
 			shine.mesh.size = SHINEPARAMETERS.heldSize
 			if shineAnimationMode not in ["AnimatingIn", "On"]: animate_shine(true)
 			set_assets("on")
+			isHeld = true
 		ScaleModes.DROPPED:
 			floatingMesh.show()
 			mesh.hide()
@@ -136,6 +139,7 @@ func set_size(mode: ScaleModes) -> void:
 			shine.mesh.size = SHINEPARAMETERS.defaultSize
 			if shineAnimationMode not in ["AnimatingOut", "Off"]: animate_shine(false)
 			set_assets("off")
+			isHeld = false
 		ScaleModes.PLACED:
 			floatingMesh.hide()
 			mesh.show()
@@ -150,6 +154,7 @@ func set_size(mode: ScaleModes) -> void:
 			shine.mesh.size = SHINEPARAMETERS.defaultSize
 			if shineAnimationMode not in ["AnimatingIn", "On"]: animate_shine(true)
 			set_assets("on")
+			isHeld = false
 		ScaleModes.ZOOMEDOUT:
 			floatingMesh.hide()
 	await get_tree().physics_frame
@@ -256,6 +261,7 @@ func activate_on_player_effect() -> void:
 ## Deactivates the sticker effect when held by the player
 func deactivate_on_player_effect() -> void:
 	if placed: await get_tree().create_timer(NOHELDEFFECTWAIT).timeout
+	if isHeld: return
 	player.get_node("DarknessBlockerModule").holding_light(false)
 
 ## Signals that the body entered the light area
