@@ -62,7 +62,9 @@ func _create_scene() -> void:
 		_instantiatedScene.ready.connect(Callable(_instantiatedScene, "add_child").bind(animationPlayer))
 		_instantiatedScene.set_meta("animationPlayer", animationPlayer)
 
-## Clears the scene. Just in plase to make sure only non-persistent popups get freed from queue.
+## Clears the scene. Just in place to make sure only non-persistent popups get freed from queue.
 func clear_scene() -> void:
 	if persistent:
 		_instantiatedScene.get_parent().remove_child(_instantiatedScene)
+	else:
+		_instantiatedScene.queue_free()

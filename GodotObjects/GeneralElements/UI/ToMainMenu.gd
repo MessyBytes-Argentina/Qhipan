@@ -85,6 +85,7 @@ func _on_pressed() -> void:
 		label.text = TEXTS.confirm
 		return
 	GeneralVariables.inventory.book.hide_book(true)
+	await get_tree().process_frame
 	PopupManager.close_popup_by_name(popupName)
 	restart()
 	label.text = TEXTS.normal

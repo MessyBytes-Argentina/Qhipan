@@ -73,6 +73,7 @@ func _update_multimesh():
 		var sequence: Array[MultiMeshResource] = []
 		var sequenceMultimesh: Array[MultiMeshInstance3D] = []
 		if multiMeshResource is RandomMultimeshResource:
+			multimesh.queue_free()
 			var weights: Array[MultiMeshResource] = []
 			var multimeshReference: Dictionary[MultiMeshResource, MultiMeshInstance3D] = {}
 			for key in multiMeshResource.multimeshes:

@@ -91,3 +91,4 @@ func sticker_activity() -> void:
 func _on_delete_requested() -> void:
 	if Engine.is_editor_hint(): return
 	GeneralVariables.stickerableSurfacesManager.delete_data(data)
+	queue_free()

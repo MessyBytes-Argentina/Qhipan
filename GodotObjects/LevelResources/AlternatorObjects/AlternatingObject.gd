@@ -89,3 +89,4 @@ func _notification(what) -> void:
 	if Engine.is_editor_hint(): return
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.queue_to_cutout_materials([material], false)
+		queue_free()

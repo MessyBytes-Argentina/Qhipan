@@ -9,7 +9,7 @@ signal closed_popup(popupName: String)
 const PopupsResourceGroup: String = "uid://b6vq5y04cq4o7"
 
 ## The lsit of popups to import.
-var popupResources: Dictionary = {}
+var popupResources: Dictionary[String, PopupResource] = {}
 ## The actual queue of popups in screen.
 var popupQueue: Array[ColorRect] = []
 ## The list of afterloaded popups.

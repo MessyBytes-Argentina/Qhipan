@@ -499,3 +499,4 @@ func check_falling() -> bool:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.in_game_switch(false)
+		queue_free()

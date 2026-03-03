@@ -113,3 +113,4 @@ func _animation_tick_emission(newEmission: float) -> void:
 func _notification(what) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.queue_to_cutout_materials([material], false)
+		queue_free()
