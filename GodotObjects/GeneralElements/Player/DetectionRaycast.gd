@@ -20,14 +20,15 @@ var isDetecting: bool = false
 ## Current detected distance to an edge
 var currentDistance: float = 1
 
-
 ## Sets isDetecting to the value given
 func set_detecting(value: bool) -> void:
 	isDetecting = value
 
 ## Executed once per physics frame
 func _physics_process(_delta: float) -> void:
-	if not isDetecting: return
+	if not isDetecting: 
+		windParticles.emitting = false
+		return
 	var collisionPoint: Vector3
 	if verticalRaycast.is_colliding() or pathRayCast.is_colliding():
 		windParticles.emitting = false

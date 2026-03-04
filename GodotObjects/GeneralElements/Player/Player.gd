@@ -491,12 +491,7 @@ func exit_no_gravity(node: Node3D) -> void:
 #region On Player Sticker Functions
 ## Returns true if not on the floor or floating
 func check_falling() -> bool:
-	var falling: bool = false
-	if not is_on_floor() and (not forcedNoGravity or len(noGravityZones) == 0):
-		falling = true
-	else:
-		falling = false
-	return falling
+	return not is_on_floor() or forcedNoGravity or len(noGravityZones) > 0
 #endregion
 
 ## Called when player leaves the scene DEMO SHIT

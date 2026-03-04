@@ -206,7 +206,7 @@ metadata/_custom_type_script = "uid://cqarofy2kggt"
 [node name="Wood Fence" type="Path3D"]
 script = ExtResource("1_kkgpq")
 multiMeshResources = Array[ExtResource("2_684hn")]([SubResource("Resource_s5cjj")])
-collisionLayer = 1
+collisionLayer = 4096
 colliderSize = Vector2(0.1, 0.6)
 collisionSnapPointToPath = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"

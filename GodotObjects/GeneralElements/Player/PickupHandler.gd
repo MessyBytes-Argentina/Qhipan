@@ -12,7 +12,7 @@ const STICKERHIGHLIGHTBOBTIME: float = 0.5
 ## Maximum surface distance.
 const MAXSURFACEDISTANCE: float = 2.25
 ## Collision layers to block raycast.
-const RAYCOLLISIONLAYERS: Array[int] = [1, 4, 9, 13]
+const RAYCOLLISIONLAYERS: Array[int] = [1, 3, 4, 9, 13]
 ## Sticker area radius.
 const STICKERRADIUS: float = 0.132
 ## Sticker list

@@ -15,8 +15,10 @@ const FANPUSHDISTANCE: float = 1.5
 
 ## Flag that turns on when the player has a sticker on hand
 var stickerOnHand: bool = false
-## Flag that turns on when the player is able to jump
-var ableToPush: bool = false
+## Flag for detection state
+var detecting: bool = false
+## Flag for enabling jumping
+var ableToJump: bool = false
 ## Collection of Detection Raycasts
 var raycastCollection: Array
 
@@ -26,20 +28,20 @@ func _ready() -> void:
 
 ## Executed once per physics frame
 func _physics_process(_delta: float) -> void:
-	if not stickerOnHand: return
-	if player.noGravityZones.size() > 0: return
-	if not ableToPush:
-		if not player.check_falling() or len(player.noGravityZones) > 0:
-			ableToPush = true
-			set_raycasts_detection(true)
-			return
-		else:
-			return
+	var canDetect: bool = not player.check_falling() and stickerOnHand
+	if not canDetect:
+		set_raycasts_detection(false)
+		detecting = false
+		return
+	elif not detecting and canDetect:
+		ableToJump = true
+		set_raycasts_detection(true)
+		detecting = true
+		return
 	var zeroCount: int = 0
 	for raycast: DetectionRaycast in raycastCollection:
 		if raycast.previousDistance == 0 : zeroCount += 1
 	if zeroCount == raycastCollection.size(): return
-	
 	for raycast: DetectionRaycast in raycastCollection:
 		if raycast.currentDistance < JUMPDISTANCE and raycast.currentDistance <= raycast.previousDistance:
 			var normalDirection: Vector3 = raycast.get_collision_normal()
@@ -50,7 +52,8 @@ func _physics_process(_delta: float) -> void:
 
 ## Makes the player jump in the given direction by FANPUSHDISTANCE
 func do_player_jump(direction: Vector3) -> void:
-	ableToPush = false
+	if not ableToJump: return
+	ableToJump = false
 	set_raycasts_detection(false)
 	jumpSound.play_sound()
 	var targetPosition: Vector3 = player.global_position + (direction * FANPUSHDISTANCE)
@@ -75,11 +78,7 @@ func set_raycasts_detection(value: bool) -> void:
 ## Sets necessary flags to true
 func enable_push() -> void:
 	stickerOnHand = true
-	ableToPush = true
-	set_raycasts_detection(true)
 
 ## Sets necessary flags to false
 func disable_push() -> void:
 	stickerOnHand = false
-	ableToPush = false
-	set_raycasts_detection(false)
