@@ -283,7 +283,7 @@ size = Vector3(1, 4, 3)
 size = Vector3(1, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vlw36"]
-size = Vector3(1, 1, 5)
+size = Vector3(5.3, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0kcf"]
 size = Vector3(1.5, 1.5, 3)
@@ -771,7 +771,7 @@ rootNode = NodePath("../..")
 metadata/_custom_type_script = "uid://dnqb2rmldc7yh"
 
 [node name="LoadShape" type="CollisionShape3D" parent="Destileria_puzzle2/ChunkLoadingHotspot-minifork"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 0, 0)
 shape = SubResource("BoxShape3D_vlw36")
 debug_color = Color(1, 0.64705884, 0, 0.5)
 metadata/LoadShape = true
@@ -974,11 +974,11 @@ hideObjects = [NodePath("../BlackWalls")]
 sceneParent = NodePath("../..")
 metadata/_custom_type_script = "uid://blllvpjbphq1w"
 
-[node name="ONShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+[node name="ONShape2" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
 debug_color = Color(0, 0.7490196, 1, 0.5)
 metadata/ONShape = true
 
-[node name="OFFShape" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
+[node name="OFFShape2" type="CollisionShape3D" parent="Destileria_puzzle2/ObjectOccluder"]
 debug_color = Color(1, 0.078431375, 0.5764706, 0.5)
 metadata/OFFShape = true
 
