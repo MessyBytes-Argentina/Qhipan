@@ -60,11 +60,7 @@ func _process(_delta: float) -> void:
 ## Updates slider and button to match the current volume set.
 func _update_values():
 	var currentVolume: float = VolumeManager.get_bus_volume(bus)
-	if currentVolume == -60:
-		currentVolume = VolumeManager.get_bus_saved_volume(bus)
-		_button.button_pressed = true
-	else:
-		_button.button_pressed = false
+	_button.button_pressed = currentVolume == -60
 	_slider.value = currentVolume
 
 ## Called when the node enters the scene tree for the first time.
