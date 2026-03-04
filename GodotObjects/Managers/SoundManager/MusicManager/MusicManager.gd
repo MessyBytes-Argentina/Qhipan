@@ -16,6 +16,12 @@ var busName: String
 var currentSong: String = ""
 ## Flag to indicate that the music player is muted. Used to determine whether to raise the volume when switching songs.
 var silenced: bool = false
+## Flag for paused music
+var paused: bool = false
+## Previous volume for pausing
+var prePauseVolume: float = 0.0
+## Previous pause position
+var prePausePosition: float = 0.0
 ## A reference to the audio player stream playback.
 var audioPlayerStreamPlayback: AudioStreamPlayback
 ## The music name list.
@@ -54,6 +60,18 @@ func silence() -> void:
 	fade_volume(0, -80)
 	silenced = true
 
+## Pauses and unpauses music.
+func pause(doPause: bool = true, fadeTime: float = 0) -> void:
+	if doPause:
+		prePauseVolume = audioPlayer.volume_db
+		paused = true
+		await fade_volume(fadeTime, -80)
+		audioPlayer.stream_paused = true
+	else:
+		fade_volume(fadeTime, prePauseVolume)
+		paused = false
+		audioPlayer.stream_paused = false
+
 ## Changes the music that is currently playing.
 func change_music(newSongName: String) -> void:
 	if newSongName != currentSong:
@@ -89,8 +107,7 @@ func fade_volume(fadeTime: float, newMusicVolume: float) -> void:
 			tweener.tween_property(audioPlayer, "volume_db", newMusicVolume, fadeTime)
 			tweener.play()
 			await get_tree().create_timer(fadeTime).timeout
-			tweener.stop()
-			if newMusicVolume == -80:
-				audioPlayer.stop()
 		else:
 			audioPlayer.volume_db = newMusicVolume
+		if newMusicVolume == -80 and not paused:
+			audioPlayer.stop()

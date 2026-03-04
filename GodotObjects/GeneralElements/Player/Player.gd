@@ -41,6 +41,8 @@ const MAXFALLPITCH: float = 1.0
 const NOGRABSTATES: Array[States] = [States.Slap]
 ## Regular animation states that can't be interrupted.
 const NOINTERRUPTSTATES: Array[States] = [States.Slap]
+## Fanfare wait times.
+const FANFAREWAIT: Dictionary[String, float] = {"pause": 0.1, "unpause": 1.0}
 
 ## Time it takes for the player sprite to flip.
 const spriteFlipDuration: float = 0.5
@@ -120,6 +122,8 @@ signal camera_rotated(newAngle: float)
 @onready var shine: MeshInstance3D = %Shine
 ## Reference to the alternator held effect.
 @onready var alternatorHeldEffect: MeshInstance3D = %AlternatorHeldEffect
+## Reference to the fanfare sound.
+@onready var fanfare: AudioStreamPlayer = %Fanfare
 #endregion
 
 #region Variables
@@ -500,3 +504,10 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.in_game_switch(false)
 		queue_free()
+
+## Pauses music for fanfarre
+func do_fanfarre() -> void:
+	MusicManager.pause(true, FANFAREWAIT.pause)
+	fanfare.play()
+	await fanfare.finished
+	MusicManager.pause(false, FANFAREWAIT.unpause)

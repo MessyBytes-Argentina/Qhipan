@@ -395,15 +395,15 @@ tracks/10/keys = {
 tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("PlayerSounds/Fanfare")
+tracks/11/path = NodePath(".")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.0],
-"method": &"play"
+"args": [],
+"method": &"do_fanfarre"
 }]
 }
 
@@ -1681,6 +1681,7 @@ unique_name_in_owner = true
 stream = ExtResource("8_xvk8m")
 
 [node name="Fanfare" type="AudioStreamPlayer" parent="PlayerSounds"]
+unique_name_in_owner = true
 stream = ExtResource("13_q1b61")
 
 [node name="Jump" type="AudioStreamPlayer" parent="PlayerSounds"]
