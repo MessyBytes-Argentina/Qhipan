@@ -139,7 +139,7 @@ metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 [node name="Bushes" type="Path3D"]
 script = ExtResource("1_32tpj")
 multiMeshResources = Array[ExtResource("2_yg7g3")]([SubResource("Resource_5q6um"), SubResource("Resource_e6oro"), SubResource("Resource_14f5g")])
-collisionLayer = 1
+collisionLayer = 4096
 colliderSize = Vector2(1.45, 1.5)
 collisionSnapPointToPath = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"

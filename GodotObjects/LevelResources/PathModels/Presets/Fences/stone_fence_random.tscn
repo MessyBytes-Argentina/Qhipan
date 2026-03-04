@@ -146,7 +146,7 @@ metadata/_custom_type_script = "uid://cqarofy2kggt"
 [node name="Stone Fence" type="Path3D"]
 script = ExtResource("1_e4rwk")
 multiMeshResources = Array[ExtResource("2_me25i")]([SubResource("Resource_f3fs8"), SubResource("Resource_wgj61")])
-collisionLayer = 1
+collisionLayer = 4096
 colliderSize = Vector2(0.7, 1)
 collisionSnapPointToPath = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"

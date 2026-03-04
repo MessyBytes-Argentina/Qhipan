@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://bkoj8wciyavc4"]
+[gd_scene load_steps=20 format=4 uid="uid://bkoj8wciyavc4"]
 
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_n36hx"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_chiju"]
+[ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_eqqg4"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_c662v"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_4g0gq"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_f3fs8"]
@@ -91,8 +92,8 @@ mesh = SubResource("ArrayMesh_ple87")
 applyOnlyToNodes = true
 distanceBetweenPieces = 0.7
 randomRotation = Vector3(0, 1.134464, 0)
-randomSeed = 12
 baseOffset = Vector2(0, 0)
+randomSeed = 12
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1k6wi"]
@@ -131,9 +132,9 @@ shadow_mesh = SubResource("ArrayMesh_1k6wi")
 [sub_resource type="Resource" id="Resource_7gyso"]
 script = ExtResource("2_chiju")
 mesh = SubResource("ArrayMesh_e1ixb")
-offsetStart = 0.5
 randomRotation = Vector3(0, 0.2617994, 0)
 baseOffset = Vector2(0, 0)
+offsetStart = 0.5
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ed8kn"]
@@ -172,16 +173,16 @@ shadow_mesh = SubResource("ArrayMesh_ed8kn")
 [sub_resource type="Resource" id="Resource_e2jmk"]
 script = ExtResource("2_chiju")
 mesh = SubResource("ArrayMesh_cp2ys")
-offsetStart = 1.0
 randomRotation = Vector3(0, -0.2617994, 0)
-randomSeed = 4
 baseOffset = Vector2(0, 0)
+offsetStart = 1.0
+randomSeed = 4
 metadata/_custom_type_script = "uid://ci5wvjf6ekhnq"
 
 [node name="Stone Fence" type="Path3D"]
 script = ExtResource("1_n36hx")
-multiMeshResources = Array[ExtResource("2_chiju")]([SubResource("Resource_f3fs8"), SubResource("Resource_7gyso"), SubResource("Resource_e2jmk")])
-collisionLayer = 1
+multiMeshResources = Array[ExtResource("2_eqqg4")]([SubResource("Resource_f3fs8"), SubResource("Resource_7gyso"), SubResource("Resource_e2jmk")])
+collisionLayer = 4096
 colliderSize = Vector2(0.7, 1)
 collisionSnapPointToPath = 1
 metadata/_custom_type_script = "uid://pvc1wchcttc2"
