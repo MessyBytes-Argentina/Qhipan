@@ -14,8 +14,6 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 ## Parent node reference for placement.
 @export var sceneParent: Node
 
-## Node reference to connect open signal.
-@onready var doorBody: DoorBody = %DownPivot
 ## AnimationPlayer reference.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## SoundPlayer for the open sound
@@ -27,8 +25,6 @@ enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, Rotat
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		sceneParent = get_tree().edited_scene_root
-		return
-	doorBody.open.connect(open_door)
 
 ## Opens the door.
 func open_door(update: bool = true) -> void:
@@ -39,8 +35,7 @@ func open_door(update: bool = true) -> void:
 			GeneralVariables.saveManager.store_change(self, sceneParent)
 			playerPushChecker.queue_free()
 	else:
-		animationPlayer.play_backwards(Animations.keys()[openAnimation])
-		animationPlayer.stop()
+		animationPlayer.play("Opened")
 		playerPushChecker.queue_free()
 
 ## Closes the door.

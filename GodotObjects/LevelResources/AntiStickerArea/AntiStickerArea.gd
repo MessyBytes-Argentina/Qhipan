@@ -24,8 +24,6 @@ var material: ShaderMaterial
 var pickupHandler: PickupHandler
 ## Point bufffer for area shader
 var _points: PointBuffer = PointBuffer.new(32)
-## Has player just entered
-var playerEntered: bool = false
 
 ## Point bufffer class for area shader
 class PointBuffer:
@@ -62,10 +60,11 @@ func _ready() -> void:
 	material = mesh.get_surface_override_material(0).duplicate()
 	mesh.set_surface_override_material(0, material)
 	mesh.mesh = mesh.mesh.duplicate()
-	mesh.mesh.size = Vector2(scale.x, scale.y)
-	collisionShape.shape = collisionShape.shape.duplicate()
-	collisionShape.shape.size = Vector3(scale.x, scale.y, 0.0)
-	scale = Vector3.ONE
+	if scale != Vector3.ONE:
+		mesh.mesh.size = Vector2(scale.x, scale.y)
+		collisionShape.shape = collisionShape.shape.duplicate()
+		collisionShape.shape.size = Vector3(scale.x, scale.y, 0.01)
+		scale = Vector3.ONE
 
 func _process(delta: float) -> void:
 	var decayed_points:Array[Vector4] = _points.decay_points(delta, DECAY_SPEED)
@@ -74,18 +73,16 @@ func _process(delta: float) -> void:
 ## Called when a body enters the area.
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Player: return
-	if playerEntered: return
-	if pickupHandler.pickupOnHand: pickupHandler.drop(false, true)
+	if pickupHandler.pickupOnHand: 
+		pickupHandler.drop(false, true)
+		soundPlayer.play_sound()
 	pickupHandler.inNoStickerArea = true
-	soundPlayer.play_sound()
 	var pos: Vector3 = body.global_position
 	for i in AMOUNT:
 		_points.push(to_local(pos))
 		await get_tree().create_timer(DELAY).timeout
-	playerEntered = true
 
 ## Called when a body exits the area.
 func _on_body_exited(body: Node3D) -> void:
 	if body is not Player: return
-	playerEntered = false
 	pickupHandler.inNoStickerArea = false

@@ -1,7 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://xwsbpt7bioko"]
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
-[ext_resource type="Script" uid="uid://btjj708xpqpid" path="res://GodotObjects/LevelResources/Props/Door/DoorBody.gd" id="2_55ifw"]
 [ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="4_ekaqn"]
@@ -302,8 +301,50 @@ tracks/1/keys = {
 "values": [Vector3(1, 0.9, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_hu4jo"]
+resource_name = "Opened"
+length = 0.001
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-3),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered/UpPivot/DownPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.1, -0.985)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Centered/UpPivot/DownPivot/Door/DoorBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmc35"]
 _data = {
+&"Opened": SubResource("Animation_hu4jo"),
 &"RESET": SubResource("Animation_5h8iw"),
 &"RotateToCeiling": SubResource("Animation_gmc35"),
 &"RotateToFloor": SubResource("Animation_iyqt8"),
@@ -325,9 +366,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18557e-08, 0.5)
 [node name="UpPivot" type="Node3D" parent="Centered"]
 
 [node name="DownPivot" type="Node3D" parent="Centered/UpPivot"]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.37114e-08, -1)
-script = ExtResource("2_55ifw")
 
 [node name="Door" type="MeshInstance3D" parent="Centered/UpPivot/DownPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0.5)

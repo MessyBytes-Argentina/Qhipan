@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="8_lffbj"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="9_gdvbg"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="10_35xyp"]
-[ext_resource type="PackedScene" uid="uid://cdt4s6yeng5g8" path="res://GodotObjects/LevelResources/Props/Door/PushDoorUniDireccional.tscn" id="11_drosb"]
 [ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="12_rc3x7"]
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="15_7wx1f"]
+[ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/PorticoAntiSticker.tscn" id="15_kluub"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="15_lby3b"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="16_35xyp"]
 [ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="17_drosb"]
@@ -121,14 +121,14 @@ shadow_mesh = SubResource("ArrayMesh_35vhv")
 
 [sub_resource type="Curve3D" id="Curve3D_stqvm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7000003, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 0, 0, 0, 0, 1.5, 0, 1.5),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_h27s4"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.9, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.25, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -720,49 +720,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
 sceneParent = NodePath("../../../..")
 originalParent = "Molino_minifork"
 
+[node name="AlternatingBlock2" parent="Rooms/Molino_puzzle3" instance=ExtResource("9_gdvbg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.15, -0.5, 6.5)
+isOff = true
+
 [node name="Group1" type="Node3D" parent="Rooms/Molino_puzzle3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, 5.5)
 script = ExtResource("8_lffbj")
 metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
 
 [node name="LeyLine" parent="Rooms/Molino_puzzle3/Group1" instance=ExtResource("10_35xyp")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.1999998, 0, 1)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, -0.5, 6)
 
 [node name="LeylinePiece2" type="Node3D" parent="Rooms/Molino_puzzle3/Group1"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.1999998, 0, 0.5)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, -0.5, 5.5)
+script = ExtResource("12_rc3x7")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Rooms/Molino_puzzle3/Group1/LeylinePiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 script = ExtResource("12_rc3x7")
 exits = 4
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
-[node name="LeylinePiece" type="Node3D" parent="Rooms/Molino_puzzle3/Group1/LeylinePiece2"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.5, 0, 0.5)
-script = ExtResource("12_rc3x7")
-exits = 2
-metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
-
 [node name="AlternatingBlock" parent="Rooms/Molino_puzzle3/Group1/LeylinePiece2/LeylinePiece" instance=ExtResource("9_gdvbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
 
 [node name="ExitBlocks" type="Node3D" parent="Rooms/Molino_puzzle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 2.5)
 
 [node name="AlternatingBlock2" parent="Rooms/Molino_puzzle3/ExitBlocks" instance=ExtResource("9_gdvbg")]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 4096
 isOff = true
-
-[node name="PushDoor" parent="Rooms/Molino_puzzle3" node_paths=PackedStringArray("sceneParent") instance=ExtResource("11_drosb")]
-transform = Transform3D(-1, 8.742278e-08, 3.8213718e-15, 0, -4.37114e-08, 1, 8.742278e-08, 1, 4.37114e-08, -0.5, 0, 4.55)
-isOneWay = true
-sceneParent = NodePath("../../..")
 
 [node name="Fences" type="Node3D" parent="Rooms/Molino_puzzle3"]
 
 [node name="LeftFence" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("6_3m86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.5, 4.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4.5)
 curve = SubResource("Curve3D_stqvm")
 
 [node name="RightFence" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("6_3m86x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 4.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 4.5)
 curve = SubResource("Curve3D_h27s4")
 
 [node name="Wood Fence" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("6_3m86x")]
@@ -776,6 +774,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, 11)
 curve = SubResource("Curve3D_rpd6h")
 collisionLayer = 4096
 colliderSize = Vector2(0.05, 2)
+
+[node name="PorticoAntiSticker" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("15_kluub")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.9000001, -0.5, 4.45)
 
 [node name="Molino_puzzle4" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)

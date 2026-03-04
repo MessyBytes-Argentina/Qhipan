@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://crc3on5e58ajc"]
+[gd_scene load_steps=14 format=4 uid="uid://crc3on5e58ajc"]
 
-[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="1_j5p8p"]
-[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="2_ok3mu"]
-[ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="3_ydp2v"]
+[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="1_7w5j2"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="2_qhyfc"]
+[ext_resource type="Script" uid="uid://ds7jwxemwltp7" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.gd" id="3_vclfs"]
+[ext_resource type="Shader" uid="uid://cntgou3iy0wgy" path="res://Assets/Shaders/WobblyArea.gdshader" id="4_mpuqu"]
+[ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_5e5fy"]
+[ext_resource type="Resource" uid="uid://bymjjmevmewpb" path="res://Assets/Sounds/SFXResources/AntiSticker.tres" id="6_eefmn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oblum"]
 transparency = 1
@@ -83,12 +86,70 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_35vhv")
 
-[node name="Portico" type="MeshInstance3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_c57is"]
+size = Vector3(1.8, 1.5, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dg2el"]
+size = Vector2(1.6, 1.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hh7r4"]
+render_priority = 2
+shader = ExtResource("4_mpuqu")
+shader_parameter/albedo = Color(0.8509804, 0.8509804, 0, 1)
+shader_parameter/see_through = 0.98999997787152
+shader_parameter/wave_color = Color(1, 1, 0, 0.29411766)
+shader_parameter/emission = 0.75
+shader_parameter/wave_emission = 1.0
+shader_parameter/frequency = 4.99999988824
+shader_parameter/amplitude = 1.0000000475
+shader_parameter/ripple_rate = 2.000000095
+shader_parameter/blending = 0.950000045125
+shader_parameter/wave_amplitude = 0.010000000475
+shader_parameter/wave_frequency = 1.999999955296
+shader_parameter/color = Color(1, 1, 0, 1)
+shader_parameter/fresnel_sharpness = 3.0
+shader_parameter/extend_distance = 0.0
+shader_parameter/impact_points = PackedVector4Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/impact_size = 1.0
+shader_parameter/impact_falloff_sharpness = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c07b2"]
+size = Vector3(1.8, 1.5, 0)
+
+[node name="PorticoAntiSticker" type="MeshInstance3D"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_87ntp")
 skeleton = NodePath("../../..")
-surface_material_override/0 = ExtResource("1_j5p8p")
-surface_material_override/1 = ExtResource("2_ok3mu")
+surface_material_override/0 = ExtResource("1_7w5j2")
+surface_material_override/1 = ExtResource("2_qhyfc")
 
-[node name="AntiStickerArea" parent="." instance=ExtResource("3_ydp2v")]
-transform = Transform3D(1.55, 0, 0, 0, 1.6099999, 0, 0, 0, 1, 0, 0.7, 0)
+[node name="AntiStickerArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
+collision_layer = 0
+collision_mask = 514
+monitorable = false
+script = ExtResource("3_vclfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntiStickerArea"]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999896, 0, -1.0018653e-12, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_c57is")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AntiStickerArea"]
+unique_name_in_owner = true
+layers = 2
+mesh = SubResource("QuadMesh_dg2el")
+surface_material_override/0 = SubResource("ShaderMaterial_hh7r4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="AntiStickerArea"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AntiStickerArea/StaticBody3D"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_c07b2")
+
+[node name="RandomSoundPlayer" type="AudioStreamPlayer" parent="AntiStickerArea"]
+unique_name_in_owner = true
+script = ExtResource("5_5e5fy")
+soundResource = ExtResource("6_eefmn")
+metadata/_custom_type_script = "uid://6jte5qpxmam0"
