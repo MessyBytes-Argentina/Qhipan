@@ -70,6 +70,7 @@ func check_player_direction(direction: Vector3) -> bool:
 func set_raycasts_detection(value: bool) -> void:
 	for raycast: DetectionRaycast in raycastCollection:
 		raycast.set_detecting(value)
+		raycast.windParticles.emitting = false
 
 ## Sets necessary flags to true
 func enable_push() -> void:

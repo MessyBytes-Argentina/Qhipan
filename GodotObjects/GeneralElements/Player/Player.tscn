@@ -1925,20 +1925,19 @@ autoplay = "preload"
 
 [node name="LedgeDetection" type="Node3D" parent="." groups=["OnPlayerFan"]]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -0.6, 0)
-visible = false
 script = ExtResource("72_4biwg")
 
 [node name="DetectionRaycast" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353553, -0.05, 0.353553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.05, 0.4)
 
 [node name="DetectionRaycast2" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
-transform = Transform3D(-5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -5.9604645e-08, 0.353553, -0.050000012, -0.35355335)
+transform = Transform3D(-5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -5.9604645e-08, 0.4, -0.05, -0.4)
 
 [node name="DetectionRaycast3" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
-transform = Transform3D(-0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -0.99999994, -0.35355335, -0.050000012, -0.35355335)
+transform = Transform3D(-0.99999994, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -0.99999994, -0.4, -0.05, -0.4)
 
 [node name="DetectionRaycast4" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
-transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -0.35355335, -0.050000012, 0.353553)
+transform = Transform3D(0, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 0, -0.4, -0.05, 0.4)
 
 [node name="AlternatorHeldEffect" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

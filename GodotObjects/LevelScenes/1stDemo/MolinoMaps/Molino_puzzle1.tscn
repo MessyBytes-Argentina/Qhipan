@@ -928,7 +928,7 @@ curve = SubResource("Curve3D_775bl")
 [node name="Grates" type="Node3D" parent="Props"]
 
 [node name="Grate" parent="Props/Grates" instance=ExtResource("6_kiax6")]
-transform = Transform3D(-1.3113416e-07, 0, 1, 0, 1, 0, -3, 0, -4.371139e-08, 4.1, 0, 9.494447)
+transform = Transform3D(-1.3113416e-07, 0, 1, 0, 1, 0, -3, 0, -4.371139e-08, 4, 0, 9.494447)
 
 [node name="Grate2" parent="Props/Grates" instance=ExtResource("6_kiax6")]
 transform = Transform3D(-6.884544e-08, 0, 5.01, 0, 0.2, 0, -1.575, 0, -2.1899406e-07, 23.579731, -0.1, 1.0143461)
