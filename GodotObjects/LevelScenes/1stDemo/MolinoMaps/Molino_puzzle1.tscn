@@ -788,10 +788,12 @@ transform = Transform3D(1.51, 0, 0, 0, 1.5, 0, 0, 0, 1, -0.015009522, 0.7450284,
 [node name="Wood Fence4" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.997741, -0.5, 7.1)
 curve = SubResource("Curve3D_hbnpc")
+colliderSize = Vector2(0.1, 1.5)
 
 [node name="Wood Fence5" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.997741, -0.5, 11.900001)
 curve = SubResource("Curve3D_u2yv7")
+colliderSize = Vector2(0.1, 1.5)
 
 [node name="Wood Fence6" parent="Props/Fences" instance=ExtResource("11_1k3do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, -0.5, 7.2)
