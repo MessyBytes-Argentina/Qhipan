@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=58 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -57,12 +57,19 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Curve3D" id="Curve3D_xvgo0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.05000019, 0, 0, 0, 0, 0, 0, 0, 0, 0.05000019, 0, -0.95, 0, 0, 0, 0, 0, 0, 2.2000008, 0, -0.95),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [sub_resource type="Curve3D" id="Curve3D_r1tyr"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.05000019, 0, 0, 0, 0, 0, 0, 0, 0, 0.05000019, 0, -0.95, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -0.95, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -6),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.9500008, 0, -0.95, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -0.95, 0, 0, 0, 0, 0, 0, 4.1000004, 0, -6),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_5cjl0"]
 _data = {
@@ -358,6 +365,10 @@ metadata/_custom_type_script = "uid://cctq08qihhy37"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4.5, 1)
 
 [node name="Wood Fence" parent="Props/Fences" instance=ExtResource("8_32ax7")]
+curve = SubResource("Curve3D_xvgo0")
+colliderSize = Vector2(0.2, 0.6)
+
+[node name="Wood Fence10" parent="Props/Fences" instance=ExtResource("8_32ax7")]
 curve = SubResource("Curve3D_r1tyr")
 colliderSize = Vector2(0.2, 0.6)
 
