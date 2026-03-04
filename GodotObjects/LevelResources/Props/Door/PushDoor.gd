@@ -2,11 +2,6 @@
 extends Node3D
 class_name PushDoor
 
-## Door animation names.
-enum Animations {SlideLeft, SlideRight, SlideUp, SlideDown, RotateToFloor, RotateToCeiling}
-
-## Selected animation name.
-@export var openAnimation: Animations = Animations.SlideLeft
 ## Flag that closes the door after activation
 @export var isOneWay: bool = false
 ## Group to hide storage only variables because export storage doesn't seem to do the thing.
@@ -29,16 +24,16 @@ func _ready() -> void:
 ## Opens the door.
 func open_door(update: bool = true) -> void:
 	if update: 
-		animationPlayer.play(Animations.keys()[openAnimation])
+		animationPlayer.play("Open")
 		openSound.play_sound()
 		if not isOneWay: 
 			GeneralVariables.saveManager.store_change(self, sceneParent)
 			playerPushChecker.queue_free()
-	else:
+	elif not isOneWay:
 		animationPlayer.play("Opened")
 		playerPushChecker.queue_free()
 
 ## Closes the door.
 func close_door() -> void:
-	animationPlayer.play_backwards(Animations.keys()[openAnimation])
+	animationPlayer.play_backwards("Open")
 	openSound.play_sound()
