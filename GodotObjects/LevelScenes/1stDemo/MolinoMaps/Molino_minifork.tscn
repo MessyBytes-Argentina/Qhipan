@@ -722,6 +722,7 @@ originalParent = "Molino_minifork"
 
 [node name="AlternatingBlock2" parent="Rooms/Molino_puzzle3" instance=ExtResource("9_gdvbg")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.15, -0.5, 6.5)
+collision_layer = 4096
 isOff = true
 
 [node name="Group1" type="Node3D" parent="Rooms/Molino_puzzle3"]
@@ -766,13 +767,11 @@ curve = SubResource("Curve3D_h27s4")
 [node name="Wood Fence" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, 11)
 curve = SubResource("Curve3D_bg1jm")
-collisionLayer = 4096
 colliderSize = Vector2(0.05, 2)
 
 [node name="Wood Fence2" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1.5, 11)
 curve = SubResource("Curve3D_rpd6h")
-collisionLayer = 4096
 colliderSize = Vector2(0.05, 2)
 
 [node name="PorticoAntiSticker" parent="Rooms/Molino_puzzle3/Fences" instance=ExtResource("15_kluub")]
@@ -931,6 +930,7 @@ curve = SubResource("Curve3D_14d7h")
 [node name="Wood Fence2" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3000002, 0, 1.0500002)
 curve = SubResource("Curve3D_4vh7k")
+colliderSize = Vector2(0.1, 2)
 
 [node name="Wood Fence6" parent="Rooms/Molino_puzzle4/Fences" instance=ExtResource("6_3m86x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.90000004, 0.05000019)
