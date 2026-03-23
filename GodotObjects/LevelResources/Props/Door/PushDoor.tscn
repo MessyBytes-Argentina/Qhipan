@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=4 uid="uid://xwsbpt7bioko"]
+[gd_scene load_steps=18 format=4 uid="uid://xwsbpt7bioko"]
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
 [ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Puente Empujable Demo/Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="4_ekaqn"]
 [ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_hu4jo"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_wpwc1"]
+[ext_resource type="PackedScene" uid="uid://dqa1gb6c12eqq" path="res://GodotObjects/GeneralElements/Particles/door_smoke_particle.tscn" id="5_echi1"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_wpwc1"]
 [ext_resource type="Resource" uid="uid://fcwoju7q3gpe" path="res://Assets/Sounds/SFXResources/DoorOpen.tres" id="7_hu4jo"]
 
@@ -44,58 +46,6 @@ data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
 size = Vector3(0.1, 1, 1)
-
-[sub_resource type="Curve" id="Curve_ekaqn"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7442748, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_wpwc1"]
-curve = SubResource("Curve_ekaqn")
-
-[sub_resource type="CurveTexture" id="CurveTexture_55ifw"]
-
-[sub_resource type="Curve" id="Curve_hu4jo"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ekaqn"]
-curve = SubResource("Curve_hu4jo")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpwc1"]
-particle_flag_align_y = true
-particle_flag_rotate_y = true
-particle_flag_damping_as_friction = true
-emission_shape_scale = Vector3(0.5, 0.1, 0.5)
-emission_shape = 6
-emission_ring_axis = Vector3(0, 1, 0)
-emission_ring_height = 1.0
-emission_ring_radius = 1.1
-emission_ring_inner_radius = 0.9
-emission_ring_cone_angle = 90.0
-direction = Vector3(0, -1, 0)
-spread = 0.0
-initial_velocity_min = 3.0
-initial_velocity_max = 3.0
-radial_velocity_min = 0.99997765
-radial_velocity_max = 0.99997765
-gravity = Vector3(0, 0, 0)
-radial_accel_curve = SubResource("CurveTexture_55ifw")
-damping_min = 100.00001
-damping_max = 100.00001
-scale_curve = SubResource("CurveTexture_ekaqn")
-alpha_curve = SubResource("CurveTexture_wpwc1")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hu4jo"]
-load_path = "res://.godot/imported/Poof-Cloud.png-d72747695316850e04ad56e3979a1856.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekaqn"]
-transparency = 1
-shading_mode = 0
-albedo_texture = SubResource("CompressedTexture2D_hu4jo")
-
-[sub_resource type="QuadMesh" id="QuadMesh_y025s"]
-material = SubResource("StandardMaterial3D_ekaqn")
-size = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_iyqt8"]
 resource_name = "RotateToFloor"
@@ -137,29 +87,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0)]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Centered/UpPivot/DownPivot/Particles/SmokeParticle:emitting")
+tracks/3/path = NodePath("Centered/UpPivot/DownPivot/Particles/MultipleParticle3DEmitter (doorsmoke)")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.45),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"emit_animator"
+}]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Centered/UpPivot/DownPivot/Particles/StickedPlacedParticles (interact):emitting")
+tracks/4/path = NodePath("Centered/UpPivot/DownPivot/Particles/MultipleParticle3DEmitter (Interact)")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"emit_animator"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hu4jo"]
@@ -277,30 +231,6 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Centered/UpPivot/DownPivot/Particles/SmokeParticle:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Centered/UpPivot/DownPivot/Particles/StickedPlacedParticles (interact):emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmc35"]
 _data = {
@@ -367,20 +297,19 @@ one_shot = true
 
 [node name="Particles" type="Node3D" parent="Centered/UpPivot/DownPivot"]
 
-[node name="SmokeParticle" type="GPUParticles3D" parent="Centered/UpPivot/DownPivot/Particles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05114702, 0.5)
-emitting = false
-amount = 10
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-use_fixed_seed = true
-transform_align = 1
-process_material = SubResource("ParticleProcessMaterial_wpwc1")
-draw_pass_1 = SubResource("QuadMesh_y025s")
+[node name="MultipleParticle3DEmitter (doorsmoke)" type="Node3D" parent="Centered/UpPivot/DownPivot/Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.0658141e-14, 0, 1.0658141e-14, 1, 0, -2.18557e-08, 0.5)
+script = ExtResource("4_wpwc1")
+particles = Array[PackedScene]([ExtResource("5_echi1")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
-[node name="StickedPlacedParticles (interact)" parent="Centered/UpPivot/DownPivot/Particles" instance=ExtResource("4_hu4jo")]
-transform = Transform3D(1, 0, 0, 0, 1.589325e-08, -0.99999994, 0, 0.99999994, 1.589325e-08, 0, -2.1855701e-08, 0.5)
+[node name="MultipleParticle3DEmitter (Interact)" type="Node3D" parent="Centered/UpPivot/DownPivot/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.18557e-08, 0.5)
+script = ExtResource("4_wpwc1")
+particles = Array[PackedScene]([ExtResource("4_hu4jo")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
