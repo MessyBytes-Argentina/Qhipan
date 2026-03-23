@@ -83,10 +83,6 @@ signal camera_rotated(newAngle: float)
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## Reference to the poof particle emitter.
 @onready var poof: MultipleParticle3DEmitter = %Poof
-## Reference to the poof sound player.
-@onready var poofSound: RandomSoundPlayer = %PoofSound
-## Reference to the player shadow decal.
-@onready var shadowDecal: Decal = %ShadowDecal
 ## Reference to the fall sound player.
 @onready var fallSound: AudioStreamPlayer = %FallSound
 ## Reference to the rotate camera left sound player.
@@ -197,6 +193,8 @@ var coolStickerGrabbing: bool = false
 var coolStickerGrabbingFinished: bool = false
 ## Current cool sticker.
 var currentCoolSticker: PocketSticker
+
+var currentCamera: Camera3D
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -204,7 +202,6 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	grabArea.player = self
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	#poof.emit_particles()
 	cameraPivot.rotation.y = rotation.y
 	cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
@@ -244,7 +241,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			GeneralVariables.inventory.book.show_book()
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
-	camera_rotation_check()
+	#camera_rotation_check()
 	camera_zoom_check()
 
 ## Called during the physics processing step of the main loop.
@@ -377,7 +374,11 @@ func get_grid_position() -> Vector3:
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:
 	moveDirection = inputDirection
-	moveDirection = moveDirection.rotated(Vector3.UP, rotation.y)
+	#moveDirection = moveDirection.rotated(Vector3.UP, rotation.y)
+	
+	currentCameraRotation = currentCamera.global_rotation.y
+	spritePivot.look_at(currentCamera.global_position)
+	
 	moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation)
 	return moveDirection
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=72 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="21_bqiac"]
 [ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="21_kmm3r"]
 [ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="22_txbe1"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="35_idoyc"]
 
 [sub_resource type="Curve3D" id="Curve3D_osh58"]
 _data = {
@@ -327,6 +328,13 @@ radial_steps = 6
 sections = 10
 section_length = 1.0
 curve = SubResource("Curve_6dxpo")
+
+[sub_resource type="Curve3D" id="Curve3D_idoyc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.5333, -3.452509, -1.5628614, -7.5, -0.5, 2, 7.5, 0.5, -2, -0.5, 2, -1.5, 0, 0, 0, 0, 0, 0, 7.5, 4.5, -16),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Molino_puzzle2" type="Node3D"]
 
@@ -722,3 +730,16 @@ skeleton = NodePath("../..")
 transform = Transform3D(-0.30781794, 0, 0.8457233, 0, 0.89999986, 0, -0.8457233, 0, -0.30781794, -1.3147573, -2.8999999, 4.245696)
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9999818, 0, 0, 0, 0.99997646, 0, 0, 0, 0.9999829, 0, 0, 0)
+current = true
+fov = 55.0
+script = ExtResource("35_idoyc")
+mode = 2
+freeBaseRotation = null
+
+[node name="CameraPath" type="Path3D" parent="Camera3D"]
+top_level = true
+curve = SubResource("Curve3D_idoyc")
+metadata/CameraPath = true

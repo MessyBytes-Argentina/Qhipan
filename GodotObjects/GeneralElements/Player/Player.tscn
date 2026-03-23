@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=195 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
@@ -7,13 +7,11 @@
 [ext_resource type="Script" uid="uid://bo2nbioawqprd" path="res://GodotObjects/GeneralElements/Player/ForcedMovement.gd" id="4_4biwg"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/SFX/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/SFX/Camera_Rotate_Right.mp3" id="5_3jjt7"]
-[ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/SFX/poof.ogg" id="6_3jjt7"]
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/GeneralElements/Player/PickupHandler.gd" id="6_cphfr"]
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Textures/Character/IDLE/IDLE 2.png" id="7_fj5th"]
 [ext_resource type="AudioStream" uid="uid://c3rywfna5oyfk" path="res://Assets/Sounds/SFX/zoomIn.mp3" id="7_upgpw"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Textures/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
-[ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/GeneralElements/Player/poofEmitter.tscn" id="8_3jjt7"]
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
 [ext_resource type="AudioStream" uid="uid://cnb8ua68k7mfg" path="res://Assets/Sounds/SFX/zoomOut.mp3" id="8_xvk8m"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
@@ -22,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Textures/Character/WALK/WALK 1.png" id="10_2fn2m"]
 [ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/GeneralElements/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="10_8hsli"]
-[ext_resource type="Resource" uid="uid://dme8wa7pwh8ip" path="res://Assets/Sounds/SFXResources/PoofSound.tres" id="10_e7wym"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Textures/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/SFX/Sticker_Drop.mp3" id="11_f7h1j"]
@@ -189,18 +186,6 @@ albedo_texture = ExtResource("2_cphfr")
 normal_enabled = true
 normal_texture = ExtResource("14_kc7ad")
 backlight = Color(0.72464263, 0.7246426, 0.7246426, 1)
-
-[sub_resource type="Gradient" id="Gradient_mseqm"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
-gradient = SubResource("Gradient_mseqm")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_c42h5"]
 size = Vector2(0, 0)
@@ -1664,14 +1649,6 @@ stream = ExtResource("4_rr2ib")
 unique_name_in_owner = true
 stream = ExtResource("5_3jjt7")
 
-[node name="PoofSound" type="AudioStreamPlayer" parent="PlayerSounds"]
-unique_name_in_owner = true
-stream = ExtResource("6_3jjt7")
-volume_db = -20.0
-script = ExtResource("10_8hsli")
-soundResource = ExtResource("10_e7wym")
-metadata/_custom_type_script = "uid://6jte5qpxmam0"
-
 [node name="CamZoomIn" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("7_upgpw")
@@ -1693,7 +1670,7 @@ metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0)
 
 [node name="Sprite" type="MeshInstance3D" parent="SpritePivot"]
 unique_name_in_owner = true
@@ -1702,11 +1679,6 @@ layers = 2
 mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
-
-[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
-unique_name_in_owner = true
-transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939693, 0.34202, -0.707107, -0.241845, 0.664463, 0, 0, 0)
-top_level = true
 
 [node name="PlayerHighlight" type="Sprite3D" parent="SpritePivot/Sprite"]
 unique_name_in_owner = true
@@ -1717,16 +1689,6 @@ no_depth_test = true
 fixed_size = true
 render_priority = 3
 texture = ExtResource("11_xvk8m")
-
-[node name="ShadowDecal" type="Decal" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939691, -0.34202, 0, 0.342019, 0.939692, 0.0353553, -0.506123, -0.0713405)
-size = Vector3(0.6, 2, 0.6)
-texture_albedo = SubResource("GradientTexture2D_vq31v")
-lower_fade = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-cull_mask = 1048573
 
 [node name="CoolSticker" type="Sprite3D" parent="SpritePivot"]
 unique_name_in_owner = true
@@ -1793,7 +1755,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 3, 5)
 cull_mask = 655359
-current = true
 fov = 55.0
 
 [node name="PostProcessing" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
