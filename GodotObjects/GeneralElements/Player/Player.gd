@@ -81,8 +81,6 @@ signal camera_rotated(newAngle: float)
 @onready var grabArea: PickupHandler = %GrabArea
 ## Reference to the character animation player.
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
-## Reference to the poof particle emitter.
-@onready var poof: MultipleParticle3DEmitter = %Poof
 ## Reference to the fall sound player.
 @onready var fallSound: AudioStreamPlayer = %FallSound
 ## Reference to the rotate camera left sound player.
@@ -267,13 +265,13 @@ func enable_inputs() -> void:
 
 ## Checks and handles flipping the character sprite.
 func sprite_flip_check() -> void:
-	var horizontal: float = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
+	var horizontal: float = sign(Input.get_action_strength("left") - Input.get_action_strength("right"))
 	if horizontal == 0.0: return
 	if lastHorizontal != horizontal:
 		if spriteFlipTween: 
 			if spriteFlipTween.is_running(): 
 				await spriteFlipTween.finished
-				horizontal = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
+				horizontal = sign(Input.get_action_strength("left") - Input.get_action_strength("right"))
 				if lastHorizontal == horizontal or horizontal == 0: return
 		spriteFlipTween = create_tween()
 		spriteFlipTween.tween_method(
@@ -374,12 +372,10 @@ func get_grid_position() -> Vector3:
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:
 	moveDirection = inputDirection
-	#moveDirection = moveDirection.rotated(Vector3.UP, rotation.y)
-	
-	currentCameraRotation = currentCamera.global_rotation.y
-	spritePivot.look_at(currentCamera.global_position)
-	
-	moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation)
+	if currentCamera:
+		currentCameraRotation = currentCamera.global_rotation.y
+		spritePivot.look_at(currentCamera.global_position, currentCamera.transform.basis.y)
+		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation)
 	return moveDirection
 
 ## Moves the player character.
