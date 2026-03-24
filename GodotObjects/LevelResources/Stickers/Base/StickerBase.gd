@@ -117,7 +117,7 @@ func _ready() -> void:
 	startSize = mesh.mesh.size
 	shadowDecal.size = Vector3(BOBBINGSCALE, shadowDecal.size.y, BOBBINGSCALE)
 	prerender()
-	get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
+	#get_tree().get_first_node_in_group("Player").zooming_out.connect(zooming_out)
 	areaChecker.area_entered.connect(_on_area_entered)
 	areaChecker.area_exited.connect(_on_area_exited)
 	await get_tree().create_timer(PLACEDCHECKTIME).timeout

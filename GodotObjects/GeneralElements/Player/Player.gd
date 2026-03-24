@@ -59,14 +59,10 @@ const decceleration: float = 20.0
 const gravity: float = 20
 ## Movement speed in the air.
 const airMovementMultiplier: float = 0.35
-#endregion
 
-## Signal emmited when camera is zooming in or out.
-signal zooming_out(zoomingOut: bool)
-## Signal emmited when camera is about to rotate.
-signal camera_rotating(goalAngle: float)
-## Signal emmited when camera angle changes.
-signal camera_rotated(newAngle: float)
+## Camera animation time on coolsticker.
+const CAMERALERPCOOLSTICKER: float = 0.3
+#endregion
 
 #region On Ready Variables
 ## Reference to the camera pivot for rotations.
@@ -83,22 +79,8 @@ signal camera_rotated(newAngle: float)
 @onready var animationPlayer: AnimationPlayer = %AnimationPlayer
 ## Reference to the fall sound player.
 @onready var fallSound: AudioStreamPlayer = %FallSound
-## Reference to the rotate camera left sound player.
-@onready var rotateCamLeftSound: AudioStreamPlayer = %RotateCamLeft
-## Reference to the rotate camera right sound player.
-@onready var rotateCamRightSound: AudioStreamPlayer = %RotateCamRight
-## Reference to the zoom camera in sound player.
-@onready var camZoomIn: AudioStreamPlayer = %CamZoomIn
-## Reference to the camera zoom pivot.
-@onready var cameraZoomPivot: Node3D = %CameraZoomPivot
-## Reference to the zoom camera out sound player.
-@onready var camZoomOut: AudioStreamPlayer = %CamZoomOut
-## Reference to the player highlight sprite for zooming out.
-@onready var playerHighlight: Sprite3D = %PlayerHighlight
-## Reference to the camera cutout cube.
-@onready var cubeCutout: CutoutCube = %CubeCutout
-## Reference to the camera cutout cube pivot.
-@onready var cubeCutoutPivot: Node3D = %CubeCutoutPivot
+## Reference to the camera.
+@onready var camera: Camera3D = %Camera3D
 ## The reset popup assets.
 @onready var resetAssets: Dictionary[String, Texture2D] = {
 	"keyboard": preload("uid://dd8k35t2irrpo"),
@@ -108,8 +90,6 @@ signal camera_rotated(newAngle: float)
 @onready var involuntaryPushModule: InvoluntaryPushModule = %InvoluntaryPushModule
 ## Reference to the darkness blocker module.
 @onready var darknessBlockerModule: DarknessBlockerModule = %DarknessBlockerModule
-## Reference to the camera.
-@onready var cameraCubeWallCutout: Marker3D = %CameraCubeWallCutout
 ## Reference to cool sticker sprite.
 @onready var coolSticker: Sprite3D = %CoolSticker
 ## Reference to cool sticker shine.
@@ -191,8 +171,10 @@ var coolStickerGrabbing: bool = false
 var coolStickerGrabbingFinished: bool = false
 ## Current cool sticker.
 var currentCoolSticker: PocketSticker
-
+## Used for input and rotation mapping.
 var currentCamera: Camera3D
+## Used to remember camera.
+var previousCamera: Camera3D
 #endregion
 
 ## Called when the node enters the scene tree for the first time.
@@ -200,17 +182,16 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	grabArea.player = self
 	if not get_tree().get_first_node_in_group("SceneManager"): noMovement = false
-	cameraPivot.rotation.y = rotation.y
-	cameraPivot.global_position = global_position
+	#cameraPivot.rotation.y = rotation.y
+	#cameraPivot.global_position = global_position
 	material = sprite.get_surface_override_material(0)
 	submaterial = sprite.get_surface_override_material(0).next_pass
 	if not get_tree().debug_collisions_hint:
 		postProcessing.show()
-	playerHighlight.scale = Vector3.ONE * 0.001
 	while not gridmap:
 		gridmap = get_tree().get_first_node_in_group("Gridmap")
 		await get_tree().process_frame
-	cutout_cube_rotation_check(cameraPivot.rotation.y)
+	#cutout_cube_rotation_check(cameraPivot.rotation.y)
 	## BULLSHIT FOR THE DEMO
 	GeneralVariables.inventory.book.get_parent().show()
 	GeneralVariables.in_game_switch(true)
@@ -225,6 +206,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		await animationPlayer.animation_finished
 		coolStickerGrabbing = false
 		coolStickerGrabbingFinished = false
+		CameraLerper.switch_to(previousCamera, CAMERALERPCOOLSTICKER)
 		enable_inputs()
 		animation_check()
 		return
@@ -240,17 +222,17 @@ func _unhandled_input(_event: InputEvent) -> void:
 	check_movement_animation(inputDirection)
 	sprite_flip_check()
 	#camera_rotation_check()
-	camera_zoom_check()
+	#camera_zoom_check()
 
 ## Called during the physics processing step of the main loop.
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	if onSettings: return
 	# Camera Follow
-	cameraPivot.global_position = lerp(cameraPivot.global_position, global_position, cameraFollowSpeed)
+	#cameraPivot.global_position = lerp(cameraPivot.global_position, global_position, cameraFollowSpeed)
 	move_character(delta)
 	animation_check()
-	current_grid_check()
+	#current_grid_check()
 	grabArea.canDrop = is_on_floor()
 
 ## Blocks the player input control.
@@ -283,87 +265,82 @@ func sprite_flip_check() -> void:
 		spriteFlipTween.play()
 	lastHorizontal = horizontal
 
-## Checks and handles rotating the camera.
-func camera_rotation_check() -> void:
-	if cameraRotationTween or rotatingCamera == true: return
-	var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
-	cameraRotation = clamp(cameraRotation, -CAMERAROTATIONSTEP, CAMERAROTATIONSTEP)
-	if cameraRotation == 0: return
-	cubeCutout.rotatingCamera = true
-	rotatingCamera = true
-	currentCameraRotation += cameraRotation
-	cutout_cube_rotation_check(cameraPivot.rotation.y + cameraRotation)
-	await get_tree().physics_frame
-	cameraRotationTween = create_tween()
-	cameraRotationTween.tween_method(
-		func(rotationValue: float): 
-			spritePivot.rotation.y = rotationValue
-			cameraPivot.rotation.y = rotationValue + rotation.y,
-		spritePivot.rotation.y,
-		currentCameraRotation,
-		CAMERALERPDURATION
-	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	cameraRotationTween.finished.connect(camera_rotation_finished)
-	cameraRotationTween.play()
-	if cameraRotation > 0:
-		rotateCamLeftSound.play()
-	else:
-		rotateCamRightSound.play()
-	camera_rotating.emit(cameraPivot.global_rotation.y + cameraRotation)
+### Checks and handles rotating the camera.
+#func camera_rotation_check() -> void:
+	#if cameraRotationTween or rotatingCamera == true: return
+	#var cameraRotation: float = (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_right") else 0.0) - (CAMERAROTATIONSTEP if Input.is_action_just_pressed("camera_left") else 0.0)
+	#cameraRotation = clamp(cameraRotation, -CAMERAROTATIONSTEP, CAMERAROTATIONSTEP)
+	#if cameraRotation == 0: return
+	#rotatingCamera = true
+	#currentCameraRotation += cameraRotation
+	#cutout_cube_rotation_check(cameraPivot.rotation.y + cameraRotation)
+	#await get_tree().physics_frame
+	#cameraRotationTween = create_tween()
+	#cameraRotationTween.tween_method(
+		#func(rotationValue: float): 
+			#spritePivot.rotation.y = rotationValue
+			#cameraPivot.rotation.y = rotationValue + rotation.y,
+		#spritePivot.rotation.y,
+		#currentCameraRotation,
+		#CAMERALERPDURATION
+	#).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	#cameraRotationTween.finished.connect(camera_rotation_finished)
+	#cameraRotationTween.play()
+	#camera_rotating.emit(cameraPivot.global_rotation.y + cameraRotation)
 
 ## Called when the camera finishes rotating.
-func camera_rotation_finished() -> void:
-	if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 
-		currentCameraRotation = 0.0
-		spritePivot.rotation.y = 0.0
-		cameraPivot.rotation.y = rotation.y
-	if cameraRotationTween: 
-		cameraRotationTween.kill()
-		cameraRotationTween = null
-	cubeCutout.rotatingCamera = false
-	rotatingCamera = false
-	camera_rotated.emit(cameraPivot.global_rotation.y)
+#func camera_rotation_finished() -> void:
+	#if fmod(currentCameraRotation, deg_to_rad(360.0)) == 0.0: 
+		#currentCameraRotation = 0.0
+		#spritePivot.rotation.y = 0.0
+		#cameraPivot.rotation.y = rotation.y
+	#if cameraRotationTween: 
+		#cameraRotationTween.kill()
+		#cameraRotationTween = null
+	#cubeCutout.rotatingCamera = false
+	#rotatingCamera = false
+	#camera_rotated.emit(cameraPivot.global_rotation.y)
 
 ## Checks and handles the camera zoom.
-func camera_zoom_check() -> void:
-	if zooming: return
-	var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
-	#if not zoomedOut and inputDirection != Vector3.ZERO: doZoom = false
-	if not doZoom: return
-	cubeCutout.zoomedOut = not zoomedOut
-	zooming_out.emit(not zoomedOut)
-	if zoomedOut: camZoomIn.play()
-	else: camZoomOut.play()
-	zooming = true
-	noMovement = true
-	grabArea.canGrab = false
-	cameraZoomTween = create_tween()
-	cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
-	cameraZoomTween.play()
-	await cameraZoomTween.finished
-	zooming = false
-	noMovement = false
-	grabArea.canGrab = true
-	zoomedOut = not zoomedOut
-	grabArea.zoomedOut = zoomedOut
-
-## Checks and handles the cutout cube rotation.
-func cutout_cube_rotation_check(rotationCheck: float) -> void:
-	if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
-		cubeCutout.auxMode = false
-		cubeCutoutPivot.rotation.y = rotationCheck
-	else: 
-		cubeCutout.auxMode = true
-		cubeCutoutPivot.rotation.y = rotationCheck - PI / 4.0
+#func camera_zoom_check() -> void:
+	#if zooming: return
+	#var doZoom: bool = Input.is_action_just_pressed("zoom") or (zoomedOut and inputDirection.length() > 0)
+	##if not zoomedOut and inputDirection != Vector3.ZERO: doZoom = false
+	#if not doZoom: return
+	#cubeCutout.zoomedOut = not zoomedOut
+	#zooming_out.emit(not zoomedOut)
+	#if zoomedOut: camZoomIn.play()
+	#else: camZoomOut.play()
+	#zooming = true
+	#noMovement = true
+	#grabArea.canGrab = false
+	#cameraZoomTween = create_tween()
+	#cameraZoomTween.tween_property(cameraZoomPivot, "position", CAMERAZOOMOUT if not zoomedOut else Vector3.ZERO, CAMERAZOOMTIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	#cameraZoomTween.parallel().tween_property(playerHighlight, "scale", (Vector3.ONE * 0.001) if zoomedOut else Vector3.ONE, CAMERAZOOMTIME).set_trans(Tween.TRANS_SINE)
+	#cameraZoomTween.play()
+	#await cameraZoomTween.finished
+	#zooming = false
+	#noMovement = false
+	#grabArea.canGrab = true
+	#zoomedOut = not zoomedOut
+	#grabArea.zoomedOut = zoomedOut
+#
+### Checks and handles the cutout cube rotation.
+#func cutout_cube_rotation_check(rotationCheck: float) -> void:
+	#if fmod(abs(rotationCheck) + 0.0001, PI / 2.0) < 0.001:
+		#cubeCutout.auxMode = false
+		#cubeCutoutPivot.rotation.y = rotationCheck
+	#else: 
+		#cubeCutout.auxMode = true
+		#cubeCutoutPivot.rotation.y = rotationCheck - PI / 4.0
 
 ## Checks and handles the cutout cube snapping to the gridmap.
-func current_grid_check() -> void:
-	while not gridmap:
-		gridmap = get_tree().get_first_node_in_group("Gridmap")
-	var currentGridPosition: Vector3 = get_grid_position()
-	var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
-	cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
+#func current_grid_check() -> void:
+	#while not gridmap:
+		#gridmap = get_tree().get_first_node_in_group("Gridmap")
+	#var currentGridPosition: Vector3 = get_grid_position()
+	#var pushOnPerpendicularCamera: Vector3 = (Vector3(-0.5, 0.0, -0.5).rotated(Vector3.UP, currentCameraRotation).normalized() / 2.0) if fmod(currentCameraRotation, PI / 2) != 0 else (Vector3.FORWARD * sqrt(2.0)).rotated(Vector3.UP, currentCameraRotation)
+	#cubeCutoutPivot.global_position = currentGridPosition + pushOnPerpendicularCamera
 
 ## Returns the position of the grid cell the player is in.
 func get_grid_position() -> Vector3:
@@ -372,10 +349,10 @@ func get_grid_position() -> Vector3:
 ## Gets the inputted player movement.
 func get_move_direction() -> Vector3:
 	moveDirection = inputDirection
-	if currentCamera:
+	if currentCamera and currentCamera != camera:
 		currentCameraRotation = currentCamera.global_rotation.y
-		spritePivot.look_at(currentCamera.global_position, currentCamera.transform.basis.y)
-		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation)
+		spritePivot.look_at(currentCamera.global_position, currentCamera.global_transform.basis.y)
+		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation).normalized()
 	return moveDirection
 
 ## Moves the player character.
@@ -457,10 +434,13 @@ func animation_check(override: States = currentState) -> void:
 func grabbed_inventory_sticker(sticker: PocketSticker) -> void:
 	currentCoolSticker = sticker
 	coolSticker.texture = sticker.image
+	cameraPivot.global_rotation.y = -currentCameraRotation
 	var shineMaterial: ShaderMaterial = shine.get_surface_override_material(0)
 	shineMaterial.set_shader_parameter("gradientColor", sticker.glowBackgroundColor)
 	shineMaterial.set_shader_parameter("rayColor", sticker.glowRay1Color)
 	shineMaterial.set_shader_parameter("secondRayColor", sticker.glowRay2Color)
+	previousCamera = currentCamera
+	CameraLerper.switch_to(camera, CAMERALERPCOOLSTICKER)
 	animationPlayer.play("CoolSticker")
 	coolStickerGrabbing = true
 	block_inputs()
