@@ -268,7 +268,7 @@ func get_move_direction() -> Vector3:
 		currentCameraRotation = currentCamera.global_rotation.y
 		spritePivot.look_at(currentCamera.global_position, currentCamera.global_transform.basis.y)
 		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation).normalized()
-		cameraPivot.global_rotation.y = -currentCameraRotation
+		cameraPivot.global_rotation.y = currentCameraRotation
 	return moveDirection
 
 ## Moves the player character.
@@ -398,3 +398,8 @@ func do_fanfarre() -> void:
 	fanfare.play()
 	await fanfare.finished
 	MusicManager.pause(false, FANFAREWAIT.unpause)
+
+## Swaps active camera.
+func swap_camera(newCamera: Camera3D) -> void:
+	currentCamera = newCamera
+	postProcessing.reparent(currentCamera)

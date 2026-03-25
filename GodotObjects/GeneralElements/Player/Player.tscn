@@ -1,8 +1,9 @@
-[gd_scene load_steps=192 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=194 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
+[ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="2_io5h4"]
 [ext_resource type="Script" uid="uid://swnu5grqd4wr" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/DarknessBlockerModule.gd" id="3_2q27j"]
 [ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutComponent.gd" id="3_io5h4"]
 [ext_resource type="Script" uid="uid://bo2nbioawqprd" path="res://GodotObjects/GeneralElements/Player/ForcedMovement.gd" id="4_4biwg"]
@@ -19,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Textures/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/SFX/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Textures/Character/WALK/WALK 1.png" id="10_2fn2m"]
-[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/GeneralElements/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="10_8hsli"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Textures/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
@@ -159,6 +159,20 @@
 [ext_resource type="Texture2D" uid="uid://bji8lkq3pgt3h" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 4.png" id="148_a6q8b"]
 [ext_resource type="Shader" uid="uid://cvyi8x0g1llyf" path="res://Assets/Shaders/AlternatorArea.gdshader" id="159_1nwq5"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nwq5"]
+render_priority = -2
+shader = ExtResource("2_io5h4")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.00749999981025
+shader_parameter/normal_influence = 0.0
+shader_parameter/depth_affect = 0.149999996205
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002
+
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
 
@@ -179,7 +193,8 @@ render_priority = 2
 next_pass = SubResource("StandardMaterial3D_rb8lh")
 transparency = 3
 alpha_hash_scale = 0.0
-alpha_antialiasing_mode = 0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
 cull_mode = 2
 specular_mode = 1
 albedo_texture = ExtResource("2_cphfr")
@@ -1539,10 +1554,17 @@ unique_name_in_owner = true
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999976, 0, 0, 0)
 visible = false
 
-[node name="Outlines" parent="PostProcessing" instance=ExtResource("10_3jjt7")]
-visible = true
+[node name="Outlines" type="MeshInstance3D" parent="PostProcessing"]
 layers = 524288
+cast_shadow = 0
+extra_cull_margin = 16384.0
+lod_bias = 128.0
+ignore_occlusion_culling = true
+gi_mode = 0
+gi_lightmap_texel_scale = 0.01
+mesh = SubResource("QuadMesh_vq31v")
 skeleton = NodePath("../../CameraPivot/Camera3D")
+surface_material_override/0 = SubResource("ShaderMaterial_1nwq5")
 
 [node name="CutoutComponent" type="Node" parent="."]
 script = ExtResource("3_io5h4")

@@ -334,12 +334,12 @@ sections = 10
 section_length = 1.0
 curve = SubResource("Curve_6dxpo")
 
-[sub_resource type="Curve3D" id="Curve3D_idoyc"]
+[sub_resource type="Curve3D" id="Curve3D_0ktue"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.8749318, 0.9948616, -0.68598485, 0, 0, 0, 0, 0, 0, 4.1239786, 1.1712294, -1.7619703, 0, 0, 0, 0, 0, 0, 8.879686, -2.0249023, -10.560752),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.6674123, -0.08437967, -2.85569, 0, 0, 0, 0, 0, 0, 3.700643, 1.4125762, -8.520562),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_0nf3i"]
 _data = {
@@ -757,25 +757,30 @@ mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(-0.977531, 0.04864398, -0.20509996, 0, 0.9730067, 0.2307699, 0.21078983, 0.22558488, -0.9511444, -3.3749318, 0.9948616, -3.1859848)
+transform = Transform3D(-0.76604444, 0.21984631, -0.6040228, 0, 0.9396926, 0.34202012, 0.64278764, 0.26200262, -0.7198463, -4.6674123, 1.4156203, -2.85569)
 cull_mask = 655359
 current = true
 fov = 55.0
 script = ExtResource("35_idoyc")
-freeBaseRotation = Vector3(-0.2617994, -1.5358897, 0)
+mode = 2
+freeBaseRotation = Vector3(-0.41887903, -1.5358897, 0)
+followBaseRotation = Vector3(-0.34906584, -2.443461, 0)
+followRotationLimit = Vector3(-0.6981317, 1.3962634, 0)
+followRotationOffset = Vector3(0.34906584, 0, 0)
 
 [node name="CameraPath" type="Path3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 top_level = true
-curve = SubResource("Curve3D_idoyc")
+curve = SubResource("Curve3D_0ktue")
 metadata/CameraPath = true
 
 [node name="Camera3D2" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(0.9995899, -0.02091004, 0.019485466, 7.9413164e-11, 0.68174595, 0.7315835, -0.028581757, -0.73128694, 0.68146527, -7.374932, 2.9948616, 2.3140152)
+transform = Transform3D(0.99959147, -0.02091009, 0.019485574, 7.941329e-11, 0.68174756, 0.7315875, -0.028581802, -0.7312887, 0.681469, -7.374932, 2.9948616, 2.3140152)
 cull_mask = 655359
 fov = 55.0
 script = ExtResource("35_idoyc")
 freeBaseRotation = Vector3(-0.8552113, -0.06981317, 0)
+followRotationOffset = null
 
 [node name="CameraPath" type="Path3D" parent="Camera3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)

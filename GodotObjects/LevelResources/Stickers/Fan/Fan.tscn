@@ -323,7 +323,7 @@ texture_albedo = SubResource("GradientTexture2D_sly70")
 lower_fade = 0.5
 distance_fade_enabled = true
 distance_fade_begin = 10.0
-cull_mask = 1048573
+cull_mask = 524285
 
 [node name="SpinupSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
