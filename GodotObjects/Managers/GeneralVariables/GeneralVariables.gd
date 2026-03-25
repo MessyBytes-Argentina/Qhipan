@@ -88,6 +88,7 @@ func _input(event: InputEvent) -> void:
 func queue_to_cutout_materials(materials: Array[ShaderMaterial], doAdd: bool) -> void:
 	queueCutoutMaterials.append({"materials": materials, "doAdd": doAdd})
 	if cutoutStaggerTimer: if cutoutStaggerTimer.time_left > 0: return
+	if not get_tree(): return
 	cutoutStaggerTimer = get_tree().create_timer(0.5)
 	cutoutStaggerTimer.timeout.connect(do_cutout_materials_queue)
 

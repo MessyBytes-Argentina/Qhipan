@@ -33,11 +33,11 @@ VolumeManager="*res://GodotObjects/Managers/SoundManager/VolumeManager.gd"
 PopupManager="*res://GodotObjects/Managers/PopupManager/PopupManager.gd"
 LevelManager="*res://GodotObjects/Managers/LevelManager/LevelManager.tscn"
 GeneralVariables="*res://GodotObjects/Managers/GeneralVariables/GeneralVariables.gd"
+CameraLerper="*res://GodotObjects/GeneralElements/Cameras/CameraLerper.gd"
 
 [display]
 
 window/size/resizable=false
-window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/fullsize=false
 window/bg_color=Color(0, 0, 0, 1)
