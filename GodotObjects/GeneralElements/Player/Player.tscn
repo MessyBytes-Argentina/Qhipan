@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
 [ext_resource type="Script" uid="uid://swnu5grqd4wr" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/DarknessBlockerModule.gd" id="3_2q27j"]
+[ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutComponent.gd" id="3_io5h4"]
 [ext_resource type="Script" uid="uid://bo2nbioawqprd" path="res://GodotObjects/GeneralElements/Player/ForcedMovement.gd" id="4_4biwg"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/SFX/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/SFX/Camera_Rotate_Right.mp3" id="5_3jjt7"]
@@ -203,11 +204,6 @@ shader_parameter/rays = Vector3(9, 14, 19)
 shader_parameter/secondRayColor = Color(1, 1, 1, 0.78431374)
 shader_parameter/secondRays = Vector3(12, 17, 22)
 shader_parameter/secondRayEdge = 0.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
-top_radius = 0.0
-bottom_radius = 1.25
-height = 7.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.25
@@ -1533,20 +1529,23 @@ shader_parameter/uv_offset = Vector3(0, 0, 0)
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
 collision_layer = 2
-collision_mask = 6181
+collision_mask = 6189
 floor_constant_speed = true
 floor_max_angle = 1.0471976
 script = ExtResource("1_iw8fe")
 
 [node name="PostProcessing" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.9994193, 0.006235972, -0.033493668, 0.006236045, 0.93301266, 0.3597895, 0.033493698, -0.35978937, 0.93243194, 0, 0.7999985, 1.5556339)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999976, 0, 0, 0)
 visible = false
 
 [node name="Outlines" parent="PostProcessing" instance=ExtResource("10_3jjt7")]
 visible = true
 layers = 524288
 skeleton = NodePath("../../CameraPivot/Camera3D")
+
+[node name="CutoutComponent" type="Node" parent="."]
+script = ExtResource("3_io5h4")
 
 [node name="InvoluntaryPushModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
@@ -1563,7 +1562,7 @@ parent = NodePath("..")
 unique_name_in_owner = true
 script = ExtResource("4_4biwg")
 
-[node name="PlayerSounds" type="Node3D" parent="."]
+[node name="PlayerSounds" type="Node" parent="."]
 
 [node name="FallSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
@@ -1606,6 +1605,22 @@ transform = Transform3D(0.9999999, 0, 0, 0, 0.98480785, 0.17364816, 0, -0.173648
 cull_mask = 655359
 fov = 55.0
 
+[node name="RaycastMarkers" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, -0.4, 0)
+
+[node name="Top" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64999986, 0)
+
+[node name="Bottom" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999997, 0)
+
+[node name="Left" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999998, 0.39999992, 0)
+
+[node name="Right" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14999998, 0.39999992, 0)
+
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, -0.4, 0)
@@ -1646,43 +1661,6 @@ unique_name_in_owner = true
 visible = false
 mesh = SubResource("QuadMesh_c42h5")
 surface_material_override/0 = SubResource("ShaderMaterial_064yy")
-
-[node name="CutoutCylinder" type="MeshInstance3D" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(-0.99999976, -8.940697e-08, -2.2351742e-08, 2.1175816e-21, 0.17364827, -0.9848074, 5.9604645e-08, -0.98480725, -0.17364821, 2.9802322e-07, 0.39223117, 1.946825)
-visible = false
-mesh = SubResource("CylinderMesh_xvk8m")
-skeleton = NodePath("")
-
-[node name="CameraRayCasts" type="Node3D" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(-0.99999976, 2.2351742e-08, -8.940697e-08, 2.1175816e-21, 0.9848074, 0.17364821, 5.9604645e-08, 0.17364815, -0.98480725, 0, 0.9999999, -1.5000002)
-
-[node name="CameraRayCast1" type="RayCast3D" parent="SpritePivot/CameraRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, -0.05)
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="CameraRayCast2" type="RayCast3D" parent="SpritePivot/CameraRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, 0.2)
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="FogRayCasts" type="Node3D" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(-0.99999976, 2.2351742e-08, -8.940697e-08, 2.1175816e-21, 0.9848074, 0.17364821, 5.9604645e-08, 0.17364815, -0.98480725, 0, 0.9999999, -1.5000002)
-
-[node name="CameraRayCast1" type="RayCast3D" parent="SpritePivot/FogRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, -0.05)
-collision_mask = 8
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="CameraRayCast2" type="RayCast3D" parent="SpritePivot/FogRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, 0.2)
-collision_mask = 8
-debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)

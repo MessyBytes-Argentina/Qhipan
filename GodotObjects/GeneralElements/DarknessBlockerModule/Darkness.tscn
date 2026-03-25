@@ -22,7 +22,7 @@ orientation = 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ggxyo"]
 render_priority = -3
 shader = ExtResource("3_s5ihy")
-shader_parameter/size = Vector3(1, 1, 1)
+shader_parameter/size = Vector3(0.9, 0.9, 0.9)
 
 [node name="Darkness" type="FogVolume" groups=["Fog"]]
 size = Vector3(3, 3, 3)

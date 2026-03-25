@@ -19,5 +19,5 @@ void vertex() {
 void fragment() {
 	ALBEDO = vec3(0.0);
 	ALPHA = 0.0;
-	if (proximity == 0.0) {discard;}
+	if (proximity <= 2.0) {discard;}
 }

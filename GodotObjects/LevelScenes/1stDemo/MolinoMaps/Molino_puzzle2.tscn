@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=80 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="37_h66y8"]
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="38_0ktue"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="39_6kxku"]
+[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="40_0ktue"]
 
 [sub_resource type="Curve3D" id="Curve3D_osh58"]
 _data = {
@@ -688,11 +689,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3999996, 0, 0)
 
 [node name="Deco Chunk3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -3.299999, -0.19999987, -3.2000005)
+visible = false
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Deco Chunk4" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.9063078, 0, -0.42261833, 0, 1, 0, 0.42261833, 0, 0.9063078, -0.79999906, -1.1999998, -6.200001)
+visible = false
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
@@ -703,6 +706,7 @@ skeleton = NodePath("../..")
 
 [node name="Deco Chunk15" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.815677, 0, -0.3803565, 0, 0.9, 0, 0.3803565, 0, 0.815677, -5.499999, -3, -6.200001)
+visible = false
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
@@ -713,6 +717,7 @@ skeleton = NodePath("../..")
 
 [node name="Deco Chunk7" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.9396926, 0, -0.34202003, 0, 1, 0, 0.34202003, 0, -0.9396926, 1.888157, 1.7881393e-07, -8.412014)
+visible = false
 mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
@@ -760,7 +765,7 @@ script = ExtResource("35_idoyc")
 freeBaseRotation = Vector3(-0.2617994, -1.5358897, 0)
 
 [node name="CameraPath" type="Path3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, -5)
 top_level = true
 curve = SubResource("Curve3D_idoyc")
 metadata/CameraPath = true
@@ -792,3 +797,7 @@ shape = SubResource("BoxShape3D_be435")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59339285, 0, 0.0005517006)
 sticker = SubResource("Resource_7ddii")
 sceneParent = NodePath("..")
+
+[node name="Darkness" parent="." instance=ExtResource("40_0ktue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.75, -2.5)
+size = Vector3(3, 2.5, 2)
