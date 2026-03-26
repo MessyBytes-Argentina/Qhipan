@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://rx0u8rmdu5s0"]
 
-[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="1_rjn61"]
+[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/Wood Fence/Wood Fence.tres" id="1_rjn61"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gofqp"]
 albedo_color = Color(0.8688137, 0.39556152, 0.21409452, 1)

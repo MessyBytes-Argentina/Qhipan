@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_32tpj"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_hihee"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_yg7g3"]
-[ext_resource type="Material" uid="uid://d0auxqcm82ogf" path="res://Assets/Materials/WithCutout/Bushes/Arbusto Triplanar.tres" id="3_yg7g3"]
+[ext_resource type="Material" uid="uid://d0auxqcm82ogf" path="res://Assets/Materials/Bushes/Arbusto Triplanar.tres" id="3_yg7g3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bt384"]
 _surfaces = [{

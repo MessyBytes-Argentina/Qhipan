@@ -61,7 +61,6 @@ var storedMaterials: Array[ShaderMaterial] = []
 ## Executed when node first enters the scene.
 func _ready() -> void:
 	if not Engine.is_editor_hint(): 
-		add_material_to_cutout(material)
 		GeneralVariables.add_to_stagger_queue(regenerate_wall_shape)
 	else: regenerate_wall_shape()
 
@@ -83,15 +82,6 @@ func flip_path() -> void:
 		curve.set_point_out(i, flippedPathOut[i])
 	regenerate_wall_shape()
 
-## Makes the material update with cutout.
-func add_material_to_cutout(materialToStore: Material) -> void:
-	if Engine.is_editor_hint(): return
-	if noCutout: return
-	if materialToStore is not ShaderMaterial: return
-	if not GeneralVariables.is_node_ready(): await GeneralVariables.ready
-	storedMaterials.append(materialToStore)
-	GeneralVariables.queue_to_cutout_materials(storedMaterials, true)
-
 ## Regenerates the wall with current parameters.
 func regenerate_wall_shape() -> void:
 	if downPolygon: downPolygon.queue_free()
@@ -111,7 +101,6 @@ func regenerate_wall_shape() -> void:
 	if customProfileShape and material is ShaderMaterial: 
 		polygon.material = material.duplicate()
 		polygon.material.set_shader_parameter("height", wallHeight)
-		add_material_to_cutout(polygon.material)
 	polygon.collision_layer = collisionLayer
 	polygon.polygon = wallShape
 	polygon.show()
@@ -224,10 +213,3 @@ func _create_wall_shape(isShadowPolygon: bool, isDownWall: bool) -> PackedVector
 			downPolygon.flip_faces = true
 			res[0] = Vector2(res[1].x, 0.0)
 		return res
-
-## Cleans unique materials.
-func _notification(what) -> void:
-	if Engine.is_editor_hint(): return
-	if what == NOTIFICATION_PREDELETE:
-		GeneralVariables.queue_to_cutout_materials(storedMaterials, false)
-		queue_free()

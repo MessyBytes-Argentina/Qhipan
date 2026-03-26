@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://uefmm3wnclty"]
 
 [ext_resource type="Script" uid="uid://dc8ouxotv186o" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.gd" id="1_7xcgd"]
-[ext_resource type="Material" uid="uid://5w7vc5mxjyk0" path="res://Assets/Materials/WithCutout/Darkness.tres" id="1_fwrbv"]
+[ext_resource type="Material" uid="uid://5w7vc5mxjyk0" path="res://Assets/Materials/Player Position Sensitive/Darkness.tres" id="1_fwrbv"]
 [ext_resource type="Shader" uid="uid://bxkdm3v8jja5r" path="res://Assets/Shaders/DarknessOutlineBlocker.gdshader" id="3_s5ihy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7xcgd"]
