@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://ccbpqcmw6e32i"]
 
-[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/Wood Streaks/Wood Streaks.tres" id="1_3wvh6"]
+[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/Enviromental/Maderas/Wood Streaks/Wood Streaks.tres" id="1_3wvh6"]
 
 [sub_resource type="Gradient" id="Gradient_sch2r"]
 colors = PackedColorArray(0.47779977, 0.37390384, 0.10601834, 1, 0.8627709, 0.8377903, 0, 1)

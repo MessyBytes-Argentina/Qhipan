@@ -1,14 +1,14 @@
 [gd_resource type="MeshLibrary" load_steps=1341 format=4 uid="uid://p0o0keyowjmt"]
 
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="1_ibvhi"]
-[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Arena.tres" id="2_d7w6m"]
-[ext_resource type="Material" uid="uid://cfkxbb4k5yns7" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/Cemento Destilería.tres" id="2_lb27t"]
-[ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Tierra con Pasto.tres" id="2_nbik3"]
-[ext_resource type="Material" uid="uid://hbu6fusu7u2t" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/Baldosa Molino.tres" id="3_64bf3"]
-[ext_resource type="Material" uid="uid://dr5ln2aluhdhm" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Molino/Cemento Molino.tres" id="4_jhcmf"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="5_ep3i0"]
-[ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/New Earth.tres" id="8_6llng"]
-[ext_resource type="Material" uid="uid://ck7y2kyvo3xfb" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Baldosas Distintivas/Destilería/Baldosa Destilería.tres" id="9_ydk1k"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Interior/Ladrillo Interior.tres" id="1_ibvhi"]
+[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/Enviromental/Terrenos/Arena/Arena.tres" id="2_d7w6m"]
+[ext_resource type="Material" uid="uid://cfkxbb4k5yns7" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/Cemento Destilería.tres" id="2_lb27t"]
+[ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/Enviromental/Terrenos/Tierra con Pasto/Tierra con Pasto.tres" id="2_nbik3"]
+[ext_resource type="Material" uid="uid://hbu6fusu7u2t" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Molino/Baldosa Molino.tres" id="3_64bf3"]
+[ext_resource type="Material" uid="uid://dr5ln2aluhdhm" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Molino/Cemento Molino.tres" id="4_jhcmf"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Exterior/Ladrillo Exterior.tres" id="5_ep3i0"]
+[ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/Enviromental/Terrenos/Tierra Sola/New Earth.tres" id="8_6llng"]
+[ext_resource type="Material" uid="uid://ck7y2kyvo3xfb" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/Baldosa Destilería.tres" id="9_ydk1k"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_33j14"]
 _surfaces = [{

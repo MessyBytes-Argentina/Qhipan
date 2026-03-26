@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=4 uid="uid://deyhqqkbiwlvi"]
 
 [ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_fc10l"]
-[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/Piedras.tres" id="2_d7r6m"]
+[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/Enviromental/Piedras/Piedras.tres" id="2_d7r6m"]
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="3_fc10l"]
 [ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="3_goa8p"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_hbv6x"]
 [ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_itfsx"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_x515r"]
-[ext_resource type="Texture2D" uid="uid://c06ypx4pygwbf" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_albedo.png" id="6_jae6r"]
-[ext_resource type="Texture2D" uid="uid://b6n6287g07h1k" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_normal.png" id="7_5uydc"]
-[ext_resource type="Texture2D" uid="uid://0vge8j8j5h3e" path="res://Assets/Materials/Murales/Mural Placeholder/Mural Placeholder_orm.png" id="8_dm644"]
+[ext_resource type="Texture2D" uid="uid://c06ypx4pygwbf" path="res://Assets/Materials/Props/Murales/Mural Placeholder/Mural Placeholder_albedo.png" id="6_jae6r"]
+[ext_resource type="Texture2D" uid="uid://b6n6287g07h1k" path="res://Assets/Materials/Props/Murales/Mural Placeholder/Mural Placeholder_normal.png" id="7_5uydc"]
+[ext_resource type="Texture2D" uid="uid://0vge8j8j5h3e" path="res://Assets/Materials/Props/Murales/Mural Placeholder/Mural Placeholder_orm.png" id="8_dm644"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7u05"]
 render_priority = 0

@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cjtpgkwconv8w"]
+
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="1_wp5bu"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_wi7ul"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_u5kx0"]
+[ext_resource type="Texture2D" uid="uid://d1tx1ykhpk5fp" path="res://Assets/Materials/Enviromental/Plantas/Bushes/Bush Standard_albedo.png" id="4_do4lw"]
+[ext_resource type="Texture2D" uid="uid://b7oav4ywpqpg0" path="res://Assets/Materials/Enviromental/Plantas/Bushes/Bush Standard_normal.png" id="5_j4byv"]
+[ext_resource type="Texture2D" uid="uid://f3wdnkscgfpa" path="res://Assets/Materials/Enviromental/Plantas/Bushes/Bush Standard_orm.png" id="6_3mo15"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wp5bu")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_u5kx0")
+shader_parameter/fresnel_gradient = ExtResource("2_wi7ul")
+shader_parameter/texture_scale = 3.0000000447036004
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_do4lw")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_j4byv")
+shader_parameter/normal_scale = 1.5000008312499986
+shader_parameter/texture_orm = ExtResource("6_3mo15")
+shader_parameter/enable_ambient_occlusion = true
+shader_parameter/ao_light_affect = 0.6999999843536
+shader_parameter/roughness = 0.3030000143925
+shader_parameter/metallic_specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 0.0
+shader_parameter/clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

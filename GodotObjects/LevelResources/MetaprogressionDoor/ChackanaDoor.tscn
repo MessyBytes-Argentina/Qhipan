@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://b6whyy35seo3"]
 
-[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/Puerta Chackana/Puerta Chackana.tres" id="1_76s3h"]
+[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/Props/Puerta Chackana/Puerta Chackana.tres" id="1_76s3h"]
 [ext_resource type="Script" uid="uid://cr6lpcw1i81uy" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.gd" id="1_elvij"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="3_ffp7s"]
 [ext_resource type="Script" uid="uid://dbeicj2vr2k5j" path="res://GodotObjects/Managers/SoundManager/CentralizedSoundResource/CentralizedSoundResource.gd" id="4_spmsl"]

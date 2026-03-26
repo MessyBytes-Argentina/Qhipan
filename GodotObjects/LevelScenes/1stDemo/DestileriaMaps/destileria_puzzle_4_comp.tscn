@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="5_8lg17"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="6_823fv"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="7_d2c6w"]
-[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Walls/Ladrillo Azul.tres" id="8_qmvnx"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Estructural/Walls/Ladrillo Azul.tres" id="8_qmvnx"]
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="9_2ky1u"]
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="10_8lg17"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="10_spd6m"]

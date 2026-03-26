@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_jtn5c"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_sp0mw"]
-[ext_resource type="Material" uid="uid://bijrytrmfx0xi" path="res://Assets/Materials/Fringes/Sand Fringe.tres" id="3_grnhj"]
+[ext_resource type="Material" uid="uid://bijrytrmfx0xi" path="res://Assets/Materials/Enviromental/Fringes/Sand Fringe.tres" id="3_grnhj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_4qh0s"]
 material = ExtResource("3_grnhj")

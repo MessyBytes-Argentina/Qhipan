@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0nhfx01gy36r" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/stone_fence_random.tscn" id="6_01brn"]
 [ext_resource type="PackedScene" uid="uid://bfbre5vkar3l4" path="res://GodotObjects/LevelResources/PlaceholderMetaprogressionBlock/PlaceholderMetaprogressionBlock.tscn" id="9_imc7x"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="9_x0jxa"]
-[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Walls/Ladrillo Azul.tres" id="10_iqlko"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Estructural/Walls/Ladrillo Azul.tres" id="10_iqlko"]
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="10_wwpq5"]
 [ext_resource type="PackedScene" uid="uid://bba7fgwsefvpt" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/Sconce.tscn" id="11_iqlko"]
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="11_wwpq5"]

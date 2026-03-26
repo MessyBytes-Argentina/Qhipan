@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://crc3on5e58ajc"]
 
-[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/Portico A/Portico A Face Material.tres" id="1_7w5j2"]
-[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/Patron-Andino-1.tres" id="2_qhyfc"]
+[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/Props/Portico A/Portico A Face Material.tres" id="1_7w5j2"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/Props/Patron-Andino-1.tres" id="2_qhyfc"]
 [ext_resource type="Script" uid="uid://ds7jwxemwltp7" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.gd" id="3_vclfs"]
 [ext_resource type="Shader" uid="uid://cntgou3iy0wgy" path="res://Assets/Shaders/WobblyArea.gdshader" id="4_mpuqu"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_5e5fy"]

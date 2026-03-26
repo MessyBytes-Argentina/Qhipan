@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="4_2hb3y"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_lalsh"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_w2j1e"]
-[ext_resource type="Texture2D" uid="uid://d1idumi3axx2" path="res://Assets/Materials/BloquesAlternantes/Textile/Textile Roughness.png" id="6_34abf"]
-[ext_resource type="Texture2D" uid="uid://bgd56w8luewlk" path="res://Assets/Materials/BloquesAlternantes/Textile/Textile Normal.png" id="7_d0byb"]
+[ext_resource type="Texture2D" uid="uid://d1idumi3axx2" path="res://Assets/Materials/Props/BloquesAlternantes/Textile/Textile Roughness.png" id="6_34abf"]
+[ext_resource type="Texture2D" uid="uid://bgd56w8luewlk" path="res://Assets/Materials/Props/BloquesAlternantes/Textile/Textile Normal.png" id="7_d0byb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tucv6"]
 
