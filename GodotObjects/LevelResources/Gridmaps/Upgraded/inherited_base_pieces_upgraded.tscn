@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4uceqjfxw8vo"]
+
+[ext_resource type="PackedScene" uid="uid://dl51wlfffvl3h" path="res://Assets/Models/Upgraded Gridmap Museum/BasePiecesUpgraded.blend" id="1_yusth"]
+
+[node name="BasePiecesUpgraded" instance=ExtResource("1_yusth")]
