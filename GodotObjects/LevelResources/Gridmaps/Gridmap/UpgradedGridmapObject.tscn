@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2e8v3drfxv34"]
 
-[ext_resource type="MeshLibrary" uid="uid://p0o0keyowjmt" path="res://Assets/Models/Upgraded Gridmap Museum/UpgradedGridmap.tres" id="1_i4q5a"]
+[ext_resource type="MeshLibrary" uid="uid://p0o0keyowjmt" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/UpgradedGridmap.tres" id="1_i4q5a"]
 
 [node name="UpgradedGridmapObject" type="GridMap" groups=["Gridmap"]]
 mesh_library = ExtResource("1_i4q5a")

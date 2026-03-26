@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgywwopa8nmh"]
+[gd_scene load_steps=18 format=3 uid="uid://dgywwopa8nmh"]
 
 [ext_resource type="PackedScene" uid="uid://2e8v3drfxv34" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/UpgradedGridmapObject.tscn" id="1_4k03x"]
 [ext_resource type="Texture2D" uid="uid://sqtxibr8ogo0" path="res://Assets/Textures/paleta_colores.png" id="2_2kfau"]
@@ -8,12 +8,27 @@ shading_mode = 0
 
 [sub_resource type="TextMesh" id="TextMesh_msgbv"]
 material = SubResource("StandardMaterial3D_2kfau")
-text = "Category: ROUND"
+text = "Category: ROUND
+Keywords:
+- Block (Columnas)
+- Double (doble altura)
+- Triple (triple altura)
+- Thin (Columna angosta)
+- Corner
+- Negativa (contra curva)
+- Slab
+- Bevel
+"
 font_size = 40
 
 [sub_resource type="TextMesh" id="TextMesh_2kfau"]
 material = SubResource("StandardMaterial3D_2kfau")
-text = "Category: Bevel"
+text = "Category: Bevel
+Keywords:
+- Side
+- Corner
+- Parallel
+- Cap"
 font_size = 40
 
 [sub_resource type="TextMesh" id="TextMesh_yo0b8"]
@@ -71,6 +86,18 @@ material = SubResource("StandardMaterial3D_2kfau")
 text = "MATERIAL KEYWORDS"
 font_size = 40
 
+[sub_resource type="TextMesh" id="TextMesh_8l42u"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "GENERAL KEYWORDS
+- Cube
+- Ramp
+- Slab
+- Block
+- Removed
+- Corner
+- Wedge"
+font_size = 40
+
 [node name="Museum" type="Node3D"]
 
 [node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_4k03x")]
@@ -82,11 +109,11 @@ metadata/_editor_floor_ = Vector3(0, 4, 0)
 [node name="Tags" type="Node3D" parent="."]
 
 [node name="Category Round" type="MeshInstance3D" parent="Tags"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.6944652, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.794465, 2)
 mesh = SubResource("TextMesh_msgbv")
 
 [node name="Category Bevel" type="MeshInstance3D" parent="Tags"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 5.694465, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 6.694465, 2)
 mesh = SubResource("TextMesh_2kfau")
 
 [node name="Category Vertical" type="MeshInstance3D" parent="Tags"]
@@ -133,6 +160,10 @@ mesh = SubResource("TextMesh_2yuo4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.694465, 1.8000001)
 mesh = SubResource("TextMesh_4k03x")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="General Keywords" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 5.0944653, 1.8000001)
+mesh = SubResource("TextMesh_8l42u")
+
+[node name="Palette" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.337778, 5, 2)
 texture = ExtResource("2_2kfau")

@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c6223kgrhubrh"]
+
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="1_hpglf"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_60ufu"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_hb8pm"]
+[ext_resource type="Texture2D" uid="uid://johnr7dgifij" path="res://Assets/Materials/Prototype/Textures/godot_green.png" id="4_gpvfn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hpglf")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_hb8pm")
+shader_parameter/fresnel_gradient = ExtResource("2_60ufu")
+shader_parameter/offset = Vector3(0, 0, 0)
+shader_parameter/top_texture_scale = 1.0
+shader_parameter/side_texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = ExtResource("4_gpvfn")
+shader_parameter/side_texture_albedo = ExtResource("4_gpvfn")
+shader_parameter/enable_normal = false
+shader_parameter/top_normal_scale = 1.0
+shader_parameter/side_normal_scale = 1.0
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 1.0
+shader_parameter/side_roughness = 1.0
+shader_parameter/top_metallic_specular = 0.5
+shader_parameter/side_metallic_specular = 0.5
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 1.0
+shader_parameter/side_emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 1.0
+shader_parameter/side_clearcoat = 1.0
+shader_parameter/top_clearcoat_roughness = 0.5
+shader_parameter/side_clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0

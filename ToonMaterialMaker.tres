@@ -1,68 +1,21 @@
-[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=10 format=3 uid="uid://jyf2ifcvqb52"]
+[gd_resource type="Resource" script_class="ToonMaterialMaker" load_steps=7 format=3 uid="uid://jyf2ifcvqb52"]
 
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="1_0brr2"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="1_51jts"]
+[ext_resource type="Material" uid="uid://ckcabeonsl0dc" path="res://Assets/Materials/Prototype/Prototype Red.tres" id="1_koauu"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="2_ar384"]
 [ext_resource type="Script" uid="uid://duwq10b1isvmn" path="res://Assets/Shaders/ToonTriplaneMaterialMaker.gd" id="3_koauu"]
-[ext_resource type="Texture2D" uid="uid://bnyhnj4e0vjwx" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/MM-Cemento Destilería_albedo.png" id="4_gyrky"]
-[ext_resource type="Texture2D" uid="uid://87nxp0l733l6" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/MM-Cemento Destilería_normal.png" id="5_pq6br"]
-[ext_resource type="Texture2D" uid="uid://bgxcfoagp5fwt" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/MM-Cemento Destilería_orm.png" id="6_8oogb"]
+[ext_resource type="Texture2D" uid="uid://b0vutmi2sv3n7" path="res://Assets/Materials/Prototype/Textures/godot_red.png" id="5_eydcr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaf5q"]
-render_priority = 0
-shader = ExtResource("1_51jts")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/light_gradient = ExtResource("2_ar384")
-shader_parameter/fresnel_gradient = ExtResource("1_0brr2")
-shader_parameter/texture_scale = 1.0
-shader_parameter/blend_sharpness = 10.0
-shader_parameter/texture_albedo = ExtResource("4_gyrky")
-shader_parameter/enable_normal = true
-shader_parameter/texture_normal = ExtResource("5_pq6br")
-shader_parameter/normal_scale = 1.0
-shader_parameter/texture_orm = ExtResource("6_8oogb")
-shader_parameter/enable_ambient_occlusion = false
-shader_parameter/ao_light_affect = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/metallic_specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/enable_emission = false
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy_multiplier = 1.0
-shader_parameter/enable_clearcoat = false
-shader_parameter/clearcoat = 1.0
-shader_parameter/clearcoat_roughness = 0.5
-shader_parameter/enable_anisotropy = false
-shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8628"]
-albedo_texture = ExtResource("4_gyrky")
-roughness_texture = ExtResource("6_8oogb")
-normal_enabled = true
-normal_texture = ExtResource("5_pq6br")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51jts"]
+albedo_texture = ExtResource("5_eydcr")
 
 [resource]
 script = ExtResource("3_koauu")
-materialMode = 4
-surfaceMaterial = SubResource("StandardMaterial3D_m8628")
-UVSize = Vector2(1, 1)
+topSurfaceMaterial = SubResource("StandardMaterial3D_51jts")
+topSize = null
+sideSurfaceMaterial = SubResource("StandardMaterial3D_51jts")
+sideSize = null
 lightGradient = ExtResource("2_ar384")
 fresnelGradient = ExtResource("1_0brr2")
-finalizeShaderMaterial = SubResource("ShaderMaterial_aaf5q")
+finalizeShaderMaterial = ExtResource("1_koauu")
 metadata/_custom_type_script = "uid://duwq10b1isvmn"
