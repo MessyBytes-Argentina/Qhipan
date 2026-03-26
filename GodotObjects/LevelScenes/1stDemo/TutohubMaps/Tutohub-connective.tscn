@@ -11,27 +11,27 @@
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="7_5n13k"]
 [ext_resource type="PackedScene" uid="uid://deyhqqkbiwlvi" path="res://GodotObjects/LevelResources/Pedestal/MuralInti.tscn" id="7_wv83u"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="8_143k4"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="10_n1n0r"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/Walls/Ladera Terrosa Wall.tres" id="10_n1n0r"]
 [ext_resource type="PackedScene" uid="uid://crep7wjqspl23" path="res://GodotObjects/LevelResources/Pedestal/MuralPlanta.tscn" id="10_y25gd"]
 [ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="11_2remw"]
 [ext_resource type="Curve3D" uid="uid://dmmqh2jpg33cn" path="res://GodotObjects/LevelResources/ShapeExtruder/Curve Presets/Round 05m.tres" id="12_en8j3"]
 [ext_resource type="PackedScene" uid="uid://csn828pr3n3ji" path="res://GodotObjects/LevelResources/Pedestal/MuralPajara.tscn" id="12_fdnxg"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="13_n1n0r"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="14_lku13"]
-[ext_resource type="Material" uid="uid://oks2ccgi7glu" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul Exterior.tres" id="14_tlqgd"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="14_lku13"]
+[ext_resource type="Material" uid="uid://oks2ccgi7glu" path="res://Assets/Materials/Walls/Ladrillo Azul Exterior.tres" id="14_tlqgd"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="15_knjsu"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="16_inrfn"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="23_1x2dl"]
 [ext_resource type="PackedScene" uid="uid://ckaxdwpab2b6f" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bushes.tscn" id="24_ec45u"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="25_5onks"]
 [ext_resource type="PackedScene" uid="uid://cw86nervtqicu" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/grass_fringe.tscn" id="26_wv83u"]
-[ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
+[ext_resource type="Texture2D" uid="uid://cs7i3k5xly1p1" path="res://Assets/Materials/Puerta Chackana/Puerta Chackana_albedo.png" id="29_knjsu"]
 [ext_resource type="Script" uid="uid://blllvpjbphq1w" path="res://GodotObjects/LevelResources/ObjectHider/ObjectOccluder.gd" id="34_n5fu6"]
-[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/WithCutout/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
+[ext_resource type="Material" uid="uid://bealj8q24qxnc" path="res://Assets/Materials/Wood Streaks/Wood Streaks.tres" id="34_y25gd"]
 [ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="35_1x2dl"]
 [ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerEnvironment.tres" id="36_a74g7"]
 [ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerLight.tres" id="37_n5fu6"]
-[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="38_a74g7"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Walls/Ladrillo Azul.tres" id="38_a74g7"]
 [ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="38_vlngr"]
 [ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="39_n5fu6"]
 [ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="39_p4wax"]
@@ -50,21 +50,21 @@
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="49_mxdex"]
 [ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="50_wfdgi"]
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="51_8jqqo"]
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="52_usc8t"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="52_usc8t"]
 [ext_resource type="PackedScene" uid="uid://57twmtocploa" path="res://GodotObjects/LevelResources/PathModels/Presets/Fringes/sand_fringe.tscn" id="53_6nxmg"]
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="53_l7bbn"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="53_l7bbn"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="54_lhey2"]
-[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="55_i0g0w"]
+[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/Walls/Ladrillo Rojo.tres" id="55_i0g0w"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="55_ybp0o"]
-[ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="58_prin4"]
-[ext_resource type="Texture2D" uid="uid://bp7xvj8wm1h5" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_albedo.png" id="62_efdds"]
+[ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="58_prin4"]
+[ext_resource type="Texture2D" uid="uid://bp7xvj8wm1h5" path="res://Assets/Materials/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_albedo.png" id="62_efdds"]
 [ext_resource type="Script" uid="uid://demxut5mahmch" path="res://GodotObjects/LevelResources/LeylinePieces/RemoteSwitcher.gd" id="62_ucst0"]
 [ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/PorticoAntiSticker.tscn" id="62_wfdgi"]
-[ext_resource type="Texture2D" uid="uid://bc65cpqffuj7o" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_normal.png" id="63_8jqqo"]
-[ext_resource type="Texture2D" uid="uid://cch6il6i8uixx" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Texturas/Earth_albedo.png" id="64_usc8t"]
-[ext_resource type="Texture2D" uid="uid://21jcunl0ok2b" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Tierra Sola/Texturas/Earth_normal.png" id="65_6nxmg"]
-[ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="66_qlig2"]
-[ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="67_i0g0w"]
+[ext_resource type="Texture2D" uid="uid://bc65cpqffuj7o" path="res://Assets/Materials/Terrenos/Comunes/Tierra con Pasto/Texturas/Pasto Neo_normal.png" id="63_8jqqo"]
+[ext_resource type="Texture2D" uid="uid://cch6il6i8uixx" path="res://Assets/Materials/Terrenos/Comunes/Tierra Sola/Texturas/Earth_albedo.png" id="64_usc8t"]
+[ext_resource type="Texture2D" uid="uid://21jcunl0ok2b" path="res://Assets/Materials/Terrenos/Comunes/Tierra Sola/Texturas/Earth_normal.png" id="65_6nxmg"]
+[ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="66_qlig2"]
+[ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="67_i0g0w"]
 [ext_resource type="PackedScene" uid="uid://ctergtb8gmy38" path="res://Assets/Models/HeightmapScatter/House1.tscn" id="68_p3fv4"]
 [ext_resource type="Image" uid="uid://d3hejcsoxr7gr" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective/Heightmap_0_0.res" id="68_usc8t"]
 [ext_resource type="Image" uid="uid://qw53cf21xg6g" path="res://GodotObjects/LevelScenes/1stDemo/TutohubMaps/Tutohub-connective/Splatmap_0_0_0.res" id="69_6nxmg"]
@@ -270,22 +270,6 @@ shader_parameter/side_clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/top_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_14t51"]
 material = SubResource("ShaderMaterial_ehnte")
@@ -2333,14 +2317,12 @@ skeleton = NodePath("../../../../../../..")
 [node name="Bushes" parent="Rooms/Tutohub-Puzzle3/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.9, 0.5, -0.5, -2.1000001)
 curve = SubResource("Curve3D_kpojp")
-collisionLayer = 4096
 collisionSnapPointToPath = 0
 collisionOffsetFromPath = Vector2(0, 1)
 
 [node name="Bushes2" parent="Rooms/Tutohub-Puzzle3/Props/Fences" instance=ExtResource("24_ec45u")]
 transform = Transform3D(-0.84999996, 0, 7.868049e-08, 0, 0.84999996, 0, -7.430936e-08, 0, -0.9, -1.5, -0.5, -11.1)
 curve = SubResource("Curve3D_kpojp")
-collisionLayer = 4096
 collisionSnapPointToPath = 0
 collisionOffsetFromPath = Vector2(0, 1)
 

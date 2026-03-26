@@ -1,0 +1,66 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ciy708bia1kd1"]
+
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="1_c788r"]
+[ext_resource type="Texture2D" uid="uid://dye2myam31tkk" path="res://Assets/Textures/UV Textures/Baldosas-1/Baldosas-1-Top.png" id="2_rifs5"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_rifs5"]
+
+[sub_resource type="Gradient" id="Gradient_epi6i"]
+offsets = PackedFloat32Array(0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2, 0.2, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bof8u"]
+gradient = SubResource("Gradient_epi6i")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c788r")
+shader_parameter/albedo = Color(1.0962195, 0.37739182, 0.2668029, 1)
+shader_parameter/light_gradient = ExtResource("3_rifs5")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_bof8u")
+shader_parameter/offset = Vector3(0, 0, 0)
+shader_parameter/top_texture_scale = 1.0
+shader_parameter/side_texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/top_texture_albedo = ExtResource("2_rifs5")
+shader_parameter/side_texture_albedo = ExtResource("2_rifs5")
+shader_parameter/enable_normal = false
+shader_parameter/top_normal_scale = 0.0
+shader_parameter/side_normal_scale = 0.0
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/top_ao_light_affect = 0.0
+shader_parameter/side_ao_light_affect = 0.0
+shader_parameter/top_roughness = 0.0
+shader_parameter/side_roughness = 0.0
+shader_parameter/top_metallic_specular = 0.0
+shader_parameter/side_metallic_specular = 0.0
+shader_parameter/top_metallic = 0.0
+shader_parameter/side_metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/top_emission = Color(0, 0, 0, 1)
+shader_parameter/side_emission = Color(0, 0, 0, 1)
+shader_parameter/top_emission_energy_multiplier = 0.0
+shader_parameter/side_emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/top_clearcoat = 0.0
+shader_parameter/side_clearcoat = 0.0
+shader_parameter/top_clearcoat_roughness = 0.0
+shader_parameter/side_clearcoat_roughness = 0.0
+shader_parameter/enable_anisotropy = false
+shader_parameter/top_anisotropy = 0.0
+shader_parameter/side_anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(0, 0, 0, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 7.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

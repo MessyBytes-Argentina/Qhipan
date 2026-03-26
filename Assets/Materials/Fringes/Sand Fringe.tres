@@ -1,12 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bijrytrmfx0xi"]
 
-[ext_resource type="Shader" uid="uid://d70se0jvv0xj" path="res://Assets/Shaders/DecalToonTriplaneCutoutShader.gdshader" id="1_vulv6"]
+[ext_resource type="Shader" uid="uid://d70se0jvv0xj" path="res://Assets/Shaders/DecalToonTriplaneShader.gdshader" id="1_vulv6"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_rj5vw"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_km1cb"]
 [ext_resource type="Texture2D" uid="uid://soiir8obtkwi" path="res://Assets/Materials/Fringes/Sand Fringe UV Mask.png" id="4_g0nic"]
-[ext_resource type="Texture2D" uid="uid://c4j0f12ggrwlf" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Texturas/Sandwave_albedo.png" id="5_k5iko"]
-[ext_resource type="Texture2D" uid="uid://rcoptgnp4eee" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Texturas/Sandwave_normal.png" id="6_pe2x5"]
-[ext_resource type="Texture2D" uid="uid://dmd380lrk7tjr" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Arena/Texturas/Sandwave_orm.png" id="7_4qxts"]
+[ext_resource type="Texture2D" uid="uid://c4j0f12ggrwlf" path="res://Assets/Materials/Terrenos/Comunes/Arena/Texturas/Sandwave_albedo.png" id="5_k5iko"]
+[ext_resource type="Texture2D" uid="uid://rcoptgnp4eee" path="res://Assets/Materials/Terrenos/Comunes/Arena/Texturas/Sandwave_normal.png" id="6_pe2x5"]
+[ext_resource type="Texture2D" uid="uid://dmd380lrk7tjr" path="res://Assets/Materials/Terrenos/Comunes/Arena/Texturas/Sandwave_orm.png" id="7_4qxts"]
 
 [resource]
 render_priority = 0

@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://bealj8q24qxnc"]
+
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="1_shk0o"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_tyv18"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_2at6b"]
+[ext_resource type="Texture2D" uid="uid://ci3fibawwjupn" path="res://Assets/Materials/Wood Streaks/MM Wood Streaks_albedo.png" id="4_h5ldr"]
+[ext_resource type="Texture2D" uid="uid://bl74nv0shy2uw" path="res://Assets/Materials/Wood Streaks/MM Wood Streaks_normal.png" id="5_5rgbt"]
+[ext_resource type="Texture2D" uid="uid://cbtxlbkl1ep0d" path="res://Assets/Materials/Wood Streaks/MM Wood Streaks_orm.png" id="6_vxi35"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_shk0o")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_2at6b")
+shader_parameter/fresnel_gradient = ExtResource("2_tyv18")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_h5ldr")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_5rgbt")
+shader_parameter/normal_scale = 0.5
+shader_parameter/texture_orm = ExtResource("6_vxi35")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = false
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
+shader_parameter/cylinderCutout = false
+shader_parameter/borderColor = Color(1, 1, 1, 1)
+shader_parameter/borderSize = 0.0
+shader_parameter/borderEmission = 0.0
+shader_parameter/boxPosition = Vector3(0, 0, 0)
+shader_parameter/boxSize = Vector3(0, 0, 0)
+shader_parameter/boxRotation = 0.0
+shader_parameter/cylinderPosition = Vector3(0, 0, 0)
+shader_parameter/cylinderRotation = Vector3(0, 0, 0)
+shader_parameter/cylinderRadius1 = 0.0
+shader_parameter/cylinderRadius2 = 0.0
+shader_parameter/cylinderHeight = 0.0
+shader_parameter/playerPosition = Vector3(0, 0, 0)
+shader_parameter/auxMode = false
+shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
+shader_parameter/auxBoxRotation = 0.0

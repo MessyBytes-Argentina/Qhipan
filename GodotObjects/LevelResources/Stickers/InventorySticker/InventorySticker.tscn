@@ -26,6 +26,7 @@ render_priority = 2
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
+blend_mode = 4
 albedo_texture = SubResource("GradientTexture2D_b4s83")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8dhaa"]
@@ -154,4 +155,4 @@ texture_albedo = SubResource("GradientTexture2D_b7w4x")
 lower_fade = 0.5
 distance_fade_enabled = true
 distance_fade_begin = 10.0
-cull_mask = 1048573
+cull_mask = 524285

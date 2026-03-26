@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=4 uid="uid://csn828pr3n3ji"]
 
 [ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_nc26k"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="2_nbqd5"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="2_nbqd5"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="3_2uk4j"]
 [ext_resource type="Texture2D" uid="uid://bydm4fxnfhumj" path="res://Assets/Textures/Stickers/Placeholder Murals/Pajara.png" id="3_nc26k"]
 [ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_llk78"]

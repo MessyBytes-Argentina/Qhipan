@@ -3,8 +3,8 @@
 [ext_resource type="Shader" uid="uid://cdwry2j0kdtdw" path="res://Assets/Shaders/AlternatingBlock.gdshader" id="1_w48iq"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_ckosb"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_a0p5x"]
-[ext_resource type="Texture2D" uid="uid://d1idumi3axx2" path="res://Assets/Materials/WithCutout/BloquesAlternantes/Textile/Textile Roughness.png" id="4_1ebbq"]
-[ext_resource type="Texture2D" uid="uid://bgd56w8luewlk" path="res://Assets/Materials/WithCutout/BloquesAlternantes/Textile/Textile Normal.png" id="5_fm4fi"]
+[ext_resource type="Texture2D" uid="uid://d1idumi3axx2" path="res://Assets/Materials/BloquesAlternantes/Textile/Textile Roughness.png" id="4_1ebbq"]
+[ext_resource type="Texture2D" uid="uid://bgd56w8luewlk" path="res://Assets/Materials/BloquesAlternantes/Textile/Textile Normal.png" id="5_fm4fi"]
 
 [resource]
 render_priority = 0

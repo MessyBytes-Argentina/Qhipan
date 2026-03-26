@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://twqcp50kf00f"]
 
-[ext_resource type="Shader" uid="uid://wr3awr1nsjmu" path="res://Assets/Shaders/ToonTriplaneCutoutShaderAlpha.gdshader" id="1_rl2d0"]
+[ext_resource type="Shader" uid="uid://wr3awr1nsjmu" path="res://Assets/Shaders/ToonTriplaneShaderAlpha.gdshader" id="1_rl2d0"]
 [ext_resource type="Texture2D" uid="uid://is3k34e5d7ao" path="res://Assets/Materials/Reja/Reja Material_albedo.png" id="2_4snhk"]
 [ext_resource type="Texture2D" uid="uid://dkc7xn7e2f2l4" path="res://Assets/Materials/Reja/Reja Material_normal.png" id="4_bqst5"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="5_qjuj3"]

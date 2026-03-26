@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/SmallPedestal.gd" id="1_re33t"]
 [ext_resource type="Texture2D" uid="uid://bl5tesrbned68" path="res://Assets/Textures/Stickers/Key/Key-3.png" id="2_o0lvu"]
-[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="2_re33t"]
+[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/Puerta Chackana/Puerta Chackana.tres" id="2_re33t"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="4_hb5s7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1as40"]

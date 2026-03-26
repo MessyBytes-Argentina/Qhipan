@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://17aglbv45lu0"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_x85ol"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="1_x85ol"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_0a2st"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_pwu86"]
 [ext_resource type="Texture2D" uid="uid://cf8774wnvepjx" path="res://Assets/Materials/Switch Blocks/Azul/Switch Block Azul_albedo.png" id="4_8rwgy"]

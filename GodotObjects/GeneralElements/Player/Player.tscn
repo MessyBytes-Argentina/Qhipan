@@ -1,28 +1,26 @@
-[gd_scene load_steps=200 format=3 uid="uid://b4i4wpup84wht"]
+[gd_scene load_steps=194 format=3 uid="uid://b4i4wpup84wht"]
 
 [ext_resource type="Script" uid="uid://bqjfcmnlondaf" path="res://GodotObjects/GeneralElements/Player/Player.gd" id="1_iw8fe"]
 [ext_resource type="Script" uid="uid://cofnfedunchms" path="res://GodotObjects/GeneralElements/InvoluntaryPushModule/InvoluntaryPushModule.gd" id="2_bjorx"]
 [ext_resource type="Texture2D" uid="uid://ujp1jpnaus8x" path="res://Assets/Textures/Character/IDLE/IDLE 1.png" id="2_cphfr"]
+[ext_resource type="Shader" uid="uid://djoewbmm0qa0m" path="res://Assets/Shaders/Outlines.gdshader" id="2_io5h4"]
 [ext_resource type="Script" uid="uid://swnu5grqd4wr" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/DarknessBlockerModule.gd" id="3_2q27j"]
+[ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutComponent.gd" id="3_io5h4"]
 [ext_resource type="Script" uid="uid://bo2nbioawqprd" path="res://GodotObjects/GeneralElements/Player/ForcedMovement.gd" id="4_4biwg"]
 [ext_resource type="AudioStream" uid="uid://chwyd6yagslik" path="res://Assets/Sounds/SFX/Camera_Rotate_Left.mp3" id="4_rr2ib"]
 [ext_resource type="AudioStream" uid="uid://bvt34f15ajyaq" path="res://Assets/Sounds/SFX/Camera_Rotate_Right.mp3" id="5_3jjt7"]
-[ext_resource type="AudioStream" uid="uid://bpg55uuv4avvf" path="res://Assets/Sounds/SFX/poof.ogg" id="6_3jjt7"]
 [ext_resource type="Script" uid="uid://c0npuea2hbyjs" path="res://GodotObjects/GeneralElements/Player/PickupHandler.gd" id="6_cphfr"]
 [ext_resource type="Texture2D" uid="uid://d1mia2c75cv8d" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 1.png" id="7_5jpe1"]
 [ext_resource type="Texture2D" uid="uid://c31s6gyls7a6s" path="res://Assets/Textures/Character/IDLE/IDLE 2.png" id="7_fj5th"]
 [ext_resource type="AudioStream" uid="uid://c3rywfna5oyfk" path="res://Assets/Sounds/SFX/zoomIn.mp3" id="7_upgpw"]
 [ext_resource type="Texture2D" uid="uid://dqgr35mi8fqov" path="res://Assets/Textures/Character/IDLE/IDLE 3.png" id="8_3fd1v"]
-[ext_resource type="PackedScene" uid="uid://dkdoii7lm8ucj" path="res://GodotObjects/GeneralElements/Player/poofEmitter.tscn" id="8_3jjt7"]
 [ext_resource type="Texture2D" uid="uid://r5bvpmpg8m1" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 2.png" id="8_6pvne"]
 [ext_resource type="AudioStream" uid="uid://cnb8ua68k7mfg" path="res://Assets/Sounds/SFX/zoomOut.mp3" id="8_xvk8m"]
 [ext_resource type="Texture2D" uid="uid://ctnuqo6rm7q85" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 3.png" id="9_504ik"]
 [ext_resource type="Texture2D" uid="uid://b2yad5pdl5lhc" path="res://Assets/Textures/Character/IDLE/IDLE 4.png" id="9_mxndk"]
 [ext_resource type="AudioStream" uid="uid://dq14utemofx17" path="res://Assets/Sounds/SFX/Sticker_Pickup.mp3" id="9_sjywp"]
 [ext_resource type="Texture2D" uid="uid://blkix5nbe1cd5" path="res://Assets/Textures/Character/WALK/WALK 1.png" id="10_2fn2m"]
-[ext_resource type="PackedScene" uid="uid://dg8pmyaygm64r" path="res://GodotObjects/GeneralElements/Particles/post_processing.tscn" id="10_3jjt7"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="10_8hsli"]
-[ext_resource type="Resource" uid="uid://dme8wa7pwh8ip" path="res://Assets/Sounds/SFXResources/PoofSound.tres" id="10_e7wym"]
 [ext_resource type="Texture2D" uid="uid://beehn2ycuj7bm" path="res://Assets/Textures/Character/GRAB FLOAT/FLOAT GRAB 4.png" id="10_x38go"]
 [ext_resource type="Texture2D" uid="uid://c4hlevwrmjktd" path="res://Assets/Textures/Character/GRAB IDLE/IG 4.png" id="10_yiccp"]
 [ext_resource type="AudioStream" uid="uid://cprnr2eocgcrv" path="res://Assets/Sounds/SFX/Sticker_Drop.mp3" id="11_f7h1j"]
@@ -30,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://5yqj8isqe5kv" path="res://Assets/Textures/Eagle eye icon.png" id="11_xvk8m"]
 [ext_resource type="AudioStream" uid="uid://4hjnlh63k4na" path="res://Assets/Sounds/SFX/Sticker_Sticked.mp3" id="12_f7h1j"]
 [ext_resource type="Texture2D" uid="uid://c54kgpovwf2el" path="res://Assets/Textures/Character/WALK/WALK 3.png" id="12_wm78n"]
-[ext_resource type="Script" uid="uid://cwwyrk706rbap" path="res://GodotObjects/GeneralElements/Player/CutoutCube.gd" id="12_xf0c4"]
 [ext_resource type="AudioStream" uid="uid://bxcubc7hfyhru" path="res://Assets/Sounds/SFX/Ripping.mp3" id="13_8hsli"]
 [ext_resource type="Texture2D" uid="uid://cbldo24cir5h7" path="res://Assets/Textures/Character/WALK/WALK 4.png" id="13_bity2"]
 [ext_resource type="AudioStream" uid="uid://ci1w1v448c8i" path="res://Assets/Sounds/SFX/Fanfarre.mp3" id="13_q1b61"]
@@ -162,6 +159,20 @@
 [ext_resource type="Texture2D" uid="uid://bji8lkq3pgt3h" path="res://Assets/Textures/Character/SLAP STICKER BACK/SLAP BACK 4.png" id="148_a6q8b"]
 [ext_resource type="Shader" uid="uid://cvyi8x0g1llyf" path="res://Assets/Shaders/AlternatorArea.gdshader" id="159_1nwq5"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_vq31v"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nwq5"]
+render_priority = -2
+shader = ExtResource("2_io5h4")
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_threshold = 0.00749999981025
+shader_parameter/normal_influence = 0.0
+shader_parameter/depth_affect = 0.149999996205
+shader_parameter/noise_frequency = 10.0
+shader_parameter/noise_offset_intensity = 0.002
+
 [sub_resource type="QuadMesh" id="QuadMesh_8lbv8"]
 size = Vector2(0.9, 0.9)
 
@@ -182,25 +193,14 @@ render_priority = 2
 next_pass = SubResource("StandardMaterial3D_rb8lh")
 transparency = 3
 alpha_hash_scale = 0.0
-alpha_antialiasing_mode = 0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
 cull_mode = 2
 specular_mode = 1
 albedo_texture = ExtResource("2_cphfr")
 normal_enabled = true
 normal_texture = ExtResource("14_kc7ad")
 backlight = Color(0.72464263, 0.7246426, 0.7246426, 1)
-
-[sub_resource type="Gradient" id="Gradient_mseqm"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5)
-colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq31v"]
-gradient = SubResource("Gradient_mseqm")
-width = 1024
-height = 1024
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_c42h5"]
 size = Vector2(0, 0)
@@ -223,19 +223,6 @@ shader_parameter/secondRayEdge = 0.5
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cphfr"]
 radius = 0.25
 height = 0.8
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_k5k78"]
-transparency = 1
-albedo_color = Color(0.490196, 1, 1, 0.784314)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k5k78"]
-material = SubResource("ORMMaterial3D_k5k78")
-size = Vector3(4, 4, 4)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xvk8m"]
-top_radius = 0.0
-bottom_radius = 1.25
-height = 7.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l6njb"]
 radius = 0.8
@@ -287,7 +274,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/2/path = NodePath("SpritePivot/Sprite/CoolSticker:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -299,7 +286,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/3/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:mesh:size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -311,7 +298,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/4/path = NodePath("SpritePivot/Sprite/CoolSticker:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -323,7 +310,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/5/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -335,70 +322,46 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/6/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0, 3, 5), Vector3(0, 1.5, 2.5)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(-0.523599, 0, 0), Vector3(-0.43633232, 0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0.19999999, 0.4, 0.5, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("70_k6myi"), ExtResource("71_xewgh"), ExtResource("72_n0ub2"), ExtResource("73_ucbnu")]
 }
-tracks/9/type = "value"
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("35_j4462"), ExtResource("36_qg1xx"), ExtResource("37_p4ocl"), ExtResource("38_ueqbd")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("35_j4462"), ExtResource("36_qg1xx"), ExtResource("37_p4ocl"), ExtResource("38_ueqbd")]
+}
+tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
+tracks/9/path = NodePath(".")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("35_j4462"), ExtResource("36_qg1xx"), ExtResource("37_p4ocl"), ExtResource("38_ueqbd")]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("35_j4462"), ExtResource("36_qg1xx"), ExtResource("37_p4ocl"), ExtResource("38_ueqbd")]
-}
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath(".")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -426,7 +389,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/1/path = NodePath("SpritePivot/Sprite/CoolSticker:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -438,7 +401,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/2/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:mesh:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -450,7 +413,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/3/path = NodePath("SpritePivot/Sprite/CoolSticker:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -462,7 +425,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/4/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -471,37 +434,13 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0, 1.5, 2.5), Vector3(0, 3, 5)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(-0.43633232, 0, 0), Vector3(-0.523599, 0, 0)]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.099999994),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -509,37 +448,37 @@ tracks/7/keys = {
 "method": &"store_cool_sticker"
 }]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("73_ucbnu"), ExtResource("70_k6myi")]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("38_ueqbd"), ExtResource("35_j4462")]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -1157,7 +1096,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/CoolSticker:scale")
+tracks/1/path = NodePath("SpritePivot/Sprite/CoolSticker:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1169,7 +1108,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/CoolSticker/Shine:mesh:size")
+tracks/2/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:mesh:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1181,7 +1120,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/CoolSticker:visible")
+tracks/3/path = NodePath("SpritePivot/Sprite/CoolSticker:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1193,7 +1132,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpritePivot/CoolSticker/Shine:visible")
+tracks/4/path = NodePath("SpritePivot/Sprite/CoolSticker/Shine:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1205,58 +1144,34 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:position")
+tracks/5/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3, 5)]
+"update": 1,
+"values": [SubResource("CompressedTexture2D_e7wym")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CameraPivot/CameraZoomPivot/Camera3D:rotation")
+tracks/6/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.523599, 0, 0)]
+"update": 1,
+"values": [ExtResource("14_kc7ad")]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:albedo_texture")
+tracks/7/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CompressedTexture2D_e7wym")]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("SpritePivot/Sprite:surface_material_override/0:normal_texture")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("14_kc7ad")]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("SpritePivot/Sprite:surface_material_override/0:next_pass:normal_texture")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1627,12 +1542,32 @@ shader_parameter/uv_scale = Vector3(0, 0, 0)
 shader_parameter/uv_offset = Vector3(0, 0, 0)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
 collision_layer = 2
-collision_mask = 6181
+collision_mask = 6189
 floor_constant_speed = true
 floor_max_angle = 1.0471976
 script = ExtResource("1_iw8fe")
+
+[node name="PostProcessing" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999976, 0, 0, 0)
+visible = false
+
+[node name="Outlines" type="MeshInstance3D" parent="PostProcessing"]
+layers = 524288
+cast_shadow = 0
+extra_cull_margin = 16384.0
+lod_bias = 128.0
+ignore_occlusion_culling = true
+gi_mode = 0
+gi_lightmap_texel_scale = 0.01
+mesh = SubResource("QuadMesh_vq31v")
+skeleton = NodePath("../../CameraPivot/Camera3D")
+surface_material_override/0 = SubResource("ShaderMaterial_1nwq5")
+
+[node name="CutoutComponent" type="Node" parent="."]
+script = ExtResource("3_io5h4")
 
 [node name="InvoluntaryPushModule" type="Node" parent="." node_paths=PackedStringArray("parent")]
 unique_name_in_owner = true
@@ -1649,7 +1584,7 @@ parent = NodePath("..")
 unique_name_in_owner = true
 script = ExtResource("4_4biwg")
 
-[node name="PlayerSounds" type="Node3D" parent="."]
+[node name="PlayerSounds" type="Node" parent="."]
 
 [node name="FallSound" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
@@ -1663,14 +1598,6 @@ stream = ExtResource("4_rr2ib")
 [node name="RotateCamRight" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
 stream = ExtResource("5_3jjt7")
-
-[node name="PoofSound" type="AudioStreamPlayer" parent="PlayerSounds"]
-unique_name_in_owner = true
-stream = ExtResource("6_3jjt7")
-volume_db = -20.0
-script = ExtResource("10_8hsli")
-soundResource = ExtResource("10_e7wym")
-metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
 [node name="CamZoomIn" type="AudioStreamPlayer" parent="PlayerSounds"]
 unique_name_in_owner = true
@@ -1691,22 +1618,42 @@ script = ExtResource("10_8hsli")
 soundResource = ExtResource("14_6p00r")
 metadata/_custom_type_script = "uid://6jte5qpxmam0"
 
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" groups=["Camera"]]
+unique_name_in_owner = true
+transform = Transform3D(0.9999999, 0, 0, 0, 0.98480785, 0.17364816, 0, -0.1736482, 0.9848076, 0, 0.6, 1.5)
+cull_mask = 655359
+fov = 55.0
+
+[node name="RaycastMarkers" type="Node3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, -0.4, 0)
+
+[node name="Top" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64999986, 0)
+
+[node name="Bottom" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999997, 0)
+
+[node name="Left" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14999998, 0.39999992, 0)
+
+[node name="Right" type="Marker3D" parent="CameraPivot/RaycastMarkers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14999998, 0.39999992, 0)
+
 [node name="SpritePivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, -0.4, 0)
 
 [node name="Sprite" type="MeshInstance3D" parent="SpritePivot"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 0, 1, 0.0353553, -0.0362767, 0.0996694)
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 0, 1, 0, 0.4, 0)
 layers = 2
 mesh = SubResource("QuadMesh_8lbv8")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ghylh")
-
-[node name="Poof" parent="SpritePivot/Sprite" instance=ExtResource("8_3jjt7")]
-unique_name_in_owner = true
-transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939693, 0.34202, -0.707107, -0.241845, 0.664463, 0, 0, 0)
-top_level = true
 
 [node name="PlayerHighlight" type="Sprite3D" parent="SpritePivot/Sprite"]
 unique_name_in_owner = true
@@ -1718,22 +1665,12 @@ fixed_size = true
 render_priority = 3
 texture = ExtResource("11_xvk8m")
 
-[node name="ShadowDecal" type="Decal" parent="SpritePivot"]
+[node name="CoolSticker" type="Sprite3D" parent="SpritePivot/Sprite"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939691, -0.34202, 0, 0.342019, 0.939692, 0.0353553, -0.506123, -0.0713405)
-size = Vector3(0.6, 2, 0.6)
-texture_albedo = SubResource("GradientTexture2D_vq31v")
-lower_fade = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 10.0
-cull_mask = 1048573
-
-[node name="CoolSticker" type="Sprite3D" parent="SpritePivot"]
-unique_name_in_owner = true
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.041619986, 0.55752134, 0.28265622)
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.59999985, 0)
 visible = false
 layers = 4
-pixel_size = 0.0008
+pixel_size = 0.0007
 billboard = 1
 double_sided = false
 no_depth_test = true
@@ -1741,7 +1678,7 @@ texture_filter = 1
 render_priority = 4
 texture = ExtResource("15_n0ub2")
 
-[node name="Shine" type="MeshInstance3D" parent="SpritePivot/CoolSticker"]
+[node name="Shine" type="MeshInstance3D" parent="SpritePivot/Sprite/CoolSticker"]
 unique_name_in_owner = true
 visible = false
 mesh = SubResource("QuadMesh_c42h5")
@@ -1750,99 +1687,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_064yy")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("CapsuleShape3D_cphfr")
-
-[node name="CameraPivot" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6e-45, 0)
-top_level = true
-
-[node name="CubeCutoutPivot" type="Node3D" parent="CameraPivot"]
-unique_name_in_owner = true
-top_level = true
-
-[node name="CubeCutout" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.99)
-visible = false
-mesh = SubResource("BoxMesh_k5k78")
-skeleton = NodePath("../../CameraZoomPivot/Camera3D/CutoutCylinder")
-script = ExtResource("12_xf0c4")
-
-[node name="CubeCutoutAux" type="MeshInstance3D" parent="CameraPivot/CubeCutoutPivot/CubeCutout"]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.499, 0, 3)
-mesh = SubResource("BoxMesh_k5k78")
-skeleton = NodePath("../../../CameraZoomPivot/Camera3D/CutoutCylinder")
-
-[node name="PlayerFloor" type="Marker3D" parent="CameraPivot/CubeCutoutPivot"]
-unique_name_in_owner = true
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.269, 0)
-
-[node name="RotateCamLeft" type="AudioStreamPlayer" parent="CameraPivot/CubeCutoutPivot"]
-stream = ExtResource("4_rr2ib")
-bus = &"SFX"
-
-[node name="RotateCamRight" type="AudioStreamPlayer" parent="CameraPivot/CubeCutoutPivot"]
-stream = ExtResource("5_3jjt7")
-bus = &"SFX"
-
-[node name="CameraZoomPivot" type="Node3D" parent="CameraPivot"]
-unique_name_in_owner = true
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraZoomPivot" groups=["Camera"]]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0, 3, 5)
-cull_mask = 655359
-current = true
-fov = 55.0
-
-[node name="PostProcessing" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
-unique_name_in_owner = true
-visible = false
-
-[node name="Outlines" parent="CameraPivot/CameraZoomPivot/Camera3D/PostProcessing" instance=ExtResource("10_3jjt7")]
-visible = true
-layers = 524288
-skeleton = NodePath("../..")
-
-[node name="CutoutCylinder" type="MeshInstance3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 5.96046e-08, -1, 0, 1, 5.96046e-08, 0, 0, -3.5)
-visible = false
-mesh = SubResource("CylinderMesh_xvk8m")
-skeleton = NodePath("../../..")
-
-[node name="CameraRayCasts" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
-unique_name_in_owner = true
-
-[node name="CameraRayCast1" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, -0.05)
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="CameraRayCast2" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/CameraRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, 0.2)
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="FogRayCasts" type="Node3D" parent="CameraPivot/CameraZoomPivot/Camera3D"]
-unique_name_in_owner = true
-
-[node name="CameraRayCast1" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/FogRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, -0.05)
-collision_mask = 8
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="CameraRayCast2" type="RayCast3D" parent="CameraPivot/CameraZoomPivot/Camera3D/FogRayCasts"]
-transform = Transform3D(1, 0, 0, 0, -1.49012e-07, -1, 0, 1, -1.49012e-07, 0, 0, 0)
-target_position = Vector3(0, -6, 0.2)
-collision_mask = 8
-debug_shape_custom_color = Color(0, 0, 0, 0)
-
-[node name="CameraCubeWallCutout" type="Marker3D" parent="CameraPivot"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 5.1)
 
 [node name="GrabArea" type="Area3D" parent="."]
 unique_name_in_owner = true

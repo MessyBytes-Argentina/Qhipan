@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_qo040"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_ue2y0"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_y7ady"]
-[ext_resource type="Material" uid="uid://cu0xy75eb688w" path="res://Assets/Materials/WithCutout/Rope Rail/Rope Rail.tres" id="3_4we1m"]
+[ext_resource type="Material" uid="uid://cu0xy75eb688w" path="res://Assets/Materials/Rope Rail/Rope Rail.tres" id="3_4we1m"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bj4bn"]
 _surfaces = [{
