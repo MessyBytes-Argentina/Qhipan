@@ -73,6 +73,8 @@ var antiDropAreaCollection: Array[AntiDropArea] = []
 var layerMask: int
 ## Sticker mask for when all stickers are available
 var stickerMask: int
+## Last global position to detect movement
+var lastPos: Vector3
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,19 +91,24 @@ func _ready() -> void:
 ## Called during the physics processing step of the main loop.
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	sort_close_stickers()
+	if lastPos != global_position:
+		sort_close_stickers()
+	lastPos = global_position
 	get_closest_surface()
 
 ## Handles player input.
 func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if player.onSettings: return
-	if event.is_action_pressed("interact") and not zoomedOut and canGrab and not inNoStickerArea:
-		if len(antiDropAreaCollection) > 0: return
-		if not pickupOnHand:
-			do_grab()
-		elif get_sticker_class(currentPickup) & blockedStickers != 0:
-			drop()
+	if not zoomedOut and canGrab and not inNoStickerArea:
+		if event.is_action_pressed("interact"):
+			if len(antiDropAreaCollection) > 0: return
+			if not pickupOnHand:
+				do_grab()
+			elif get_sticker_class(currentPickup) & blockedStickers != 0:
+				drop()
+		if event.is_action_pressed("cycle_stickers"):
+			cycle_stickers()
 
 ## Checks for sticker class
 func get_sticker_class(sticker: StickerBase) -> StickerList:
@@ -126,6 +133,7 @@ func do_grab() -> void:
 	currentPickup.reparent(self)
 	pickupOnHand = true
 	currentPickup.activate_on_player_effect()
+	sort_close_stickers()
 
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
@@ -152,6 +160,7 @@ func place_sticker() -> void:
 	currentPickup.deactivate_on_player_effect()
 	currentPickup = null
 	pickupOnHand = false
+	sort_close_stickers()
 
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false, forceDrop: bool = false) -> void:
@@ -169,6 +178,7 @@ func drop(onReset: bool = false, forceDrop: bool = false) -> void:
 		currentPickup.deactivate_on_player_effect()
 		currentPickup = null
 		pickupOnHand = false
+		sort_close_stickers()
 
 ## When a sticker body is detected it adds it to the closeStickers list
 func _on_body_entered(body: Node3D) -> void:
@@ -180,7 +190,7 @@ func _on_body_exited(body: Node3D) -> void:
 	if body is not StickerBase: return
 	closeStickers.erase(body)
 
-## Sorts the closeSticker list by distance and shows sticker highlight when possible
+## Sorts the closeSticker list by distance and checks for highlight
 func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	currentlyAvailableStickers = closeStickers.duplicate()
@@ -193,11 +203,21 @@ func sort_close_stickers() -> void:
 		raycast.collision_mask = layerMask
 		return not spaceState.intersect_ray(raycast)
 	)
-	if len(currentlyAvailableStickers) == 0 or pickupOnHand or not canGrab or inNoStickerArea: 
+	check_highlight()
+
+## Shows sticker highlight when possible
+func check_highlight() -> void:
+	if len(currentlyAvailableStickers) == 0 or not canGrab or inNoStickerArea: 
 		if highlight: highlight.hide()
 	elif highlight:
 		highlightPivot.global_position = currentlyAvailableStickers[0].global_position
 		highlight.show()
+
+## Cycles between available stickers if possible
+func cycle_stickers() -> void:
+	if len(currentlyAvailableStickers) <= 1 or not canGrab or inNoStickerArea: return
+	currentlyAvailableStickers.push_back(currentlyAvailableStickers.pop_front())
+	check_highlight()
 
 ## When a placement area exits the placement area it's removed from the closeAreas list
 func _on_area_exited(_area: Area3D) -> void:
