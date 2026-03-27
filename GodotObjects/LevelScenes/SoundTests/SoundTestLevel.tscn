@@ -109,7 +109,17 @@ sceneParent = NodePath("../..")
 originalParent = "SoundTestScene"
 
 [node name="StickerLamp" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_w0v3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.5)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="StickerLamp2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_w0v3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
+[node name="StickerLamp3" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("3_w0v3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1.5)
 sceneParent = NodePath("../..")
 originalParent = "SoundTestScene"
 
