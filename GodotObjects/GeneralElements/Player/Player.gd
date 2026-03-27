@@ -389,6 +389,7 @@ func check_falling() -> bool:
 ## Called when player leaves the scene DEMO SHIT
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
+		if not GeneralVariables: return
 		GeneralVariables.in_game_switch(false)
 		queue_free()
 
