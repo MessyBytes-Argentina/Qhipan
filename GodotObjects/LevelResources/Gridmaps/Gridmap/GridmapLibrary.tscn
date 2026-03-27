@@ -1,11 +1,11 @@
 [gd_scene load_steps=60 format=4 uid="uid://cl20o6ojxtevm"]
 
 [ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_fnntw"]
-[ext_resource type="Material" uid="uid://8psq8m74l0gh" path="res://Assets/Materials/WithCutout/Rust-1.tres" id="2_dtlxk"]
+[ext_resource type="Material" path="res://Assets/Materials/WithCutout/Rust-1.tres" id="2_dtlxk"]
 [ext_resource type="Texture2D" uid="uid://cr41yocs0783p" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/Basic.001.png" id="3_ug2ju"]
-[ext_resource type="Material" uid="uid://cka0eqqiaflf5" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="4_ug2ju"]
-[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Materials/WithCutout/Arcilla-1.tres" id="5_kiaye"]
-[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Materials/WithCutout/Baldosas-1.tres" id="6_xeqyn"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/Props/Patron-Andino-1.tres" id="4_ug2ju"]
+[ext_resource type="Material" uid="uid://cd35salnecua2" path="res://Assets/Materials/Enviromental/Piedras/Arcilla-1.tres" id="5_kiaye"]
+[ext_resource type="Material" uid="uid://ciy708bia1kd1" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas-1.tres" id="6_xeqyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6leej"]
 resource_name = "Material.001"

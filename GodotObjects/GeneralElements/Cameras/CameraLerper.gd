@@ -71,6 +71,6 @@ func animation_tick(progress: float) -> void:
 ## Once finished finishes the camera swap.
 func finish_transition(targetCamera: Camera3D) -> void:
 	currentCamera = targetCamera
-	player.currentCamera = targetCamera
+	player.swap_camera(targetCamera)
 	targetCamera.current = true
 	transitioning = false

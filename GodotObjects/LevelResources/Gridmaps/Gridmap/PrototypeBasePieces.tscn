@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkwqkl7tkpo43"]
+
+[ext_resource type="PackedScene" uid="uid://b4uceqjfxw8vo" path="res://GodotObjects/LevelResources/Gridmaps/Upgraded/inherited_base_pieces_upgraded.tscn" id="1_pm7qo"]
+[ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="2_t2w4r"]
+[ext_resource type="Material" uid="uid://ddptw8q7ammr" path="res://Assets/Materials/Prototype/Prototype Grey.tres" id="3_aj6ne"]
+[ext_resource type="Material" uid="uid://c6223kgrhubrh" path="res://Assets/Materials/Prototype/Prototype Green.tres" id="4_rfcp0"]
+[ext_resource type="Material" uid="uid://dvguc0nlq3xwa" path="res://Assets/Materials/Prototype/Prototype Blue.tres" id="5_rw0h8"]
+[ext_resource type="Material" uid="uid://ckcabeonsl0dc" path="res://Assets/Materials/Prototype/Prototype Red.tres" id="6_dx48r"]
+[ext_resource type="Material" uid="uid://cbbyn8b0v0pv" path="res://Assets/Materials/Prototype/Prototype Orange.tres" id="7_b0fl2"]
+
+[node name="Prototype Pieces" type="Node3D"]
+
+[node name="Grey" parent="." instance=ExtResource("1_pm7qo")]
+script = ExtResource("2_t2w4r")
+collectionMaterial = ExtResource("3_aj6ne")
+
+[node name="Green" parent="." instance=ExtResource("1_pm7qo")]
+script = ExtResource("2_t2w4r")
+collectionMaterial = ExtResource("4_rfcp0")
+
+[node name="Blue" parent="." instance=ExtResource("1_pm7qo")]
+script = ExtResource("2_t2w4r")
+collectionMaterial = ExtResource("5_rw0h8")
+
+[node name="Red" parent="." instance=ExtResource("1_pm7qo")]
+script = ExtResource("2_t2w4r")
+collectionMaterial = ExtResource("6_dx48r")
+
+[node name="Orange" parent="." instance=ExtResource("1_pm7qo")]
+script = ExtResource("2_t2w4r")
+collectionMaterial = ExtResource("7_b0fl2")

@@ -18,6 +18,24 @@ enum CameraModes {FREE, ROTATION_LOCKED, FOLLOW_PLAYER, FIXED, FIXED_FOLLOW_PLAY
 		freeBaseRotation = value
 		if Engine.is_editor_hint() and is_node_ready() and mode == CameraModes.FREE:
 			update_camera_position()
+## Base rotation for follow rotations.
+@export_custom(PROPERTY_HINT_RANGE, "-180,180,1,radians_as_degrees") var followBaseRotation: Vector3 = Vector3.ZERO:
+	set(value):
+		followBaseRotation = value
+		if Engine.is_editor_hint() and is_node_ready() and mode in [CameraModes.FOLLOW_PLAYER, CameraModes.FIXED_FOLLOW_PLAYER]:
+			update_camera_position()
+## Rotation limit for follow player rotations.
+@export_custom(PROPERTY_HINT_RANGE, "0,180,1,radians_as_degrees") var followRotationLimit: Vector3 = Vector3.ZERO:
+	set(value):
+		followRotationLimit = value
+		if Engine.is_editor_hint() and is_node_ready() and mode in [CameraModes.FOLLOW_PLAYER, CameraModes.FIXED_FOLLOW_PLAYER]:
+			update_camera_position()
+## Rotation offset for follow player rotations.
+@export_custom(PROPERTY_HINT_RANGE, "-180,180,1,radians_as_degrees") var followRotationOffset: Vector3 = Vector3.ZERO:
+	set(value):
+		followRotationOffset = value
+		if Engine.is_editor_hint() and is_node_ready() and mode in [CameraModes.FOLLOW_PLAYER, CameraModes.FIXED_FOLLOW_PLAYER]:
+			update_camera_position()
 ## Offset to lag behind the player.
 @export_range(0.0, 5.0, 0.01) var offsetToStartFollowing: float = 0.2
 ## How fast to lerp the camera.
@@ -55,6 +73,7 @@ func _ready() -> void:
 	get_player()
 	progress = 0
 	update_camera_position()
+	freeBaseRotation = Vector3(fmod(freeBaseRotation.x, 4 * PI), fmod(freeBaseRotation.y, 4 * PI), fmod(freeBaseRotation.z, 4 * PI))
 
 ## Creates and mans the rail.
 func setup_rail() -> void:
@@ -106,8 +125,7 @@ func get_progress(delta: float) -> void:
 func update_camera_position() -> void:
 	if not pathFollower:
 		if mode == CameraModes.FIXED_FOLLOW_PLAYER:
-			get_player()
-			if player: look_at(player.global_position)
+			look_at_player()
 		return
 	pathFollower.progress_ratio = progress
 	match mode:
@@ -118,9 +136,25 @@ func update_camera_position() -> void:
 			global_position = pathFollower.global_position
 		CameraModes.FOLLOW_PLAYER:
 			global_position = pathFollower.global_position
-			get_player()
-			if player: look_at(player.global_position)
+			look_at_player()
 	if curve: currentOffset = curve.get_closest_offset(path.to_local(global_position))
+
+## Does look at player with clamps.
+func look_at_player() -> void:
+	get_player()
+	if not player: 
+		global_rotation = followBaseRotation
+		return
+	var previousRotation = rotation
+	look_at(player.global_position)
+	global_rotation += followRotationOffset
+	for axis in ["x", "y", "z"]: clamp_axis(axis, previousRotation[axis])
+
+## Clamps a given axis.
+func clamp_axis(axis: String, previousRotation: float) -> void:
+	if followRotationLimit[axis] > 0:
+		if abs(fmod(rotation[axis], 4 * PI) - followBaseRotation[axis]) > followRotationLimit[axis]:
+			rotation[axis] = previousRotation
 
 ## Gets the player.
 func get_player() -> void:

@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh1b4nu0lxnmi"]
+
+[ext_resource type="PackedScene" uid="uid://b4uceqjfxw8vo" path="res://GodotObjects/LevelResources/Gridmaps/Upgraded/inherited_base_pieces_upgraded.tscn" id="1_owlcp"]
+[ext_resource type="Script" uid="uid://culmafke8ir1" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/TilesetCollection.gd" id="1_vfopy"]
+[ext_resource type="Material" uid="uid://dt3ctoracwq40" path="res://Assets/Materials/Enviromental/Terrenos/Arena/Arena.tres" id="3_chfrt"]
+[ext_resource type="Material" uid="uid://ck7y2kyvo3xfb" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/Baldosa Destilería.tres" id="4_w53p3"]
+[ext_resource type="Material" uid="uid://cfkxbb4k5yns7" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Destilería/Cemento Destilería.tres" id="5_wa235"]
+[ext_resource type="Material" uid="uid://hbu6fusu7u2t" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Molino/Baldosa Molino.tres" id="6_8u0ou"]
+[ext_resource type="Material" uid="uid://dr5ln2aluhdhm" path="res://Assets/Materials/Enviromental/Terrenos/Baldosas Distintivas/Molino/Cemento Molino.tres" id="7_cdxcb"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Exterior/Ladrillo Exterior.tres" id="8_h2ylk"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Interior/Ladrillo Interior.tres" id="9_k6jw4"]
+[ext_resource type="Material" uid="uid://bqem16sgg21th" path="res://Assets/Materials/Enviromental/Terrenos/Tierra con Pasto/Tierra con Pasto.tres" id="10_qf0vb"]
+[ext_resource type="Material" uid="uid://bqmrgnm5xpy4h" path="res://Assets/Materials/Enviromental/Terrenos/Tierra Sola/New Earth.tres" id="11_4u5r7"]
+
+[node name="BacePiecesUpgraded" type="Node3D"]
+
+[node name="Arena" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("3_chfrt")
+
+[node name="Baldosa Interior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("4_w53p3")
+
+[node name="Cemento Interior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("5_wa235")
+
+[node name="Baldosa Exterior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("6_8u0ou")
+
+[node name="Cemento Exterior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("7_cdxcb")
+
+[node name="Ladrillo Interior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("8_h2ylk")
+
+[node name="Ladrillo Exterior" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("9_k6jw4")
+
+[node name="Tierra Con Pasto" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("10_qf0vb")
+
+[node name="Tierra Sola" parent="." instance=ExtResource("1_owlcp")]
+script = ExtResource("1_vfopy")
+collectionMaterial = ExtResource("11_4u5r7")

@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_57xuv"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_1rtt0"]
 [ext_resource type="PackedScene" uid="uid://v4l7in5irof5" path="res://GodotObjects/LevelResources/AntiStickerArea/AntiStickerArea.tscn" id="5_4t2lx"]
-[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/WithCutout/Piedras.tres" id="9_jvloj"]
+[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/Enviromental/Piedras/Piedras.tres" id="9_jvloj"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="20_jvloj"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="21_01va3"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="21_cvmp3"]
-[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Azul.tres" id="22_d457b"]
-[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/WithCutout/Portico A/Portico A Face Material.tres" id="25_fpt0c"]
-[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/WithCutout/Patron-Andino-1.tres" id="26_b54xi"]
+[ext_resource type="Material" uid="uid://bkr6tjvk18oqm" path="res://Assets/Materials/Estructural/Walls/Ladrillo Azul.tres" id="22_d457b"]
+[ext_resource type="Material" uid="uid://rnsg2yaymfu7" path="res://Assets/Materials/Props/Portico A/Portico A Face Material.tres" id="25_fpt0c"]
+[ext_resource type="Material" uid="uid://by185uymn0ej3" path="res://Assets/Materials/Props/Patron-Andino-1.tres" id="26_b54xi"]
 
 [sub_resource type="Curve3D" id="Curve3D_uqbb7"]
 _data = {

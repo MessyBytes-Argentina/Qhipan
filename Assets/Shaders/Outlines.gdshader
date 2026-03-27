@@ -53,7 +53,6 @@ float perlin(vec2 pos) {
 
 
 void vertex(){
-
 	POSITION = vec4(VERTEX.xy,1.0,1.0);
 }
 
@@ -122,4 +121,8 @@ void fragment() {
     }
 	//ALBEDO = vec3(sqrt(texture(depth_texture, uv).r));
 
+}
+
+void light(){
+	
 }

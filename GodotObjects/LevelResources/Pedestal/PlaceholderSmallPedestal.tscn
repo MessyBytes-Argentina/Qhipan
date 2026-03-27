@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cvr78l4xvakoj"]
 
 [ext_resource type="Script" uid="uid://cglbff3vusnlm" path="res://GodotObjects/LevelResources/Pedestal/SmallPedestal.gd" id="1_4hne7"]
-[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Interior/Ladrillo Interior.tres" id="1_xtwdd"]
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="3_4hne7"]
+[ext_resource type="Material" uid="uid://tqe7ogvjw6u2" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Interior/Ladrillo Interior.tres" id="1_xtwdd"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="3_4hne7"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="4_8b161"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mtel8"]

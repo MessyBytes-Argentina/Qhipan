@@ -68,14 +68,6 @@ uniform float anisotropy : hint_range(0.0, 1.0, 0.01);
 // Unique values
 uniform float height = 0.0;
 
-// Camera values
-uniform vec3 cameraMiddlePoint;
-uniform float cameraMiddleRotation;
-uniform float squareSize;
-uniform bool auxMode;
-uniform bool rotating;
-uniform vec3 globalPlayerPosition;
-
 // Globals
 varying vec3 world_normal;
 varying vec3 view_normal;
@@ -160,13 +152,6 @@ void fragment() {
 	vec4 base_albedo = triplanar_texture(texture_albedo, power_normal, triplanar_pos) * current_selective_mask;
 	ALPHA = 1.0 - clamp(power_normal.y + binormal.y, 0.0, 2.0);
 	ALPHA = step(0.5, ALPHA);
-	vec4 normalPositions = vec4(worldVector.xz + world_normal.xz, worldVector.xz - world_normal.xz);
-	vec2 distances = vec2(distance(normalPositions.xy, globalPlayerPosition.xz), distance(normalPositions.zw, globalPlayerPosition.xz));
-	bool normalCheckToPlayer = distances.x > distances.y && !goesDown;
-	float sdfBox = sdBoxRotated2d(worldVector.xz - cameraMiddlePoint.xz, vec2(squareSize), cameraMiddleRotation);
-	// Distance Fade: Pixel Alpha
-	bool doCutout = !rotating && normalCheckToPlayer;
-	ALPHA *= clamp(smoothstep(distance_fade_min, distance_fade_max, sdfBox), 0.0, 1.0) * float(doCutout) + float(!doCutout);
 	ALBEDO = base_albedo.rgb * albedo.rgb * top_obfuscation * screen_obfuscation * selective_screen_obfuscation * ALPHA;
 	ALBEDO = clamp(mix(ALBEDO, goesDown ? fade_color_down : fade_color_up, 1.0 - smoothstep(0.0, 1.0, top_obfuscation.r * screen_obfuscation.r * selective_screen_obfuscation * smoothstep(0.0, 0.5, current_selective_mask))), vec3(0.0), vec3(1.0));
 

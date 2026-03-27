@@ -1,0 +1,169 @@
+[gd_scene load_steps=18 format=3 uid="uid://dgywwopa8nmh"]
+
+[ext_resource type="PackedScene" uid="uid://2e8v3drfxv34" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/UpgradedGridmapObject.tscn" id="1_4k03x"]
+[ext_resource type="Texture2D" uid="uid://sqtxibr8ogo0" path="res://Assets/Textures/paleta_colores.png" id="2_2kfau"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kfau"]
+shading_mode = 0
+
+[sub_resource type="TextMesh" id="TextMesh_msgbv"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Category: ROUND
+Keywords:
+- Block (Columnas)
+- Double (doble altura)
+- Triple (triple altura)
+- Thin (Columna angosta)
+- Corner
+- Negativa (contra curva)
+- Slab
+- Bevel
+"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_2kfau"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Category: Bevel
+Keywords:
+- Side
+- Corner
+- Parallel
+- Cap"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_yo0b8"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Category: Vertical"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_rw4yl"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Arena"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_o5kge"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Baldosa Exterior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_i8k2a"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Cemento Exterior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_qcpct"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Baldosa Interior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_qmrkf"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Camento Interior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_cytvj"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Ladrillo Exterior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_h4jdr"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Tierra con Pasto"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_83cga"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Tierra Sola"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_2yuo4"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "Ladrillo Interior"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_4k03x"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "MATERIAL KEYWORDS"
+font_size = 40
+
+[sub_resource type="TextMesh" id="TextMesh_8l42u"]
+material = SubResource("StandardMaterial3D_2kfau")
+text = "GENERAL KEYWORDS
+- Cube
+- Ramp
+- Slab
+- Block
+- Removed
+- Corner
+- Wedge"
+font_size = 40
+
+[node name="Museum" type="Node3D"]
+
+[node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_4k03x")]
+data = {
+"cells": PackedInt32Array(65532, 2, 1442148, 65529, 2, 1442150, 65533, 2, 1442152, 65534, 2, 1442149, 65531, 2, 1442151, 65530, 2, 1442147, 65529, 4, 1442153, 65530, 4, 1442154, 65531, 4, 1442145, 65532, 4, 1442155, 65533, 4, 1442146, 65534, 4, 1442156, 65532, 6, 367, 65530, 6, 1048942, 2, 2, 153, 262146, 2, 199, 524290, 2, 245, 10, 2, 337, 262154, 2, 383, 6, 2, 61, 262150, 2, 107, 524294, 2, 291, 524298, 2, 15, 65534, 6, 365, 65523, 2, 349, 65524, 2, 348, 65526, 2, 354, 65527, 2, 353, 327667, 2, 347, 327668, 2, 350, 327670, 2, 346, 327671, 2, 352, 589812, 2, 345, 589811, 2, 351, 65517, 2, 1442120, 65518, 2, 1442131, 65519, 2, 1048918, 65520, 2, 1442132, 65521, 2, 343, 327661, 2, 365, 327663, 2, 341, 327665, 2, 1442136)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
+
+[node name="Tags" type="Node3D" parent="."]
+
+[node name="Category Round" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.794465, 2)
+mesh = SubResource("TextMesh_msgbv")
+
+[node name="Category Bevel" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 6.694465, 2)
+mesh = SubResource("TextMesh_2kfau")
+
+[node name="Category Vertical" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 3.6944652, 2)
+mesh = SubResource("TextMesh_yo0b8")
+
+[node name="Arena Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 5.694465, 1.8000001)
+mesh = SubResource("TextMesh_rw4yl")
+
+[node name="Baldosa Exterior Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.6944652, 1.8000001)
+mesh = SubResource("TextMesh_o5kge")
+
+[node name="Cemento Exterior Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3.6944652, 1.8000001)
+mesh = SubResource("TextMesh_i8k2a")
+
+[node name="Baldosa Interior Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.6944652, 1.8000001)
+mesh = SubResource("TextMesh_qcpct")
+
+[node name="Cemento Interior Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.6944652, 1.8000001)
+mesh = SubResource("TextMesh_qmrkf")
+
+[node name="Ladrillo Exterior Tag" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5.694465, 1.8000001)
+mesh = SubResource("TextMesh_cytvj")
+
+[node name="Tierra con Pasto" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.6944652, 1.8000001)
+mesh = SubResource("TextMesh_h4jdr")
+
+[node name="Tierra Sola" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 3.6944652, 1.8000001)
+mesh = SubResource("TextMesh_83cga")
+
+[node name="Ladrillo Interior" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 5.694465, 1.8000001)
+mesh = SubResource("TextMesh_2yuo4")
+
+[node name="Material Keywords" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.694465, 1.8000001)
+mesh = SubResource("TextMesh_4k03x")
+
+[node name="General Keywords" type="MeshInstance3D" parent="Tags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6, 5.0944653, 1.8000001)
+mesh = SubResource("TextMesh_8l42u")
+
+[node name="Palette" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.337778, 5, 2)
+texture = ExtResource("2_2kfau")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://6mh0kqfnui1e"]
 
-[ext_resource type="Material" uid="uid://twqcp50kf00f" path="res://Assets/Materials/Reja/Reja.tres" id="1_ns51y"]
+[ext_resource type="Material" uid="uid://twqcp50kf00f" path="res://Assets/Materials/Props/Reja/Reja.tres" id="1_ns51y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_efgxu"]
 size = Vector3(1, 1, 0.25)

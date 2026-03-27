@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_5p3jd"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_ndg67"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="3_77oe0"]
-[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/WithCutout/Wood Fence/Wood Fence.tres" id="4_5p3jd"]
+[ext_resource type="Material" uid="uid://c2v0ikfgkf54p" path="res://Assets/Materials/Estructural/Fences/Wood Fence/Wood Fence.tres" id="4_5p3jd"]
 [ext_resource type="Script" uid="uid://cqarofy2kggt" path="res://GodotObjects/LevelResources/Walls/RandomMultimeshInstance.gd" id="5_6tfig"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sbpkj"]

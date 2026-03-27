@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://2e8v3drfxv34"]
+
+[ext_resource type="MeshLibrary" uid="uid://p0o0keyowjmt" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/UpgradedGridmap.tres" id="1_i4q5a"]
+
+[node name="UpgradedGridmapObject" type="GridMap" groups=["Gridmap"]]
+mesh_library = ExtResource("1_i4q5a")
+cell_size = Vector3(1, 0.5, 1)
+cell_center_y = false
+metadata/_editor_floor_ = Vector3(0, 0, 0)

@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://pvc1wchcttc2" path="res://GodotObjects/LevelResources/PathModels/PopulatingPath.gd" id="1_n36hx"]
 [ext_resource type="Script" uid="uid://ci5wvjf6ekhnq" path="res://GodotObjects/LevelResources/Walls/MultiMeshResource.gd" id="2_chiju"]
 [ext_resource type="Script" uid="uid://c5i6hg47281jm" path="res://GodotObjects/LevelResources/Walls/PathPopulatorResource.gd" id="2_eqqg4"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_c662v"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="3_c662v"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_4g0gq"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_f3fs8"]
-[ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Piedras/Piedras_albedo.png" id="6_7gyso"]
-[ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Piedras/Piedras_normal.png" id="7_e2jmk"]
-[ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Piedras/Piedras_orm.png" id="8_wjl1s"]
+[ext_resource type="Texture2D" uid="uid://d0tw75j5mojq4" path="res://Assets/Materials/Enviromental/Piedras/Textures/Piedras_albedo.png" id="6_7gyso"]
+[ext_resource type="Texture2D" uid="uid://ci7ept3ljsgda" path="res://Assets/Materials/Enviromental/Piedras/Textures/Piedras_normal.png" id="7_e2jmk"]
+[ext_resource type="Texture2D" uid="uid://ca0i2e6buf5s7" path="res://Assets/Materials/Enviromental/Piedras/Textures/Piedras_orm.png" id="8_wjl1s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00bqr"]
 render_priority = 0

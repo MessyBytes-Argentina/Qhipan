@@ -9,29 +9,29 @@
 [ext_resource type="Script" uid="uid://c4bu42j3ajl1x" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.gd" id="6_xreyp"]
 [ext_resource type="PackedScene" uid="uid://g4nvui5dhffk" path="res://Assets/Models/Fan Machines/fan_placement.tscn" id="7_6fuqp"]
 [ext_resource type="PackedScene" uid="uid://bpkf0okc884ry" path="res://Assets/Models/Fan Machines/fan_placement_vertical.tscn" id="7_bqiac"]
-[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/WithCutout/Puerta Chackana/Puerta Chackana.tres" id="7_idoyc"]
-[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonCutoutShaderAlpha.gdshader" id="8_0nf3i"]
+[ext_resource type="Material" uid="uid://et67lclgtp0l" path="res://Assets/Materials/Props/Puerta Chackana/Puerta Chackana.tres" id="7_idoyc"]
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonShaderAlpha.gdshader" id="8_0nf3i"]
 [ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="8_32ax7"]
 [ext_resource type="Script" uid="uid://cctq08qihhy37" path="res://GodotObjects/LevelResources/ShapeExtruder/ShapeExtruder.gd" id="8_caj7f"]
-[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/WithCutout/Terrenos/Comunes/Ladrillo Exterior/Ladrillo Exterior.tres" id="9_6fuqp"]
-[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_albedo.png" id="11_be435"]
-[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_normal.png" id="12_540uq"]
+[ext_resource type="Material" uid="uid://cvhhh1d0yeocc" path="res://Assets/Materials/Enviromental/Terrenos/Ladrillo Exterior/Ladrillo Exterior.tres" id="9_6fuqp"]
+[ext_resource type="Texture2D" uid="uid://c63psg6nxbx01" path="res://Assets/Materials/Estructural/Sticker Placements/Normal Placement/Chakana Placeholder_albedo.png" id="11_be435"]
+[ext_resource type="Texture2D" uid="uid://gta4ndohf2tf" path="res://Assets/Materials/Estructural/Sticker Placements/Normal Placement/Chakana Placeholder_normal.png" id="12_540uq"]
 [ext_resource type="PackedScene" uid="uid://bsiqj32o2lu41" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/bridge.tscn" id="12_kapp8"]
 [ext_resource type="Script" uid="uid://d4b07ry1uvwgr" path="res://GodotObjects/LevelResources/Walls/WallGenerator.gd" id="13_5cjl0"]
 [ext_resource type="PackedScene" uid="uid://dfyuul4plxy48" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/rope_rail.tscn" id="13_8rbat"]
-[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/WithCutout/Sticker Placements/Normal Placement/Chakana Placeholder_orm.png" id="13_h66y8"]
+[ext_resource type="Texture2D" uid="uid://baxjf4ppsj3qg" path="res://Assets/Materials/Estructural/Sticker Placements/Normal Placement/Chakana Placeholder_orm.png" id="13_h66y8"]
 [ext_resource type="Script" uid="uid://cpapjcv8gch4b" path="res://GodotObjects/LevelResources/StickerArea/StickerMarker.gd" id="14_0ktue"]
-[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/WithCutout/Walls/Ladera Terrosa Wall.tres" id="14_6fuqp"]
-[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/WithCutout/Walls/Ladrillo Rojo.tres" id="14_caj7f"]
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="16_4lybr"]
+[ext_resource type="Material" uid="uid://cn1sf4r5byqob" path="res://Assets/Materials/Estructural/Walls/Ladera Terrosa Wall.tres" id="14_6fuqp"]
+[ext_resource type="Material" uid="uid://dm3whp6bi4c02" path="res://Assets/Materials/Estructural/Walls/Ladrillo Rojo.tres" id="14_caj7f"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="16_4lybr"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="17_8rbat"]
 [ext_resource type="Script" uid="uid://bddbbu1gkhxjt" path="res://GodotObjects/GeneralElements/Environment/EnvironmentLerper.gd" id="18_0y02q"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="18_coq2h"]
-[ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="19_l7nsy"]
+[ext_resource type="Texture2D" uid="uid://cud22ouo6qpup" path="res://Assets/Materials/Estructural/Walls/Ladera Mejorada/Ladera Mejorada_albedo.png" id="19_l7nsy"]
 [ext_resource type="Resource" uid="uid://c4s6sdt66h5f2" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerEnvironment.tres" id="19_qmpux"]
-[ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="20_aeeo3"]
+[ext_resource type="Texture2D" uid="uid://b6pfutytmfsn0" path="res://Assets/Materials/Estructural/Walls/Ladera Mejorada/Ladera Mejorada_normal.png" id="20_aeeo3"]
 [ext_resource type="Resource" uid="uid://bva01fhpet3b" path="res://GodotObjects/GeneralElements/Environment/Presets/Exterior Atardecer/ExteriorAtardecerLight.tres" id="20_ufcgp"]
-[ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/WithCutout/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="21_bqiac"]
+[ext_resource type="Texture2D" uid="uid://ceslepsucb3jd" path="res://Assets/Materials/Estructural/Walls/Ladera Mejorada/Ladera Mejorada_orm.png" id="21_bqiac"]
 [ext_resource type="Resource" uid="uid://vy31upty1ilh" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioEnvironment.tres" id="21_kmm3r"]
 [ext_resource type="Resource" uid="uid://pemsm3bybhgf" path="res://GodotObjects/GeneralElements/Environment/Presets/Interior Frio/InteriorFrioLight.tres" id="22_txbe1"]
 [ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="35_idoyc"]
@@ -99,22 +99,6 @@ shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_e4t6e"]
 material = SubResource("ShaderMaterial_wvyl4")
@@ -309,22 +293,6 @@ shader_parameter/side_clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/top_anisotropy = 0.0
 shader_parameter/side_anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_4lybr"]
 material = SubResource("ShaderMaterial_86do6")
@@ -334,12 +302,12 @@ sections = 10
 section_length = 1.0
 curve = SubResource("Curve_6dxpo")
 
-[sub_resource type="Curve3D" id="Curve3D_idoyc"]
+[sub_resource type="Curve3D" id="Curve3D_0ktue"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.8749318, 0.9948616, -0.68598485, 0, 0, 0, 0, 0, 0, 4.1239786, 1.1712294, -1.7619703, 0, 0, 0, 0, 0, 0, 8.879686, -2.0249023, -10.560752),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.6674123, -0.08437967, -2.85569, 0, 0, 0, 0, 0, 0, 3.700643, 1.4125762, -8.520562),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_0nf3i"]
 _data = {
@@ -757,21 +725,25 @@ mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(-0.977531, 0.04864398, -0.20509996, 0, 0.9730067, 0.2307699, 0.21078983, 0.22558488, -0.9511444, -3.3749318, 0.9948616, -3.1859848)
+transform = Transform3D(-0.5219001, -0.08167881, -0.84908706, 0, 0.995405, -0.09575402, 0.8530066, -0.049974035, -0.519502, -4.6674123, 1.4156203, -2.85569)
 cull_mask = 655359
 current = true
 fov = 55.0
 script = ExtResource("35_idoyc")
-freeBaseRotation = Vector3(-0.2617994, -1.5358897, 0)
+mode = 2
+freeBaseRotation = Vector3(-0.41887903, -1.5358897, 0)
+followBaseRotation = Vector3(-0.34906584, -2.443461, 0)
+followRotationLimit = Vector3(-0.6981317, 1.3962634, 0)
+followRotationOffset = Vector3(0.34906584, 0, 0)
 
 [node name="CameraPath" type="Path3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 top_level = true
-curve = SubResource("Curve3D_idoyc")
+curve = SubResource("Curve3D_0ktue")
 metadata/CameraPath = true
 
 [node name="Camera3D2" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(0.9995899, -0.02091004, 0.019485466, 7.9413164e-11, 0.68174595, 0.7315835, -0.028581757, -0.73128694, 0.68146527, -7.374932, 2.9948616, 2.3140152)
+transform = Transform3D(0.99959147, -0.02091009, 0.019485574, 7.941329e-11, 0.68174756, 0.7315875, -0.028581802, -0.7312887, 0.681469, -7.374932, 2.9948616, 2.3140152)
 cull_mask = 655359
 fov = 55.0
 script = ExtResource("35_idoyc")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://crep7wjqspl23"]
 
 [ext_resource type="Script" uid="uid://cmfhpf6ech4wv" path="res://GodotObjects/LevelResources/Pedestal/InventoryPedestal.gd" id="1_irmxf"]
-[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/WithCutout/Piedras.tres" id="2_f0j2y"]
-[ext_resource type="Material" uid="uid://clsh5or3lqcrk" path="res://Assets/Materials/Murales/Mural Placeholder/MuralPlaceholder.tres" id="2_x4dyn"]
+[ext_resource type="Material" uid="uid://bd2l2y5yrfe0c" path="res://Assets/Materials/Enviromental/Piedras/Piedras.tres" id="2_f0j2y"]
+[ext_resource type="Material" uid="uid://clsh5or3lqcrk" path="res://Assets/Materials/Props/Murales/Mural Placeholder/MuralPlaceholder.tres" id="2_x4dyn"]
 [ext_resource type="Texture2D" uid="uid://bv6ei23av1k0w" path="res://Assets/Textures/Stickers/Placeholder Murals/Planta.png" id="3_irmxf"]
 [ext_resource type="Texture2D" uid="uid://d0vsrt2ej7lbk" path="res://Assets/Textures/Sticker Indicator Arrow.png" id="4_3v3fd"]
 

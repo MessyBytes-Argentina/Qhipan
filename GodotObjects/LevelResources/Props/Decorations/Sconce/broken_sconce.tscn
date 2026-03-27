@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://17aglbv45lu0"]
 
-[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneCutoutShader.gdshader" id="1_x85ol"]
+[ext_resource type="Shader" uid="uid://j67qewi23t7g" path="res://Assets/Shaders/ToonTriplaneShader.gdshader" id="1_x85ol"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_0a2st"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_pwu86"]
-[ext_resource type="Texture2D" uid="uid://cf8774wnvepjx" path="res://Assets/Materials/Switch Blocks/Azul/Switch Block Azul_albedo.png" id="4_8rwgy"]
-[ext_resource type="Texture2D" uid="uid://bs433x5xelnxm" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_normal.png" id="5_fvyp3"]
-[ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Switch Blocks/Switch Block Azul_orm.png" id="6_p0ijl"]
+[ext_resource type="Texture2D" uid="uid://cf8774wnvepjx" path="res://Assets/Materials/Props/Switch Blocks/Azul/Switch Block Azul_albedo.png" id="4_8rwgy"]
+[ext_resource type="Texture2D" uid="uid://bs433x5xelnxm" path="res://Assets/Materials/Props/Switch Blocks/Switch Block Azul_normal.png" id="5_fvyp3"]
+[ext_resource type="Texture2D" uid="uid://djnj7igikqs0w" path="res://Assets/Materials/Props/Switch Blocks/Switch Block Azul_orm.png" id="6_p0ijl"]
 [ext_resource type="Script" uid="uid://bu0cc5bk06ki" path="res://GodotObjects/GeneralElements/OnWallObject.gd" id="7_v0jhd"]
 [ext_resource type="PackedScene" uid="uid://bc5kl5oyjudpv" path="res://GodotObjects/LevelResources/Props/Decorations/Sconce/fallen_crystal.tscn" id="7_wpk0s"]
 
