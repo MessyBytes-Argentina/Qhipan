@@ -1,5 +1,10 @@
 extends AnimatableBody3D
+
+## Represents moving platforms.
 class_name MovingPlatform
+
+## Signal that the mode has switched.
+signal state_switched(newMode: bool)
 
 ## Color and animation parameters for the platform.
 const EMISSION: Dictionary[String, Variant] = {
@@ -76,6 +81,7 @@ func switch_state() -> void:
 	if isPermanent: return
 	powered = !powered
 	mode = "on" if powered else "off"
+	state_switched.emit(mode)
 	transition_color()
 
 ## Transitions to another mode.

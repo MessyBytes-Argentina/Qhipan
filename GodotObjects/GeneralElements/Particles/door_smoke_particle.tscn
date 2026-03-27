@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqa1gb6c12eqq"]
+
+[sub_resource type="Curve" id="Curve_ekaqn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7442748, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpwc1"]
+curve = SubResource("Curve_ekaqn")
+
+[sub_resource type="Curve" id="Curve_wpwc1"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_55ifw"]
+curve = SubResource("Curve_wpwc1")
+
+[sub_resource type="Curve" id="Curve_hu4jo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ekaqn"]
+curve = SubResource("Curve_hu4jo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpwc1"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(0.5, 0.1, 0.5)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.1
+emission_ring_inner_radius = 0.9
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 0.99997765
+gravity = Vector3(0, 0, 0)
+radial_accel_curve = SubResource("CurveTexture_55ifw")
+damping_min = 100.00001
+damping_max = 100.00001
+scale_curve = SubResource("CurveTexture_ekaqn")
+alpha_curve = SubResource("CurveTexture_wpwc1")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hu4jo"]
+load_path = "res://.godot/imported/Poof-Cloud.png-d72747695316850e04ad56e3979a1856.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekaqn"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("CompressedTexture2D_hu4jo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_y025s"]
+material = SubResource("StandardMaterial3D_ekaqn")
+size = Vector2(0.5, 0.5)
+
+[node name="DoorSmokeParticle" type="GPUParticles3D"]
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 2158445566
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_wpwc1")
+draw_pass_1 = SubResource("QuadMesh_y025s")

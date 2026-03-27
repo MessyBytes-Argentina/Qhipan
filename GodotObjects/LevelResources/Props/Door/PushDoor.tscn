@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://xwsbpt7bioko"]
+[gd_scene load_steps=18 format=4 uid="uid://xwsbpt7bioko"]
 
 [ext_resource type="Script" uid="uid://brjdvstq6o7aw" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.gd" id="1_m727r"]
 [ext_resource type="Material" uid="uid://g8mif02pabbp" path="res://Assets/Materials/Props/Puente Empujable Demo/Demo Puente Empujable.tres" id="3_55ifw"]
 [ext_resource type="Script" uid="uid://br537trrcofyf" path="res://GodotObjects/LevelResources/Props/Door/PlayerPushChecker.gd" id="4_55ifw"]
 [ext_resource type="AudioStream" uid="uid://d3fk6yvvhdgpe" path="res://Assets/Sounds/SFX/Door Activate.mp3" id="4_ekaqn"]
+[ext_resource type="PackedScene" uid="uid://dssmeu7eu6c87" path="res://GodotObjects/GeneralElements/Particles/StickerPlacedParticles.tscn" id="4_hu4jo"]
+[ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="4_wpwc1"]
+[ext_resource type="PackedScene" uid="uid://dqa1gb6c12eqq" path="res://GodotObjects/GeneralElements/Particles/door_smoke_particle.tscn" id="5_echi1"]
 [ext_resource type="Script" uid="uid://6jte5qpxmam0" path="res://GodotObjects/GeneralElements/SoundPlayer/RandomSoundPlayer.gd" id="5_wpwc1"]
 [ext_resource type="Resource" uid="uid://fcwoju7q3gpe" path="res://Assets/Sounds/SFXResources/DoorOpen.tres" id="7_hu4jo"]
 
@@ -43,6 +46,75 @@ data = PackedVector3Array(0.5, -5.96046e-08, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyqt8"]
 size = Vector3(0.1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_iyqt8"]
+resource_name = "RotateToFloor"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Centered/UpPivot/DownPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 4.37114e-08, -1), Vector3(0, 0.1, -0.985)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Centered/UpPivot/DownPivot/Door/DoorBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Centered/UpPivot/DownPivot/Particles/MultipleParticle3DEmitter (doorsmoke)")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_animator"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Centered/UpPivot/DownPivot/Particles/MultipleParticle3DEmitter (Interact)")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_animator"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hu4jo"]
 resource_name = "Opened"
@@ -160,47 +232,6 @@ tracks/5/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_iyqt8"]
-resource_name = "RotateToFloor"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Centered/UpPivot/DownPivot:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-3, -3),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Centered/UpPivot/DownPivot:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 4.37114e-08, -1), Vector3(0, 0.1, -0.985)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Centered/UpPivot/DownPivot/Door/DoorBody:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gmc35"]
 _data = {
 &"Open": SubResource("Animation_iyqt8"),
@@ -263,6 +294,22 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 0.02
 one_shot = true
+
+[node name="Particles" type="Node3D" parent="Centered/UpPivot/DownPivot"]
+
+[node name="MultipleParticle3DEmitter (doorsmoke)" type="Node3D" parent="Centered/UpPivot/DownPivot/Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.0658141e-14, 0, 1.0658141e-14, 1, 0, -2.18557e-08, 0.5)
+script = ExtResource("4_wpwc1")
+particles = Array[PackedScene]([ExtResource("5_echi1")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
+
+[node name="MultipleParticle3DEmitter (Interact)" type="Node3D" parent="Centered/UpPivot/DownPivot/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.18557e-08, 0.5)
+script = ExtResource("4_wpwc1")
+particles = Array[PackedScene]([ExtResource("4_hu4jo")])
+_testParticles = ""
+metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

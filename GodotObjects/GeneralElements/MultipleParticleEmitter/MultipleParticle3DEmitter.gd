@@ -103,3 +103,6 @@ func emit_particles(newPosition: Vector3 = global_position, newRotation: Vector3
 			if len(particles) > 1 and i < len(particles) - 1:
 				if delay[i] > 0:
 					await get_tree().create_timer(delay[i]).timeout
+
+func emit_animator():
+	emit_particles()
