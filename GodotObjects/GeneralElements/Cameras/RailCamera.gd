@@ -157,7 +157,6 @@ func update_camera_position() -> void:
 	if leashLength == 0 or leashAxis == Vector3.ZERO: return
 	if mode in [CameraModes.FREE, CameraModes.ROTATION_LOCKED, CameraModes.FOLLOW_PLAYER]: currentLeashPosition = global_position
 	var leashDirection: Vector3 = (currentLeashPosition.direction_to(player.global_position) * leashAxis).normalized()
-	print(leashDirection)
 	position = currentLeashPosition + leashDirection * leashLength
 
 ## Does look at player with clamps.
