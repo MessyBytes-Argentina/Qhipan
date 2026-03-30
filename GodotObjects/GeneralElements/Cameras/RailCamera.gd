@@ -36,6 +36,18 @@ enum CameraModes {FREE, ROTATION_LOCKED, FOLLOW_PLAYER, FIXED, FIXED_FOLLOW_PLAY
 		followRotationOffset = value
 		if Engine.is_editor_hint() and is_node_ready() and mode in [CameraModes.FOLLOW_PLAYER, CameraModes.FIXED_FOLLOW_PLAYER]:
 			update_camera_position()
+## Leash length. Ffor offsetting the camara in regard to the player position.
+@export_range(0.0, 20.0, 0.01) var leashLength: float:
+	set(value):
+		leashLength = value
+		if Engine.is_editor_hint() and is_node_ready():
+			update_camera_position()
+## Leash axis lock. The influence on each given axis.
+@export_custom(PROPERTY_HINT_RANGE, "-1.0,1.0,0.01") var leashAxis: Vector3 = Vector3.ZERO:
+	set(value):
+		leashAxis = value
+		if Engine.is_editor_hint() and is_node_ready():
+			update_camera_position()
 ## Offset to lag behind the player.
 @export_range(0.0, 5.0, 0.01) var offsetToStartFollowing: float = 0.2
 ## How fast to lerp the camera.
@@ -63,6 +75,8 @@ var pointLength: float
 var curveLength: float = 0
 ## The current offset of the curve that the camera is settled into.
 var currentOffset: float = 0
+## The offset position, used for leash operations.
+var currentLeashPosition: Vector3
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -123,21 +137,28 @@ func get_progress(delta: float) -> void:
 
 ## Updates the camera along the rail.
 func update_camera_position() -> void:
+	if not currentLeashPosition:
+		currentLeashPosition = global_position
 	if not pathFollower:
 		if mode == CameraModes.FIXED_FOLLOW_PLAYER:
 			look_at_player()
-		return
-	pathFollower.progress_ratio = progress
-	match mode:
-		CameraModes.FREE:
-			global_transform = pathFollower.global_transform
-			rotation += freeBaseRotation
-		CameraModes.ROTATION_LOCKED:
-			global_position = pathFollower.global_position
-		CameraModes.FOLLOW_PLAYER:
-			global_position = pathFollower.global_position
-			look_at_player()
-	if curve: currentOffset = curve.get_closest_offset(path.to_local(global_position))
+	else:
+		pathFollower.progress_ratio = progress
+		match mode:
+			CameraModes.FREE:
+				global_transform = pathFollower.global_transform
+				rotation += freeBaseRotation
+			CameraModes.ROTATION_LOCKED:
+				global_position = pathFollower.global_position
+			CameraModes.FOLLOW_PLAYER:
+				global_position = pathFollower.global_position
+				look_at_player()
+		if curve: currentOffset = curve.get_closest_offset(path.to_local(global_position))
+	if leashLength == 0 or leashAxis == Vector3.ZERO: return
+	if mode in [CameraModes.FREE, CameraModes.ROTATION_LOCKED, CameraModes.FOLLOW_PLAYER]: currentLeashPosition = global_position
+	var leashDirection: Vector3 = (currentLeashPosition.direction_to(player.global_position) * leashAxis).normalized()
+	print(leashDirection)
+	position = currentLeashPosition + leashDirection * leashLength
 
 ## Does look at player with clamps.
 func look_at_player() -> void:
