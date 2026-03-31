@@ -204,7 +204,8 @@ func _on_body_exited(body: Node3D) -> void:
 func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	currentlyAvailableStickers = closeStickers.duplicate()
-	currentlyAvailableStickers.erase(currentPickup)
+	if currentlyAvailableStickers.has(currentPickup):
+		currentlyAvailableStickers.erase(currentPickup)
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
 		if get_sticker_class(a) & blockedStickers == 0: return false
