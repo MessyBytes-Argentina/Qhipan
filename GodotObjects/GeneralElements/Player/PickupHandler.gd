@@ -34,6 +34,9 @@ enum StickerList {ALTERNATOR = 1, FAN = 2, LAMP = 4, KEY = 8, INVENTORY = 16}
 @onready var highlightPivot: Node3D = %HighlightPivot
 ## PlaceholderArea reference for sticker placement detection
 @onready var placeholderArea: Area3D = %PlaceholderArea
+## Timer reference for pick up cooldown
+@onready var pickupCd: Timer = $PickupCooldown
+
 ## Reference to the player.
 var player: Player
 
@@ -101,7 +104,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if player.onSettings: return
 	if not zoomedOut and canGrab and not inNoStickerArea:
-		if event.is_action_pressed("interact"):
+		if event.is_action_pressed("interact") and pickupCd.is_stopped():
 			if len(antiDropAreaCollection) > 0: return
 			#if not pickupOnHand:
 				#do_grab()
@@ -115,6 +118,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif len(currentlyAvailableStickers) > 0:
 				do_grab()
 			sort_close_stickers()
+			pickupCd.start()
 		if event.is_action_pressed("cycle_stickers"):
 			cycle_stickers()
 

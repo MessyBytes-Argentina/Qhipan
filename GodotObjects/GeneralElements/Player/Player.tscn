@@ -1760,6 +1760,10 @@ monitorable = false
 shape = SubResource("SphereShape3D_hlfjp")
 debug_color = Color(1, 0.833333, 0, 0.419608)
 
+[node name="PickupCooldown" type="Timer" parent="GrabArea"]
+wait_time = 0.3
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
