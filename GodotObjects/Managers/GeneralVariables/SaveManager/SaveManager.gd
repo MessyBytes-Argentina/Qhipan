@@ -31,6 +31,10 @@ func delete_sticker(sticker: StickerBase) -> void:
 func request_scene_load(scene: Node, loadEnvironment: bool = false) -> void:
 	currentSave.load_changes(scene, loadEnvironment)
 
+## Resets a scene's save.
+func reset_saved_scene(sceneName: String, toReset: Array[String] = ["stickerModifications", "removedStickers", "openDoors", "objectHiders"]) -> void:
+	currentSave.reset_saved_scene(sceneName, toReset)
+
 ## Refreshes save on restart DEMO SHIT
 func _on_new_gamestate(isPlaying: bool) -> void:
 	if isPlaying: currentSave = SaveResource.new()
