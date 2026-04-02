@@ -1,20 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://255156x4bcbw"]
+[gd_scene load_steps=9 format=3 uid="uid://ddnqkludn7533"]
 
-[sub_resource type="Curve" id="Curve_d8any"]
+[sub_resource type="Curve" id="Curve_o0qyv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16065574, 1), 0.0, 0.0, 0, 0, Vector2(0.8327869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_xufk4"]
-curve = SubResource("Curve_d8any")
+[sub_resource type="CurveTexture" id="CurveTexture_11wf7"]
+curve = SubResource("Curve_o0qyv")
 
-[sub_resource type="Curve" id="Curve_w1tbg"]
+[sub_resource type="Curve" id="Curve_vhxve"]
 _data = [Vector2(0, 0.5431034), 0.0, 0.0, 0, 0, Vector2(0.25573772, 1), 0.0, 0.0, 0, 0, Vector2(0.58360654, 1), 0.0, 0.0, 0, 0, Vector2(0.8534279, 0.44855595), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_7v4v6"]
-curve = SubResource("Curve_w1tbg")
+[sub_resource type="CurveTexture" id="CurveTexture_8nkqc"]
+curve = SubResource("Curve_vhxve")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t8syx"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_377iv"]
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.2
@@ -25,14 +25,14 @@ angle_min = 1.0728835e-05
 angle_max = 1.0728835e-05
 direction = Vector3(1, 0, 1)
 spread = 0.0
-radial_velocity_min = -3.0000222
-radial_velocity_max = -3.0000222
+radial_velocity_min = 2.9999776
+radial_velocity_max = 2.9999776
 gravity = Vector3(0, 0, 0)
 damping_min = 30.404001
 damping_max = 30.404001
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_7v4v6")
-alpha_curve = SubResource("CurveTexture_xufk4")
+scale_curve = SubResource("CurveTexture_8nkqc")
+alpha_curve = SubResource("CurveTexture_11wf7")
 hue_variation_min = -0.15000002
 hue_variation_max = -0.15000002
 anim_offset_max = 1.0
@@ -58,10 +58,10 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_xufk4")
 size = Vector2(0.1, 0.1)
 
-[node name="PlatformPowerSwitchParticlesON" type="GPUParticles3D"]
+[node name="PlatformPowerSwitchParticlesOFF" type="GPUParticles3D"]
 emitting = false
 amount = 10
 lifetime = 0.15000000000000002
 one_shot = true
-process_material = SubResource("ParticleProcessMaterial_t8syx")
+process_material = SubResource("ParticleProcessMaterial_377iv")
 draw_pass_1 = SubResource("QuadMesh_w1tbg")

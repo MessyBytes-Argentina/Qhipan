@@ -81,7 +81,7 @@ func switch_state() -> void:
 	if isPermanent: return
 	powered = !powered
 	mode = "on" if powered else "off"
-	state_switched.emit(mode)
+	state_switched.emit(powered)
 	transition_color()
 
 ## Transitions to another mode.
