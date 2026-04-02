@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cd3aubgkj73k0"]
+[gd_scene load_steps=78 format=3 uid="uid://cd3aubgkj73k0"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_ovbv4"]
 [ext_resource type="Script" uid="uid://dnqb2rmldc7yh" path="res://GodotObjects/LevelResources/ChunkLoading/ChunkLoadingHotspot.gd" id="2_2x748"]
@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://c1itoeoceqq0o" path="res://GodotObjects/LevelResources/Stickers/InventorySticker/InventorySticker.tscn" id="37_h66y8"]
 [ext_resource type="Texture2D" uid="uid://brkxeqdvai8ha" path="res://Assets/Textures/Stickers/Placeholder Murals/Inti.png" id="38_0ktue"]
 [ext_resource type="Script" uid="uid://cs5riap1rgf6x" path="res://GodotObjects/Managers/GeneralVariables/Inventory/PocketSticker.gd" id="39_6kxku"]
-[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="40_0ktue"]
 
 [sub_resource type="Curve3D" id="Curve3D_osh58"]
 _data = {
@@ -301,13 +300,6 @@ radial_steps = 6
 sections = 10
 section_length = 1.0
 curve = SubResource("Curve_6dxpo")
-
-[sub_resource type="Curve3D" id="Curve3D_0ktue"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.6674123, -0.08437967, -2.85569, 0, 0, 0, 0, 0, 0, 3.700643, 1.4125762, -8.520562),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_0nf3i"]
 _data = {
@@ -725,22 +717,18 @@ mesh = SubResource("TubeTrailMesh_4lybr")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(-0.5219001, -0.08167881, -0.84908706, 0, 0.995405, -0.09575402, 0.8530066, -0.049974035, -0.519502, -4.6674123, 1.4156203, -2.85569)
+transform = Transform3D(-0.76604444, 0.21984631, -0.6040228, 0, 0.9396926, 0.34202012, 0.64278764, 0.26200262, -0.7198463, 3.8325877, 0.9156203, -0.85569)
 cull_mask = 655359
 current = true
 fov = 55.0
 script = ExtResource("35_idoyc")
-mode = 2
+mode = 4
 freeBaseRotation = Vector3(-0.41887903, -1.5358897, 0)
 followBaseRotation = Vector3(-0.34906584, -2.443461, 0)
-followRotationLimit = Vector3(-0.6981317, 1.3962634, 0)
+followRotationLimit = Vector3(-0.6981317, 0, 0)
 followRotationOffset = Vector3(0.34906584, 0, 0)
-
-[node name="CameraPath" type="Path3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-top_level = true
-curve = SubResource("Curve3D_0ktue")
-metadata/CameraPath = true
+leashLength = 3.0
+leashAxis = Vector3(-1, 0, -1)
 
 [node name="Camera3D2" type="Camera3D" parent="." groups=["Camera"]]
 transform = Transform3D(0.99959147, -0.02091009, 0.019485574, 7.941329e-11, 0.68174756, 0.7315875, -0.028581802, -0.7312887, 0.681469, -7.374932, 2.9948616, 2.3140152)
@@ -748,6 +736,8 @@ cull_mask = 655359
 fov = 55.0
 script = ExtResource("35_idoyc")
 freeBaseRotation = Vector3(-0.8552113, -0.06981317, 0)
+leashLength = null
+leashAxis = null
 
 [node name="CameraPath" type="Path3D" parent="Camera3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
@@ -769,7 +759,3 @@ shape = SubResource("BoxShape3D_be435")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59339285, 0, 0.0005517006)
 sticker = SubResource("Resource_7ddii")
 sceneParent = NodePath("..")
-
-[node name="Darkness" parent="." instance=ExtResource("40_0ktue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.75, -2.5)
-size = Vector3(3, 2.5, 2)

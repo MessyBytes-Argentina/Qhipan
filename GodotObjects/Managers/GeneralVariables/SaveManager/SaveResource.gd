@@ -61,6 +61,8 @@ class SceneSave:
 	var stickerModifications: Dictionary[int, StickerSave] = {}
 	## Deleted stickers.
 	var removedStickers: Array[NodePath] = []
+	## Deleted inventory stickers.
+	var removedInventoryStickers: Array[NodePath] = []
 	## Activated pedestals.
 	var activePedestals: Array[PedestalSave] = []
 	## Permanently open doors.
@@ -105,7 +107,7 @@ func delete_inventory_sticker(sticker: InventorySticker) -> void:
 	else:
 		currentScene = SceneSave.new()
 		sceneChanges[sticker.sceneParent.name] = currentScene
-	sceneChanges[sticker.sceneParent.name].removedStickers.append(NodePath(sticker.originalParentPath))
+	sceneChanges[sticker.sceneParent.name].removedInventoryStickers.append(NodePath(sticker.originalParentPath))
 
 ## Stores sticker removal.
 func delete_sticker(sticker: StickerBase) -> void:
@@ -131,6 +133,8 @@ func load_changes(scene: Node, loadEnvironment: bool = false) -> void:
 	for hider in currentSave.objectHiders:
 		GeneralVariables.get_tree().root.get_node(hider).restore_save(currentSave.objectHiders[hider])
 	for sticker in currentSave.removedStickers:
+		GeneralVariables.get_tree().root.get_node(sticker).queue_free()
+	for sticker in currentSave.removedInventoryStickers:
 		GeneralVariables.get_tree().root.get_node(sticker).queue_free()
 	for pedestal in currentSave.activePedestals:
 		var pedestalNode: Node = GeneralVariables.get_tree().root.get_node(pedestal.nodePath)
@@ -158,3 +162,8 @@ func new_sticker(UUID: int, sticker: StickerSave, scene: Node) -> void:
 	newSticker.sceneParent = scene
 	scene.add_child(newSticker)
 	newSticker.position = sticker.position
+
+## Resets a scene save.
+func reset_saved_scene(sceneName: String, toReset: Array[String] = ["stickerModifications", "removedStickers", "openDoors", "objectHiders"]) -> void:
+	if not sceneChanges.has(sceneName): return
+	for param in toReset: sceneChanges[sceneName][param].clear()

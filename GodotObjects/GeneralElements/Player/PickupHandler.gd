@@ -34,6 +34,9 @@ enum StickerList {ALTERNATOR = 1, FAN = 2, LAMP = 4, KEY = 8, INVENTORY = 16}
 @onready var highlightPivot: Node3D = %HighlightPivot
 ## PlaceholderArea reference for sticker placement detection
 @onready var placeholderArea: Area3D = %PlaceholderArea
+## Timer reference for pick up cooldown
+@onready var pickupCd: Timer = $PickupCooldown
+
 ## Reference to the player.
 var player: Player
 
@@ -101,12 +104,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if player.onSettings: return
 	if not zoomedOut and canGrab and not inNoStickerArea:
-		if event.is_action_pressed("interact"):
+		if event.is_action_pressed("interact") and pickupCd.is_stopped():
 			if len(antiDropAreaCollection) > 0: return
-			if not pickupOnHand:
+			#if not pickupOnHand:
+				#do_grab()
+			#elif get_sticker_class(currentPickup) & blockedStickers != 0:
+				#drop()
+			if pickupOnHand:
+				if get_sticker_class(currentPickup) & blockedStickers != 0:
+					drop()
+				if len(currentlyAvailableStickers) > 0:
+					do_grab()
+			elif len(currentlyAvailableStickers) > 0:
 				do_grab()
-			elif get_sticker_class(currentPickup) & blockedStickers != 0:
-				drop()
+			sort_close_stickers()
+			pickupCd.start()
 		if event.is_action_pressed("cycle_stickers"):
 			cycle_stickers()
 
@@ -122,6 +134,7 @@ func get_sticker_class(sticker: StickerBase) -> StickerList:
 func do_grab() -> void:
 	if len(currentlyAvailableStickers) == 0: return
 	currentPickup = currentlyAvailableStickers[0]
+	
 	if currentPickup.placed:
 		removeSound.play_sound()
 		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_sticker(currentPickup)
@@ -133,7 +146,6 @@ func do_grab() -> void:
 	currentPickup.reparent(self)
 	pickupOnHand = true
 	currentPickup.activate_on_player_effect()
-	sort_close_stickers()
 
 ## Checks for available areas to place a sticker
 func check_available_area() -> bool:
@@ -160,7 +172,6 @@ func place_sticker() -> void:
 	currentPickup.deactivate_on_player_effect()
 	currentPickup = null
 	pickupOnHand = false
-	sort_close_stickers()
 
 ## Tries to place sticker, if it can't it drops it on the ground
 func drop(onReset: bool = false, forceDrop: bool = false) -> void:
@@ -178,7 +189,6 @@ func drop(onReset: bool = false, forceDrop: bool = false) -> void:
 		currentPickup.deactivate_on_player_effect()
 		currentPickup = null
 		pickupOnHand = false
-		sort_close_stickers()
 
 ## When a sticker body is detected it adds it to the closeStickers list
 func _on_body_entered(body: Node3D) -> void:
@@ -194,6 +204,8 @@ func _on_body_exited(body: Node3D) -> void:
 func sort_close_stickers() -> void:
 	closeStickers.sort_custom(func(a: StickerBase, b: StickerBase): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
 	currentlyAvailableStickers = closeStickers.duplicate()
+	if currentlyAvailableStickers.has(currentPickup):
+		currentlyAvailableStickers.erase(currentPickup)
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	currentlyAvailableStickers = currentlyAvailableStickers.filter(func(a: StickerBase): 
 		if get_sticker_class(a) & blockedStickers == 0: return false
