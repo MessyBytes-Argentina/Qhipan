@@ -105,14 +105,24 @@ func switch_fan(mode: bool = not isOn) -> void:
 		canCheckLength = true
 	else: canCheckLength = false
 
+## Returns the direction of the fan
+func get_fan_direction() -> Vector3:
+	return origin.global_position.direction_to(target.global_position)
+
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
+	prints("hello:", body.name)
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
-		body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true, true)
+		body.get_node("InvoluntaryPushModule").push(self, get_fan_direction(), pushForce, true, true)
+	if body is PushableBlock:
+		prints("hello")
+		body.push(self)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
 		body.get_node("InvoluntaryPushModule").stop_pushing(self, true)
+	if body is PushableBlock:
+		body.stop_pushing()

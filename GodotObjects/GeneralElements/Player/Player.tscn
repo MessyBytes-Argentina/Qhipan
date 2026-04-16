@@ -1544,7 +1544,7 @@ shader_parameter/uv_offset = Vector3(0, 0, 0)
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
 collision_layer = 2
-collision_mask = 6189
+collision_mask = 22573
 floor_constant_speed = true
 floor_max_angle = 1.0471976
 script = ExtResource("1_iw8fe")

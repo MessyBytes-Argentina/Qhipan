@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqxq2c1j1cy3e"]
+
+[ext_resource type="Script" uid="uid://badepv5nenped" path="res://GodotObjects/LevelResources/PushableBlock/PushableBlock.gd" id="1_aunex"]
+[ext_resource type="Material" uid="uid://dvguc0nlq3xwa" path="res://Assets/Materials/Prototype/Prototype Blue.tres" id="1_tbg2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aunex"]
+size = Vector3(0.99, 0.99, 0.99)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yia5y"]
+material = ExtResource("1_tbg2u")
+
+[node name="PushableBlock" type="AnimatableBody3D"]
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource("1_aunex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_aunex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yia5y")
