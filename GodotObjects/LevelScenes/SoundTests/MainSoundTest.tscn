@@ -10,12 +10,12 @@
 [node name="EnvironmentObjects" parent="." instance=ExtResource("1_waxla")]
 
 [node name="Player" parent="." instance=ExtResource("2_2bl52")]
-transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 0, 0, 0)
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 1, 0, 0.5)
 
 [node name="SoundTestScene" parent="." instance=ExtResource("3_c45bg")]
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.9794792, -0.08277075, 0.1837647, 0, 0.91177917, 0.4106809, -0.20154518, -0.4022534, 0.89306873, 0.6009935, 1.343112, 2.9207377)
+transform = Transform3D(0.54975766, 0.7197302, -0.4239752, 0, 0.50755763, 0.8616178, 0.8353242, -0.47368097, 0.2790337, -0.3990065, 2.843112, 1.4207377)
 cull_mask = 655359
 current = true
 script = ExtResource("4_quybr")

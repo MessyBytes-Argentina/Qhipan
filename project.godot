@@ -187,6 +187,7 @@ cycle_stickers={
 3d_physics/layer_13="Wind & Light Pass Through"
 3d_physics/layer_14="AlternatingBlocks"
 3d_physics/layer_15="PushableBlocks"
+3d_physics/layer_16="FanAreas"
 
 [rendering]
 

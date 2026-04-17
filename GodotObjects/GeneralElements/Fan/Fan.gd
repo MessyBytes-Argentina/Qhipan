@@ -111,18 +111,12 @@ func get_fan_direction() -> Vector3:
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
-	prints("hello:", body.name)
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
 		body.get_node("InvoluntaryPushModule").push(self, get_fan_direction(), pushForce, true, true)
-	if body is PushableBlock:
-		prints("hello")
-		body.push(self)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
 		body.get_node("InvoluntaryPushModule").stop_pushing(self, true)
-	if body is PushableBlock:
-		body.stop_pushing()

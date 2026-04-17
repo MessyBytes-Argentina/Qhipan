@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqxq2c1j1cy3e"]
+[gd_scene load_steps=6 format=3 uid="uid://bqxq2c1j1cy3e"]
 
 [ext_resource type="Script" uid="uid://badepv5nenped" path="res://GodotObjects/LevelResources/PushableBlock/PushableBlock.gd" id="1_aunex"]
 [ext_resource type="Material" uid="uid://dvguc0nlq3xwa" path="res://Assets/Materials/Prototype/Prototype Blue.tres" id="1_tbg2u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aunex"]
-size = Vector3(0.99, 0.99, 0.99)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yia5y"]
 material = ExtResource("1_tbg2u")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yia5y"]
+size = Vector3(0.6, 0.6, 0.6)
 
 [node name="PushableBlock" type="AnimatableBody3D"]
 collision_layer = 16384
@@ -19,3 +21,13 @@ shape = SubResource("BoxShape3D_aunex")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_yia5y")
+
+[node name="FanChecker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FanChecker"]
+shape = SubResource("BoxShape3D_yia5y")
+debug_color = Color(0.9413197, 1.0203719e-05, 0.61331546, 0.41960785)
+
+[connection signal="area_exited" from="FanChecker" to="." method="stop_pushing"]
