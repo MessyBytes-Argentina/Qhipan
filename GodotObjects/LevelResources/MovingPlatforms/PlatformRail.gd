@@ -6,7 +6,7 @@ class_name PlatformRail
 ## Platform speed
 @export_range(0.1, 5, 0.05) var speed: float = 1
 ## Platform speed when called
-@export_range(0.1, 5, 0.05) var returnSpeed: float = 5
+@export_range(0.1, 20, 0.05) var returnSpeed: float = 5
 ## Wait time to start moving after being blocked
 @export_range(0.1, 10, 0.05) var blockedTime: float = 3
 

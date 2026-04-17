@@ -69,7 +69,7 @@ func leyline_child_off() -> void:
 
 ## Signals to animate cube.
 func animate_cube(mode: bool) -> void:
-	var previousState: bool = state
+	var _previousState: bool = state
 	# ANIMATE CUBE HERE
 	state = mode
 	animation_finished()

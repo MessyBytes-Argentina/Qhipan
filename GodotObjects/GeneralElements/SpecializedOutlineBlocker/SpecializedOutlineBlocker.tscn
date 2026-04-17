@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://1i6rt2m78ouu"]
+
+[ext_resource type="Shader" uid="uid://bxkdm3v8jja5r" path="res://Assets/Shaders/DarknessOutlineBlocker.gdshader" id="1_6puts"]
+[ext_resource type="Script" uid="uid://b38wm5orvjewh" path="res://GodotObjects/GeneralElements/SpecializedOutlineBlocker/SpecializedOutlineBlocker.gd" id="2_61s75"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ve3d1"]
+
+[sub_resource type="Gradient" id="Gradient_3rjmh"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qs13x"]
+gradient = SubResource("Gradient_3rjmh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rjmh"]
+render_priority = -3
+shader = ExtResource("1_6puts")
+shader_parameter/size = Vector3(20, 0, 20)
+shader_parameter/light_mask = SubResource("GradientTexture1D_qs13x")
+shader_parameter/override = 3.0
+
+[node name="SpecializedOutlineBlocker" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_ve3d1")
+surface_material_override/0 = SubResource("ShaderMaterial_3rjmh")
+script = ExtResource("2_61s75")

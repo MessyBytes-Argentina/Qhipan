@@ -4,7 +4,7 @@ class_name PlatformCaller
 ## Position to which this caller send the platform
 @export_range(0, 1, 1) var callTo: int = 0
 ## Reference to the platform rail to call
-@export var railReference: PlatformRail
+@export var railReferences: Array[PlatformRail]
 
 ## Executed when node first enters the scene tree.
 func _ready() -> void:
@@ -12,4 +12,5 @@ func _ready() -> void:
 
 ## Calls the platform to the set position
 func call_platform(_body) -> void:
-	railReference.call_platform(callTo)
+	for railReference in railReferences:
+		railReference.call_platform(callTo)
