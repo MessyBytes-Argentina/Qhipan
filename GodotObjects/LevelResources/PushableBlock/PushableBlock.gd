@@ -5,7 +5,7 @@ class_name PushableBlock
 
 @onready var fanChecker: Area3D = $FanChecker
 
-const moveTime: float = 1.0
+const moveTime: float = 0.2
 
 var moveTween: Tween
 var isMoving: bool = false

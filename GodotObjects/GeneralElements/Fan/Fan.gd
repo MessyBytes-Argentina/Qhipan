@@ -97,6 +97,7 @@ func check_obstacles() -> void:
 ## Turns on and off the fan
 func switch_fan(mode: bool = not isOn) -> void:
 	isOn = mode
+	set_deferred("monitorable", isOn)
 	set_deferred("monitoring", isOn)
 	if fanParticles: fanParticles.emitting = mode
 	noGravity.set_deferred("monitoring", isOn and hasAntigravity)
