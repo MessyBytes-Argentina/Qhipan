@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chpjrc2kgjrb"]
+[gd_scene load_steps=22 format=3 uid="uid://chpjrc2kgjrb"]
 
 [ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_8gtv3"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_5r4h4"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="7_fanpx"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="8_qckw7"]
 [ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="9_xsxny"]
-[ext_resource type="PackedScene" uid="uid://1i6rt2m78ouu" path="res://GodotObjects/GeneralElements/SpecializedOutlineBlocker/SpecializedOutlineBlocker.tscn" id="10_apee8"]
 [ext_resource type="Script" uid="uid://ch1wpkvccnv8n" path="res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/CameraSwap.gd" id="11_5r4h4"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
@@ -65,13 +64,10 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_5r4h4"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 2.5, 0, 0, -3, 0, -2, 0, 0, -2.5, 0, 0, 0, 2.5, 0, 3),
+"points": PackedVector3Array(0, 0, 0, 2.5, 0, 0, -3, 0, -2, 0, 0, -2.5, 0, 0, 0, 2.5, 0, 3.5),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3rjmh"]
-size = Vector3(20, 2, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4gmex"]
 size = Vector3(18, 1, 18)
@@ -139,7 +135,7 @@ shape = SubResource("BoxShape3D_vwmu5")
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 3.5, 1.5, -3.5)
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(1.9470544e-07, 0.25881904, -0.9659171, 0, 0.9659258, 0.25881672, 0.999991, -5.0393925e-08, 1.88071e-07, 2, 3, 2)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -2, 3, -2)
 cull_mask = 655359
 current = true
 script = ExtResource("9_xsxny")
@@ -148,7 +144,6 @@ freeBaseRotation = Vector3(-0.2617994, 1.5707964, 0)
 leashAxis = Vector3(1, 0, 1)
 offsetToStartFollowing = 0.0
 followSpeed = 2.0
-progress = 1.0
 metadata/_custom_type_script = "uid://bmkcxot1om0jv"
 
 [node name="CameraPath" type="Path3D" parent="RailCamera"]
@@ -158,7 +153,7 @@ curve = SubResource("Curve3D_8gtv3")
 metadata/CameraPath = true
 
 [node name="RailCamera2" type="Camera3D" parent="."]
-transform = Transform3D(0.9999843, 0, 0, 0, 0.9659258, 0.258815, 0, -0.25881904, 0.9659107, -0.5, 8.5, -5)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -0.5, 8.150001, -5)
 cull_mask = 655359
 script = ExtResource("9_xsxny")
 pathOffset = Vector3(0, 1, 0)
@@ -169,24 +164,10 @@ followSpeed = 2.0
 metadata/_custom_type_script = "uid://bmkcxot1om0jv"
 
 [node name="CameraPath" type="Path3D" parent="RailCamera2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 8.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 8.150001, -3)
 top_level = true
 curve = SubResource("Curve3D_5r4h4")
 metadata/CameraPath = true
-
-[node name="OutlineBlockerWhileArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OutlineBlockerWhileArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-shape = SubResource("BoxShape3D_3rjmh")
-
-[node name="SpecializedOutlineBlocker" parent="." instance=ExtResource("10_apee8")]
-transform = Transform3D(20, 0, 0, 0, 1.1, 0, 0, 0, 20, 0, 7, 0)
-visible = false
 
 [node name="CameraSwapArea" type="Area3D" parent="." node_paths=PackedStringArray("targetCamera")]
 script = ExtResource("11_5r4h4")
@@ -208,6 +189,3 @@ metadata/_custom_type_script = "uid://ch1wpkvccnv8n"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraSwapArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4, -3)
 shape = SubResource("BoxShape3D_4gmex")
-
-[connection signal="body_entered" from="OutlineBlockerWhileArea" to="SpecializedOutlineBlocker" method="player_entered"]
-[connection signal="body_exited" from="OutlineBlockerWhileArea" to="SpecializedOutlineBlocker" method="player_exited"]
