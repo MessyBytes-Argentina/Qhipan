@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bh7syru2hvl88"]
+[gd_scene load_steps=19 format=3 uid="uid://bh7syru2hvl88"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_r7bpn"]
 [ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="2_c1rls"]
@@ -46,6 +46,13 @@ metadata/_custom_type_script = "uid://44mc8q7u8dbc"
 [sub_resource type="Curve3D" id="Curve3D_ivg0v"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_fvpom"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -113,8 +120,14 @@ metadata/CameraPath = true
 transform = Transform3D(-4.3545047e-08, -0.08715573, -0.99619466, -3.809697e-09, 0.99619466, -0.08715573, 1, 0, -4.371139e-08, 16.5, 2.4999995, 1.1920929e-07)
 cull_mask = 655359
 script = ExtResource("9_f743w")
-mode = 3
+mode = 1
 metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.4999995, 1.1920929e-07)
+top_level = true
+curve = SubResource("Curve3D_fvpom")
+metadata/CameraPath = true
 
 [node name="CameraSwapArea" type="Area3D" parent="." node_paths=PackedStringArray("targetCamera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
