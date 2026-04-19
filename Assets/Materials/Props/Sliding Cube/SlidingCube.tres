@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://t3eatekj02eh"]
+
+[ext_resource type="Shader" uid="uid://omq16r2m5a6" path="res://Assets/Shaders/ToonShaderAlpha.gdshader" id="1_magl1"]
+[ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="2_magl1"]
+[ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="3_u78u7"]
+[ext_resource type="Texture2D" uid="uid://couixwrwbyvbf" path="res://Assets/Materials/Props/Sliding Cube/MM_SlidingCube_albedo.png" id="4_ov5wd"]
+[ext_resource type="Texture2D" uid="uid://bo0gkmin60xsl" path="res://Assets/Materials/Props/Sliding Cube/Layline Map.png" id="5_magl1"]
+[ext_resource type="Texture2D" uid="uid://b58noar478os4" path="res://Assets/Materials/Props/Sliding Cube/MM_SlidingCube_normal.png" id="5_v6cwa"]
+[ext_resource type="Texture2D" uid="uid://cfociv07ij6uf" path="res://Assets/Materials/Props/Sliding Cube/MM_SlidingCube_orm.png" id="6_k5j50"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_magl1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/light_gradient = ExtResource("3_u78u7")
+shader_parameter/fresnel_gradient = ExtResource("2_magl1")
+shader_parameter/texture_scale = 1.0
+shader_parameter/blend_sharpness = 10.0
+shader_parameter/texture_albedo = ExtResource("4_ov5wd")
+shader_parameter/enable_normal = true
+shader_parameter/texture_normal = ExtResource("5_v6cwa")
+shader_parameter/normal_scale = 1.0
+shader_parameter/texture_orm = ExtResource("6_k5j50")
+shader_parameter/enable_ambient_occlusion = false
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/enable_emission = true
+shader_parameter/texture_emission = ExtResource("5_magl1")
+shader_parameter/emission = Color(0.45792133, 0.51567227, 0.9588401, 1)
+shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/enable_clearcoat = false
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_roughness = 0.5
+shader_parameter/enable_anisotropy = false
+shader_parameter/anisotropy = 0.0
