@@ -127,7 +127,7 @@ func _process(delta: float) -> void:
 	update_camera_position()
 
 ## Returns the goal progress for the current frame.
-func get_progress(delta: float) -> void:
+func get_progress(delta: float, forced: bool = false) -> void:
 	if Engine.is_editor_hint() or mode in [CameraModes.FIXED, CameraModes.FIXED_FOLLOW_PLAYER]: return
 	if not curve:
 		curve = path.curve
@@ -142,7 +142,12 @@ func get_progress(delta: float) -> void:
 	if distance < offsetToStartFollowing: return
 	var targetOffset: float = sign(currentOffset - closestOffset) * offsetToStartFollowing + closestOffset
 	var targetProgress: float = clamp(targetOffset / curveLength, 0.0, 1.0)
-	progress = lerp(progress, targetProgress, followSpeed * delta)
+	progress = lerp(progress, targetProgress, followSpeed * delta) if not forced else targetProgress
+
+## Forces camera update for lerping.
+func force_update() -> void:
+	get_progress(0, true)
+	update_camera_position()
 
 ## Updates the camera along the rail.
 func update_camera_position() -> void:
