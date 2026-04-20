@@ -45,6 +45,7 @@ uniform float top_metallic_specular : hint_range(0.0, 1.0, 0.01);
 uniform float side_metallic_specular : hint_range(0.0, 1.0, 0.01);
 uniform float top_metallic : hint_range(0.0, 1.0, 0.01);
 uniform float side_metallic : hint_range(0.0, 1.0, 0.01);
+uniform bool emission_multiply = false;
 
 // Emission
 uniform bool enable_emission = false;
@@ -178,7 +179,12 @@ void fragment() {
 	if (enable_emission) {
 		// Emission: Add
 		vec3 base_emission = triplanar_texture(top_texture_emission, side_texture_emission, power_normal, triplanar_pos).rgb;
-		EMISSION = (vec3_plane_condition(top_emission, side_emission) + base_emission) * float_plane_condition(top_emission_energy_multiplier, side_emission_energy_multiplier);
+		if (emission_multiply) {
+			base_emission = vec3_plane_condition(top_emission, side_emission) * base_emission;
+		} else {
+			base_emission = vec3_plane_condition(top_emission, side_emission) + base_emission;
+		}
+		EMISSION = base_emission * float_plane_condition(top_emission_energy_multiplier, side_emission_energy_multiplier);
 	}
 
 	if (enable_clearcoat) {

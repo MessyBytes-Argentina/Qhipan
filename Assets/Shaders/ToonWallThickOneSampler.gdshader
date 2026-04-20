@@ -53,6 +53,7 @@ uniform bool enable_emission = false;
 uniform sampler2D texture_emission : source_color, filter_linear_mipmap, repeat_enable;
 uniform vec3 emission : source_color;
 uniform float emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
+uniform bool emission_multiply = false;
 
 // Clearcoat
 uniform bool enable_clearcoat = false;
@@ -185,7 +186,11 @@ void fragment() {
 	if (enable_emission) {
 		// Emission: Add
 		vec3 base_emission = triplanar_texture(texture_emission, power_normal, triplanar_pos).rgb * current_selective_mask;
-		EMISSION = (emission + base_emission) * emission_energy_multiplier;
+		if (emission_multiply) {
+			EMISSION = (emission * base_emission) * emission_energy_multiplier;
+		} else {
+			EMISSION = (emission + base_emission) * emission_energy_multiplier;
+		}
 	}
 
 	if (enable_clearcoat) {

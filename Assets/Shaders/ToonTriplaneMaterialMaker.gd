@@ -216,6 +216,7 @@ func make_material() -> void:
 			finalizeShaderMaterial.shader = load(taShader)
 			make_T_material()
 			finalizeShaderMaterial.set_shader_parameter("uv1_scale", UVSize)
+	finalizeShaderMaterial.set_shader_parameter("emission_multiply", surfaceMaterial.emission_operator == BaseMaterial3D.EmissionOperator.EMISSION_OP_MULTIPLY)
 
 ## Make a Toon Standard Material.
 func make_T_material() -> void:
