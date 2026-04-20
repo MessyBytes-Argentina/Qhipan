@@ -54,6 +54,7 @@ uniform vec3 top_emission : source_color;
 uniform vec3 side_emission : source_color;
 uniform float top_emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
 uniform float side_emission_energy_multiplier : hint_range(0.0, 100.0, 0.01);
+uniform bool emission_multiply = false;
 
 // Clearcoat
 uniform bool enable_clearcoat = false;
@@ -177,7 +178,12 @@ void fragment() {
 	if (enable_emission) {
 		// Emission: Add
 		vec3 base_emission = triplanar_texture(top_texture_emission, side_texture_emission, power_normal, triplanar_pos).rgb;
-		EMISSION = (vec3_plane_condition(top_emission, side_emission) + base_emission) * float_plane_condition(top_emission_energy_multiplier, side_emission_energy_multiplier);
+		if (emission_multiply) {
+			base_emission = vec3_plane_condition(top_emission, side_emission) * base_emission;
+		} else {
+			base_emission = vec3_plane_condition(top_emission, side_emission) + base_emission;
+		}
+		EMISSION = base_emission * float_plane_condition(top_emission_energy_multiplier, side_emission_energy_multiplier);
 	}
 
 	if (enable_clearcoat) {

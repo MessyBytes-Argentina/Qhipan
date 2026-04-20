@@ -66,8 +66,12 @@ var mesh: QuadMesh
 var material: ShaderMaterial
 ## This piece's parent if it's a leyline piece.
 var leylineParent: LeylinePiece
+## This piece's parent if it's a CubeCheck.
+var cubeCheckParent: LeylineCubeCheck
 ## This piece's leyline piece children.
 var leylineChildren: Array[LeylinePiece] = []
+## This piece's LeylineCubeCheck children.
+var leylineCubeChildren: Array[LeylineCubeCheck] = []
 ## This piece's alternable children.
 var alternableChildren: Array[Node] = []
 ## Tracks if this piece is on currently.
@@ -97,9 +101,11 @@ func _ready() -> void:
 	set_length()
 	if not Engine.is_editor_hint(): GeneralVariables.queue_to_cutout_materials([material], true)
 	leylineParent = get_parent() if get_parent() is LeylinePiece else null
+	cubeCheckParent = get_parent() if get_parent() is LeylineCubeCheck else null
 	for child in get_children(): 
 		if child is LeylinePiece: leylineChildren.append(child)
-		if child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: alternableChildren.append(child)
+		elif child is LeylineCubeCheck: leylineCubeChildren.append(child)
+		elif child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: alternableChildren.append(child)
 	if not Engine.is_editor_hint(): return
 	var editorMesh: MeshInstance3D = MeshInstance3D.new()
 	editorMesh.mesh = PrismMesh.new()
@@ -165,18 +171,24 @@ func apply_textures(piece: String) -> void:
 
 ## Switches state.
 func switch_state() -> void:
-	if leylineParent: return
+	if leylineParent or cubeCheckParent: return
 	if not isOn: animate()
 	else: animate_last() 
 
 ## Animates the last piece first, used for turning off.
 func animate_last() -> void:
-	if len(leylineChildren) == 0: animate()
-	else: for child in leylineChildren: child.animate_last()
+	if len(leylineChildren) == 0 and len(leylineCubeChildren) == 0: animate()
+	else: 
+		for child in leylineChildren: child.animate_last()
+		for child in leylineCubeChildren: child.animate_last()
 
 ## Animates this piece and subsequent ones.
 func animate() -> void:
-	if isOn: for child in leylineChildren: if child.progress > 0: return
+	if isOn: 
+		var doOff: bool = true
+		doOff = doOff and not leylineChildren.any(func(a: LeylinePiece): return a.progress > 0)
+		doOff = doOff and not leylineCubeChildren.any(func(a: Node): return a.state)
+		if not doOff: return
 	isOn = not isOn
 	if tween: if tween.is_running(): tween.kill()
 	tween = create_tween()
@@ -196,9 +208,12 @@ func _animation_tick(currentProgres: float) -> void:
 func animation_finished() -> void:
 	if isOn: 
 		for child in leylineChildren: child.animate()
+		for child in leylineCubeChildren: child.animate_cube(true)
 		if not Engine.is_editor_hint(): for child in alternableChildren: child.switch_state()
 	elif leylineParent:
 		leylineParent.animate()
+	elif cubeCheckParent:
+		cubeCheckParent.leyline_child_off()
 
 ## Cleans unique materials.
 func _notification(what) -> void:

@@ -235,6 +235,7 @@ func make_T_material() -> void:
 			if surfaceMaterial[mode + "_enabled"] == false: validModes[mode] = false
 	for mode in validModes:
 		finalizeShaderMaterial.set_shader_parameter("enable_" + mode if mode != "anisotropy_flowmap" else "anisotropy", validModes[mode])
+	finalizeShaderMaterial.set_shader_parameter("emission_multiply", surfaceMaterial.emission_operator == BaseMaterial3D.EmissionOperator.EMISSION_OP_MULTIPLY)
 
 ## Make a Toon Triplanar Material.
 func make_TT_material() -> void:
@@ -256,4 +257,5 @@ func make_TT_material() -> void:
 			finalizeShaderMaterial.set_shader_parameter(surface + "_" + prop, baseMaterials[surface][prop])
 	for mode in validModes:
 		finalizeShaderMaterial.set_shader_parameter("enable_" + mode if mode != "anisotropy_flowmap" else "anisotropy", validModes[mode])
+	finalizeShaderMaterial.set_shader_parameter("emission_multiply", topSurfaceMaterial.emission_operator == BaseMaterial3D.EmissionOperator.EMISSION_OP_MULTIPLY)
 	
