@@ -61,6 +61,23 @@ metadata/extras = {
 [sub_resource type="Animation" id="Animation_gbw1q"]
 resource_name = "Cube_075Action"
 length = 1.25
+markers = [{
+"color": Color(0.33587962, 0.8016461, 0, 1),
+"name": &"start",
+"time": 0.0
+}, {
+"color": Color(0.04222899, 0.7927397, 1, 1),
+"name": &"extended",
+"time": 0.41233775
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"extended_rebound",
+"time": 0.5146559
+}, {
+"color": Color(1, 0, 0, 1),
+"name": &"full_stop",
+"time": 1.2502135
+}]
 tracks/0/type = "blend_shape"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -145,7 +162,7 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1.0716122, 0, 0, 0, 0.94000006, 0.497301, 0.07, 0)
 mesh = SubResource("ArrayMesh_6glh3")
 skeleton = NodePath("")
-"blend_shapes/Key 1" = 1.0
+"blend_shapes/Key 1" = 0.0
 "blend_shapes/Key 2" = 0.0
 surface_material_override/0 = ExtResource("1_fv8os")
 
