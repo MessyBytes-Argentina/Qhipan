@@ -1,6 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://cbd2p1re63o03"]
 
 [ext_resource type="Material" uid="uid://t3eatekj02eh" path="res://Assets/Materials/Props/Sliding Cube/SlidingCube.tres" id="1_fv8os"]
+[ext_resource type="Animation" uid="uid://c11ub1tj7yagc" path="res://Assets/Models/Sliding Cube/sail_animation.res" id="2_7h4ch"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8omm0"]
 
@@ -58,44 +59,9 @@ metadata/extras = {
 "targetNames": ["Key 1", "Key 2"]
 }
 
-[sub_resource type="Animation" id="Animation_gbw1q"]
-resource_name = "Cube_075Action"
-length = 1.25
-markers = [{
-"color": Color(0.33587962, 0.8016461, 0, 1),
-"name": &"start",
-"time": 0.0
-}, {
-"color": Color(0.04222899, 0.7927397, 1, 1),
-"name": &"extended",
-"time": 0.41233775
-}, {
-"color": Color(1, 1, 1, 1),
-"name": &"extended_rebound",
-"time": 0.5146559
-}, {
-"color": Color(1, 0, 0, 1),
-"name": &"full_stop",
-"time": 1.2502135
-}]
-tracks/0/type = "blend_shape"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("Veleta:Key 1")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.041666668, 1, 0, 0.083333336, 1, 0.039423134, 0.125, 1, 0.16121742, 0.16666667, 1, 0.34712288, 0.20833333, 1, 0.5492379, 0.25, 1, 0.72399276, 0.29166666, 1, 0.8539673, 0.33333334, 1, 0.9392662, 0.375, 1, 0.9857888, 0.41666666, 1, 1, 0.45833334, 1, 0.99451107, 0.5, 1, 0.97873753, 0.5416667, 1, 0.95271325, 0.5833333, 1, 0.9155231, 0.625, 1, 0.86532027, 0.6666667, 1, 0.7989322, 0.7083333, 1, 0.7107985, 0.75, 1, 0.5900149, 0.7916667, 1, 0.40914553, 0.8333333, 1, 0, 1.25, 1, 0)
-tracks/1/type = "blend_shape"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("Veleta:Key 2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0.041666668, 1, 0, 0.8333333, 1, 0, 0.875, 1, 0.10400003, 0.9166667, 1, 0.352, 0.9583333, 1, 0.648, 1, 1, 0.896, 1.0416666, 1, 1, 1.0833334, 1, 0.89599997, 1.125, 1, 0.648, 1.1666666, 1, 0.352, 1.2083334, 1, 0.10399997, 1.25, 1, 0)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmcir"]
 _data = {
-&"Cube_075Action": SubResource("Animation_gbw1q")
+&"Cube_075Action": ExtResource("2_7h4ch")
 }
 
 [node name="SlidingCube" type="Node3D"]
