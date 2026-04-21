@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg8x05qu5iain"]
+[gd_scene load_steps=6 format=3 uid="uid://dg8x05qu5iain"]
 
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="3_feuco"]
 [ext_resource type="PackedScene" uid="uid://2e8v3drfxv34" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/UpgradedGridmapObject.tscn" id="3_uc5ix"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_uc5ix"]
+[ext_resource type="PackedScene" uid="uid://cbd2p1re63o03" path="res://Assets/Models/Sliding Cube/sliding_cube.tscn" id="5_x7val"]
 
 [node name="Art Main Test" type="Node3D"]
 
@@ -20,3 +21,6 @@ metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="FanSticker" parent="." instance=ExtResource("4_uc5ix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="SlidingCube" parent="." instance=ExtResource("5_x7val")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
