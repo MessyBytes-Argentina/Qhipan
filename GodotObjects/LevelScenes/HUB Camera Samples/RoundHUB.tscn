@@ -146,7 +146,7 @@ shape = SubResource("BoxShape3D_vwmu5")
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, -1, 1, 4)
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(-1, 3.662187e-08, -1.4648742e-07, 0, 0.9701424, 0.24253568, 1.509958e-07, 0.24253568, -0.9701424, -1, 1.5, 1)
+transform = Transform3D(-1, 1.5008437e-08, -1.5024804e-07, 0, 0.99504787, 0.09939639, 1.509958e-07, 0.09939639, -0.99504787, -1, 1.5, 1)
 cull_mask = 655359
 current = true
 script = ExtResource("9_wgly4")

@@ -135,7 +135,7 @@ shape = SubResource("BoxShape3D_vwmu5")
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 3.5, 1.5, -3.5)
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -2, 3, -2)
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9659258, 0.25881892, 0, -0.25881904, 0.9659254, -2, 3, -2)
 cull_mask = 655359
 current = true
 script = ExtResource("9_xsxny")
@@ -153,7 +153,7 @@ curve = SubResource("Curve3D_8gtv3")
 metadata/CameraPath = true
 
 [node name="RailCamera2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, -0.5, 8.150001, -5)
+transform = Transform3D(0.99999774, 0, 0, 0, 0.9659258, 0.25881845, 0, -0.25881904, 0.9659236, -0.5, 8.150001, -5)
 cull_mask = 655359
 script = ExtResource("9_xsxny")
 pathOffset = Vector3(0, 1, 0)
