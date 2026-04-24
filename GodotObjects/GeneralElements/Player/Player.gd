@@ -43,6 +43,8 @@ const NOGRABSTATES: Array[States] = [States.Slap]
 const NOINTERRUPTSTATES: Array[States] = [States.Slap]
 ## Fanfare wait times.
 const FANFAREWAIT: Dictionary[String, float] = {"pause": 0.1, "unpause": 1.0}
+## Maximum player sprite angle.
+const MAXSPRITEANGLE: float = deg_to_rad(15)
 
 ## Time it takes for the player sprite to flip.
 const spriteFlipDuration: float = 0.5
@@ -267,6 +269,8 @@ func get_move_direction() -> Vector3:
 	if currentCamera and currentCamera != camera:
 		currentCameraRotation = currentCamera.global_rotation.y
 		spritePivot.look_at(currentCamera.global_position, currentCamera.global_transform.basis.y)
+		spritePivot.rotation.x = clamp(spritePivot.rotation.x, -MAXSPRITEANGLE, MAXSPRITEANGLE)
+		spritePivot.rotation.z = clamp(spritePivot.rotation.z, -MAXSPRITEANGLE, MAXSPRITEANGLE)
 		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation).normalized()
 		cameraPivot.global_rotation.y = currentCameraRotation
 	return moveDirection

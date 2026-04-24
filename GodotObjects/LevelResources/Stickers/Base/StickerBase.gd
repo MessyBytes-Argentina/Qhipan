@@ -8,6 +8,8 @@ signal just_placed(bool)
 
 ## Size of the sticker when the camera zooms out.
 const ZOOMOUTSCALE: float = 0.5
+## How far from the floor to float.
+const FLOATHEIGHT: float = 0.5
 ## Size of the sticker when floating on the ground.
 const BOBBINGSCALE: float = 0.5
 ## Length of bobbing in the y axis.
@@ -18,8 +20,6 @@ const BOBBINGTIME: float = 2.0
 const ROTATIONTIME: float = 3.0
 ## Angle of the sticker in the x axis when floating on the ground.
 const TILTANGLE: float = deg_to_rad(-30)
-## Height of the sticker when grabbed.
-const GRABHEIGHT: float = 0.6
 ## Wait time to place when loading.
 const PLACEDCHECKTIME: float = 0.25
 ## Maximum preplaced distance check.
@@ -261,7 +261,6 @@ func grab(node: Node3D) -> void:
 	lastLocation = global_position
 	lastMode = placed
 	global_position = node.global_position
-	global_position.y = global_position.y + GRABHEIGHT
 	rotation = Vector3.ZERO
 	set_size(ScaleModes.GRABBED)
 	grabed = true
@@ -305,11 +304,18 @@ func get_root_parent(node: Node) -> Node:
 func drop() -> void:
 	set_deferred("collision_mask", collisionMask)
 	set_size(ScaleModes.DROPPED)
-	global_position.y = global_position.y - GRABHEIGHT
+	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
+	var raycast = PhysicsRayQueryParameters3D.create(global_position, global_position - Vector3(0.0, 5.0, 0.0))
+	raycast.hit_from_inside = false
+	raycast.hit_back_faces = false
+	raycast.collision_mask = 1
+	var intersection: Dictionary = spaceState.intersect_ray(raycast)
+	if intersection:
+		global_position = intersection.position + Vector3(0.0, FLOATHEIGHT, 0.0)
 	placed = false
 	just_placed.emit(placed)
-	await do_reparent()
 	grabed = false
+	await do_reparent()
 	_push_save()
 
 ## Starts the floating animations 

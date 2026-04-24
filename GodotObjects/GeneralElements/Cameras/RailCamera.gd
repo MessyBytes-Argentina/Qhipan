@@ -168,7 +168,9 @@ func update_camera_position() -> void:
 				global_position = pathFollower.global_position
 				look_at_player()
 		if curve: currentOffset = curve.get_closest_offset(path.to_local(global_position))
-	if leashLength == 0 or leashAxis == Vector3.ZERO: return
+	if leashLength == 0 or leashAxis == Vector3.ZERO:
+		position +=pathOffset if mode in [CameraModes.FREE, CameraModes.FOLLOW_PLAYER, CameraModes.ROTATION_LOCKED] else Vector3.ZERO
+		return
 	if mode in [CameraModes.FREE, CameraModes.ROTATION_LOCKED, CameraModes.FOLLOW_PLAYER]: currentLeashPosition = global_position
 	var leashDirection: Vector3 = (currentLeashPosition.direction_to(player.global_position) * leashAxis).normalized()
 	if not Engine.is_editor_hint() or mode != CameraModes.FIXED_FOLLOW_PLAYER:

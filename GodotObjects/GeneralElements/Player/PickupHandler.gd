@@ -18,6 +18,9 @@ const STICKERRADIUS: float = 0.132
 ## Sticker list
 enum StickerList {ALTERNATOR = 1, FAN = 2, LAMP = 4, KEY = 8, INVENTORY = 16}
 
+## Sprite pivot reference.
+@export var spriteSocket: Node3D
+
 ## Pick up sound player reference
 @onready var pickupSound: RandomSoundPlayer = $Pickup
 ## Remove sound player reference
@@ -142,8 +145,8 @@ func do_grab() -> void:
 			surface.node.sticker_activity()
 			surface.used = null
 	elif currentPickup is not InventorySticker: pickupSound.play_sound()
-	currentPickup.grab(self)
-	currentPickup.reparent(self)
+	currentPickup.grab(spriteSocket if spriteSocket else self)
+	currentPickup.reparent(spriteSocket if spriteSocket else self)
 	pickupOnHand = true
 	currentPickup.activate_on_player_effect()
 

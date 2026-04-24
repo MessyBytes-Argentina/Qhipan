@@ -125,8 +125,7 @@ func set_size(mode: ScaleModes) -> void:
 			lightArea.set_collision_layer_value(5, false)
 			lightArea.set_collision_mask_value(2, false)
 			stickerLightArea.set_collision_mask_value(2, false)
-			light.position.y = -GRABHEIGHT / 2.0
-			light.position.z = 0.0
+			light.global_position = global_position
 			light.light_size = 1.0
 			light.shadow_bias = 10.0
 			shine.mesh.size = SHINEPARAMETERS.heldSize
