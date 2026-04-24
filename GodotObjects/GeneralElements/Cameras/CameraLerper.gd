@@ -42,6 +42,8 @@ func _ready() -> void:
 
 ## Animates and swaps to a given camera in a given timeframe.
 func switch_to(targetCamera: Camera3D, time: float) -> void:
+	if targetCamera is RailCamera:
+		targetCamera.force_update()
 	if time == 0:
 		currentCamera = targetCamera
 		currentCamera.current = true
