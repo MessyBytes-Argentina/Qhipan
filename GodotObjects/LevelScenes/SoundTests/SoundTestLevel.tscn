@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b8cuiswalgjil"]
+[gd_scene load_steps=42 format=3 uid="uid://b8cuiswalgjil"]
 
 [ext_resource type="PackedScene" uid="uid://b8a0qh5aupt2k" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/GridmapObject.tscn" id="1_3pwcs"]
 [ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="2_8cdyi"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="2_vjep4"]
 [ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="3_w0v3n"]
 [ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="4_3cdh6"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="5_3cdh6"]
@@ -27,6 +28,14 @@
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="24_4agif"]
 [ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="25_aqlqk"]
 [ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="27_aqlqk"]
+
+[sub_resource type="Curve3D" id="Curve3D_s0ppa"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9, -1, -3, 0, 0, 0, 0, 0, 0, 9.2797785, -1, 7.4334373, 0, 0, 0, 0, 0, 0, 6.7749996, -1, 9.816, 0, 0, 0, 0, 0, 0, 4.813, -1, 15.396, 0, 0, 0, 0, 0, 0, 0.76087856, -0.8913107, 18.109299, 0, 0, 0, 0, 0, 0, -4.874192, -0.7614813, 16.53393, 0, 0, 0, 0, 0, 0, -5.457833, -0.63165, 13.276194, 0, 0, 0, 0, 0, 0, -4.7315817, -0.25839233, 9.816548, 0, 0, 0, 0, 0, 0, -7.470007, -0.12841797, 9.225487, 0, 0, 0, 0, 0, 0, -11.143362, 0.85617733, 9.393162, 0, 0, 0, 0, 0, 0, -16.014914, 2.280778, 5.872108, 0, 0, 0, 0, 0, 0, -11.360695, 1.5401506, -5.2281466, 0, 0, 0, 0, 0, 0, -0.9642458, 1.2084332, -8.745545),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 13
 
 [sub_resource type="Gradient" id="Gradient_t8iic"]
 offsets = PackedFloat32Array(0.4222798, 0.52590674)
@@ -103,6 +112,22 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -5, 0)
 
+[node name="RailCamera1" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.5, -2.5)
+cull_mask = 655359
+current = true
+script = ExtResource("2_vjep4")
+mode = 2
+leashLength = 6.4
+offsetToStartFollowing = 1.0
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, 0.5)
+top_level = true
+curve = SubResource("Curve3D_s0ppa")
+metadata/CameraPath = true
+
 [node name="Stickers" type="Node3D" parent="."]
 
 [node name="Alternator" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("2_8cdyi")]
@@ -143,6 +168,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1.5)
 sceneParent = NodePath("../..")
 originalParent = "SoundTestScene"
 
+[node name="FanSticker2" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3cdh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 9)
+sceneParent = NodePath("../..")
+originalParent = "SoundTestScene"
+
 [node name="FanSticker" parent="Stickers" node_paths=PackedStringArray("sceneParent") instance=ExtResource("4_3cdh6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 9.5)
 sceneParent = NodePath("../..")
@@ -163,6 +193,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -1.499, 3.5)
 
 [node name="Placeholder Sticker Area2" parent="StickerPlacements" instance=ExtResource("5_vpgie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 3.5)
+
+[node name="Placeholder Sticker Area4" parent="StickerPlacements" instance=ExtResource("5_vpgie")]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, -2.9802322e-08, 0, 2.9802322e-08, 1.0000001, 1, -1.5, 11)
 
 [node name="AlternatingGroup" type="Node3D" parent="."]
 script = ExtResource("7_4agif")
@@ -330,8 +363,7 @@ railReference = NodePath("../PlatformRail")
 isPermanent = true
 powered = true
 
-[node name="PlatformCaller" parent="MovingPlatform" node_paths=PackedStringArray("railReference") instance=ExtResource("24_4agif")]
-railReference = NodePath("../PlatformRail")
+[node name="PlatformCaller" parent="MovingPlatform" instance=ExtResource("24_4agif")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform/PlatformCaller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, 5.5)
@@ -348,8 +380,7 @@ platformReference = NodePath("../MovingPlatform")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
 railReference = NodePath("../PlatformRail")
 
-[node name="PlatformCaller" parent="MovingPlatform2" node_paths=PackedStringArray("railReference") instance=ExtResource("24_4agif")]
-railReference = NodePath("../PlatformRail")
+[node name="PlatformCaller" parent="MovingPlatform2" instance=ExtResource("24_4agif")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingPlatform2/PlatformCaller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.25, 4.5)
