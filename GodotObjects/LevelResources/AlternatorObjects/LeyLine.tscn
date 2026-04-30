@@ -31,27 +31,12 @@ shader_parameter/metallic = 0.0
 shader_parameter/enable_emission = true
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/emission_multiply = false
 shader_parameter/enable_clearcoat = true
 shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_g7bac"]
 material = SubResource("ShaderMaterial_wvyl4")
@@ -68,6 +53,7 @@ surface_material_override/0 = ExtResource("8_0qu5i")
 
 [node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
 unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("2_7bq5v")
 metadata/_custom_type_script = "uid://cpapjcv8gch4b"
 

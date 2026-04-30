@@ -26,6 +26,8 @@ var shouldBeOn: bool = false
 var state: bool = false
 ## Flag that checks if cube is placed.
 var isCubeInPlace: bool = false
+## Count for child checks in case multiple come out at one time.
+var childOffChecks: int = 0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,10 +62,9 @@ func set_mode(mode: bool) -> void:
 
 ## Turns off via child leyline.
 func leyline_child_off() -> void:
-	var doOff: bool = true
-	doOff = doOff and not leylineChildren.any(func(a: LeylinePiece): return a.progress > 0)
-	doOff = doOff and not leylineCubeChildren.any(func(a: Node): return a.state)
-	if doOff:
+	childOffChecks += 1
+	if childOffChecks < len(leylineChildren) + len(leylineCubeChildren):
+		childOffChecks = 0
 		shouldBeOn = false
 		set_mode(false)
 

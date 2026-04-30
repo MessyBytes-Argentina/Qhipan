@@ -57,6 +57,7 @@ shader_parameter/metallic = 0.4499999899416
 shader_parameter/enable_emission = false
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy_multiplier = 0.0
+shader_parameter/emission_multiply = false
 shader_parameter/enable_clearcoat = false
 shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5

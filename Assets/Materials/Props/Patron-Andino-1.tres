@@ -40,6 +40,7 @@ shader_parameter/top_emission = Color(0, 0, 0, 1)
 shader_parameter/side_emission = Color(0, 0, 0, 1)
 shader_parameter/top_emission_energy_multiplier = 0.0
 shader_parameter/side_emission_energy_multiplier = 0.0
+shader_parameter/emission_multiply = false
 shader_parameter/enable_clearcoat = false
 shader_parameter/top_clearcoat = 0.0
 shader_parameter/side_clearcoat = 0.0

@@ -47,8 +47,6 @@ var player: Player
 var closeStickers: Array[StickerBase] = []
 ## List of valid stickers
 var currentlyAvailableStickers: Array[StickerBase] = []
-## List of areas in range for placement
-var closeAreas: Array[Area3D] = []
 ## Starting highlight height
 var highlightHeight: float
 ## Flag that turns true when 
@@ -137,7 +135,6 @@ func get_sticker_class(sticker: StickerBase) -> StickerList:
 func do_grab() -> void:
 	if len(currentlyAvailableStickers) == 0: return
 	currentPickup = currentlyAvailableStickers[0]
-	
 	if currentPickup.placed:
 		removeSound.play_sound()
 		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_sticker(currentPickup)

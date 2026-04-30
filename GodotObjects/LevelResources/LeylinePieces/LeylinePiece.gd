@@ -80,6 +80,8 @@ var isOn: bool = false
 var tween: Tween
 ## Curent animation progress.
 var progress: float = 0.0
+## Count for child checks in case multiple come out at one time.
+var childOffChecks: int = 0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -173,7 +175,7 @@ func apply_textures(piece: String) -> void:
 func switch_state() -> void:
 	if leylineParent or cubeCheckParent: return
 	if not isOn: animate()
-	else: animate_last() 
+	else: animate_last()
 
 ## Animates the last piece first, used for turning off.
 func animate_last() -> void:
@@ -185,10 +187,9 @@ func animate_last() -> void:
 ## Animates this piece and subsequent ones.
 func animate() -> void:
 	if isOn: 
-		var doOff: bool = true
-		doOff = doOff and not leylineChildren.any(func(a: LeylinePiece): return a.progress > 0)
-		doOff = doOff and not leylineCubeChildren.any(func(a: Node): return a.state)
-		if not doOff: return
+		childOffChecks += 1
+		if childOffChecks < len(leylineChildren) + len(leylineCubeChildren): return
+	childOffChecks = 0
 	isOn = not isOn
 	if tween: if tween.is_running(): tween.kill()
 	tween = create_tween()
