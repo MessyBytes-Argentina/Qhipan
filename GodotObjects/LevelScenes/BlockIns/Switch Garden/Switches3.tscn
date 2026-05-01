@@ -74,7 +74,7 @@ startEnvironment = SubResource("Resource_3rjmh")
 startLight = SubResource("Resource_qs13x")
 
 [node name="Player" parent="." instance=ExtResource("7_ansqb")]
-transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2, 1.5, 0.5)
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2.5, 1.5, 0.5)
 
 [node name="RailCamera" type="Camera3D" parent="."]
 transform = Transform3D(-4.3711385e-08, 0.6427876, -0.7660443, 0, 0.76604444, 0.6427875, 0.9999999, 2.8097137e-08, -3.3484863e-08, -1.5, 4, 0.5)
