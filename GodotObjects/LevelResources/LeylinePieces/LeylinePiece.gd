@@ -32,7 +32,7 @@ const LEYLINEMATERIAL: ShaderMaterial = preload("uid://dt4jndoftnsvs")
 ## Exits for the leyline piece.
 enum ExitValues {Straight = 1, Left = 2, Right = 4}
 ## Angles for the leyline piece.
-enum VerticalAngles {Flat, SmallSlope, BigSlope, Wall}
+enum VerticalAngles {Flat, SmallSlope, BigSlope, Wall, WallDown}
 
 ## Length of this piece. Used only for straight pieces.
 @export_range(1.0, 100.0, 1.0) var length: float = 1.0:
@@ -145,6 +145,9 @@ func set_length() -> void:
 			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.Wall:
 			pivot.rotation.z = PI / 2.0
+			mesh.size.x = length
+		VerticalAngles.WallDown:
+			pivot.rotation.z = PI * 1.5
 			mesh.size.x = length
 	leylinePiece.position.x = mesh.size.x / 2.0
 	material.set_shader_parameter("segments", length)
