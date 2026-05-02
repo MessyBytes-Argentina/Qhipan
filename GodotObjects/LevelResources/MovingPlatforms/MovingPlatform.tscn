@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://binvrpy31ahx6"]
+[gd_scene load_steps=19 format=4 uid="uid://binvrpy31ahx6"]
 
 [ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
 [ext_resource type="Material" uid="uid://cgfof2gvhje8o" path="res://Assets/Materials/Props/MovingPlatforms/MovingPlatforms_final.tres" id="2_4qakn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cukahv1iy1cg3" path="res://GodotObjects/LevelResources/MovingPlatforms/ParticleBehaviour.gd" id="8_ob2je"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="9_0ptab"]
 [ext_resource type="PackedScene" uid="uid://255156x4bcbw" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformPowerSwitchParticlesON.tscn" id="10_vqjp4"]
+[ext_resource type="PackedScene" uid="uid://ddnqkludn7533" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformPowerSwitchParticlesOFF.tscn" id="11_mtoqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mtoqw"]
 render_priority = 0
@@ -151,8 +152,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7x5hj")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
-[node name="ParticleParent" type="Node3D" parent="." node_paths=PackedStringArray("movingPlatformParent")]
+[node name="ParticleParent" type="Node3D" parent="." node_paths=PackedStringArray("stateSwitchParticleOn", "stateSwitchParticleOff", "movingPlatformParent")]
 script = ExtResource("8_ob2je")
+stateSwitchParticleOn = NodePath("MultipleParticle3DEmitter (State Switch ON)")
+stateSwitchParticleOff = NodePath("MultipleParticle3DEmitter (State Switch OFF)")
 movingPlatformParent = NodePath("..")
 
 [node name="MultipleParticle3DEmitter (State Switch ON)" type="Node3D" parent="ParticleParent"]
@@ -163,7 +166,7 @@ metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="MultipleParticle3DEmitter (State Switch OFF)" type="Node3D" parent="ParticleParent"]
 script = ExtResource("9_0ptab")
-particles = Array[PackedScene]([ExtResource("10_vqjp4")])
+particles = Array[PackedScene]([ExtResource("11_mtoqw")])
 _testParticles = ""
 metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 

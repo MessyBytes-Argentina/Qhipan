@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbsw2e4vumksw"]
+[gd_scene load_steps=4 format=3 uid="uid://dbsw2e4vumksw"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_waxla"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_2bl52"]
 [ext_resource type="PackedScene" uid="uid://b8cuiswalgjil" path="res://GodotObjects/LevelScenes/SoundTests/SoundTestLevel.tscn" id="3_c45bg"]
-[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="4_quybr"]
 
 [node name="MainTest" type="Node3D"]
 
@@ -13,11 +12,3 @@
 transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 0, 0, 0)
 
 [node name="SoundTestScene" parent="." instance=ExtResource("3_c45bg")]
-
-[node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.8675751, -0.25794357, 0.42518058, 0, 0.8549675, 0.51868165, -0.49730614, -0.44999528, 0.7417485, 1.1009935, 1.343112, 1.9207376)
-cull_mask = 655359
-current = true
-script = ExtResource("4_quybr")
-mode = 4
-metadata/_custom_type_script = "uid://bmkcxot1om0jv"
