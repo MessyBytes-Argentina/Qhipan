@@ -89,24 +89,23 @@ startLight = SubResource("Resource_qs13x")
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2.5, 1.5, 0.5)
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 5.4994526, 4, 5.5)
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 6.2995257, 4, 5.5)
 cull_mask = 655359
 current = true
 script = ExtResource("6_u41jf")
-freeBaseRotation = Vector3(-0.5235988, 1.5707964, 0)
+freeBaseRotation = Vector3(-0.61086524, 1.5707964, 0)
 offsetToStartFollowing = 0.0
 progress = 0.2
 metadata/_custom_type_script = "uid://bmkcxot1om0jv"
 
 [node name="CameraPath" type="Path3D" parent="RailCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 5.5)
 top_level = true
 curve = SubResource("Curve3D_w0fjr")
 metadata/CameraPath = true
 
 [node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("7_7bi2t")]
-transform = Transform3D(-4.371138e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, -3.5527137e-15, 10, 0.049999893, 2.5000002)
-placed = true
+transform = Transform3D(-4.371138e-08, 5.9604645e-08, -1, 0, 1, 5.9604645e-08, 1, 1.2434498e-14, -4.3711385e-08, 8.5, 0.54999995, 2.5000002)
 sceneParent = NodePath("..")
 originalParent = "Switches3"
 
