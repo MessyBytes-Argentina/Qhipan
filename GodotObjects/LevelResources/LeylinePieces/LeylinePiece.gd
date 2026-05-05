@@ -93,7 +93,7 @@ func _ready() -> void:
 	mesh.size = PIECESIZE
 	mesh.orientation = PlaneMesh.FACE_Y
 	leylinePiece.mesh = mesh
-	leylinePiece.position = Vector3(PIECESIZE.x / 2.0, PIECEAVERTICALDISPLACEMENT, 0.0)
+	leylinePiece.position = Vector3(PIECESIZE.x / 2.0, 0.0, 0.0)
 	pivot.add_child(leylinePiece)
 	add_child(pivot)
 	material = LEYLINEMATERIAL.duplicate()
@@ -138,13 +138,13 @@ func set_length() -> void:
 			pivot.rotation.z = 0
 			mesh.size.x = length
 		VerticalAngles.SmallSlope:
-			pivot.rotation.z = PI / 8.0
+			pivot.rotation.z = tanh(0.501)
 			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.BigSlope:
 			pivot.rotation.z = PI / 4.0
 			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.SmallSlopeDown:
-			pivot.rotation.z = -PI / 8.0
+			pivot.rotation.z = -tanh(0.501)
 			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.BigSlopeDown:
 			pivot.rotation.z = -PI / 4.0
@@ -155,7 +155,7 @@ func set_length() -> void:
 		VerticalAngles.WallDown:
 			pivot.rotation.z = PI * 1.5
 			mesh.size.x = length
-	leylinePiece.position.x = mesh.size.x / 2.0
+	leylinePiece.position = Vector3(mesh.size.x / 2.0, PIECEAVERTICALDISPLACEMENT, leylinePiece.position.z)
 	material.set_shader_parameter("segments", length)
 
 ## Sets this piece's material.
