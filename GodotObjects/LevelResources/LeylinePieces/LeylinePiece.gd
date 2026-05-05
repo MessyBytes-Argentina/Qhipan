@@ -54,7 +54,7 @@ enum VerticalAngles {Flat, SmallSlope, BigSlope, SmallSlopeDown, BigSlopeDown, W
 		if Engine.is_editor_hint() and is_node_ready():
 			set_piece()
 ## Test animation.
-@export_tool_button("Test", "Play") var doTest: Callable = switch_state
+@export_tool_button("Test", "Play") var doTest: Callable = do_test
 
 ## Reference to the leyline piece.
 var leylinePiece: MeshInstance3D
@@ -231,3 +231,21 @@ func _notification(what) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.queue_to_cutout_materials([material], false)
 		queue_free()
+
+## Tests leyline in editor.
+func do_test() -> void:
+	recursive_ready(self)
+	switch_state()
+
+## Re readies nodes for test in editor.
+func recursive_ready(node: Node) -> void:
+	if node is not LeylinePiece: return
+	for child in node.get_children():
+		recursive_ready(child)
+	node.leylineChildren.clear()
+	node.leylineCubeChildren.clear()
+	node.alternableChildren.clear()
+	for child in node.get_children(): 
+		if child is LeylinePiece: node.leylineChildren.append(child)
+		elif child is LeylineCubeCheck: node.leylineCubeChildren.append(child)
+		elif child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: node.alternableChildren.append(child)

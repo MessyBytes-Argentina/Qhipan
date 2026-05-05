@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://tppytnas5uj4"]
+[gd_scene load_steps=30 format=3 uid="uid://tppytnas5uj4"]
 
 [ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_ehrdx"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_asier"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="11_wnpjp"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="12_asier"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="12_gnx6j"]
-[ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="13_1l1l2"]
 [ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/PorticoAntiSticker.tscn" id="14_7bi2t"]
 [ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="14_sekkb"]
 [ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="15_jqr3t"]
@@ -111,7 +110,6 @@ metadata/CameraPath = true
 
 [node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("7_7bi2t")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 4.5, 1.05, 0.5)
-placed = true
 sceneParent = NodePath("..")
 originalParent = "Switches3"
 
@@ -272,20 +270,6 @@ railReferences = [NodePath("../AlternatingGroup1/LeyLine/LeylinePiece/LeylinePie
 shape = SubResource("BoxShape3D_7bi2t")
 
 [node name="Props" type="Node3D" parent="."]
-
-[node name="AlternatingBlock" parent="Props" instance=ExtResource("12_gnx6j")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.500001, 0, -1.5000007)
-collision_layer = 4096
-isOff = true
-
-[node name="AlternatingBlock2" parent="Props" instance=ExtResource("12_gnx6j")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.500001, 0, -2.5000007)
-collision_layer = 4096
-isOff = true
-
-[node name="PushDoor" parent="Props" node_paths=PackedStringArray("sceneParent") instance=ExtResource("13_1l1l2")]
-transform = Transform3D(-1, 8.742278e-08, 3.8213718e-15, 0, -4.37114e-08, 1, 8.742278e-08, 1, 4.37114e-08, 15.5, 1.5, -0.1)
-sceneParent = NodePath("../..")
 
 [node name="ChackanaDoor" parent="Props" instance=ExtResource("14_sekkb")]
 transform = Transform3D(-1.3113416e-07, 0, -2.9999998, 0, 3.0000005, 0, 2.9999998, 0, -1.3113416e-07, 13, 1, -1.5)
