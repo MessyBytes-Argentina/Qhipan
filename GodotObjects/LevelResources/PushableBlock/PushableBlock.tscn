@@ -17,17 +17,24 @@ collision_mask = 0
 script = ExtResource("1_aunex")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_aunex")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_yia5y")
 
 [node name="FanChecker" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 0
 collision_mask = 32768
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FanChecker"]
 shape = SubResource("BoxShape3D_yia5y")
 debug_color = Color(0.9413197, 1.0203719e-05, 0.61331546, 0.41960785)
+
+[node name="BlockDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_mask = 16384
 
 [connection signal="area_exited" from="FanChecker" to="." method="stop_pushing"]

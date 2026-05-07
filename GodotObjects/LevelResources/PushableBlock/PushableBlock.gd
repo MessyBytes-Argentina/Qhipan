@@ -4,6 +4,7 @@ class_name PushableBlock
 @export var gridMapRef: GridMap
 
 @onready var fanChecker: Area3D = $FanChecker
+@onready var blockDetector: RayCast3D = $BlockDetector
 
 const moveTime: float = 0.2
 
@@ -12,15 +13,58 @@ var isMoving: bool = false
 var isFalling: bool = false
 var pushingForces: Dictionary[Node3D, Vector3] = {}
 var currentDirection: Vector3
+var currentPushDistance: int = 0
+var destination: Vector3
 var fanAreasInRange: Array[Area3D]
+var waitingToMove: bool = false
+var startWait: bool = true
 
+func _ready() -> void:
+	start_wait()
+
+func start_wait() -> void:
+	startWait = true
+	get_tree().create_timer(moveTime).timeout.connect(end_wait)
+
+func end_wait() -> void:
+	startWait = false
 
 func _physics_process(_delta: float) -> void:
+	if startWait: return
 	if isFalling: return
+	if isMoving: return
 	get_fan_areas()
 	check_fan_areas()
-	if not isMoving:
-		check_state()
+	check_state()
+	if waitingToMove:
+		if check_for_blocks():
+			start_move_tween()
+
+func check_for_blocks() -> bool:
+	destination = global_position + Vector3(currentDirection * currentPushDistance)
+	blockDetector.target_position = to_local(destination)
+	blockDetector.force_raycast_update()
+	if blockDetector.is_colliding():
+		var block: PushableBlock = blockDetector.get_collider()
+		var distanceToBlock: float = global_position.distance_to(block.global_position)
+		if distanceToBlock > 1:
+			if block.isMoving:
+				if destination.distance_to(block.destination) < 0.5:
+					destination -= currentDirection
+			else:
+				currentPushDistance = int(distanceToBlock) - 1
+				destination = global_position + Vector3(currentDirection * currentPushDistance)
+			return true
+		else:
+			if block.isMoving:
+				if destination.distance_to(block.destination) < 0.5:
+					destination -= currentDirection
+				return true
+			else:
+				start_wait()
+				return false
+	else:
+		return true
 
 func check_fan_areas() -> void:
 	var areasToRemove: Array = []
@@ -38,16 +82,19 @@ func get_fan_areas() -> void:
 func start_move_tween() -> void:
 	if moveTween: moveTween.kill()
 	isMoving = true
+	waitingToMove = false
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	moveTween.tween_property(self, "global_position", global_position + currentDirection, moveTime)
+	moveTween.tween_property(self, "global_position", destination, moveTime * currentPushDistance)
 	moveTween.connect("finished", check_state)
 
 func check_state() -> void:
 	if pushingForces.is_empty():
 		isMoving = false
+		waitingToMove = false
 		return
 	if get_current_direction():
-		start_move_tween()
+		waitingToMove = true
+	isMoving = false
 
 func get_current_direction() -> bool:
 	var sumOfForces: Vector3 = Vector3.ZERO
@@ -56,22 +103,32 @@ func get_current_direction() -> bool:
 	if Vector3i(sumOfForces) == Vector3i.ZERO: 
 		isMoving = false
 		return false
-	for object in pushingForces:
-		if gridMapRef.get_cell_item(get_grid_position(pushingForces[object])) == -1:
-			currentDirection = Vector3i(pushingForces[object])
+	for fan:Fan in pushingForces:
+		var actualPushDistance: int = 0
+		currentDirection = Vector3i(pushingForces[fan])
+		@warning_ignore("narrowing_conversion")
+		currentPushDistance = fan.areaHeight - int(global_position.distance_to(fan.global_position))
+		for n in range(currentPushDistance):
+			var gridPos: Vector3i = get_grid_position(global_position + Vector3(currentDirection * int(n+1)))
+			if gridMapRef.get_cell_item(gridPos) == -1 and gridMapRef.get_cell_item(gridPos + Vector3i.UP) == -1:
+				actualPushDistance += 1
+			else:
+				break
+		if actualPushDistance > 0:
+			currentPushDistance = actualPushDistance
+			destination = global_position + Vector3(currentDirection * currentPushDistance)
 			return true
 	isMoving = false
 	return false
 
-func get_grid_position(direction: Vector3 = Vector3.ZERO) -> Vector3i:
-	return gridMapRef.local_to_map(gridMapRef.to_local(global_position + direction))
+func get_grid_position(globalPos: Vector3 = Vector3.ZERO) -> Vector3i:
+	return gridMapRef.local_to_map(gridMapRef.to_local(globalPos))
 
 func push(area: Area3D, direction: Vector3) -> void:
 	if pushingForces.has(area) or Vector3i(direction).y != 0.0: return
 	pushingForces[area] = direction
-	if not isMoving:
-		if get_current_direction():
-			start_move_tween()
 
 func stop_pushing(area: Area3D) -> void:
 	pushingForces.erase(area)
+	if not isMoving:
+		check_state()
