@@ -133,12 +133,13 @@ func get_current_direction() -> bool:
 			var gridPos: Vector3i = get_grid_position(global_position + Vector3(currentDirection * int(n+1)))
 			if gridMapRef.get_cell_item(gridPos) == -1 and gridMapRef.get_cell_item(gridPos + Vector3i.UP) == -1:
 				actualPushDistance += 1
-				if gridMapRef.get_cell_item(gridPos + Vector3i.DOWN) == -1 and not ignoreHole:
+				if gridMapRef.get_cell_item(gridPos - Vector3i(0,1,0)) == -1 and gridMapRef.get_cell_item(gridPos - Vector3i(0,2,0)) == -1 and not ignoreHole:
 					verticalDetector.position = Vector3(currentDirection * int(n+1))
 					verticalDetector.force_raycast_update()
 					if verticalDetector.is_colliding():
 						@warning_ignore("narrowing_conversion")
 						var collisionDistance: int = verticalDetector.global_position.distance_to(verticalDetector.get_collision_point())
+						prints(name, collisionDistance,gridPos,"-", verticalDetector.get_collision_point())
 						if collisionDistance < 1:
 							continue
 						else:
