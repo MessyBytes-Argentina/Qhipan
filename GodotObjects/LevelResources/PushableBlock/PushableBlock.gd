@@ -39,13 +39,14 @@ func _physics_process(_delta: float) -> void:
 			start_move_tween()
 
 func start_move_tween() -> void:
-	if moveTween: moveTween.kill()
+	if moveTween: if moveTween.is_running(): moveTween.kill()
 	prints(name,"from:",global_position,"to:",destination)
 	isMoving = true
 	waitingToMove = false
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	moveTween.tween_property(self, "global_position", destination, moveTime * currentPushDistance)
-	moveTween.connect("finished", check_state)
+	moveTween.tween_property(self, "global_position:x", destination.x, moveTime * currentPushDistance)
+	moveTween.parallel().tween_property(self, "global_position:z", destination.z, moveTime * currentPushDistance)
+	moveTween.finished.connect(check_state)
 
 func start_fall_tween() -> void:
 	if fallTween: return
@@ -53,8 +54,8 @@ func start_fall_tween() -> void:
 	var fallDestination: Vector3 = global_position + Vector3(Vector3.DOWN * fallDistance)
 	prints("fd:",fallDestination,"gp:", global_position, name)
 	fallTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	fallTween.tween_property(self, "global_position", fallDestination, fallTime * fallDistance)
-	fallTween.connect("finished", end_fall)
+	fallTween.tween_property(self, "global_position:y", fallDestination.y, fallTime * fallDistance)
+	fallTween.finished.connect(end_fall)
 
 func end_fall() -> void:
 	isFalling = false
@@ -74,9 +75,6 @@ func get_fan_areas() -> void:
 		push(fan, fan.get_fan_direction())
 
 func check_state() -> void:
-	#prints("await")
-	#await get_tree().physics_frame
-	#prints("espere")
 	if isFalling:
 		prints("cs-gp:", global_position, name)
 		start_fall_tween()
