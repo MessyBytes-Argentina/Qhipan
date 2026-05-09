@@ -2,7 +2,7 @@ extends Area3D
 class_name PlatformCaller
 
 ## Position to which this caller send the platform
-@export_range(0, 1, 1) var callTo: int = 0
+@export_range(0, 10, 1) var callTo: int = 0
 ## Reference to the platform rail to call
 @export var railReferences: Array[PlatformRail]
 

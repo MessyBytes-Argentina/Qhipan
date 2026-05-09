@@ -18,11 +18,15 @@ class_name PlatformRail
 @onready var returnTimer: Timer = %ReturnTimer
 
 ## Current direction target (0 = start / 1 = end)
-var currentDirection: int = 1
+var currentDirection: float = 1
 ## Tween used for movement
 var moveTween: Tween
 ## Flag that turns true when called
 var wasCalled: bool = false
+## Curve length
+var curveLength: float
+## Was the platform last going to the start position or end position.
+var goingToEnd: bool = true
 
 ## Executed when node first enters the scene tree
 func _ready() -> void:
@@ -30,37 +34,29 @@ func _ready() -> void:
 	remoteTransform3d.remote_path = platformReference.get_path()
 	returnTimer.connect("timeout",return_to_origin)
 	returnTimer.wait_time = blockedTime
+	curveLength = curve.get_baked_length()
 
 ## Starts the move tween, tweening the progress ratio to the given value
-func start_tween(direction: int) -> void:
+func start_tween(direction: float) -> void:
+	if direction == pathFollower.progress_ratio: 
+		wasCalled = false
+		return
+	goingToEnd = pathFollower.progress_ratio < direction
 	if moveTween: moveTween.kill()
+	prints(pathFollower.progress_ratio, direction, get_time(direction), wasCalled)
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	moveTween.tween_property(pathFollower,"progress_ratio", direction, get_time())
-	moveTween.connect("finished", switch_direction)
-
-## Switches the current direction to the opposite
-func switch_direction() -> void:
+	moveTween.tween_property(pathFollower,"progress_ratio", direction, get_time(direction))
 	wasCalled = false
-	match currentDirection:
-		1:
-			currentDirection = 0
-		0:
-			currentDirection = 1
 
 ## Returns the amount of time to tween
-func get_time() -> float:
-	var remainingLength = curve.get_baked_length()
-	match currentDirection:
-		1:
-			remainingLength *= 1 - pathFollower.progress_ratio
-		0:
-			remainingLength *= pathFollower.progress_ratio
-	var time: float = remainingLength / (speed if not wasCalled else returnSpeed)
+func get_time(direction: float) -> float:
+	var distance: float = abs(direction - pathFollower.progress_ratio)
+	var time: float = (distance * curveLength) / (speed if not wasCalled else returnSpeed)
 	return time
 
 ## Starts the movement of the platform (called from the moving platform)
 func start_moving() -> void:
-	start_tween(currentDirection)
+	start_tween(1.0 if goingToEnd else 0.0)
 
 ## Stops movement and starts the return timer
 func stop_moving() -> void:
@@ -69,19 +65,13 @@ func stop_moving() -> void:
 
 ## Starts moving towards the origin (called when the path is blocked)
 func return_to_origin() -> void:
-	match currentDirection:
-		1:
-			start_tween(0)
-		0:
-			start_tween(1)
+	start_tween(currentDirection)
 
 ## Calls the platform to the given point
 func call_platform(caller: int) -> void:
-	match caller:
-		1:
-			if pathFollower.progress_ratio == 1.0: return
-		0:
-			if pathFollower.progress_ratio == 0.0: return
-	currentDirection = caller
+	var goalRatio: float = clamp(curve.get_closest_offset(curve.get_point_position(caller)) / curveLength, 0.0, 1.0)
+	prints(caller, curve.point_count, goalRatio)
+	if pathFollower.progress_ratio == goalRatio: return
+	currentDirection = pathFollower.progress_ratio
 	wasCalled = true
-	start_tween(currentDirection)
+	start_tween(goalRatio)
