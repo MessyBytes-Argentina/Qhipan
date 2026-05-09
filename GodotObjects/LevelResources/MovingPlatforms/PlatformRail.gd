@@ -56,6 +56,9 @@ func get_time(direction: float) -> float:
 
 ## Starts the movement of the platform (called from the moving platform)
 func start_moving() -> void:
+	if pathFollower.progress_ratio == 0.0: goingToEnd = true
+	elif pathFollower.progress_ratio == 1.0: goingToEnd = false
+	print(pathFollower.progress_ratio)
 	start_tween(1.0 if goingToEnd else 0.0)
 
 ## Stops movement and starts the return timer
