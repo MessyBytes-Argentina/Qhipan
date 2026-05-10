@@ -43,7 +43,6 @@ func start_tween(direction: float) -> void:
 		return
 	goingToEnd = pathFollower.progress_ratio < direction
 	if moveTween: moveTween.kill()
-	prints(pathFollower.progress_ratio, direction, get_time(direction), wasCalled)
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	moveTween.tween_property(pathFollower,"progress_ratio", direction, get_time(direction))
 	wasCalled = false
@@ -58,7 +57,6 @@ func get_time(direction: float) -> float:
 func start_moving() -> void:
 	if pathFollower.progress_ratio == 0.0: goingToEnd = true
 	elif pathFollower.progress_ratio == 1.0: goingToEnd = false
-	print(pathFollower.progress_ratio)
 	start_tween(1.0 if goingToEnd else 0.0)
 
 ## Stops movement and starts the return timer
@@ -73,7 +71,6 @@ func return_to_origin() -> void:
 ## Calls the platform to the given point
 func call_platform(caller: int) -> void:
 	var goalRatio: float = clamp(curve.get_closest_offset(curve.get_point_position(caller)) / curveLength, 0.0, 1.0)
-	prints(caller, curve.point_count, goalRatio)
 	if pathFollower.progress_ratio == goalRatio: return
 	currentDirection = pathFollower.progress_ratio
 	wasCalled = true
