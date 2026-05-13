@@ -35,12 +35,18 @@ shape = SubResource("BoxShape3D_yia5y")
 debug_color = Color(0.9413197, 1.0203719e-05, 0.61331546, 0.41960785)
 
 [node name="BlockDetector" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 collision_mask = 16384
+
+[node name="FloorDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+collision_mask = 4097
 
 [node name="VerticalDetector" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 target_position = Vector3(0, -3, 0)
 collision_mask = 16385
 
+[connection signal="area_entered" from="FanChecker" to="." method="push"]
 [connection signal="area_exited" from="FanChecker" to="." method="stop_pushing"]

@@ -1,10 +1,9 @@
 extends AnimatableBody3D
 class_name PushableBlock
 
-@export var gridMapRef: GridMap
-
 @onready var fanChecker: Area3D = $FanChecker
 @onready var blockDetector: RayCast3D = $BlockDetector
+@onready var floorDetector: RayCast3D = $FloorDetector
 @onready var verticalDetector: RayCast3D = $VerticalDetector
 
 const moveTime: float = 0.2
@@ -14,7 +13,8 @@ var moveTween: Tween
 var fallTween: Tween
 var isMoving: bool = false
 var isFalling: bool = false
-var pushingForces: Dictionary[Node3D, Vector3] = {}
+var pushingForces: Dictionary[Node3D, Vector3i] = {}
+var actualPushingForces: Dictionary[Vector3i, int] = {}
 var currentDirection: Vector3i
 var currentPushDistance: int = 0
 var fallDistance: int = 0
@@ -31,16 +31,17 @@ func _physics_process(_delta: float) -> void:
 	if startWait: return
 	if isFalling: return
 	if isMoving: return
-	get_fan_areas()
 	check_fan_areas()
 	check_state()
 	if waitingToMove:
-		if check_for_blocks():
+		if check_for_collisions():
 			start_move_tween()
+		else:
+			start_wait()
 
 func start_move_tween() -> void:
 	if moveTween: if moveTween.is_running(): moveTween.kill()
-	prints(name,"from:",global_position,"to:",destination)
+	prints(name, "moving to:", destination)
 	isMoving = true
 	waitingToMove = false
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -52,7 +53,6 @@ func start_fall_tween() -> void:
 	if fallTween: return
 	isMoving = false
 	var fallDestination: Vector3 = global_position + Vector3(Vector3.DOWN * fallDistance)
-	prints("fd:",fallDestination,"gp:", global_position, name)
 	fallTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	fallTween.tween_property(self, "global_position:y", fallDestination.y, fallTime * fallDistance)
 	fallTween.finished.connect(end_fall)
@@ -63,20 +63,14 @@ func end_fall() -> void:
 
 func check_fan_areas() -> void:
 	var areasToRemove: Array = []
-	for area in pushingForces:
-		if not fanAreasInRange.has(area):
+	for area: Fan in pushingForces:
+		if not area.monitorable:
 			areasToRemove.append(area)
 	for area in areasToRemove:
 		stop_pushing(area)
 
-func get_fan_areas() -> void:
-	fanAreasInRange = fanChecker.get_overlapping_areas()
-	for fan: Fan in fanAreasInRange:
-		push(fan, fan.get_fan_direction())
-
 func check_state() -> void:
 	if isFalling:
-		prints("cs-gp:", global_position, name)
 		start_fall_tween()
 		return
 	if pushingForces.is_empty():
@@ -88,87 +82,78 @@ func check_state() -> void:
 	isMoving = false
 
 func check_for_blocks() -> bool:
-	destination = global_position + Vector3(currentDirection * currentPushDistance)
-	blockDetector.target_position = to_local(destination)
-	blockDetector.force_raycast_update()
-	if blockDetector.is_colliding():
-		var block: PushableBlock = blockDetector.get_collider()
-		var distanceToBlock: float = global_position.distance_to(block.global_position)
-		if destination.distance_to(block.destination) < 0.5 and block.isFalling:
-			ignoreHole = true
-			get_current_direction()
-			return true
-		if distanceToBlock > 1:
-			if block.isMoving:
-				if destination.distance_to(block.destination) < 0.5 and currentDirection == block.currentDirection and not block.isFalling:
-					destination -= Vector3(currentDirection)
-			else:
-				currentPushDistance = int(distanceToBlock) - 1
-				destination = global_position + Vector3(currentDirection * currentPushDistance)
-			return true
+	var block: PushableBlock = blockDetector.get_collider()
+	var distanceToBlock: int = int(global_position.distance_to(block.global_position))
+	if not block.isMoving:
+		if distanceToBlock <= 1: 
+			return false
 		else:
-			if block.isMoving:
-				if destination.distance_to(block.destination) < 0.5 and not block.isFalling:
-					destination -= Vector3(currentDirection)
-				return true
-			else:
-				start_wait()
-				return false
+			currentPushDistance = distanceToBlock - 1
+			set_destination()
+			return true
 	else:
+		if destination.distance_to(block.destination) < 0.2 and not block.isFalling:
+			currentPushDistance -= 1
+			set_destination()
 		return true
 
-func get_current_direction() -> bool:
-	var sumOfForces: Vector3 = Vector3.ZERO
-	for object in pushingForces:
-		sumOfForces += pushingForces[object]
-	if Vector3i(sumOfForces) == Vector3i.ZERO: 
-		isMoving = false
-		return false
-	for fan:Fan in pushingForces:
-		var actualPushDistance: int = 0
-		currentDirection = Vector3i(pushingForces[fan])
-		@warning_ignore("narrowing_conversion")
-		currentPushDistance = fan.areaHeight - int(global_position.distance_to(fan.global_position))
-		for n in range(currentPushDistance):
-			var gridPos: Vector3i = get_grid_position(global_position + Vector3(currentDirection * int(n+1)))
-			if gridMapRef.get_cell_item(gridPos) == -1 and gridMapRef.get_cell_item(gridPos + Vector3i.UP) == -1:
-				actualPushDistance += 1
-				if gridMapRef.get_cell_item(gridPos - Vector3i(0,1,0)) == -1 and gridMapRef.get_cell_item(gridPos - Vector3i(0,2,0)) == -1 and not ignoreHole:
-					verticalDetector.position = Vector3(currentDirection * int(n+1))
-					verticalDetector.force_raycast_update()
-					if verticalDetector.is_colliding():
-						@warning_ignore("narrowing_conversion")
-						var collisionDistance: int = verticalDetector.global_position.distance_to(verticalDetector.get_collision_point())
-						prints(name, collisionDistance,gridPos,"-", verticalDetector.get_collision_point())
-						if collisionDistance < 1:
-							continue
-						else:
-							isFalling = true
-							fallDistance = collisionDistance
-							break
-			elif ignoreHole:
-				ignoreHole = false
-				continue
-			else:
-				break
-		if actualPushDistance > 0:
-			currentPushDistance = actualPushDistance
-			destination = global_position + Vector3(currentDirection * currentPushDistance)
-			return true
-	isMoving = false
+func check_for_collisions() -> bool:
+	for direction in actualPushingForces:
+		currentDirection = direction
+		currentPushDistance = actualPushingForces[direction]
+		set_destination()
+		blockDetector.target_position = to_local(destination)
+		blockDetector.force_raycast_update()
+		floorDetector.target_position = to_local(destination)
+		floorDetector.force_raycast_update()
+		if floorDetector.is_colliding():
+			var distanceToPoint: int = int(global_position.distance_to(floorDetector.get_collision_point()))
+			if distanceToPoint < 1: continue
+			currentPushDistance = distanceToPoint
+			set_destination()
+		if blockDetector.is_colliding():
+			if not check_for_blocks(): continue
+		
+		return true
 	return false
 
-func get_grid_position(globalPos: Vector3 = Vector3.ZERO) -> Vector3i:
-	return gridMapRef.local_to_map(gridMapRef.to_local(globalPos))
+func set_destination() -> void:
+	destination = global_position + Vector3(currentDirection * currentPushDistance)
 
-func push(area: Area3D, direction: Vector3) -> void:
-	if pushingForces.has(area) or Vector3i(direction).y != 0.0: return
+func get_current_direction() -> bool:
+	var sumOfForces: Vector3i = Vector3i.ZERO
+	for object in pushingForces:
+		sumOfForces += Vector3i(pushingForces[object])
+	if sumOfForces == Vector3i.ZERO: 
+		isMoving = false
+		return false
+	actualPushingForces.clear()
+	var tempKey
+	if sumOfForces.length() == 1:
+		tempKey = pushingForces.find_key(sumOfForces)
+		if tempKey != null:
+			add_push(pushingForces.find_key(sumOfForces))
+	else:
+		tempKey = pushingForces.find_key(Vector3(sumOfForces.x,0,0))
+		if tempKey != null:
+			add_push(tempKey)
+		tempKey = pushingForces.find_key(Vector3(0,0,sumOfForces.z))
+		if tempKey != null:
+			add_push(tempKey)
+	return true
+
+func add_push(fan: Fan) -> void:
+	actualPushingForces[pushingForces[fan]] = int(fan.areaHeight - int(global_position.distance_to(fan.global_position)))
+
+func push(area: Area3D) -> void:
+	prints("push")
+	var direction: Vector3i = Vector3i(area.get_fan_direction())
+	if pushingForces.has(area) or direction.y != 0: return
 	pushingForces[area] = direction
 
 func stop_pushing(area: Area3D) -> void:
+	prints("stop")
 	pushingForces.erase(area)
-	if not isMoving and not isFalling:
-		check_state()
 
 func start_wait() -> void:
 	startWait = true

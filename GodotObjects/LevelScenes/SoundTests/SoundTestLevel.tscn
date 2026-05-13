@@ -446,10 +446,8 @@ isOff = true
 
 [node name="PushBLocks" type="Node3D" parent="."]
 
-[node name="PushableBlock2" parent="PushBLocks" node_paths=PackedStringArray("gridMapRef") instance=ExtResource("28_vjep4")]
+[node name="PushableBlock2" parent="PushBLocks" instance=ExtResource("28_vjep4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, 1.5)
-gridMapRef = NodePath("../../GridmapObject")
 
-[node name="PushableBlock3" parent="PushBLocks" node_paths=PackedStringArray("gridMapRef") instance=ExtResource("28_vjep4")]
+[node name="PushableBlock3" parent="PushBLocks" instance=ExtResource("28_vjep4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, -0.5, 0.5)
-gridMapRef = NodePath("../../GridmapObject")
