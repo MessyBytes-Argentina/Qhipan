@@ -166,13 +166,13 @@ func _physics_process(delta: float) -> void:
 	var currentPush: Vector3 = involuntaryPushModule.get_current_push()
 	velocity = currentPush * delta
 	move_and_slide()
-	if currentPush.length() > 0:
+	if currentPush.length() > 0.0:
 		moved = true
 	elif moved:
 		if len(parentChecker.get_overlapping_bodies()) == 0: return
-		await do_reparent()
-		_push_save()
 		moved = false
+		await do_reparent(global_position, "PhysicsProcess")
+		_push_save()
 
 ## Cabeza fix to load visuals
 func prerender() -> void:
@@ -217,7 +217,7 @@ func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vec
 	placed = true
 	just_placed.emit(placed)
 	grabed = false
-	await do_reparent(pos + direction * 0.01)
+	await do_reparent(pos + direction * 0.01, "PlaceSticker")
 	if hasBeenMoved:
 		_push_save()
 	if not placed or not is_inside_tree(): return
@@ -270,8 +270,8 @@ func grab(node: Node3D) -> void:
 	hasBeenMoved = true
 
 ## Called when player reset is called.
-func reset_sticker() -> void:
-	await do_reparent()
+func reset_sticker(trigger: String = "") -> void:
+	await do_reparent(global_position, trigger)
 	grabed = false
 	global_position = lastLocation
 	placed = lastMode
@@ -279,11 +279,13 @@ func reset_sticker() -> void:
 	check_placement()
 
 ## Special reparent for scene loading workaround
-func do_reparent(newPos: Vector3 = global_position) -> void:
+func do_reparent(newPos: Vector3 = global_position, trigger: String = "") -> void:
+	print(trigger)
 	sceneParent = null
 	while sceneParent == null:
 		var bodies: Array[Node3D] = parentChecker.get_overlapping_bodies()
 		bodies.sort_custom(func(a: Node3D, b: Node3D): return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position))
+		print(len(bodies))
 		if len(bodies) == 0: await get_tree().process_frame
 		else: 
 			sceneParent = get_root_parent(bodies[0])
@@ -315,7 +317,7 @@ func drop() -> void:
 	placed = false
 	just_placed.emit(placed)
 	grabed = false
-	await do_reparent()
+	await do_reparent(global_position, "Drop")
 	_push_save()
 
 ## Starts the floating animations 
