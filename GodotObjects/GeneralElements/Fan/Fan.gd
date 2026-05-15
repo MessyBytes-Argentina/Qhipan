@@ -46,10 +46,13 @@ var setupReady: bool = false
 var canAffectPlayer: bool = true
 ## Flag to check for length.
 var canCheckLength: bool = false
+## Curren actual length.
+var currentLength: float = 0.0
 
 ## Adjust push and noGravity size and position
 func set_area_size(overridenSize: float = areaHeight) -> void:
 	if not is_node_ready(): await ready
+	currentLength = overridenSize
 	area.shape.size = Vector3(areaDiameter, overridenSize, areaDiameter)
 	area.position.y = overridenSize / 2.0
 	noGravityCollision.shape.size = Vector3(areaDiameter, overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0), areaDiameter)
@@ -86,7 +89,7 @@ func check_obstacles() -> void:
 	if blockingRaycast.target_position.y == 0: return
 	if not blockingRaycast.is_colliding():
 		if lastRayCollision != 0.0:
-			set_area_size()
+			set_area_size(currentLength)
 			lastRayCollision = 0.0
 		return
 	var currentRayCollision: float = roundf(global_position.distance_to(blockingRaycast.get_collision_point()))

@@ -82,4 +82,4 @@ func deactivate_on_player_effect() -> void:
 func set_override_range(newRange: float) -> void:
 	overrideRange = newRange
 	fanRange = overrideRange if overrideRange > -1 else DEFAULTFANRANGE
-	fan.set_area_size()
+	fan.set_area_size(fanRange)
