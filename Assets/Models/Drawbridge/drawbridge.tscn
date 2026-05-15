@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://dk14671sql8d5"]
+
+[ext_resource type="PackedScene" uid="uid://dwqqyonpkkxn6" path="res://Assets/Models/Drawbridge/Drawbridge.glb" id="1_nt7gc"]
+[ext_resource type="Shader" uid="uid://dlpqih7m6ak0w" path="res://Assets/Shaders/Godrays.gdshader" id="2_3hjkm"]
+[ext_resource type="AnimationLibrary" uid="uid://couaqhvoskdv0" path="res://Assets/Models/Animations/Props.res" id="3_3hjkm"]
+
+[sub_resource type="Gradient" id="Gradient_b4gss"]
+offsets = PackedFloat32Array(0, 0.25222552, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.034999996, 0.034999996, 0.034999996, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bdrj3"]
+gradient = SubResource("Gradient_b4gss")
+fill_to = Vector2(0.85470086, 0)
+
+[sub_resource type="Gradient" id="Gradient_51xmy"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(16.132156, 10.662359, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.892157, 17.694866, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npjj3"]
+gradient = SubResource("Gradient_51xmy")
+fill_to = Vector2(0.33333334, 0)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdoql"]
+render_priority = 0
+shader = ExtResource("2_3hjkm")
+shader_parameter/alpha = 1.0
+shader_parameter/rim_power = 0.0
+shader_parameter/texture_emission = SubResource("GradientTexture2D_npjj3")
+shader_parameter/gradient = SubResource("GradientTexture2D_bdrj3")
+shader_parameter/speed = Vector2(15, 15)
+shader_parameter/emission = Color(0.8641576, 0.36129215, 0.22346815, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/scale = Vector2(0.5, 0.1)
+shader_parameter/offset = Vector2(0, 1)
+shader_parameter/distance_fade_close_min = 0.0
+shader_parameter/distance_fade_close_max = 0.0
+shader_parameter/distance_fade_far_min = 0.0
+shader_parameter/distance_fade_far_max = 0.0
+
+[sub_resource type="Animation" id="Animation_bdrj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCylinder3D:material:shader_parameter/emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51xmy"]
+_data = {
+&"RESET": SubResource("Animation_bdrj3")
+}
+
+[node name="Drawbridge" instance=ExtResource("1_nt7gc")]
+
+[node name="Traba L" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47652096, 0.17, 0.001871191)
+
+[node name="Traba R" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47652096, 0.17, 0.001871191)
+
+[node name="Caño" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 0, 0.100000046, 0.001871191)
+
+[node name="Plataforma" parent="." index="4"]
+transform = Transform3D(1, 7.888609e-31, -3.4482205e-38, 0, -4.371139e-08, -1, -7.888609e-31, 1, -4.371139e-08, 0, 0.10473268, 0.0010390431)
+
+[node name="Colision" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 0.9999575, -0.009221888, 0, 0.009221888, 0.9999575, 0, 0.11173269, -0.0038321614)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 0.17476517, -0.9846101, 0, 0.9846101, 0.17476517, 0, 0.55999225, -0.5388902)
+cast_shadow = 0
+flip_faces = true
+radius = 0.311
+height = 0.87854004
+cone = true
+smooth_faces = false
+material = SubResource("ShaderMaterial_hdoql")
+
+[node name="AnimationPlayer" parent="." index="7"]
+libraries = {
+&"": SubResource("AnimationLibrary_51xmy"),
+&"Props": ExtResource("3_3hjkm")
+}
+autoplay = "Props/PlataformaAction_001"
