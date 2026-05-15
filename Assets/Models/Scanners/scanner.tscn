@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dt2o3urpe83j6"]
+
+[ext_resource type="PackedScene" uid="uid://dv7uqga8bo0ls" path="res://Assets/Models/Scanners/Scanner.glb" id="1_ps1a1"]
+[ext_resource type="AnimationLibrary" uid="uid://couaqhvoskdv0" path="res://Assets/Models/Animations/Props.res" id="2_v1rqd"]
+[ext_resource type="Shader" uid="uid://dlpqih7m6ak0w" path="res://Assets/Shaders/Godrays.gdshader" id="3_18ry0"]
+
+[sub_resource type="Animation" id="Animation_ylhuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCylinder3D:material:shader_parameter/emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r10dr"]
+_data = {
+&"RESET": SubResource("Animation_ylhuc")
+}
+
+[sub_resource type="Gradient" id="Gradient_ee23o"]
+offsets = PackedFloat32Array(0, 0.25222552, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.034999996, 0.034999996, 0.034999996, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bdrj3"]
+gradient = SubResource("Gradient_ee23o")
+fill_to = Vector2(0.85470086, 0)
+
+[sub_resource type="Gradient" id="Gradient_up7a5"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(16.132156, 10.662359, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.892157, 17.694866, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npjj3"]
+gradient = SubResource("Gradient_up7a5")
+fill_to = Vector2(0.33333334, 0)
+repeat = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3o0h"]
+render_priority = 0
+shader = ExtResource("3_18ry0")
+shader_parameter/alpha = 1.0
+shader_parameter/rim_power = 0.0
+shader_parameter/texture_emission = SubResource("GradientTexture2D_npjj3")
+shader_parameter/gradient = SubResource("GradientTexture2D_bdrj3")
+shader_parameter/speed = Vector2(15, 15)
+shader_parameter/emission = Color(0.8641576, 0.36129215, 0.22346815, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/scale = Vector2(0.5, 0.1)
+shader_parameter/offset = Vector2(0, 1)
+shader_parameter/distance_fade_close_min = 0.0
+shader_parameter/distance_fade_close_max = 0.0
+shader_parameter/distance_fade_far_min = 0.0
+shader_parameter/distance_fade_far_max = 0.0
+
+[node name="Scanner" instance=ExtResource("1_ps1a1")]
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_r10dr"),
+&"Props": ExtResource("2_v1rqd")
+}
+autoplay = "Props/ScannerAction"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -0.9999994, -0.0011343285, 0, 0.0011343285, -0.9999994, 0, 0.43101943, -0.0004284978)
+cast_shadow = 0
+flip_faces = true
+radius = 0.311
+height = 0.87854004
+cone = true
+smooth_faces = false
+material = SubResource("ShaderMaterial_k3o0h")

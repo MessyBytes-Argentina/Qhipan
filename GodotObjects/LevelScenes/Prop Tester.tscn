@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2w1cynehceuu"]
+[gd_scene load_steps=24 format=3 uid="uid://b2w1cynehceuu"]
 
 [ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_ft34o"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_8dfj3"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="9_epig7"]
 [ext_resource type="PackedScene" uid="uid://1i6rt2m78ouu" path="res://GodotObjects/GeneralElements/SpecializedOutlineBlocker/SpecializedOutlineBlocker.tscn" id="10_mdlyd"]
 [ext_resource type="PackedScene" uid="uid://dk14671sql8d5" path="res://Assets/Models/Drawbridge/drawbridge.tscn" id="11_xd0rd"]
+[ext_resource type="PackedScene" uid="uid://dt2o3urpe83j6" path="res://Assets/Models/Scanners/scanner.tscn" id="12_pnnuq"]
+[ext_resource type="PackedScene" uid="uid://dfqjv3eij1tmo" path="res://Assets/Models/One Way/one_way.tscn" id="13_ji5sc"]
 
 [sub_resource type="Gradient" id="Gradient_a74g7"]
 offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
@@ -181,6 +183,12 @@ transform = Transform3D(20, 0, 0, 0, 1.1, 0, 0, 0, 20, 0, 7, 0)
 
 [node name="Drawbridge" parent="." instance=ExtResource("11_xd0rd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 3.863238)
+
+[node name="Scanner" parent="." instance=ExtResource("12_pnnuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 3)
+
+[node name="OneWay" parent="." instance=ExtResource("13_ji5sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, 4.5)
 
 [connection signal="body_entered" from="OutlineBlockerWhileArea" to="SpecializedOutlineBlocker" method="player_entered"]
 [connection signal="body_exited" from="OutlineBlockerWhileArea" to="SpecializedOutlineBlocker" method="player_exited"]
