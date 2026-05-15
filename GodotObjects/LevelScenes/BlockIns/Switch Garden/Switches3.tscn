@@ -77,7 +77,7 @@ startLight = SubResource("Resource_qs13x")
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2.5, 1.5, 0.5)
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(-4.3711385e-08, 0.6427876, -0.7660443, 0, 0.76604444, 0.6427875, 0.9999999, 2.8097137e-08, -3.3484863e-08, -1.5, 4, 0.5)
+transform = Transform3D(-4.371139e-08, 0.6427876, -0.76604444, 0, 0.76604444, 0.6427876, 1, 2.8097137e-08, -3.3484866e-08, -1.5, 4, 0.5)
 cull_mask = 655359
 current = true
 script = ExtResource("8_wmv5o")
@@ -130,7 +130,6 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2" instance=ExtResource("10_1akhy")]
 transform = Transform3D(-1, 0, 2.6226832e-07, 0, 1, 0, -2.6226832e-07, 0, -1, 1.5, 0, 4.7683716e-07)
-collision_layer = 4096
 
 [node name="LeylinePiece3r" type="Node3D" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2"]
 transform = Transform3D(1.3113413e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113413e-07, 0.49999857, 0, 0.49999893)
@@ -140,7 +139,6 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3r" instance=ExtResource("10_1akhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5000005, 0, -0.99999905)
-collision_layer = 4096
 
 [node name="LeylinePiece4r" type="Node3D" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3r"]
 transform = Transform3D(1, 0, 1.7484552e-07, 0, 1, 0, -1.7484552e-07, 0, 1, 0.9999988, 0, -9.536743e-07)
@@ -150,7 +148,6 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3r/LeylinePiece4r" instance=ExtResource("10_1akhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5000005, 0, -0.99999905)
-collision_layer = 4096
 
 [node name="LeylinePiece3l" type="Node3D" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2"]
 transform = Transform3D(-4.371134e-08, 0, 1, 0, 1, 0, -1, 0, -4.371134e-08, 0.4999981, 0, -0.5000011)
@@ -160,7 +157,6 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3l" instance=ExtResource("10_1akhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999967, 0, 1.000001)
-collision_layer = 4096
 
 [node name="LeylinePiece4l" type="Node3D" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3l"]
 transform = Transform3D(1, 0, 1.7484552e-07, 0, 1, 0, -1.7484552e-07, 0, 1, 0.9999988, 0, -9.536743e-07)
@@ -170,7 +166,6 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1/LeylinePiece1/LeylinePiece2/LeylinePiece3l/LeylinePiece4l" instance=ExtResource("10_1akhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999928, 0, 1.000001)
-collision_layer = 4096
 
 [node name="AlternatingGroup2" type="Node3D" parent="Placements"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
@@ -187,7 +182,7 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 [node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeylinePiece"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 script = ExtResource("14_vqmck")
-verticalAngle = 4
+verticalAngle = 6
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeylinePiece/LeylinePiece"]
@@ -210,7 +205,7 @@ metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 [node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 script = ExtResource("14_vqmck")
-verticalAngle = 3
+verticalAngle = 5
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
 
 [node name="LeylinePiece1" type="Node3D" parent="Placements/AlternatingGroup2/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2/LeylinePiece"]
@@ -267,10 +262,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999928, 0, 1.000001)
 
 [node name="AlternatingBlock" parent="Props" instance=ExtResource("10_1akhy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.500001, 0, -1.5000007)
+collision_layer = 4096
 isOff = true
 
 [node name="AlternatingBlock2" parent="Props" instance=ExtResource("10_1akhy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.500001, 0, -2.5000007)
+collision_layer = 4096
 isOff = true
 
 [node name="PushDoor" parent="Props" node_paths=PackedStringArray("sceneParent") instance=ExtResource("12_mq4o5")]
