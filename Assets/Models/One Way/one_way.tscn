@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dfqjv3eij1tmo"]
+[gd_scene load_steps=22 format=4 uid="uid://dfqjv3eij1tmo"]
 
 [ext_resource type="PackedScene" uid="uid://8bbsu1tu6geu" path="res://Assets/Models/One Way/OneWay.glb" id="1_mf767"]
 [ext_resource type="Texture2D" uid="uid://dmktk7j3tjgsc" path="res://Assets/Models/One Way/OneWay_Altar.png" id="2_bclkw"]
@@ -224,6 +224,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7qm8i")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf767"]
+
 [node name="OneWay" instance=ExtResource("1_mf767")]
 
 [node name="Base_002" parent="." index="0"]
@@ -243,3 +245,9 @@ mesh = SubResource("ArrayMesh_kfn42")
 
 [node name="Chakana_001" parent="." index="5"]
 mesh = SubResource("ArrayMesh_dwmgr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49658203, 0)
+shape = SubResource("BoxShape3D_mf767")
