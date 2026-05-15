@@ -28,6 +28,7 @@ func _ready() -> void:
 	start_wait()
 
 func _physics_process(_delta: float) -> void:
+	if pushingForces.is_empty(): return
 	if startWait: return
 	if isFalling: return
 	if isMoving: return
@@ -117,7 +118,8 @@ func check_for_collisions() -> bool:
 		if blockDetector.is_colliding():
 			var block: PushableBlock = blockDetector.get_collider()
 			var distanceToBlock: int = int(global_position.distance_to(block.global_position))
-			blockDelay = true
+			if distanceToBlock == 1:
+				blockDelay = true
 			if block.isMoving:
 				if block.isFalling:
 					if block.fallDistance == 1:
@@ -140,7 +142,7 @@ func check_for_collisions() -> bool:
 				else:
 					currentPushDistance = distanceToBlock - 1
 					set_destination()
-		if not isFalling and holeCollection.size() > 0:
+		if not holeCollection.is_empty():
 			for posKey in holeCollection:
 				destination = posKey
 				fallDistance = holeCollection[posKey]
@@ -166,10 +168,10 @@ func get_current_direction() -> bool:
 		if tempKey != null:
 			add_push(pushingForces.find_key(sumOfForces))
 	else:
-		tempKey = pushingForces.find_key(Vector3(sumOfForces.x,0,0))
+		tempKey = pushingForces.find_key(Vector3i(sumOfForces.x,0,0))
 		if tempKey != null:
 			add_push(tempKey)
-		tempKey = pushingForces.find_key(Vector3(0,0,sumOfForces.z))
+		tempKey = pushingForces.find_key(Vector3i(0,0,sumOfForces.z))
 		if tempKey != null:
 			add_push(tempKey)
 	return true
@@ -178,15 +180,18 @@ func add_push(fan: Fan) -> void:
 	actualPushingForces[pushingForces[fan]] = int(fan.areaHeight - int(global_position.distance_to(fan.global_position)))
 
 func push(area: Area3D) -> void:
+	prints(name,"push")
 	var direction: Vector3i = Vector3i(area.get_fan_direction())
 	if pushingForces.has(area) or direction.y != 0: return
 	pushingForces[area] = direction
 
 func stop_pushing(area: Area3D) -> void:
+	prints(name,"stop push")
 	pushingForces.erase(area)
 
 func start_wait() -> void:
 	startWait = true
+	prints(name, "wait")
 	get_tree().create_timer(moveTime).timeout.connect(end_wait)
 
 func end_wait() -> void:

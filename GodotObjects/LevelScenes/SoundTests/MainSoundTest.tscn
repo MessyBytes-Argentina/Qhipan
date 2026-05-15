@@ -15,7 +15,7 @@ transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70
 [node name="SoundTestScene" parent="." instance=ExtResource("3_c45bg")]
 
 [node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.43627638, 0.7608837, -0.480332, 0, 0.5338133, 0.84560233, 0.8998127, -0.36891633, 0.23289013, -0.8990065, 3.343112, 1.4207377)
+transform = Transform3D(0.46743977, -0.41859767, 0.7786373, 0, 0.8807866, 0.47351342, -0.8840249, -0.221339, 0.41171467, 6.4973555, 3.343112, 3.4067993)
 cull_mask = 655359
 current = true
 script = ExtResource("4_quybr")
