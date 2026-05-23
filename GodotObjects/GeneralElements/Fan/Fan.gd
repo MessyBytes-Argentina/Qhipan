@@ -108,7 +108,10 @@ func switch_fan(mode: bool = not isOn) -> void:
 
 ## Returns the direction of the fan
 func get_fan_direction() -> Vector3:
-	return origin.global_position.direction_to(target.global_position)
+	if origin.is_inside_tree():
+		return origin.global_position.direction_to(target.global_position)
+	else:
+		return Vector3.ZERO
 
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
