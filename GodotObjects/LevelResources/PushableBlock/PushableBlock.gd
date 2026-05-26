@@ -22,6 +22,7 @@ var destination: Vector3
 var fanAreasInRange: Array[Area3D]
 var waitingToMove: bool = false
 var waiting: bool = true
+var blockCaller: PushableBlock = null
 
 signal moving
 signal falling
@@ -29,7 +30,8 @@ signal falling
 func _ready() -> void:
 	start_wait()
 
-func _physics_process(_delta: float) -> void:
+#func _physics_process(_delta: float) -> void:
+func check_movement() -> void:
 	if pushingForces.is_empty(): return
 	if waiting: return
 	if isFalling: return
@@ -38,15 +40,13 @@ func _physics_process(_delta: float) -> void:
 	if waitingToMove:
 		if check_for_collisions():
 			start_move_tween()
-		else:
-			start_wait()
 
 func start_move_tween() -> void:
 	if moveTween: if moveTween.is_running(): moveTween.kill()
 	prints(name,"to:",destination,isFalling,"f:",get_tree().get_frame())
-	emit_signal("moving")
 	isMoving = true
 	waitingToMove = false
+	emit_signal("moving")
 	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	moveTween.tween_property(self, "global_position:x", destination.x, moveTime * currentPushDistance)
 	moveTween.parallel().tween_property(self, "global_position:z", destination.z, moveTime * currentPushDistance)
@@ -54,7 +54,7 @@ func start_move_tween() -> void:
 
 func start_fall_tween() -> void:
 	if fallTween: if fallTween.is_running(): fallTween.kill()
-	prints(name,"falling :",fallDistance,"f:",get_tree().get_frame())
+	#prints(name,"falling :",fallDistance,"f:",get_tree().get_frame())
 	emit_signal("falling", self)
 	isMoving = false
 	fallTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -89,15 +89,6 @@ func check_hole() -> bool:
 		fallDistance = abs(verticalDetector.target_position.y)
 		return true
 
-
-func check_fan_areas() -> void:
-	var areasToRemove: Array = []
-	for area: Fan in pushingForces:
-		if not area.monitorable:
-			areasToRemove.append(area)
-	for area in areasToRemove:
-		stop_pushing(area)
-
 func check_state() -> void:
 	check_fan_areas()
 	if isFalling:
@@ -111,11 +102,35 @@ func check_state() -> void:
 		waitingToMove = true
 	isMoving = false
 
+func check_fan_areas() -> void:
+	var areasToRemove: Array = []
+	for area: Fan in pushingForces:
+		if not area.monitorable:
+			areasToRemove.append(area)
+	for area in areasToRemove:
+		stop_pushing(area)
+
 func check_for_collisions() -> bool:
 	for direction in actualPushingForces:
 		currentDirection = direction
 		currentPushDistance = actualPushingForces[direction]
 		set_destination()
+		# -- pre check --
+		blockDetector.target_position = to_local(destination)
+		blockDetector.force_raycast_update()
+		if blockDetector.is_colliding():
+			var collidingBlock: PushableBlock = blockDetector.get_collider()
+			var distanceToBlock: int = int(global_position.distance_to(collidingBlock.global_position))
+			if distanceToBlock <= 1 and collidingBlock != blockCaller and not collidingBlock.isMoving:
+				blockCaller = collidingBlock
+				blockCaller.moving.connect(check_movement)
+				#prints(name,"connecting to:",blockCaller.name)
+				return false
+			elif blockCaller != null:
+				#prints(name,"disconnecting:",blockCaller.name)
+				if blockCaller.moving.is_connected(check_movement):
+					blockCaller.moving.disconnect(check_movement)
+				blockCaller = null
 		# -- Floor detection --
 		# gets maximum amount of movement in this direction
 		floorDetector.target_position = to_local(destination)
@@ -146,8 +161,6 @@ func check_for_collisions() -> bool:
 				else:
 					holeCollection[global_position + Vector3(currentDirection * (n + 1))] = snappedf(distanceToCollision, 0.5) 
 		# -- Block detection --
-		blockDetector.target_position = to_local(destination)
-		blockDetector.force_raycast_update()
 		if blockDetector.is_colliding():
 			var block: PushableBlock = blockDetector.get_collider()
 			var distanceToBlock: int = int(global_position.distance_to(block.global_position))
@@ -218,13 +231,14 @@ func push(area: Area3D) -> void:
 	var direction: Vector3i = Vector3i(area.get_fan_direction())
 	if pushingForces.has(area) or direction.y != 0 or direction == Vector3i.ZERO: return
 	pushingForces[area] = direction
+	check_movement()
 
 func stop_pushing(area: Area3D) -> void:
 	pushingForces.erase(area)
 
 func start_wait(time: float = moveTime) -> void:
 	waiting = true
-	prints(name,"waiting:",time,"secs ","f:",get_tree().get_frame()) 
+	#prints(name,"waiting:",time,"secs ","f:",get_tree().get_frame()) 
 	get_tree().create_timer(time).timeout.connect(end_wait)
 
 func end_wait() -> void:
