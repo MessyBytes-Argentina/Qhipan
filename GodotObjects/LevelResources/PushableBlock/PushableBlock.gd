@@ -37,13 +37,10 @@ func check_movement() -> void:
 	if isFalling: return
 	if isMoving: return
 	check_state()
-	if waitingToMove:
-		if check_for_collisions():
-			start_move_tween()
 
 func start_move_tween() -> void:
 	if moveTween: if moveTween.is_running(): moveTween.kill()
-	prints(name,"to:",destination,isFalling,"f:",get_tree().get_frame())
+	prints(name,"to:",destination,"is falling:",isFalling,"f:",get_tree().get_frame())
 	isMoving = true
 	waitingToMove = false
 	emit_signal("moving")
@@ -98,9 +95,10 @@ func check_state() -> void:
 		isMoving = false
 		waitingToMove = false
 		return
-	if get_current_direction():
-		waitingToMove = true
 	isMoving = false
+	if get_current_direction():
+		if check_for_collisions():
+			start_move_tween()
 
 func check_fan_areas() -> void:
 	var areasToRemove: Array = []
@@ -124,10 +122,10 @@ func check_for_collisions() -> bool:
 			if distanceToBlock <= 1 and collidingBlock != blockCaller and not collidingBlock.isMoving:
 				blockCaller = collidingBlock
 				blockCaller.moving.connect(check_movement)
-				#prints(name,"connecting to:",blockCaller.name)
+				prints(name,"connecting to:",blockCaller.name)
 				return false
 			elif blockCaller != null:
-				#prints(name,"disconnecting:",blockCaller.name)
+				prints(name,"disconnecting:",blockCaller.name)
 				if blockCaller.moving.is_connected(check_movement):
 					blockCaller.moving.disconnect(check_movement)
 				blockCaller = null
@@ -166,10 +164,15 @@ func check_for_collisions() -> bool:
 			var distanceToBlock: int = int(global_position.distance_to(block.global_position))
 			if block.isMoving:
 				if block.isFalling:
+					if distanceToBlock == 1:
+						set_destination(block.destination - Vector3(currentDirection))
+						currentPushDistance = block.currentPushDistance
+						return true
 					match  block.fallDistance:
 						0.5:
 							set_destination(block.destination - Vector3(currentDirection))
-							holeCollection.clear()
+							currentPushDistance = block.currentPushDistance
+							return true
 						1.0:
 							for posKey in holeCollection:
 								if block.destination.distance_to(posKey) < 0.2:
