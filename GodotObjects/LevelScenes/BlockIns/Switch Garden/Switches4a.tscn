@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://tppytnas5uj4"]
+[gd_scene load_steps=27 format=3 uid="uid://tppytnas5uj4"]
 
 [ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_ehrdx"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_asier"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="9_o07qh"]
 [ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="10_y2spm"]
 [ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="11_wnpjp"]
+[ext_resource type="Script" uid="uid://cmfu731awuagp" path="res://GodotObjects/LevelResources/LeylinePieces/CubeCheck.gd" id="12_66jry"]
 [ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="12_asier"]
 [ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="12_gnx6j"]
 [ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="16_u41jf"]
@@ -174,6 +175,10 @@ transform = Transform3D(-4.3711395e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711395e-08, 0.
 script = ExtResource("11_wnpjp")
 verticalAngle = 1
 metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylineCubeCheck" type="Area3D" parent="Placements/AlternatingGroup1/LeyLine"]
+script = ExtResource("12_66jry")
+metadata/_custom_type_script = "uid://cmfu731awuagp"
 
 [node name="AlternatingBlock" parent="Placements/AlternatingGroup1" instance=ExtResource("12_gnx6j")]
 transform = Transform3D(1.23322915e-14, -2.8212997e-07, 1, -1, -4.371139e-08, 0, 4.371139e-08, -1, -2.8212997e-07, 12.500002, 1.5, 0.99999833)

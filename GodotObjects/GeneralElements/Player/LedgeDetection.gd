@@ -7,7 +7,8 @@ const JUMPDISTANCE: float = 0.40
 const FANPUSHDISTANCE: float = 1.5
 
 ## Player reference
-@onready var player: Player = $".."
+@export var player: Player
+
 ## Forced movement node reference
 @onready var forcedMovement: ForcedMovement = %ForcedMovement
 ## Jump sound

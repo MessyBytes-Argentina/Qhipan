@@ -9,7 +9,7 @@ const LENGTH: float = 0.75
 ## Vertical raycast reference
 @onready var verticalRaycast: RayCast3D = %VerticalRayCast
 ## Obstacle detecting raycast
-@onready var pathRayCast: RayCast3D = $PathRayCast
+@onready var pathRayCast: RayCast3D = %PathRayCast
 ## Wind particles
 @onready var windParticles: GPUParticles3D = %WindJumpParticles
 

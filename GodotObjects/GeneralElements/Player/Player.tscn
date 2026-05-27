@@ -1775,9 +1775,10 @@ libraries = {
 }
 autoplay = "preload"
 
-[node name="LedgeDetection" type="Node3D" parent="." groups=["OnPlayerFan"]]
+[node name="LedgeDetection" type="Node3D" parent="." node_paths=PackedStringArray("player") groups=["OnPlayerFan"]]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, -0.6, 0)
 script = ExtResource("72_4biwg")
+player = NodePath("..")
 
 [node name="DetectionRaycast" parent="LedgeDetection" instance=ExtResource("73_uxb7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.05, 0.4)

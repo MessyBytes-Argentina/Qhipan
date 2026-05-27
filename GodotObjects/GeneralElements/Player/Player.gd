@@ -100,6 +100,8 @@ const CAMERALERPCOOLSTICKER: float = 0.3
 @onready var alternatorHeldEffect: MeshInstance3D = %AlternatorHeldEffect
 ## Reference to the fanfare sound.
 @onready var fanfare: AudioStreamPlayer = %Fanfare
+## Ledge detection.
+@onready var ledgeDetection: LedgeDetection = $LedgeDetection
 #endregion
 
 #region Variables
@@ -273,6 +275,7 @@ func get_move_direction() -> Vector3:
 		spritePivot.rotation.z = clamp(spritePivot.rotation.z, -MAXSPRITEANGLE, MAXSPRITEANGLE)
 		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation).normalized()
 		cameraPivot.global_rotation.y = currentCameraRotation
+		ledgeDetection.global_rotation.y = currentCameraRotation + PI * 0.25
 	return moveDirection
 
 ## Moves the player character.
