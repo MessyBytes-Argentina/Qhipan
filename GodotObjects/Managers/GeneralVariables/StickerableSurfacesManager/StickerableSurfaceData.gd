@@ -21,7 +21,6 @@ var extraParameters: Dictionary = {}
 
 func _init(surface: StickerMarker = null, pointingTo: Node3D = null) -> void:
 	if not surface: return
-	print("c")
 	node = surface
 	direction = surface.global_position.direction_to(pointingTo.global_position)
 	globalPosition = surface.global_position

@@ -19,5 +19,4 @@ func process_children(node: Node) -> void:
 		node.specialStickerScale = specialStickerScale
 		node.specialFlags = specialFlags
 		node.overrideFanLength = overrideFanLength
-		print("a")
 	for child in node.get_children(): process_children(child)
