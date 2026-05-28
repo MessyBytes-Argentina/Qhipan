@@ -44,6 +44,7 @@ func _ready() -> void:
 ## Plays sound and places the fan then starts the fan animation.
 func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0, extraParameters: Dictionary = {}) -> void:
 	fan.canAffectPlayer = specialFlags & NOPLAYERFAN == 0
+	print(extraParameters)
 	if extraParameters.has("overrideFanLength"): set_override_range(extraParameters.overrideFanLength)
 	noGravity.canAffectPlayer = specialFlags & NOPLAYERANTIGRAVITY == 0
 	if grabed:

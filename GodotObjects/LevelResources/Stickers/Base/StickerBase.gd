@@ -145,7 +145,7 @@ func check_placement() -> void:
 		var closest: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_closest_valid_surface(global_position, self)
 		if closest != null: 
 			if closest.globalPosition.distance_to(global_position) <= MAXPREPLACEDDISTANCE: 
-				place_sticker(closest.globalPosition, closest.direction, closest.specialScale, closest.specialFlags)
+				place_sticker(closest.globalPosition, closest.direction, closest.specialScale, closest.specialFlags, closest.extraParameters)
 				closest.used = self
 				closest.node.sticker_activity()
 				return

@@ -28,6 +28,8 @@ var data: StickerableSurfaceData
 func _ready() -> void:
 	_setup_shape()
 	if Engine.is_editor_hint(): return
+	await get_tree().process_frame
+	print("b")
 	_save_data()
 
 ## Ties queue free to function.
