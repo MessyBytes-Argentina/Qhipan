@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://808lg2io23og"]
+[gd_scene load_steps=33 format=3 uid="uid://808lg2io23og"]
 
 [ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_86p8b"]
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_reg1q"]
@@ -105,6 +105,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_pm1da"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 1),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Venti5" type="Node3D"]
 metadata/isRoot = true
@@ -244,6 +251,9 @@ placed = true
 [node name="FanSticker12" parent="Stickers" instance=ExtResource("8_asuib")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7, 29, -0.5)
 placed = true
+
+[node name="FanSticker13" parent="Stickers" instance=ExtResource("8_asuib")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.5, 24, -4)
 
 [node name="KeySticker" parent="Stickers" instance=ExtResource("8_pm1da")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 29, -0.5)
@@ -460,3 +470,7 @@ curve = SubResource("Curve3D_6gedm")
 [node name="Wood Fence7" parent="Props" instance=ExtResource("14_skhw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 28.5, -1)
 curve = SubResource("Curve3D_rn4mk")
+
+[node name="Wood Fence8" parent="Props" instance=ExtResource("14_skhw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 23.5, -5)
+curve = SubResource("Curve3D_pm1da")
