@@ -31,12 +31,13 @@ emission_ring_height = 0.5
 emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
 velocity_limit_curve = SubResource("CurveTexture_c3cli")
-gravity = Vector3(0, 9.8, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 2.0
+gravity = Vector3(0, 0, 0)
 linear_accel_curve = SubResource("CurveTexture_30j2s")
-damping_max = 2.0
 scale_min = 0.5
 scale_max = 0.8
 scale_over_velocity_max = 2.0
@@ -60,7 +61,7 @@ bottom_radius = 0.025
 height = 0.75
 
 [node name="FanParticles" type="GPUParticles3D"]
-lifetime = 0.45
+lifetime = 0.6
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_5l5r5")
 draw_pass_1 = SubResource("CylinderMesh_2hw6u")

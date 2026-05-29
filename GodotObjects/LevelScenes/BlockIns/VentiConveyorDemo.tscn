@@ -1,0 +1,249 @@
+[gd_scene load_steps=24 format=3 uid="uid://bpdd38kksc6na"]
+
+[ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_x6ufi"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_g2f8v"]
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="3_jhnkv"]
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="4_0ugah"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="5_1sdcm"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="6_42j0k"]
+[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="7_1sdcm"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="8_42j0k"]
+[ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/PorticoAntiSticker.tscn" id="9_m3ggm"]
+[ext_resource type="PackedScene" uid="uid://cjg3u8idl755x" path="res://GodotObjects/LevelResources/Stickers/Fan/Fan.tscn" id="10_7t4vk"]
+[ext_resource type="Script" uid="uid://ch1wpkvccnv8n" path="res://GodotObjects/LevelScenes/1stDemo/MolinoMaps/CameraSwap.gd" id="11_42j0k"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
+colors = PackedColorArray(0, 0, 0, 1, 0.09380949, 0.026161313, 0.09751137, 1, 0.9872274, 0.7921966, 0.68620634, 1, 0.9896011, 0.9260117, 0.9271558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_papsg"]
+gradient = SubResource("Gradient_a74g7")
+fill_from = Vector2(0, 0.021367522)
+
+[sub_resource type="Gradient" id="Gradient_0j15c"]
+offsets = PackedFloat32Array(0.47936508, 0.60952383, 0.6888889)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 1, 1, 1, 1, 0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve3d1"]
+gradient = SubResource("Gradient_0j15c")
+fill_from = Vector2(1, 0.047008548)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_3rjmh"]
+script = ExtResource("3_jhnkv")
+sky_panorama = SubResource("GradientTexture2D_ve3d1")
+glow_intensity = 0.5
+brightness = 0.7999999999999999
+contrast = 0.9
+saturation = 0.9
+color_correction = SubResource("GradientTexture2D_papsg")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_qs13x"]
+script = ExtResource("4_0ugah")
+energy = 1.808
+indirect_energy = 2.257
+specular = 2.885
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="Curve3D" id="Curve3D_1sdcm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -7),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_6su31"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_10fjb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.6, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_qpgjd"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1sdcm"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3ggm"]
+
+[node name="Venti?" type="Node3D"]
+metadata/isRoot = true
+
+[node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_x6ufi")]
+data = {
+"cells": PackedInt32Array(-196608, 65535, 61, -131073, 65535, 61, -131073, 0, 61, -196608, 0, 61, -196608, 65534, 61, -131073, 65534, 61, -196608, 65533, 61, -131073, 65533, 61, -196607, 0, 61, -196607, 65535, 61, -196607, 65534, 61, -196607, 65533, 61, -196606, 0, 61, -196606, 65535, 61, -196606, 65533, 61, -196606, 65534, 61, -131074, 65533, 50, -131074, 65534, 61, -131074, 65535, 61, -131074, 0, 50, -327678, 0, 61, -327679, 0, 61, -327680, 0, 61, -262145, 0, 61, -262146, 0, 61, -327678, 65535, 61, -327678, 65534, 61, -327678, 65533, 61, -262146, 65535, 61, -262146, 65534, 61, -262146, 65533, 61, -262147, 0, 199, -262147, 65535, 199, -262148, 65535, 61, -262148, 65534, 61, -262147, 65534, 199, -262147, 65533, 199, -262148, 65533, 61, -262148, 0, 61, -131076, 65533, 61, -131076, 65534, 61, -131076, 65535, 61, -131076, 0, 61, -131077, 65533, 61, -131077, 65534, 61, -131077, 65535, 61, -131077, 0, 61, -131078, 0, 61, -131078, 65535, 61, -131078, 65534, 61, -131078, 65533, 61, -131079, 65534, 107, -131079, 65533, 15, -131079, 65535, 107, -131079, 0, 15, -262151, 0, 15, -262151, 65535, 15, -262151, 65534, 15, -262151, 65533, 15, -262146, 65532, 15, -262147, 65532, 15, -262148, 65532, 15, -262149, 65532, 15, -262150, 65532, 15, -262151, 65532, 15, -131079, 65532, 15, -131078, 65532, 15, -131077, 65532, 15, -131076, 65532, 15, -131075, 65532, 15, -131074, 65532, 15, -131080, 65534, 107, -131080, 65535, 107, -8, 65535, 107, -8, 65534, 107, 131064, 65534, 107, 131064, 65535, 107, -7, 65533, 15, -7, 65532, 15, -6, 65532, 15, -5, 65532, 15, -4, 65532, 15, -3, 65532, 15, -2, 65532, 15, -7, 0, 15, 131065, 0, 15, 131065, 65533, 15, 131065, 65532, 15, 131066, 65532, 15, 131067, 65532, 15, 131068, 65532, 15, 131069, 65532, 15, 131070, 65532, 15, 262142, 65532, 15, 262141, 65532, 15, 262140, 65532, 15, 262139, 65532, 15, 262138, 65532, 15, 262137, 65532, 15, 262137, 65533, 15, 262137, 65534, 15, 262137, 65535, 15, 262137, 0, 15, 393209, 0, 15, 393209, 65535, 15, 393209, 65534, 15, 393209, 65533, 15, 393209, 65532, 15, 393210, 65532, 15, 393211, 65532, 15, 393212, 65532, 15, 393213, 65532, 15, 393214, 65532, 15, 524286, 65532, 15, 524285, 65532, 15, 524284, 65532, 15, 524283, 65532, 15, 524282, 65532, 15, 524281, 65532, 15, 524281, 65533, 15, 524281, 65534, 15, 524281, 65535, 15, 524281, 0, 15, -327678, 65532, 61, -327679, 65532, 61, -327680, 65532, 61, -262145, 65532, 61, -327677, 65532, 61, -327677, 65533, 61, -327677, 65534, 61, -327677, 65535, 61, -327677, 0, 61, -327677, 65531, 61, -327678, 65531, 61, -327679, 65531, 61, -327680, 65531, 61, -262145, 65531, 61, -327677, 65530, 61, -327678, 65530, 61, -327679, 65530, 61, -327680, 65530, 61, -262145, 65530, 61, -327680, 65529, 61, -327679, 65529, 61, -327678, 65529, 61, -327677, 65529, 61, -327677, 65528, 61, -327678, 65528, 61, -327679, 65528, 61, -327680, 65528, 61, -262145, 65528, 61, -262145, 65529, 61, -262145, 65527, 61, -262145, 65526, 61, -262145, 65525, 61, -327680, 65525, 61, -327679, 65525, 61, -327678, 65525, 61, -327677, 65525, 61, -327677, 65526, 61, -327677, 65527, 61, -327678, 65527, 61, -327679, 65527, 61, -327680, 65527, 61, -327680, 65526, 61, -327679, 65526, 61, -327678, 65526, 61, -196605, 0, 61, -196605, 65535, 61, -196605, 65534, 61, -196605, 65533, 61, -196605, 65532, 61, -196606, 65532, 61, -196606, 65531, 61, -196607, 65531, 61, -196607, 65532, 61, -196608, 65532, 61, -131073, 65532, 61, -131073, 65531, 61, -196608, 65531, 61, -196608, 65530, 61, -196607, 65530, 61, -196606, 65530, 61, -196605, 65530, 61, -196605, 65531, 61, -196605, 65529, 61, -196605, 65528, 61, -196605, 65527, 61, -196605, 65526, 61, -196605, 65525, 61, -196606, 65525, 61, -196607, 65525, 61, -196608, 65525, 61, -131073, 65525, 61, -131073, 65526, 61, -131073, 65527, 61, -131073, 65528, 61, -131073, 65529, 61, -131073, 65530, 61, -196608, 65528, 61, -196608, 65529, 61, -196607, 65529, 61, -196606, 65529, 61, -196606, 65528, 61, -196606, 65527, 61, -196606, 65526, 61, -196607, 65526, 61, -196608, 65526, 61, -196608, 65527, 61, -196607, 65527, 61, -196607, 65528, 61, -1, 65526, 1048591, -65534, 65525, 1048591, -65533, 65528, 1048591, -65536, 65529, 1048591, -262146, 65530, 1441807, -131074, 65530, 1441807, -2, 65530, 1441807, 131070, 65530, 1441807, 262142, 65530, 1441807, 393214, 65530, 1441807, 524286, 65530, 1441807, -262146, 65529, 1441807, -131074, 65529, 1441807, -2, 65529, 1441807, 131070, 65529, 1441807, 262142, 65529, 1441807, 393214, 65529, 1441807, 524286, 65529, 1441807, -262146, 65528, 1441807, -131074, 65528, 1441807, -2, 65528, 1441807, 131070, 65528, 1441807, 262142, 65528, 1441807, 393214, 65528, 1441807, 524286, 65528, 1441807, -262146, 65527, 1441807, -131074, 65527, 1441807, -2, 65527, 1441807, 131070, 65527, 1441807, 262142, 65527, 1441807, 393214, 65527, 1441807, 524286, 65527, 1441807, -262146, 65526, 1441807, -131074, 65526, 1441807, -2, 65526, 1441807, 131070, 65526, 1441807, 262142, 65526, 1441807, 393214, 65526, 1441807, 524286, 65526, 1441807, -262146, 65525, 1048591, -131074, 65525, 1048591, -2, 65525, 1048591, 131070, 65525, 1048591, 262142, 65525, 1048591, 393214, 65525, 1048591, 524286, 65525, 1048591, -327677, 65524, 15, -327678, 65524, 15, -327679, 65524, 15, -327680, 65524, 15, -262145, 65524, 15, -262146, 65524, 15, -196605, 65524, 15, -196606, 65524, 15, -196607, 65524, 15, -196608, 65524, 15, -131073, 65524, 15, -131074, 65524, 15, -65533, 65524, 15, -65534, 65524, 15, -65535, 65524, 15, -65536, 65524, 15, -1, 65524, 15, -2, 65524, 15, 65539, 65524, 15, 65538, 65524, 15, 65537, 65524, 15, 65536, 65524, 15, 131071, 65524, 15, 131070, 65524, 15, 196611, 65524, 15, 196610, 65524, 15, 196609, 65524, 15, 196608, 65524, 15, 262143, 65524, 15, 262142, 65524, 15, 327683, 65524, 15, 327682, 65524, 15, 327681, 65524, 15, 327680, 65524, 15, 393215, 65524, 15, 393214, 65524, 15, 458755, 65524, 15, 458754, 65524, 15, 458753, 65524, 15, 458752, 65524, 15, 524287, 65524, 15, 524286, 65524, 15, -262146, 65531, 1441807, -131074, 65531, 1441807, -2, 65531, 1441807, 131070, 65531, 1441807, 262142, 65531, 1441807, 393214, 65531, 1441807, 524286, 65531, 1441807, -327677, 1, 1441807, -327678, 1, 15, -327679, 1, 1441807, -327680, 1, 15, -262145, 1, 655375, -262146, 1, 655375, -262147, 1, 655375, -262148, 1, 655375, -262149, 1, 655375, -196605, 1, 1441807, -196606, 1, 15, -196607, 1, 1441807, -196608, 1, 15, -131073, 1, 655375, -131074, 1, 655375, -131075, 1, 655375, -131076, 1, 655375, -131077, 1, 655375, -65533, 1, 1441807, -65534, 1, 15, -65535, 1, 1441807, -65536, 1, 15, -1, 1, 655375, -2, 1, 655375, -3, 1, 655375, -4, 1, 655375, -5, 1, 655375, 65539, 1, 1441807, 65538, 1, 15, 65537, 1, 1441807, 65536, 1, 15, 131071, 1, 655375, 131070, 1, 655375, 131069, 1, 655375, 131068, 1, 655375, 131067, 1, 655375, 196611, 1, 1441807, 196610, 1, 15, 196609, 1, 1441807, 196608, 1, 15, 262143, 1, 655375, 262142, 1, 655375, 262141, 1, 655375, 262140, 1, 655375, 262139, 1, 655375, 327683, 1, 1441807, 327682, 1, 15, 327681, 1, 1441807, 327680, 1, 15, 393215, 1, 655375, 393214, 1, 655375, 393213, 1, 655375, 393212, 1, 655375, 393211, 1, 655375, 458755, 1, 1441807, 458754, 1, 15, 458753, 1, 1441807, 458752, 1, 15, 524287, 1, 655375, 524286, 1, 655375, 524285, 1, 655375, 524284, 1, 655375, 524283, 1, 655375, -262151, 1, 1441807, -131079, 1, 1441807, -7, 1, 1441807, 131065, 1, 1441807, 262137, 1, 1441807, 393209, 1, 1441807, 524281, 1, 1441807, -262150, 1, 655375, -131078, 1, 655375, -6, 1, 655375, 131066, 1, 655375, 262138, 1, 655375, 393210, 1, 655375, 524282, 1, 655375)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("2_g2f8v")]
+startEnvironment = SubResource("Resource_3rjmh")
+startLight = SubResource("Resource_qs13x")
+
+[node name="Player" parent="." instance=ExtResource("5_1sdcm")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2, 0, -0.5)
+
+[node name="RailCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, -0.34202012, 0.9396926, 0, 0.9396926, 0.34202012, -1, 1.4950174e-08, -4.1075268e-08, 6, 2.5, -2)
+cull_mask = 655359
+current = true
+script = ExtResource("6_42j0k")
+pathOffset = Vector3(0, 0, -2)
+freeBaseRotation = Vector3(-0.34906584, 1.5707964, 0)
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.5, 0)
+top_level = true
+curve = SubResource("Curve3D_1sdcm")
+metadata/CameraPath = true
+
+[node name="RailCamera2" type="Camera3D" parent="."]
+transform = Transform3D(-4.2221956e-08, -0.57357645, 0.8191521, -1.1313337e-08, 0.8191521, 0.57357645, -1, 1.4950174e-08, -4.1075268e-08, 0.5, 2.5, -1)
+cull_mask = 655359
+script = ExtResource("6_42j0k")
+mode = 3
+pathOffset = Vector3(0, 0, -2)
+freeBaseRotation = Vector3(0, 1.5707964, 0)
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="Fence" type="Node3D" parent="."]
+
+[node name="Wood Fence" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -7)
+curve = SubResource("Curve3D_6su31")
+
+[node name="Wood Fence2" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.5, -10)
+curve = SubResource("Curve3D_6su31")
+
+[node name="Wood Fence3" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.0000002, -0.5, -10)
+curve = SubResource("Curve3D_6su31")
+
+[node name="Wood Fence4" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 2.9999998, -0.5, -7)
+curve = SubResource("Curve3D_6su31")
+
+[node name="Wood Fence5" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0000002, -0.5, -3)
+curve = SubResource("Curve3D_10fjb")
+
+[node name="Wood Fence6" parent="Fence" instance=ExtResource("7_1sdcm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9999998, -0.5, -3)
+curve = SubResource("Curve3D_qpgjd")
+
+[node name="Placements" type="Node3D" parent="."]
+
+[node name="Placeholder Sticker Area" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -8.5)
+
+[node name="Placeholder Sticker Area2" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2.5, 0, -10)
+specialFlags = 3
+overrideFanLength = 2.5
+
+[node name="Placeholder Sticker Area4" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, -9.5)
+specialFlags = 3
+overrideFanLength = 2.5
+
+[node name="Placeholder Sticker Area5" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -1, 0, -8.5)
+specialFlags = 1
+overrideFanLength = 2.5
+
+[node name="Placeholder Sticker Area6" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(-1, -8.742278e-08, 3.821371e-15, 0, -4.371139e-08, -1, 8.742278e-08, -1, 4.371139e-08, 0.5, 0, -7)
+specialFlags = 3
+overrideFanLength = 2.5
+
+[node name="Placeholder Sticker Area7" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(1.3113416e-07, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, 1.3113416e-07, -5.7320566e-15, 3, 0, -7.5)
+specialFlags = 3
+overrideFanLength = 2.5
+
+[node name="Placeholder Sticker Area3" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.5, 3, -11)
+overrideFanLength = 10.5
+
+[node name="Placeholder Sticker Area8" parent="Placements" instance=ExtResource("8_42j0k")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 1.5, 4.5, -1)
+visible = false
+specialFlags = 3
+overrideFanLength = 5.0
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="FanSticker" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.5, -0.5, -8.5)
+placed = true
+
+[node name="FanSticker2" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -10)
+placed = true
+
+[node name="FanSticker3" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, -7.5)
+placed = true
+
+[node name="FanSticker4" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5, 0, -7)
+placed = true
+
+[node name="FanSticker5" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0, 0, -9.5)
+placed = true
+
+[node name="FanSticker8" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1, 0, -4.5)
+
+[node name="FanSticker9" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1.5, 0, -7.5)
+
+[node name="FanSticker6" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 1.5, 3, -11)
+placed = true
+
+[node name="FanSticker7" parent="Stickers" instance=ExtResource("10_7t4vk")]
+transform = Transform3D(1, 0, -1.7484555e-07, -1.7484555e-07, -4.371139e-08, -1, -7.642742e-15, 1, -4.371139e-08, 1.5, 4.5, -1)
+placed = true
+
+[node name="PorticoAntiSticker" parent="." instance=ExtResource("9_m3ggm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.525, -0.5, -3)
+
+[node name="InvisibleWall" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -1, 0)
+shape = SubResource("BoxShape3D_1sdcm")
+
+[node name="CameraSwapArea" type="Area3D" parent="." node_paths=PackedStringArray("targetCamera")]
+script = ExtResource("11_42j0k")
+targetCamera = NodePath("../RailCamera2")
+metadata/_custom_type_script = "uid://ch1wpkvccnv8n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraSwapArea"]
+shape = SubResource("BoxShape3D_m3ggm")
+
+[node name="CameraSwapArea2" type="Area3D" parent="." node_paths=PackedStringArray("targetCamera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+script = ExtResource("11_42j0k")
+targetCamera = NodePath("../RailCamera")
+metadata/_custom_type_script = "uid://ch1wpkvccnv8n"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraSwapArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+shape = SubResource("BoxShape3D_m3ggm")

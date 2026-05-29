@@ -22,6 +22,10 @@ const pushForce: float = 300.0
 const areaDiameter: float = 0.4
 ## Extra lenght of no gravity
 const noGravityAreaMargin: float = 0.15
+## Particles base amount
+const PARTICLESAMOUNT: float = 8.0
+## Particles lifetime amount
+const PARTICLESLIFETIME: float = 0.6
 
 ## Target marker for direction
 @onready var target: Marker3D = %Target
@@ -46,16 +50,17 @@ var setupReady: bool = false
 var canAffectPlayer: bool = true
 ## Flag to check for length.
 var canCheckLength: bool = false
-## Curren actual length.
+## Current actual length.
 var currentLength: float = 0.0
 
 ## Adjust push and noGravity size and position
-func set_area_size(overridenSize: float = areaHeight) -> void:
+func set_area_size(overridenSize: float = areaHeight, isCollision: bool = false) -> void:
 	if not is_node_ready(): await ready
+	if currentLength != overridenSize: setupReady = false
 	currentLength = overridenSize
 	area.shape.size = Vector3(areaDiameter, overridenSize, areaDiameter)
 	area.position.y = overridenSize / 2.0
-	noGravityCollision.shape.size = Vector3(areaDiameter, overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0), areaDiameter)
+	noGravityCollision.shape.size = Vector3(areaDiameter, overridenSize + (noGravityAreaMargin if not isCollision else 0.0), areaDiameter)
 	noGravity.position.y = (overridenSize + (noGravityAreaMargin if overridenSize == areaHeight else 0.0)) / 2.0
 	target.position.y = overridenSize + ((noGravityAreaMargin if overridenSize == areaHeight else 0.0) if hasAntigravity else 0.0)
 	if blockingRaycast.target_position.y == 0.0:
@@ -64,9 +69,9 @@ func set_area_size(overridenSize: float = areaHeight) -> void:
 		if not setupReady:
 			setupReady = true
 			await get_tree().process_frame
-			fanParticles.amount = roundi(areaHeight / 3.0 * float(fanParticles.amount))
-			fanParticles.lifetime = areaHeight / 3.0 * fanParticles.lifetime
-		fanParticles.interp_to_end = (1.0 - overridenSize / areaHeight) / 6.0
+			fanParticles.amount = roundi(currentLength / areaHeight * PARTICLESAMOUNT)
+			fanParticles.lifetime = currentLength / areaHeight * PARTICLESLIFETIME
+		fanParticles.interp_to_end = ((1.0 - currentLength / areaHeight) / 6.0) if isCollision else 0.0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,13 +94,13 @@ func check_obstacles() -> void:
 	if blockingRaycast.target_position.y == 0: return
 	if not blockingRaycast.is_colliding():
 		if lastRayCollision != 0.0:
-			set_area_size(currentLength)
 			lastRayCollision = 0.0
+			set_area_size(currentLength)
 		return
 	var currentRayCollision: float = roundf(global_position.distance_to(blockingRaycast.get_collision_point()))
 	if lastRayCollision != currentRayCollision:
 		lastRayCollision = currentRayCollision
-		set_area_size(lastRayCollision)
+		set_area_size(lastRayCollision, true)
 
 ## Turns on and off the fan
 func switch_fan(mode: bool = not isOn) -> void:
