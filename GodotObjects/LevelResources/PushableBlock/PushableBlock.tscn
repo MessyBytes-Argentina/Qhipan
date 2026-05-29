@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqxq2c1j1cy3e"]
+
+[ext_resource type="Script" uid="uid://badepv5nenped" path="res://GodotObjects/LevelResources/PushableBlock/PushableBlock.gd" id="1_aunex"]
+[ext_resource type="Material" uid="uid://dvguc0nlq3xwa" path="res://Assets/Materials/Prototype/Prototype Blue.tres" id="1_tbg2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aunex"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yia5y"]
+material = ExtResource("1_tbg2u")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yia5y"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[node name="PushableBlock" type="AnimatableBody3D"]
+collision_layer = 16384
+collision_mask = 0
+sync_to_physics = false
+script = ExtResource("1_aunex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_aunex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_yia5y")
+
+[node name="FanChecker" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 0
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FanChecker"]
+shape = SubResource("BoxShape3D_yia5y")
+debug_color = Color(0.9413197, 1.0203719e-05, 0.61331546, 0.41960785)
+
+[node name="BlockDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+collision_mask = 16384
+
+[node name="FloorDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+collision_mask = 4097
+
+[node name="VerticalDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 16385
+
+[connection signal="area_entered" from="FanChecker" to="." method="push"]
+[connection signal="area_exited" from="FanChecker" to="." method="stop_pushing"]

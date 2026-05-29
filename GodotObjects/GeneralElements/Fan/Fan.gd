@@ -105,6 +105,7 @@ func check_obstacles() -> void:
 ## Turns on and off the fan
 func switch_fan(mode: bool = not isOn) -> void:
 	isOn = mode
+	set_deferred("monitorable", isOn)
 	set_deferred("monitoring", isOn)
 	if fanParticles: fanParticles.emitting = mode
 	noGravity.set_deferred("monitoring", isOn and hasAntigravity)
@@ -113,11 +114,18 @@ func switch_fan(mode: bool = not isOn) -> void:
 		canCheckLength = true
 	else: canCheckLength = false
 
+## Returns the direction of the fan
+func get_fan_direction() -> Vector3:
+	if origin.is_inside_tree():
+		return origin.global_position.direction_to(target.global_position)
+	else:
+		return Vector3.ZERO
+
 ## On body_entered pushes the given body if pusheable
 func push(body: Node3D) -> void:
 	if body.has_node("InvoluntaryPushModule"): 
 		if body is Player and not canAffectPlayer: return
-		body.get_node("InvoluntaryPushModule").push(self, origin.global_position.direction_to(target.global_position), pushForce, true, true)
+		body.get_node("InvoluntaryPushModule").push(self, get_fan_direction(), pushForce, true, true)
 
 ## On body_exited stops pushing the given body if pusheable
 func stop_pushing(body: Node3D) -> void:

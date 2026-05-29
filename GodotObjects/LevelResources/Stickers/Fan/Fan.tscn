@@ -49,10 +49,10 @@ detail_enabled = true
 detail_mask = SubResource("GradientTexture2D_5l5r5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt347"]
-size = Vector3(0.5, 3, 0.5)
+size = Vector3(0.4, 3, 0.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ps2dv"]
-size = Vector3(0.5, 3.15, 0.5)
+size = Vector3(0.4, 3.15, 0.4)
 
 [sub_resource type="Gradient" id="Gradient_gt347"]
 offsets = PackedFloat32Array(0.25, 0.25)
@@ -245,9 +245,8 @@ texture = ExtResource("2_e06n3")
 [node name="Fan" type="Area3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-collision_layer = 0
+collision_layer = 32768
 collision_mask = 514
-monitorable = false
 script = ExtResource("3_6ngi6")
 
 [node name="Area" type="CollisionShape3D" parent="Fan"]

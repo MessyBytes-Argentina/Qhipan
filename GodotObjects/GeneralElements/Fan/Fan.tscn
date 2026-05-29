@@ -29,7 +29,7 @@ fill_from = Vector2(0.5, 1)
 
 [node name="Fan" type="Area3D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 16386
 monitorable = false
 script = ExtResource("1_igptx")
 
