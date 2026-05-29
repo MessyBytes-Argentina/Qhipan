@@ -1,0 +1,519 @@
+[gd_scene load_steps=31 format=3 uid="uid://bpq67xjnr2w5v"]
+
+[ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_s5da4"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_k3cth"]
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="3_f0kdb"]
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="4_s3utt"]
+[ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="5_wmuq2"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="6_rc6hg"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="7_takm0"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="8_ppxx3"]
+[ext_resource type="Script" uid="uid://b6xvs4tlg4hkr" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingGroup.gd" id="9_s2ftv"]
+[ext_resource type="PackedScene" uid="uid://d03r6mharc16r" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformCaller.tscn" id="9_s3utt"]
+[ext_resource type="PackedScene" uid="uid://b4llfjretvmtq" path="res://GodotObjects/LevelResources/AlternatorObjects/LeyLine.tscn" id="10_ksfms"]
+[ext_resource type="Script" uid="uid://b1jqrm3mi80dn" path="res://GodotObjects/LevelResources/LeylinePieces/LeylinePiece.gd" id="11_rrcio"]
+[ext_resource type="PackedScene" uid="uid://b64kyok4cdqwe" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformRail.tscn" id="12_k3cth"]
+[ext_resource type="PackedScene" uid="uid://crc3on5e58ajc" path="res://GodotObjects/LevelResources/AntiStickerArea/PorticoAntiSticker.tscn" id="13_60378"]
+[ext_resource type="PackedScene" uid="uid://binvrpy31ahx6" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.tscn" id="13_f0kdb"]
+[ext_resource type="PackedScene" uid="uid://srdwx3pg85t6" path="res://GodotObjects/LevelResources/PathModels/Presets/Fences/wood_fence.tscn" id="14_nfct0"]
+[ext_resource type="PackedScene" uid="uid://xwsbpt7bioko" path="res://GodotObjects/LevelResources/Props/Door/PushDoor.tscn" id="16_f0kdb"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
+colors = PackedColorArray(0, 0, 0, 1, 0.09380949, 0.026161313, 0.09751137, 1, 0.9872274, 0.7921966, 0.68620634, 1, 0.9896011, 0.9260117, 0.9271558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_papsg"]
+gradient = SubResource("Gradient_a74g7")
+fill_from = Vector2(0, 0.021367522)
+
+[sub_resource type="Gradient" id="Gradient_0j15c"]
+offsets = PackedFloat32Array(0.47936508, 0.60952383, 0.6888889)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 1, 1, 1, 1, 0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve3d1"]
+gradient = SubResource("Gradient_0j15c")
+fill_from = Vector2(1, 0.047008548)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_3rjmh"]
+script = ExtResource("3_f0kdb")
+sky_panorama = SubResource("GradientTexture2D_ve3d1")
+glow_intensity = 0.5
+brightness = 0.7999999999999999
+contrast = 0.9
+saturation = 0.9
+color_correction = SubResource("GradientTexture2D_papsg")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_qs13x"]
+script = ExtResource("4_s3utt")
+energy = 1.808
+indirect_energy = 2.257
+specular = 2.885
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="Curve3D" id="Curve3D_i5pyn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2j5a"]
+size = Vector3(9.5, 3.5, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmuq2"]
+size = Vector3(1, 1, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc6hg"]
+
+[sub_resource type="Curve3D" id="Curve3D_wh027"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.7881393e-07, 0, 1.9999995, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 7),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_s3utt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0.79999924, 0, 0, 0, 0, 0, 0, -2.3841858e-07, 0, -12.4),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_djqxu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Switches5" type="Node3D"]
+metadata/isRoot = true
+
+[node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_s5da4")]
+data = {
+"cells": PackedInt32Array(3, 65535, 61, 2, 65535, 61, 2, 3, 61, 3, 3, 61, 1, 3, 655421, 1, 2, 61, 1, 1, 655410, 1, 65535, 1048637, 1, 65533, 655410, 4, 3, 1441853, 5, 3, 1441853, 6, 3, 1048637, 1, 4, 1048637, 2, 4, 1048637, 3, 4, 1048637, 4, 4, 1048637, 5, 4, 1048637, 6, 4, 1048637, 6, 5, 1048637, 5, 5, 1048637, 4, 5, 1048637, 3, 5, 1048637, 2, 5, 1048637, 1, 5, 1048637, 1, 65532, 61, 1, 65534, 655410, 1, 0, 655410, 0, 65532, 655421, 0, 65533, 655421, 0, 65534, 655421, 0, 65535, 655421, 0, 0, 655421, 0, 1, 655421, 0, 2, 655421, 0, 3, 655421, 0, 4, 655421, 0, 5, 655421, 65535, 5, 655421, 65535, 4, 655421, 65535, 3, 655421, 65535, 2, 655421, 65535, 1, 655421, 65535, 0, 655421, 65535, 65535, 655421, 65535, 65534, 655421, 65535, 65533, 655421, 65535, 65532, 655421, -131071, 2, 655559, -131070, 2, 655559, -131069, 2, 655559, -131068, 2, 655559, -131067, 2, 655559, -131066, 2, 655559, -131066, 0, 655559, -131067, 0, 655559, -131068, 0, 655559, -131069, 0, 655559, -131070, 0, 655559, -131070, 65535, 655559, -131070, 65534, 655559, -131069, 65534, 655559, -131068, 65534, 655559, -131067, 65534, 655559, -131066, 65534, 655559, -131066, 65532, 655559, -131068, 65532, 655559, -131069, 65532, 655559, -131070, 65532, 655559, -131067, 65532, 655559, -131067, 65533, 655559, -131071, 65532, 655559, -131071, 65533, 655559, -131071, 65534, 655559, -131071, 65535, 655559, -131071, 0, 655559, -131071, 1, 655559, -131070, 1, 655559, -131066, 65533, 655559, -131070, 65533, 655559, -131069, 65533, 655559, -131068, 65533, 655559, -131066, 65535, 655559, -131067, 65535, 655559, -131068, 65535, 655559, -131069, 65535, 655559, -131066, 1, 655559, -131067, 1, 655559, -131068, 1, 655559, -131069, 1, 655559, 65535, 6, 15, 196607, 6, 15, 327679, 6, 15, 458751, 6, 15, 589823, 6, 15, 720895, 6, 15, 0, 6, 15, 131072, 6, 15, 262144, 6, 15, 393216, 6, 15, 524288, 6, 15, 655360, 6, 15, 1, 6, 15, 131073, 6, 15, 262145, 6, 15, 393217, 6, 15, 524289, 6, 15, 655361, 6, 15, 2, 6, 15, 131074, 6, 15, 262146, 6, 15, 393218, 6, 15, 524290, 6, 15, 655362, 6, 15, 3, 6, 15, 131075, 6, 15, 262147, 6, 15, 393219, 6, 15, 524291, 6, 15, 655363, 6, 15, 4, 6, 15, 131076, 6, 15, 262148, 6, 15, 393220, 6, 15, 524292, 6, 15, 655364, 6, 15, 5, 6, 15, 131077, 6, 15, 262149, 6, 15, 393221, 6, 15, 524293, 6, 15, 655365, 6, 15, 6, 6, 15, 131078, 6, 15, 262150, 6, 15, 393222, 6, 15, 524294, 6, 15, 655366, 6, 15, 2, 2, 61, 3, 2, 61, 4, 2, 61, 5, 2, 61, 6, 2, 61, 2, 65532, 61, 3, 65532, 61, 4, 65532, 61, 5, 65532, 61, 6, 65532, 61, -131062, 65532, 655559, -131062, 65533, 655559, -131062, 65534, 655559, -131062, 65535, 655559, -131062, 0, 655559, -131062, 1, 655559, -131062, 2, 655559, 10, 65532, 61, 10, 2, 61, 10, 3, 1048637, 10, 4, 1048637, 10, 5, 1048637, 10, 6, 15, 131082, 6, 15, 262154, 6, 15, 393226, 6, 15, 524298, 6, 15, 655370, 6, 15, -131061, 65532, 655559, -131061, 65533, 655559, -131061, 65534, 655559, -131061, 65535, 655559, -131061, 0, 655559, -131061, 1, 655559, -131061, 2, 655559, 11, 65532, 61, 11, 2, 61, 11, 3, 1048637, 11, 4, 1048637, 11, 5, 1048637, 11, 6, 15, 131083, 6, 15, 262155, 6, 15, 393227, 6, 15, 524299, 6, 15, 655371, 6, 15, -131060, 65532, 655559, -131060, 65533, 655559, -131060, 65534, 655559, -131060, 65535, 655559, -131060, 0, 655559, -131060, 1, 655559, -131060, 2, 655559, 12, 65532, 61, 12, 2, 61, 12, 3, 1048637, 12, 4, 1048637, 12, 5, 1048637, 12, 6, 15, 131084, 6, 15, 262156, 6, 15, 393228, 6, 15, 524300, 6, 15, 655372, 6, 15, -131059, 65532, 655559, -131059, 65533, 655559, -131059, 65534, 655559, -131059, 65535, 655559, -131059, 0, 655559, -131059, 1, 655559, -131059, 2, 655559, 13, 65532, 61, 13, 2, 61, 13, 3, 1441853, 13, 4, 1048637, 13, 5, 1048637, 13, 6, 15, 131085, 6, 15, 262157, 6, 15, 393229, 6, 15, 524301, 6, 15, 655373, 6, 15, 14, 65532, 1048637, 14, 65533, 1441853, 14, 65534, 1441853, 14, 65535, 1048637, 14, 0, 1048637, 14, 1, 1048637, 14, 2, 61, 14, 3, 1441853, 14, 4, 1048637, 14, 5, 1048637, 14, 6, 15, 131086, 6, 15, 262158, 6, 15, 393230, 6, 15, 524302, 6, 15, 655374, 6, 15, 15, 65532, 1048637, 15, 65533, 655421, 15, 65534, 655421, 15, 65535, 655421, 15, 0, 1048637, 15, 1, 655421, 15, 2, 655421, 15, 3, 655421, 15, 4, 1048637, 15, 5, 1048637, 15, 6, 15, 131087, 6, 15, 262159, 6, 15, 393231, 6, 15, 524303, 6, 15, 655375, 6, 15, 16, 65532, 15, 16, 65533, 15, 16, 65534, 61, 16, 65535, 61, 16, 0, 61, 16, 1, 15, 16, 2, 15, 16, 3, 15, 16, 4, 15, 16, 5, 15, 16, 6, 15, 131088, 65532, 15, 131088, 65533, 15, 131088, 1, 15, 131088, 2, 15, 131088, 3, 15, 131088, 4, 15, 131088, 5, 15, 131088, 6, 15, 262160, 65532, 15, 262160, 65533, 15, 262160, 1, 15, 262160, 2, 15, 262160, 3, 15, 262160, 4, 15, 262160, 5, 15, 262160, 6, 15, 393232, 65532, 15, 393232, 65533, 15, 393232, 1, 15, 393232, 2, 15, 393232, 3, 15, 393232, 4, 15, 393232, 5, 15, 393232, 6, 15, 524304, 65532, 15, 524304, 65533, 15, 524304, 1, 15, 524304, 2, 15, 524304, 3, 15, 524304, 4, 15, 524304, 5, 15, 524304, 6, 15, 655376, 65532, 15, 655376, 65533, 15, 655376, 1, 15, 655376, 2, 15, 655376, 3, 15, 655376, 4, 15, 655376, 5, 15, 655376, 6, 15, 17, 65533, 15, 17, 65534, 61, 17, 65535, 61, 17, 0, 61, 17, 1, 15, 131089, 65533, 15, 131089, 1, 15, 262161, 65533, 15, 262161, 1, 15, 393233, 65533, 15, 393233, 1, 15, 524305, 65533, 15, 524305, 1, 15, 655377, 65533, 15, 655377, 1, 15, 18, 65533, 15, 18, 65534, 107, 18, 65535, 107, 18, 0, 107, 18, 1, 15, 131090, 65533, 15, 131090, 1, 15, 262162, 65533, 15, 262162, 1, 15, 393234, 65533, 15, 393234, 1, 15, 524306, 65533, 15, 524306, 1, 15, 655378, 65533, 15, 655378, 1, 15, -131063, 65532, 655559, -131063, 65533, 655559, -131063, 65534, 655559, -131063, 65535, 655559, -131063, 0, 655559, -131063, 1, 655559, -131063, 2, 655559, 9, 65532, 61, 9, 2, 61, 9, 3, 1048637, 9, 4, 1048637, 9, 5, 1048637, 9, 6, 15, 131081, 6, 15, 262153, 6, 15, 393225, 6, 15, 524297, 6, 15, 655369, 6, 15, -131064, 65532, 655559, -131064, 65533, 655559, -131064, 65534, 655559, -131064, 65535, 655559, -131064, 0, 655559, -131064, 1, 655559, -131064, 2, 655559, 8, 65532, 61, 8, 2, 61, 8, 3, 1048637, 8, 4, 1048637, 8, 5, 1048637, 8, 6, 15, 131080, 6, 15, 262152, 6, 15, 393224, 6, 15, 524296, 6, 15, 655368, 6, 15, -131065, 65532, 655559, -131065, 65533, 655559, -131065, 65534, 655559, -131065, 65535, 655559, -131065, 0, 655559, -131065, 1, 655559, -131065, 2, 655559, 7, 65532, 61, 7, 2, 61, 7, 3, 1048637, 7, 4, 1048637, 7, 5, 1048637, 7, 6, 15, 131079, 6, 15, 262151, 6, 15, 393223, 6, 15, 524295, 6, 15, 655367, 6, 15, 13, 65535, 655421, 12, 65535, 655421, 9, 1, 655421, 9, 0, 655421, 6, 65533, 655421, 65535, 65531, 15, 196607, 65531, 15, 327679, 65531, 15, 458751, 65531, 15, 589823, 65531, 15, 720895, 65531, 15, 0, 65531, 15, 131072, 65531, 15, 262144, 65531, 15, 393216, 65531, 15, 524288, 65531, 15, 655360, 65531, 15, 1, 65531, 15, 131073, 65531, 15, 262145, 65531, 15, 393217, 65531, 15, 524289, 65531, 15, 655361, 65531, 15, 2, 65531, 15, 131074, 65531, 15, 262146, 65531, 15, 393218, 65531, 15, 524290, 65531, 15, 655362, 65531, 15, 3, 65531, 15, 131075, 65531, 15, 262147, 65531, 15, 393219, 65531, 15, 524291, 65531, 15, 655363, 65531, 15, 4, 65531, 15, 131076, 65531, 15, 262148, 65531, 15, 393220, 65531, 15, 524292, 65531, 15, 655364, 65531, 15, 5, 65531, 15, 131077, 65531, 15, 262149, 65531, 15, 393221, 65531, 15, 524293, 65531, 15, 655365, 65531, 15, 6, 65531, 15, 131078, 65531, 15, 262150, 65531, 15, 393222, 65531, 15, 524294, 65531, 15, 655366, 65531, 15, 7, 65531, 15, 131079, 65531, 15, 262151, 65531, 15, 393223, 65531, 15, 524295, 65531, 15, 655367, 65531, 15, 8, 65531, 15, 131080, 65531, 15, 262152, 65531, 15, 393224, 65531, 15, 524296, 65531, 15, 655368, 65531, 15, 9, 65531, 15, 131081, 65531, 15, 262153, 65531, 15, 393225, 65531, 15, 524297, 65531, 15, 655369, 65531, 15, 10, 65531, 15, 131082, 65531, 15, 262154, 65531, 15, 393226, 65531, 15, 524298, 65531, 15, 655370, 65531, 15, 11, 65531, 15, 131083, 65531, 15, 262155, 65531, 15, 393227, 65531, 15, 524299, 65531, 15, 655371, 65531, 15, 12, 65531, 15, 131084, 65531, 15, 262156, 65531, 15, 393228, 65531, 15, 524300, 65531, 15, 655372, 65531, 15, 13, 65531, 15, 131085, 65531, 15, 262157, 65531, 15, 393229, 65531, 15, 524301, 65531, 15, 655373, 65531, 15, 14, 65531, 15, 131086, 65531, 15, 262158, 65531, 15, 393230, 65531, 15, 524302, 65531, 15, 655374, 65531, 15, 15, 65531, 15, 131087, 65531, 15, 262159, 65531, 15, 393231, 65531, 15, 524303, 65531, 15, 655375, 65531, 15, 16, 65531, 15, 131088, 65531, 15, 262160, 65531, 15, 393232, 65531, 15, 524304, 65531, 15, 655376, 65531, 15)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("2_k3cth")]
+startEnvironment = SubResource("Resource_3rjmh")
+startLight = SubResource("Resource_qs13x")
+
+[node name="Player" parent="." instance=ExtResource("6_rc6hg")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.5, 1.5, -0.5)
+
+[node name="RailCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.7071068, -0.7071067, 0, 0.7071067, 0.7071068, 1, 3.090862e-08, -3.0908616e-08, -3, 5.5, 1)
+cull_mask = 655359
+current = true
+script = ExtResource("7_takm0")
+mode = 1
+pathOffset = Vector3(-2.5, 0, 0)
+offsetToStartFollowing = 0.0
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 5.5, 1)
+top_level = true
+curve = SubResource("Curve3D_i5pyn")
+metadata/CameraPath = true
+
+[node name="Alternator" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_wmuq2")]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, -1, -4.371139e-08, 1, -1.59578e-37, 1, 4.371139e-08, 1.9106855e-15, 1.5, 1.55, -0.5)
+sceneParent = NodePath("..")
+originalParent = "Switches3"
+
+[node name="Alternator2" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_wmuq2")]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, -1, -4.371139e-08, 1, -1.59578e-37, 1, 4.371139e-08, 1.9106855e-15, 1.5, 1.55, 4.5)
+sceneParent = NodePath("..")
+originalParent = "Switches3"
+
+[node name="Alternator3" parent="." node_paths=PackedStringArray("sceneParent") instance=ExtResource("5_wmuq2")]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, -1, -4.371139e-08, 1, -1.59578e-37, 1, 4.371139e-08, 1.9106855e-15, 12.5, 1.55, 4.5)
+sceneParent = NodePath("..")
+originalParent = "Switches3"
+
+[node name="InvisibleWall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -0.75)
+shape = SubResource("BoxShape3D_g2j5a")
+
+[node name="Placements" type="Node3D" parent="."]
+
+[node name="AlternatingBlock" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, 1, -3.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock2" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, 1, -0.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock3" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.5, 1, 2.5)
+
+[node name="AlternatingBlock4" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 13.5, 1, 2.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock7" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16.5, 1, 0.5)
+
+[node name="AlternatingBlock8" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16.5, 1, -0.5)
+
+[node name="AlternatingBlock9" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 16.5, 1, -1.5)
+
+[node name="AlternatingBlock5" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 13.5, 1, -0.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock6" parent="Placements" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 13.5, 1, -3.5)
+
+[node name="PlatformCaller" parent="Placements" node_paths=PackedStringArray("railReferences") instance=ExtResource("9_s3utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -0.5)
+railReferences = [NodePath("../AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/PlatformRail")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Placements/PlatformCaller"]
+shape = SubResource("BoxShape3D_wmuq2")
+
+[node name="PlatformCaller2" parent="Placements" node_paths=PackedStringArray("railReferences") instance=ExtResource("9_s3utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.5, -3.5)
+callTo = 1
+railReferences = [NodePath("../AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/PlatformRail")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Placements/PlatformCaller2"]
+shape = SubResource("BoxShape3D_rc6hg")
+
+[node name="PlatformCaller3" parent="Placements" node_paths=PackedStringArray("railReferences") instance=ExtResource("9_s3utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, 1.5, 2.5)
+callTo = 2
+railReferences = [NodePath("../AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/PlatformRail")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Placements/PlatformCaller3"]
+shape = SubResource("BoxShape3D_rc6hg")
+
+[node name="PlatformCaller4" parent="Placements" node_paths=PackedStringArray("railReferences") instance=ExtResource("9_s3utt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.5, -0.5)
+callTo = 3
+railReferences = [NodePath("../AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/PlatformRail")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Placements/PlatformCaller4"]
+shape = SubResource("BoxShape3D_wmuq2")
+
+[node name="AlternatingGroup" type="Node3D" parent="Placements"]
+script = ExtResource("9_s2ftv")
+metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="LeyLine" parent="Placements/AlternatingGroup" instance=ExtResource("10_ksfms")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.5, 1, 4.5)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999905, 0, 4.7683716e-07)
+script = ExtResource("11_rrcio")
+exits = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 0, 1)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999976, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+length = 2.0
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="PlatformRail" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" node_paths=PackedStringArray("platformReference") instance=ExtResource("12_k3cth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999997, 0, 1)
+curve = SubResource("Curve3D_wh027")
+platformReference = NodePath("../MovingPlatform")
+speed = 1.5
+
+[node name="MovingPlatform" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" node_paths=PackedStringArray("railReference") instance=ExtResource("13_f0kdb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49999997, 0, 1)
+railReference = NodePath("../PlatformRail")
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999976, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+length = 2.0
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.3841858e-07)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 4
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 0, 0.9999995)
+
+[node name="AlternatingGroup2" type="Node3D" parent="Placements"]
+script = ExtResource("9_s2ftv")
+metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="LeyLine" parent="Placements/AlternatingGroup2" instance=ExtResource("10_ksfms")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5, 1, 4.5)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece"]
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 0, 1)
+collision_layer = 4096
+isOff = true
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999976, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+length = 5.0
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece2" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 4
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup2/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.50000024, 0, 1)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingGroup3" type="Node3D" parent="Placements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+script = ExtResource("9_s2ftv")
+metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="LeyLine" parent="Placements/AlternatingGroup3" instance=ExtResource("10_ksfms")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5, 1, 4.5)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece"]
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 0, 1)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999976, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+length = 5.0
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece2" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 4
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup3/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.50000024, 0, 1)
+
+[node name="AlternatingGroup4" type="Node3D" parent="Placements"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("9_s2ftv")
+metadata/_custom_type_script = "uid://b6xvs4tlg4hkr"
+
+[node name="LeyLine" parent="Placements/AlternatingGroup4" instance=ExtResource("10_ksfms")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.5, 1, 4.5)
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece"]
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.5, 0, 1)
+collision_layer = 4096
+isOff = true
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99999976, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 6
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("11_rrcio")
+length = 5.0
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece2" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("11_rrcio")
+verticalAngle = 5
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="LeylinePiece" type="Node3D" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("11_rrcio")
+exits = 4
+metadata/_custom_type_script = "uid://b1jqrm3mi80dn"
+
+[node name="AlternatingBlock4" parent="Placements/AlternatingGroup4/LeyLine/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece/LeylinePiece2/LeylinePiece" instance=ExtResource("8_ppxx3")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 0.50000024, 0, 1)
+collision_layer = 4096
+isOff = true
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="PorticoAntiSticker" parent="Props" instance=ExtResource("13_60378")]
+transform = Transform3D(-1, 0, -2.6226834e-07, 0, 1, 0, 2.6226834e-07, 0, -1, 15, 1, 3)
+skeleton = NodePath("")
+
+[node name="PorticoAntiSticker3" parent="Props" instance=ExtResource("13_60378")]
+transform = Transform3D(-1, 0, -2.6226834e-07, 0, 1, 0, 2.6226834e-07, 0, -1, 0, 1, 3)
+skeleton = NodePath("")
+
+[node name="Wood Fence" parent="Props" instance=ExtResource("14_nfct0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.75, 1, 2.9999998)
+curve = SubResource("Curve3D_s3utt")
+colliderSize = Vector2(0.1, 1)
+
+[node name="Wood Fence2" parent="Props" instance=ExtResource("14_nfct0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 3)
+curve = SubResource("Curve3D_djqxu")
+colliderSize = Vector2(0.1, 1)
+
+[node name="PushDoor" parent="Props" node_paths=PackedStringArray("sceneParent") instance=ExtResource("16_f0kdb")]
+transform = Transform3D(-1, 8.742278e-08, 3.8213718e-15, 0, -4.37114e-08, 1, 8.742278e-08, 1, 4.37114e-08, 6.5, 1.5, -2.1)
+sceneParent = NodePath("../..")

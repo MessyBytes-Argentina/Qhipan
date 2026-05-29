@@ -8,14 +8,9 @@ extends Node3D
 ## to and from ON or OFF.
 
 func _ready() -> void:
-	pass
 	movingPlatformParent.state_switched.connect(animate_particles)
 	
 
-
 func animate_particles(state : bool):
-	match state:
-		true:
-			stateSwitchParticleOn
-		false:
-			pass
+	if state: stateSwitchParticleOn.emit_animator()
+	else: stateSwitchParticleOff.emit_animator()

@@ -14,6 +14,8 @@ class_name EnvironmentObjects
 	set(value):
 		startLight = value
 		if Engine.is_editor_hint() and is_node_ready(): setup()
+## Applies environment on engine.
+@export_tool_button("Apply Changes", "WorldEnvironment") var apply: Callable = setup
 
 ## Reference to the environment.
 @onready var environment: WorldEnvironment = %WorldEnvironment

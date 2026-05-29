@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=4 uid="uid://binvrpy31ahx6"]
+[gd_scene load_steps=19 format=4 uid="uid://binvrpy31ahx6"]
 
 [ext_resource type="Script" uid="uid://dic2ifl5x03qx" path="res://GodotObjects/LevelResources/MovingPlatforms/MovingPlatform.gd" id="1_qh56c"]
-[ext_resource type="Material" uid="uid://cgfof2gvhje8o" path="res://Assets/Materials/WithCutout/MovingPlatforms/MovingPlatforms_final.tres" id="2_4qakn"]
-[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonCutoutShader.gdshader" id="3_4qakn"]
+[ext_resource type="Material" uid="uid://cgfof2gvhje8o" path="res://Assets/Materials/Props/MovingPlatforms/MovingPlatforms_final.tres" id="2_4qakn"]
+[ext_resource type="Shader" uid="uid://dsnxr718iap3n" path="res://Assets/Shaders/ToonShader.gdshader" id="3_4qakn"]
 [ext_resource type="Script" uid="uid://jfg2nbcd5sxp" path="res://GodotObjects/LevelResources/AlternatorObjects/AntiDropArea.gd" id="3_xivvd"]
 [ext_resource type="Texture2D" uid="uid://cg26alu2ef7we" path="res://Assets/Materials/ToonGradients/FresnelGradient.tres" id="4_ob2je"]
 [ext_resource type="Texture2D" uid="uid://cg15s1jf3mbcd" path="res://Assets/Materials/ToonGradients/LightGradient.tres" id="5_0ptab"]
-[ext_resource type="Material" uid="uid://dlhk43ultf6xw" path="res://Assets/Materials/WithCutout/BloquesAlternantes/MovingPlatform internal.tres" id="6_vqjp4"]
+[ext_resource type="Material" uid="uid://dlhk43ultf6xw" path="res://Assets/Materials/Props/BloquesAlternantes/MovingPlatform internal.tres" id="6_vqjp4"]
 [ext_resource type="Script" uid="uid://cukahv1iy1cg3" path="res://GodotObjects/LevelResources/MovingPlatforms/ParticleBehaviour.gd" id="8_ob2je"]
 [ext_resource type="Script" uid="uid://b4pvfpl47f5bm" path="res://GodotObjects/GeneralElements/MultipleParticleEmitter/MultipleParticle3DEmitter.gd" id="9_0ptab"]
 [ext_resource type="PackedScene" uid="uid://255156x4bcbw" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformPowerSwitchParticlesON.tscn" id="10_vqjp4"]
+[ext_resource type="PackedScene" uid="uid://ddnqkludn7533" path="res://GodotObjects/LevelResources/MovingPlatforms/PlatformPowerSwitchParticlesOFF.tscn" id="11_mtoqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mtoqw"]
 render_priority = 0
@@ -29,27 +30,12 @@ shader_parameter/metallic = 0.0
 shader_parameter/enable_emission = true
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy_multiplier = 1.0
+shader_parameter/emission_multiply = false
 shader_parameter/enable_clearcoat = false
 shader_parameter/clearcoat = 1.0
 shader_parameter/clearcoat_roughness = 0.5
 shader_parameter/enable_anisotropy = false
 shader_parameter/anisotropy = 0.0
-shader_parameter/cylinderCutout = false
-shader_parameter/borderColor = Color(1, 1, 1, 1)
-shader_parameter/borderSize = 0.0
-shader_parameter/borderEmission = 0.0
-shader_parameter/boxPosition = Vector3(0, 0, 0)
-shader_parameter/boxSize = Vector3(0, 0, 0)
-shader_parameter/boxRotation = 0.0
-shader_parameter/cylinderPosition = Vector3(0, 0, 0)
-shader_parameter/cylinderRotation = Vector3(0, 0, 0)
-shader_parameter/cylinderRadius1 = 0.0
-shader_parameter/cylinderRadius2 = 0.0
-shader_parameter/cylinderHeight = 0.0
-shader_parameter/playerPosition = Vector3(0, 0, 0)
-shader_parameter/auxMode = false
-shader_parameter/auxBoxPosition = Vector3(0, 0, 0)
-shader_parameter/auxBoxRotation = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dgtsm"]
 _surfaces = [{
@@ -113,7 +99,7 @@ size = Vector3(1, 0.1, 1)
 size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xivvd"]
-size = Vector3(0.9, 0.3, 0.9)
+size = Vector3(0.5, 0.3, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7x5hj"]
 size = Vector3(0.8, 0.5, 0.8)
@@ -166,8 +152,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_7x5hj")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
-[node name="ParticleParent" type="Node3D" parent="." node_paths=PackedStringArray("movingPlatformParent")]
+[node name="ParticleParent" type="Node3D" parent="." node_paths=PackedStringArray("stateSwitchParticleOn", "stateSwitchParticleOff", "movingPlatformParent")]
 script = ExtResource("8_ob2je")
+stateSwitchParticleOn = NodePath("MultipleParticle3DEmitter (State Switch ON)")
+stateSwitchParticleOff = NodePath("MultipleParticle3DEmitter (State Switch OFF)")
 movingPlatformParent = NodePath("..")
 
 [node name="MultipleParticle3DEmitter (State Switch ON)" type="Node3D" parent="ParticleParent"]
@@ -178,7 +166,7 @@ metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 
 [node name="MultipleParticle3DEmitter (State Switch OFF)" type="Node3D" parent="ParticleParent"]
 script = ExtResource("9_0ptab")
-particles = Array[PackedScene]([ExtResource("10_vqjp4")])
+particles = Array[PackedScene]([ExtResource("11_mtoqw")])
 _testParticles = ""
 metadata/_custom_type_script = "uid://b4pvfpl47f5bm"
 

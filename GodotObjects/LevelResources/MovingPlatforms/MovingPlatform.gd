@@ -5,6 +5,8 @@ class_name MovingPlatform
 
 ## Signal that the mode has switched.
 signal state_switched(newMode: bool)
+## Signal that the player stepped on or off it.
+signal player_step(newMode: bool)
 
 ## Color and animation parameters for the platform.
 const EMISSION: Dictionary[String, Variant] = {
@@ -44,6 +46,8 @@ var tween: Tween
 var currentColor: Color
 ## Current emission.
 var currentEmission: float
+## Has player on top/
+var playerOnTop: bool
 
 ## Executed when node first enters the scene.
 func _ready() -> void:
@@ -55,6 +59,8 @@ func _ready() -> void:
 
 ## Called when the Player is detected. Checks if movement is possible, starts moving if true.
 func check_power(body: Node3D) -> void:
+	playerOnTop = true
+	player_step.emit(true)
 	if powered or isPermanent and not doingWait:
 		doingWait = true
 		await transition_color(false, false, false)
@@ -69,6 +75,8 @@ func check_power(body: Node3D) -> void:
 ## Called when the player gets off.
 func player_off(_body: Node3D) -> void:
 	if doingWait: return
+	playerOnTop = false
+	player_step.emit(false)
 	transition_color(true)
 
 ## When a block is detected stops the movement.
@@ -81,7 +89,7 @@ func switch_state() -> void:
 	if isPermanent: return
 	powered = !powered
 	mode = "on" if powered else "off"
-	state_switched.emit(mode)
+	state_switched.emit(mode == "on")
 	transition_color()
 
 ## Transitions to another mode.

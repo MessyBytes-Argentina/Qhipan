@@ -14,6 +14,7 @@ tilt_enabled = false
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="PathFollower"]
 unique_name_in_owner = true
+update_scale = false
 
 [node name="ReturnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

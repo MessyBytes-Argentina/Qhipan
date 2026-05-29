@@ -1,36 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbsw2e4vumksw"]
+[gd_scene load_steps=4 format=3 uid="uid://dbsw2e4vumksw"]
 
 [ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_waxla"]
 [ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_2bl52"]
 [ext_resource type="PackedScene" uid="uid://b8cuiswalgjil" path="res://GodotObjects/LevelScenes/SoundTests/SoundTestLevel.tscn" id="3_c45bg"]
-[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="4_quybr"]
-
-[sub_resource type="Curve3D" id="Curve3D_quybr"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [node name="MainTest" type="Node3D"]
 
 [node name="EnvironmentObjects" parent="." instance=ExtResource("1_waxla")]
 
 [node name="Player" parent="." instance=ExtResource("2_2bl52")]
-transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 6.6213527, 0, 7.4504604)
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, 0, 0, 0)
 
 [node name="SoundTestScene" parent="." instance=ExtResource("3_c45bg")]
-
-[node name="RailCamera" type="Camera3D" parent="."]
-transform = Transform3D(-0.23766944, -0.39553666, 0.88716626, 0, 0.91333693, 0.40720466, -0.9713461, 0.0967801, -0.21707228, 14.826173, 3.7659686, 5.4429007)
-cull_mask = 655359
-current = true
-script = ExtResource("4_quybr")
-mode = 2
-metadata/_custom_type_script = "uid://bmkcxot1om0jv"
-
-[node name="CameraPath" type="Path3D" parent="RailCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.826173, 3.7659686, 5.4429007)
-top_level = true
-curve = SubResource("Curve3D_quybr")
-metadata/CameraPath = true

@@ -1,0 +1,159 @@
+[gd_scene load_steps=17 format=3 uid="uid://ddfjyf82kk0ug"]
+
+[ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_e73c4"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_fxt2k"]
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="3_x3m1v"]
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="4_aeat3"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="5_157jw"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="6_diama"]
+[ext_resource type="PackedScene" uid="uid://djwsba7job37w" path="res://GodotObjects/LevelResources/Stickers/Alternator/Alternator.tscn" id="7_tfl8t"]
+[ext_resource type="PackedScene" uid="uid://bun480bt8ssjs" path="res://GodotObjects/LevelResources/AlternatorObjects/AlternatingBlock.tscn" id="8_3ehe3"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
+colors = PackedColorArray(0, 0, 0, 1, 0.09380949, 0.026161313, 0.09751137, 1, 0.9872274, 0.7921966, 0.68620634, 1, 0.9896011, 0.9260117, 0.9271558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_papsg"]
+gradient = SubResource("Gradient_a74g7")
+fill_from = Vector2(0, 0.021367522)
+
+[sub_resource type="Gradient" id="Gradient_0j15c"]
+offsets = PackedFloat32Array(0.47936508, 0.60952383, 0.6888889)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 1, 1, 1, 1, 0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve3d1"]
+gradient = SubResource("Gradient_0j15c")
+fill_from = Vector2(1, 0.047008548)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_3rjmh"]
+script = ExtResource("3_x3m1v")
+sky_panorama = SubResource("GradientTexture2D_ve3d1")
+glow_intensity = 0.5
+brightness = 0.7999999999999999
+contrast = 0.9
+saturation = 0.9
+color_correction = SubResource("GradientTexture2D_papsg")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_qs13x"]
+script = ExtResource("4_aeat3")
+energy = 1.808
+indirect_energy = 2.257
+specular = 2.885
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="Curve3D" id="Curve3D_tfl8t"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3m1v"]
+size = Vector3(4, 1, 3.5)
+
+[node name="Switches1" type="Node3D"]
+metadata/isRoot = true
+
+[node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_e73c4")]
+data = {
+"cells": PackedInt32Array(65535, 0, 61, 0, 0, 61, 1, 0, 61, 2, 65534, 61, 2, 65535, 61, 2, 0, 61, 2, 1, 61, 2, 2, 61, 3, 65534, 61, 3, 65535, 15, 3, 0, 61, 3, 1, 15, 3, 2, 61, 131075, 65535, 15, 131075, 1, 15, 4, 65534, 61, 4, 65535, 61, 4, 0, 61, 4, 1, 61, 4, 2, 61, 5, 65534, 61, 5, 65535, 15, 5, 0, 61, 5, 1, 15, 5, 2, 61, 131077, 65535, 15, 131077, 1, 15, 6, 65534, 61, 6, 65535, 61, 6, 0, 61, 6, 1, 61, 6, 2, 61, 7, 0, 61, 8, 0, 61, 9, 0, 61, 2, 3, 15, 3, 3, 15, 4, 3, 15, 5, 3, 15, 6, 3, 15, 2, 65533, 15, 3, 65533, 15, 4, 65533, 15, 5, 65533, 15, 6, 65533, 15, 7, 65533, 15, 7, 65534, 15, 7, 65535, 15, 8, 65535, 15, 9, 65535, 15, 7, 3, 15, 7, 2, 15, 7, 1, 15, 8, 1, 15, 9, 1, 15, 131074, 3, 15, 131075, 3, 15, 131076, 3, 15, 131077, 3, 15, 131078, 3, 15, 131079, 3, 15, 131079, 2, 15, 131079, 1, 15, 131080, 1, 15, 131081, 1, 15, 131081, 65535, 15, 131080, 65535, 15, 131079, 65535, 15, 131079, 65534, 15, 131079, 65533, 15, 131078, 65533, 15, 131077, 65533, 15, 131076, 65533, 15, 131075, 65533, 15, 131074, 65533, 15, 262146, 65533, 15, 262147, 65533, 15, 262148, 65533, 15, 262149, 65533, 15, 262150, 65533, 15, 262151, 65533, 15, 262151, 65534, 15, 262151, 65535, 15, 262152, 65535, 15, 262153, 65535, 15, 262153, 1, 15, 262152, 1, 15, 262151, 1, 15, 262151, 2, 15, 262151, 3, 15, 262150, 3, 15, 262149, 3, 15, 262148, 3, 15, 262147, 3, 15, 262146, 3, 15, 393218, 65533, 15, 393218, 3, 15, 393219, 65533, 15, 393219, 3, 15, 393220, 65533, 15, 393220, 3, 15, 393221, 65533, 15, 393221, 3, 15, 393222, 65533, 15, 393222, 3, 15, 393223, 65533, 15, 393223, 65534, 15, 393223, 65535, 15, 393223, 1, 15, 393223, 2, 15, 393223, 3, 15, 393224, 65535, 15, 393224, 1, 15, 393225, 65535, 15, 393225, 1, 15, 524290, 65533, 15, 524290, 3, 15, 524291, 65533, 15, 524291, 3, 15, 524292, 65533, 15, 524292, 3, 15, 524293, 65533, 15, 524293, 3, 15, 524294, 65533, 15, 524294, 3, 15, 524295, 65533, 15, 524295, 65534, 15, 524295, 65535, 15, 524295, 1, 15, 524295, 2, 15, 524295, 3, 15, 524296, 65535, 15, 524296, 1, 15, 524297, 65535, 15, 524297, 1, 15, 655362, 65533, 15, 655362, 3, 15, 655363, 65533, 15, 655363, 3, 15, 655364, 65533, 15, 655364, 3, 15, 655365, 65533, 15, 655365, 3, 15, 655366, 65533, 15, 655366, 3, 15, 655367, 65533, 15, 655367, 65534, 15, 655367, 65535, 15, 655367, 1, 15, 655367, 2, 15, 655367, 3, 15, 655368, 65535, 15, 655368, 1, 15, 655369, 65535, 15, 655369, 1, 15, 786434, 65533, 15, 786434, 3, 15, 786435, 65533, 15, 786435, 3, 15, 786436, 65533, 15, 786436, 3, 15, 786437, 65533, 15, 786437, 3, 15, 786438, 65533, 15, 786438, 3, 15, 786439, 65533, 15, 786439, 65534, 15, 786439, 65535, 15, 786439, 1, 15, 786439, 2, 15, 786439, 3, 15, 786440, 65535, 15, 786440, 1, 15, 786441, 65535, 15, 786441, 1, 15)
+}
+metadata/_editor_floor_ = Vector3(0, 12, 0)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("2_fxt2k")]
+startEnvironment = SubResource("Resource_3rjmh")
+startLight = SubResource("Resource_qs13x")
+
+[node name="Player" parent="." instance=ExtResource("5_157jw")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 1.5, 0.5)
+
+[node name="RailCamera" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0.57357645, -0.81915206, 0, 0.81915206, 0.57357645, 1, 2.5071824e-08, -3.5806274e-08, -2, 5.5, 0.5)
+cull_mask = 655359
+current = true
+script = ExtResource("6_diama")
+pathOffset = Vector3(-2, 0, 0)
+freeBaseRotation = Vector3(-0.61086524, 0, 0)
+offsetToStartFollowing = 0.0
+followSpeed = 2.0
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0.5)
+top_level = true
+curve = SubResource("Curve3D_tfl8t")
+metadata/CameraPath = true
+
+[node name="Alternator" parent="." instance=ExtResource("7_tfl8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0.5)
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="AlternatingBlock" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1, 0.5)
+
+[node name="AlternatingBlock2" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 0.5)
+
+[node name="AlternatingBlock3" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -0.5)
+
+[node name="AlternatingBlock4" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 1.5)
+
+[node name="AlternatingBlock5" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, 1.5)
+
+[node name="AlternatingBlock6" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1, -0.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock7" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 0.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock8" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, 2.5)
+
+[node name="AlternatingBlock9" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1, -1.5)
+
+[node name="AlternatingBlock10" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -1.5)
+
+[node name="AlternatingBlock11" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, 2.5)
+
+[node name="AlternatingBlock12" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, 1.5)
+collision_layer = 4096
+isOff = true
+
+[node name="AlternatingBlock13" parent="Blocks" instance=ExtResource("8_3ehe3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -0.5)
+collision_layer = 4096
+isOff = true
+
+[node name="InvisibleWall" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+shape = SubResource("BoxShape3D_x3m1v")
+
+[node name="InvisibleWall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+shape = SubResource("BoxShape3D_x3m1v")
+
+[node name="InvisibleWall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.75)
+shape = SubResource("BoxShape3D_x3m1v")

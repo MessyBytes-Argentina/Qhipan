@@ -12,6 +12,12 @@ enum CameraModes {FREE, ROTATION_LOCKED, FOLLOW_PLAYER, FIXED, FIXED_FOLLOW_PLAY
 		mode = value
 		if Engine.is_editor_hint() and is_node_ready():
 			setup_rail()
+## Path camera offset.
+@export_custom(PROPERTY_HINT_RANGE, "-30.0,30.0,0.01") var pathOffset: Vector3 = Vector3.ZERO:
+	set(value):
+		pathOffset = value
+		if Engine.is_editor_hint() and is_node_ready():
+			update_camera_position()
 ## Rotation to apply on top of free rotations.
 @export_custom(PROPERTY_HINT_RANGE, "-180,180,1,radians_as_degrees") var freeBaseRotation: Vector3 = Vector3.ZERO:
 	set(value):
@@ -58,6 +64,7 @@ enum CameraModes {FREE, ROTATION_LOCKED, FOLLOW_PLAYER, FIXED, FIXED_FOLLOW_PLAY
 		progress = value
 		if Engine.is_editor_hint() and is_node_ready():
 			update_camera_position()
+@export_tool_button("Reset Leash", "Loop") var resetLeash: Callable = func(): if Engine.is_editor_hint(): currentLeashPosition = global_position
 
 ## Reference to the path to follow.
 var path: Path3D
@@ -77,6 +84,8 @@ var curveLength: float = 0
 var currentOffset: float = 0
 ## The offset position, used for leash operations.
 var currentLeashPosition: Vector3
+## Leash flag.
+var leashSet: bool = false
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -118,7 +127,7 @@ func _process(delta: float) -> void:
 	update_camera_position()
 
 ## Returns the goal progress for the current frame.
-func get_progress(delta: float) -> void:
+func get_progress(delta: float, forced: bool = false) -> void:
 	if Engine.is_editor_hint() or mode in [CameraModes.FIXED, CameraModes.FIXED_FOLLOW_PLAYER]: return
 	if not curve:
 		curve = path.curve
@@ -133,7 +142,12 @@ func get_progress(delta: float) -> void:
 	if distance < offsetToStartFollowing: return
 	var targetOffset: float = sign(currentOffset - closestOffset) * offsetToStartFollowing + closestOffset
 	var targetProgress: float = clamp(targetOffset / curveLength, 0.0, 1.0)
-	progress = lerp(progress, targetProgress, followSpeed * delta)
+	progress = lerp(progress, targetProgress, followSpeed * delta) if not forced else targetProgress
+
+## Forces camera update for lerping.
+func force_update() -> void:
+	get_progress(0, true)
+	update_camera_position()
 
 ## Updates the camera along the rail.
 func update_camera_position() -> void:
@@ -154,10 +168,13 @@ func update_camera_position() -> void:
 				global_position = pathFollower.global_position
 				look_at_player()
 		if curve: currentOffset = curve.get_closest_offset(path.to_local(global_position))
-	if leashLength == 0 or leashAxis == Vector3.ZERO: return
+	if leashLength == 0 or leashAxis == Vector3.ZERO:
+		position +=pathOffset if mode in [CameraModes.FREE, CameraModes.FOLLOW_PLAYER, CameraModes.ROTATION_LOCKED] else Vector3.ZERO
+		return
 	if mode in [CameraModes.FREE, CameraModes.ROTATION_LOCKED, CameraModes.FOLLOW_PLAYER]: currentLeashPosition = global_position
 	var leashDirection: Vector3 = (currentLeashPosition.direction_to(player.global_position) * leashAxis).normalized()
-	position = currentLeashPosition + leashDirection * leashLength
+	if not Engine.is_editor_hint() or mode != CameraModes.FIXED_FOLLOW_PLAYER:
+		position = currentLeashPosition + leashDirection * leashLength + (pathOffset if mode in [CameraModes.FREE, CameraModes.FOLLOW_PLAYER, CameraModes.ROTATION_LOCKED] else Vector3.ZERO)
 
 ## Does look at player with clamps.
 func look_at_player() -> void:

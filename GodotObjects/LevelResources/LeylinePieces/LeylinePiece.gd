@@ -32,7 +32,7 @@ const LEYLINEMATERIAL: ShaderMaterial = preload("uid://dt4jndoftnsvs")
 ## Exits for the leyline piece.
 enum ExitValues {Straight = 1, Left = 2, Right = 4}
 ## Angles for the leyline piece.
-enum VerticalAngles {Flat, SmallSlope, BigSlope, Wall}
+enum VerticalAngles {Flat, SmallSlope, BigSlope, SmallSlopeDown, BigSlopeDown, Wall, WallDown}
 
 ## Length of this piece. Used only for straight pieces.
 @export_range(1.0, 100.0, 1.0) var length: float = 1.0:
@@ -54,7 +54,7 @@ enum VerticalAngles {Flat, SmallSlope, BigSlope, Wall}
 		if Engine.is_editor_hint() and is_node_ready():
 			set_piece()
 ## Test animation.
-@export_tool_button("Test", "Play") var doTest: Callable = switch_state
+@export_tool_button("Test", "Play") var doTest: Callable = do_test
 
 ## Reference to the leyline piece.
 var leylinePiece: MeshInstance3D
@@ -66,8 +66,12 @@ var mesh: QuadMesh
 var material: ShaderMaterial
 ## This piece's parent if it's a leyline piece.
 var leylineParent: LeylinePiece
+## This piece's parent if it's a CubeCheck.
+var cubeCheckParent: LeylineCubeCheck
 ## This piece's leyline piece children.
 var leylineChildren: Array[LeylinePiece] = []
+## This piece's LeylineCubeCheck children.
+var leylineCubeChildren: Array[LeylineCubeCheck] = []
 ## This piece's alternable children.
 var alternableChildren: Array[Node] = []
 ## Tracks if this piece is on currently.
@@ -76,6 +80,8 @@ var isOn: bool = false
 var tween: Tween
 ## Curent animation progress.
 var progress: float = 0.0
+## Count for child checks in case multiple come out at one time.
+var childOffChecks: int = 0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -87,7 +93,7 @@ func _ready() -> void:
 	mesh.size = PIECESIZE
 	mesh.orientation = PlaneMesh.FACE_Y
 	leylinePiece.mesh = mesh
-	leylinePiece.position = Vector3(PIECESIZE.x / 2.0, PIECEAVERTICALDISPLACEMENT, 0.0)
+	leylinePiece.position = Vector3(PIECESIZE.x / 2.0, 0.0, 0.0)
 	pivot.add_child(leylinePiece)
 	add_child(pivot)
 	material = LEYLINEMATERIAL.duplicate()
@@ -97,9 +103,11 @@ func _ready() -> void:
 	set_length()
 	if not Engine.is_editor_hint(): GeneralVariables.queue_to_cutout_materials([material], true)
 	leylineParent = get_parent() if get_parent() is LeylinePiece else null
+	cubeCheckParent = get_parent() if get_parent() is LeylineCubeCheck else null
 	for child in get_children(): 
 		if child is LeylinePiece: leylineChildren.append(child)
-		if child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: alternableChildren.append(child)
+		elif child is LeylineCubeCheck: leylineCubeChildren.append(child)
+		elif child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: alternableChildren.append(child)
 	if not Engine.is_editor_hint(): return
 	var editorMesh: MeshInstance3D = MeshInstance3D.new()
 	editorMesh.mesh = PrismMesh.new()
@@ -130,15 +138,24 @@ func set_length() -> void:
 			pivot.rotation.z = 0
 			mesh.size.x = length
 		VerticalAngles.SmallSlope:
-			pivot.rotation.z = PI / 8.0
+			pivot.rotation.z = tanh(0.501)
 			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.BigSlope:
 			pivot.rotation.z = PI / 4.0
 			mesh.size.x = length / cos(pivot.rotation.z)
+		VerticalAngles.SmallSlopeDown:
+			pivot.rotation.z = -tanh(0.501)
+			mesh.size.x = length / cos(pivot.rotation.z)
+		VerticalAngles.BigSlopeDown:
+			pivot.rotation.z = -PI / 4.0
+			mesh.size.x = length / cos(pivot.rotation.z)
 		VerticalAngles.Wall:
 			pivot.rotation.z = PI / 2.0
 			mesh.size.x = length
-	leylinePiece.position.x = mesh.size.x / 2.0
+		VerticalAngles.WallDown:
+			pivot.rotation.z = PI * 1.5
+			mesh.size.x = length
+	leylinePiece.position = Vector3(mesh.size.x / 2.0, PIECEAVERTICALDISPLACEMENT, leylinePiece.position.z)
 	material.set_shader_parameter("segments", length)
 
 ## Sets this piece's material.
@@ -165,18 +182,23 @@ func apply_textures(piece: String) -> void:
 
 ## Switches state.
 func switch_state() -> void:
-	if leylineParent: return
+	if leylineParent or cubeCheckParent: return
 	if not isOn: animate()
-	else: animate_last() 
+	else: animate_last()
 
 ## Animates the last piece first, used for turning off.
 func animate_last() -> void:
-	if len(leylineChildren) == 0: animate()
-	else: for child in leylineChildren: child.animate_last()
+	if len(leylineChildren) == 0 and len(leylineCubeChildren) == 0: animate()
+	else: 
+		for child in leylineChildren: child.animate_last()
+		for child in leylineCubeChildren: child.animate_last()
 
 ## Animates this piece and subsequent ones.
 func animate() -> void:
-	if isOn: for child in leylineChildren: if child.progress > 0: return
+	if isOn: 
+		childOffChecks += 1
+		if childOffChecks < len(leylineChildren) + len(leylineCubeChildren): return
+	childOffChecks = 0
 	isOn = not isOn
 	if tween: if tween.is_running(): tween.kill()
 	tween = create_tween()
@@ -196,9 +218,12 @@ func _animation_tick(currentProgres: float) -> void:
 func animation_finished() -> void:
 	if isOn: 
 		for child in leylineChildren: child.animate()
+		for child in leylineCubeChildren: child.animate_cube(true)
 		if not Engine.is_editor_hint(): for child in alternableChildren: child.switch_state()
 	elif leylineParent:
 		leylineParent.animate()
+	elif cubeCheckParent:
+		cubeCheckParent.leyline_child_off()
 
 ## Cleans unique materials.
 func _notification(what) -> void:
@@ -206,3 +231,21 @@ func _notification(what) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		GeneralVariables.queue_to_cutout_materials([material], false)
 		queue_free()
+
+## Tests leyline in editor.
+func do_test() -> void:
+	recursive_ready(self)
+	switch_state()
+
+## Re readies nodes for test in editor.
+func recursive_ready(node: Node) -> void:
+	if node is not LeylinePiece: return
+	for child in node.get_children():
+		recursive_ready(child)
+	node.leylineChildren.clear()
+	node.leylineCubeChildren.clear()
+	node.alternableChildren.clear()
+	for child in node.get_children(): 
+		if child is LeylinePiece: node.leylineChildren.append(child)
+		elif child is LeylineCubeCheck: node.leylineCubeChildren.append(child)
+		elif child is AlternatingObject or child is MovingPlatform or child is LitGlass or child is RemoteSwitcher: node.alternableChildren.append(child)

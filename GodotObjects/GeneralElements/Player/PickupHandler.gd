@@ -18,6 +18,9 @@ const STICKERRADIUS: float = 0.132
 ## Sticker list
 enum StickerList {ALTERNATOR = 1, FAN = 2, LAMP = 4, KEY = 8, INVENTORY = 16}
 
+## Sprite pivot reference.
+@export var spriteSocket: Node3D
+
 ## Pick up sound player reference
 @onready var pickupSound: RandomSoundPlayer = $Pickup
 ## Remove sound player reference
@@ -44,8 +47,6 @@ var player: Player
 var closeStickers: Array[StickerBase] = []
 ## List of valid stickers
 var currentlyAvailableStickers: Array[StickerBase] = []
-## List of areas in range for placement
-var closeAreas: Array[Area3D] = []
 ## Starting highlight height
 var highlightHeight: float
 ## Flag that turns true when 
@@ -134,7 +135,6 @@ func get_sticker_class(sticker: StickerBase) -> StickerList:
 func do_grab() -> void:
 	if len(currentlyAvailableStickers) == 0: return
 	currentPickup = currentlyAvailableStickers[0]
-	
 	if currentPickup.placed:
 		removeSound.play_sound()
 		var surface: StickerableSurfaceData = GeneralVariables.stickerableSurfacesManager.get_surface_with_sticker(currentPickup)
@@ -142,8 +142,8 @@ func do_grab() -> void:
 			surface.node.sticker_activity()
 			surface.used = null
 	elif currentPickup is not InventorySticker: pickupSound.play_sound()
-	currentPickup.grab(self)
-	currentPickup.reparent(self)
+	currentPickup.grab(spriteSocket if spriteSocket else self)
+	currentPickup.reparent(spriteSocket if spriteSocket else self)
 	pickupOnHand = true
 	currentPickup.activate_on_player_effect()
 

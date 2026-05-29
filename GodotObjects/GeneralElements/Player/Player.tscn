@@ -1684,16 +1684,20 @@ visible = false
 mesh = SubResource("QuadMesh_c42h5")
 surface_material_override/0 = SubResource("ShaderMaterial_064yy")
 
+[node name="SpriteSocket" type="Node3D" parent="SpritePivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9999998, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("CapsuleShape3D_cphfr")
 
-[node name="GrabArea" type="Area3D" parent="."]
+[node name="GrabArea" type="Area3D" parent="." node_paths=PackedStringArray("spriteSocket")]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 3584
 monitorable = false
 script = ExtResource("6_cphfr")
+spriteSocket = NodePath("../SpritePivot/SpriteSocket")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabArea"]
 shape = SubResource("CapsuleShape3D_l6njb")
