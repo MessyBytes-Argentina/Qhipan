@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrfpdktb5y8s"]
+
+[ext_resource type="PackedScene" uid="uid://bipgqrbsaiiv6" path="res://Assets/Models/Plataformas Moviles/Horizontal/Marco.glb" id="1_fci7j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx3fv"]
+albedo_color = Color(0.80412894, 0.7066364, 0.20832384, 1)
+
+[node name="Marco" instance=ExtResource("1_fci7j")]
+
+[node name="Chakana Marco_001" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kx3fv")

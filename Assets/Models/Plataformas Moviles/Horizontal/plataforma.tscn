@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnps2d0lqlbx1"]
+
+[ext_resource type="PackedScene" uid="uid://dvuwjt7qne1n1" path="res://Assets/Models/Plataformas Moviles/Horizontal/Plataforma.glb" id="1_3f020"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx3fv"]
+albedo_color = Color(0.80412894, 0.7066364, 0.20832384, 1)
+
+[node name="Plataforma" instance=ExtResource("1_3f020")]
+
+[node name="Chakana Plataforma_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kx3fv")

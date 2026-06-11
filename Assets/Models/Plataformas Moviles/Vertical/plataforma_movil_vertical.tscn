@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://2eldhv8tk6vc"]
+
+[ext_resource type="PackedScene" uid="uid://qcpars5c50c7" path="res://Assets/Models/Plataformas Moviles/Vertical/PMV-Base.glb" id="1_34m03"]
+[ext_resource type="PackedScene" uid="uid://bccg2ngcdpyyu" path="res://Assets/Models/Plataformas Moviles/Vertical/PMV-Plataforma.glb" id="2_msd0g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_34m03"]
+size = Vector3(0.86187744, 0.12475586, 0.8590088)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_msd0g"]
+size = Vector3(1.2, 0.2, 1.2)
+
+[node name="plataforma movil vertical" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="PMV-Plataforma" parent="StaticBody3D" instance=ExtResource("2_msd0g")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0018005371, 0.048217773, -0.0036010742)
+shape = SubResource("BoxShape3D_34m03")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="PMV-Base" parent="StaticBody3D2" instance=ExtResource("1_34m03")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04598759, 0)
+shape = SubResource("BoxShape3D_msd0g")

@@ -10,7 +10,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.034999996, 0.034999996, 0.034999996, 1, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bdrj3"]
 gradient = SubResource("Gradient_b4gss")
-fill_to = Vector2(0.85470086, 0)
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.36324787, 1)
 
 [sub_resource type="Gradient" id="Gradient_51xmy"]
 offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
@@ -62,19 +63,22 @@ _data = {
 [node name="Drawbridge" instance=ExtResource("1_nt7gc")]
 
 [node name="Traba L" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47652096, 0.17, 0.001871191)
+transform = Transform3D(0.42261824, -0.9063078, 0, 0.9063078, 0.42261824, 0, 0, 0, 1, 0.47652096, 0.17, 0.001871191)
 
 [node name="Traba R" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47652096, 0.17, 0.001871191)
+transform = Transform3D(0.42261824, 0.9063078, 0, -0.9063078, 0.42261824, 0, 0, 0, 1, -0.47652096, 0.17, 0.001871191)
 
 [node name="Caño" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, -2.6226834e-08, -0.6, 0, 0.6, -2.6226834e-08, 0, 0.100000046, 0.001871191)
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.100000046, 0.001871191)
 
 [node name="Plataforma" parent="." index="4"]
-transform = Transform3D(1, 7.888609e-31, -3.4482205e-38, 0, -4.371139e-08, -1, -7.888609e-31, 1, -4.371139e-08, 0, 0.10473268, 0.0010390431)
+transform = Transform3D(1, -3.529012e-24, 0, 3.529012e-24, 1, 0, 0, 0, 1, 0, 0.10473268, 0.0010390431)
 
 [node name="Colision" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 0.9999575, -0.009221888, 0, 0.009221888, 0.9999575, 0, 0.11173269, -0.0038321614)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.11173269, -0.0038321614)
+
+[node name="CollisionShape3D" parent="Colision" index="0"]
+transform = Transform3D(0.8201528, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 0.17476517, -0.9846101, 0, 0.9846101, 0.17476517, 0, 0.55999225, -0.5388902)
