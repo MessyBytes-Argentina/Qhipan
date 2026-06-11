@@ -9,6 +9,8 @@ class_name PushableBlock
 @onready var floorDetector: RayCast3D = $FloorDetector
 ## Reference to the VerticalDetector RayCast3D
 @onready var verticalDetector: RayCast3D = $VerticalDetector
+## Reference to the LeylineArea Checker
+@onready var leyLineChecker: Area3D = $LeylineChecker
 
 ## Time it takes a block to move 1 unit of distance
 const moveTime: float = 0.2
@@ -37,6 +39,10 @@ var destination: Vector3
 var waiting: bool = true
 ## Reference to other pushable blocks to disconnect signals
 var blockCaller: PushableBlock = null
+## Flag that turns true when a LeylineArea is detected
+var onLeylineArea: bool = false
+## Reference to the LeylineArea node (if the block is on top of one)
+var leylineAreaNode: LeylineCubeCheck = null
 
 ## Emitted at the start of movement
 signal moving
@@ -48,6 +54,31 @@ func _ready() -> void:
 	start_wait()
 	end_fall(true)
 
+## Checks for leylineAreas when called
+func check_leylines() -> void:
+	var leylines: Array[Area3D] = leyLineChecker.get_overlapping_areas()
+	if leylines.is_empty(): return
+	onLeylineArea = true
+	leylineAreaNode = leylines[0]
+	leylineAreaNode.alternating_cube_finished_moving()
+
+## Starts the move tween when called and emits the moving signal
+func start_move_tween() -> void:
+	if moveTween: if moveTween.is_running(): moveTween.kill()
+	disconnect_move_signals()
+	#prints(name,"to:",destination,"d:",moveTime * currentPushDistance,"is falling:",isFalling,"f:",get_tree().get_frame())
+	isMoving = true
+	emit_signal("moving")
+	if onLeylineArea:
+		onLeylineArea = false
+		leylineAreaNode.alternating_cube_left()
+		leylineAreaNode = null
+	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	moveTween.tween_property(self, "global_position:x", destination.x, moveTime * currentPushDistance)
+	moveTween.parallel().tween_property(self, "global_position:z", destination.z, moveTime * currentPushDistance)
+	moveTween.finished.connect(check_state)
+	moveTween.finished.connect(check_leylines)
+
 ## Starts the check for movement when called
 func check_movement(waitFlag: bool = false) -> void:
 	if pushingFanNode == null: return
@@ -57,18 +88,6 @@ func check_movement(waitFlag: bool = false) -> void:
 	if waitFlag:
 		await get_tree().create_timer(fallTime).timeout
 	check_state()
-
-## Starts the move tween when called and emits the moving signal
-func start_move_tween() -> void:
-	if moveTween: if moveTween.is_running(): moveTween.kill()
-	disconnect_move_signals()
-	#prints(name,"to:",destination,"d:",moveTime * currentPushDistance,"is falling:",isFalling,"f:",get_tree().get_frame())
-	isMoving = true
-	emit_signal("moving")
-	moveTween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	moveTween.tween_property(self, "global_position:x", destination.x, moveTime * currentPushDistance)
-	moveTween.parallel().tween_property(self, "global_position:z", destination.z, moveTime * currentPushDistance)
-	moveTween.finished.connect(check_state)
 
 ## Checks the current state of the block to fall or move when called
 func check_state() -> void:
@@ -207,6 +226,7 @@ func end_fall(waitFlag: bool = false) -> void:
 		start_fall_tween()
 	else:
 		isFalling = false
+		check_leylines()
 		check_movement()
 
 ## Returns true when it detects it can fall,

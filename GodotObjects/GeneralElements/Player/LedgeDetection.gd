@@ -47,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 		if raycast.currentDistance < JUMPDISTANCE and raycast.currentDistance <= raycast.previousDistance:
 			var normalDirection: Vector3 = raycast.get_collision_normal()
 			if normalDirection == Vector3.ZERO or player.forcedNoGravity : return
-			if not check_player_direction(normalDirection): continue
+			if not check_player_direction(normalDirection.round()): continue
 			do_player_jump(normalDirection)
 			return
 

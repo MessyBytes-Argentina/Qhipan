@@ -2,23 +2,23 @@
 
 [ext_resource type="Shader" uid="uid://b8opvehbjkxkm" path="res://Assets/Shaders/Sky.gdshader" id="1_ricvt"]
 
-[sub_resource type="Gradient" id="Gradient_0j15c"]
+[sub_resource type="Gradient" id="Gradient_u3ji6"]
 offsets = PackedFloat32Array(0.47936508, 0.60952383, 0.6888889)
 colors = PackedColorArray(0.6862745, 1, 1, 1, 1, 1, 1, 1, 0.19076231, 0.19076234, 0.19076231, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ve3d1"]
-gradient = SubResource("Gradient_0j15c")
+gradient = SubResource("Gradient_u3ji6")
 fill_from = Vector2(1, 0.047008548)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3ji6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ricvt"]
 shader = ExtResource("1_ricvt")
 shader_parameter/startPanorama = SubResource("GradientTexture2D_ve3d1")
 shader_parameter/panoramaProgress = 0.0
 shader_parameter/skyContribution = 0.75
 
 [sub_resource type="Sky" id="Sky_k8jv3"]
-sky_material = SubResource("ShaderMaterial_u3ji6")
+sky_material = SubResource("ShaderMaterial_ricvt")
 
 [resource]
 resource_local_to_scene = true

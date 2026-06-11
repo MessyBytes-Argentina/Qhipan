@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqxq2c1j1cy3e"]
+[gd_scene load_steps=7 format=3 uid="uid://bqxq2c1j1cy3e"]
 
 [ext_resource type="Script" uid="uid://badepv5nenped" path="res://GodotObjects/LevelResources/PushableBlock/PushableBlock.gd" id="1_aunex"]
 [ext_resource type="Material" uid="uid://dvguc0nlq3xwa" path="res://Assets/Materials/Prototype/Prototype Blue.tres" id="1_tbg2u"]
@@ -10,6 +10,9 @@ material = ExtResource("1_tbg2u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yia5y"]
 size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvhgx"]
+size = Vector3(0.9, 0.5, 0.9)
 
 [node name="PushableBlock" type="AnimatableBody3D"]
 collision_layer = 16384
@@ -46,6 +49,15 @@ collision_mask = 4097
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, -3, 0)
 collision_mask = 16385
+
+[node name="LeylineChecker" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 65536
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeylineChecker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_gvhgx")
+debug_color = Color(0.79790395, 0.42310554, 1.92523e-07, 0.41960785)
 
 [connection signal="area_entered" from="FanChecker" to="." method="push"]
 [connection signal="area_exited" from="FanChecker" to="." method="stop_pushing"]

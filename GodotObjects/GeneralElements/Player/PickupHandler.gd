@@ -114,7 +114,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if pickupOnHand:
 				if get_sticker_class(currentPickup) & blockedStickers != 0:
 					drop()
-				if len(currentlyAvailableStickers) > 0:
+				if len(currentlyAvailableStickers) > 0 and not areaHighlight.visible:
 					do_grab()
 			elif len(currentlyAvailableStickers) > 0:
 				do_grab()
@@ -219,7 +219,7 @@ func sort_close_stickers() -> void:
 
 ## Shows sticker highlight when possible
 func check_highlight() -> void:
-	if len(currentlyAvailableStickers) == 0 or not canGrab or inNoStickerArea: 
+	if currentlyAvailableStickers.is_empty() or not canGrab or inNoStickerArea or areaHighlight.visible: 
 		if highlight: highlight.hide()
 	elif highlight:
 		highlightPivot.global_position = currentlyAvailableStickers[0].global_position

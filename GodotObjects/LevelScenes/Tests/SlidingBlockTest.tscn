@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cymyf5kl3lqb7"]
+
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="1_h0c4w"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="2_a3vhd"]
+[ext_resource type="PackedScene" uid="uid://8ylsw8v8awhm" path="res://GodotObjects/LevelScenes/Tests/SlideScene.tscn" id="3_a3vhd"]
+
+[node name="SlidingBlockTest" type="Node3D"]
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("1_h0c4w")]
+
+[node name="Player" parent="." instance=ExtResource("2_a3vhd")]
+transform = Transform3D(0.70710695, 0, 0.70710695, 0, 1, 0, -0.70710695, 0, 0.70710695, -0.5, 0.5, 0)
+
+[node name="SlideScene" parent="." instance=ExtResource("3_a3vhd")]
