@@ -19,3 +19,4 @@ mesh = SubResource("QuadMesh_e4t6e")
 [node name="StickerMarker" type="Node3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
 script = ExtResource("2_qjnqx")
+overrideLightLength = null

@@ -20,6 +20,8 @@ signal sticker(placed: StickerBase)
 @export_flags("noPlayerFan", "NoPlayerAntigravity") var specialFlags: int = 0
 ## Fan range override.
 @export_range(-1, 20, 0.5) var overrideFanLength: float = -1
+## Light range override.
+@export_range(-1, 20, 0.5) var overrideLightLength: float = -1
 
 ## Surface data.
 var data: StickerableSurfaceData

@@ -1,0 +1,158 @@
+[gd_scene load_steps=22 format=3 uid="uid://b1flqcnad3mca"]
+
+[ext_resource type="PackedScene" uid="uid://b8i6hwkva0fmh" path="res://GodotObjects/LevelResources/Gridmaps/Gridmap/PrototypeGridmapObject.tscn" id="1_s85xt"]
+[ext_resource type="PackedScene" uid="uid://b7st877p5uct1" path="res://GodotObjects/GeneralElements/Environment/EnvironmentObjects.tscn" id="2_4qep8"]
+[ext_resource type="Script" uid="uid://cxsuhlykdvh1s" path="res://GodotObjects/GeneralElements/Environment/EnvironmentParameters.gd" id="3_l13yq"]
+[ext_resource type="Script" uid="uid://44mc8q7u8dbc" path="res://GodotObjects/GeneralElements/Environment/LightParameters.gd" id="4_a5wk8"]
+[ext_resource type="PackedScene" uid="uid://b4i4wpup84wht" path="res://GodotObjects/GeneralElements/Player/Player.tscn" id="5_40puq"]
+[ext_resource type="Script" uid="uid://bmkcxot1om0jv" path="res://GodotObjects/GeneralElements/Cameras/RailCamera.gd" id="6_gkhfx"]
+[ext_resource type="PackedScene" uid="uid://cnyaxl7dggkt4" path="res://GodotObjects/LevelResources/InvisiblePlatform/InvisiblePlatform.tscn" id="7_4qep8"]
+[ext_resource type="PackedScene" uid="uid://b6whyy35seo3" path="res://GodotObjects/LevelResources/MetaprogressionDoor/ChackanaDoor.tscn" id="8_a5wk8"]
+[ext_resource type="PackedScene" uid="uid://mkq4gyndl2fu" path="res://GodotObjects/LevelResources/Pedestal/PlaceholderSmallKey.tscn" id="9_40puq"]
+[ext_resource type="PackedScene" uid="uid://6mh0kqfnui1e" path="res://GodotObjects/LevelResources/Props/Grate/Grate.tscn" id="10_7c7df"]
+[ext_resource type="PackedScene" uid="uid://uefmm3wnclty" path="res://GodotObjects/GeneralElements/DarknessBlockerModule/Darkness.tscn" id="11_2ww1l"]
+[ext_resource type="PackedScene" uid="uid://bhp6mup3grffc" path="res://GodotObjects/LevelResources/StickerArea/PlaceholderStickerArea.tscn" id="12_tx04e"]
+[ext_resource type="PackedScene" uid="uid://obi7mybs0j53" path="res://GodotObjects/LevelResources/Stickers/Lamp/Lamp.tscn" id="13_tx04e"]
+[ext_resource type="PackedScene" uid="uid://5y3mxiemv321" path="res://GodotObjects/LevelResources/Stickers/Key/Key.tscn" id="14_nj6j7"]
+
+[sub_resource type="Gradient" id="Gradient_a74g7"]
+offsets = PackedFloat32Array(0, 0.12943633, 0.55949897, 0.57202506)
+colors = PackedColorArray(0, 0, 0, 1, 0.09380949, 0.026161313, 0.09751137, 1, 0.9872274, 0.7921966, 0.68620634, 1, 0.9896011, 0.9260117, 0.9271558, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_papsg"]
+gradient = SubResource("Gradient_a74g7")
+fill_from = Vector2(0, 0.021367522)
+
+[sub_resource type="Gradient" id="Gradient_0j15c"]
+offsets = PackedFloat32Array(0.47936508, 0.60952383, 0.6888889)
+colors = PackedColorArray(0.6862745, 1, 1, 1, 1, 1, 1, 1, 0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ve3d1"]
+gradient = SubResource("Gradient_0j15c")
+fill_from = Vector2(1, 0.047008548)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_3rjmh"]
+script = ExtResource("3_l13yq")
+sky_panorama = SubResource("GradientTexture2D_ve3d1")
+glow_intensity = 0.5
+brightness = 0.7999999999999999
+contrast = 0.9
+saturation = 0.9
+color_correction = SubResource("GradientTexture2D_papsg")
+metadata/_custom_type_script = "uid://cxsuhlykdvh1s"
+
+[sub_resource type="Resource" id="Resource_qs13x"]
+script = ExtResource("4_a5wk8")
+energy = 1.808
+indirect_energy = 2.257
+specular = 2.885
+metadata/_custom_type_script = "uid://44mc8q7u8dbc"
+
+[sub_resource type="Curve3D" id="Curve3D_yj8br"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -20),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="LampIntro1" type="Node3D"]
+metadata/isRoot = true
+
+[node name="UpgradedGridmapObject" parent="." instance=ExtResource("1_s85xt")]
+data = {
+"cells": PackedInt32Array(-131073, 65535, 61, -196608, 65535, 61, -196608, 0, 61, -131073, 0, 61, -131074, 0, 61, -131074, 65535, 61, -196607, 0, 61, -196607, 65535, 61, -196606, 65535, 61, -196606, 0, 61, -196606, 65534, 61, -196607, 65534, 61, -196608, 65534, 61, -131073, 65534, 61, -131074, 65534, 61, -196606, 65533, 61, -196607, 65533, 61, -196608, 65533, 61, -131073, 65533, 61, -131074, 65533, 61, -131073, 65532, 61, -131073, 65531, 61, -131073, 65530, 153, -196607, 65530, 153, -196606, 65530, 61, -196606, 65529, 61, -196606, 65528, 61, -196606, 65532, 61, -196607, 65532, 153, -196608, 65532, 61, -196608, 65531, 61, -196607, 65531, 153, -196606, 65531, 61, -131074, 65532, 61, -131074, 65531, 61, -131074, 65530, 153, -131074, 65529, 153, -131073, 65529, 61, -196608, 65529, 61, -196607, 65529, 61, -196607, 65528, 61, -196608, 65528, 61, -131073, 65528, 61, -131074, 65528, 153, -131074, 65527, 61, -131073, 65527, 61, -196608, 65527, 61, -196607, 65527, 61, -196606, 65527, 61, -196608, 65530, 107, -196605, 65532, 15, -196605, 65531, 15, -196605, 65530, 15, -196605, 65529, 15, -196605, 65528, 15, -196605, 65527, 15, -196606, 65526, 61, -196607, 65526, 61, -196608, 65526, 61, -131073, 65526, 61, -131074, 65526, 61, -196604, 65532, 1441853, -196604, 65531, 1441853, -196604, 65530, 1441853, -196604, 65529, 1441853, -196604, 65528, 1441853, -196604, 65527, 1441853, -196603, 65527, 1441853, -196603, 65528, 1441853, -196603, 65529, 1441853, -196603, 65530, 1441853, -196603, 65531, 1441853, -196603, 65532, 1441853, -196605, 65526, 61, -196604, 65526, 61, -196603, 65526, 61, -327675, 65526, 61, -327675, 65527, 61, -327675, 65528, 61, -327675, 65529, 61, -327675, 65530, 61, -327675, 65531, 61, -327675, 65532, 61, -327676, 65532, 61, -327679, 0, 61, -327680, 0, 61, -262145, 0, 61, -327678, 0, 61, -262146, 0, 61, -131075, 65526, 15, -131075, 65527, 15, -131075, 65528, 15, -131075, 65529, 15, -131075, 65530, 15, -131075, 65531, 15, -131075, 65532, 15, -131075, 65533, 15, -131075, 65534, 15, -131075, 65535, 15, -131075, 0, 15, -3, 65526, 15, -3, 65527, 15, -3, 65528, 15, -3, 65529, 15, -3, 65530, 15, -3, 65531, 15, -3, 65532, 15, -3, 65533, 15, -3, 65534, 15, -3, 65535, 15, -3, 0, 15, 131069, 65526, 15, 131069, 65527, 15, 131069, 65528, 15, 131069, 65529, 15, 131069, 65530, 15, 131069, 65531, 15, 131069, 65532, 15, 131069, 65533, 15, 131069, 65534, 15, 131069, 65535, 15, 131069, 0, 15, 262141, 65526, 15, 262141, 65527, 15, 262141, 65528, 15, 262141, 65529, 15, 262141, 65530, 15, 262141, 65531, 15, 262141, 65532, 15, 262141, 65533, 15, 262141, 65534, 15, 262141, 65535, 15, 262141, 0, 15, 393213, 65526, 15, 393213, 65527, 15, 393213, 65528, 15, 393213, 65529, 15, 393213, 65530, 15, 393213, 65531, 15, 393213, 65532, 15, 393213, 65533, 15, 393213, 65534, 15, 393213, 65535, 15, 393213, 0, 15, -327678, 65533, 61, -327678, 65534, 61, -327678, 65535, 61, -327677, 65532, 15, -131075, 65513, 15, -131075, 65514, 15, -131075, 65515, 15, -131075, 65516, 15, -131075, 65517, 15, -131075, 65518, 15, -131075, 65519, 15, -131075, 65520, 15, -131075, 65521, 15, -131075, 65522, 15, -3, 65513, 15, -3, 65514, 15, -3, 65515, 15, -3, 65516, 15, -3, 65517, 15, -3, 65518, 15, -3, 65519, 15, -3, 65520, 15, -3, 65521, 15, -3, 65522, 15, 131069, 65513, 15, 131069, 65514, 15, 131069, 65515, 15, 131069, 65516, 15, 131069, 65517, 15, 131069, 65518, 15, 131069, 65519, 15, 131069, 65520, 15, 131069, 65521, 15, 131069, 65522, 15, 262141, 65513, 15, 262141, 65514, 15, 262141, 65515, 15, 262141, 65516, 15, 262141, 65517, 15, 262141, 65518, 15, 262141, 65519, 15, 262141, 65520, 15, 262141, 65521, 15, 262141, 65522, 15, 393213, 65513, 15, 393213, 65514, 15, 393213, 65515, 15, 393213, 65516, 15, 393213, 65517, 15, 393213, 65518, 15, 393213, 65519, 15, 393213, 65520, 15, 393213, 65521, 15, 393213, 65522, 15, -262146, 65513, 15, -262146, 65514, 61, -262146, 65515, 61, -262146, 65516, 61, -262146, 65517, 199, -262146, 65518, 199, -262146, 65519, 199, -262146, 65520, 199, -262146, 65521, 199, -131074, 65513, 15, -131074, 65514, 61, -131074, 65515, 61, -131074, 65516, 61, -131074, 65521, 1441842, -131074, 65522, 61, -2, 65513, 15, 131070, 65513, 15, 262142, 65513, 15, 393214, 65513, 15, -262145, 65512, 107, -262145, 65513, 107, -262145, 65514, 61, -262145, 65515, 61, -262145, 65516, 61, -262145, 65517, 199, -262145, 65518, 199, -262145, 65519, 199, -262145, 65520, 199, -262145, 65521, 199, -131073, 65512, 107, -131073, 65513, 107, -131073, 65514, 61, -131073, 65515, 61, -131073, 65516, 61, -131073, 65521, 1441842, -131073, 65522, 61, -1, 65512, 107, 131071, 65512, 107, 262143, 65512, 107, 393215, 65513, 15, -327680, 65512, 107, -327680, 65513, 107, -327680, 65514, 61, -327680, 65515, 61, -327680, 65516, 61, -327680, 65517, 199, -327680, 65518, 199, -327680, 65519, 199, -327680, 65520, 199, -327680, 65521, 199, -196608, 65512, 107, -196608, 65513, 107, -196608, 65514, 61, -196608, 65515, 61, -196608, 65516, 61, -196608, 65519, 107, -196608, 65521, 1441842, -196608, 65522, 61, -65536, 65512, 107, 65536, 65512, 107, 196608, 65512, 107, 327680, 65513, 15, -327679, 65512, 107, -327679, 65513, 107, -327679, 65514, 61, -327679, 65515, 61, -327679, 65516, 61, -327679, 65517, 199, -327679, 65518, 199, -327679, 65519, 199, -327679, 65520, 199, -327679, 65521, 199, -196607, 65512, 107, -196607, 65513, 107, -196607, 65514, 61, -196607, 65515, 61, -196607, 65516, 61, -196607, 65521, 1441842, -196607, 65522, 61, -65535, 65512, 107, 65537, 65512, 107, 196609, 65512, 107, 327681, 65513, 15, -327678, 65513, 15, -327678, 65514, 61, -327678, 65515, 61, -327678, 65516, 61, -327678, 65517, 199, -327678, 65518, 199, -327678, 65519, 199, -327678, 65520, 199, -327678, 65521, 199, -196606, 65513, 15, -196606, 65514, 61, -196606, 65515, 61, -196606, 65516, 61, -196606, 65521, 1441842, -196606, 65522, 61, -65534, 65513, 15, 65538, 65513, 15, 196610, 65513, 15, 327682, 65513, 15, -327677, 65517, 1048591, -327677, 65518, 199, -327677, 65519, 199, -327677, 65520, 199, -196605, 65517, 15, -196605, 65518, 15, -196605, 65519, 15, -196605, 65520, 15, -196605, 65521, 15, -196605, 65522, 61, -327676, 65517, 61, -196604, 65517, 61, -196604, 65518, 61, -196604, 65519, 61, -196604, 65520, 61, -196604, 65521, 61, -196604, 65522, 61, -327675, 65517, 61, -327675, 65518, 61, -327675, 65519, 61, -327675, 65520, 61, -327675, 65521, 61, -327675, 65522, 61, -196603, 65517, 61, -196603, 65518, 61, -196603, 65519, 61, -196603, 65520, 61, -196603, 65521, 61, -196603, 65522, 61, -327675, 65523, 1048637, -327675, 65524, 1048637, -327675, 65525, 1048637, -196603, 65523, 1048637, -196603, 65524, 1048637, -196603, 65525, 1048637, -196604, 65525, 1048637, -196605, 65525, 1048637, -196606, 65525, 1048637, -196607, 65525, 1048637, -196608, 65525, 1048637, -131073, 65525, 1048637, -131074, 65525, 1048637, -131074, 65524, 1048637, -131074, 65523, 1048637, -131073, 65523, 1048637, -196608, 65523, 1048637, -196607, 65523, 1048637, -196606, 65523, 1048637, -196605, 65523, 1048637, -196605, 65524, 1048637, -196604, 65524, 1048637, -196604, 65523, 1048637, -196606, 65524, 1048637, -196607, 65524, 1048637, -196608, 65524, 1048637, -131075, 65523, 15, -131075, 65524, 15, -131075, 65525, 15, -3, 65523, 15, -3, 65524, 15, -3, 65525, 15, 131069, 65523, 15, 131069, 65524, 15, 131069, 65525, 15, 262141, 65523, 15, 262141, 65524, 15, 262141, 65525, 15, 393213, 65523, 15, 393213, 65524, 15, 393213, 65525, 15, -131073, 65524, 1048637)
+}
+metadata/_editor_floor_ = Vector3(0, -5, 0)
+
+[node name="UpgradedGridmapObject2" parent="." instance=ExtResource("1_s85xt")]
+collision_layer = 4096
+collision_mask = 4096
+data = {
+"cells": PackedInt32Array(-65533, 65531, 13, -65533, 65529, 1048589, -65533, 65528, 1048592, -65533, 65527, 1048592, -65533, 65532, 1048592, -65533, 65517, 1048592, -65533, 65518, 1048589, -65533, 65520, 13, -65533, 65521, 1048592)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="EnvironmentObjects" parent="." instance=ExtResource("2_4qep8")]
+startEnvironment = SubResource("Resource_3rjmh")
+startLight = SubResource("Resource_qs13x")
+
+[node name="Player" parent="." instance=ExtResource("5_40puq")]
+
+[node name="RailCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.7071068, -0.29883626, 0.6408564, 0, 0.9063078, 0.42261827, -0.7071068, -0.29883626, 0.6408564, 6.5, 3.5, 0.5)
+cull_mask = 655359
+current = true
+script = ExtResource("6_gkhfx")
+mode = 1
+pathOffset = Vector3(0, 0, 3)
+metadata/_custom_type_script = "uid://bmkcxot1om0jv"
+
+[node name="CameraPath" type="Path3D" parent="RailCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3.5, -2.5)
+top_level = true
+curve = SubResource("Curve3D_yj8br")
+metadata/CameraPath = true
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="InvisiblePlatform" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -14.5)
+
+[node name="InvisiblePlatform2" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -15.5)
+
+[node name="InvisiblePlatform3" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.5, -16.5)
+
+[node name="InvisiblePlatform4" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -16.5)
+
+[node name="InvisiblePlatform5" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -16.5)
+
+[node name="InvisiblePlatform6" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -17.5)
+
+[node name="InvisiblePlatform7" parent="Props" instance=ExtResource("7_4qep8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -0.5, -18.5)
+
+[node name="ChackanaDoor" parent="Props" instance=ExtResource("8_a5wk8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.5, -0.5, -22)
+pedestalName = "LampIntro1"
+
+[node name="SmallPedestalKey" parent="Props" instance=ExtResource("9_40puq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -0.5, -21)
+pedestalName = "LampIntro1"
+
+[node name="Grate" parent="Props" instance=ExtResource("10_7c7df")]
+transform = Transform3D(-6.556708e-08, 0, 1, 0, 0.5, 0, -1.5, 0, -4.371139e-08, 3.85, -0.3, -5.5)
+
+[node name="Grate2" parent="Props" instance=ExtResource("10_7c7df")]
+transform = Transform3D(-6.556708e-08, 0, 1, 0, 0.5, 0, -1.5, 0, -4.371139e-08, 3.85, -0.3, -16.5)
+
+[node name="Darkness" parent="Props" instance=ExtResource("11_2ww1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -5.5)
+size = Vector3(5, 2, 6)
+
+[node name="Darkness2" parent="Props" instance=ExtResource("11_2ww1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.25, -16.5)
+size = Vector3(5, 3.5, 6)
+
+[node name="Placements" type="Node3D" parent="."]
+
+[node name="Placeholder Sticker Area" parent="Placements" instance=ExtResource("12_tx04e")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.5, -0.5, -16.5)
+overrideLightLength = 7.0
+
+[node name="Placeholder Sticker Area2" parent="Placements" instance=ExtResource("12_tx04e")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.5, -0.5, -5.5)
+overrideLightLength = 7.0
+
+[node name="Stickers" type="Node3D" parent="."]
+
+[node name="StickerLamp" parent="Stickers" instance=ExtResource("13_tx04e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -1.5)
+
+[node name="KeySticker" parent="Stickers" instance=ExtResource("14_nj6j7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -5.5)

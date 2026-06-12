@@ -102,6 +102,8 @@ const CAMERALERPCOOLSTICKER: float = 0.3
 @onready var fanfare: AudioStreamPlayer = %Fanfare
 ## Ledge detection.
 @onready var ledgeDetection: LedgeDetection = $LedgeDetection
+## Camera probe for darkness cutout.
+@onready var cameraProbe: Node3D = %CameraProbe
 #endregion
 
 #region Variables
@@ -276,6 +278,7 @@ func get_move_direction() -> Vector3:
 		moveDirection = moveDirection.rotated(Vector3.UP, currentCameraRotation).normalized()
 		cameraPivot.global_rotation.y = currentCameraRotation
 		ledgeDetection.global_rotation.y = currentCameraRotation + PI * 0.25
+		cameraProbe.look_at(currentCamera.global_position, currentCamera.global_transform.basis.y)
 	return moveDirection
 
 ## Moves the player character.

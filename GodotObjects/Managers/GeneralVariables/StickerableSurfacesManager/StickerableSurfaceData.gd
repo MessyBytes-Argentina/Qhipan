@@ -28,3 +28,4 @@ func _init(surface: StickerMarker = null, pointingTo: Node3D = null) -> void:
 	specialScale = Vector3.ONE * surface.specialStickerScale
 	specialFlags = surface.specialFlags
 	extraParameters.overrideFanLength = surface.overrideFanLength
+	extraParameters.overrideLightLength = surface.overrideLightLength

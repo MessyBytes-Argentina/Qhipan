@@ -1798,3 +1798,6 @@ visible = false
 mesh = SubResource("SphereMesh_q1b61")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_6p00r")
+
+[node name="CameraProbe" type="Node3D" parent="."]
+unique_name_in_owner = true

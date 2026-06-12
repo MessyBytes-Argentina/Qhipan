@@ -8,6 +8,8 @@ extends Node
 @export_flags("noPlayerFan", "NoPlayerAntigravity", "NoLampLightEffects") var specialFlags: int = 0
 ## Fan range override.
 @export_range(-1, 20, 0.5) var overrideFanLength: float = -1
+## Light range override.
+@export_range(-1, 20, 0.5) var overrideLightLength: float = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,4 +21,5 @@ func process_children(node: Node) -> void:
 		node.specialStickerScale = specialStickerScale
 		node.specialFlags = specialFlags
 		node.overrideFanLength = overrideFanLength
+		node.overrideLightLength = overrideLightLength
 	for child in node.get_children(): process_children(child)

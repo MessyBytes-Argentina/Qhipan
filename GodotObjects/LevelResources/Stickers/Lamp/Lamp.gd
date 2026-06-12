@@ -74,6 +74,8 @@ var shineAnimationMode: String = "Off"
 var effectsOn: bool = true
 ## Is it currently held.
 var isHeld: bool = false
+## Current override light length.
+var currentOverrideLength: float = LIGHTRANGEPLACED
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -146,7 +148,7 @@ func set_size(mode: ScaleModes) -> void:
 			if isHeld: soundPlayer.play_sound()
 			floatingMesh.hide()
 			mesh.show()
-			animate_light_fade(LIGHTRANGEPLACED)
+			animate_light_fade(currentOverrideLength)
 			lightArea.set_collision_layer_value(5, true)
 			lightArea.set_collision_mask_value(2, true)
 			stickerLightArea.set_collision_mask_value(2, true)
@@ -183,16 +185,16 @@ func animate_light_fade(newValue: float) -> void:
 	if not isReadyToTween:
 		light.light_energy = energyGoal
 		light.omni_range = newValue
-		if newValue == LIGHTRANGEPLACED:
+		if newValue == currentOverrideLength:
 			lightShape.shape.radius = newValue
 		else:
 			lightShape.shape.radius = 0.0001
 		return
-	var goalTime: float = (LIGHTFADETIME if newValue != LIGHTRANGEPLACED else LIGHTAREAFADETIME) * inverse_lerp(newValue, lastLightValue, light.omni_range)
+	var goalTime: float = (LIGHTFADETIME if newValue != currentOverrideLength else LIGHTAREAFADETIME) * inverse_lerp(newValue, lastLightValue, light.omni_range)
 	lightTween = create_tween()
 	lightTween.tween_property(light, "light_energy", energyGoal, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	lightTween.parallel().tween_property(light, "omni_range", newValue, goalTime).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	if newValue == LIGHTRANGEPLACED:
+	if newValue == currentOverrideLength:
 		lightTween.parallel().tween_property(lightShape.shape, "radius", newValue, LIGHTAREAFADETIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 		lightTween.parallel().tween_method(check_darkness_update, 0, DarknessArea.ONLIGHTUPDATETIMES, LIGHTAREAFADETIME)
 	else:
@@ -250,11 +252,13 @@ func prerender() -> void:
 	billboard.pixel_size = billboardsize
 
 ## Places the light then applies special changes.
-func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0, _extraParameters: Dictionary = {}) -> void:
+func place_sticker(pos: Vector3, direction: Vector3, overrideSize: Vector3 = Vector3.ONE, specialFlags: int = 0, extraParameters: Dictionary = {}) -> void:
 	if specialFlags & NOLIGHTEFFECTS:
 		effectsOn = false
 		light.hide()
 		shine.hide()
+	if extraParameters.overrideLightLength != -1: currentOverrideLength = extraParameters.overrideLightLength
+	else: currentOverrideLength = LIGHTRANGEPLACED
 	super(pos, direction, overrideSize, specialFlags)
 
 ## Activates the sticker effect when held by the player

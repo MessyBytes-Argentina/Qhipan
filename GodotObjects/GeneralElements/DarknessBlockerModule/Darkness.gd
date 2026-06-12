@@ -27,6 +27,8 @@ const RAYCOLLISIONLAYERS: Array[int] = [1, 6, 7]
 var collisionMap: HeightMapShape3D
 ## Reference to the fog shader.
 var fogShader: ShaderMaterial
+## Reference to the player.
+var player: Player
 
 ## Lights currently affecting the fog.
 var lights: Array[Area3D] = []
@@ -49,6 +51,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	lights = darknessArea.get_overlapping_areas()
 	_collision_shape_set()
+	player = get_tree().get_first_node_in_group("Player")
 
 ## Sets up the collision shape for the fog.
 func _collision_shape_set() -> void:
@@ -91,14 +94,13 @@ func update_collision_shape() -> void:
 	var lightDistances: Dictionary[Vector3, float]
 	var lightAbsoluteDistances: Dictionary[Vector3, float]
 	var spaceState: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var yPos: float = global_position.y - size.y / 2 + DARKMARGIN
 	for lightArea in lights: 
 		if lightArea.has_node("LightShape"): 
 			var lightShape: CollisionShape3D = lightArea.get_node("LightShape")
 			var parent: Node = lightArea.get_node(lightArea.get_meta("Parent"))
 			lightDistances[lightArea.global_position] = lightShape.shape.radius
 			if parent is LampSticker:
-				lightAbsoluteDistances[lightArea.global_position] = LampSticker.LIGHTRANGEPLACED if parent.placed else LampSticker.LIGHTRANGEGRABED
+				lightAbsoluteDistances[lightArea.global_position] = parent.currentOverrideLength if parent.placed else LampSticker.LIGHTRANGEGRABED
 			else:
 				lightAbsoluteDistances[lightArea.global_position] = lightShape.shape.radius
 			if parent.lightTween: 
@@ -112,7 +114,7 @@ func update_collision_shape() -> void:
 		var vertexFlatGlobalPosition: Vector2 = Vector2((size.x / float(collisionMap.map_width)) * (i % collisionMap.map_width), (size.z / float(collisionMap.map_depth)) * floorf(i / float(collisionMap.map_width)))
 		vertexFlatGlobalPosition = flatStartGlobalPosition + vertexFlatGlobalPosition.rotated(-rotation.y)
 		for lightStart in lightDistances:
-			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, yPos, vertexFlatGlobalPosition.y)
+			var relativeGlobalPosition: Vector3 = Vector3(vertexFlatGlobalPosition.x, lightStart.y, vertexFlatGlobalPosition.y)
 			if lightStart.distance_to(relativeGlobalPosition) <= lightAbsoluteDistances[lightStart]:
 				var raycast = PhysicsRayQueryParameters3D.create(lightStart, relativeGlobalPosition)
 				raycast.hit_from_inside = false

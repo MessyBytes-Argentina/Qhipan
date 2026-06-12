@@ -61,7 +61,7 @@ func update_material(updateMaterial: ShaderMaterial, anyRaycast: bool) -> void:
 	updateMaterial.set_shader_parameter("cylinderHeight", player.currentCamera.global_position.distance_to(player.global_position) + CONEEXTRA)
 	var cylinderPosition: Vector3 = player.currentCamera.global_position + player.currentCamera.global_position.direction_to(player.global_position) * (player.currentCamera.global_position.distance_to(player.global_position) / 2.0)
 	updateMaterial.set_shader_parameter("cylinderPosition", cylinderPosition)
-	updateMaterial.set_shader_parameter("cylinderRotation", player.currentCamera.global_position - up.global_position)
+	updateMaterial.set_shader_parameter("cylinderRotation", player.cameraProbe.global_rotation)
 	updateMaterial.set_shader_parameter("playerPosition", playerFloor.global_position)
 	updateMaterial.set_shader_parameter("globalPlayerPosition", player.global_position)
 	updateMaterial.set_shader_parameter("cameraMiddleRotation", playerFloor.global_rotation.y)
